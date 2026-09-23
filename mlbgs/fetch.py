@@ -102,10 +102,27 @@ def is_completed(g: dict) -> bool:
             and "score" in g["teams"]["away"])
 
 
-def season_results(season: int) -> list[dict]:
+def season_schedule(season: int) -> tuple[list[dict], list[dict]]:
+    """(resultados finales, juegos restantes). Un juego suspendido y reanudado aparece dos veces
+    en el calendario con el mismo gamePk: se deduplica para no contarlo doble (cotejo contra standings)."""
     data = get(f"{STATS}/schedule?sportId=1&season={season}&gameType=R&hydrate=linescore")
     games = [g for d in data.get("dates", []) for g in d["games"]]
-    return [slim_game(g) for g in games if is_completed(g)]
+    done: dict[int, dict] = {}
+    remaining: dict[int, dict] = {}
+    for g in games:
+        if is_completed(g):
+            done[g["gamePk"]] = slim_game(g)
+        elif g["status"].get("abstractGameState") != "Final" and not re.search(
+                r"Postponed|Cancel", g["status"].get("detailedState", "")):
+            remaining[g["gamePk"]] = {"pk": g["gamePk"], "date": g.get("officialDate"),
+                                      "away": g["teams"]["away"]["team"]["id"], "home": g["teams"]["home"]["team"]["id"]}
+    for pk in done:
+        remaining.pop(pk, None)
+    return sorted(done.values(), key=lambda g: (g["date"], g["pk"])), sorted(remaining.values(), key=lambda g: g["date"])
+
+
+def season_results(season: int) -> list[dict]:
+    return season_schedule(season)[0]
 
 
 def upcoming_games(start: str, end: str) -> list[dict]:
@@ -176,6 +193,10 @@ def standings(season: int) -> dict:
                 "divRank": tr.get("divisionRank"), "gb": tr.get("divisionGamesBack"),
                 "wcgb": tr.get("wildCardGamesBack"), "clinch": tr.get("clinchIndicator"),
                 "elim": tr.get("eliminationNumber"), "splits": splits,
+                "wcRank": tr.get("wildCardRank"), "wcElim": tr.get("wildCardEliminationNumber"),
+                "magic": tr.get("magicNumber"), "divLeader": tr.get("divisionLeader"), "clinched": tr.get("clinched"),
+                "leagueRank": tr.get("leagueRank"), "runDiff": tr.get("runDifferential"),
+                "lastUpdated": tr.get("lastUpdated"),
             }
     return out
 
@@ -186,13 +207,13 @@ def team_stats(season: int) -> dict:
     def put(tid, key, stat, keys):
         out.setdefault(str(tid), {})[key] = pick(stat, keys)
 
-    for s in get(f"{STATS}/teams/stats?season={season}&group=pitching&stats=season&sportIds=1")["stats"][0]["splits"]:
+    for s in get(f"{STATS}/teams/stats?season={season}&group=pitching&stats=season&sportIds=1&limit=100")["stats"][0]["splits"]:
         put(s["team"]["id"], "pitching", s["stat"], PITCH_KEYS)
-    for s in get(f"{STATS}/teams/stats?season={season}&group=pitching&stats=statSplits&sitCodes=sp,rp&sportIds=1")["stats"][0]["splits"]:
+    for s in get(f"{STATS}/teams/stats?season={season}&group=pitching&stats=statSplits&sitCodes=sp,rp&sportIds=1&limit=100")["stats"][0]["splits"]:
         put(s["team"]["id"], s["split"]["code"], s["stat"], PITCH_KEYS)
-    for s in get(f"{STATS}/teams/stats?season={season}&group=hitting&stats=season&sportIds=1")["stats"][0]["splits"]:
+    for s in get(f"{STATS}/teams/stats?season={season}&group=hitting&stats=season&sportIds=1&limit=100")["stats"][0]["splits"]:
         put(s["team"]["id"], "hitting", s["stat"], HIT_KEYS)
-    for s in get(f"{STATS}/teams/stats?season={season}&group=hitting&stats=statSplits&sitCodes=vl,vr&sportIds=1")["stats"][0]["splits"]:
+    for s in get(f"{STATS}/teams/stats?season={season}&group=hitting&stats=statSplits&sitCodes=vl,vr&sportIds=1&limit=100")["stats"][0]["splits"]:
         put(s["team"]["id"], "hit_" + s["split"]["code"], s["stat"], HIT_KEYS)
     return out
 
@@ -273,6 +294,84 @@ def handedness(ids: list[int]) -> tuple[dict, dict]:
     return throws, bats
 
 
+# ------------------------------------------------------------------ rosters, lesionados y noticias
+
+def roster(tid: int, season: int) -> dict:
+    """Roster activo con stats de temporada y splits vs zurdos/derechos, más la lista de lesionados."""
+    hyd = (f"person(stats(type=[season,statSplits],sitCodes=[vl,vr],group=[hitting,pitching],season={season}))")
+    act = get(f"{STATS}/teams/{tid}/roster?rosterType=active&hydrate={hyd}")
+    players = []
+    for r in act.get("roster", []):
+        per = r.get("person") or {}
+        row = {"id": per.get("id"), "name": per.get("fullName"), "pos": (r.get("position") or {}).get("abbreviation"),
+               "number": r.get("jerseyNumber"), "status": (r.get("status") or {}).get("description"),
+               "bats": (per.get("batSide") or {}).get("code"), "throws": (per.get("pitchHand") or {}).get("code"),
+               "hit": None, "pit": None, "hitVs": {}, "pitVs": {}}
+        for blk in per.get("stats", []):
+            kind, grp = blk["type"]["displayName"], blk["group"]["displayName"]
+            for sp in blk.get("splits", []):
+                if kind == "season" and "team" in sp and len(blk["splits"]) > 1:
+                    continue
+                keys = HIT_KEYS if grp == "hitting" else PITCH_KEYS
+                st = pick(sp.get("stat", {}), keys)
+                if kind == "season":
+                    row["hit" if grp == "hitting" else "pit"] = st
+                elif kind == "statSplits":
+                    code = (sp.get("split") or {}).get("code")
+                    if code in ("vl", "vr"):
+                        row["hitVs" if grp == "hitting" else "pitVs"][code] = st
+        players.append(row)
+    injured = []
+    try:
+        full = get(f"{STATS}/teams/{tid}/roster?rosterType=40Man")
+        for r in full.get("roster", []):
+            code = (r.get("status") or {}).get("code") or ""
+            if code.startswith("D") or "Injured" in ((r.get("status") or {}).get("description") or ""):
+                injured.append({"id": r["person"]["id"], "name": r["person"].get("fullName"),
+                                "pos": (r.get("position") or {}).get("abbreviation"),
+                                "status": (r.get("status") or {}).get("description")})
+    except Exception as e:  # noqa: BLE001
+        log("lesionados", tid, repr(e))
+    return {"players": players, "injured": injured}
+
+
+TRANSACTION_TYPES = {"SC", "CU", "OPT", "DES", "SE", "TR", "REL", "ASG", "SFA", "CLW", "DFA"}
+
+
+def transactions(team_ids: set[int], start: str, end: str) -> list[dict]:
+    """Movimientos oficiales (lista de lesionados, llamados, opciones, cambios) = noticias del equipo."""
+    out = []
+
+    def one(tid):
+        return get(f"{STATS}/transactions?teamId={tid}&startDate={start}&endDate={end}").get("transactions", [])
+
+    for rows in pmap(one, sorted(team_ids), workers=6):
+        for t in rows:
+            if t.get("typeCode") not in TRANSACTION_TYPES:
+                continue
+            team = (t.get("toTeam") or {}).get("id") or (t.get("fromTeam") or {}).get("id")
+            if team not in team_ids:
+                continue
+            out.append({"id": t.get("id"), "date": t.get("date") or t.get("effectiveDate"), "type": t.get("typeDesc"),
+                        "code": t.get("typeCode"), "team": team, "person": (t.get("person") or {}).get("id"),
+                        "name": (t.get("person") or {}).get("fullName"), "text": t.get("description")})
+    uniq = {t["id"]: t for t in out}
+    return sorted(uniq.values(), key=lambda t: (t["date"] or ""), reverse=True)
+
+
+def arsenal(season: int) -> dict:
+    """Arsenal por pitcheo (Savant): uso, run value/100, whiff%, wOBA; para abridores y bateadores."""
+    out = {"pitcher": {}, "batter": {}}
+    for kind in ("pitcher", "batter"):
+        for r in _csv(f"{SAVANT}/leaderboard/pitch-arsenal-stats?type={kind}&pitchType=&year={season}&team=&min=1&csv=true"):
+            out[kind].setdefault(r["player_id"], []).append({
+                "type": r.get("pitch_type"), "name": r.get("pitch_name"), "usage": _num(r.get("pitch_usage")),
+                "rv100": _num(r.get("run_value_per_100")), "pitches": _num(r.get("pitches")), "pa": _num(r.get("pa")),
+                "woba": _num(r.get("woba")), "xwoba": _num(r.get("est_woba")), "whiff": _num(r.get("whiff_percent")),
+                "k": _num(r.get("k_percent")), "hardhit": _num(r.get("hard_hit_percent"))})
+    return out
+
+
 # ------------------------------------------------------------------ box scores (uso de bullpen)
 
 def boxscore(pk: int) -> dict:
@@ -290,7 +389,13 @@ def boxscore(pk: int) -> dict:
                          "h": st.get("hits", 0), "bb": st.get("baseOnBalls", 0), "k": st.get("strikeOuts", 0),
                          "hr": st.get("homeRuns", 0), "sv": st.get("saves", 0), "hld": st.get("holds", 0),
                          "bs": st.get("blownSaves", 0), "note": st.get("note")})
-        out[side] = {"team": t["team"]["id"], "pitchers": rows, "bullpen": t.get("bullpen", [])}
+        lineup = []
+        for pid in t.get("battingOrder", []):
+            p = t["players"].get(f"ID{pid}", {})
+            lineup.append({"id": pid, "name": (p.get("person") or {}).get("fullName"),
+                           "pos": (p.get("position") or {}).get("abbreviation")})
+        out[side] = {"team": t["team"]["id"], "pitchers": rows, "bullpen": t.get("bullpen", []),
+                     "bench": t.get("bench", []), "lineup": lineup}
     return out
 
 
@@ -351,7 +456,7 @@ def et_today() -> dt.date:
         return (dt.datetime.utcnow() - dt.timedelta(hours=4)).date()
 
 
-def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int = 7) -> dict:
+def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int = 10) -> dict:
     today = today or et_today()
     season = today.year
     errors: dict[str, str] = {}
@@ -373,15 +478,24 @@ def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int 
                  "today": today.isoformat(), "season": season, "days": days},
         "teams": attempt("teams", lambda: teams(season), {}),
         "upcoming": attempt("upcoming", lambda: upcoming_games(today.isoformat(), end.isoformat()), []),
-        "results": attempt("results", lambda: season_results(season), []),
+        "results": [],
         "prevResults": attempt("prevResults", lambda: season_results(season - 1), []),
         "standings": attempt("standings", lambda: standings(season), {}),
         "teamStats": attempt("teamStats", lambda: team_stats(season), {}),
         "playersPitching": attempt("playersPitching", lambda: players(season, "pitching"), []),
         "playersHitting": attempt("playersHitting", lambda: players(season, "hitting"), []),
         "savant": attempt("savant", lambda: savant(season), {}),
+        "arsenal": attempt("arsenal", lambda: arsenal(season), {}),
         "odds": attempt("odds", odds, None),
     }
+    bundle["results"], bundle["remaining"] = attempt("schedule", lambda: season_schedule(season), ([], []))
+
+    playing = sorted({t for g in bundle["upcoming"] for t in (g["away"], g["home"])})
+    rosters = attempt("rosters", lambda: pmap(lambda t: (t, roster(t, season)), playing, workers=6), [])
+    bundle["rosters"] = {str(t): r for t, r in rosters or []}
+    bundle["transactions"] = attempt(
+        "transactions", lambda: transactions(set(playing), (today - dt.timedelta(days=21)).isoformat(),
+                                             today.isoformat()), [])
 
     pids = sorted({pid for g in bundle["upcoming"] for pid in g["probable"].values() if pid})
     pitchers = attempt("probables", lambda: pmap(lambda p: pitcher(p, season), pids), [])
