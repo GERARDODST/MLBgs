@@ -2,7 +2,7 @@ name: Investigación (temporal)
 on:
   push:
     branches: ["claude/eloquent-ride-7quneh"]
-    paths: ["scripts/research_urls.txt", "scripts/research_fetch.py", ".github/workflows/research-fetch.yml"]
+    paths: ["scripts/research_urls.txt", "scripts/research_keys.txt", "scripts/research_fetch.py", ".github/workflows/research-fetch.yml"]
 permissions:
   contents: read
 jobs:
