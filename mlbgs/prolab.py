@@ -691,7 +691,7 @@ def run_kronos(pk: int, label: str = "pre", n_sims: int = 20000) -> dict:
     mu_diff = mc["meanRuns"]["home"] - mc["meanRuns"]["away"]
     sd_diff = math.sqrt(max(1e-9, sum(k * k * v for k, v in margin.items()) - sum(k * v for k, v in margin.items()) ** 2))
 
-    return {
+    lab = {
         "model": "KRONOS", "modelKey": "kronos", "pk": pk, "frozenAt": snap["takenAt"], "firstPitch": game["time"],
         "tagline": "El partido como proceso estocástico: cadena de Markov de la cuenta lanzamiento a lanzamiento + cadena base-out + salida del abridor como proceso de conteo",
         "builtAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
@@ -718,6 +718,9 @@ def run_kronos(pk: int, label: str = "pre", n_sims: int = 20000) -> dict:
         "summaryProb": {"pModel": mc["pHome"], "totalDist": mc["total"]},
         "result": None, "secondsTotal": time.time() - t0,
     }
+    lab["research"] = KR.REFERENCES
+    lab["reading"] = KR.reading(base, lab["kronos"])
+    return lab
 
 
 if __name__ == "__main__":

@@ -732,3 +732,122 @@ def starter_leash(boxscores):
     resid = [y - (a - beta * x) for x, y in zip(xs, ys)]
     return {"starts": len(xs), "meanPitches": my, "meanRuns": mx, "beta": beta, "sdResid": statistics.pstdev(resid),
             "intercept": a}
+
+
+# ============================================================ investigación: fuentes y qué se tomó de cada una
+
+REFERENCES = [
+    {"key": "lindsey", "ref": "Lindsey, G. R. (1961, 1963). The progress of the score during a baseball game; An investigation of strategies in baseball. JASA 56(295); Operations Research 11(4).",
+     "url": "https://www.jstor.org/stable/2282091", "idea": "Primera matriz de las 24 situaciones base-out y primera probabilidad de victoria por entrada con la distribución de carreras por entrada.",
+     "use": "Base de la cadena base-out que KRONOS recorre dentro de cada entrada.", "check": "quasi"},
+    {"key": "bukiet", "ref": "Bukiet, Harold & Palacios (1997). A Markov chain approach to baseball. Operations Research 45(1):14-23.",
+     "url": "https://pubsonline.informs.org/doi/10.1287/opre.45.1.14", "idea": "Cadena de Markov con jugadores distintos (no un equipo promedio) para carreras por entrada, victorias y orden al bate.",
+     "use": "Cada turno usa al bateador real del lineup confirmado contra el pitcher real, no promedios de equipo.", "check": None},
+    {"key": "sokol", "ref": "Sokol, J. (2004). An intuitive Markov chain lesson from baseball. INFORMS Transactions on Education 5(1):47-55.",
+     "url": "https://pubsonline.informs.org/doi/pdf/10.1287/ited.5.1.47", "idea": "Matriz fundamental N = (I − Q)⁻¹ de una cadena absorbente para valores esperados.",
+     "use": "N de la cadena de la cuenta da lanzamientos esperados por turno y P(K), P(BB) exactas.", "check": "chain"},
+    {"key": "powers", "ref": "Powers & Yurko (2025). Swinging, fast and slow: interpreting variation in baseball swing tracking metrics. arXiv:2507.01238.",
+     "url": "https://arxiv.org/abs/2507.01238", "idea": "El turno al bate como proceso de Markov con recompensa sobre las 12 cuentas y estados terminales ponche, base por bolas, pelotazo y bola en juego; cada lanzamiento es bola, strike cantado, strike tirándole, foul, en juego o pelotazo.",
+     "use": "Misma estructura de estados; KRONOS estima las probabilidades por lanzamiento de cada jugador con Statcast 2026.", "check": "palen"},
+    {"key": "albert", "ref": "Albert, J. Count Effects y Runs Expectancy (Exploring Baseball Data with R); Beyond runs expectancy (2015), Journal of Sports Analytics 1(1).",
+     "url": "https://baseballwithr.wordpress.com/", "idea": "Las transiciones de la cuenta forman una cadena de Markov; cada bola o strike cambia el valor del turno (≈0.04 carreras en 0-0; 0.16 de palanca en 2-0).",
+     "use": "Tabla de transición por cuenta de la liga y de cada jugador.", "check": "chain"},
+    {"key": "brill", "ref": "Brill, Deshpande & Wyner (2023). A Bayesian analysis of the time through the order penalty in baseball. JQAS 19(4):245-262.",
+     "url": "https://arxiv.org/abs/2210.06724", "idea": "La caída del pitcher es continua a lo largo del juego; no hay salto significativo al empezar la 3ª vuelta del orden.",
+     "use": "Deriva continua por bateador enfrentado (no escalones por vuelta), estimada con la liga 2026.", "check": "drift"},
+    {"key": "rosner", "ref": "Rosner, Mosteller & Youtz (1996). Modeling pitcher performance and the distribution of runs per inning in MLB. The American Statistician 50(4).",
+     "url": "https://www.tandfonline.com/doi/abs/10.1080/00031305.1996.10473565", "idea": "Bateadores enfrentados por entrada ≈ binomial negativa modificada; carreras como binomial truncada.",
+     "use": "Contraste: KRONOS no supone la distribución, la genera lanzamiento a lanzamiento y se compara contra la real.", "check": "quasi"},
+    {"key": "glass", "ref": "Glass & Lowry (2008). Quasigeometric distributions and extra inning baseball games. Mathematics Magazine 81(2):127-137.",
+     "url": "https://www.tandfonline.com/doi/abs/10.1080/0025570X.2008.11953539", "idea": "Carreras por entrada: P(0) = a y luego geométrica con constante de depreciación d ≈ 0.436 igual para todos los equipos (los equipos difieren en anotar la primera).",
+     "use": "Se re-estimó con 2026 y se usa para la media entrada en curso en la pestaña En vivo.", "check": "quasi"},
+    {"key": "stern", "ref": "Stern, H. (1994). A Brownian motion model for the progress of sports scores. JASA 89(427):1128-1134.",
+     "url": "https://www.tandfonline.com/doi/abs/10.1080/01621459.1994.10476851", "idea": "Diferencia de marcador como movimiento browniano con deriva μ y varianza σ²: P(local gana | ventaja ℓ en t) = Φ((ℓ + (1−t)μ) / (σ√(1−t))).",
+     "use": "Se probó con 2,359 juegos de 2026: funciona a mitad de juego pero falla al final (discreto, el local batea último). Por eso la probabilidad en vivo es la cadena discreta.", "check": "brown"},
+    {"key": "polson", "ref": "Polson & Stern (2015). The implied volatility of a sports game. JQAS 11(3):145-153.",
+     "url": "https://www.degruyterbrill.com/document/doi/10.1515/jqas-2014-0095/html", "idea": "Con el momio (P de victoria) y la ventaja esperada se despeja la volatilidad implícita del partido, como en opciones financieras.",
+     "use": "σ implícita del mercado con tu momio vs σ del modelo: si el mercado espera un juego más volátil, el favorito vale menos.", "check": "brown"},
+    {"key": "miller", "ref": "Miller, S. J. (2006). A derivation of the Pythagorean won-loss formula in baseball. arXiv:math/0509698.",
+     "url": "https://arxiv.org/abs/math/0509698", "idea": "Carreras anotadas y permitidas como Weibull independientes → fórmula pitagórica con γ ≈ 1.79.",
+     "use": "Supuesto de independencia entre las carreras de ambos equipos, que KRONOS respeta (cada lado se simula por su lado dentro del mismo juego).", "check": None},
+    {"key": "green", "ref": "Green & Zwiebel (2018). The hot-hand fallacy: cognitive mistakes or equilibrium adjustments? Evidence from MLB. Management Science 64(11).",
+     "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2017.2804", "idea": "Sí hay 'mano caliente' de jugadores entre turnos en MLB (medio a un desvío estándar de talento).",
+     "use": "Motivó probar estados ocultos (HMM) y rachas entre entradas; con 2026 no hay persistencia entrada a entrada, solo un efecto común del partido.", "check": "hmm"},
+    {"key": "brill2", "ref": "Brill, Yurko & Wyner (2025). Exploring the difficulty of estimating win probability: a simulation study. arXiv:2406.16171.",
+     "url": "https://arxiv.org/abs/2406.16171", "idea": "Los modelos de probabilidad de victoria ajustados con datos de jugada a jugada tienen mucha varianza; en béisbol los modelos de espacio de estados (desde Lindsey) funcionan bien.",
+     "use": "KRONOS es un modelo de espacio de estados (cuenta × base-out × entrada) en vez de un ajuste directo de victoria.", "check": None},
+    {"key": "survival", "ref": "Pitch Count Trends – Why managers remove starting pitchers (FanGraphs Community, 2014); Matus, Fifteen pitches per inning (SABR BRJ 1978).",
+     "url": "https://community.fangraphs.com/pitch-count-trends-why-managers-remove-starting-pitchers/", "idea": "La salida del abridor depende del conteo de lanzamientos y del contexto (carreras, embasados).",
+     "use": "Umbral aleatorio de lanzamientos por abridor que se adelanta con cada carrera permitida (tiempo de falla acelerado estimado con las aperturas de la liga).", "check": "leash"},
+    {"key": "rules", "ref": "Official Baseball Rules, 2026 Edition (Office of the Commissioner of Baseball).",
+     "url": "https://mktg.mlbstatic.com/mlb/official-information/2026-official-baseball-rules.pdf", "idea": "Regla 7.01(b)(2): en temporada regular cada media entrada extra empieza con corredor en 2ª; 7.01(g): no aplica en postemporada. El reloj de lanzamiento cobra bola o strike automático.",
+     "use": "Corredor en 2ª en extra innings; los ball/strike automáticos del reloj quedan dentro de las tablas de la cuenta.", "check": "clock"},
+    {"key": "savant", "ref": "Baseball Savant: Statcast Search CSV Documentation (MLB).",
+     "url": "https://baseballsavant.mlb.com/csv-docs", "idea": "Campos oficiales por lanzamiento: balls, strikes (cuenta previa), description, events, n_thruorder_pitcher; desde 2026 la zona es la definida por ABS.",
+     "use": "Fuente de las tablas por cuenta de cada jugador (temporada 2026) y de la liga (14 días previos).", "check": "chain"},
+    {"key": "abs", "ref": "ABS Challenge System 2026 (MLB; análisis de ESPN y Opta).",
+     "url": "https://www.espn.com/mlb/story/_/id/48807610/mlb-2026-abs-automated-balls-strikes-system-early-numbers-lessons-analytics", "idea": "Con los retos de bolas y strikes, los strikes cantados fuera de zona bajaron (6.7% → 5.1%) y las bases por bolas subieron.",
+     "use": "Por eso KRONOS usa solo datos de 2026 para la cuenta: el ambiente de bolas y strikes cambió.", "check": "chain"},
+    {"key": "tango", "ref": "Tango, Lichtman & Dolphin (2007). The Book; Win Expectancy / Leverage Index (FanGraphs, Baseball-Reference).",
+     "url": "https://library.fangraphs.com/misc/we/", "idea": "Win Expectancy = probabilidad histórica de ganar según entrada, marcador, outs y corredores; Leverage Index = cuánto puede mover una jugada esa probabilidad.",
+     "use": "La matriz de probabilidad en vivo usa la misma definición de estado.", "check": None},
+]
+
+
+def reading(base, out):
+    """Lectura integrada: el modelo estocástico junto al contexto del framework (secciones 1-8)."""
+    S = base["sections"]
+    a, h = base["teams"]["away"]["abbr"], base["teams"]["home"]["abbr"]
+    mc = out["mc"]
+    rows = []
+    imp = S["s1"].get("importance") or {}
+    ir = {r["team"]: r for r in imp.get("rows", [])}
+    if ir:
+        def st(t):
+            r = ir.get(t) or {}
+            return f"{t} {r.get('w')}-{r.get('l')}, {r.get('status', '').lower()} (playoffs {round(100 * (r.get('pPlayoffs') or 0))}%, bye {round(100 * (r.get('pBye') or 0))}%)"
+        rows.append({"k": "Qué se juegan", "src": "Framework 1 · importancia",
+                     "v": f"{st(a)}; {st(h)}. Importancia {imp.get('level', '—').lower()}. " + " ".join(imp.get("notes", []))})
+    comp = {c["side"]: c for c in S["s3"]["comparison"]}
+    for side, opp in (("away", h), ("home", a)):
+        c = comp.get(side) or {}
+        ch = out["chains"][side]
+        kbar = statistics.fmean(r["K"] for r in ch["rows"])
+        bbar = statistics.fmean(r["BB"] for r in ch["rows"])
+        pbar = statistics.fmean(r["pitches"] for r in ch["rows"])
+        kexp = sum(i * v for i, v in enumerate(mc["k"][side]))
+        outs = sum(i * v for i, v in enumerate(mc["spOuts"][side]))
+        top = max(ch["rows"], key=lambda r: r["K"])
+        low = min(ch["rows"], key=lambda r: r["K"])
+        rows.append({"k": f"Abridor {base['teams'][side]['abbr']}: {c.get('name', ch['pitcher'])}", "src": "Framework 3 + cadena de la cuenta",
+                     "v": f"ERA {c.get('era', 0):.2f} · FIP {c.get('fip', 0):.2f} · K% {c.get('k', 0):.1f} en la temporada. Contra el lineup confirmado de {opp} la cadena da K {100 * kbar:.1f}%, BB+HBP {100 * bbar:.1f}% y {pbar:.2f} lanzamientos por turno; "
+                          f"{kexp:.1f} ponches y {outs / 3:.1f} entradas esperadas. Más ponchable: {top['name']} ({100 * top['K']:.0f}%); más difícil: {low['name']} ({100 * low['K']:.0f}%)."})
+    pm = out["park"]["mult"]
+    w = out["park"]["wind"]
+    rows.append({"k": "Parque y clima", "src": "Framework 5.3 · 6.4",
+                 "v": f"{out['park']['name'] or base['venue']['name']}: {w.get('windText') or 'sin viento reportado'}, {w.get('temp') or '—'}°F. Factor de jonrón aplicado ×{pm['HR']:.3f} (parque × viento); sencillos ×{pm['1B']:.3f}."})
+    s4 = S["s4"]
+    unav = {sd: [r["name"] for r in s4.get("full", {}).get(sd, []) if r["available"] in ("Dudoso", "No disponible") and r["role"] != "Rotación"] for sd in ("away", "home")}
+    rel = {sd: list(mc["relievers"][sd].items())[:3] for sd in ("away", "home")}
+    rows.append({"k": "Bullpens", "src": "Framework 4 + simulación",
+                 "v": f"{s4['conclusion']} Dudosos/no disponibles: {a} {', '.join(unav['away']) or 'ninguno'}; {h} {', '.join(unav['home']) or 'ninguno'}. "
+                      f"Relevistas que más entran en la simulación: {a} " + ", ".join(f"{n} {round(100 * p)}%" for n, p in rel["away"]) +
+                      f"; {h} " + ", ".join(f"{n} {round(100 * p)}%" for n, p in rel["home"]) + "."})
+    news = S["s1"].get("news") or {}
+    inj = []
+    for sd in ("away", "home"):
+        n = news.get(sd) or {}
+        il = [x["name"] for x in (n.get("injured") or [])][:4]
+        if il:
+            inj.append(f"{n.get('team')}: {', '.join(il)}")
+    if inj:
+        rows.append({"k": "Lesionados relevantes", "src": "Framework 1 · noticias",
+                     "v": "; ".join(inj) + ". Ya no están en el lineup ni en el bullpen del partido, así que no entran a la simulación."})
+    ser = base.get("series") or {}
+    if ser.get("gameNumber"):
+        rows.append({"k": "Serie", "src": "Framework 2", "v": f"Juego {ser['gameNumber']} de {ser.get('totalGames')}: {ser.get('result') or 'serie empatada'}."})
+    bp = base["summary"]["pHome"]
+    rows.append({"k": "Modelo contra framework", "src": "Triangulación 5.7",
+                 "v": f"KRONOS da P({h}) {100 * mc['pHome']:.1f}% y el framework {100 * bp:.1f}%; diferencia {100 * (mc['pHome'] - bp):+.1f} pp. "
+                      f"Marcador esperado {a} {mc['meanRuns']['away']:.2f} – {mc['meanRuns']['home']:.2f} {h} (framework {base['summary']['proj']['away']:.2f} – {base['summary']['proj']['home']:.2f})."})
+    return rows
