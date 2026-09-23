@@ -30,6 +30,7 @@ from . import mathlib as M
 from . import model
 from . import picks as P
 from . import prisma as PR
+from . import kronos as KR
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, "prolab")
@@ -494,9 +495,19 @@ def main():
     import argparse
     ap = argparse.ArgumentParser(description="Pro-Lab: DIAMANTE-24 sobre un partido congelado")
     ap.add_argument("--pk", type=int, default=824223)
-    ap.add_argument("--model", choices=["diamante", "prisma"], default="diamante")
+    ap.add_argument("--model", choices=["diamante", "prisma", "kronos"], default="diamante")
+    ap.add_argument("--label", default="pre")
     ap.add_argument("--sims", type=int, default=50000)
     args = ap.parse_args()
+    if args.model == "kronos":
+        out = run_kronos(args.pk, args.label, n_sims=args.sims)
+        path = os.path.join(DIR, f"prolab_{args.pk}.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, separators=(",", ":"), default=float)
+        k = out["kronos"]["mc"]
+        print(f"KRONOS: P({out['game']['teams']['home']['abbr']}) = {k['pHome']:.3f} · carreras {k['meanRuns']['away']:.2f}-{k['meanRuns']['home']:.2f}"
+              f" · {k['n']} sims en {k['seconds']:.1f} s → {path}", file=sys.stderr)
+        return
     if args.model == "prisma":
         out = run_prisma(args.pk, n_sims=max(args.sims, 100000))
         path = os.path.join(DIR, f"prolab_{args.pk}.json")
@@ -514,6 +525,199 @@ def main():
         json.dump(out, f, ensure_ascii=False, separators=(",", ":"), default=float)
     print(f"{MODEL_NAME}: P({out['game']['teams']['home']['abbr']}) = {out['mc']['pHome']:.3f} ± {1.96 * out['mc']['se']:.3f} "
           f"en {out['mc']['n']} simulaciones ({out['mc']['seconds']:.1f} s) → {path}", file=sys.stderr)
+
+
+
+# ============================================================ KRONOS (procesos estocásticos, lanzamiento a lanzamiento)
+
+def _platoon(rates_vs, rates_all):
+    r = lambda k: (rates_vs.get(k, 0) / rates_all[k]) if rates_all.get(k) else 1.0
+    hit = sum(rates_vs.get(k, 0) for k in ("1B", "2B", "3B")) / max(1e-9, sum(rates_all.get(k, 0) for k in ("1B", "2B", "3B")))
+    return {"K": r("K"), "BB": r("BB"), "HR": r("HR"), "H": hit}
+
+
+def _apply_platoon(P, bip, f):
+    """Ajuste por mano: strikes ~ K, bolas ~ BB y bola en juego ~ hits/HR del split contra esa mano."""
+    Pn = {}
+    for c, row in P.items():
+        Pn[c] = KR.norm({k: v * (f["K"] if k in ("SS", "CS") else f["BB"] if k == "B" else 1.0) for k, v in row.items()})
+    bn = dict(bip)
+    for k in ("1B", "2B", "3B"):
+        bn[k] = bip[k] * f["H"]
+    bn["HR"] = bip["HR"] * f["HR"]
+    bn["OUT"] = max(0.05, 1 - sum(bn[k] for k in ("1B", "2B", "3B", "HR", "E")))
+    return Pn, KR.norm(bn)
+
+
+def run_kronos(pk: int, label: str = "pre", n_sims: int = 20000) -> dict:
+    t0 = time.time()
+    bundle, snap, game = assemble_generic(pk, label)
+    ctx = model.Context(bundle)
+    lg = ctx.lg
+    base = model.analyze(ctx, game)
+    PD = snap["pitchData"]
+    L = KR.league_tables(snap["pitchLeague"])
+    Lr = MK.league_rates(lg.tot)
+    chain_lg = KR.absorb(L["count"])
+
+    # --- parque y clima (misma regla que DIAMANTE-24)
+    park = ctx.park_raw.get(game["venue"], {})
+    def idx(key, fallback):
+        v = park.get(key) or fallback
+        return 1 + 0.5 * ((v or 100) / 100 - 1)
+    wx = model.parse_weather(game.get("weather"), game.get("roof"))
+    wind_hr = 1.0
+    if wx["out"] and (wx["speed"] or 0) >= 10:
+        wind_hr = 1.10 if wx["speed"] < 16 else 1.15
+    elif wx["in"] and (wx["speed"] or 0) >= 10:
+        wind_hr = 0.90 if wx["speed"] < 16 else 0.85
+    runs_i = park.get("runs") or 100
+    park_m = {"HR": idx("hr", runs_i) * wind_hr, "1B": idx("1b", runs_i), "2B": idx("2b", runs_i), "3B": idx("3b", runs_i)}
+
+    rosters = {int(t): {p["id"]: p for p in r["players"]} for t, r in bundle["rosters"].items()}
+    hitters = {p["id"]: p for p in bundle.get("playersHitting", [])}
+
+    def batter(pid, tid, opp_hand):
+        ros = rosters[tid].get(pid) or {}
+        d = PD.get(f"batter:{pid}") or {}
+        P_, fac = KR.player_table(d, L)
+        bp, nb = KR.bip_table(d, L, KR.K_BIP_BAT)
+        st = ros.get("hit") or (hitters.get(pid) or {}).get("stat") or {}
+        vs = (ros.get("hitVs") or {}).get("vl" if opp_hand == "L" else "vr")
+        f = {"K": 1, "BB": 1, "HR": 1, "H": 1}
+        if vs and st:
+            r_vs, r_all = rates_batter(st, vs, opp_hand, Lr)
+            f = _platoon(r_vs, r_all)
+            P_, bp = _apply_platoon(P_, bp, f)
+        name = game["lineupNames"][("away" if tid == game["away"] else "home")].get(str(pid)) or ros.get("name") or str(pid)
+        return {"id": pid, "name": name, "bats": ros.get("bats") or ctx.bats.get(pid), "P": P_, "bip": bp,
+                "n": d.get("n", 0), "nBip": nb, "platoon": f, "factor": fac}
+
+    def pitcher_obj(pid, tid, role, stint=None, avail=1.0, puse=0.5):
+        d = PD.get(f"pitcher:{pid}") or {}
+        P_, fac = KR.player_table(d, L)
+        bp, nb = KR.bip_table(d, L, KR.K_BIP_PIT)
+        raw = bundle["pitchers"].get(str(pid)) or {}
+        ros = rosters[tid].get(pid) or {}
+        st = raw.get("season") or ros.get("pit") or {}
+        o = KR.Pitcher(pid, raw.get("name") or ros.get("name") or str(pid), role, P_, bp, gb_share(st, lg.gb_rate),
+                       stint=stint, avail=avail, pUse=puse, hand=raw.get("hand") or ros.get("throws"))
+        o.n, o.nBip, o.factor = d.get("n", 0), nb, fac
+        o.games = d.get("games") or []
+        return o
+
+    sides = ("away", "home")
+    sp = {s: pitcher_obj(game["probable"][s], game[s], "SP") for s in sides}
+    lineups = {s: [batter(pid, game[s], sp["home" if s == "away" else "away"].hand or "R") for pid in game["lineups"][s]] for s in sides}
+
+    # --- bullpens: roles, fatiga y lista oficial (framework 4.3), tramos por lanzamientos de sus salidas
+    pens_raw = {s: C.full_bullpen(bundle, ctx.bp, game[s], game["probable"][s], ctx.today, lg,
+                                  bundle["rosters"][str(game[s])], game["officialBullpen"][s]) for s in sides}
+    pens = {}
+    for s in sides:
+        out = []
+        for r in pens_raw[s]:
+            if r["role"] == "Rotación":
+                continue
+            d = PD.get(f"pitcher:{r['id']}") or {}
+            rel = [g["pitches"] for g in d.get("games") or [] if g["pitches"] < 50]
+            stint = (statistics.fmean(rel), max(4.0, statistics.pstdev(rel))) if len(rel) >= 3 else (17.0, 6.0)
+            av = {"Disponible": 1.0, "Dudoso": 0.5, "No disponible": 0.0}.get(r["available"], 0.0)
+            out.append(pitcher_obj(r["id"], game[s], r["role"], stint, av, r["pUse"]))
+        pens[s] = out
+
+    # --- umbral de salida del abridor (tiempo de falla acelerado)
+    ls = KR.starter_leash(bundle.get("boxscores", []))
+    beta = max(0.0, ls["beta"])
+    lg_sp = statistics.fmean([b[x]["pitchers"][0]["pitches"] for b in bundle.get("boxscores", []) for x in sides
+                              if b[x]["pitchers"] and (b[x]["pitchers"][0].get("pitches") or 0) >= 60] or [88.0])
+    leash = {}
+    for s in sides:
+        raw = bundle["pitchers"][str(game["probable"][s])]
+        starts = [r["stat"].get("numberOfPitches") for r in raw.get("log", []) if r["stat"].get("gamesStarted") and r["stat"].get("numberOfPitches")][-8:]
+        mu = M.shrink(statistics.fmean(starts), len(starts), 3, lg_sp) if starts else lg_sp
+        sd = max(7.0, statistics.pstdev(starts)) if len(starts) >= 3 else 12.0
+        leash[s] = {"mu": mu + beta * ls["meanRuns"], "sd": sd, "recent": starts, "expPitches": mu}
+
+    # --- calibración del proceso a la liga: residuo de corrido (robos, WP, PB)
+    drift = KR.tto_drift(L)
+    q_adv, lg_mean = KR.calibrate_adv(L, lg.gb_rate, lg.runs_per_half, drift, n_half=9000)
+    half_sim = KR.half_inning_mean.last
+    dep = KR.inning_dependence(bundle["results"])
+    hmm = KR.hmm_fit(bundle["results"], K=2, iters=25)
+    brown = KR.brownian(bundle["results"])
+    qg = KR.quasigeometric(bundle["results"])
+    # fragilidad: la mitad de la varianza común del partido (la otra la explican abridor y lineup explícitos)
+    v_runs = max(0.0, 0.5 * dep["frailtyRuns"])
+    elasticity = 1.6
+    v_frail = v_runs / elasticity ** 2
+
+    M_ = KR.Matchups(L, park_m, drift)
+    sim_game = {"L": L, "matchups": M_, "leashBeta": beta, "qAdv": q_adv, "frailty": v_frail}
+    for s in sides:
+        sim_game[s] = {"lineup": lineups[s], "starter": sp[s], "pen": pens[s], "leash": (leash[s]["mu"], leash[s]["sd"])}
+    t1 = time.time()
+    mc = KR.simulate(sim_game, n=n_sims, seed=11)
+    sim_secs = time.time() - t1
+
+    # --- cadenas analíticas abridor × lineup rival (matriz fundamental por bateador)
+    chains = {}
+    for s in sides:
+        opp = "home" if s == "away" else "away"
+        rows = []
+        for bt in lineups[opp]:
+            P_ = KR.combine_counts(bt["P"], sp[s].P, L)
+            ab = KR.absorb(P_)
+            bp = KR.combine(bt["bip"], sp[s].bip, L["bip"])
+            rows.append({"name": bt["name"], "bats": bt["bats"], "K": ab["K"], "BB": ab["BB"] + ab["HBP"], "X": ab["X"],
+                         "pitches": ab["pitches"][0], "hitBip": 1 - bp["OUT"] - bp["E"], "hrBip": bp["HR"],
+                         "platoon": bt["platoon"], "n": bt["n"]})
+        mid = KR.combine_counts(lineups[opp][3]["P"], sp[s].P, L)
+        abm = KR.absorb(mid)
+        chains[s] = {"pitcher": sp[s].name, "vs": base["teams"][opp]["abbr"], "rows": rows,
+                     "Q": abm["Q"], "N": abm["N"], "batter": lineups[opp][3]["name"],
+                     "count": {c: sp[s].P[c] for c in KR.CKEY}, "n": sp[s].n, "factor": sp[s].factor}
+
+    a_ab, h_ab = base["teams"]["away"]["abbr"], base["teams"]["home"]["abbr"]
+    margin = {int(k): v for k, v in mc["margin"].items()}
+    extra = {"methodKey": "kronos", "n": n_sims, "label": "KRONOS estocástico", "pHome": mc["pHome"],
+             "total": mc["total"], "runs_away": mc["runs"]["away"], "runs_home": mc["runs"]["home"],
+             "f5total": mc["f5total"], "f5": mc["f5"], "nrfi": mc["nrfi"], "k_away": mc["k"]["away"], "k_home": mc["k"]["home"],
+             "rl": {f"{h_ab} -1.5": sum(v for k, v in margin.items() if k >= 2), f"{a_ab} +1.5": sum(v for k, v in margin.items() if k <= 1),
+                    f"{a_ab} -1.5": sum(v for k, v in margin.items() if k <= -2), f"{h_ab} +1.5": sum(v for k, v in margin.items() if k >= -1)}}
+    picks = P.build(base, extra)
+    tri = base["sections"]["s5"]["triangulation"]
+    consensus = {"log5": tri["log5"]["pHome"], "elo": tri["elo"]["pHome"], "lambda": tri["lambda"]["pHome"], "kronos": mc["pHome"]}
+    mu_diff = mc["meanRuns"]["home"] - mc["meanRuns"]["away"]
+    sd_diff = math.sqrt(max(1e-9, sum(k * k * v for k, v in margin.items()) - sum(k * v for k, v in margin.items()) ** 2))
+
+    return {
+        "model": "KRONOS", "modelKey": "kronos", "pk": pk, "frozenAt": snap["takenAt"], "firstPitch": game["time"],
+        "tagline": "El partido como proceso estocástico: cadena de Markov de la cuenta lanzamiento a lanzamiento + cadena base-out + salida del abridor como proceso de conteo",
+        "builtAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "game": {k: base[k] for k in ("pk", "date", "time", "venue", "teams", "weather", "umpire", "series")},
+        "base": base, "picks": picks, "topPicks": picks[:2],
+        "consensus": {"methods": consensus, "pHome": sum(consensus.values()) / 4,
+                      "spread": max(consensus.values()) - min(consensus.values())},
+        "kronos": {
+            "league": {"pitches": L["pitches"], "days": len(snap["pitchLeague"]), "count": L["count"], "countN": L["countN"],
+                       "bip": L["bip"], "clock": L["clock"], "chain": {k: chain_lg[k] for k in ("K", "BB", "HBP", "X", "Xby", "visits")},
+                       "pitchesPA": chain_lg["pitches"][0], "Q": chain_lg["Q"], "N": chain_lg["N"],
+                       "paLenChain": KR.pa_length_dist(L["count"]), "paLenReal": L["paLen"]},
+            "chains": chains,
+            "lineups": {s: [{k: b[k] for k in ("id", "name", "bats", "n", "nBip", "platoon")} for b in lineups[s]] for s in sides},
+            "starters": {s: {"name": sp[s].name, "hand": sp[s].hand, "n": sp[s].n, "nBip": sp[s].nBip, "gb": sp[s].gb,
+                             "factor": sp[s].factor, "bip": sp[s].bip, "leash": leash[s]} for s in sides},
+            "pens": {s: [{"name": p.name, "role": p.role, "avail": p.avail, "pUse": p.pUse, "stint": p.stint, "n": p.n} for p in pens[s]] for s in sides},
+            "calib": {"qAdv": q_adv, "simHalf": lg_mean, "target": lg.runs_per_half, "halfDist": half_sim},
+            "drift": drift, "leashModel": ls, "lgStarterPitches": lg_sp, "park": {"name": park.get("name"), "mult": park_m, "wind": wx},
+            "dependence": dep, "hmm": hmm, "frailty": {"vRuns": v_runs, "vG": v_frail, "elasticity": elasticity},
+            "brownian": dict(brown, simMu=mu_diff, simSigma=sd_diff), "quasigeo": qg,
+            "mc": dict(mc, seconds=sim_secs),
+        },
+        "summaryProb": {"pModel": mc["pHome"], "totalDist": mc["total"]},
+        "result": None, "secondsTotal": time.time() - t0,
+    }
 
 
 if __name__ == "__main__":

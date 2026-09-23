@@ -24,6 +24,7 @@ MODEL_NAMES = {
     "log5": "Log5 (5.7.2)", "elo": "Elo + abridor (5.7.7)", "lambda": "λ + Binomial Negativa (5.3 · 5.7.5)",
     "poisson": "λ + Poisson (5.4)", "calib": "λ calibrado a ceros reales (6.8)", "mc": "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
     "prisma": "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
+    "kronos": "KRONOS estocástico (5.7.3 · 5.7.9)",
 }
 
 
