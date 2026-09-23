@@ -717,21 +717,27 @@ def _inv_phi(p):
 
 
 def starter_leash(boxscores):
-    """Tiempo de falla acelerado: lanzamientos al salir ~ a − β·carreras (aperturas de la liga de los últimos días)."""
-    xs, ys = [], []
+    """Tiempo de falla acelerado: lanzamientos al salir contra carreras permitidas POR ENTRADA (la cifra cruda por
+    salida está confundida: quien dura más acumula más carreras). β = lanzamientos que adelanta cada carrera extra."""
+    def ipf(v):
+        w, _, fr = str(v).partition(".")
+        return int(w or 0) + int(fr or 0) / 3
+    xs, ys, ips = [], [], []
     for b in boxscores:
         for s in ("away", "home"):
             ps = b[s]["pitchers"]
-            if ps and ps[0].get("pitches"):
-                xs.append(ps[0].get("r") or 0)
+            if ps and (ps[0].get("pitches") or 0) >= 45 and ipf(ps[0].get("ip")) > 0:
+                ip = ipf(ps[0]["ip"])
+                xs.append((ps[0].get("r") or 0) / ip)
                 ys.append(ps[0]["pitches"])
+                ips.append(ip)
     mx, my = statistics.fmean(xs), statistics.fmean(ys)
     sxx = sum((x - mx) ** 2 for x in xs)
-    beta = -sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sxx if sxx else 0.0
-    a = my + beta * mx
-    resid = [y - (a - beta * x) for x, y in zip(xs, ys)]
-    return {"starts": len(xs), "meanPitches": my, "meanRuns": mx, "beta": beta, "sdResid": statistics.pstdev(resid),
-            "intercept": a}
+    slope = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sxx if sxx else 0.0
+    mip = statistics.fmean(ips)
+    resid = [y - (my + slope * (x - mx)) for x, y in zip(xs, ys)]
+    return {"starts": len(xs), "meanPitches": my, "meanRunsPerInning": mx, "meanIp": mip, "slopeRate": slope,
+            "beta": -slope / mip if mip else 0.0, "meanRuns": mx * mip, "sdResid": statistics.pstdev(resid)}
 
 
 # ============================================================ investigación: fuentes y qué se tomó de cada una

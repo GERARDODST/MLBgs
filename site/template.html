@@ -1416,12 +1416,13 @@
   // ---------------------------------------------------------------- vista: Pro-Lab
   const LABS = D.prolabs || [];
   const LAB_BY_PK = Object.fromEntries(LABS.map((l) => [String(l.pk), l]));
-  const labKey = (lab) => lab.modelKey || (lab.mc ? "diamante" : "prisma");
+  const labKey = (lab) => lab.modelKey || (lab.mc ? "diamante" : lab.kronos ? "kronos" : "prisma");
   const LAB_INFO = {
     diamante: { name: ["DIAMANTE", "-24"], kind: "Cadenas de Markov + Monte Carlo", tagline: "Probabilidad de cada turno al bate + cadena de Markov de 24 situaciones base-out + Monte Carlo del partido completo", tech: ["24 estados base-out", "Matriz fundamental (I − Q)⁻¹", "Cadena de 216 estados", "Log5 multinomial", "Monte Carlo 50,000"] },
     prisma: { name: ["PRISMA", ""], kind: "Probabilidad bayesiana avanzada", tech: ["GLM jerárquico", "Bayes empírico (EM)", "Laplace + Cholesky", "Predictiva con fragilidad", "WP en vivo", "Validación fuera de muestra"] },
+    kronos: { name: ["KRONOS", ""], kind: "Procesos estocásticos", tech: ["Cadena de Markov de la cuenta", "N = (I − Q)⁻¹", "Cadena base-out", "Proceso de conteo del abridor", "HMM y fragilidad", "Browniano de Stern", "Monte Carlo por lanzamiento"] },
   };
-  const labTotal = (lab) => (labKey(lab) === "diamante" ? lab.mc.total.reduce((acc, v, k) => acc + k * v, 0) : lab.prisma.predictive.meanTotal);
+  const labTotal = (lab) => (labKey(lab) === "diamante" ? lab.mc.total.reduce((acc, v, k) => acc + k * v, 0) : labKey(lab) === "kronos" ? lab.kronos.mc.total.reduce((acc, v, k) => acc + k * v, 0) : lab.prisma.predictive.meanTotal);
   const liveOf = (pk) => ((D.live && D.live.games) || []).find((x) => x.pk === pk);
 
   function labCard(lab) {
@@ -1431,7 +1432,8 @@
       : lv && lv.state === "Live" ? `<span class="live-dot">En vivo · ${esc(a.abbr)} ${lv.ar ?? 0}–${lv.hr ?? 0} ${esc(h.abbr)}</span>`
       : `<span class="stpill ok">Congelado ${fmtStamp(lab.frozenAt)}</span>`;
     const kpis = [[pc(cons.pHome, 1), `P(${h.abbr}) consenso`], [f(labTotal(lab), 1), "Total esperado"],
-      k === "prisma" ? [`${pc(P.posterior.q05, 0)}–${pc(P.posterior.q95, 0)}`, "Intervalo creíble 90%"] : [pc(lab.mc.nrfi, 0), "NRFI simulado"]];
+      k === "prisma" ? [`${pc(P.posterior.q05, 0)}–${pc(P.posterior.q95, 0)}`, "Intervalo creíble 90%"]
+        : k === "kronos" ? [f(lab.kronos.league.pitchesPA, 2), "Lanzamientos por turno (liga)"] : [pc(lab.mc.nrfi, 0), "NRFI simulado"]];
     return `<a class="lab-card" href="#lab${lab.pk}">
       <div class="lc-top"><span class="eyebrow">${esc(info.kind)}</span>${state}</div>
       <span class="mname">${esc(info.name[0])}<span>${esc(info.name[1])}</span></span>
@@ -1447,13 +1449,14 @@
   function viewProLabList() {
     app.innerHTML = `<div class="page-head"><p class="eyebrow">Pro-Lab · pruebas de modelo</p><h1>Modelos de prueba con datos congelados antes del primer lanzamiento</h1>
       <p class="lede">Cada modelo se corre sobre un partido real con los datos congelados antes del juego (sin fuga de información) y se califica contra el resultado oficial. Toca una tarjeta para ver todo el modelo: matrices, distribuciones, validación y picks.</p></div>
-      ${LABS.length ? `<div class="lab-cards">${LABS.slice().sort((x, y) => (labKey(x) === "diamante" ? -1 : 1) - (labKey(y) === "diamante" ? -1 : 1)).map(labCard).join("")}</div>` : `<div class="empty">El Pro-Lab todavía no tiene partidos congelados.</div>`}
+      ${LABS.length ? `<div class="lab-cards">${LABS.slice().sort((x, y) => ["diamante", "prisma", "kronos"].indexOf(labKey(x)) - ["diamante", "prisma", "kronos"].indexOf(labKey(y))).map(labCard).join("")}</div>` : `<div class="empty">El Pro-Lab todavía no tiene partidos congelados.</div>`}
       ${footer()}`;
   }
 
   function viewLab(lab, showBase) {
     if (showBase) { viewGame(lab.base, `#lab${lab.pk}`, "← Volver al modelo"); return; }
-    if (labKey(lab) === "prisma") viewPrisma(lab); else viewDiamante(lab);
+    const k = labKey(lab);
+    if (k === "prisma") viewPrisma(lab); else if (k === "kronos") viewKronos(lab); else viewDiamante(lab);
   }
 
   function viewDiamante(lab) {
@@ -1757,6 +1760,146 @@
 
       <section class="block"><h2 class="bh">Alineaciones ${stPill(sectionStatus(base).lu)}</h2>
         <div class="lineups">${lineupCard(a.abbr, lu.away, base.summary.probables.home.name)}${lineupCard(h.abbr, lu.home, base.summary.probables.away.name)}</div></section>
+
+      <section class="block"><h2>Todos los picks del partido por nivel de confianza</h2>${picksTable(lab.picks, lab.pk, res ? res.graded : null)}</section>
+      <a class="callout-link btn" href="#lab${lab.pk}base">Ver el análisis completo del framework (10 secciones) para este partido →</a>
+      ${footer()}`;
+    window.scrollTo(0, 0);
+  }
+
+  // ---------------------------------------------------------------- vista: KRONOS (procesos estocásticos)
+  const CAT_ES = { B: "Bola", CS: "Strike cantado", SS: "Strike tirándole", F: "Foul", FB: "Foul de toque", HBP: "Pelotazo", X: "En juego" };
+  const CK = ["0-0", "1-0", "2-0", "3-0", "0-1", "1-1", "2-1", "3-1", "0-2", "1-2", "2-2", "3-2"];
+  const meanDist = (d) => (Array.isArray(d) ? d.reduce((acc, v, k) => acc + k * v, 0) : Object.entries(d).reduce((acc, [k, v]) => acc + Number(k) * v, 0));
+  const invPhi = (p) => { let lo = -8, hi = 8; for (let i = 0; i < 80; i++) { const m = (lo + hi) / 2; if (0.5 * (1 + erf(m / Math.SQRT2)) < p) lo = m; else hi = m; } return (lo + hi) / 2; };
+  function erf(x) { const s = Math.sign(x); x = Math.abs(x); const t = 1 / (1 + 0.3275911 * x); const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x); return s * y; }
+
+  function viewKronos(lab) {
+    const g = lab.game, a = g.teams.away, h = g.teams.home, K = lab.kronos, mc = K.mc, cons = lab.consensus, res = lab.result, base = lab.base;
+    const frozen = new Date(lab.frozenAt), first = new Date(lab.firstPitch), built = new Date(lab.builtAt);
+    const mins = Math.round((first - frozen) / 60000), minsBuilt = Math.round((first - built) / 60000);
+    const gmap = Object.fromEntries(((res && res.graded) || []).map((x) => [x.pick, x]));
+    const top = (lab.topPicks || []).map((p, i) => pickCard(p, lab.pk, i + 1, gmap[p.pick])).join("");
+    const Lg = K.league, ch = K.chains;
+    const total = meanDist(mc.total);
+    const spP = { away: meanDist(mc.spPitches.away), home: meanDist(mc.spPitches.home) };
+    const spO = { away: meanDist(mc.spOuts.away) / 3, home: meanDist(mc.spOuts.home) / 3 };
+    const kExp = { away: meanDist(mc.k.away), home: meanDist(mc.k.home) };
+    const B = K.brownian, D = K.dependence, H = K.hmm, Q = K.quasigeo, C = K.calib;
+    const chkTxt = {
+      chain: `Cadena de la liga: K ${pc(Lg.chain.K, 1)}, BB ${pc(Lg.chain.BB, 1)}, ${f(Lg.pitchesPA, 2)} lanzamientos por turno`,
+      palen: "Largo del turno predicho = real (ver paso 1)",
+      drift: `1ª→3ª vuelta: strikes tirándole ${pc(K.drift.raw.t1.SS, 1)}→${pc(K.drift.raw.t3.SS, 1)}, hit por bola en juego ${pc(K.drift.raw.t1.hit, 1)}→${pc(K.drift.raw.t3.hit, 1)}`,
+      quasi: `2026: a = ${f(Q.a, 3)}, d = ${f(Q.d, 3)} (histórico 0.436)`,
+      brown: `2026: μ = ${f(B.mu, 2)}, σ = ${f(B.sigma, 2)} carreras`,
+      hmm: `BIC HMM ${Math.round(H.bic).toLocaleString("es-MX")} vs independiente ${Math.round(H.bicIndep).toLocaleString("es-MX")}`,
+      leash: `${K.leashModel.starts} aperturas (45+ lanzamientos): cada carrera permitida adelanta la salida ${f(K.leashModel.beta, 2)} lanzamientos`,
+      clock: `${Math.round(Lg.clock.automatic_ball || 0)} bolas y ${Math.round(Lg.clock.automatic_strike || 0)} strikes automáticos en ${Lg.pitches.toLocaleString("es-MX")} lanzamientos`,
+    };
+    const mlKey = oddsKey(lab.pk, h.abbr), mlOdds = parseOdds(oddsStore[mlKey]);
+    const sigImp = mlOdds ? B.simMu / invPhi(mlOdds.imp) : null;
+    const chainRows = (sd) => table(["Bateador", "B", "~K%", "~BB+HBP%", "~En juego%", "~Lanz./turno", "~Hit por BIP", "~HR por BIP", "~Ajuste por mano (K · BB · H · HR)", "~Lanz. vistos 2026"],
+      ch[sd].rows.map((r) => tr([td(esc(r.name)), td(esc(r.bats || "")), tdn(pc(r.K, 1)), tdn(pc(r.BB, 1)), tdn(pc(r.X, 1)), tdn(f(r.pitches, 2)), tdn(pc(r.hitBip, 1)), tdn(pc(r.hrBip, 1)),
+        tdn(`${f(r.platoon.K, 2)} · ${f(r.platoon.BB, 2)} · ${f(r.platoon.H, 2)} · ${f(r.platoon.HR, 2)}`), tdn(r.n.toLocaleString("es-MX"))])));
+    const cats = ["B", "CS", "SS", "F", "FB", "HBP", "X"];
+    const qgRows = Q.fit.map((x) => tr([tdn(x.runs), tdn(pc(x.real, 1)), tdn(pc(x.qg, 1)), tdn(C.halfDist[x.runs] != null ? pc(C.halfDist[x.runs], 1) : "—")]));
+    app.innerHTML = `
+      <a class="back" href="#prolab">← Pro-Lab: todos los modelos</a>
+      <div class="lab-hero">
+        <p class="eyebrow">Pro-Lab · prueba de modelo · ${esc(a.abbr)} @ ${esc(h.abbr)}</p>
+        <span class="name">KRONOS</span>
+        <p class="lede">El partido como <b>proceso estocástico</b>, lanzamiento a lanzamiento: cada lanzamiento mueve una cadena de Markov de la cuenta (12 estados), cada turno mueve la cadena base-out (24 estados), el abridor sale cuando su conteo de lanzamientos cruza un umbral aleatorio y todo se simula ${mc.n.toLocaleString("es-MX")} veces. Partido: <b>${esc(a.name)} @ ${esc(h.name)}</b>, ${fmtDateLong(g.date)}, ${esc(g.venue.name)}.</p>
+        <div class="notice"><span class="ic" style="background:var(--verde-soft);color:var(--verde)">✓</span><div><b>Sin fuga de información:</b> datos congelados el ${fmtStamp(lab.frozenAt)} (${mins} min antes del primer lanzamiento, con lineups oficiales) y predicción registrada en el repositorio ${minsBuilt > 0 ? `${minsBuilt} min antes del juego` : "después del inicio (solo con los datos congelados)"}.</div></div>
+      </div>
+
+      ${res ? `<section class="block"><h2>Resultado real contra el modelo</h2><div class="res">
+        <div class="tile"><span class="eyebrow">Final</span><span class="big">${esc(a.abbr)} ${res.away} – ${res.home} ${esc(h.abbr)}</span><span class="sub">esperado ${f(mc.meanRuns.away, 1)} – ${f(mc.meanRuns.home, 1)}</span></div>
+        <div class="tile"><span class="eyebrow">Ganador</span><span class="big">${esc(res.homeWon ? h.abbr : a.abbr)}</span><span class="sub">KRONOS daba ${pc(res.homeWon ? mc.pHome : 1 - mc.pHome, 1)} · Brier ${f(res.brierMc, 3)}</span></div>
+        <div class="tile"><span class="eyebrow">Total</span><span class="big">${res.total}</span><span class="sub">percentil ${pc(res.percentileTotal)} de la simulación</span></div>
+        <div class="tile"><span class="eyebrow">Picks calificados</span><span class="big">${res.hits} ✓ · ${res.misses} ✗</span><span class="sub">F5 real ${res.f5[0]}–${res.f5[1]}</span></div></div></section>` : ""}
+
+      <section class="block"><h2>Los dos picks de mayor confianza</h2><div class="toppicks">${top}</div></section>
+
+      <div class="tiles">
+        <div class="tile"><span class="eyebrow">P(${esc(h.abbr)}) simulada</span><span class="big">${pc(mc.pHome, 1)}</span><span class="sub">± ${pc(1.96 * mc.se, 1)} (95%) · ${mc.n.toLocaleString("es-MX")} partidos lanzamiento a lanzamiento</span></div>
+        <div class="tile"><span class="eyebrow">Carreras esperadas</span><span class="big">${f(mc.meanRuns.away, 2)} – ${f(mc.meanRuns.home, 2)}</span><span class="sub">total ${f(total, 2)} · F5 ${esc(a.abbr)} ${pc(mc.f5.away)} / empate ${pc(mc.f5.tie)} / ${esc(h.abbr)} ${pc(mc.f5.home)}</span></div>
+        <div class="tile"><span class="eyebrow">Abridores (lanzamientos · entradas · K)</span><span class="big" style="font-size:24px">${Math.round(spP.away)} · ${f(spO.away, 1)} · ${f(kExp.away, 1)}</span><span class="sub">${esc(K.starters.away.name)}; ${esc(K.starters.home.name)}: ${Math.round(spP.home)} · ${f(spO.home, 1)} · ${f(kExp.home, 1)}</span></div>
+        <div class="tile"><span class="eyebrow">Consenso de 4 métodos</span><span class="big">${pc(cons.pHome, 1)}</span><span class="sub">divergencia ${pc(cons.spread, 1)} · NRFI ${pc(mc.nrfi)}</span></div>
+      </div>
+
+      <section class="block"><h2>Lectura integrada: el modelo con todo el contexto del partido</h2>
+        <div class="panel"><dl class="kv" style="grid-template-columns:minmax(0,220px) minmax(0,1fr)">${(lab.reading || []).map((r) => `<dt><b>${esc(r.k)}</b><br><span class="muted" style="font-size:12px">${esc(r.src)}</span></dt><dd style="text-align:left;font-weight:400">${esc(r.v)}</dd>`).join("")}</dl></div>
+        ${importanceBlock(base.sections.s1.importance)}
+      </section>
+
+      <section class="block"><h2>Investigación: qué se tomó de cada fuente</h2>
+        <p class="note">Antes de construir el modelo se revisaron documentos oficiales de MLB y trabajos publicados sobre procesos estocásticos en béisbol. Cada fila dice la idea, cómo la usa KRONOS y qué se verificó con los datos de 2026.</p>
+        ${table(["Fuente", "Idea", "Uso en KRONOS", "Verificado con 2026"], (lab.research || []).map((r) => tr([td(`<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.ref)}</a>`), td(esc(r.idea), "muted"), td(esc(r.use)), td(r.check ? esc(chkTxt[r.check] || "") : "—", "muted")])))}
+      </section>
+
+      <div class="step"><span class="n">1</span><div><h2>Cadena de Markov de la cuenta (12 estados + 4 absorbentes)</h2>
+        <p class="note">Cada lanzamiento es bola, strike cantado, strike tirándole, foul, foul de toque, pelotazo o bola en juego; la cuenta cambia de forma determinista (el foul con 2 strikes no suma). Con ${Lg.pitches.toLocaleString("es-MX")} lanzamientos de la liga en los ${Lg.days} días previos se estima P(categoría | cuenta):</p>
+        <div class="tbl" style="padding:8px">${heatmap(CK.map((c) => cats.map((k) => Lg.count[c][k] || 0)), CK, cats.map((k) => CAT_ES[k]), { cell: 58, cellH: 24, left: 46, top: 84, values: true, minLabel: 0.004, fmt: (v) => (v * 100).toFixed(1), label: "Probabilidad por cuenta", maxW: 480 })}</div>
+        <p class="note">Con Q (transiciones entre cuentas) y R (absorción) se resuelve la cadena absorbente: <span class="num">N = (I − Q)⁻¹</span> da las visitas esperadas a cada cuenta y <span class="num">B = N·R</span> las probabilidades finales del turno: ponche <b>${pc(Lg.chain.K, 1)}</b>, base por bolas <b>${pc(Lg.chain.BB, 1)}</b>, pelotazo ${pc(Lg.chain.HBP, 1)}, bola en juego ${pc(Lg.chain.X, 1)} y <b>${f(Lg.pitchesPA, 2)} lanzamientos por turno</b>.</p>
+        <div class="two"><div><h3 class="sub">Matriz fundamental N (visitas esperadas desde cada cuenta)</h3><div class="tbl" style="padding:8px">${heatmap(Lg.N, CK, CK, { cell: 30, left: 40, top: 40, values: true, minLabel: 0.05, fmt: (v) => v.toFixed(2), label: "Matriz N" })}</div></div>
+          <div><h3 class="sub">Prueba de la propiedad de Markov: lanzamientos por turno</h3>${groupedBars([{ name: "Cadena (predicho)", color: "var(--accent)", values: Lg.paLenChain.slice(1, 13) }, { name: "Real 2026", color: "var(--home)", values: [...Array(12).keys()].map((i) => (Lg.paLenReal[i + 1] || 0) / Object.values(Lg.paLenReal).reduce((x, y) => x + y, 0)) }], [...Array(12).keys()].map((i) => String(i + 1)), { w: 460, h: 190, label: "Largo del turno" })}
+          <p class="note muted">Si la cuenta no fuera markoviana (si importara cómo se llegó a 1-1), la distribución del largo del turno no coincidiría. Coincide en cada punto: la cuenta resume el turno.</p></div></div>
+      </div></div>
+
+      <div class="step"><span class="n">2</span><div><h2>Cada bateador contra el abridor rival</h2>
+        <p class="note">Cada jugador tiene su propia tabla por cuenta con sus lanzamientos 2026 de Statcast, regresada a la liga en dos niveles: un factor global por categoría (40 lanzamientos de prior) y la tabla de cada cuenta (25). Bateador × pitcher se combinan con log5 multinomial <b>en cada cuenta</b>: P(e | cuenta) ∝ bateador<sub>e</sub> · pitcher<sub>e</sub> / liga<sub>e</sub>; después se ajusta por la mano del pitcher con los splits del bateador. La bola en juego se combina igual (out, sencillo, doble, triple, jonrón, error) con el parque y el viento.</p>
+        <h3 class="sub">${esc(ch.away.pitcher)} contra el lineup de ${esc(h.abbr)} <span class="code">${ch.away.n.toLocaleString("es-MX")} lanzamientos en 2026</span></h3>${chainRows("away")}
+        <h3 class="sub">${esc(ch.home.pitcher)} contra el lineup de ${esc(a.abbr)} <span class="code">${ch.home.n.toLocaleString("es-MX")} lanzamientos en 2026</span></h3>${chainRows("home")}
+        <div class="two">${["away", "home"].map((sd) => `<div><h3 class="sub">Q de ${esc(ch[sd].pitcher)} vs ${esc(ch[sd].batter)} <span class="code">transición entre cuentas</span></h3><div class="tbl" style="padding:8px">${heatmap(ch[sd].Q, CK, CK, { cell: 30, left: 40, top: 40, values: true, minLabel: 0.03, fmt: (v) => (v * 100).toFixed(0), label: "Matriz Q" })}</div></div>`).join("")}</div>
+      </div></div>
+
+      <div class="step"><span class="n">3</span><div><h2>Cadena base-out y calibración a la liga</h2>
+        <p class="note">Cada resultado del turno mueve las 24 situaciones base-out con reglas de corrido de la liga (doble play en rodados, elevado de sacrificio, sencillo anota desde 2ª). Lo que la cuenta no ve (robos, wild pitches, passed balls) entra como un <b>avance extra por lanzamiento con corredores</b>, calibrado por bisección para que la liga simulada anote lo mismo que la real: ${pc(C.qAdv, 2)} → ${f(C.simHalf, 3)} carreras por media entrada (real ${f(C.target, 3)}).</p>
+        <h3 class="sub">Carreras por media entrada: real 2026, cuasigeométrica de Glass & Lowry y simulación</h3>
+        ${table(["Carreras", "~Real 2026", "~Cuasigeométrica", "~KRONOS (liga)"], qgRows)}
+        <p class="note muted">Cuasigeométrica: P(0) = a, P(n) = (1−a)(1−d)d<sup>n−1</sup>. Con 2026: a = ${f(Q.a, 3)}, d = ${f(Q.d, 3)}. Glass & Lowry encontraron d ≈ 0.436 constante entre equipos: los equipos se distinguen en anotar la primera carrera; después todos siguen igual.</p>
+      </div></div>
+
+      <div class="step"><span class="n">4</span><div><h2>Salida del abridor como proceso de conteo</h2>
+        <p class="note">El conteo de lanzamientos N(t) crece con cada lanzamiento simulado (la cadena de la cuenta genera cuántos lanza por turno). El abridor sale al terminar un turno cuando N(t) ≥ U − β·carreras permitidas, con U ~ Normal(μ, σ) de sus últimas aperturas (regresado a ${Math.round(K.lgStarterPitches)} de la liga) y β = ${f(K.leashModel.beta, 2)} lanzamientos por carrera, estimado con ${K.leashModel.starts} aperturas recientes de la liga (tiempo de falla acelerado). Ojo: por salida completa, quien permite más carreras lanza <i>más</i> (dura más y acumula); por eso β se estima con carreras por entrada. El efecto es chico: los managers de 2026 sacan al abridor sobre todo por conteo.</p>
+        <div class="two">${["away", "home"].map((sd) => { const s = K.starters[sd]; const ks = Object.keys(mc.spPitches[sd]); return `<div><h3 class="sub">${esc(s.name)} <span class="code">últimas: ${s.leash.recent.join(", ")}</span></h3>${groupedBars([{ name: "Lanzamientos", color: sd === "away" ? "var(--away)" : "var(--home)", values: ks.map((k) => mc.spPitches[sd][k]) }], ks, { w: 360, h: 160, label: "Lanzamientos del abridor" })}
+          <p class="formula">Media simulada ${Math.round(spP[sd])} lanzamientos · ${f(spO[sd], 1)} entradas · ${f(kExp[sd], 1)} ponches</p></div>`; }).join("")}</div>
+      </div></div>
+
+      <div class="step"><span class="n">5</span><div><h2>¿Hay momentum? Estados ocultos y fragilidad del partido</h2>
+        <p class="note">Si anotar en una entrada hiciera más probable anotar en la siguiente (proceso auto-excitado tipo Hawkes o estados "caliente/frío" persistentes), la correlación entre entradas consecutivas sería la más alta. Con ${D.seqs.toLocaleString("es-MX")} secuencias equipo-partido de 2026:</p>
+        ${table(["Separación entre entradas", "~Correlación cruda", "~Sin calidad de equipos"], D.lagRaw.map((v, i) => tr([td(`${i + 1} entrada${i ? "s" : ""}`), tdn(f(v, 4)), tdn(f(D.lagResid[i], 4))])))}
+        <p class="note">La correlación con la entrada <b>siguiente</b> (${f(D.lagResid[0], 3)}) es menor que con entradas lejanas (≈${f(D.lagResid.slice(1).reduce((x, y) => x + y, 0) / 5, 3)}): no hay momentum, hay un <b>efecto común a todo el juego</b> (el día del pitcher, el umpire, el clima). Eso explica que la varianza de las carreras en 8 entradas sea ${f(D.var8, 2)} contra ${f(D.var8Indep, 2)} si las entradas fueran independientes.</p>
+        <p class="note">Un HMM de 2 estados ajustado por Baum-Welch encuentra estados con ${f(H.means[0], 2)} y ${f(H.means[1], 2)} carreras por entrada y persistencia ${pc(H.A[0][0])} / ${pc(H.A[1][1])}, pero <b>no mejora el BIC</b> (${Math.round(H.bic).toLocaleString("es-MX")} vs ${Math.round(H.bicIndep).toLocaleString("es-MX")} independiente). Por eso KRONOS usa una <b>fragilidad gamma por partido</b> (varianza ${f(K.frailty.vG, 4)} sobre los hits, la mitad del efecto común; la otra mitad ya la explican el abridor y el lineup reales) en lugar de estados que cambian entrada a entrada.</p>
+      </div></div>
+
+      <div class="step"><span class="n">6</span><div><h2>Movimiento browniano de Stern y volatilidad implícita</h2>
+        <p class="note">Stern (1994): la diferencia de marcador es un movimiento browniano con deriva μ y varianza σ² por juego. En 2026: μ = ${f(B.mu, 2)} carreras a favor del local y σ = ${f(B.sigma, 2)}. La varianza no crece lineal (${f(B.varT[0], 2)} tras la 1ª entrada, ${f(B.varT[7] / 8, 2)} por entrada en promedio a la 8ª): el bullpen hace el final más volátil.</p>
+        ${table(["Tras la entrada", "Ventaja local", "~Juegos", "~Gana el local (real)", "~Stern"], B.calib.filter((c) => c.inning === 5 || c.inning === 8).map((c) => tr([tdn(c.inning), tdn(signed(c.lead, 0)), tdn(c.n), tdn(pc(c.real, 1)), tdn(pc(c.stern, 1))], Math.abs(c.real - c.stern) > 0.08 ? "hl" : "")))}
+        <p class="note">Funciona a mitad del juego y falla al final (renglones resaltados): con +1 después de la 8ª el local gana ${pc((B.calib.find((c) => c.inning === 8 && c.lead === 1) || {}).real, 0)} y Stern da ${pc((B.calib.find((c) => c.inning === 8 && c.lead === 1) || {}).stern, 0)}, porque las carreras son discretas y el local batea al último. Por eso la probabilidad en vivo de KRONOS es la cadena discreta, no el browniano.</p>
+        <p class="note"><b>Volatilidad implícita (Polson & Stern 2015):</b> la simulación da ventaja esperada μ = ${signed(B.simMu, 2)} y σ = ${f(B.simSigma, 2)} carreras. ${sigImp ? `Con tu momio de ${esc(h.abbr)} (${odds(mlOdds.am)} en ${esc(bookSel())}) el mercado implica σ = ${f(Math.abs(sigImp), 2)}: ${Math.abs(sigImp) > B.simSigma ? "espera un juego más volátil que el modelo, lo que acerca al no favorito" : "espera un juego menos volátil que el modelo, lo que favorece al favorito"}.` : `Escribe el momio de ${esc(h.abbr)} en el tablero de la sección 7 para ver la σ implícita del mercado.`}</p>
+      </div></div>
+
+      <div class="step"><span class="n">7</span><div><h2>Monte Carlo: ${mc.n.toLocaleString("es-MX")} partidos lanzamiento a lanzamiento</h2>
+        <p class="note">Cada simulación juega cada lanzamiento con la tabla bateador × pitcher de la cuenta actual, aplica la deriva continua del pitcher por bateador enfrentado (Brill et al.: sin saltos por vuelta; strikes tirándole −${pc(K.drift.SS, 1)} y hits en juego +${pc(K.drift.H, 1)} cada 9 bateadores), saca al abridor por el proceso de conteo, elige relevistas por rol, situación y disponibilidad, sortea la fragilidad del partido y respeta las reglas 2026: corredor en 2ª desde la 10ª y el local no batea la 9ª si va ganando. ${f(mc.seconds, 1)} s de cómputo.</p>
+        <h3 class="sub">Convergencia de P(${esc(h.abbr)}) con banda de 95%</h3>${convergence(mc.convergence, "Convergencia")}
+        <h3 class="sub">Carreras por equipo</h3>${groupedBars([{ name: a.abbr, color: "var(--away)", values: mc.runs.away.slice(0, 16) }, { name: h.abbr, color: "var(--home)", values: mc.runs.home.slice(0, 16) }], [...Array(16).keys()].map(String), { label: "Carreras" })}
+        <h3 class="sub">Total de carreras (media ${f(total, 2)})</h3>${groupedBars([{ name: "Total", color: "var(--accent)", values: mc.total.slice(0, 22) }], [...Array(22).keys()].map(String), { marks: [{ at: 7.5, label: "7.5" }, { at: 8.5, label: "8.5" }, { at: 9.5, label: "9.5" }], label: "Total" })}
+        <div class="two"><div><h3 class="sub">Ponches de ${esc(K.starters.away.name)}</h3>${groupedBars([{ name: "K", color: "var(--away)", values: mc.k.away.slice(0, 13) }], [...Array(13).keys()].map(String), { w: 320, h: 150, label: "Ponches" })}</div>
+          <div><h3 class="sub">Ponches de ${esc(K.starters.home.name)}</h3>${groupedBars([{ name: "K", color: "var(--home)", values: mc.k.home.slice(0, 13) }], [...Array(13).keys()].map(String), { w: 320, h: 150, label: "Ponches" })}</div></div>
+        <div class="two"><div><h3 class="sub">Bullpen ${esc(a.abbr)}: probabilidad de entrar</h3>${hbars(Object.entries(mc.relievers.away).slice(0, 9).map(([n, p]) => ({ label: n, value: p })), "var(--away)")}</div>
+          <div><h3 class="sub">Bullpen ${esc(h.abbr)}: probabilidad de entrar</h3>${hbars(Object.entries(mc.relievers.home).slice(0, 9).map(([n, p]) => ({ label: n, value: p })), "var(--home)")}</div></div>
+        <dl class="kv"><dt>NRFI · anota primero ${esc(a.abbr)} / ${esc(h.abbr)}</dt><dd class="num">${pc(mc.nrfi, 1)} · ${pc(mc.first.away, 1)} / ${pc(mc.first.home, 1)}</dd><dt>Extra innings</dt><dd class="num">${pc(mc.extras, 1)}</dd></dl>
+      </div></div>
+
+      <section class="block"><h2>Consenso de cuatro métodos</h2><div class="panel">
+        ${[["Log5 (5.7.2)", cons.methods.log5], ["Elo + abridor (5.7.7)", cons.methods.elo], ["λ + Binomial Negativa (5.3 · 5.7.5)", cons.methods.lambda], ["KRONOS estocástico (5.7.3 · 5.7.9)", cons.methods.kronos]].map(([n, v]) => `<div class="mbar" style="grid-template-columns:minmax(0,260px) 1fr 52px"><span>${n}</span><span class="track"><i style="width:${(v * 100).toFixed(1)}%"></i></span><span class="num">${pc(v, 1)}</span></div>`).join("")}
+        <p class="note">P(${esc(h.abbr)}) de consenso <b>${pc(cons.pHome, 1)}</b> · divergencia ${pc(cons.spread, 1)}.</p></div></section>
+
+      ${newsBlock(base.sections.s1.news)}
+      <section class="block"><h2 class="bh">Alineaciones ${stPill(sectionStatus(base).lu)}</h2>
+        <div class="lineups">${lineupCard(a.abbr, base.sections.s5.lineups.away, base.summary.probables.home.name)}${lineupCard(h.abbr, base.sections.s5.lineups.home, base.summary.probables.away.name)}</div></section>
+      ${base.sections.s4.full ? `<section class="block"><h2>Bullpens completos</h2>${bullpenTable(a.abbr, base.sections.s4.full.away, true)}${bullpenTable(h.abbr, base.sections.s4.full.home, true)}</section>` : ""}
 
       <section class="block"><h2>Todos los picks del partido por nivel de confianza</h2>${picksTable(lab.picks, lab.pk, res ? res.graded : null)}</section>
       <a class="callout-link btn" href="#lab${lab.pk}base">Ver el análisis completo del framework (10 secciones) para este partido →</a>
