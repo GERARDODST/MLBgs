@@ -86,7 +86,7 @@ def over_under(pmf: Sequence[float], line: float) -> dict[str, float]:
     """P(Over), P(Under) y P(Push) para una línea (entera o .5)."""
     over = sum(p for k, p in enumerate(pmf) if k > line)
     under = sum(p for k, p in enumerate(pmf) if k < line)
-    push = max(0.0, 1.0 - over - under)
+    push = pmf[int(line)] if float(line).is_integer() and int(line) < len(pmf) else 0.0
     return {"over": over, "under": under, "push": push}
 
 

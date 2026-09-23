@@ -1,0 +1,797 @@
+<title>MLBgs</title>
+<meta name="description" content="Análisis matemático y estadístico de los próximos partidos de MLB con datos oficiales (Framework MLB Picks v2).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+  :root {
+    --ground: #f1f3f0;
+    --surface: #ffffff;
+    --surface-2: #e8ece7;
+    --ink: #15202b;
+    --ink-2: #34414c;
+    --muted: #5b6770;
+    --border: #d5dbd4;
+    --grid: #e4e8e3;
+    --accent: #1e4fa3;
+    --accent-soft: rgba(30, 79, 163, 0.10);
+    --heat: 30, 79, 163;
+    --away: #2f6fd0;
+    --home: #c8612a;
+    --verde: #23794b;
+    --verde-soft: rgba(35, 121, 75, 0.13);
+    --amarillo: #8a5f00;
+    --amarillo-soft: rgba(201, 147, 0, 0.18);
+    --gris: #5f6a72;
+    --gris-soft: rgba(106, 116, 124, 0.15);
+    --rojo: #b3302a;
+    --rojo-soft: rgba(184, 50, 44, 0.12);
+    --shadow: 0 1px 2px rgba(21, 32, 43, 0.06);
+    --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+    --sans: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0e1419; --surface: #151d24; --surface-2: #1c2630; --ink: #e8edf0; --ink-2: #c3ccd3;
+      --muted: #93a0aa; --border: #2a3540; --grid: #212b35; --accent: #7fa8f2; --accent-soft: rgba(127, 168, 242, 0.13);
+      --heat: 127, 168, 242; --away: #5a93ea; --home: #c66a33;
+      --verde: #5cc98e; --verde-soft: rgba(76, 192, 130, 0.15); --amarillo: #e9bd4c; --amarillo-soft: rgba(229, 181, 58, 0.16);
+      --gris: #a3adb5; --gris-soft: rgba(142, 153, 161, 0.16); --rojo: #f07a73; --rojo-soft: rgba(232, 98, 91, 0.16);
+      --shadow: none; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0e1419; --surface: #151d24; --surface-2: #1c2630; --ink: #e8edf0; --ink-2: #c3ccd3;
+    --muted: #93a0aa; --border: #2a3540; --grid: #212b35; --accent: #7fa8f2; --accent-soft: rgba(127, 168, 242, 0.13);
+    --heat: 127, 168, 242; --away: #5a93ea; --home: #c66a33;
+    --verde: #5cc98e; --verde-soft: rgba(76, 192, 130, 0.15); --amarillo: #e9bd4c; --amarillo-soft: rgba(229, 181, 58, 0.16);
+    --gris: #a3adb5; --gris-soft: rgba(142, 153, 161, 0.16); --rojo: #f07a73; --rojo-soft: rgba(232, 98, 91, 0.16);
+    --shadow: none; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--ground); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 0.93em; }
+  .muted { color: var(--muted); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: max(16px, 3vw); }
+
+  /* barra superior */
+  .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in oklab, var(--ground) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  .topbar .wrap { display: flex; align-items: center; gap: 18px; padding-block: 10px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; }
+  .brand:hover { text-decoration: none; }
+  .brand svg { width: 26px; height: 26px; flex: none; }
+  .brand b { font-family: var(--display); font-weight: 700; font-size: 26px; letter-spacing: 0.01em; line-height: 1; }
+  .brand b span { color: var(--home); }
+  nav.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.tabs a { font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted); padding: 4px 10px; border-radius: 6px; }
+  nav.tabs a:hover { color: var(--ink); text-decoration: none; background: var(--surface-2); }
+  nav.tabs a[aria-current="page"] { color: var(--ink); background: var(--surface); box-shadow: inset 0 -2px 0 var(--accent); }
+  .stamp { margin-left: auto; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  @media (max-width: 640px) { .stamp { display: none; } }
+
+  main { padding-block: 22px 56px; display: flex; flex-direction: column; gap: 26px; }
+  .eyebrow { font-family: var(--display); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .lede { color: var(--ink-2); max-width: 72ch; }
+  .page-head { display: flex; flex-direction: column; gap: 6px; }
+  .page-head h1 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 4.4vw, 42px); line-height: 1.02; letter-spacing: 0.005em; }
+
+  .notice { border: 1px solid var(--border); background: var(--surface); border-radius: 10px; padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }
+  .notice .ic { flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 13px; background: var(--amarillo-soft); color: var(--amarillo); }
+
+  .toolbar { display: flex; gap: 8px 14px; flex-wrap: wrap; align-items: center; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip { font: inherit; font-size: 13.5px; font-weight: 600; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+  .chip:hover { color: var(--ink); }
+  .chip[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); background: var(--surface-2); }
+
+  /* semáforo */
+  .light { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700; border-radius: 999px; padding: 2px 9px 2px 7px; white-space: nowrap; }
+  .light::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .light.Verde { color: var(--verde); background: var(--verde-soft); }
+  .light.Amarillo { color: var(--amarillo); background: var(--amarillo-soft); }
+  .light.Gris { color: var(--gris); background: var(--gris-soft); }
+  .light.Rojo { color: var(--rojo); background: var(--rojo-soft); }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; border-radius: 5px; padding: 1px 7px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+  .tag.ok { background: var(--verde-soft); color: var(--verde); }
+  .tag.warn { background: var(--amarillo-soft); color: var(--amarillo); }
+  .tag.bad { background: var(--rojo-soft); color: var(--rojo); }
+  .tag.info { background: var(--accent-soft); color: var(--accent); }
+
+  /* tarjetas de partido */
+  .day { display: flex; flex-direction: column; gap: 12px; }
+  .day h2 { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: 0.01em; display: flex; align-items: baseline; gap: 10px; }
+  .day h2 small { font-family: var(--sans); font-size: 14px; font-weight: 400; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 12px; }
+  .game { display: flex; flex-direction: column; gap: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px; color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+  .game:hover { border-color: var(--accent); text-decoration: none; }
+  .game .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+  .game .top span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .line { display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; gap: 2px 10px; align-items: center; }
+  .abbr { font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1; letter-spacing: 0.01em; display: flex; align-items: center; gap: 6px; }
+  .abbr i { width: 4px; height: 22px; border-radius: 2px; flex: none; }
+  .away-mark { background: var(--away); }
+  .home-mark { background: var(--home); }
+  .who { min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }
+  .who .rec { font-size: 12.5px; color: var(--muted); }
+  .who .sp { font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .who .sp.tbd { color: var(--amarillo); font-weight: 600; }
+  .prob { font-family: var(--display); font-weight: 600; font-size: 24px; text-align: right; font-variant-numeric: tabular-nums; }
+  .prob.fav { color: var(--ink); }
+  .prob.dog { color: var(--muted); }
+  .splitbar { display: flex; gap: 2px; height: 8px; }
+  .splitbar span { display: block; height: 100%; }
+  .splitbar span:first-child { background: var(--away); border-radius: 4px 0 0 4px; }
+  .splitbar span:last-child { background: var(--home); border-radius: 0 4px 4px 0; }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; border-top: 1px solid var(--grid); padding-top: 9px; }
+  .fact { display: flex; flex-direction: column; min-width: 0; }
+  .fact b { font-family: var(--mono); font-weight: 500; font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .fact span { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .bestline { display: flex; gap: 8px; align-items: center; justify-content: space-between; font-size: 13px; color: var(--ink-2); flex-wrap: wrap; }
+  .bestline .pick { min-width: 0; }
+
+  /* detalle */
+  .back { font-size: 14px; }
+  .board { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; box-shadow: var(--shadow); }
+  .board .team { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .board .team.home { text-align: right; align-items: flex-end; }
+  .board .team .big { font-family: var(--display); font-weight: 700; font-size: clamp(40px, 7vw, 60px); line-height: 0.9; letter-spacing: 0.01em; }
+  .board .team.away .big { color: var(--away); }
+  .board .team.home .big { color: var(--home); }
+  .board .team .nm { font-weight: 600; }
+  .board .team .sub { font-size: 13px; color: var(--muted); }
+  .board .mid { text-align: center; display: flex; flex-direction: column; gap: 4px; align-items: center; font-size: 13.5px; color: var(--ink-2); max-width: 300px; }
+  .board .mid .at { font-family: var(--display); font-size: 22px; font-weight: 600; color: var(--muted); }
+  @media (max-width: 700px) { .board { grid-template-columns: 1fr 1fr; } .board .mid { grid-column: 1 / -1; order: 3; max-width: none; } }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .tile .big { font-family: var(--display); font-weight: 700; font-size: 34px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .tile .sub { font-size: 13px; color: var(--muted); }
+  .mbar { display: grid; grid-template-columns: 58px 1fr 46px; gap: 8px; align-items: center; font-size: 13px; }
+  .mbar .track { position: relative; height: 8px; background: var(--surface-2); border-radius: 4px; }
+  .mbar .track i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--home); border-radius: 4px; }
+  .mbar .track::after { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: var(--muted); opacity: 0.6; }
+
+  section.block { display: flex; flex-direction: column; gap: 12px; }
+  .block > h2, .sec-title { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: 0.01em; }
+  .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  details.sec { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+  details.sec > summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 12px; padding: 14px 16px; }
+  details.sec > summary::-webkit-details-marker { display: none; }
+  details.sec > summary .n { font-family: var(--display); font-weight: 700; font-size: 22px; color: var(--accent); min-width: 26px; }
+  details.sec > summary .t { font-family: var(--display); font-weight: 700; font-size: 21px; letter-spacing: 0.01em; flex: 1; }
+  details.sec > summary .s { font-size: 13px; color: var(--muted); text-align: right; }
+  details.sec > summary::after { content: "+"; font-family: var(--mono); color: var(--muted); font-size: 18px; }
+  details.sec[open] > summary::after { content: "−"; }
+  details.sec > .body { padding: 0 16px 18px; display: flex; flex-direction: column; gap: 16px; }
+  @media (max-width: 560px) { details.sec > summary .s { display: none; } }
+  h3.sub { font-size: 15.5px; font-weight: 700; display: flex; gap: 8px; align-items: baseline; }
+  h3.sub .code { font-family: var(--display); color: var(--muted); font-weight: 600; font-size: 15px; }
+  .rule { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 8px 12px; border-radius: 0 8px 8px 0; font-size: 14px; font-weight: 600; color: var(--ink); }
+  .note { font-size: 13.5px; color: var(--ink-2); }
+  ul.clean { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 16px; }
+  .kv { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 14px; font-size: 14px; }
+  .kv dt { color: var(--ink-2); }
+  .kv dd { margin: 0; text-align: right; font-weight: 600; }
+
+  .tbl { overflow-x: auto; border: 1px solid var(--grid); border-radius: 8px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  th, td { padding: 6px 9px; text-align: left; border-bottom: 1px solid var(--grid); vertical-align: top; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; background: var(--surface-2); white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  td.r, th.r { text-align: right; }
+  td.c, th.c { text-align: center; }
+  td.num, .r.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.hl td { background: var(--accent-soft); }
+  td.w { color: var(--verde); font-weight: 700; }
+  td.l { color: var(--rojo); font-weight: 700; }
+
+  /* linescore de carreras esperadas */
+  .linescore td, .linescore th { text-align: center; padding: 6px 4px; min-width: 34px; }
+  .linescore td:first-child, .linescore th:first-child { text-align: left; padding-left: 10px; min-width: 60px; }
+  .linescore td.tot { font-weight: 700; border-left: 1px solid var(--grid); }
+  .linescore .team-cell { font-family: var(--display); font-weight: 700; font-size: 18px; }
+
+  .chart { width: 100%; height: auto; display: block; }
+  .chart text { fill: var(--muted); font-family: var(--mono); font-size: 11px; }
+  .chart .lbl { fill: var(--ink-2); }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+  #tip { position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--surface); font-size: 12.5px; padding: 5px 8px; border-radius: 6px; max-width: 260px; }
+
+  .foot { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--border); padding-top: 14px; }
+  .empty { padding: 26px; text-align: center; color: var(--muted); background: var(--surface); border: 1px dashed var(--border); border-radius: 12px; }
+  .btn { font: inherit; font-size: 13.5px; font-weight: 600; color: var(--accent); background: transparent; border: 1px solid var(--border); border-radius: 8px; padding: 5px 11px; cursor: pointer; }
+  .btn:hover { border-color: var(--accent); }
+  @media (prefers-reduced-motion: no-preference) { .game, .chip, nav.tabs a { transition: border-color .15s, background .15s, color .15s; } }
+</style>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#partidos" aria-label="MLBgs, inicio">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/><path d="M9 5.5c3.5 3 4.8 6.5 4.8 10.5S12.5 23.5 9 26.5M23 5.5c-3.5 3-4.8 6.5-4.8 10.5s1.3 7.5 4.8 10.5" fill="none" stroke="var(--home)" stroke-width="1.8" stroke-dasharray="2.2 1.6"/></svg>
+      <b>MLB<span>gs</span></b>
+    </a>
+    <nav class="tabs" aria-label="Secciones">
+      <a href="#partidos" data-tab="partidos">Partidos</a>
+      <a href="#posiciones" data-tab="posiciones">Posiciones</a>
+      <a href="#seguimiento" data-tab="seguimiento">Seguimiento</a>
+      <a href="#metodologia" data-tab="metodologia">Metodología</a>
+    </nav>
+    <span class="stamp" id="stamp"></span>
+  </div>
+</header>
+<main class="wrap" id="app"></main>
+<div id="tip" hidden></div>
+
+<script id="mlbgs-data" type="application/json">__MLBGS_DATA__</script>
+<script>
+(() => {
+  "use strict";
+  const D = JSON.parse(document.getElementById("mlbgs-data").textContent);
+  const app = document.getElementById("app");
+  const GAMES = D.games || [];
+  const BY_PK = Object.fromEntries(GAMES.map((g) => [String(g.pk), g]));
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch { /* sin almacenamiento */ } },
+  };
+
+  // ---------------------------------------------------------------- formato
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const isNum = (x) => typeof x === "number" && isFinite(x);
+  const f = (x, d = 2) => (isNum(x) ? x.toFixed(d) : "—");
+  const pc = (p, d = 0) => (isNum(p) ? (100 * p).toFixed(d) + "%" : "—");
+  const pv = (x, d = 1) => (isNum(x) ? x.toFixed(d) + "%" : "—"); // ya viene en porcentaje
+  const odds = (m) => (isNum(m) ? (m > 0 ? "+" : "") + Math.round(m) : "—");
+  const signed = (x, d = 1) => (isNum(x) ? (x > 0 ? "+" : "") + x.toFixed(d) : "—");
+  const hand = (h) => (h === "L" ? "Z" : h === "R" ? "D" : "—");
+  const light = (l) => `<span class="light ${esc(l)}">${esc(l)}</span>`;
+  const status = (s) => {
+    const cls = { OK: "ok", disponible: "ok", derivado: "info", sustituido: "info", "no aplica": "", parcial: "warn", Alerta: "warn", faltante: "bad" }[s] ?? "";
+    return `<span class="tag ${cls}">${esc(s)}</span>`;
+  };
+  const yes = (v) => `<span class="tag ${v === "Sí" ? "ok" : v === "No" ? "bad" : ""}">${esc(v)}</span>`;
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const fmtTime = (iso) => { try { return new Date(iso).toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit" }); } catch { return iso; } };
+  const fmtDateLong = (d) => { const dt = new Date(d + "T12:00:00"); return dt.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }); };
+  const fmtShort = (d) => { const dt = new Date(d + "T12:00:00"); return dt.toLocaleDateString("es-MX", { day: "numeric", month: "short" }); };
+  const fmtStamp = (iso) => { try { return new Date(iso).toLocaleString("es-MX", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }); } catch { return iso; } };
+  const dayLabel = (d) => {
+    const t = D.meta.today;
+    if (d === t) return "Hoy";
+    const n = new Date(t + "T12:00:00"); n.setDate(n.getDate() + 1);
+    if (d === n.toISOString().slice(0, 10)) return "Mañana";
+    return fmtShort(d);
+  };
+  const table = (head, rows, opts = {}) => `<div class="tbl"><table${opts.cls ? ` class="${opts.cls}"` : ""}><thead><tr>${head.map((h) => `<th${h.startsWith("~") ? ' class="r"' : ""}>${esc(h.replace(/^~/, ""))}</th>`).join("")}</tr></thead><tbody>${rows.join("") || `<tr><td colspan="${head.length}" class="muted">Sin datos</td></tr>`}</tbody></table></div>`;
+  const tr = (cells, cls = "") => `<tr${cls ? ` class="${cls}"` : ""}>${cells.join("")}</tr>`;
+  const td = (v, cls = "") => `<td${cls ? ` class="${cls}"` : ""}>${v}</td>`;
+  const tdn = (v) => `<td class="r num">${v}</td>`;
+
+  document.getElementById("stamp").textContent = `Datos: ${fmtStamp(D.meta.generatedAt)} · ${tz}`;
+
+  // ---------------------------------------------------------------- tooltip
+  const tip = document.getElementById("tip");
+  document.addEventListener("mouseover", (e) => {
+    const t = e.target.closest("[data-tip]");
+    if (!t) { tip.hidden = true; return; }
+    tip.textContent = t.getAttribute("data-tip");
+    tip.hidden = false;
+  });
+  document.addEventListener("mousemove", (e) => {
+    if (tip.hidden) return;
+    const x = Math.min(e.clientX + 12, window.innerWidth - tip.offsetWidth - 8);
+    tip.style.left = x + "px";
+    tip.style.top = e.clientY + 14 + "px";
+  });
+
+  // ---------------------------------------------------------------- vista: partidos
+  function gameCard(g) {
+    const s = g.summary, a = g.teams.away, h = g.teams.home;
+    const pa = s.pAway, ph = s.pHome;
+    const sp = (x) => x.missing ? `<span class="sp tbd">Abridor por anunciar</span>`
+      : `<span class="sp">${esc(x.name)} <span class="muted">(${hand(x.hand)}) ERA ${f(x.era)} · FIP ${f(x.fip)}</span></span>`;
+    const b = s.best;
+    const bestTxt = b ? `${esc(b.market)}: <b>${esc(b.pick)}</b> ${pc(b.p)}${isNum(b.price) ? ` · ${odds(b.price)}` : isNum(b.fair) ? ` · justo ${odds(b.fair)}` : ""}` : "Sin mercado";
+    const edge = s.starterEdge;
+    const edgeTxt = !edge.side ? "sin dato" : edge.level === "equilibrado" ? "parejos" : `${esc(g.teams[edge.side].abbr)} ${esc(edge.level)}`;
+    return `<a class="game" href="#g${g.pk}">
+      <div class="top"><span>${fmtTime(g.time)} · ${esc(g.venue.name)}${g.dh && g.dh !== "N" ? ` · juego ${g.gameNumber}` : ""}</span>${light(s.light)}</div>
+      <div class="line"><span class="abbr"><i class="away-mark"></i>${esc(a.abbr)}</span><span class="who"><span class="rec">${esc(a.name)} · ${a.w}-${a.l}</span>${sp(s.probables.away)}</span><span class="prob ${pa >= 0.5 ? "fav" : "dog"}">${pc(pa)}</span></div>
+      <div class="line"><span class="abbr"><i class="home-mark"></i>${esc(h.abbr)}</span><span class="who"><span class="rec">${esc(h.name)} · ${h.w}-${h.l}</span>${sp(s.probables.home)}</span><span class="prob ${ph > 0.5 ? "fav" : "dog"}">${pc(ph)}</span></div>
+      <div class="splitbar" role="img" aria-label="Probabilidad de victoria: ${esc(a.abbr)} ${pc(pa)}, ${esc(h.abbr)} ${pc(ph)}"><span style="width:${(pa * 100).toFixed(1)}%"></span><span style="width:${(ph * 100).toFixed(1)}%"></span></div>
+      <div class="facts">
+        <div class="fact"><b>${f(s.proj.away, 1)}–${f(s.proj.home, 1)}</b><span>Marcador</span></div>
+        <div class="fact"><b>${f(s.proj.total, 1)}</b><span>Total</span></div>
+        <div class="fact"><b>${f(s.proj.f5.away, 1)}–${f(s.proj.f5.home, 1)}</b><span>F5</span></div>
+        <div class="fact"><b>${pc(s.nrfi)}</b><span>NRFI</span></div>
+      </div>
+      <div class="bestline"><span>Abridor: <b>${edgeTxt}</b> · confianza ${esc(s.confidence)}</span><span class="muted">${s.gate.missing} dato${s.gate.missing === 1 ? "" : "s"} faltante${s.gate.missing === 1 ? "" : "s"}</span></div>
+      <div class="bestline"><span class="pick">${bestTxt}</span></div>
+    </a>`;
+  }
+
+  function viewGames() {
+    const dates = [...new Set(GAMES.map((g) => g.date))].sort();
+    let sel = store.get("mlbgs-day");
+    if (sel !== "todos" && !dates.includes(sel)) sel = dates[0] || "todos";
+    let lightSel = store.get("mlbgs-light") || "todos";
+    const render = () => {
+      const games = GAMES.filter((g) => (sel === "todos" || g.date === sel) && (lightSel === "todos" || g.summary.light === lightSel));
+      const days = [...new Set(games.map((g) => g.date))].sort();
+      const noOdds = !D.meta.hasOdds;
+      app.innerHTML = `
+        <div class="page-head">
+          <p class="eyebrow">Framework MLB Picks v2 · datos oficiales de MLB</p>
+          <h1>Próximos partidos de la MLB, analizados antes del primer lanzamiento</h1>
+          <p class="lede">Cada juego pasa por las 10 secciones del framework: contexto, historial, abridores con regresión a la media, bullpen y fatiga, modelo de carreras (Poisson / Binomial Negativa), Over/Under, valor contra el mercado y auditoría de contradicciones. El semáforo nunca es Verde si falta un dato obligatorio.</p>
+        </div>
+        ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>Sin momios conectados.</b> Sin cuotas no hay edge calculable, así que el framework marca los mercados en Gris («esperar cuota») o Rojo. Cada pick trae su <b>momio justo</b> y el <b>mínimo aceptable</b> para compararlo con tu casa de apuestas. Para activar el valor automático agrega el secreto <code>ODDS_API_KEY</code> (The Odds API) al repositorio.</div></div>` : ""}
+        <div class="toolbar">
+          <div class="chips" role="group" aria-label="Día">${dates.map((d) => `<button class="chip" data-day="${d}" aria-pressed="${sel === d}">${dayLabel(d)} · ${GAMES.filter((g) => g.date === d).length}</button>`).join("")}<button class="chip" data-day="todos" aria-pressed="${sel === "todos"}">Todos</button></div>
+          <div class="chips" role="group" aria-label="Semáforo">${["todos", "Verde", "Amarillo", "Gris", "Rojo"].map((l) => `<button class="chip" data-light="${l}" aria-pressed="${lightSel === l}">${l === "todos" ? "Todo semáforo" : l}</button>`).join("")}</div>
+        </div>
+        ${days.length ? days.map((d) => `<section class="day"><h2>${dayLabel(d)} <small>${fmtDateLong(d)} · ${games.filter((g) => g.date === d).length} partidos</small></h2>
+          <div class="grid">${games.filter((g) => g.date === d).map(gameCard).join("")}</div></section>`).join("")
+          : `<div class="empty">No hay partidos con ese filtro.</div>`}
+        ${footer()}`;
+      app.querySelectorAll("[data-day]").forEach((b) => b.addEventListener("click", () => { sel = b.dataset.day; store.set("mlbgs-day", sel); render(); }));
+      app.querySelectorAll("[data-light]").forEach((b) => b.addEventListener("click", () => { lightSel = b.dataset.light; store.set("mlbgs-light", lightSel); render(); }));
+    };
+    render();
+  }
+
+  function footer() {
+    const m = D.meta;
+    return `<p class="foot">Fuentes: MLB Stats API (statsapi.mlb.com) y Baseball Savant (baseballsavant.mlb.com)${m.hasOdds ? " · The Odds API" : ""}. Datos generados ${fmtStamp(m.generatedAt)}: ${m.counts.results} resultados de la temporada ${m.season}, ${m.counts.boxscores} box scores recientes, ${m.counts.pitchers} abridores probables. Herramienta de análisis estadístico: no garantiza resultados y apostar implica riesgo financiero real.</p>`;
+  }
+
+  // ---------------------------------------------------------------- gráficas
+  function distChart(pmf, lines, proj) {
+    const W = 560, H = 190, L = 34, R = 10, T = 14, B = 30;
+    const n = pmf.length, max = Math.max(...pmf) * 1.12;
+    const bw = (W - L - R) / n;
+    const y = (v) => T + (H - T - B) * (1 - v / max);
+    const x = (k) => L + k * bw;
+    const ticks = [0, 0.05, 0.1, 0.15].filter((t) => t <= max);
+    let s = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribución de carreras totales">`;
+    ticks.forEach((t) => { s += `<line x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}" stroke="var(--grid)"/><text x="${L - 6}" y="${y(t) + 4}" text-anchor="end">${Math.round(t * 100)}%</text>`; });
+    pmf.forEach((p, k) => {
+      const h = Math.max(0, y(0) - y(p));
+      s += `<rect x="${x(k) + 1}" y="${y(p)}" width="${bw - 2}" height="${h}" rx="2" fill="${k > 8.5 ? "var(--home)" : "var(--away)"}" opacity="0.85" data-tip="${k} carreras: ${(p * 100).toFixed(1)}%"/>`;
+      if (k % 2 === 0) s += `<text x="${x(k) + bw / 2}" y="${H - 12}" text-anchor="middle">${k}</text>`;
+    });
+    lines.forEach((ln) => { const lx = L + (ln + 0.5) * bw; s += `<line x1="${lx}" x2="${lx}" y1="${T}" y2="${y(0)}" stroke="var(--ink-2)" stroke-dasharray="3 3"/><text class="lbl" x="${lx}" y="${T - 3}" text-anchor="middle">${ln}</text>`; });
+    const px = L + (proj + 0.5) * bw;
+    s += `<line x1="${px}" x2="${px}" y1="${T}" y2="${y(0)}" stroke="var(--accent)" stroke-width="2"/>`;
+    s += `<text x="${L}" y="${H - 1}">carreras totales</text></svg>`;
+    return s;
+  }
+
+  function linescore(g) {
+    const d = g.sections.s6.development;
+    const max = Math.max(...d.perInning.away, ...d.perInning.home, 0.01);
+    const cell = (v) => `<td class="num" style="background: rgba(var(--heat), ${(0.08 + 0.5 * v / max).toFixed(3)})" data-tip="${f(v, 2)} carreras esperadas">${f(v, 2)}</td>`;
+    const row = (side) => `<tr><td class="team-cell"><span class="abbr" style="font-size:18px"><i class="${side}-mark" style="height:14px"></i>${esc(g.teams[side].abbr)}</span></td>${d.perInning[side].map(cell).join("")}<td class="num tot">${f(d.final[side], 1)}</td><td class="num">${f(d.f5[side], 1)}</td><td class="num">${f(d.f3[side], 1)}</td></tr>`;
+    return `<div class="tbl"><table class="linescore"><thead><tr><th>Equipo</th>${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => `<th>${i}</th>`).join("")}<th>R</th><th>F5</th><th>F3</th></tr></thead><tbody>${row("away")}${row("home")}</tbody></table></div>`;
+  }
+
+  function methodBars(g) {
+    const t = g.sections.s5.triangulation, h = g.teams.home.abbr;
+    const row = (label, p) => `<div class="mbar"><span>${label}</span><span class="track" data-tip="${label}: ${esc(h)} ${pc(p, 1)}"><i style="width:${(p * 100).toFixed(1)}%"></i></span><span class="num">${pc(p, 1)}</span></div>`;
+    return row("Log5", t.log5.pHome) + row("Elo", t.elo.pHome) + row("λ NB", t.lambda.pHome);
+  }
+
+  // ---------------------------------------------------------------- vista: partido
+  function viewGame(g) {
+    const s = g.summary, S = g.sections, a = g.teams.away, h = g.teams.home;
+    const w = g.weather;
+    const weather = w.closed ? "Techo cerrado / domo" : w.available ? `${esc(w.condition || "")} · ${w.temp ?? "—"}°F · viento ${esc(w.windText || "—")}` : "Clima: sin reporte todavía";
+    const fav = s.pHome >= 0.5 ? "home" : "away";
+    const openAll = store.get("mlbgs-open") === "1";
+    app.innerHTML = `
+      <a class="back" href="#partidos">← Todos los partidos</a>
+      <div class="board">
+        <div class="team away"><span class="eyebrow">Visitante</span><span class="big">${esc(a.abbr)}</span><span class="nm">${esc(a.name)}</span><span class="sub">${a.w}-${a.l} · ${esc(a.division || "")}${a.streak ? " · racha " + esc(a.streak) : ""} · Elo ${a.elo ?? "—"}</span></div>
+        <div class="mid"><span class="at">@</span><b>${fmtDateLong(g.date)} · ${fmtTime(g.time)}</b><span>${esc(g.venue.name)}${g.venue.city ? ", " + esc(g.venue.city) : ""}${g.venue.neutral ? " · sede neutra" : ""}</span><span class="muted">${weather}</span><span class="muted">Umpire: ${esc(g.umpire || "no asignado aún")}${g.series && g.series.gameNumber ? ` · juego ${g.series.gameNumber} de ${g.series.totalGames}${g.series.result ? ` (${esc(g.series.result)})` : ""}` : ""}</span></div>
+        <div class="team home"><span class="eyebrow">Local</span><span class="big">${esc(h.abbr)}</span><span class="nm">${esc(h.name)}</span><span class="sub">${h.w}-${h.l} · ${esc(h.division || "")}${h.streak ? " · racha " + esc(h.streak) : ""} · Elo ${h.elo ?? "—"}</span></div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile"><span class="eyebrow">Probabilidad triangulada</span>
+          <span class="big">${esc(g.teams[fav].abbr)} ${pc(fav === "home" ? s.pHome : s.pAway)}</span>
+          <div class="splitbar"><span style="width:${(s.pAway * 100).toFixed(1)}%"></span><span style="width:${(s.pHome * 100).toFixed(1)}%"></span></div>
+          ${methodBars(g)}
+          <span class="sub">P(${esc(h.abbr)}) por método · confianza <b>${esc(s.confidence)}</b> (divergencia ${pc(s.spread, 1)})</span></div>
+        <div class="tile"><span class="eyebrow">Marcador proyectado</span>
+          <span class="big">${esc(a.abbr)} ${f(s.proj.away, 1)} – ${f(s.proj.home, 1)} ${esc(h.abbr)}</span>
+          <dl class="kv"><dt>Total esperado</dt><dd class="num">${f(s.proj.total, 2)}</dd><dt>F5</dt><dd class="num">${f(s.proj.f5.away, 2)} – ${f(s.proj.f5.home, 2)}</dd><dt>F3</dt><dd class="num">${f(s.proj.f3.away, 2)} – ${f(s.proj.f3.home, 2)}</dd><dt>NRFI / YRFI</dt><dd class="num">${pc(s.nrfi)} / ${pc(1 - s.nrfi)}</dd></dl></div>
+        <div class="tile"><span class="eyebrow">Mejor mercado (8.4)</span>
+          ${s.best ? `<span class="big" style="font-size:26px">${esc(s.best.pick)}</span><span>${esc(s.best.market)} · ${pc(s.best.p, 1)} ${light(s.best.light)}</span>
+          <span class="sub">${isNum(s.best.price) ? `Momio ${odds(s.best.price)} · edge ${signed(100 * s.best.edge, 1)} pp` : `Momio justo ${odds(s.best.fair)} · mínimo aceptable ${odds(s.best.minPrice)}`} · ${esc(s.best.decision)}</span>` : "<span class='sub'>Sin mercado</span>"}
+          <span class="sub">Gate: ${s.gate.ok}/${s.gate.total} campos · ${s.gate.missing} faltante${s.gate.missing === 1 ? "" : "s"}</span></div>
+      </div>
+
+      <section class="block"><h2>Carreras esperadas por entrada</h2>
+        ${linescore(g)}
+        <p class="note">λ por media entrada = carreras promedio de la liga en esa entrada × ofensiva × (fracción del abridor × abridor + fracción del bullpen × bullpen) × parque. Más intenso = más carreras esperadas.</p>
+      </section>
+
+      <section class="block"><h2>Decisión corregida por mercado</h2>
+        ${decisionTable(S.s8)}
+        <p class="rule">${esc(S.s8.rule)}</p>
+      </section>
+
+      <div class="toolbar"><button class="btn" id="toggle-all">${openAll ? "Contraer" : "Expandir"} las 10 secciones</button><span class="muted" style="font-size:13px">Numeración = secciones del Framework MLB Picks v2</span></div>
+      ${sec(1, "Liga, división y contexto competitivo", S.s1.divisional ? "Divisional" : S.s1.sameLeague ? "Misma liga" : "Interliga", sec1(g), openAll)}
+      ${sec(2, "Localía, visita, récords recientes e historial directo", `${S.s2.h2hCount} H2H`, sec2(g), openAll)}
+      ${sec(3, "Pitchers abridores: comparación completa", S.s3.advantage.text, sec3(g), openAll)}
+      ${sec(4, "Bullpen: relevistas, fatiga, roles y matchup", S.s4.advantage.team ? "Ventaja " + S.s4.advantage.team : "Parejos", sec4(g), openAll)}
+      ${sec(5, "Patrones, probabilidades y modelo matemático", `P(${h.abbr}) ${pc(s.pHome, 1)}`, sec5(g), openAll)}
+      ${sec(6, "Análisis Over/Under y desarrollo por entradas", `Total ${f(s.proj.total, 2)}`, sec6(g), openAll)}
+      ${sec(7, "Cuotas, probabilidad implícita y valor", S.s7.hasOdds ? `${S.s7.nBooks} casas` : "Sin momios", sec7(g), openAll)}
+      ${sec(8, "Auditoría final de contradicciones", `${S.s8.audit.filter((x) => x.status === "Alerta").length} alertas`, sec8(g), openAll)}
+      ${sec(9, "Fuentes de datos y regla de completitud", `${s.gate.missing} faltantes`, sec9(g), openAll)}
+      ${sec(10, "Algoritmo maestro", "Fases 0–6", sec10(g), openAll)}
+      ${footer()}`;
+    document.getElementById("toggle-all").addEventListener("click", () => {
+      const open = store.get("mlbgs-open") !== "1";
+      store.set("mlbgs-open", open ? "1" : "0");
+      app.querySelectorAll("details.sec").forEach((d) => { d.open = open; });
+      document.getElementById("toggle-all").textContent = `${open ? "Contraer" : "Expandir"} las 10 secciones`;
+    });
+    window.scrollTo(0, 0);
+  }
+
+  const sec = (n, title, sum, body, open) => `<details class="sec" id="s${n}"${open ? " open" : ""}><summary><span class="n">${n}</span><span class="t">${esc(title)}</span><span class="s">${esc(sum || "")}</span></summary><div class="body">${body}</div></details>`;
+
+  function decisionTable(s8) {
+    return table(["Mercado", "Pick", "~Prob.", "~Momio", "~Justo", "~Mínimo", "~Edge", "Modelo", "Guion", "Cuota", "Contradicción", "Semáforo", "Decisión"],
+      s8.decisions.map((d) => tr([td(`<b>${esc(d.market)}</b>`), td(esc(d.pick)), tdn(pc(d.p, 1)), tdn(odds(d.price)), tdn(odds(d.fair)), tdn(odds(d.minPrice)),
+        tdn(isNum(d.edge) ? signed(100 * d.edge, 1) + " pp" : "—"), td(yes(d.modelo)), td(`<span data-tip="${esc(d.guionWhy || "")}">${yes(d.guion)}</span>`), td(yes(d.cuota)),
+        td(`<span data-tip="${esc((d.contraList || []).join(" · ") || "Sin contradicciones")}">${esc(d.contradiction)}</span>`), td(light(d.light)),
+        td(`${esc(d.decision)}${d.blocked ? ' <span class="tag warn" data-tip="Gate de completitud: falta un dato obligatorio">gate</span>' : ""}${d.stake ? `<br><span class="muted">¼ Kelly ${pc(d.stake.quarter, 2)}</span>` : ""}`)])));
+  }
+
+  // ------------------------------------------------ sección 1
+  function sec1(g) {
+    const s = g.sections.s1;
+    return `${table(["Pregunta", "Respuesta", "Detalle"], s.rows.map((r) => tr([td(esc(r.q)), td(`<b>${esc(r.a)}</b>`), td(esc(r.d), "muted")])))}
+      <p class="rule">Partido divisional no significa automáticamente Over</p>
+      <div><h3 class="sub">Interpretación corregida</h3><p class="note">${esc(s.interpretation)}</p></div>`;
+  }
+
+  // ------------------------------------------------ sección 2
+  function gamesTable(rows, opts = {}) {
+    return table(["Fecha", "Visitante", "Local", "Estadio", "~Marcador", "Ganador", "~Total", "~F5", ...(opts.venue ? ["Estadio actual"] : [])],
+      rows.map((r) => tr([td(fmtShort(r.date), "num"), td(esc(r.away)), td(esc(r.home)), td(esc(r.venue), "muted"),
+        tdn(`${r.score}${r.innings > 9 ? ` (${r.innings})` : ""}`), td(`<b>${esc(r.winner)}</b>`, r.won === true ? "w" : r.won === false ? "l" : ""),
+        tdn(r.total), tdn(`${r.f5[0]}-${r.f5[1]}`), ...(opts.venue ? [td(r.sameVenue ? "✓" : "×", "c")] : [])])));
+  }
+  function sec2(g) {
+    const s = g.sections.s2;
+    return `<h3 class="sub"><span class="code">2.1</span> Récord general y splits de localía/visita</h3>
+      ${table(["Equipo", "Rol", "Récord", "Casa", "Visita", "Últimos 10", "Racha", "Comentario"], s.records.map((r) => tr([td(`<b>${esc(r.team)}</b>`), td(r.role), tdn(r.overall), tdn(r.home), tdn(r.away), tdn(r.last10), td(esc(r.streak || "—")), td(esc(r.comment), "muted")])))}
+      <h3 class="sub"><span class="code">2.2</span> Últimos 10 del local como local (${esc(g.teams.home.abbr)})</h3>${gamesTable(s.homeL10)}
+      <h3 class="sub"><span class="code">2.3</span> Últimos 10 del visitante como visitante (${esc(g.teams.away.abbr)})</h3>${gamesTable(s.awayL10)}
+      <h3 class="sub"><span class="code">2.4</span> Últimos 10 enfrentamientos directos</h3>${gamesTable(s.h2h, { venue: true })}
+      <p class="note muted">Columna «Figura» del framework: la API de calendario no publica el jugador del partido; en su lugar se muestra el marcador de F5.</p>
+      <h3 class="sub"><span class="code">2.5</span> Resumen estadístico de tendencias</h3>
+      <dl class="kv">${s.summary.map((r) => `<dt>${esc(r.k)}</dt><dd class="num">${esc(r.v ?? "—")}</dd>`).join("")}</dl>
+      <p class="rule">El historial directo es apoyo, no argumento suficiente para pick final.</p>
+      <p class="note">${esc(s.warning)}</p>`;
+  }
+
+  // ------------------------------------------------ sección 3
+  function logTable(rows) {
+    return table(["Fecha", "Condición", "Rival", "~IP", "~H", "~ER", "~BB", "~K", "~HR", "~BF", "~Pitcheos"],
+      rows.map((r) => tr([td(fmtShort(r.date), "num"), td(r.home ? "Local" : "Visita"), td(esc(r.oppAbbr)), tdn(r.ip), tdn(r.h), tdn(r.er), tdn(r.bb), tdn(r.k), tdn(r.hr), tdn(r.bf), tdn(r.pitches ?? "—")])));
+  }
+  function sec3(g) {
+    const s = g.sections.s3;
+    const comp = s.comparison;
+    const scoreRows = s.weights.map((w, i) => tr([td(esc(w.f)), tdn(pc(w.w)), td(esc(w.what), "muted"),
+      tdn(s.scores.away.rows[i] ? (s.scores.away.rows[i].score ?? "s/d") : "—"), tdn(s.scores.home.rows[i] ? (s.scores.home.rows[i].score ?? "s/d") : "—")]));
+    scoreRows.push(tr([td("<b>Puntaje ponderado (0-100)</b>"), tdn("100%"), td(""), tdn(`<b>${f(s.scores.away.total, 1)}</b>`), tdn(`<b>${f(s.scores.home.total, 1)}</b>`)], "hl"));
+    const block = (side) => {
+      const b = s.blocks[side], p = comp.find((c) => c.side === side);
+      if (!b) return `<div class="panel"><h3 class="sub">${esc(p.name)} (${esc(p.team)})</h3><p class="note">${esc(p.note || "Sin abridor anunciado")}. ERA estimada de la rotación: ${f(p.estEra)}.</p></div>`;
+      return `<div class="panel"><h3 class="sub">${esc(p.name)} <span class="code">${esc(p.team)} · ${side === "away" ? "3.5 visitante" : "3.6 local"}</span></h3>
+        <dl class="kv"><dt>a) Temporada</dt><dd class="num">ERA ${f(b.season.era)} · WHIP ${f(b.season.whip)} · FIP ${f(b.season.fip)} · ${b.season.bf} BF</dd>
+        <dt>b) ${esc(b.condition.label)}</dt><dd class="num">ERA ${f(b.condition.era)} · WHIP ${f(b.condition.whip)} · FIP ${f(b.condition.fip)} · ${b.condition.bf} BF</dd>
+        <dt>Factor de split regresado</dt><dd class="num">${f(b.condition.factor, 3)}</dd>
+        <dt>Récord del equipo en sus aperturas</dt><dd class="num">${esc(b.teamRecordInStarts)}</dd>
+        <dt>f) ¿Ya enfrentó al abridor rival?</dt><dd>${b.facedOpp ? (b.facedOpp.count ? `Sí, ${b.facedOpp.count} vez/veces (${b.facedOpp.dates.map(fmtShort).join(", ")})` : "No (2 temporadas)") : "—"}</dd>
+        <dt>g) Valor en ponches</dt><dd>${b.kValue ? '<span class="tag warn">Sí</span>' : '<span class="tag">No</span>'} <span class="num">${f(b.kProj, 1)} K proyectados</span></dd>
+        <dt>h) Tamaño de muestra (BF)</dt><dd class="num">temp ${b.bf.season} · cond ${b.bf.cond} · L5 ${b.bf.last5} · rival ${b.bf.vsRival}</dd>
+        <dt>Forma (FIP L5 → factor regresado)</dt><dd class="num">${f(b.l5fip)} → ${f(b.form, 3)}</dd></dl>
+        <p class="note">${esc(b.kNote)}</p>
+        <h3 class="sub">c) Últimas 5 aperturas ${side === "away" ? "como visitante" : "como local"}</h3>${logTable(b.last5cond)}
+        <h3 class="sub">d) Últimas 5 aperturas totales</h3>${logTable(b.last5)}
+        <h3 class="sub">e) Últimos 3 enfrentamientos contra el rival</h3>${logTable(b.vsRival)}</div>`;
+    };
+    return `<h3 class="sub"><span class="code">3.1</span> Identificación de abridores</h3>
+      ${table(["Elemento", "Pitcher visitante", "Pitcher local"], [
+        tr([td("Nombre"), td(`<b>${esc(s.ident[0].name)}</b>`), td(`<b>${esc(s.ident[1].name)}</b>`)]),
+        tr([td("Equipo"), td(esc(s.ident[0].team)), td(esc(s.ident[1].team))]),
+        tr([td("Mano de lanzar"), td(esc(s.ident[0].hand)), td(esc(s.ident[1].hand))]),
+        tr([td("Estado"), td(esc(s.ident[0].status)), td(esc(s.ident[1].status))]),
+        tr([td("Condición"), td(esc(s.ident[0].cond)), td(esc(s.ident[1].cond))])])}
+      <h3 class="sub"><span class="code">3.2</span> Comparación general de temporada</h3>
+      ${table(["Pitcher", "Eq.", "Mano", "W-L", "~ERA", "~WHIP", "~IP", "~K%", "~BB%", "~K-BB%", "~FIP", "~xFIP*", "~SIERA", "~xERA", "~HR/9", "~Barrel%"],
+        comp.map((c) => c.missing ? tr([td(`<b>${esc(c.name)}</b>`), td(esc(c.team)), td(`<span class="muted">${esc(c.note || "")}</span>`), ...Array(13).fill(td("—"))])
+          : tr([td(`<b>${esc(c.name)}</b>`), td(esc(c.team)), td(hand(c.hand)), tdn(c.wl), tdn(f(c.era)), tdn(f(c.whip)), tdn(f(c.ip, 1)), tdn(pv(c.k)), tdn(pv(c.bb)), tdn(pv(c.kbb)), tdn(f(c.fip)), tdn(f(c.xfip)), tdn("s/d"), tdn(f(c.xera)), tdn(f(c.hr9)), tdn(pv(c.barrel))])))}
+      <p class="note muted">* xFIP aproximado con airOuts de la MLB Stats API (sin FanGraphs); SIERA no disponible, sustituido por FIP según 3.4. FIP = (13·HR + 3·(BB+HBP) − 2·K)/IP + ${f(s.fipConstant, 3)} (constante de liga calculada con los totales de la temporada).</p>
+      ${table(["Regresado a la media", "~K%", "~BB%", "~K-BB%", "~FIP", "~ERA", "~xERA", "~ERA estimada", "~IP esperadas"],
+        comp.filter((c) => !c.missing).map((c) => tr([td(`<b>${esc(c.name)}</b><br><span class="muted" style="font-size:12px">${esc(c.blend)}</span>`), tdn(pv(c.shrunk.k)), tdn(pv(c.shrunk.bb)), tdn(pv(c.shrunk.kbb)), tdn(f(c.shrunk.fip)), tdn(f(c.shrunk.era)), tdn(f(c.shrunk.xera)), tdn(`<b>${f(c.estEra)}</b>`), tdn(f(c.expIp, 1))])))}
+      <h3 class="sub"><span class="code">3.3</span> Peso corregido para evaluar abridores</h3>
+      <p class="rule">Últimas 5 salidas no pueden pesar más que temporada + matchup + parque + pitch mix</p>
+      ${table(["Factor", "~Peso", "Cómo se mide", `~${esc(g.teams.away.abbr)}`, `~${esc(g.teams.home.abbr)}`], scoreRows)}
+      ${s.scores.away.note || s.scores.home.note ? `<p class="note muted">${esc(s.scores.away.note || s.scores.home.note)}. Puntaje = 50 + 15·z frente a la liga.</p>` : `<p class="note muted">Puntaje = 50 + 15·z frente a la liga.</p>`}
+      <div class="two">${block("away")}${block("home")}</div>
+      <h3 class="sub"><span class="code">3.8</span> Interpretación de abridores</h3>
+      <dl class="kv">${s.interpretation.map((r) => `<dt>${esc(r.k)} <span class="muted" style="font-size:12px">(${esc(r.basis)})</span></dt><dd>${esc(r.v)}</dd>`).join("")}</dl>
+      <h3 class="sub"><span class="code">3.9</span> Tabla final de ventaja de abridor</h3>
+      <p class="rule">Ventaja preliminar de abridor: ${esc(s.advantage.text)} — pendiente de confirmar tras la regresión a la media (5.7.4)</p>
+      <p class="note">${esc(s.advantage.markets)}</p>`;
+  }
+
+  // ------------------------------------------------ sección 4
+  function sec4(g) {
+    const s = g.sections.s4;
+    const relTable = (side) => table(["Relevista", "Mano", "Rol", "~ERA", "~WHIP", "~FIP", "~IP", "~K%", "~BB%", "~SV/HLD", "Último uso", "~Pitcheos", "~Juegos 3d", "~IP 3d", "¿Disponible?", "Riesgo", "Matchup"],
+      (s.relievers[side] || []).map((r) => tr([td(`<b>${esc(r.name)}</b>${r.idle7 ? ' <span class="tag warn" data-tip="No aparece en box scores de los últimos 7 días">7d sin uso</span>' : ""}`), td(hand(r.hand)), td(esc(r.role)),
+        tdn(f(r.era)), tdn(f(r.whip)), tdn(f(r.fip)), tdn(f(r.ip, 1)), tdn(pv(r.k)), tdn(pv(r.bb)), tdn(`${r.sv}/${r.hld}`), td(r.lastDate ? fmtShort(r.lastDate) : "—", "num"), tdn(r.lastPitches ?? "—"), tdn(r.g3), tdn(f(r.ip3, 1)),
+        td(`<span class="tag ${r.available === "Sí" ? "ok" : r.available === "Dudoso" ? "warn" : "bad"}">${esc(r.available)}</span>`), td(esc(r.risk)),
+        td(r.matchup ? `<span data-tip="Ofensiva rival vs ${r.hand === "L" ? "zurdos" : "derechos"}: ${f(r.oppRatio, 3)} (1 = su promedio)">${esc(r.matchup)}</span>` : "—")])));
+    return `<p class="rule">Bullpen = calidad + disponibilidad real + uso últimos 3 días + brazos clave</p>
+      <h3 class="sub"><span class="code">4.1</span> Estadísticas generales del bullpen (relevistas, temporada)</h3>
+      ${table(["Equipo", "~ERA", "~WHIP", "~FIP", "~K%", "~BB%", "~K-BB%", "~HR/9", "~H/9", "~LOB%", "~BABIP", "~Blown Sv.", "~Saves", "~ERA 7d", "~Rank"],
+        s.stats.map((b) => tr([td(`<b>${esc(b.team)}</b>`), tdn(f(b.era)), tdn(f(b.whip)), tdn(f(b.fip)), tdn(pv(b.k)), tdn(pv(b.bb)), tdn(pv(b.kbb)), tdn(f(b.hr9)), tdn(f(b.h9)), tdn(pv(b.lob)), tdn(f(b.babip, 3)), tdn(b.bs), tdn(b.sv), tdn(f(b.era7)), tdn(`${b.rank}/30`)])))}
+      <h3 class="sub"><span class="code">4.2</span> Interpretación general del bullpen</h3>
+      <dl class="kv">${s.interpretation.map((r) => `<dt>${esc(r.k)}</dt><dd>${esc(r.v)}</dd>`).join("")}</dl>
+      <p class="note muted">Si la ERA es buena pero el FIP es malo, debe advertirse posible regresión negativa.</p>
+      <h3 class="sub"><span class="code">4.3 · 4.5 · 4.6</span> Relevistas principales, uso reciente, fatiga y matchup — ${esc(g.teams.away.abbr)}</h3>${relTable("away")}
+      <h3 class="sub">${esc(g.teams.home.abbr)}</h3>${relTable("home")}
+      <p class="note muted">Disponibilidad derivada de los box scores oficiales: «Probablemente no» con 3 juegos en 3 días, días consecutivos con 15+ pitcheos o 35+ pitcheos ayer; «Dudoso» con días consecutivos, 20+ pitcheos ayer o 45+ en 3 días. Matchup = ofensiva rival contra esa mano (regresada).</p>
+      <h3 class="sub"><span class="code">4.4</span> Lectura de fatiga</h3>
+      <ul class="clean">${s.fatigueReading.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+      ${table(["Equipo", "~Pitcheos ponderados 3d", "~z fatiga", "~z ERA", "~z WHIP", "~z BB%", "~z HR/9", "~RiesgoBullpen"],
+        s.stats.map((b) => tr([td(`<b>${esc(b.team)}</b>`), tdn(b.fatigue), tdn(f(b.zFatigue)), tdn(f(b.riskParts.era)), tdn(f(b.riskParts.whip)), tdn(f(b.riskParts.bb)), tdn(f(b.riskParts.hr9)), tdn(`<b>${f(b.risk)}</b>`)])))}
+      <p class="note muted">${esc(s.formula)}. Pitcheos de relevistas ponderados: ayer ×1, hace 2 días ×0.66, hace 3 días ×0.33.</p>
+      <h3 class="sub"><span class="code">4.7</span> Conclusión obligatoria del bullpen</h3>
+      <p class="rule">${esc(s.conclusion)}</p>`;
+  }
+
+  // ------------------------------------------------ sección 5
+  function sec5(g) {
+    const s = g.sections.s5, L = s.lambda, t = s.triangulation;
+    const lamRow = (label, key, d = 3) => tr([td(label), tdn(f(L.away[key], d)), tdn(f(L.home[key], d))]);
+    const lu = (side) => {
+      const x = s.lineups[side];
+      if (!x) return `<p class="note">${esc(g.teams[side].abbr)}: lineup aún no publicado; se usa la ofensiva habitual del equipo.</p>`;
+      return `<h3 class="sub">Lineup confirmado ${esc(g.teams[side].abbr)} <span class="code">OBP ${f(x.obp, 3)} · SLG ${f(x.slg, 3)} · K% ${pv(x.k)} · Barrel% ${f(x.barrel, 1)} · factor ${f(x.ratio, 3)}</span></h3>
+        ${table(["#", "Bateador", "Batea", "~PA", "~OBP", "~SLG", "~OPS", "~HR", "~K%", "~Barrel%"], x.rows.map((r, i) => tr([tdn(i + 1), td(esc(r.name)), td(esc(r.bats || "—")), tdn(r.pa), tdn(f(r.obp, 3)), tdn(f(r.slg, 3)), tdn(f(r.ops, 3)), tdn(r.hr), tdn(pv(r.k)), tdn(pv(r.barrel))])))}`;
+    };
+    return `<p class="rule">No se debe convertir una ventaja estadística en pick automático.</p>
+      ${table(["Factor", `~${esc(g.teams.away.abbr)}`, `~${esc(g.teams.home.abbr)}`, "Ventaja", "Mercado afectado"], s.factors.map((r) => tr([td(esc(r.f)), tdn(r.a ?? "—"), tdn(r.h ?? "—"), td(`<b>${esc(r.adv)}</b>`), td(esc(r.m), "muted")])))}
+      <h3 class="sub"><span class="code">5.1</span> Relación abridor vs lineup</h3>
+      ${table(["Abridor", "Contra", "~Calidad (z)", "~Amenaza (z)", "~Ventaja", "Clasificación"], s.starterVsLineup.map((r) => tr([td(`<b>${esc(r.pitcher)}</b>`), td(esc(r.lineup)), tdn(f(r.quality)), tdn(f(r.threat)), tdn(f(r.diff)), td(esc(r.class))])))}
+      <p class="note muted">Ventaja Abridor-Lineup = Calidad del abridor (ERA estimada vs liga) − Amenaza ofensiva rival (ofensiva × split vs mano × lineup).</p>
+      ${lu("away")}${lu("home")}
+      <h3 class="sub"><span class="code">5.2</span> Relación bullpen vs lineup</h3>
+      <p class="note">RiesgoBullpen = z(ERA) + z(WHIP) + z(BB%) + z(HR/9) + z(Fatiga): ver 4.4. Si el bullpen contradice el pick de juego completo, se revisa F5.</p>
+      <h3 class="sub"><span class="code">5.3</span> Carreras esperadas con ajuste de contradicciones</h3>
+      ${table(["Componente", `~${esc(g.teams.away.abbr)} batea`, `~${esc(g.teams.home.abbr)} batea`], [
+        lamRow("Ofensiva (neutral de parque, regresada)", "offense"), lamRow("× Split vs mano del abridor rival", "handRatio"), lamRow("× Lineup confirmado", "lineup"),
+        lamRow("× Park factor (Savant)", "park"), lamRow("× Abridor rival (RA9 estimada / liga)", "starter"), lamRow("× Forma reciente regresada", "form"),
+        lamRow("× Split casa/visita del abridor", "split"), lamRow("× Bullpen rival", "bullpen"), lamRow("× Fatiga del bullpen rival", "fatigue"),
+        tr([td("λ base juego (sin ajustes 5.3)"), tdn(f(L.away.base.full)), tdn(f(L.home.base.full))]),
+        tr([td("<b>λ F3 · F5 · juego (ajustada)</b>"), tdn(`<b>${f(L.away.f3)} · ${f(L.away.f5)} · ${f(L.away.full)}</b>`), tdn(`<b>${f(L.home.f3)} · ${f(L.home.f5)} · ${f(L.home.full)}</b>`)], "hl"),
+        tr([td("Carreras vs abridor / vs bullpen"), tdn(`${f(L.away.vsStarter)} / ${f(L.away.vsBullpen)}`), tdn(`${f(L.home.vsStarter)} / ${f(L.home.vsBullpen)}`)]),
+        tr([td("Promedio de liga (mismo lado)"), tdn(f(L.away.lgFull)), tdn(f(L.home.lgFull))])])}
+      <p class="note muted">λ<sub>juego</sub> = λ<sub>F5</sub> + carreras esperadas contra el bullpen. La salida del abridor se modela como Normal(IP esperadas, 1.2): fracción de cada entrada cubierta por el abridor ${esc(g.teams.home.abbr)}: ${L.away.starterFracs.map((x) => f(x, 2)).join(" · ")}.</p>
+      <p class="rule">Nunca subir el total por un solo factor. Los ajustes ya presentes en λ base no se duplican.</p>
+      ${table(["Condición", "~Ajuste", "Impacto", "¿Se cumple?", "Estado", "Dato"], s.adjustments.map((r) => tr([td(`<b>${esc(r.cond)}</b><br><span class="muted" style="font-size:12px">${esc(r.why)}</span>`), tdn("λ × " + f(r.factor, 2)), td(esc(r.impact)),
+        td(r.applies ? '<span class="tag warn">Sí</span>' : '<span class="tag">No</span>'), td(r.applied ? '<span class="tag info">Aplicado</span>' : r.applies && r.inBase ? `<span class="tag" data-tip="${esc(r.inBase)}">En λ base</span>` : '<span class="muted">—</span>'),
+        td(esc(r.note || "") + (r.applies && r.inBase ? `<br><span class="muted" style="font-size:12px">${esc(r.inBase)}</span>` : ""), "muted")])))}
+      <h3 class="sub"><span class="code">5.4 · 5.7.5</span> Modelo de probabilidad</h3>
+      <p class="note">Juego completo: Binomial Negativa por equipo con Var/Media = ${f(s.league.varRatio, 2)} medido en ${s.league.games} juegos de esta temporada (Poisson subestima blanqueadas y juegos largos). F3/F5: Poisson. Empates a 9 entradas se resuelven con el ${pv(s.league.extraHomeWin)} de victorias locales en extra innings.</p>
+      <h3 class="sub"><span class="code">5.5</span> Probabilidad por mercado</h3>
+      ${table(["Mercado", "Pick", "~Prob.", "~Empate/push"], s.probabilities.map((r) => tr([td(esc(r.market)), td(esc(r.pick)), tdn(pc(r.p, 1)), tdn(r.tie ? pc(r.tie, 1) : r.push ? pc(r.push, 1) : "—")])))}
+      <h3 class="sub"><span class="code">5.6</span> Razones preliminares para cancelar un pick</h3>
+      <ul class="clean">${s.cancel.map((c) => `<li>${c.on ? '<span class="tag warn">Activa</span>' : '<span class="tag">No</span>'} ${esc(c.text)}</li>`).join("")}</ul>
+      <h3 class="sub"><span class="code">5.7.1</span> Pythagorean Expectation (Pythagenpat)</h3>
+      ${table(["Equipo", "~RS", "~RA", "~G", "~Win% real", "~Pitagórico", "~Prior (temp. anterior)", "~Win% verdadero", "Lectura"], s.luck.map((r) => tr([td(`<b>${esc(r.team)}</b>`), tdn(r.rs), tdn(r.ra), tdn(r.g), tdn(pv(r.wpct)), tdn(pv(r.pyth)), tdn(pv(r.prior)), tdn(`<b>${pv(r.true)}</b>`), td(esc(r.text), "muted")])))}
+      <h3 class="sub"><span class="code">5.7.2 · 5.7.7 · FASE 2</span> Triangulación de la probabilidad de victoria</h3>
+      ${table(["Método", `~P(${esc(g.teams.home.abbr)})`, "Cálculo"], [
+        tr([td("<b>Log5</b> (win% verdadero)"), tdn(pc(t.log5.pHome, 1)), td(esc(t.log5.detail), "muted")]),
+        tr([td("<b>Elo</b> + ajuste por abridor"), tdn(pc(t.elo.pHome, 1)), td(esc(t.elo.detail), "muted")]),
+        tr([td("<b>Modelo λ</b> (Binomial Negativa)"), tdn(pc(t.lambda.pHome, 1)), td(esc(t.lambda.detail), "muted")]),
+        tr([td("<b>Triangulada</b>"), tdn(`<b>${pc(t.pHome, 1)}</b>`), td(`Divergencia ${pc(t.spread, 1)} → confianza <b>${esc(t.confidence)}</b>. ${esc(t.rule)}`)], "hl")])}
+      <p class="note muted">Ajuste de abridor en Elo: carreras que ahorra frente a la rotación de su equipo × entradas esperadas / 9, a ~0.1 de win% por carrera. ${esc(g.teams.away.abbr)}: ${f(t.elo.starterAdj.away.runsSaved)} carreras (${signed(t.elo.starterAdj.away.elo, 0)} Elo) · ${esc(g.teams.home.abbr)}: ${f(t.elo.starterAdj.home.runsSaved)} carreras (${signed(t.elo.starterAdj.home.elo, 0)} Elo).</p>
+      <h3 class="sub"><span class="code">5.7.4</span> Regresión a la media (shrinkage bayesiano)</h3>
+      <ul class="clean">${s.shrinkage.map((x) => `<li class="num" style="font-family:var(--sans)">${esc(x)}</li>`).join("")}</ul>
+      <p class="note muted">θ̂ = n/(n+k)·x̄ + k/(n+k)·μ<sub>liga</sub> con k = 70 BF (K%), 170 BF (BB%), 1150 BF (HR, ≈400 FB) y 1000 BF para la ERA; la temporada anterior entra con peso 0.5.</p>
+      <h3 class="sub"><span class="code">5.7.10</span> Correlación entre mercados</h3>
+      <ul class="clean">${s.correlation.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  }
+
+  // ------------------------------------------------ sección 6
+  function sec6(g) {
+    const s = g.sections.s6;
+    const lean = (x) => `<span class="tag ${x === "Over" ? "bad" : x === "Under" ? "info" : ""}">${esc(x)}</span>`;
+    const kp = Object.entries(s.kprops || {});
+    return `<p class="rule">Si el juego proyecta pocas carreras, revisar primero Under/F5 Under antes que ML o Run Line.</p>
+      <h3 class="sub"><span class="code">6.1</span> Datos base para el total</h3>
+      ${table(["Factor", "Favorece", "Comentario"], s.base.map((r) => tr([td(esc(r.f)), td(lean(r.lean)), td(esc(r.c), "muted")])))}
+      <h3 class="sub"><span class="code">6.3</span> Filtro de ponches contra Over (${s.kCount} de ${s.kFilter.length} condiciones)</h3>
+      ${table(["Condición", "¿Se cumple?", "~Dato"], s.kFilter.map((r) => tr([td(esc(r.c)), td(r.on ? '<span class="tag warn">Sí</span>' : '<span class="tag">No</span>'), tdn(isNum(r.v) ? f(r.v, 1) : esc(r.v ?? "—"))])))}
+      <p class="rule">${s.overBlocked ? "3 o más condiciones: el Over queda bloqueado salvo razón muy fuerte." : "Pitcher Ks fuerte + lineup con K alto = revisar F5 Under/Under antes que Over"}</p>
+      <h3 class="sub"><span class="code">6.4</span> El estadio no puede dominar el análisis</h3>
+      <p class="note">${esc(s.parkText)}</p>
+      <ul class="clean">${s.parkChecks.map((c) => `<li>${c.on ? '<span class="tag ok">Sí</span>' : '<span class="tag">No</span>'} ${esc(c.c)}</li>`).join("")}</ul>
+      <h3 class="sub"><span class="code">6.7 · 6.8</span> Carreras esperadas por tramos y distribución del total</h3>
+      <dl class="kv"><dt>λ F3 total</dt><dd class="num">${f(s.segments.f3)}</dd><dt>λ F5 total</dt><dd class="num">${f(s.segments.f5)}</dd><dt>λ juego total</dt><dd class="num">${f(s.segments.full)}</dd><dt>Promedio de liga</dt><dd class="num">${f(s.segments.lg)}</dd></dl>
+      ${distChart(s.totalPmf, [7.5, 8.5, 9.5], s.segments.full)}
+      <div class="legend"><span><i style="background:var(--away)"></i>8 carreras o menos</span><span><i style="background:var(--home)"></i>9 o más</span><span><i style="background:var(--accent);height:3px"></i>total proyectado</span><span>líneas punteadas: 7.5 · 8.5 · 9.5</span></div>
+      <h3 class="sub"><span class="code">6.9</span> Desarrollo probable por entradas</h3>
+      <dl class="kv"><dt>F3</dt><dd class="num">${esc(g.teams.away.abbr)} ${f(s.development.f3.away, 1)} – ${esc(g.teams.home.abbr)} ${f(s.development.f3.home, 1)}</dd>
+        <dt>F5</dt><dd class="num">${esc(g.teams.away.abbr)} ${f(s.development.f5.away, 1)} – ${esc(g.teams.home.abbr)} ${f(s.development.f5.home, 1)}</dd>
+        <dt>Final</dt><dd class="num">${esc(g.teams.away.abbr)} ${f(s.development.final.away, 1)} – ${esc(g.teams.home.abbr)} ${f(s.development.final.home, 1)}</dd>
+        <dt>NRFI · anota en la 1ª ${esc(g.teams.away.abbr)} / ${esc(g.teams.home.abbr)}</dt><dd class="num">${pc(s.nrfi.p, 1)} · ${pc(s.nrfi.pAway1, 1)} / ${pc(s.nrfi.pHome1, 1)}</dd></dl>
+      <ul class="clean">${s.devNotes.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+      <p class="note muted">NRFI calibrado con la frecuencia real de medias entradas iniciales sin carrera en la liga (${pc(s.nrfi.lgScoreless, 1)}), escalada por la λ de la 1ª entrada de cada equipo.</p>
+      <h3 class="sub"><span class="code">6.10</span> Tabla de decisiones por línea</h3>
+      ${table(["Línea", "~Over", "~Under", "~Push", "~Justo Over", "~Justo Under", "Lectura", "Decisión"], s.lineTable.map((r) => tr([td(`${esc(r.market)} ${r.line}${r.marketLine ? ' <span class="tag info">mercado</span>' : ""}`), tdn(pc(r.over, 1)), tdn(pc(r.under, 1)), tdn(r.push ? pc(r.push, 1) : "—"), tdn(odds(r.fairOver)), tdn(odds(r.fairUnder)), td(esc(r.read), "muted"), td(esc(r.decision))], r.decision !== "Sin ventaja" ? "hl" : "")))}
+      ${kp.length ? `<h3 class="sub">Props de ponches (abridores)</h3>${table(["Pitcher", "~K esperados", "~K% vs este rival", "~BF esperados", "~K% rival", ...kp[0][1].lines.map((l) => `~O/U ${l.line}`)],
+        kp.map(([, v]) => tr([td(`<b>${esc(v.pitcher)}</b>`), tdn(f(v.exp, 2)), tdn(pv(v.kRate)), tdn(f(v.expBf, 1)), tdn(pv(v.oppK)), ...v.lines.map((l) => tdn(`${pc(l.over)} / ${pc(l.under)}`))])))}` : ""}
+      <h3 class="sub"><span class="code">6.11</span> Contradicciones del total</h3>
+      <ul class="clean">${s.contradictions.map((c) => `<li>${c.on ? '<span class="tag warn">Activa</span>' : '<span class="tag">No</span>'} ${esc(c.text)}</li>`).join("")}</ul>
+      <h3 class="sub"><span class="code">6.12</span> Conclusión Over/Under</h3>
+      <dl class="kv"><dt>Mejor línea para Over</dt><dd>${esc(s.conclusion.bestOver)}</dd><dt>Mejor línea para Under</dt><dd>${esc(s.conclusion.bestUnder)}</dd>
+        <dt>Líneas sin valor</dt><dd class="num">${esc(s.conclusion.noValue.join(" · ") || "—")}</dd><dt>Mercado más conveniente</dt><dd>${esc(s.conclusion.market)}</dd>
+        <dt>Información faltante antes de apostar</dt><dd>${esc(s.conclusion.missing.join(", ") || "—")}</dd><dt>Clasificación</dt><dd>${esc(s.conclusion.classification)}</dd></dl>
+      <p class="rule">${esc(s.conclusion.rule)}</p>`;
+  }
+
+  // ------------------------------------------------ sección 7
+  function sec7(g) {
+    const s = g.sections.s7;
+    const books = s.hasOdds ? table(["Casa", "ML visita", "ML local", "RL visita", "RL local", "Over", "Under"], s.books.map((b) => tr([td(esc(b.book)), tdn(odds(b.mlAway)), tdn(odds(b.mlHome)),
+      tdn(b.rlAway ? `${b.rlAway.point} ${odds(b.rlAway.price)}` : "—"), tdn(b.rlHome ? `${b.rlHome.point} ${odds(b.rlHome.price)}` : "—"),
+      tdn(b.over ? `${b.over.point} ${odds(b.over.price)}` : "—"), tdn(b.under ? `${b.under.point} ${odds(b.under.price)}` : "—")]))) : "";
+    return `<p class="rule">No confundas predicción con valor.</p>
+      ${s.note ? `<div class="notice"><span class="ic">!</span><div>${esc(s.note)}</div></div>` : ""}
+      <h3 class="sub"><span class="code">7.1</span> Cuotas actuales</h3>${s.hasOdds ? books : '<p class="note muted">Sin momios en esta corrida.</p>'}
+      <h3 class="sub"><span class="code">7.2 · 7.3 · 7.4</span> Probabilidad implícita, edge y precio máximo aceptable</h3>
+      <p class="note">P<sub>implícita</sub> = |m|/(|m|+100) si m &lt; 0 · 100/(m+100) si m &gt; 0 · Edge = P<sub>estimada</sub> − P<sub>implícita</sub> · Momio justo = −100p/(1−p) si p ≥ 0.5, 100(1−p)/p si p &lt; 0.5 · Mínimo aceptable = momio justo exigiendo ${pc(s.edgeMin)} de edge.</p>
+      ${table(["Mercado", "Pick", "~P. estimada", "~Momio justo", "~Mínimo aceptable", "~Mejor momio", "~Edge"], s.fair.map((r) => tr([td(esc(r.market)), td(`<b>${esc(r.pick)}</b>`), tdn(pc(r.p, 1)), tdn(odds(r.fair)), tdn(odds(r.minPrice)), tdn(odds(r.price)), tdn(isNum(r.edge) ? signed(100 * r.edge, 1) + " pp" : "—")])))}
+      <p class="note muted">Si el mercado ofrece peor precio que el momio mínimo aceptable, no hay valor.</p>
+      <h3 class="sub"><span class="code">7.5</span> Filtro contra favoritos caros</h3>
+      <p class="rule">${esc(s.expensiveFav.text)}</p>
+      ${table(["Pregunta", "Respuesta", "Ajuste"], s.questions.map((q) => tr([td(esc(q.q)), td(`<b>${esc(q.a)}</b>`), td(esc(q.adj), "muted")])))}
+      ${s.value.length ? `<h3 class="sub"><span class="code">7.8</span> Tabla final de valor</h3>${table(["Mercado", "Pick", "~Mejor momio", "~P. implícita", "~P. estimada", "~Edge"], s.value.map((m) => tr([td(esc(m.market)), td(esc(m.pick)), tdn(odds(m.price)), tdn(pc(m.implied, 1)), tdn(pc(m.pNoPush, 1)), tdn(signed(100 * m.edge, 1) + " pp")])))}` : ""}`;
+  }
+
+  // ------------------------------------------------ sección 8
+  function sec8(g) {
+    const s = g.sections.s8;
+    return `<p class="rule">No se debe elegir el mercado que predice al ganador, sino el que mejor representa el guion del partido con menor contradicción.</p>
+      <h3 class="sub"><span class="code">8.1</span> Predicción no es igual a valor</h3>
+      <p class="note">Todo pick debe cumplir: <b>Modelo estadístico + Guion del partido + Cuota con edge</b>. Si falta uno, no puede ser fuerte.</p>
+      <h3 class="sub"><span class="code">8.2</span> Dependencia de supuestos</h3>
+      ${table(["Pick", "Supuesto principal", "Si el supuesto falla", "Observación", "Riesgo"], s.dependencies.map((d) => tr([td(esc(d.pick)), td(esc(d.assumption)), td(esc(d.fails)), td(esc(d.obs), "muted"), td(esc(d.risk))])))}
+      ${s.correlation.length ? `<ul class="clean">${s.correlation.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+      <h3 class="sub"><span class="code">8.3</span> Auditoría obligatoria antes del pick final</h3>
+      ${table(["#", "Filtro", "Estado", "Detalle"], s.audit.map((a) => tr([tdn(a.n), td(`<b>${esc(a.title)}</b>`), td(status(a.status)), td(esc(a.detail), "muted")])))}
+      <h3 class="sub"><span class="code">8.4</span> Tabla final de decisión corregida</h3>${decisionTable(s)}
+      <h3 class="sub"><span class="code">8.5</span> Recomendación final</h3>
+      <dl class="kv">${s.recommendation.map((r) => `<dt>${esc(r.k)}</dt><dd style="text-align:left">${esc(r.v)}</dd>`).join("")}</dl>
+      <h3 class="sub"><span class="code">8.6</span> Corrección central del análisis</h3>
+      <p class="rule">${esc(s.central)}</p>
+      <p class="note">Regla final: proteger el bankroll es más importante que forzar una apuesta. Si el edge no es claro, si el pick depende de demasiados supuestos o si el mercado contradice el guion probable, la decisión correcta es no bet.</p>`;
+  }
+
+  // ------------------------------------------------ secciones 9 y 10
+  function sec9(g) {
+    const s = g.sections.s9;
+    return `<h3 class="sub"><span class="code">9.3</span> Regla de completitud obligatoria</h3>
+      <p class="rule">${esc(s.rule)}</p>
+      ${table(["Sección", "Campo obligatorio", "Estado", "Fuente", "Si falta →"], s.fields.map((x) => tr([td(esc(x.sec), "num"), td(esc(x.field)), td(status(x.status)), td(esc(x.source), "muted"), td(esc(x.blocks), "muted")])))}
+      <p class="note">Mercados bloqueados para Verde en este partido: ${Object.entries(s.gate.blocks).filter(([, v]) => v).map(([k]) => ({ ml: "ML", f5: "F5", props: "props", total: "total", nrfi: "NRFI/YRFI" }[k])).join(", ") || "ninguno"}.</p>`;
+  }
+  function sec10(g) {
+    return table(["Fase", "Estado", "Resultado en este partido"], g.sections.s10.map((p) => tr([td(`<b>${esc(p.phase)}</b>`), td(status(p.status)), td(esc(p.detail), "muted")])));
+  }
+
+  // ---------------------------------------------------------------- vista: posiciones
+  function viewStandings() {
+    const rows = D.standings || [];
+    const divs = [...new Set(rows.map((r) => r.division))];
+    app.innerHTML = `<div class="page-head"><p class="eyebrow">Temporada ${D.meta.season}</p><h1>Posiciones con Pitágoras, Elo y bullpen</h1>
+      <p class="lede">El win% «verdadero» regresa el Pitagórico hacia la temporada anterior (k = 70 juegos). «Suerte» = win% real − Pitagórico: valores altos suelen regresar.</p></div>
+      ${divs.map((d) => `<section class="block"><h2>${esc(d)}</h2>${table(["Equipo", "~W-L", "~JD", "~RS", "~RA", "~Pitagórico", "~Win% verdadero", "~Suerte", "~Elo", "~Ofensiva", "~Bullpen (rank)"],
+        rows.filter((r) => r.division === d).map((r) => tr([td(`<b>${esc(r.abbr)}</b> <span class="muted">${esc(r.name)}</span>${r.clinch ? ` <span class="tag ok">${esc(r.clinch)}</span>` : ""}`), tdn(`${r.w}-${r.l}`), tdn(r.gb), tdn(r.rs), tdn(r.ra), tdn(pc(r.pyth, 1)), tdn(pc(r.true, 1)), tdn(signed(100 * r.luck, 1)), tdn(Math.round(r.elo)), tdn(f(r.off, 3)), tdn(`${f(r.bpEra)} (${r.bpRank})`)])))}</section>`).join("")}
+      ${footer()}`;
+  }
+
+  // ---------------------------------------------------------------- vista: seguimiento
+  function viewTrack() {
+    const t = D.track || { n: 0 };
+    const head = `<div class="page-head"><p class="eyebrow">Control de calidad</p><h1>¿Qué tan bien predice el modelo?</h1>
+      <p class="lede">Cada corrida guarda la última predicción antes del primer lanzamiento (<code>data/predictions/</code>). Cuando el juego termina se compara contra el resultado oficial: acierto, Brier, log-loss y error del total.</p></div>`;
+    if (!t.n) { app.innerHTML = head + `<div class="empty">Todavía no hay partidos terminados con predicción guardada. El seguimiento arranca con los partidos de hoy y se llena solo en cada actualización.</div>` + footer(); return; }
+    app.innerHTML = head + `<div class="tiles">
+        <div class="tile"><span class="eyebrow">Partidos evaluados</span><span class="big">${t.n}</span></div>
+        <div class="tile"><span class="eyebrow">Acierto de ganador</span><span class="big">${pc(t.accuracy, 1)}</span><span class="sub">favorito del modelo</span></div>
+        <div class="tile"><span class="eyebrow">Brier / log-loss</span><span class="big">${f(t.brier, 3)}</span><span class="sub">log-loss ${f(t.logloss, 3)} (0.693 = moneda)</span></div>
+        <div class="tile"><span class="eyebrow">Error del total</span><span class="big">${f(t.totalMae, 2)}</span><span class="sub">MAE en carreras · sesgo ${signed(t.totalBias, 2)}</span></div>
+      </div>
+      ${table(["Método", "~Brier"], Object.entries(t.brierMethods).map(([k, v]) => tr([td(esc({ log5: "Log5", elo: "Elo + abridor", lambda: "Modelo λ" }[k])), tdn(f(v, 4))])))}
+      ${table(["Rango de confianza", "~Partidos", "~Prob. media", "~Acierto real"], t.calibration.map((b) => tr([td(esc(b.range)), tdn(b.n), tdn(pc(b.pred, 1)), tdn(pc(b.hit, 1))])))}
+      <section class="block"><h2>Últimos partidos evaluados</h2>${table(["Fecha", "Partido", "~P(local)", "~Proyección", "~Final", "~Total", "NRFI", "Semáforo"],
+        t.rows.map((r) => tr([td(fmtShort(r.date), "num"), td(`${esc(r.away)} @ ${esc(r.home)}`), tdn(pc(r.pHome)), tdn(`${f(r.projAway, 1)}-${f(r.projHome, 1)}`),
+          td(`${r.ar}-${r.hr}`, `num r ${(r.pHome >= 0.5) === r.homeWon ? "w" : "l"}`), tdn(`${f(r.total, 1)} / ${r.actualTotal}`), td(r.nrfiHit ? "Sí" : "No"), td(light(r.light))])))}</section>` + footer();
+  }
+
+  // ---------------------------------------------------------------- vista: metodología
+  function viewMethod() {
+    const L = D.league;
+    app.innerHTML = `<div class="page-head"><p class="eyebrow">Cómo se calcula</p><h1>Metodología y fuentes</h1>
+      <p class="lede">MLBgs implementa el Framework MLB Picks v2 de punta a punta con datos oficiales. Todo se recalcula en cada actualización (varias veces al día) desde cero.</p></div>
+      <section class="block"><h2>Constantes de la liga medidas hoy</h2>
+      <dl class="kv panel"><dt>ERA de liga · RA9</dt><dd class="num">${f(L.era)} · ${f(L.ra9)}</dd><dt>Constante FIP</dt><dd class="num">${f(L.cFip, 3)}</dd>
+        <dt>Carreras por juego visitante · local</dt><dd class="num">${f(L.rpg.away)} · ${f(L.rpg.home)}</dd><dt>Var/Media de carreras (sobredispersión)</dt><dd class="num">${f(L.varRatio, 3)}</dd>
+        <dt>Win% del local</dt><dd class="num">${pc(L.homeWin, 1)}</dd><dt>Juegos a extra innings · win% local en extras</dt><dd class="num">${pc(L.extraShare, 1)} · ${pc(L.extraHomeWin, 1)}</dd>
+        <dt>Primeras medias entradas sin carrera</dt><dd class="num">${pc(L.pScoreless1, 1)}</dd><dt>K% · BB% de liga</dt><dd class="num">${pc(L.kRate, 1)} · ${pc(L.bbRate, 1)}</dd>
+        <dt>Juegos de la temporada usados</dt><dd class="num">${L.games}</dd></dl></section>
+      <section class="block"><h2>Fuentes</h2>${table(["Dato", "Fuente", "Uso"], [
+        ["Calendario, abridores probables, lineups, umpires, clima", "MLB Stats API · /schedule", "Secciones 1, 3, 6"],
+        ["Resultados y linescore por entrada (2 temporadas)", "MLB Stats API · /schedule?hydrate=linescore", "Secciones 2, 5, 6 · Elo, Pitágoras, NRFI"],
+        ["Standings y splits casa/visita", "MLB Stats API · /standings", "Sección 2"],
+        ["Stats de abridores (temporada, game logs, splits)", "MLB Stats API · /people", "Sección 3"],
+        ["Bullpen (split relevistas) y ofensiva vs mano", "MLB Stats API · /teams/stats", "Secciones 4, 5"],
+        ["Uso de relevistas últimos 7 días", "MLB Stats API · /game/{pk}/boxscore", "Sección 4 (fatiga)"],
+        ["xERA, xwOBA, Barrel%, Hard Hit%", "Baseball Savant · leaderboards", "Secciones 3, 5"],
+        ["Park factors (índice 3 años)", "Baseball Savant · statcast-park-factors", "Secciones 5, 6"],
+        ["Momios de varias casas (opcional)", "The Odds API · ODDS_API_KEY", "Sección 7"],
+        ["Tendencias de umpires, SIERA, props de bateadores", "No conectadas", "Marcadas como faltantes/sustituidas"]].map((r) => tr(r.map((c) => td(esc(c))))))}</section>
+      <section class="block"><h2>Decisiones de modelado</h2><ul class="clean panel">
+        <li>Regresión a la media con los puntos de estabilización del framework (K% 70 BF, BB% 170 BF, HR ≈1150 BF) y la temporada anterior al 50%.</li>
+        <li>ERA estimada del abridor = 0.45·FIP regresado + 0.35·xERA regresada + 0.20·ERA regresada.</li>
+        <li>Carreras por media entrada con la distribución real de la liga por entrada; el abridor cubre cada entrada según sus IP esperadas y el resto lo cubre el bullpen (con su fatiga).</li>
+        <li>Ajustes de la tabla 5.3: se evalúan todos; se aplican solo los que traen información nueva (viento, HR/9 + parque + contacto). Los que ya están en λ base (K-BB%, K% rival, bullpens, parque) se muestran pero no se duplican. Nunca se sube el total por un solo factor.</li>
+        <li>Juego completo con Binomial Negativa (Var/Media medida); F3/F5 con Poisson; NRFI calibrado con la frecuencia real de ceros.</li>
+        <li>Probabilidad de victoria triangulada: Log5 (Pitágoras regresado + ventaja de local medida), Elo (K=4, local +24, ajuste por abridor) y modelo λ.</li>
+        <li>Semáforo: Verde solo con Modelo + Guion + Cuota con edge ≥ 3 pp y baja contradicción, y nunca con un campo obligatorio faltante.</li>
+      </ul></section>
+      ${footer()}`;
+  }
+
+  // ---------------------------------------------------------------- router
+  function route() {
+    const h = (location.hash || "#partidos").slice(1);
+    let tab = "partidos";
+    if (h.startsWith("g") && BY_PK[h.slice(1)]) viewGame(BY_PK[h.slice(1)]);
+    else if (h === "posiciones") { tab = h; viewStandings(); }
+    else if (h === "seguimiento") { tab = h; viewTrack(); }
+    else if (h === "metodologia") { tab = h; viewMethod(); }
+    else viewGames();
+    document.querySelectorAll("nav.tabs a").forEach((a) => a.setAttribute("aria-current", a.dataset.tab === tab ? "page" : "false"));
+    tip.hidden = true;
+  }
+  window.addEventListener("hashchange", () => { route(); if (!location.hash.startsWith("#g")) window.scrollTo(0, 0); });
+  route();
+})();
+</script>

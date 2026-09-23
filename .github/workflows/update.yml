@@ -1,17 +1,19 @@
-name: Actualizar datos MLBgs
+name: Actualizar MLBgs
 
 on:
   schedule:
-    # 8am, 11am, 2pm, 5pm y 8pm hora del Este (antes de lineups y de los juegos de la costa oeste)
+    # 8am, 11am, 2pm, 5pm y 8pm hora del Este: antes de los lineups y de los juegos de la costa oeste
     - cron: "0 12,15,18,21 * * *"
     - cron: "0 0 * * *"
   workflow_dispatch:
   push:
-    branches: ["claude/eloquent-ride-7quneh"]
-    paths: ["mlbgs/**", "site/**", ".github/workflows/update.yml"]
+    branches: ["main", "claude/eloquent-ride-7quneh"]
+    paths: ["mlbgs/**", "site/template.html", "tests/**", ".github/workflows/update.yml"]
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: mlbgs-update
@@ -25,17 +27,39 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Pruebas
+        run: python -m unittest discover -s tests
       - name: Descargar datos oficiales (MLB Stats API + Baseball Savant)
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python -m mlbgs.fetch --out .cache/raw_bundle.json.gz
-      - name: Guardar bundle crudo (solo rama de desarrollo)
+      - name: Correr el modelo y construir la página
+        run: python -m mlbgs.build --bundle .cache/raw_bundle.json.gz
+      - name: Guardar bundle crudo (solo ramas de desarrollo)
         if: github.ref != 'refs/heads/main'
         run: mkdir -p dev && cp .cache/raw_bundle.json.gz dev/raw_bundle.json.gz
-      - name: Commit
+      - name: Guardar predicciones (seguimiento)
         run: |
           git config user.name "mlbgs-bot"
           git config user.email "mlbgs-bot@users.noreply.github.com"
-          for p in dev data site; do if [ -e "$p" ]; then git add -A "$p"; fi; done
-          git commit -m "Datos MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
+          for p in data/predictions dev; do if [ -e "$p" ]; then git add -A "$p"; fi; done
+          git commit -m "Predicciones MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
           git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Empaquetar la página
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    # Requiere Settings → Pages → Source: "GitHub Actions" (una sola vez)
+    if: github.ref == 'refs/heads/main'
+    needs: update
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

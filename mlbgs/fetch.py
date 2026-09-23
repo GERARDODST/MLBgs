@@ -257,6 +257,22 @@ def pitcher(pid: int, season: int) -> dict:
     return out
 
 
+def handedness(ids: list[int]) -> tuple[dict, dict]:
+    """Mano de lanzar y de batear para una lista de jugadores (en lotes)."""
+    throws, bats = {}, {}
+    ids = sorted(set(i for i in ids if i))
+    chunks = [ids[i:i + 150] for i in range(0, len(ids), 150)]
+
+    def one(chunk):
+        return get(f"{STATS}/people?personIds={','.join(map(str, chunk))}")["people"]
+
+    for people in pmap(one, chunks, workers=4):
+        for p in people:
+            throws[str(p["id"])] = (p.get("pitchHand") or {}).get("code")
+            bats[str(p["id"])] = (p.get("batSide") or {}).get("code")
+    return throws, bats
+
+
 # ------------------------------------------------------------------ box scores (uso de bullpen)
 
 def boxscore(pk: int) -> dict:
@@ -370,6 +386,11 @@ def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int 
     pids = sorted({pid for g in bundle["upcoming"] for pid in g["probable"].values() if pid})
     pitchers = attempt("probables", lambda: pmap(lambda p: pitcher(p, season), pids), [])
     bundle["pitchers"] = {str(p["id"]): p for p in pitchers or []}
+
+    ids = [p["id"] for p in bundle["playersPitching"]] + [p["id"] for p in bundle["playersHitting"]]
+    ids += [pid for g in bundle["upcoming"] for side in ("away", "home") for pid in g["lineups"][side]]
+    throws, bats = attempt("handedness", lambda: handedness(ids), ({}, {}))
+    bundle["hands"], bundle["bats"] = throws, bats
 
     since = (today - dt.timedelta(days=bullpen_days)).isoformat()
     pks = [g["pk"] for g in bundle["results"] if g["date"] and g["date"] >= since]
