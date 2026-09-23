@@ -1047,7 +1047,7 @@
       </div>
 
       <section class="block"><h2>${lab ? `Picks finales: framework + ${esc(labName)}` : "Picks principales"}</h2>
-        ${lab ? `<div class="notice labnote"><span class="ic" style="background:var(--accent-soft);color:var(--accent)">★</span><div>Este partido tiene modelo del Pro-Lab: <b>${esc(labName)}</b> (${esc(LAB_INFO[labKey(lab)].kind.toLowerCase())}), con datos congelados el ${fmtStamp(lab.frozenAt)}. Estos dos picks ya combinan los métodos del framework (Log5, Elo, λ, Poisson) con el modelo; al final de la página se explica cómo se complementan. <a href="#lab${lab.pk}"><b>Ver el modelo del Pro-Lab →</b></a></div></div>` : ""}
+        ${lab ? `<div class="notice labnote"><span class="ic" style="background:var(--accent-soft);color:var(--accent)">★</span><div>Este partido tiene modelo del Pro-Lab: <b>${esc(labName)}</b> (${esc(LAB_INFO[labKey(lab)].kind.toLowerCase())}), con datos congelados el ${fmtStamp(lab.frozenAt)}; estos dos picks ya combinan los métodos del framework (Log5, Elo, λ, Poisson) con el modelo; al final de la página se explica cómo se complementan. <a href="#lab${lab.pk}"><b>Ver el modelo del Pro-Lab →</b></a></div></div>` : ""}
         <div class="toppicks">${(lab ? lab.topPicks || [] : (g.picks || []).slice(0, 2)).map((p, i) => pickCard(p, g.pk, i + 1)).join("")}</div>
       </section>
 
