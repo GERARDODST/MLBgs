@@ -146,7 +146,7 @@ def run_prisma(pk: int, n_draws: int = 2000, n_sims: int = 200000, cutoff: str =
             "label": lb, "takenAt": s_["takenAt"], "pHome": pr_["predictive"]["pHome"],
             "posterior": {k: pr_["posterior"][k] for k in ("mean", "q05", "q95")},
             "meanTotal": pr_["predictive"]["meanTotal"],
-            "lineups": {sd: [ (base_["sections"]["s5"]["lineups"][sd] or {}).get("status") ] for sd in SIDES},
+            "lineups": {sd: (base_["sections"]["s5"]["lineups"][sd] or {}).get("status") for sd in SIDES},
             "lineupIds": {sd: g_["lineups"][sd] for sd in SIDES}, "weather": g_.get("weather"),
             "probables": {sd: g_["probable"][sd] for sd in SIDES}, "umpire": base_.get("umpire"),
         })

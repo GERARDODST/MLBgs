@@ -70,16 +70,43 @@ Niveles: ≥70 Alta · 55-69 Media · 40-54 Baja · <40 Muy baja. Los dos picks 
 tarjeta del partido y arriba de su página; al final están todos. La pestaña *Seguimiento* mide el
 acierto real por nivel de confianza.
 
-**Momios de casas mexicanas (Draftea, Playdoit, Caliente, Codere, Strendus…):** no publican una API
-pública, así que en cada pick hay un campo para escribir el momio de tu casa (americano −150/+130 o
-decimal 1.91). La página recalcula al instante la probabilidad implícita, el edge, el IC, el semáforo
-y el stake de ¼ de Kelly. Se guarda solo en tu navegador.
+**Momios de casas mexicanas (Draftea, Playdoit, Caliente, Codere, Strendus, Betcris, bet365):** no
+publican una API pública, así que la sección 7 de cada partido tiene un **tablero de momios estilo
+casino**: una fila por selección (moneyline, run line, F5, total, NRFI/YRFI, props y cada pick del
+modelo) y una casilla por casa. Escribe el momio que ves en la app (americano −150/+130 o decimal
+1.91) y la página marca en verde las casillas con edge ≥ 3 pp, en dorado el mejor precio de la fila y
+en rojo las que pagan menos de lo que vale; recalcula edge, IC, semáforo y ¼ de Kelly. En modo
+*Elegir apuesta* tocas un momio y va al **boleto**, que calcula pago y valor esperado. Todo se guarda
+solo en tu navegador (si hay `ODDS_API_KEY`, las casas de la API aparecen ya llenas).
 
-## Pro-Lab: modelo DIAMANTE-24
+## Estado de los datos (verde = confirmado)
 
-Laboratorio para probar un modelo nuevo contra un partido real con los datos **congelados antes del
-primer lanzamiento** (sin fuga de información). Primera prueba: Nationals @ Tigers, 23-sep-2026
-(datos congelados 18 minutos antes, con lineups y bullpen oficiales).
+Cada partido abre con un mapa de 11 bloques (alineaciones + las 10 secciones del framework) y cada
+sección lleva una franja de color: **verde** si sus datos son oficiales y están al día (lineup
+confirmado, abridor anunciado, lista oficial de bullpen, momios de 2+ casas…), **ámbar** si algo es
+parcial, proyectado o sustituido, y **rojo** si falta un dato obligatorio del gate 9.3. Las secciones
+se agrupan en Contexto (1-2), Pitcheo (3-4), Modelo (5-6), Mercado y decisión (7-8) y Control de
+calidad (9-10). Al capturar momios, las secciones 7-9 cambian de color al instante.
+
+## En vivo
+
+La pestaña *En vivo* muestra los partidos de hoy en juego, terminados y por jugar con los **dos picks
+que el modelo guardó antes del primer lanzamiento**. En juego se recalcula la probabilidad de cada
+pick con la situación real: la media entrada en curso usa la RE24 y P(≥1 carrera) de la liga según
+corredores y outs, y las siguientes la distribución empírica de carreras por media entrada escalada a
+la proyección de cada equipo (misma programación dinámica que PRISMA). Al terminar, cada pick se
+califica con el resultado oficial (✓ ganó / ✗ perdió / push). Donde el navegador lo permite (GitHub
+Pages) el marcador se consulta directo a statsapi.mlb.com cada minuto; si no, usa el último corte.
+
+## Pro-Lab: modelos de prueba
+
+Laboratorio para probar modelos nuevos contra partidos reales con los datos **congelados antes del
+primer lanzamiento** (sin fuga de información). Cada modelo es una tarjeta en la pestaña *Pro-Lab*;
+al abrirla se ve todo el modelo y, cuando el partido termina, su calificación contra el resultado.
+
+### DIAMANTE-24 (Nationals @ Tigers, 23-sep-2026)
+
+Datos congelados 18 minutos antes, con lineups y bullpen oficiales.
 
 1. **Probabilidad de cada turno al bate** (K, BB, 1B, 2B, 3B, HR, OUT) bateador contra pitcher con
    log5 multinomial sobre tasas regresadas, splits por mano, parque, viento y veces en el orden.
@@ -94,7 +121,32 @@ primer lanzamiento** (sin fuga de información). Primera prueba: Nationals @ Tig
 5. **Actualización bayesiana:** pasada con lineups proyectados contra pasada con los oficiales.
 
 ```bash
-python -m mlbgs.prolab --pk 824223 --sims 50000   # usa los datos congelados de prolab/
+python -m mlbgs.prolab --model diamante --pk 824223 --sims 50000   # datos congelados de prolab/
+```
+
+### PRISMA (Twins @ Giants, 23-sep-2026)
+
+**P**osterior de ca**R**reras con **R**egresión jerárquica, **I**ntegración por **S**imulación,
+**M**uestreo y **A**ctualización: un modelo de probabilidad bayesiana que estima la distribución
+completa de la probabilidad, no un solo número.
+
+1. **GLM jerárquico de Poisson** con exposición (medias entradas bateadas) y efectos de ataque y
+   defensa por equipo: `log μ = log(entradas/9) + log PF + α + h·local + ataque − defensa`, con
+   priors normales cuyo σ se estima por **Bayes empírico** (EM con aproximación de Laplace).
+2. **Posterior de Laplace:** θ ~ N(θ̂, (−H)⁻¹), muestras con **Cholesky** → distribución de P(local),
+   intervalo creíble y P(valor) = P(p real > p implícita del momio).
+3. **Actualización secuencial** en escala logit: temporada → abridores → mano → lineups → fatiga.
+4. **Predictiva posterior** Poisson–lognormal–gamma con fragilidad individual y compartida (estimadas
+   por momentos con los residuos).
+5. **Probabilidad de victoria en vivo** (matriz entrada × marcador) por programación dinámica.
+6. **Validación fuera de muestra** desde el 1-sep contra Log5 y "siempre el local", con rejilla de
+   hiperparámetros: la forma reciente resultó ruido, así que PRISMA usa la temporada completa.
+
+Dos pasadas el día del juego (mañana y tarde): `prolab/request.env` elige el partido y la etiqueta y
+el workflow `prolab-snapshot.yml` congela los datos.
+
+```bash
+python -m mlbgs.prolab --model prisma --pk 823168   # pasadas congeladas en prolab/
 ```
 
 Cuando el partido termina, cada actualización califica los picks del Pro-Lab con el resultado oficial.
@@ -139,7 +191,8 @@ python -m unittest discover -s tests                        # pruebas
 | `mlbgs/context.py` | Lineup proyectado, bullpen completo, importancia (simulación de playoffs), noticias, arsenal |
 | `mlbgs/picks.py` | Picks con índice de confianza y calificación contra el resultado |
 | `mlbgs/markov.py` | DIAMANTE-24: turnos al bate, cadena de Markov (RE24) y Monte Carlo |
-| `mlbgs/prolab.py` | Pro-Lab: DIAMANTE-24 sobre un partido con datos congelados |
+| `mlbgs/prisma.py` | PRISMA: GLM jerárquico bayesiano, Laplace + Cholesky, predictiva, WP en vivo, validación |
+| `mlbgs/prolab.py` | Pro-Lab: corre DIAMANTE-24 o PRISMA sobre un partido con datos congelados |
 | `mlbgs/validate.py` | Cotejo cruzado de las fuentes |
 | `prolab/` | Datos congelados antes del partido de prueba y su resultado |
 | `mlbgs/mathlib.py` | Fórmulas: Poisson, Binomial Negativa, FIP, Log5, Elo, Kelly, momios |

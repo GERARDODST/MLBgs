@@ -4,8 +4,9 @@ Segundo modelo del Pro-Lab, centrado en probabilidad avanzada (secciones 5.7.4-5
 
 1. Modelo jerárquico bayesiano de ataque y defensa (GLM Poisson con exposición):
        log μ = log(entradas bateadas) + log(park) + α + h·local + ataque_ofensiva − defensa_rival
-   con priors normales cuyo σ se estima por Bayes empírico (EM con aproximación de Laplace) y
-   decaimiento temporal de la verosimilitud (vida media de 60 días; temporada anterior ×0.35).
+   con priors normales cuyo σ se estima por Bayes empírico (EM con aproximación de Laplace). El
+   decaimiento temporal y el peso de la temporada anterior se eligen por validación fuera de muestra
+   (ganó: sin decaimiento y temporada anterior con peso completo; la forma reciente resultó ruido).
 2. Posterior por aproximación de Laplace: θ ~ N(θ̂, (−H)⁻¹); muestras con Cholesky.
 3. Predictiva posterior: Poisson–lognormal–gamma con fragilidad compartida del partido (clima,
    umpire, contexto) y fragilidad individual, ambas estimadas por momentos con los residuos.
@@ -13,7 +14,7 @@ Segundo modelo del Pro-Lab, centrado en probabilidad avanzada (secciones 5.7.4-5
    P(valor) = P(p_real > p_implícita del momio).
 5. Probabilidad de victoria en vivo: matriz entrada × diferencia de carreras por programación dinámica
    sobre la distribución de carreras por media entrada.
-6. Validación fuera de muestra (1-22 sep) contra Log5 y contra "siempre el local".
+6. Validación fuera de muestra (desde el 1 de septiembre) contra Log5 y contra "siempre el local".
 """
 from __future__ import annotations
 

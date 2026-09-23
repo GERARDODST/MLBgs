@@ -180,7 +180,7 @@ def build(bundle: dict, save: bool = True) -> dict:
     checks = V.validate(bundle)
     labs = load_prolabs(bundle, save)
     lab = next((x for x in labs if x.get("modelKey") == "diamante"), labs[0] if labs else None)
-    live = live_view(bundle, ctx)
+    live = live_view(bundle, ctx, labs)
     track = evaluate(bundle)
     lg = ctx.lg
     payload = {
@@ -206,8 +206,11 @@ def build(bundle: dict, save: bool = True) -> dict:
     return rounded(payload)
 
 
-def live_view(bundle: dict, ctx: model.Context) -> dict:
-    """Partidos de ayer y hoy (programados, en vivo y finales) con sus 2 picks previos y su resultado."""
+def live_view(bundle: dict, ctx: model.Context, labs: list[dict] | None = None) -> dict:
+    """Partidos de ayer y hoy (programados, en vivo y finales) con sus 2 picks previos y su resultado.
+
+    En los partidos del Pro-Lab los dos picks son los del modelo de prueba (congelados antes del juego)."""
+    lab_picks = {lab["pk"]: (lab.get("model") or lab.get("modelKey", "").upper(), lab.get("topPicks") or []) for lab in labs or []}
     sb = bundle.get("scoreboard") or []
     preds = {}
     for date in sorted({g["date"] for g in sb}):
@@ -229,14 +232,15 @@ def live_view(bundle: dict, ctx: model.Context) -> dict:
         row = dict(g)
         if p:
             picks = []
-            for tp in p.get("topPicks") or []:
+            model_name, top = lab_picks.get(g["pk"], (None, p.get("topPicks") or []))
+            for tp in top:
                 won = None
                 if g["state"] == "Final" and g.get("ar") is not None:
                     won = PK.grade(tp, p["away"], p["home"], g["ar"], g["hr"], g.get("inn") or [], starter_k.get(g["pk"]))
-                picks.append({**tp, "won": won})
+                picks.append({**{k: tp.get(k) for k in ("family", "market", "pick", "p", "line", "ic", "level")}, "won": won})
             row["pred"] = {"pHome": p["pHome"], "projAway": p["projAway"], "projHome": p["projHome"], "total": p["total"],
                            "nrfi": p.get("nrfi"), "picks": picks, "generatedAt": p.get("generatedAt"),
-                           "probables": p.get("probables")}
+                           "probables": p.get("probables"), "model": model_name}
             row["halfAway"] = PRI.scaled_half(hd, p["projAway"] / exp_a)
             row["halfHome"] = PRI.scaled_half(hd, p["projHome"] / exp_h)
         rows.append(row)
@@ -265,6 +269,7 @@ def load_prolab(bundle: dict, save: bool, path: str | None = None) -> dict | Non
         return None
     with open(paths[-1], encoding="utf-8") as f:
         lab = json.load(f)
+    lab.setdefault("modelKey", "diamante" if "mc" in lab else "prisma")
     pk = lab["pk"]
     rpath = os.path.join(PL.DIR, f"result_{pk}.json")
     res = None
