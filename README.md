@@ -149,6 +149,30 @@ el workflow `prolab-snapshot.yml` congela los datos.
 python -m mlbgs.prolab --model prisma --pk 823168   # pasadas congeladas en prolab/
 ```
 
+### KRONOS (Brewers @ Phillies, 23-sep-2026): procesos estocásticos
+
+El partido como proceso estocástico, lanzamiento a lanzamiento, con tablas Statcast congeladas antes del
+juego (cada jugador en 2026 y la liga en los 14 días previos) y una investigación previa de la literatura
+(Lindsey; Bukiet, Harold & Palacios; Stern; Polson & Stern; Glass & Lowry; Brill, Deshpande & Wyner;
+Powers & Yurko; Reglas Oficiales 2026; documentación de Statcast):
+
+1. **Cadena de Markov de la cuenta** (12 estados + ponche, base por bolas, pelotazo, bola en juego) con
+   log5 multinomial bateador × pitcher en cada cuenta; matriz fundamental N = (I − Q)⁻¹. Reproduce la
+   distribución real de lanzamientos por turno de 2026 (prueba de la propiedad de Markov).
+2. **Cadena base-out** de 24 estados + avance por robos/wild pitches calibrado a las carreras reales.
+3. **Deriva continua** del pitcher por bateador enfrentado (sin saltos por vuelta del orden).
+4. **Salida del abridor como proceso de conteo**: umbral aleatorio de lanzamientos que se adelanta con
+   las carreras permitidas por entrada (tiempo de falla acelerado).
+5. **¿Momentum?** Con 2026 la correlación con la entrada siguiente es la más baja; un HMM de 2 estados no
+   mejora el BIC → fragilidad gamma por partido en vez de estados entrada a entrada.
+6. **Browniano de Stern** re-estimado con 2026 (falla al final del juego) y **volatilidad implícita** de
+   Polson & Stern con tu momio.
+7. **Monte Carlo** de 20,000 partidos por lanzamiento con reglas 2026 (corredor en 2ª en extras).
+
+```bash
+python -m mlbgs.prolab --model kronos --pk 823410 --label pre --sims 20000
+```
+
 Cuando el partido termina, cada actualización califica los picks del Pro-Lab con el resultado oficial.
 
 ## Cotejo de datos
@@ -192,7 +216,8 @@ python -m unittest discover -s tests                        # pruebas
 | `mlbgs/picks.py` | Picks con índice de confianza y calificación contra el resultado |
 | `mlbgs/markov.py` | DIAMANTE-24: turnos al bate, cadena de Markov (RE24) y Monte Carlo |
 | `mlbgs/prisma.py` | PRISMA: GLM jerárquico bayesiano, Laplace + Cholesky, predictiva, WP en vivo, validación |
-| `mlbgs/prolab.py` | Pro-Lab: corre DIAMANTE-24 o PRISMA sobre un partido con datos congelados |
+| `mlbgs/kronos.py` | KRONOS: cadena de la cuenta, simulación por lanzamiento, HMM, browniano, cuasigeométrica |
+| `mlbgs/prolab.py` | Pro-Lab: corre DIAMANTE-24, PRISMA o KRONOS sobre un partido con datos congelados |
 | `mlbgs/validate.py` | Cotejo cruzado de las fuentes |
 | `prolab/` | Datos congelados antes del partido de prueba y su resultado |
 | `mlbgs/mathlib.py` | Fórmulas: Poisson, Binomial Negativa, FIP, Log5, Elo, Kelly, momios |
