@@ -13,6 +13,7 @@ import re
 import statistics
 from collections import defaultdict
 
+from . import context as C
 from . import features as F
 from . import mathlib as M
 
@@ -25,10 +26,14 @@ SCORE_WEIGHTS = [        # tabla 3.3 del framework
     ("Métricas esperadas", 0.15, "FIP con constante de liga y xERA de Statcast, regresados"),
     ("K-BB%, BB%, control", 0.15, "K-BB% regresado (K% 70 BF, BB% 170 BF)"),
     ("Matchup vs lineup rival", 0.15, "Ofensiva rival vs la mano del abridor"),
-    ("Arsenal vs perfil rival", 0.15, "Proxy Statcast: Barrel% permitido vs contacto del rival"),
+    ("Arsenal vs perfil rival", 0.15, "Run value/100 de cada pitcheo (Savant) vs el del lineup rival contra ese pitcheo"),
     ("Local/visita/parque", 0.10, "Split casa/visita del abridor regresado"),
     ("Últimas 5 salidas", 0.10, "FIP de las últimas 5 aperturas (forma, no factor dominante)"),
 ]
+
+
+def opp_of(side: str) -> str:
+    return "home" if side == "away" else "away"
 
 
 def r2(x, n=2):
@@ -51,10 +56,24 @@ class Context:
         self.today = dt.date.fromisoformat(bundle["meta"]["today"])
         self.lg = F.League(bundle)
         self.pf, self.park_raw = F.park_factors(bundle)
+        self.own_parks = C.own_park_factors(bundle.get("results", []) + bundle.get("prevResults", []),
+                                            bundle.get("teams", {}))
+        for vid, own in self.own_parks.items():
+            if vid not in self.pf:  # Savant no publica índice (p. ej. estadio nuevo): cálculo propio, 2 temporadas
+                self.pf[vid] = own["runs"] / 100
+                self.park_raw[vid] = {"name": None, "runs": own["runs"], "hr": None, "years": "cálculo propio 2 temporadas",
+                                      "own": True, "games": own["games"]}
         self.T = F.Teams(bundle, self.lg, self.pf)
+        self.rosters = {int(k): v for k, v in (bundle.get("rosters") or {}).items()}
+        self.sim = C.playoff_sim(bundle, self.T, self.lg) if bundle.get("remaining") else {"available": False}
         self.bp = F.bullpen_table(bundle, self.lg, self.today)
         self.savant = bundle.get("savant") or {}
         self.hands = {int(k): v for k, v in (bundle.get("hands") or {}).items()}
+        self.hands_any = dict(self.hands)
+        for r in (bundle.get("rosters") or {}).values():
+            for p in r.get("players", []):
+                if p.get("throws"):
+                    self.hands_any.setdefault(p["id"], p["throws"])
         self.bats = {int(k): v for k, v in (bundle.get("bats") or {}).items()}
         self.hitters: dict[int, dict] = {}
         for p in bundle.get("playersHitting", []):
@@ -73,6 +92,11 @@ class Context:
         self.k_high = self.team_k[int(len(self.team_k) * 0.67)] if self.team_k else 0.23
         self.lg_barrel = self._lg_barrel()
         self.lg_kbb = self.lg.k_rate - self.lg.bb_rate
+
+    def roster_player(self, pid: int) -> dict:
+        if not hasattr(self, "_roster_idx"):
+            self._roster_idx = {p["id"]: p for r in self.rosters.values() for p in r.get("players", [])}
+        return self._roster_idx.get(pid) or {}
 
     def _lg_barrel(self):
         rows = (self.savant.get("batter") or {}).values()
@@ -234,8 +258,9 @@ def lineup_profile(ctx: Context, ids: list[int], names: dict, team_off: dict) ->
         slg += w * s_s
         k += w * k_s
         bb += w * bb_s
+        ros = ctx.roster_player(pid)
         rows.append({"id": pid, "name": names.get(str(pid)) or (ctx.hitters.get(pid) or {}).get("name"),
-                     "bats": ctx.bats.get(pid), "pa": pa, "obp": r2(o, 3), "slg": r2(s, 3), "ops": r2(o + s, 3),
+                     "bats": ctx.bats.get(pid) or ros.get("bats"), "pos": ros.get("pos"), "pa": pa, "obp": r2(o, 3), "slg": r2(s, 3), "ops": r2(o + s, 3),
                      "hr": h.get("homeRuns", 0), "k": pct(h.get("strikeOuts", 0) / pa) if pa else None,
                      "barrel": sc.get("barrel")})
     obp, slg, k, bb = obp / tot_w, slg / tot_w, k / tot_w, bb / tot_w
@@ -387,9 +412,13 @@ def starter_scores(ctx: Context, sp: dict, opp_off: dict, opp_lineup: dict | Non
     hand = sp.get("hand") or "R"
     threat = opp_off["idx"] * opp_off["vs"][hand]["ratio"] * (opp_lineup["ratio"] if opp_lineup else 1.0)
     z.append(-(threat - 1) / 0.08)
-    brl_opp = (opp_lineup or {}).get("barrel") or opp_off.get("barrel")
-    arsenal_ok = sp.get("barrel") is not None and brl_opp is not None
-    z.append((-(sp["barrel"] - ctx.lg_barrel) / 2.0 - (brl_opp - ctx.lg_barrel) / 2.0) / 2 if arsenal_ok else None)
+    ars = sp.get("arsenal")
+    if ars:
+        z.append(ars["score"] / 0.6)  # carreras/100 pitcheos a favor del pitcher; ~0.6 = 1 desviación
+    else:
+        brl_opp = (opp_lineup or {}).get("barrel") or opp_off.get("barrel")
+        arsenal_ok = sp.get("barrel") is not None and brl_opp is not None
+        z.append((-(sp["barrel"] - ctx.lg_barrel) / 2.0 - (brl_opp - ctx.lg_barrel) / 2.0) / 2 if arsenal_ok else None)
     z.append(-((sp["splits"].get("h" if is_home else "a") or {}).get("factor", 1.0) - 1) / 0.08)
     z.append(-((sp.get("l5fip") or s["fip"]) - lg.era) / 1.0 if sp.get("last5") else None)
     rows = []
@@ -440,8 +469,31 @@ def analyze(ctx: Context, g: dict) -> dict:
         o["barrel"] = team_barrel(ctx, tid)
         offs[side] = o
     lineups = {s: lineup_profile(ctx, g["lineups"][s], g["lineupNames"][s], offs[s]) for s in SIDES}
+    projected = {}
+    for s in SIDES:
+        if lineups[s]:
+            continue
+        opp_hand = sps[opp_of(s)].get("hand")
+        roster_ids = {p["id"] for p in (ctx.rosters.get(g[s]) or {}).get("players", [])} or None
+        pl = C.projected_lineup(ctx.b, g[s], opp_hand, ctx.hands_any, roster_ids)
+        if pl:
+            names = {str(r["id"]): r["name"] for r in pl["rows"]}
+            prof = lineup_profile(ctx, pl["ids"], names, offs[s])
+            if prof:
+                for row, meta in zip(prof["rows"], pl["rows"]):
+                    row.update({"pos": meta["pos"] or row.get("pos"), "prob": meta["prob"], "starts": meta["starts"], "games": meta["games"],
+                                "sameStarts": meta["sameStarts"], "sameGames": meta["sameGames"]})
+                projected[s] = {**prof, "confidence": pl["confidence"], "games": pl["games"], "sameGames": pl["sameGames"]}
     bps = {s: ctx.bp["teams"].get(tid) for s, tid in (("away", a_id), ("home", h_id))}
     opp = {"away": "home", "home": "away"}
+    pens = {s: C.full_bullpen(ctx.b, ctx.bp, g[s], g["probable"].get(s), ctx.today, lg, ctx.rosters.get(g[s]),
+                              (g.get("officialBullpen") or {}).get(s)) for s in SIDES}
+    arsenal = {}
+    for s in SIDES:
+        o = opp[s]
+        bats = (lineups[o] or projected.get(o) or {}).get("rows") or []
+        arsenal[s] = C.arsenal_matchup(ctx.b, sps[s].get("id"), [r["id"] for r in bats])
+        sps[s]["arsenal"] = arsenal[s]
 
     adj, adj_rows = adjustments(ctx, sps["away"], sps["home"], offs, lineups, bps, park_idx, weather, ump)
     neutral_adj = {"sp": 1.0, "bp": 1.0, "all": 1.0, "team": {"away": 1.0, "home": 1.0}}
@@ -550,12 +602,21 @@ def analyze(ctx: Context, g: dict) -> dict:
         "officials": g.get("officials"),
     }
     sections = {}
+    imp_sim = C.playoff_sim(ctx.b, T, lg, g, n=4000) if ctx.b.get("remaining") else None
     sections["s1"] = section1(ctx, ai, hi, neutral, g)
+    sections["s1"]["importance"] = C.importance(ctx, g, imp_sim)
+    sections["s1"]["news"] = {s: {"team": T.abbr(g[s]), **C.news(ctx.b, g[s], set(g["lineups"][s]))} for s in SIDES}
     sections["s2"] = section2(ctx, g, a_id, h_id, neutral)
     sections["s3"] = section3(ctx, g, sps, score, offs, lineups, a_id, h_id, d, adv_side, adv_level, kprops)
+    sections["s3"]["arsenal"] = {s: ({"score": r2(arsenal[s]["score"], 3),
+                                      "rows": [{k: (r2(v, 3) if isinstance(v, float) else v) for k, v in row.items()}
+                                               for row in arsenal[s]["rows"]]} if arsenal[s] else None) for s in SIDES}
     sections["s4"] = section4(ctx, g, bps, a_id, h_id, offs, lineups)
+    sections["s4"]["full"] = {s: [{k: (r2(v, 3) if isinstance(v, float) else v) for k, v in r.items() if k not in ("stats", "vs")}
+                                  for r in pens[s]] for s in SIDES}
+    sections["s4"]["officialList"] = {s: bool((g.get("officialBullpen") or {}).get(s)) for s in SIDES}
     sections["s5"] = section5(ctx, g, sps, offs, lineups, bps, lam, lam_base, adj_rows, py, methods, p_tri, spread,
-                              confidence, elo_adj, elo_a, elo_h, markets, score, adv_side, neutral, park_idx)
+                              confidence, elo_adj, elo_a, elo_h, markets, score, adv_side, neutral, park_idx, projected)
     sections["s6"] = section6(ctx, g, sps, offs, lineups, bps, lam, total_pmf, f3_total, f5_total, pmf_full, nrfi,
                               p1, first, weather, park_idx, kprops, markets, adj_rows)
     sections["s7"] = section7(ctx, g, odds, markets, p_tri, total_proj)
@@ -578,6 +639,10 @@ def analyze(ctx: Context, g: dict) -> dict:
         "lineupsConfirmed": {s: lineups[s] is not None for s in SIDES}, "hasOdds": odds is not None,
     }
     game["sections"] = sections
+    game["markets"] = markets
+    from . import picks as P  # import local: picks depende de la salida de este módulo
+    game["picks"] = P.build(game)
+    game["summary"]["topPicks"] = game["picks"][:2]
     return game
 
 
@@ -1002,7 +1067,8 @@ def section4(ctx, g, bps, a_id, h_id, offs, lineups):
 # ============================================================ sección 5: modelo
 
 def section5(ctx, g, sps, offs, lineups, bps, lam, lam_base, adj_rows, py, methods, p_tri, spread, confidence,
-             elo_adj, elo_a, elo_h, markets, score, adv_side, neutral, park_idx):
+             elo_adj, elo_a, elo_h, markets, score, adv_side, neutral, park_idx, projected=None):
+    projected = projected or {}
     T, lg = ctx.T, ctx.lg
     ab, hb = T.abbr(g["away"]), T.abbr(g["home"])
     lam_tbl = {}
@@ -1100,8 +1166,11 @@ def section5(ctx, g, sps, offs, lineups, bps, lam, lam_base, adj_rows, py, metho
                     "missing": sp["missing"]})
     lineup_view = {}
     for s in SIDES:
-        lu = lineups[s]
+        lu = lineups[s] or projected.get(s)
         lineup_view[s] = None if not lu else {
+            "status": "Confirmado" if lineups[s] else "Proyectado",
+            "confidence": None if lineups[s] else r2(lu.get("confidence"), 3),
+            "games": lu.get("games"), "sameGames": lu.get("sameGames"),
             "rows": lu["rows"], "obp": r2(lu["obp"], 3), "slg": r2(lu["slg"], 3), "k": pct(lu["k"]), "bb": pct(lu["bb"]),
             "barrel": r2(lu["barrel"], 1), "ratio": r2(lu["ratio"], 3), "lefties": lu["lefties"]}
     shrink_notes = []
@@ -1363,6 +1432,7 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
             fair.append({"market": m["market"], "pick": m["pick"], "p": m["pNoPush"], "fair": m["fair"],
                          "minPrice": m["minPrice"], "price": m["price"], "edge": m["edge"]})
     return {
+        "marketTotal": odds.get("totalLine") if odds else None,
         "hasOdds": odds is not None, "nBooks": odds["nBooks"] if odds else 0, "books": books,
         "value": value[:12], "fair": fair, "edgeMin": EDGE_MIN,
         "expensiveFav": {"on": expensive and low_total, "favPrice": fav_price, "lowTotal": low_total,

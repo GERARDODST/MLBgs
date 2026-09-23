@@ -300,6 +300,15 @@ def roster(tid: int, season: int) -> dict:
     """Roster activo con stats de temporada y splits vs zurdos/derechos, más la lista de lesionados."""
     hyd = (f"person(stats(type=[season,statSplits],sitCodes=[vl,vr],group=[hitting,pitching],season={season}))")
     act = get(f"{STATS}/teams/{tid}/roster?rosterType=active&hydrate={hyd}")
+    try:
+        full = get(f"{STATS}/teams/{tid}/roster?rosterType=40Man")
+    except Exception as e:  # noqa: BLE001
+        log("lesionados", tid, repr(e))
+        full = {}
+    return parse_roster(act, full)
+
+
+def parse_roster(act: dict, full: dict) -> dict:
     players = []
     for r in act.get("roster", []):
         per = r.get("person") or {}
@@ -322,16 +331,12 @@ def roster(tid: int, season: int) -> dict:
                         row["hitVs" if grp == "hitting" else "pitVs"][code] = st
         players.append(row)
     injured = []
-    try:
-        full = get(f"{STATS}/teams/{tid}/roster?rosterType=40Man")
-        for r in full.get("roster", []):
-            code = (r.get("status") or {}).get("code") or ""
-            if code.startswith("D") or "Injured" in ((r.get("status") or {}).get("description") or ""):
-                injured.append({"id": r["person"]["id"], "name": r["person"].get("fullName"),
-                                "pos": (r.get("position") or {}).get("abbreviation"),
-                                "status": (r.get("status") or {}).get("description")})
-    except Exception as e:  # noqa: BLE001
-        log("lesionados", tid, repr(e))
+    for r in (full or {}).get("roster", []):
+        code = (r.get("status") or {}).get("code") or ""
+        if code.startswith("D") or "Injured" in ((r.get("status") or {}).get("description") or ""):
+            injured.append({"id": r["person"]["id"], "name": r["person"].get("fullName"),
+                            "pos": (r.get("position") or {}).get("abbreviation"),
+                            "status": (r.get("status") or {}).get("description")})
     return {"players": players, "injured": injured}
 
 
@@ -340,21 +345,23 @@ TRANSACTION_TYPES = {"SC", "CU", "OPT", "DES", "SE", "TR", "REL", "ASG", "SFA", 
 
 def transactions(team_ids: set[int], start: str, end: str) -> list[dict]:
     """Movimientos oficiales (lista de lesionados, llamados, opciones, cambios) = noticias del equipo."""
-    out = []
-
     def one(tid):
         return get(f"{STATS}/transactions?teamId={tid}&startDate={start}&endDate={end}").get("transactions", [])
 
-    for rows in pmap(one, sorted(team_ids), workers=6):
-        for t in rows:
-            if t.get("typeCode") not in TRANSACTION_TYPES:
-                continue
-            team = (t.get("toTeam") or {}).get("id") or (t.get("fromTeam") or {}).get("id")
-            if team not in team_ids:
-                continue
-            out.append({"id": t.get("id"), "date": t.get("date") or t.get("effectiveDate"), "type": t.get("typeDesc"),
-                        "code": t.get("typeCode"), "team": team, "person": (t.get("person") or {}).get("id"),
-                        "name": (t.get("person") or {}).get("fullName"), "text": t.get("description")})
+    return parse_transactions([t for rows in pmap(one, sorted(team_ids), workers=6) for t in rows], team_ids)
+
+
+def parse_transactions(rows: list[dict], team_ids: set[int]) -> list[dict]:
+    out = []
+    for t in rows:
+        if t.get("typeCode") not in TRANSACTION_TYPES:
+            continue
+        team = (t.get("toTeam") or {}).get("id") or (t.get("fromTeam") or {}).get("id")
+        if team not in team_ids:
+            continue
+        out.append({"id": t.get("id"), "date": t.get("date") or t.get("effectiveDate"), "type": t.get("typeDesc"),
+                    "code": t.get("typeCode"), "team": team, "person": (t.get("person") or {}).get("id"),
+                    "name": (t.get("person") or {}).get("fullName"), "text": t.get("description")})
     uniq = {t["id"]: t for t in out}
     return sorted(uniq.values(), key=lambda t: (t["date"] or ""), reverse=True)
 
@@ -430,6 +437,8 @@ def savant(season: int) -> dict:
             out["park"][str(r["venue_id"])] = {
                 "name": r.get("venue_name"), "runs": _num(r.get("index_runs")), "hr": _num(r.get("index_hr")),
                 "woba": _num(r.get("index_woba")), "so": _num(r.get("index_so")), "bb": _num(r.get("index_bb")),
+                "1b": _num(r.get("index_1b")), "2b": _num(r.get("index_2b")), "3b": _num(r.get("index_3b")),
+                "hits": _num(r.get("index_hits")),
                 "pa": _num(r.get("n_pa")), "years": r.get("year_range"),
             }
     return out

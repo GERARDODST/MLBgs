@@ -16,6 +16,9 @@ import os
 import sys
 
 from . import model
+from . import picks as PK
+from . import prolab as PL
+from . import validate as V
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PRED_DIR = os.path.join(ROOT, "data", "predictions")
@@ -57,6 +60,7 @@ def prediction_row(a: dict, generated: str) -> dict:
         "nrfi": s["nrfi"], "pOver85": tot["over"] if tot else None,
         "probables": {k: v["name"] for k, v in s["probables"].items()},
         "light": s["light"], "best": {k: (s["best"] or {}).get(k) for k in ("market", "pick", "p", "price", "edge", "light")},
+        "topPicks": [{k: p.get(k) for k in ("family", "market", "pick", "p", "line", "ic", "level")} for p in a.get("picks", [])[:2]],
     }
 
 
@@ -80,7 +84,11 @@ def save_predictions(analyses: list[dict], generated: str) -> None:
 def evaluate(bundle: dict) -> dict:
     """Compara las predicciones guardadas contra los resultados finales oficiales."""
     results = {g["pk"]: g for g in bundle.get("results", [])}
+    starter_k = {}
+    for b in bundle.get("boxscores", []):
+        starter_k[b["pk"]] = {b[s]["pitchers"][0]["name"]: b[s]["pitchers"][0]["k"] for s in ("away", "home") if b[s]["pitchers"]}
     rows = []
+    pick_rows = []
     for path in sorted(glob.glob(os.path.join(PRED_DIR, "*.json"))):
         with open(path, encoding="utf-8") as f:
             for p in json.load(f):
@@ -93,8 +101,25 @@ def evaluate(bundle: dict) -> dict:
                 nrfi_hit = bool(first) and (first[0][0] or 0) == 0 and (first[0][1] or 0) == 0
                 rows.append({**p, "ar": g["ar"], "hr": g["hr"], "homeWon": home_won, "actualTotal": g["ar"] + g["hr"],
                              "nrfiHit": nrfi_hit})
+                for tp in p.get("topPicks") or []:
+                    won = PK.grade(tp, p["away"], p["home"], g["ar"], g["hr"], inn, starter_k.get(p["pk"]))
+                    pick_rows.append({**tp, "date": p["date"], "game": f"{p['away']} @ {p['home']}", "won": won})
     if not rows:
-        return {"n": 0, "rows": []}
+        return {"n": 0, "rows": [], "picks": {"n": 0}}
+    by_level = {}
+    for r in pick_rows:
+        if r["won"] is None:
+            continue
+        lv = by_level.setdefault(r.get("level") or "—", {"n": 0, "won": 0, "pSum": 0.0})
+        lv["n"] += 1
+        lv["won"] += bool(r["won"])
+        lv["pSum"] += r["p"]
+    picks_eval = {"n": sum(v["n"] for v in by_level.values()),
+                  "won": sum(v["won"] for v in by_level.values()),
+                  "byLevel": [{"level": k, "n": v["n"], "hit": v["won"] / v["n"], "pred": v["pSum"] / v["n"]}
+                              for k, v in sorted(by_level.items(), key=lambda kv: ["Alta", "Media", "Baja", "Muy baja"].index(kv[0])
+                                                 if kv[0] in ("Alta", "Media", "Baja", "Muy baja") else 9)],
+                  "rows": sorted(pick_rows, key=lambda r: r["date"], reverse=True)[:120]}
 
     def brier(key):
         return sum((r[key] - (1 if r["homeWon"] else 0)) ** 2 for r in rows) / len(rows)
@@ -130,7 +155,7 @@ def evaluate(bundle: dict) -> dict:
                     if ou_rows else None),
         "nrfiBrier": sum((r["nrfi"] - (1 if r["nrfiHit"] else 0)) ** 2 for r in rows) / len(rows),
         "nrfiRate": sum(1 for r in rows if r["nrfiHit"]) / len(rows),
-        "calibration": buckets, "byLight": by_light,
+        "calibration": buckets, "byLight": by_light, "picks": picks_eval,
         "rows": sorted(rows, key=lambda r: (r["date"], r["time"] or ""), reverse=True)[:120],
     })
 
@@ -150,6 +175,8 @@ def build(bundle: dict, save: bool = True) -> dict:
     generated = bundle["meta"]["generatedAt"]
     if save:
         save_predictions(analyses, generated)
+    checks = V.validate(bundle)
+    lab = load_prolab(bundle, save)
     track = evaluate(bundle)
     lg = ctx.lg
     payload = {
@@ -164,8 +191,35 @@ def build(bundle: dict, save: bool = True) -> dict:
         "standings": standings_view(ctx),
         "games": analyses,
         "track": track,
+        "checks": checks,
+        "prolab": lab,
     }
+    for a in payload["games"] + ([lab["base"]] if lab else []):
+        a.pop("markets", None)   # tabla interna de mercados: los picks y las secciones ya la resumen
     return rounded(payload)
+
+
+def load_prolab(bundle: dict, save: bool) -> dict | None:
+    """Carga el Pro-Lab congelado; si el partido ya terminó, lo califica con el resultado oficial."""
+    paths = sorted(glob.glob(os.path.join(PL.DIR, "prolab_*.json")))
+    if not paths:
+        return None
+    with open(paths[-1], encoding="utf-8") as f:
+        lab = json.load(f)
+    pk = lab["pk"]
+    rpath = os.path.join(PL.DIR, f"result_{pk}.json")
+    res = None
+    if os.path.exists(rpath):
+        with open(rpath, encoding="utf-8") as f:
+            res = json.load(f)
+    else:
+        res = PL.result_from_bundle(bundle, pk)
+        if res and save:
+            with open(rpath, "w", encoding="utf-8") as f:
+                json.dump(res, f, ensure_ascii=False, indent=1)
+    if res:
+        lab["result"] = PL.compare(res, lab)
+    return lab
 
 
 def standings_view(ctx: model.Context) -> list[dict]:

@@ -21,7 +21,7 @@ K_TEAM_WPCT = 70         # juegos de .500 que se agregan al win% (Tango)
 K_TEAM_RUNS = 45         # juegos para regresar carreras/juego del equipo
 K_SPLIT_PA = 700         # PA para regresar splits vs mano
 K_BULLPEN_IP = 150       # entradas para regresar el bullpen
-K_START_IP = 6           # aperturas para regresar entradas por apertura
+K_START_IP = 2           # aperturas para regresar IP/apertura: el uso (opener, límite de pitcheos) lo decide el manager, no es ruido
 PREV_WEIGHT = 0.5        # la temporada anterior pesa la mitad
 
 
@@ -147,6 +147,8 @@ class League:
         # carreras promedio en la media entrada i cuando se jugó (para escalar por equipo)
         self.runs_half_played = {s: [sums[s][i] / played[s][i] if played[s][i] else 0.5 for i in range(10)] for s in sums}
         self.lam1 = (self.inning_runs["away"][1] + self.inning_runs["home"][1]) / 2
+        tot_played = sum(played[s][i] for s in played for i in range(1, 10))
+        self.runs_per_half = sum(sums[s][i] for s in sums for i in range(1, 10)) / tot_played if tot_played else 0.5
 
     def _home_edge(self, results):
         hw = sum(1 for g in results if g.get("hr", 0) > g.get("ar", 0))

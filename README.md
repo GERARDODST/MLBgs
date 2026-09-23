@@ -24,6 +24,8 @@ Varias veces al día un workflow de GitHub Actions:
 | --- | --- |
 | [MLB Stats API](https://statsapi.mlb.com) | Calendario, abridores probables, lineups, umpire, clima, resultados por entrada, standings, stats de jugadores y equipos, box scores |
 | [Baseball Savant](https://baseballsavant.mlb.com) | xERA, xwOBA, Barrel%, Hard Hit%, park factors (índice 3 años) |
+| [MLB Stats API](https://statsapi.mlb.com) — rosters y transacciones | Roster activo con splits, lista de lesionados, movimientos oficiales (noticias) |
+| [Baseball Savant](https://baseballsavant.mlb.com) — arsenal | Run value por tipo de pitcheo de abridores y bateadores |
 | [The Odds API](https://the-odds-api.com) (opcional) | Momios de varias casas: moneyline, run line y total |
 
 ## El modelo, sección por sección
@@ -48,6 +50,62 @@ Varias veces al día un workflow de GitHub Actions:
   tabla Modelo + Guion + Cuota + Contradicción → semáforo.
 - **Gate de completitud (9.3):** si falta un campo obligatorio (abridor, lineup, umpire, momios…), el
   mercado afectado nunca puede ser Verde.
+
+## Picks e índice de confianza
+
+Cada partido publica sus picks (moneyline, run line, total, F5, team totals, NRFI/YRFI y ponches de
+los abridores) ordenados por un **Índice de Confianza (IC, 0-100)** que se explica pick por pick:
+
+```
+IC = 100 · (0.35·Fuerza + 0.25·Consenso + 0.15·Datos + 0.15·Estabilidad + 0.10·Sin contradicciones)
+```
+
+- **Fuerza:** probabilidad del modelo sobre el punto de equilibrio del momio (real o de referencia).
+- **Consenso:** acuerdo entre métodos independientes del framework (Log5, Elo, λ-Binomial Negativa,
+  Poisson y, en el Pro-Lab, el Monte Carlo de DIAMANTE-24).
+- **Datos:** gate de completitud (9.3) y lineups confirmados. **Estabilidad:** tamaño de muestra tras
+  la regresión a la media. **Contradicciones:** filtros de 5.6, 6.11 y 7.7.
+
+Niveles: ≥70 Alta · 55-69 Media · 40-54 Baja · <40 Muy baja. Los dos picks de mayor IC aparecen en la
+tarjeta del partido y arriba de su página; al final están todos. La pestaña *Seguimiento* mide el
+acierto real por nivel de confianza.
+
+**Momios de casas mexicanas (Draftea, Playdoit, Caliente, Codere, Strendus…):** no publican una API
+pública, así que en cada pick hay un campo para escribir el momio de tu casa (americano −150/+130 o
+decimal 1.91). La página recalcula al instante la probabilidad implícita, el edge, el IC, el semáforo
+y el stake de ¼ de Kelly. Se guarda solo en tu navegador.
+
+## Pro-Lab: modelo DIAMANTE-24
+
+Laboratorio para probar un modelo nuevo contra un partido real con los datos **congelados antes del
+primer lanzamiento** (sin fuga de información). Primera prueba: Nationals @ Tigers, 23-sep-2026
+(datos congelados 18 minutos antes, con lineups y bullpen oficiales).
+
+1. **Probabilidad de cada turno al bate** (K, BB, 1B, 2B, 3B, HR, OUT) bateador contra pitcher con
+   log5 multinomial sobre tasas regresadas, splits por mano, parque, viento y veces en el orden.
+2. **Cadena de Markov de las 24 situaciones base-out:** matriz de transición Q, matriz fundamental
+   N = (I − Q)⁻¹, RE24 = N·r y P(anotar). Calibrada con un evento residual (errores, robos, wild
+   pitches: 1.1% de los turnos) para reproducir las carreras reales de la liga; reproduce la RE24
+   empírica de MLB.
+3. **Cadena por lineup (216 estados):** carreras esperadas según quién abre la entrada y matriz T de
+   rotación del lineup.
+4. **Monte Carlo de 50,000 partidos:** abridor con límite de bateadores (detecta openers), bullpen
+   real por rol, disponibilidad y carga típica, corredor fantasma en extra innings.
+5. **Actualización bayesiana:** pasada con lineups proyectados contra pasada con los oficiales.
+
+```bash
+python -m mlbgs.prolab --pk 824223 --sims 50000   # usa los datos congelados de prolab/
+```
+
+Cuando el partido termina, cada actualización califica los picks del Pro-Lab con el resultado oficial.
+
+## Cotejo de datos
+
+Cada corrida verifica las fuentes entre sí (pestaña *Cotejo*): standings contra resultados, suma por
+entrada contra marcador, temporada del abridor contra sus game logs, ERA de la MLB Stats API contra
+Baseball Savant, abridores + relevistas = total, lineups contra roster activo, cobertura de box scores.
+Así se encontraron y corrigieron un juego duplicado en el calendario oficial (inflaba el récord de
+ATL y SF) y un límite de 50 filas en las stats por equipo que dejaba a 15 equipos sin bullpen.
 
 ## Activar la página y los momios
 
@@ -78,6 +136,12 @@ python -m unittest discover -s tests                        # pruebas
 | `mlbgs/fetch.py` | Ingesta (MLB Stats API, Baseball Savant, The Odds API) → bundle de datos |
 | `mlbgs/features.py` | Liga, Pitágoras, Elo, perfiles de abridores con shrinkage, bullpen y fatiga |
 | `mlbgs/model.py` | Análisis de cada partido: secciones 1-10 del framework |
+| `mlbgs/context.py` | Lineup proyectado, bullpen completo, importancia (simulación de playoffs), noticias, arsenal |
+| `mlbgs/picks.py` | Picks con índice de confianza y calificación contra el resultado |
+| `mlbgs/markov.py` | DIAMANTE-24: turnos al bate, cadena de Markov (RE24) y Monte Carlo |
+| `mlbgs/prolab.py` | Pro-Lab: DIAMANTE-24 sobre un partido con datos congelados |
+| `mlbgs/validate.py` | Cotejo cruzado de las fuentes |
+| `prolab/` | Datos congelados antes del partido de prueba y su resultado |
 | `mlbgs/mathlib.py` | Fórmulas: Poisson, Binomial Negativa, FIP, Log5, Elo, Kelly, momios |
 | `mlbgs/build.py` | Construye la página y el seguimiento de predicciones |
 | `site/template.html` | Interfaz (español, tema claro/oscuro) |

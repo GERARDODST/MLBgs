@@ -212,6 +212,78 @@
   .empty { padding: 26px; text-align: center; color: var(--muted); background: var(--surface); border: 1px dashed var(--border); border-radius: 12px; }
   .btn { font: inherit; font-size: 13.5px; font-weight: 600; color: var(--accent); background: transparent; border: 1px solid var(--border); border-radius: 8px; padding: 5px 11px; cursor: pointer; }
   .btn:hover { border-color: var(--accent); }
+  /* índice de confianza */
+  .ic { display: inline-flex; align-items: baseline; gap: 5px; font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.02em; border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
+  .ic small { font-family: var(--sans); font-weight: 600; font-size: 11px; letter-spacing: 0; }
+  .ic.Alta { color: var(--verde); background: var(--verde-soft); }
+  .ic.Media { color: var(--accent); background: var(--accent-soft); }
+  .ic.Baja { color: var(--amarillo); background: var(--amarillo-soft); }
+  .ic.Muy { color: var(--gris); background: var(--gris-soft); }
+  .picks2 { display: flex; flex-direction: column; gap: 5px; border-top: 1px solid var(--grid); padding-top: 9px; }
+  .p2 { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px; align-items: baseline; font-size: 13px; }
+  .p2 .t { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .p2 .t b { font-weight: 700; }
+  .toppicks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 12px; }
+  .pickcard { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .pickcard .rank { font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .pickcard h3 { font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1.05; letter-spacing: 0.005em; }
+  .pickcard .meta { display: flex; gap: 6px 14px; flex-wrap: wrap; font-size: 13.5px; color: var(--ink-2); }
+  .gauge { position: relative; height: 10px; border-radius: 5px; background: linear-gradient(90deg, var(--gris-soft) 0 40%, var(--amarillo-soft) 40% 55%, var(--accent-soft) 55% 70%, var(--verde-soft) 70% 100%); }
+  .gauge i { position: absolute; top: -3px; width: 4px; height: 16px; border-radius: 2px; background: var(--ink); transform: translateX(-2px); }
+  .gauge-l { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); font-family: var(--mono); }
+  .parts { display: grid; grid-template-columns: 118px 1fr 44px; gap: 4px 8px; align-items: center; font-size: 12.5px; }
+  .parts .bar { height: 6px; border-radius: 3px; background: var(--surface-2); position: relative; overflow: hidden; }
+  .parts .bar i { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 3px; }
+  .methods { display: flex; flex-wrap: wrap; gap: 6px; }
+  .methods span { font-size: 12px; border: 1px solid var(--border); border-radius: 6px; padding: 2px 7px; background: var(--surface-2); }
+  .methods span b { font-family: var(--mono); font-weight: 500; }
+  .formula { font-family: var(--mono); font-size: 11.5px; color: var(--muted); overflow-wrap: anywhere; }
+
+  /* momios del usuario */
+  .oddsbar { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 13.5px; }
+  .oddsbar select, .odds-in { font: inherit; font-size: 13.5px; color: var(--ink); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; }
+  .odds-in { width: 86px; font-family: var(--mono); }
+  .odds-in:focus { border-color: var(--accent); outline: none; }
+  .val { font-size: 12.5px; }
+  .val.good { color: var(--verde); font-weight: 700; }
+  .val.bad { color: var(--rojo); font-weight: 600; }
+  .val.fair { color: var(--muted); }
+
+  /* tarjeta de alineación: confirmado vs proyectado */
+  .lineups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 12px; }
+  .card-lu { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .card-lu header { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .card-lu header b { font-family: var(--display); font-size: 22px; font-weight: 700; }
+  .stamp-c, .stamp-p { font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; padding: 2px 9px; border-radius: 4px; }
+  .stamp-c { color: var(--verde); border: 2px solid var(--verde); }
+  .stamp-p { color: var(--amarillo); border: 2px dashed var(--amarillo); font-style: italic; }
+  .lu-row { display: grid; grid-template-columns: 26px 38px minmax(0, 1fr) 26px auto; gap: 8px; align-items: baseline; padding: 4px 0; border-bottom: 1px solid var(--grid); font-size: 14px; }
+  .lu-row:last-child { border-bottom: 0; }
+  .lu-row .slot { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--muted); text-align: right; }
+  .lu-row .pos { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .lu-row .nm { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lu-row .st { font-family: var(--mono); font-size: 12px; color: var(--ink-2); white-space: nowrap; }
+  .lu-row.conf .nm { font-weight: 600; }
+  .lu-row.proj .nm { font-style: italic; color: var(--ink-2); }
+  .lu-row.proj { border-bottom-style: dashed; }
+  .lu-row .pr { font-family: var(--mono); font-size: 11px; color: var(--amarillo); }
+  .pen-row td:first-child { font-weight: 600; }
+  .pen-off { font-style: normal; }
+  .pen-pred { font-style: italic; }
+
+  .heat text { font-family: var(--mono); font-size: 9px; fill: var(--muted); }
+  .heat .v { fill: var(--ink); font-size: 9.5px; }
+  .lab-hero { display: flex; flex-direction: column; gap: 8px; }
+  .lab-hero .name { font-family: var(--display); font-weight: 700; font-size: clamp(40px, 7vw, 64px); line-height: 0.92; letter-spacing: 0.01em; }
+  .lab-hero .name span { color: var(--home); }
+  .step { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; }
+  .step > .n { font-family: var(--display); font-weight: 700; font-size: 30px; color: var(--accent); line-height: 1; padding-top: 2px; }
+  .step > div { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .step h2 { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: 0.01em; }
+  @media (max-width: 560px) { .step { grid-template-columns: 1fr; } .step > .n { font-size: 22px; } }
+  .res { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 10px; }
+  .won { color: var(--verde); font-weight: 700; }
+  .lost { color: var(--rojo); font-weight: 700; }
   @media (prefers-reduced-motion: no-preference) { .game, .chip, nav.tabs a { transition: border-color .15s, background .15s, color .15s; } }
 </style>
 
@@ -223,8 +295,10 @@
     </a>
     <nav class="tabs" aria-label="Secciones">
       <a href="#partidos" data-tab="partidos">Partidos</a>
+      <a href="#prolab" data-tab="prolab">Pro-Lab</a>
       <a href="#posiciones" data-tab="posiciones">Posiciones</a>
       <a href="#seguimiento" data-tab="seguimiento">Seguimiento</a>
+      <a href="#cotejo" data-tab="cotejo">Cotejo</a>
       <a href="#metodologia" data-tab="metodologia">Metodología</a>
     </nav>
     <span class="stamp" id="stamp"></span>
@@ -257,7 +331,7 @@
   const hand = (h) => (h === "L" ? "Z" : h === "R" ? "D" : "—");
   const light = (l) => `<span class="light ${esc(l)}">${esc(l)}</span>`;
   const status = (s) => {
-    const cls = { OK: "ok", disponible: "ok", derivado: "info", sustituido: "info", "no aplica": "", parcial: "warn", Alerta: "warn", faltante: "bad" }[s] ?? "";
+    const cls = { OK: "ok", disponible: "ok", derivado: "info", sustituido: "info", "no aplica": "", parcial: "warn", Alerta: "warn", faltante: "bad", Falla: "bad" }[s] ?? "";
     return `<span class="tag ${cls}">${esc(s)}</span>`;
   };
   const yes = (v) => `<span class="tag ${v === "Sí" ? "ok" : v === "No" ? "bad" : ""}">${esc(v)}</span>`;
@@ -277,6 +351,150 @@
   const tr = (cells, cls = "") => `<tr${cls ? ` class="${cls}"` : ""}>${cells.join("")}</tr>`;
   const td = (v, cls = "") => `<td${cls ? ` class="${cls}"` : ""}>${v}</td>`;
   const tdn = (v) => `<td class="r num">${v}</td>`;
+
+  // ---------------------------------------------------------------- picks e índice de confianza
+  const lvlCls = (l) => (l === "Muy baja" ? "Muy" : esc(l));
+  const icBadge = (p) => `<span class="ic ${lvlCls(p.level)}" data-tip="Índice de confianza ${f(p.ic, 1)} de 100 · ${esc(p.level)}">IC ${Math.round(p.ic)} <small>${esc(p.level)}</small></span>`;
+  const PART_NAMES = { fuerza: "Fuerza", consenso: "Consenso", datos: "Datos", estabilidad: "Estabilidad", contradicciones: "Sin contradicciones" };
+  const PART_W = { fuerza: 0.35, consenso: 0.25, datos: 0.15, estabilidad: 0.15, contradicciones: 0.10 };
+  const PART_TIP = {
+    fuerza: "Ventaja de la probabilidad sobre el punto de equilibrio del precio (momio real o de referencia), a escala de 12 pp",
+    consenso: "Acuerdo entre métodos independientes del framework: 1 − divergencia/12 pp (un solo método = 0.5)",
+    datos: "Gate de completitud (9.3) del mercado y lineups confirmados",
+    estabilidad: "Peso de la muestra tras la regresión a la media (5.7.4) y error del Monte Carlo",
+    contradicciones: "1 − contradicciones activas/3 (secciones 5.6, 6.11, 7.7)",
+  };
+  const BOOKS = ["Draftea", "Playdoit", "Caliente", "Codere", "Strendus", "Betcris", "bet365", "Otra"];
+  const oddsStore = (() => { try { return JSON.parse(store.get("mlbgs-odds") || "{}"); } catch { return {}; } })();
+  const saveOdds = () => store.set("mlbgs-odds", JSON.stringify(oddsStore));
+  const bookSel = () => store.get("mlbgs-book") || "Draftea";
+
+  function parseOdds(raw) {
+    const t = String(raw || "").trim().replace(",", ".");
+    if (!t) return null;
+    const v = Number(t);
+    if (!isFinite(v) || v === 0) return null;
+    if (t.includes(".") && v > 1 && v < 30) return { dec: v, imp: 1 / v, am: v >= 2 ? (v - 1) * 100 : -100 / (v - 1) };
+    if (Math.abs(v) >= 100) return { am: v, imp: v < 0 ? -v / (-v + 100) : 100 / (v + 100), dec: v < 0 ? 1 + 100 / -v : 1 + v / 100 };
+    return null;
+  }
+
+  function evalOdds(p, raw) {
+    const o = parseOdds(raw);
+    if (!o) return null;
+    const edge = p.p - o.imp;
+    const fuerza = Math.max(0, Math.min(1, edge / 0.12));
+    const ic = p.ic + 100 * PART_W.fuerza * (fuerza - p.parts.fuerza);
+    const b = o.dec - 1;
+    const kelly = Math.max(0, (b * p.p - (1 - p.p)) / b);
+    let light = "Gris", why = "precio justo (edge < 3 pp)";
+    if (edge < 0) { light = "Rojo"; why = "sin valor: el momio paga menos que la probabilidad"; }
+    else if (edge >= 0.03) {
+      if (p.blocked) { light = "Amarillo"; why = "hay valor, pero falta un dato obligatorio (gate)"; }
+      else if (p.guion === "No" || p.contradiction === "Alta") { light = "Amarillo"; why = "hay valor, pero el guion o las contradicciones no acompañan"; }
+      else if (ic >= 55) { light = "Verde"; why = "modelo + guion + cuota con edge + baja contradicción"; }
+      else { light = "Amarillo"; why = "hay valor, pero la confianza es baja"; }
+    }
+    return { ...o, edge, ic, kelly, light, why, level: ic >= 70 ? "Alta" : ic >= 55 ? "Media" : ic >= 40 ? "Baja" : "Muy baja" };
+  }
+
+  function oddsResult(p, raw) {
+    const r = evalOdds(p, raw);
+    if (!r) return `<span class="muted val">Escribe el momio de ${esc(bookSel())} (−150, +130 o 1.91)</span>`;
+    const cls = r.edge >= 0.03 ? "good" : r.edge < 0 ? "bad" : "fair";
+    return `<span class="val ${cls}">${r.edge >= 0 ? "+" : ""}${(100 * r.edge).toFixed(1)} pp</span> · implícita ${pc(r.imp, 1)} · ${light(r.light)} · IC ${Math.round(r.ic)} · ¼ Kelly ${pc(r.kelly / 4, 2)}<br><span class="muted val">${esc(r.why)}</span>`;
+  }
+
+  const oddsInput = (pk, p) => {
+    const key = `${pk}|${p.pick}`;
+    return `<input class="odds-in" id="odds-${esc(String(pk))}-${esc(p.pick).replace(/[^a-zA-Z0-9]/g, "")}" data-odds="${esc(key)}" inputmode="decimal" placeholder="momio" value="${esc(oddsStore[key] || "")}" aria-label="Momio de ${esc(p.pick)}">`;
+  };
+
+  function pickCard(p, pk, rank, graded) {
+    const partsHtml = Object.entries(p.parts).map(([k, v]) => `<span data-tip="${esc(PART_TIP[k])}">${PART_NAMES[k]} <span class="muted">×${PART_W[k]}</span></span><span class="bar"><i style="width:${(v * 100).toFixed(0)}%"></i></span><span class="num">${v.toFixed(2)}</span>`).join("");
+    const res = graded ? `<span class="${graded.won ? "won" : graded.won === false ? "lost" : "muted"}">${graded.won ? "✓ Acertado" : graded.won === false ? "✗ Fallado" : "Push / sin dato"}</span>` : "";
+    return `<article class="pickcard" data-pick="${esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked }))}">
+      <div class="rank">Pick principal ${rank} · ${esc(p.market)} ${res}</div>
+      <h3>${esc(p.pick)}</h3>
+      <div class="meta"><span>Probabilidad <b class="num">${pc(p.p, 1)}</b></span><span>Momio justo <b class="num">${odds(p.fair)}</b></span><span>Mínimo aceptable <b class="num">${odds(p.minPrice)}</b></span>${icBadge(p)}</div>
+      <div class="gauge" role="img" aria-label="Índice de confianza ${Math.round(p.ic)} de 100"><i style="left:${Math.max(0, Math.min(100, p.ic))}%"></i></div>
+      <div class="gauge-l"><span>0</span><span>40 Baja</span><span>55 Media</span><span>70 Alta</span><span>100</span></div>
+      <div class="note"><b>Cómo se llegó:</b> ${esc(p.how)}</div>
+      <div class="methods">${Object.entries(p.methods).map(([k, v]) => `<span>${esc(k)} <b>${pc(v, 1)}</b></span>`).join("")}</div>
+      <div class="parts">${partsHtml}</div>
+      <div class="formula">IC = ${esc(p.formula)} → ${f(p.ic, 1)} · punto de equilibrio ${pc(p.breakeven, 1)} (${p.priceIsReal ? "momio real" : "precio de referencia " + odds(p.refPrice)})</div>
+      <div class="oddsbar"><span>Tu momio en ${esc(bookSel())}:</span>${oddsInput(pk, p)}<span class="odds-out">${oddsResult(p, oddsStore[`${pk}|${p.pick}`])}</span></div>
+    </article>`;
+  }
+
+  function picksTable(picks, pk, graded) {
+    const g = Object.fromEntries((graded || []).map((x) => [x.pick, x]));
+    return `<div class="oddsbar"><label for="book-${pk}">Casa de apuestas</label><select id="book-${pk}" data-book>${BOOKS.map((b) => `<option${b === bookSel() ? " selected" : ""}>${b}</option>`).join("")}</select><span class="muted">Escribe tu momio (americano −150 / +130 o decimal 1.91): se recalculan edge, índice de confianza, semáforo y Kelly. Se guarda solo en este navegador.</span></div>
+      ${table(["#", "Mercado", "Pick", "~Prob.", "Confianza", "Fuerza · Consenso · Datos · Estab. · Contr.", "Métodos del framework", "~Justo", "Tu momio", "Valor con tu momio", ...(graded ? ["Resultado"] : [])],
+      picks.map((p) => tr([tdn(p.rank), td(esc(p.market)), td(`<b>${esc(p.pick)}</b>`), tdn(pc(p.p, 1)), td(icBadge(p)),
+        td(`<span class="num" style="font-size:12px">${Object.values(p.parts).map((v) => v.toFixed(2)).join(" · ")}</span>`),
+        td(`<span class="muted" style="font-size:12px">${Object.entries(p.methods).map(([k, v]) => `${esc(k)} ${pc(v, 1)}`).join("<br>")}</span>`),
+        tdn(odds(p.fair)), td(oddsInput(pk, p)), td(`<span class="odds-out">${oddsResult(p, oddsStore[`${pk}|${p.pick}`])}</span>`),
+        ...(graded ? [td(g[p.pick] ? (g[p.pick].won ? '<span class="won">✓</span>' : g[p.pick].won === false ? '<span class="lost">✗</span>' : "push") : "—", "c")] : [])],
+        "").replace("<tr", `<tr data-pick="${esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked }))}"`)))}
+      <p class="note muted">IC = 100 · (0.35·Fuerza + 0.25·Consenso + 0.15·Datos + 0.15·Estabilidad + 0.10·Sin contradicciones). Niveles: ≥70 Alta · 55–69 Media · 40–54 Baja · &lt;40 Muy baja. Sin momio real la fuerza se mide contra un precio de referencia típico; en moneyline un favorito real cuesta más: escribe tu momio para medir el valor.</p>`;
+  }
+
+  document.addEventListener("input", (e) => {
+    const inp = e.target.closest("[data-odds]");
+    if (!inp) return;
+    oddsStore[inp.dataset.odds] = inp.value;
+    saveOdds();
+    const host = inp.closest("[data-pick]");
+    if (!host) return;
+    const p = JSON.parse(host.dataset.pick);
+    const out = host.querySelector(".odds-out");
+    if (out) out.innerHTML = oddsResult(p, inp.value);
+  });
+  document.addEventListener("change", (e) => {
+    const sel = e.target.closest("[data-book]");
+    if (!sel) return;
+    store.set("mlbgs-book", sel.value);
+    route();
+  });
+
+  // ---------------------------------------------------------------- lineups, bullpen, importancia y noticias
+  function lineupCard(team, lu, vsName) {
+    if (!lu) return `<div class="card-lu"><header><b>${esc(team)}</b><span class="stamp-p">Sin datos</span></header><p class="note muted">No hay lineup publicado ni juegos recientes para proyectarlo.</p></div>`;
+    const conf = lu.status === "Confirmado";
+    return `<div class="card-lu"><header><b>${esc(team)}</b>${conf ? '<span class="stamp-c">✓ Confirmado</span>' : `<span class="stamp-p">Proyectado · ${pc(lu.confidence)}</span>`}</header>
+      <p class="note muted">${conf ? "Lineup oficial publicado por el club." : `Predicción con sus últimos ${lu.games} juegos (${lu.sameGames} contra abridor de la misma mano, doble peso; recientes pesan más). El % es la frecuencia ponderada con que ese jugador abrió.`}${vsName && vsName !== "Por anunciar" ? ` Contra ${esc(vsName)}.` : " Abridor rival por anunciar: sin filtro de mano."}</p>
+      ${lu.rows.map((r, i) => `<div class="lu-row ${conf ? "conf" : "proj"}"><span class="slot">${i + 1}</span><span class="pos">${esc(r.pos || "—")}</span><span class="nm">${esc(r.name)}</span><span class="pos">${esc(r.bats || "")}</span><span class="st">${r.ops != null ? "OPS " + f(r.ops, 3) : ""}${r.k != null ? " · K% " + pv(r.k) : ""}${!conf && r.prob != null ? ` <span class="pr">${pc(r.prob)}</span>` : ""}</span></div>`).join("")}
+      <p class="formula">OBP ${f(lu.obp, 3)} · SLG ${f(lu.slg, 3)} · K% ${pv(lu.k)} · Barrel% ${f(lu.barrel, 1)} · factor vs ofensiva habitual ${f(lu.ratio, 3)}</p></div>`;
+  }
+
+  function bullpenTable(team, rows, hasOfficial) {
+    const chip = (a) => `<span class="tag ${a === "Disponible" ? "ok" : a === "Dudoso" ? "warn" : a === "No disponible" ? "bad" : ""}">${esc(a)}</span>`;
+    return `<h3 class="sub">${esc(team)} <span class="code">${rows.length} brazos · ${hasOfficial ? "lista oficial del partido + predicción de uso" : "roster activo + predicción de uso"}</span></h3>
+      ${table(["Pitcher", "Mano", "Rol", "Estado", "~P(uso)", "~ERA", "~FIP", "~K%", "~BB%", "~SV/HLD", "Último uso", "~Pitcheos 3d"], rows.map((r) => tr([
+        td(`<span class="${r.official === false ? "pen-pred" : "pen-off"}">${esc(r.name)}</span>${r.official ? ' <span class="tag ok" data-tip="Aparece en la lista oficial de bullpen del partido">oficial</span>' : ""}`),
+        td(hand(r.throws)), td(esc(r.role)), td(chip(r.available)), tdn(pc(r.pUse)), tdn(f(r.era)), tdn(f(r.fip)), tdn(pc(r.k, 1)), tdn(pc(r.bb, 1)),
+        tdn(`${r.sv}/${r.hld}`), td(r.lastDate ? fmtShort(r.lastDate) + (r.lastPitches != null ? ` (${r.lastPitches})` : "") : "—", "num"), tdn(r.p3)], "pen-row")))}`;
+  }
+
+  function importanceBlock(imp) {
+    if (!imp) return "";
+    return `<div class="panel"><h3 class="sub">¿Qué se juegan en la tabla? <span class="code">Importancia ${esc(imp.level)}</span></h3>
+      ${table(["Equipo", "Récord", "División", "~JD", "~Comodín (rank · JD)", "Estado", "~P(playoffs)", "~P(división)", "~P(bye)", "~Δ playoffs si gana vs pierde"], imp.rows.map((r) => tr([
+        td(`<b>${esc(r.team)}</b>`), tdn(`${r.w}-${r.l}`), td(esc((r.division || "").replace("American League", "AL").replace("National League", "NL")), "muted"), tdn(esc(r.gb)), tdn(`${esc(r.wcRank || "—")} · ${esc(r.wcgb || "—")}`),
+        td(`<span class="tag ${r.status === "Clasificado" ? "ok" : r.status === "Eliminado" ? "bad" : "info"}">${esc(r.status)}</span>`),
+        tdn(pc(r.pPlayoffs, 1)), tdn(pc(r.pDivision, 1)), tdn(pc(r.pBye, 1)), tdn(r.leverage ? signed(100 * r.leverage.po.delta, 1) + " pp" : "—")])))}
+      ${imp.notes.length ? `<ul class="clean">${imp.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}
+      <p class="formula">${esc(imp.method)}</p></div>`;
+  }
+
+  function newsBlock(news) {
+    if (!news) return "";
+    const one = (n) => `<div class="panel"><h3 class="sub">Noticias ${esc(n.team)} <span class="code">movimientos oficiales, 21 días</span></h3>
+      ${n.items.length ? `<ul class="clean">${n.items.slice(0, 8).map((x) => `<li><span class="num muted">${fmtShort(x.date)}</span> <span class="tag ${x.impact === "Alta" ? "warn" : ""}">${esc(x.type)}</span> ${esc(x.text)}</li>`).join("")}</ul>` : '<p class="note muted">Sin movimientos recientes.</p>'}
+      ${n.injured && n.injured.length ? `<p class="note"><b>Lista de lesionados:</b> ${n.injured.slice(0, 12).map((x) => `${esc(x.name)} (${esc(x.pos)}, ${esc(x.status)})`).join(" · ")}</p>` : ""}</div>`;
+    return `<div class="two">${one(news.away)}${one(news.home)}</div>`;
+  }
 
   document.getElementById("stamp").textContent = `Datos: ${fmtStamp(D.meta.generatedAt)} · ${tz}`;
 
@@ -316,8 +534,8 @@
         <div class="fact"><b>${f(s.proj.f5.away, 1)}–${f(s.proj.f5.home, 1)}</b><span>F5</span></div>
         <div class="fact"><b>${pc(s.nrfi)}</b><span>NRFI</span></div>
       </div>
-      <div class="bestline"><span>Abridor: <b>${edgeTxt}</b> · confianza ${esc(s.confidence)}</span><span class="muted">${s.gate.missing} dato${s.gate.missing === 1 ? "" : "s"} faltante${s.gate.missing === 1 ? "" : "s"}</span></div>
-      <div class="bestline"><span class="pick">${bestTxt}</span></div>
+      <div class="bestline"><span>Abridor: <b>${edgeTxt}</b> · triangulación ${esc(s.confidence)}</span><span class="muted">${s.gate.missing} dato${s.gate.missing === 1 ? "" : "s"} faltante${s.gate.missing === 1 ? "" : "s"}</span></div>
+      <div class="picks2">${(s.topPicks || []).map((p) => `<div class="p2">${icBadge(p)}<span class="t"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)} · justo ${odds(p.fair)}</span></span></div>`).join("") || `<span class="muted">${bestTxt}</span>`}</div>
     </a>`;
   }
 
@@ -393,19 +611,30 @@
   }
 
   // ---------------------------------------------------------------- vista: partido
-  function viewGame(g) {
+  function viewGame(g, backHref = "#partidos", backText = "← Todos los partidos") {
     const s = g.summary, S = g.sections, a = g.teams.away, h = g.teams.home;
     const w = g.weather;
     const weather = w.closed ? "Techo cerrado / domo" : w.available ? `${esc(w.condition || "")} · ${w.temp ?? "—"}°F · viento ${esc(w.windText || "—")}` : "Clima: sin reporte todavía";
     const fav = s.pHome >= 0.5 ? "home" : "away";
     const openAll = store.get("mlbgs-open") === "1";
     app.innerHTML = `
-      <a class="back" href="#partidos">← Todos los partidos</a>
+      <a class="back" href="${backHref}">${esc(backText)}</a>
       <div class="board">
         <div class="team away"><span class="eyebrow">Visitante</span><span class="big">${esc(a.abbr)}</span><span class="nm">${esc(a.name)}</span><span class="sub">${a.w}-${a.l} · ${esc(a.division || "")}${a.streak ? " · racha " + esc(a.streak) : ""} · Elo ${a.elo ?? "—"}</span></div>
         <div class="mid"><span class="at">@</span><b>${fmtDateLong(g.date)} · ${fmtTime(g.time)}</b><span>${esc(g.venue.name)}${g.venue.city ? ", " + esc(g.venue.city) : ""}${g.venue.neutral ? " · sede neutra" : ""}</span><span class="muted">${weather}</span><span class="muted">Umpire: ${esc(g.umpire || "no asignado aún")}${g.series && g.series.gameNumber ? ` · juego ${g.series.gameNumber} de ${g.series.totalGames}${g.series.result ? ` (${esc(g.series.result)})` : ""}` : ""}</span></div>
         <div class="team home"><span class="eyebrow">Local</span><span class="big">${esc(h.abbr)}</span><span class="nm">${esc(h.name)}</span><span class="sub">${h.w}-${h.l} · ${esc(h.division || "")}${h.streak ? " · racha " + esc(h.streak) : ""} · Elo ${h.elo ?? "—"}</span></div>
       </div>
+
+      <section class="block"><h2>Picks principales</h2>
+        <div class="toppicks">${(g.picks || []).slice(0, 2).map((p, i) => pickCard(p, g.pk, i + 1)).join("")}</div>
+      </section>
+
+      ${importanceBlock(S.s1.importance)}
+      ${newsBlock(S.s1.news)}
+
+      <section class="block"><h2>Alineaciones</h2>
+        <div class="lineups">${lineupCard(a.abbr, S.s5.lineups.away, s.probables.home.name)}${lineupCard(h.abbr, S.s5.lineups.home, s.probables.away.name)}</div>
+      </section>
 
       <div class="tiles">
         <div class="tile"><span class="eyebrow">Probabilidad triangulada</span>
@@ -443,6 +672,8 @@
       ${sec(8, "Auditoría final de contradicciones", `${S.s8.audit.filter((x) => x.status === "Alerta").length} alertas`, sec8(g), openAll)}
       ${sec(9, "Fuentes de datos y regla de completitud", `${s.gate.missing} faltantes`, sec9(g), openAll)}
       ${sec(10, "Algoritmo maestro", "Fases 0–6", sec10(g), openAll)}
+
+      <section class="block"><h2>Todos los picks por nivel de confianza</h2>${picksTable(g.picks || [], g.pk)}</section>
       ${footer()}`;
     document.getElementById("toggle-all").addEventListener("click", () => {
       const open = store.get("mlbgs-open") !== "1";
@@ -539,6 +770,8 @@
       ${table(["Factor", "~Peso", "Cómo se mide", `~${esc(g.teams.away.abbr)}`, `~${esc(g.teams.home.abbr)}`], scoreRows)}
       ${s.scores.away.note || s.scores.home.note ? `<p class="note muted">${esc(s.scores.away.note || s.scores.home.note)}. Puntaje = 50 + 15·z frente a la liga.</p>` : `<p class="note muted">Puntaje = 50 + 15·z frente a la liga.</p>`}
       <div class="two">${block("away")}${block("home")}</div>
+      ${s.arsenal ? ["away", "home"].filter((sd) => s.arsenal[sd]).map((sd) => `<h3 class="sub">Arsenal de ${esc((comp.find((c) => c.side === sd) || {}).name || "")} vs el lineup rival <span class="code">ventaja ${f(s.arsenal[sd].score, 2)} carreras/100 pitcheos</span></h3>
+        ${table(["Pitcheo", "~Uso", "~RV/100 pitcher", "~Regresado", "~RV/100 bateadores rivales", "~Whiff%", "~wOBA", "~Ventaja"], s.arsenal[sd].rows.map((r) => tr([td(esc(r.name)), tdn(pv(r.usage)), tdn(f(r.pitcherRv, 1)), tdn(f(r.pitcherRvShrunk, 2)), tdn(f(r.batterRv, 2)), tdn(pv(r.whiff)), tdn(f(r.woba, 3)), tdn(signed(r.edge, 2))])))}`).join("") + '<p class="note muted">Run value por 100 pitcheos de Baseball Savant: positivo en el pitcher = carreras que evita; en los bateadores = carreras que producen contra ese tipo de pitcheo. Ambos se regresan a 0 (300 pitcheos / 60 PA). Ventaja = Σ uso × (pitcher − bateadores).</p>' : ""}
       <h3 class="sub"><span class="code">3.8</span> Interpretación de abridores</h3>
       <dl class="kv">${s.interpretation.map((r) => `<dt>${esc(r.k)} <span class="muted" style="font-size:12px">(${esc(r.basis)})</span></dt><dd>${esc(r.v)}</dd>`).join("")}</dl>
       <h3 class="sub"><span class="code">3.9</span> Tabla final de ventaja de abridor</h3>
@@ -569,6 +802,9 @@
       ${table(["Equipo", "~Pitcheos ponderados 3d", "~z fatiga", "~z ERA", "~z WHIP", "~z BB%", "~z HR/9", "~RiesgoBullpen"],
         s.stats.map((b) => tr([td(`<b>${esc(b.team)}</b>`), tdn(b.fatigue), tdn(f(b.zFatigue)), tdn(f(b.riskParts.era)), tdn(f(b.riskParts.whip)), tdn(f(b.riskParts.bb)), tdn(f(b.riskParts.hr9)), tdn(`<b>${f(b.risk)}</b>`)])))}
       <p class="note muted">${esc(s.formula)}. Pitcheos de relevistas ponderados: ayer ×1, hace 2 días ×0.66, hace 3 días ×0.33.</p>
+      ${s.full ? `<h3 class="sub"><span class="code">4.3+</span> Bullpen completo: disponibilidad y probabilidad de uso</h3>
+        <p class="note muted">Roles: cerrador = líder de salvamentos, setup = líderes en holds, largo = 1.6+ IP por aparición. P(uso) = probabilidad base del rol × disponibilidad por fatiga. «Oficial» = aparece en la lista de bullpen publicada para el partido.</p>
+        ${bullpenTable(g.teams.away.abbr, s.full.away, s.officialList && s.officialList.away)}${bullpenTable(g.teams.home.abbr, s.full.home, s.officialList && s.officialList.home)}` : ""}
       <h3 class="sub"><span class="code">4.7</span> Conclusión obligatoria del bullpen</h3>
       <p class="rule">${esc(s.conclusion)}</p>`;
   }
@@ -715,6 +951,197 @@
     return table(["Fase", "Estado", "Resultado en este partido"], g.sections.s10.map((p) => tr([td(`<b>${esc(p.phase)}</b>`), td(status(p.status)), td(esc(p.detail), "muted")])));
   }
 
+  // ---------------------------------------------------------------- gráficas del Pro-Lab
+  function heatmap(M, rows, cols, o = {}) {
+    const cw = o.cell || 22, ch = o.cellH || cw, L = o.left || 52, T = o.top || 44;
+    const W = L + cols.length * cw + 6, H = T + rows.length * ch + 6;
+    const max = o.max || Math.max(...M.flat(), 1e-9);
+    let sv = `<svg class="chart heat" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || "matriz")}" style="max-width:${o.maxW || W}px">`;
+    cols.forEach((c, j) => { sv += `<text x="${L + j * cw + cw / 2}" y="${T - 6}" text-anchor="start" transform="rotate(-55 ${L + j * cw + cw / 2} ${T - 6})">${esc(c)}</text>`; });
+    rows.forEach((r, i) => {
+      sv += `<text x="${L - 4}" y="${T + i * ch + ch / 2 + 3}" text-anchor="end">${esc(r)}</text>`;
+      M[i].forEach((v, j) => {
+        const a = v <= 0 ? 0.03 : 0.08 + 0.85 * Math.min(1, v / max);
+        sv += `<rect x="${L + j * cw}" y="${T + i * ch}" width="${cw - 1}" height="${ch - 1}" rx="2" fill="rgba(var(--heat), ${a.toFixed(3)})" data-tip="${esc(r)} → ${esc(cols[j])}: ${o.fmt ? o.fmt(v) : v.toFixed(3)}"/>`;
+        if (o.values && v > (o.minLabel || 0)) sv += `<text class="v" x="${L + j * cw + cw / 2}" y="${T + i * ch + ch / 2 + 3}" text-anchor="middle">${o.fmt ? o.fmt(v) : v.toFixed(2)}</text>`;
+      });
+    });
+    return sv + "</svg>";
+  }
+
+  function groupedBars(series, labels, o = {}) {
+    const W = o.w || 620, H = o.h || 190, L = 36, R = 8, T = 12, B = 26;
+    const n = labels.length, k = series.length;
+    const max = Math.max(...series.flatMap((x) => x.values), 1e-9) * 1.12;
+    const bw = (W - L - R) / n;
+    const y = (v) => T + (H - T - B) * (1 - v / max);
+    let sv = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || "distribución")}">`;
+    const step = max > 0.2 ? 0.1 : max > 0.08 ? 0.05 : 0.02;
+    for (let t = 0; t <= max; t += step) sv += `<line x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}" stroke="var(--grid)"/><text x="${L - 5}" y="${y(t) + 4}" text-anchor="end">${Math.round(t * 100)}%</text>`;
+    labels.forEach((lab, i) => {
+      series.forEach((sr, j) => {
+        const v = sr.values[i] || 0, x = L + i * bw + 1 + j * ((bw - 2) / k);
+        sv += `<rect x="${x}" y="${y(v)}" width="${Math.max(1, (bw - 2) / k - 1)}" height="${Math.max(0, y(0) - y(v))}" rx="2" fill="${sr.color}" data-tip="${esc(sr.name)} · ${esc(lab)}: ${(v * 100).toFixed(1)}%"/>`;
+      });
+      if (n <= 16 || i % 2 === 0) sv += `<text x="${L + i * bw + bw / 2}" y="${H - 9}" text-anchor="middle">${esc(lab)}</text>`;
+    });
+    (o.marks || []).forEach((m) => { const x = L + (m.at + 0.5) * bw; sv += `<line x1="${x}" x2="${x}" y1="${T}" y2="${y(0)}" stroke="var(--ink-2)" stroke-dasharray="3 3"/><text class="lbl" x="${x + 3}" y="${T + 9}">${esc(m.label)}</text>`; });
+    return sv + "</svg>" + (series.length > 1 ? `<div class="legend">${series.map((sr) => `<span><i style="background:${sr.color}"></i>${esc(sr.name)}</span>`).join("")}</div>` : "");
+  }
+
+  function convergence(pts, label) {
+    const W = 620, H = 180, L = 44, R = 10, T = 12, B = 26;
+    const xs = pts.map((p) => p.n), maxX = Math.max(...xs);
+    const lo = Math.min(...pts.map((p) => p.p - 1.96 * p.se)), hi = Math.max(...pts.map((p) => p.p + 1.96 * p.se));
+    const pad = (hi - lo) * 0.1 || 0.01;
+    const y = (v) => T + (H - T - B) * (1 - (v - (lo - pad)) / (hi - lo + 2 * pad));
+    const x = (n) => L + (W - L - R) * (n / maxX);
+    const band = pts.map((p) => `${x(p.n)},${y(p.p + 1.96 * p.se)}`).join(" ") + " " + pts.slice().reverse().map((p) => `${x(p.n)},${y(p.p - 1.96 * p.se)}`).join(" ");
+    let sv = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">`;
+    [lo, (lo + hi) / 2, hi].forEach((t) => { sv += `<line x1="${L}" x2="${W - R}" y1="${y(t)}" y2="${y(t)}" stroke="var(--grid)"/><text x="${L - 5}" y="${y(t) + 4}" text-anchor="end">${(t * 100).toFixed(1)}%</text>`; });
+    sv += `<polygon points="${band}" fill="rgba(var(--heat), 0.16)"/>`;
+    sv += `<polyline points="${pts.map((p) => `${x(p.n)},${y(p.p)}`).join(" ")}" fill="none" stroke="var(--home)" stroke-width="2"/>`;
+    const last = pts[pts.length - 1];
+    sv += `<circle cx="${x(last.n)}" cy="${y(last.p)}" r="4" fill="var(--home)" stroke="var(--surface)" stroke-width="2"/>`;
+    [0, 0.5, 1].forEach((t) => { sv += `<text x="${x(maxX * t)}" y="${H - 8}" text-anchor="${t === 0 ? "start" : t === 1 ? "end" : "middle"}">${Math.round(maxX * t).toLocaleString("es-MX")}</text>`; });
+    return sv + "</svg>";
+  }
+
+  function hbars(items, color) {
+    const max = Math.max(...items.map((i) => i.value), 1e-9);
+    return `<div style="display:grid;grid-template-columns:minmax(0,190px) 1fr 52px;gap:5px 10px;align-items:center;font-size:13px">${items.map((i) => `<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(i.label)}${i.sub ? ` <span class="muted">${esc(i.sub)}</span>` : ""}</span><span style="height:8px;background:var(--surface-2);border-radius:4px;position:relative"><i style="position:absolute;inset:0 auto 0 0;width:${(100 * i.value / max).toFixed(1)}%;background:${color};border-radius:4px"></i></span><span class="num" style="text-align:right">${pc(i.value)}</span>`).join("")}</div>`;
+  }
+
+  // ---------------------------------------------------------------- vista: Pro-Lab
+  function viewProLab(showBase) {
+    const lab = D.prolab;
+    if (!lab) { app.innerHTML = `<div class="empty">El Pro-Lab todavía no tiene un partido congelado.</div>`; return; }
+    if (showBase) { viewGame(lab.base, "#prolab", "← Volver al Pro-Lab"); return; }
+    const g = lab.game, a = g.teams.away, h = g.teams.home, mc = lab.mc, res = lab.result;
+    const frozen = new Date(lab.frozenAt), first = new Date(lab.firstPitch);
+    const mins = Math.round((first - frozen) / 60000);
+    const E = ["K", "BB", "1B", "2B", "3B", "HR", "E", "OUT"];
+    const chainTable = (side) => {
+      const c = lab.chains[side];
+      const maxv = Math.max(...c.batterProbs.flatMap((b) => E.filter((e) => e !== "OUT").map((e) => b[e])));
+      const cell = (v, e) => `<td class="num" style="background: rgba(var(--heat), ${e === "OUT" ? 0.04 : (0.06 + 0.6 * v / maxv).toFixed(3)})">${(v * 100).toFixed(1)}</td>`;
+      return `<h3 class="sub">${esc(g.teams[side].abbr)} contra ${esc(c.vs)} <span class="code">% por turno al bate · 2ª vez en el orden</span></h3>
+        <div class="tbl"><table><thead><tr><th>#</th><th>Bateador</th><th>B</th>${E.map((e) => `<th class="r">${e}</th>`).join("")}<th class="r">OBP</th><th class="r">wOBA</th></tr></thead><tbody>
+        ${c.batterProbs.map((b, i) => `<tr><td class="num">${i + 1}</td><td>${esc(b.name)}</td><td>${esc(b.bats || "")}</td>${E.map((e) => cell(b[e], e)).join("")}<td class="r num">${f(b.obp, 3)}</td><td class="r num"><b>${f(b.woba, 3)}</b></td></tr>`).join("")}
+        </tbody></table></div>`;
+    };
+    const re24Table = (t, p1, title) => `<div><h3 class="sub">${esc(title)}</h3>${table(["Bases", "~0 outs", "~1 out", "~2 outs", "~P(≥1) 0 outs", "~P(≥1) 1 out", "~P(≥1) 2 outs"], t.map((row, b) => tr([td(`<span class="num">${["---", "1--", "-2-", "12-", "--3", "1-3", "-23", "123"][b]}</span>`), ...row.map((v) => tdn(f(v, 2))), ...(p1 ? p1[b].map((v) => tdn(pc(v))) : ["", "", ""].map(() => td("")))])))}</div>`;
+    const Q = lab.re24.Q, states = lab.re24.states;
+    const cons = lab.consensus;
+    const graded = res ? res.graded : null;
+    const gmap = Object.fromEntries((graded || []).map((x) => [x.pick, x]));
+    const top = (lab.topPicks || []).map((p, i) => pickCard(p, lab.pk, i + 1, gmap[p.pick])).join("");
+    const kLabels = [...Array(13).keys()].map(String);
+    const relieversBlock = (side) => hbars((mc.relievers[side] || []).slice(0, 10).map((r) => ({ label: r.name, sub: r.role || "", value: r.p })), side === "away" ? "var(--away)" : "var(--home)");
+    app.innerHTML = `
+      <div class="lab-hero">
+        <p class="eyebrow">Pro-Lab · prueba de modelo</p>
+        <span class="name">DIAMANTE<span>-24</span></span>
+        <p class="lede">Modelo por turno al bate: cadena de Markov de las <b>24 situaciones base-out</b> (sección 5.7.3) alimentada con la probabilidad de cada resultado bateador contra pitcher (log5 multinomial, 5.7.2, sobre tasas regresadas con 5.7.4), resuelta con matrices y simulada <b>${mc.n.toLocaleString("es-MX")} veces</b> (Monte Carlo, 5.7.9). Partido de prueba: <b>${esc(a.name)} @ ${esc(h.name)}</b>, ${fmtDateLong(g.date)}, ${esc(g.venue.name)}.</p>
+        <div class="notice"><span class="ic" style="background:var(--verde-soft);color:var(--verde)">✓</span><div><b>Sin fuga de información:</b> los datos se congelaron el ${fmtStamp(lab.frozenAt)}, ${mins} minutos antes del primer lanzamiento (${fmtTime(lab.firstPitch)}), con lineups y bullpen oficiales ya publicados. El modelo no vio nada del partido.</div></div>
+      </div>
+
+      ${res ? `<section class="block"><h2>Resultado real contra el modelo</h2>
+        <div class="res">
+          <div class="tile"><span class="eyebrow">Final</span><span class="big">${esc(a.abbr)} ${res.away} – ${res.home} ${esc(h.abbr)}</span><span class="sub">proyección ${f(mc.meanRuns.away, 1)} – ${f(mc.meanRuns.home, 1)}</span></div>
+          <div class="tile"><span class="eyebrow">Ganador</span><span class="big">${esc(res.homeWon ? h.abbr : a.abbr)}</span><span class="sub">el modelo daba ${pc(res.homeWon ? cons.pHome : 1 - cons.pHome, 1)} · Brier ${f(res.brier, 3)}</span></div>
+          <div class="tile"><span class="eyebrow">Total</span><span class="big">${res.total}</span><span class="sub">percentil ${pc(res.percentileTotal)} de la distribución simulada</span></div>
+          <div class="tile"><span class="eyebrow">Picks calificados</span><span class="big">${res.hits} ✓ · ${res.misses} ✗</span><span class="sub">F5 real ${res.f5[0]}–${res.f5[1]}</span></div>
+        </div></section>` : `<div class="notice"><span class="ic">…</span><div>El partido todavía no termina: cuando la MLB publique el resultado oficial, cada actualización lo compara aquí contra la predicción congelada (acierto de cada pick, Brier, percentil del total).</div></div>`}
+
+      <section class="block"><h2>Los dos picks de mayor confianza</h2><div class="toppicks">${top}</div></section>
+
+      <section class="block"><h2>Consenso de cuatro métodos del framework</h2>
+        <div class="panel">
+          ${[["Log5 (5.7.2)", cons.methods.log5], ["Elo + abridor (5.7.7)", cons.methods.elo], ["λ + Binomial Negativa (5.3 · 5.7.5)", cons.methods.lambda], ["DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)", cons.methods.mc]].map(([n, v]) => `<div class="mbar" style="grid-template-columns:minmax(0,260px) 1fr 52px"><span>${n}</span><span class="track"><i style="width:${(v * 100).toFixed(1)}%"></i></span><span class="num">${pc(v, 1)}</span></div>`).join("")}
+          <p class="note">P(${esc(h.abbr)}) de consenso <b>${pc(cons.pHome, 1)}</b> · divergencia entre métodos ${pc(cons.spread, 1)} · Monte Carlo ${pc(mc.pHome, 1)} ± ${pc(1.96 * mc.se, 1)} (IC 95%).</p>
+        </div></section>
+
+      <div class="step"><span class="n">1</span><div><h2>Probabilidad de cada turno al bate</h2>
+        <p class="note">Para cada bateador contra el abridor rival: tasas de temporada regresadas a la media (K% 60 PA, BB% 120, HR 170, XBH 160, sencillos ≈1,100; pitcher K% 70 BF, BB% 170, HR 1,150, hits ≈2,800 BF), split por mano, y combinación <b>log5 multinomial</b>: P(e) ∝ bateador<sub>e</sub> · pitcher<sub>e</sub> / liga<sub>e</sub>. Luego parque (${esc(lab.park.name)}: HR ×${f(lab.park.mult.HR, 3)} incluyendo viento ${esc(lab.park.weather.windText || "—")}) y penalización por veces en el orden (0.96 · 1.00 · 1.07 · 1.10).</p>
+        ${chainTable("away")}${chainTable("home")}
+        <p class="note muted">E = evento residual calibrado (errores, robos, wild pitches): ${pc(lab.calibration.eRate, 2)} de los turnos, obtenido por bisección para que la cadena reproduzca las ${f(lab.calibration.target, 3)} carreras reales por media entrada de la liga (sin él daba ${f(lab.calibration.rawRE, 3)}). La tasa real de embasado por error en MLB ronda 1%.</p>
+      </div></div>
+
+      <div class="step"><span class="n">2</span><div><h2>Matriz de transición Q (24 × 24)</h2>
+        <p class="note">Cada fila es una situación (bases ocupadas + outs) y cada columna la situación siguiente tras un turno al bate con las tasas de la liga. Las filas no suman 1: lo que falta es la probabilidad de terminar la entrada (tercer out). Reglas de corrido: sencillo anota desde 2ª 60% (85% con 2 outs), doble anota desde 1ª 40% (60%), doble play 40% de los rodados con corredor en 1ª, elevado de sacrificio 55%.</p>
+        <div class="tbl" style="padding:8px">${heatmap(Q, states, states, { cell: 20, left: 46, top: 48, label: "Matriz Q", fmt: (v) => pc(v, 1), maxW: 560 })}</div>
+      </div></div>
+
+      <div class="step"><span class="n">3</span><div><h2>Matriz fundamental N = (I − Q)⁻¹ y expectativa de carreras RE24</h2>
+        <p class="note">N<sub>ij</sub> = veces esperadas que la entrada pasa por la situación j empezando en i. Carreras esperadas = N · r, donde r son las carreras esperadas de cada turno. Desde bases vacías y 0 outs una entrada dura en promedio <b>${f(lab.re24.expectedPA, 2)} turnos</b>. P(≥1 carrera) se resuelve con un segundo sistema lineal donde anotar es absorbente.</p>
+        <div class="two">${re24Table(lab.re24.league, lab.re24.leagueP1, "Liga 2026 calibrada")}${re24Table(lab.chains.away.re24, lab.chains.away.p1, `${a.abbr} contra ${lab.chains.away.vs}`)}${re24Table(lab.chains.home.re24, lab.chains.home.p1, `${h.abbr} contra ${lab.chains.home.vs}`)}</div>
+        <p class="note muted">Cotejo: la matriz calibrada reproduce la RE24 empírica de MLB (≈0.50 · 0.27 · 0.11 con bases vacías; ≈2.3 con casa llena y 0 outs).</p>
+      </div></div>
+
+      <div class="step"><span class="n">4</span><div><h2>Cadena del lineup: 216 estados (24 situaciones × 9 bateadores)</h2>
+        <p class="note">Al agregar quién batea, la cadena da las carreras esperadas de una entrada según quién la abre (R) y la matriz T de rotación del lineup: T<sub>kj</sub> = probabilidad de que, si la entrada la abre el bateador k, la siguiente la abra el j. Proyección por entrada: π<sub>i+1</sub> = π<sub>i</sub> · T, carreras<sub>i</sub> = π<sub>i</sub> · R (si el abridor lanzara todo el juego).</p>
+        <div class="two">${["away", "home"].map((sd) => { const c = lab.chains[sd]; return `<div><h3 class="sub">${esc(g.teams[sd].abbr)} contra ${esc(c.vs)}</h3>
+          <div class="tbl" style="padding:8px">${heatmap(c.T, c.batterProbs.map((b, i) => `${i + 1} ${b.name.split(" ").slice(-1)[0]}`), c.batterProbs.map((b, i) => `${i + 1}`), { cell: 30, left: 96, top: 26, values: true, minLabel: 0.05, fmt: (v) => (v * 100).toFixed(0), label: "Matriz T" })}</div>
+          ${table(["Abre la entrada", "~Carreras esperadas R"], c.batterProbs.map((b, i) => tr([td(`${i + 1}. ${esc(b.name)}`), tdn(f(c.R[i], 3))])))}
+          <p class="formula">Carreras por entrada vs el abridor: ${c.innings.map((r) => f(r.runs, 2)).join(" · ")}</p></div>`; }).join("")}</div>
+      </div></div>
+
+      <div class="step"><span class="n">5</span><div><h2>Monte Carlo: ${mc.n.toLocaleString("es-MX")} partidos simulados</h2>
+        <p class="note">Cada simulación juega el partido turno por turno: el abridor sale al llegar a su límite de bateadores (${esc(a.abbr)}: ${f(mc.starterBf.away.mean, 1)} ± ${f(mc.starterBf.away.sd, 1)}, recientes ${mc.starterBf.away.recent.join(", ")}; ${esc(h.abbr)}: ${f(mc.starterBf.home.mean, 1)} ± ${f(mc.starterBf.home.sd, 1)}), el bullpen entra por rol y situación (largos en entradas tempranas, setup en la 8ª, cerrador en salvamento), cada relevista cubre sus outs típicos y los no disponibles por fatiga no lanzan; en extra innings hay corredor en 2ª y el local no batea la 9ª si va ganando. ${f(mc.seconds, 1)} s de cómputo.</p>
+        <h3 class="sub">Convergencia de P(${esc(h.abbr)} gana) con banda de 95%</h3>${convergence(mc.convergence, "Convergencia del Monte Carlo")}
+        <h3 class="sub">Carreras por equipo</h3>${groupedBars([{ name: a.abbr, color: "var(--away)", values: mc.runs.away.slice(0, 16) }, { name: h.abbr, color: "var(--home)", values: mc.runs.home.slice(0, 16) }], [...Array(16).keys()].map(String), { label: "Carreras por equipo" })}
+        <h3 class="sub">Total de carreras (media ${f(mc.total.reduce((acc, v, k) => acc + k * v, 0), 2)})</h3>${groupedBars([{ name: "Total", color: "var(--accent)", values: mc.total.slice(0, 22) }], [...Array(22).keys()].map(String), { marks: [{ at: 7.5, label: "7.5" }, { at: 8.5, label: "8.5" }, { at: 9.5, label: "9.5" }], label: "Total" })}
+        <h3 class="sub">Margen (${esc(h.abbr)} − ${esc(a.abbr)})</h3>${groupedBars([{ name: "Margen", color: "var(--home)", values: Object.keys(mc.margin).map(Number).sort((x, y) => x - y).map((k) => mc.margin[k]) }], Object.keys(mc.margin).map(Number).sort((x, y) => x - y).map(String), { label: "Margen" })}
+        <div class="two"><div><h3 class="sub">Ponches de ${esc(lab.chains.home.vs)} (${esc(a.abbr)})</h3>${groupedBars([{ name: "K", color: "var(--away)", values: mc.k.away.slice(0, 13) }], kLabels, { w: 320, h: 150, label: "Ponches" })}</div>
+          <div><h3 class="sub">Ponches de ${esc(lab.chains.away.vs)} (${esc(h.abbr)})</h3>${groupedBars([{ name: "K", color: "var(--home)", values: mc.k.home.slice(0, 13) }], kLabels, { w: 320, h: 150, label: "Ponches" })}</div></div>
+        <dl class="kv"><dt>F5: ${esc(a.abbr)} · empate · ${esc(h.abbr)}</dt><dd class="num">${pc(mc.f5.away, 1)} · ${pc(mc.f5.tie, 1)} · ${pc(mc.f5.home, 1)}</dd>
+          <dt>NRFI</dt><dd class="num">${pc(mc.nrfi, 1)}</dd><dt>Anota primero ${esc(a.abbr)} / ${esc(h.abbr)}</dt><dd class="num">${pc(mc.first.away, 1)} / ${pc(mc.first.home, 1)}</dd>
+          <dt>Extra innings</dt><dd class="num">${pc(mc.extras, 1)}</dd></dl>
+      </div></div>
+
+      <div class="step"><span class="n">6</span><div><h2>Bullpen: quién lanzaría (predicción del Monte Carlo)</h2>
+        <p class="note">Frecuencia con que cada relevista entra en las simulaciones. Es la predicción de uso del bullpen con la lista oficial del partido, los roles y la fatiga de los últimos 3 días.</p>
+        <div class="two"><div><h3 class="sub">${esc(a.abbr)}</h3>${relieversBlock("away")}</div><div><h3 class="sub">${esc(h.abbr)}</h3>${relieversBlock("home")}</div></div>
+        ${bullpenTable(a.abbr, lab.pens.away, true)}${bullpenTable(h.abbr, lab.pens.home, true)}
+      </div></div>
+
+      <div class="step"><span class="n">7</span><div><h2>Actualización bayesiana: lineup proyectado → confirmado (5.7.6)</h2>
+        ${lab.morning ? `<p class="note">Primera pasada con los lineups proyectados (últimos 10 juegos, doble peso contra la misma mano del abridor) y segunda con los oficiales. El dato nuevo mueve la probabilidad en lugar de rehacer el análisis.</p>
+        <div class="res"><div class="tile"><span class="eyebrow">Mañana · proyectado</span><span class="big">${pc(lab.morning.pHome, 1)}</span><span class="sub">P(${esc(h.abbr)}) · total ${f(lab.morning.total, 2)} · ${lab.morning.n.toLocaleString("es-MX")} sims</span></div>
+          <div class="tile"><span class="eyebrow">Tarde · confirmado</span><span class="big">${pc(mc.pHome, 1)}</span><span class="sub">total ${f(mc.total.reduce((acc, v, k) => acc + k * v, 0), 2)} · cambio ${signed(100 * (mc.pHome - lab.morning.pHome), 1)} pp</span></div>
+          <div class="tile"><span class="eyebrow">Acierto de la proyección</span><span class="big">${lab.morning.hits.away}/9 · ${lab.morning.hits.home}/9</span><span class="sub">titulares proyectados que sí abrieron (${esc(a.abbr)} · ${esc(h.abbr)})</span></div></div>
+        <div class="lineups">${["away", "home"].map((sd) => `<div class="card-lu"><header><b>${esc(g.teams[sd].abbr)}</b><span class="stamp-p">Proyección de la mañana</span></header>${lab.morning.lineups[sd].map((r, i) => `<div class="lu-row proj"><span class="slot">${i + 1}</span><span class="pos">${esc(r.pos || "")}</span><span class="nm">${esc(r.name)}</span><span class="pos">${r.confirmed ? '<span class="won">✓</span>' : '<span class="lost">✗</span>'}</span><span class="pr">${pc(r.prob)}</span></div>`).join("")}</div>`).join("")}</div>` : '<p class="note">Sin datos para la pasada proyectada.</p>'}
+      </div></div>
+
+      <section class="block"><h2>Alineaciones oficiales</h2>
+        <div class="lineups">${["away", "home"].map((sd) => `<div class="card-lu"><header><b>${esc(g.teams[sd].abbr)}</b><span class="stamp-c">✓ Confirmado</span></header>${lab.lineups[sd].map((r, i) => `<div class="lu-row conf"><span class="slot">${i + 1}</span><span class="pos">${esc(r.pos || "")}</span><span class="nm">${esc(r.name)}</span><span class="pos">${esc(r.bats || "")}</span><span class="st">wOBA esp. ${f(lab.chains[sd].batterProbs[i].woba, 3)}</span></div>`).join("")}<p class="formula">Banca: ${lab.bench[sd].map(esc).join(" · ")}</p></div>`).join("")}</div>
+      </section>
+
+      <section class="block"><h2>Bateador contra pitcher (historial de carrera)</h2>
+        <p class="note muted">Solo como referencia: con estas muestras el framework (5.7.4) no permite sacar conclusiones y el modelo no lo usa.</p>
+        <div class="two">${["away", "home"].map((sd) => `<div><h3 class="sub">${esc(g.teams[sd].abbr)} contra ${esc(lab.bvp[sd].vs)}</h3>${table(["Bateador", "~PA", "~H", "~HR", "~K", "~BB", "~OPS"], lab.bvp[sd].rows.map((r) => tr([td(esc(r.name) + (r.bench ? ' <span class="muted">(banca)</span>' : "")), tdn(r.pa), tdn(r.h), tdn(r.hr), tdn(r.k), tdn(r.bb), tdn(r.ops || "—")])))}</div>`).join("")}</div>
+      </section>
+
+      <section class="block"><h2>Todos los picks del partido por nivel de confianza</h2>${picksTable(lab.picks, lab.pk, graded)}</section>
+      <a class="callout-link btn" href="#prolabbase">Ver el análisis completo del framework (10 secciones) para este partido →</a>
+      ${footer()}`;
+    window.scrollTo(0, 0);
+  }
+
+  // ---------------------------------------------------------------- vista: cotejo de datos
+  function viewChecks() {
+    const c = D.checks || { checks: [], counts: {} };
+    app.innerHTML = `<div class="page-head"><p class="eyebrow">Calidad de datos</p><h1>Cotejo: cada fuente contra otra</h1>
+      <p class="lede">Antes de usar un dato se verifica contra una fuente independiente (standings contra resultados, temporada contra game logs, MLB Stats API contra Baseball Savant, lineups contra roster). ${esc(Object.entries(c.counts).map(([k, v]) => `${v} ${k}`).join(" · "))}.</p></div>
+      ${table(["Chequeo", "Estado", "Detalle", "Fuentes"], c.checks.map((x) => tr([td(`<b>${esc(x.title)}</b>${x.bad.length ? `<details><summary class="muted" style="cursor:pointer">${x.bad.length} caso(s)</summary><ul class="clean">${x.bad.slice(0, 30).map((b) => `<li>${esc(b)}</li>`).join("")}</ul></details>` : ""}`), td(status(x.status)), td(esc(x.detail), "muted"), td(esc(x.source), "muted")])))}
+      <section class="block"><h2>Correcciones que salieron del cotejo</h2><ul class="clean panel">
+        <li><b>Juego duplicado en el calendario oficial</b> (SF 7–ATL 2, gamePk 824912, listado dos veces por una reanudación): inflaba el récord, el Elo y el H2H de ATL y SF. Ahora se deduplica por gamePk.</li>
+        <li><b>La API de stats por equipo devolvía solo 50 filas</b>: 15 equipos se quedaban sin split de abridores/relevistas o sin splits por mano (bullpen vacío). Ahora se pide <code>limit=100</code> y el cotejo verifica los 30.</li>
+        <li><b>Estadio sin park factor en Savant</b> (Sutter Health Park): se calcula uno propio con dos temporadas (carreras en casa ÷ carreras de visita, regresado).</li>
+      </ul></section>${footer()}`;
+  }
+
   // ---------------------------------------------------------------- vista: posiciones
   function viewStandings() {
     const rows = D.standings || [];
@@ -740,6 +1167,10 @@
       </div>
       ${table(["Método", "~Brier"], Object.entries(t.brierMethods).map(([k, v]) => tr([td(esc({ log5: "Log5", elo: "Elo + abridor", lambda: "Modelo λ" }[k])), tdn(f(v, 4))])))}
       ${table(["Rango de confianza", "~Partidos", "~Prob. media", "~Acierto real"], t.calibration.map((b) => tr([td(esc(b.range)), tdn(b.n), tdn(pc(b.pred, 1)), tdn(pc(b.hit, 1))])))}
+      ${t.picks && t.picks.n ? `<section class="block"><h2>Picks principales: ¿el índice de confianza acierta?</h2>
+        <p class="note">Los dos picks de mayor confianza de cada partido, calificados con el resultado oficial. Si el índice funciona, los niveles altos deben acertar más.</p>
+        ${table(["Nivel de confianza", "~Picks", "~Prob. media del modelo", "~Acierto real"], t.picks.byLevel.map((b) => tr([td(`<span class="ic ${lvlCls(b.level)}">${esc(b.level)}</span>`), tdn(b.n), tdn(pc(b.pred, 1)), tdn(pc(b.hit, 1))])))}
+        ${table(["Fecha", "Partido", "Pick", "~Prob.", "Confianza", "Resultado"], t.picks.rows.slice(0, 40).map((r) => tr([td(fmtShort(r.date), "num"), td(esc(r.game)), td(esc(r.pick)), tdn(pc(r.p, 1)), td(`<span class="ic ${lvlCls(r.level)}">IC ${Math.round(r.ic)}</span>`), td(r.won ? '<span class="won">✓</span>' : r.won === false ? '<span class="lost">✗</span>' : "push", "c")])))}</section>` : ""}
       <section class="block"><h2>Últimos partidos evaluados</h2>${table(["Fecha", "Partido", "~P(local)", "~Proyección", "~Final", "~Total", "NRFI", "Semáforo"],
         t.rows.map((r) => tr([td(fmtShort(r.date), "num"), td(`${esc(r.away)} @ ${esc(r.home)}`), tdn(pc(r.pHome)), tdn(`${f(r.projAway, 1)}-${f(r.projHome, 1)}`),
           td(`${r.ar}-${r.hr}`, `num r ${(r.pHome >= 0.5) === r.homeWon ? "w" : "l"}`), tdn(`${f(r.total, 1)} / ${r.actualTotal}`), td(r.nrfiHit ? "Sí" : "No"), td(light(r.light))])))}</section>` + footer();
@@ -784,6 +1215,8 @@
     const h = (location.hash || "#partidos").slice(1);
     let tab = "partidos";
     if (h.startsWith("g") && BY_PK[h.slice(1)]) viewGame(BY_PK[h.slice(1)]);
+    else if (h === "prolab" || h === "prolabbase") { tab = "prolab"; viewProLab(h === "prolabbase"); }
+    else if (h === "cotejo") { tab = h; viewChecks(); }
     else if (h === "posiciones") { tab = h; viewStandings(); }
     else if (h === "seguimiento") { tab = h; viewTrack(); }
     else if (h === "metodologia") { tab = h; viewMethod(); }

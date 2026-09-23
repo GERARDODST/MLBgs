@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   push:
     branches: ["main"]
-    paths: ["mlbgs/**", "site/template.html", "tests/**", ".github/workflows/update.yml"]
+    paths: ["mlbgs/**", "site/template.html", "tests/**", "prolab/prolab_*.json", ".github/workflows/update.yml"]
 
 permissions:
   contents: write
@@ -40,6 +40,7 @@ jobs:
           git config user.name "mlbgs-bot"
           git config user.email "mlbgs-bot@users.noreply.github.com"
           if [ -e data/predictions ]; then git add -A data/predictions; fi
+          git add prolab/result_*.json 2>/dev/null || true
           git commit -m "Predicciones MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
           git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
       - name: Empaquetar la página
