@@ -2,9 +2,11 @@ name: Actualizar MLBgs
 
 on:
   schedule:
-    # 8am, 11am, 2pm, 5pm y 8pm hora del Este: antes de los lineups y de los juegos de la costa oeste
-    - cron: "0 12,15,18,21 * * *"
-    - cron: "0 0 * * *"
+    # Días de juego: cada 20 minutos de 15:00 a 05:59 UTC (lineups, abridores, bullpen y modelo al día);
+    # el marcador en vivo lo consulta el navegador cada 30 s directo de statsapi.mlb.com.
+    - cron: "*/20 15-23 * * *"
+    - cron: "*/20 0-5 * * *"
+    - cron: "0 12 * * *"
   workflow_dispatch:
   push:
     branches: ["main"]

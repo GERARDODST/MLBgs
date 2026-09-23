@@ -172,13 +172,15 @@ def upcoming_games(start: str, end: str) -> list[dict]:
 
 def scoreboard(start: str, end: str) -> list[dict]:
     """Marcador de todos los partidos (programados, en vivo y finales) con la situación actual."""
-    data = get(f"{STATS}/schedule?sportId=1&startDate={start}&endDate={end}&gameType=R,F,D,L,W&hydrate=linescore,team")
+    data = get(f"{STATS}/schedule?sportId=1&startDate={start}&endDate={end}&gameType=R,F,D,L,W&hydrate=linescore,team,lineups,probablePitcher")
     out = []
     for d in data.get("dates", []):
         for g in d["games"]:
             t = g["teams"]
             ls = g.get("linescore") or {}
             off = ls.get("offense") or {}
+            dfn = ls.get("defense") or {}
+            lu = g.get("lineups") or {}
             out.append({
                 "pk": g["gamePk"], "date": g.get("officialDate"), "time": g.get("gameDate"),
                 "state": g["status"].get("abstractGameState"), "detailed": g["status"].get("detailedState"),
@@ -189,7 +191,47 @@ def scoreboard(start: str, end: str) -> list[dict]:
                 "outs": ls.get("outs"), "bases": (1 if off.get("first") else 0) | (2 if off.get("second") else 0) | (4 if off.get("third") else 0),
                 "inn": [[(i.get("away") or {}).get("runs"), (i.get("home") or {}).get("runs")] for i in ls.get("innings", [])],
                 "venue": (g.get("venue") or {}).get("name"),
+                "now": {"batter": (off.get("batter") or {}).get("fullName"), "onDeck": (off.get("onDeck") or {}).get("fullName"),
+                        "pitcher": (dfn.get("pitcher") or {}).get("fullName"), "balls": ls.get("balls"), "strikes": ls.get("strikes")},
+                "probs": {s: (t[s].get("probablePitcher") or {}).get("fullName") for s in ("away", "home")},
+                "lu": ({s: [{"name": p.get("fullName"), "pos": (p.get("primaryPosition") or {}).get("abbreviation")}
+                            for p in lu.get(f"{s}Players") or []] for s in ("away", "home")}
+                       if (lu.get("awayPlayers") or lu.get("homePlayers")) else None),
             })
+    today = end
+    live = [g for g in out if g["date"] == today and g["state"] in ("Live", "Final") and "Postponed" not in (g["detailed"] or "")]
+    for g, box in zip(live, pmap(lambda g: _live_box(g["pk"]), live)):
+        if box:
+            g["box"] = box
+    return out
+
+
+def _live_box(pk):
+    """Box score reducido: orden al bate actual (con cambios) y pitchers usados, con su línea del juego."""
+    try:
+        b = get(f"{STATS}/game/{pk}/boxscore")
+    except Exception:  # noqa: BLE001 - un box score faltante no debe tumbar la ingesta
+        return None
+    out = {}
+    for sd in ("away", "home"):
+        tm = b["teams"][sd]
+        P = tm.get("players") or {}
+        bat = []
+        for pid in tm.get("battingOrder") or []:
+            p = P.get(f"ID{pid}") or {}
+            st = (p.get("stats") or {}).get("batting") or {}
+            bat.append({"name": (p.get("person") or {}).get("fullName"), "pos": (p.get("position") or {}).get("abbreviation"),
+                        "ab": st.get("atBats", 0), "h": st.get("hits", 0), "r": st.get("runs", 0), "rbi": st.get("rbi", 0),
+                        "bb": st.get("baseOnBalls", 0), "k": st.get("strikeOuts", 0), "hr": st.get("homeRuns", 0),
+                        "sub": int(p.get("battingOrder") or 0) % 100 != 0})
+        pit = []
+        for pid in tm.get("pitchers") or []:
+            p = P.get(f"ID{pid}") or {}
+            st = (p.get("stats") or {}).get("pitching") or {}
+            pit.append({"name": (p.get("person") or {}).get("fullName"), "ip": st.get("inningsPitched", "0.0"),
+                        "pitches": st.get("numberOfPitches", st.get("pitchesThrown", 0)), "k": st.get("strikeOuts", 0),
+                        "bb": st.get("baseOnBalls", 0), "h": st.get("hits", 0), "er": st.get("earnedRuns", 0)})
+        out[sd] = {"bat": bat, "pit": pit}
     return out
 
 

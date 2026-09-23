@@ -415,12 +415,23 @@
   .felt .ic.Alta { color: var(--good); } .felt .ic.Media { color: #9cc0ff; } .felt .ic.Baja { color: var(--gold); } .felt .ic.Muy { color: var(--chalk-2); }
   .felt .bestc .muted { color: var(--chalk-2); }
   .felt .bestc b, .felt td b { color: var(--chalk); }
+  .game.has-lab { border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+  .labnote { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
   .lc-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
   .lc-match { font-size: 14px; color: var(--ink-2); }
   .linescore.mini td, .linescore.mini th { min-width: 22px; padding: 3px 2px; font-size: 12px; }
   .linescore.mini td:first-child, .linescore.mini th:first-child { min-width: 42px; padding-left: 8px; }
   .linescore.mini .team-cell { font-size: 14px; }
   .score .tm small { font-family: var(--sans); font-weight: 400; font-size: 12.5px; letter-spacing: 0; }
+  .nowplay { font-size: 13px; color: var(--ink-2); background: var(--surface-2); border-radius: 8px; padding: 7px 10px; line-height: 1.45; }
+  details.lk > summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--accent); }
+  details.lk[open] > summary { margin-bottom: 8px; }
+  .lk-two { gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .lt { font-family: var(--display); font-size: 16px; font-weight: 700; margin: 2px 0 6px; display: flex; gap: 8px; align-items: center; }
+  table.mini { font-size: 12.5px; }
+  table.mini th, table.mini td { padding: 3px 6px; }
+  ol.lu-mini { margin: 0; padding-left: 22px; font-size: 13px; display: flex; flex-direction: column; gap: 2px; }
+  ol.lu-mini .pos { font-family: var(--mono); font-size: 11.5px; color: var(--muted); display: inline-block; min-width: 24px; }
   .tiles.t4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); }
   .abbr-mark { width: 4px; height: 20px; border-radius: 2px; display: inline-block; }
   .wpbar .splitbar { height: 8px; }
@@ -912,8 +923,10 @@
     const bestTxt = b ? `${esc(b.market)}: <b>${esc(b.pick)}</b> ${pc(b.p)}${isNum(b.price) ? ` · ${odds(b.price)}` : isNum(b.fair) ? ` · justo ${odds(b.fair)}` : ""}` : "Sin mercado";
     const edge = s.starterEdge;
     const edgeTxt = !edge.side ? "sin dato" : edge.level === "equilibrado" ? "parejos" : `${esc(g.teams[edge.side].abbr)} ${esc(edge.level)}`;
-    return `<a class="game" href="#g${g.pk}">
-      <div class="top"><span>${fmtTime(g.time)} · ${esc(g.venue.name)}${g.dh && g.dh !== "N" ? ` · juego ${g.gameNumber}` : ""}</span>${light(s.light)}</div>
+    const lab = LAB_BY_PK[String(g.pk)];
+    const tops = lab ? lab.topPicks || [] : s.topPicks || [];
+    return `<a class="game${lab ? " has-lab" : ""}" href="#g${g.pk}">
+      <div class="top"><span>${fmtTime(g.time)} · ${esc(g.venue.name)}${g.dh && g.dh !== "N" ? ` · juego ${g.gameNumber}` : ""}</span><span style="display:inline-flex;gap:6px;align-items:center">${lab ? `<span class="tag info" data-tip="Tiene modelo del Pro-Lab: los picks combinan framework + modelo">Pro-Lab · ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${light(s.light)}</span></div>
       <div class="line"><span class="abbr"><i class="away-mark"></i>${esc(a.abbr)}</span><span class="who"><span class="rec">${esc(a.name)} · ${a.w}-${a.l}</span>${sp(s.probables.away)}</span><span class="prob ${pa >= 0.5 ? "fav" : "dog"}">${pc(pa)}</span></div>
       <div class="line"><span class="abbr"><i class="home-mark"></i>${esc(h.abbr)}</span><span class="who"><span class="rec">${esc(h.name)} · ${h.w}-${h.l}</span>${sp(s.probables.home)}</span><span class="prob ${ph > 0.5 ? "fav" : "dog"}">${pc(ph)}</span></div>
       <div class="splitbar" role="img" aria-label="Probabilidad de victoria: ${esc(a.abbr)} ${pc(pa)}, ${esc(h.abbr)} ${pc(ph)}"><span style="width:${(pa * 100).toFixed(1)}%"></span><span style="width:${(ph * 100).toFixed(1)}%"></span></div>
@@ -924,7 +937,7 @@
         <div class="fact"><b>${pc(s.nrfi)}</b><span>NRFI</span></div>
       </div>
       <div class="bestline"><span>Abridor: <b>${edgeTxt}</b> · triangulación ${esc(s.confidence)}</span><span class="muted">${s.gate.missing} dato${s.gate.missing === 1 ? "" : "s"} faltante${s.gate.missing === 1 ? "" : "s"}</span></div>
-      <div class="picks2">${(s.topPicks || []).map((p) => `<div class="p2">${icBadge(p)}<span class="t"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)} · justo ${odds(p.fair)}</span></span></div>`).join("") || `<span class="muted">${bestTxt}</span>`}</div>
+      <div class="picks2">${lab ? `<span class="eyebrow" style="font-size:11.5px">Picks finales · framework + ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${tops.map((p) => `<div class="p2">${icBadge(p)}<span class="t"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)} · justo ${odds(p.fair)}</span></span></div>`).join("") || `<span class="muted">${bestTxt}</span>`}</div>
     </a>`;
   }
 
@@ -1007,6 +1020,8 @@
     const fav = s.pHome >= 0.5 ? "home" : "away";
     const openAll = store.get("mlbgs-open") === "1";
     CURRENT_GAME = g;
+    const lab = LAB_BY_PK[String(g.pk)];
+    const labName = lab ? LAB_INFO[labKey(lab)].name.join("") : "";
     const ST = sectionStatus(g);
     const SECS = [
       [1, "Liga, división y contexto competitivo", S.s1.divisional ? "Divisional" : S.s1.sameLeague ? "Misma liga" : "Interliga", sec1],
@@ -1031,8 +1046,9 @@
         <div class="team home"><span class="eyebrow">Local</span><span class="big">${esc(h.abbr)}</span><span class="nm">${esc(h.name)}</span><span class="sub">${h.w}-${h.l} · ${esc(h.division || "")}${h.streak ? " · racha " + esc(h.streak) : ""} · Elo ${h.elo ?? "—"}</span></div>
       </div>
 
-      <section class="block"><h2>Picks principales</h2>
-        <div class="toppicks">${(g.picks || []).slice(0, 2).map((p, i) => pickCard(p, g.pk, i + 1)).join("")}</div>
+      <section class="block"><h2>${lab ? `Picks finales: framework + ${esc(labName)}` : "Picks principales"}</h2>
+        ${lab ? `<div class="notice labnote"><span class="ic" style="background:var(--accent-soft);color:var(--accent)">★</span><div>Este partido tiene modelo del Pro-Lab: <b>${esc(labName)}</b> (${esc(LAB_INFO[labKey(lab)].kind.toLowerCase())}), con datos congelados el ${fmtStamp(lab.frozenAt)}. Estos dos picks ya combinan los métodos del framework (Log5, Elo, λ, Poisson) con el modelo; al final de la página se explica cómo se complementan. <a href="#lab${lab.pk}"><b>Ver el modelo del Pro-Lab →</b></a></div></div>` : ""}
+        <div class="toppicks">${(lab ? lab.topPicks || [] : (g.picks || []).slice(0, 2)).map((p, i) => pickCard(p, g.pk, i + 1)).join("")}</div>
       </section>
 
       ${secMap(ST)}
@@ -1072,7 +1088,9 @@
       <div class="toolbar"><h2 class="sec-title" style="margin-right:auto">Las 10 secciones del framework</h2><button class="btn" id="toggle-all">${openAll ? "Contraer" : "Expandir"} todas</button></div>
       <div class="sec-groups">${secsHtml}</div>
 
-      <section class="block"><h2>Todos los picks por nivel de confianza</h2>${picksTable(g.picks || [], g.pk)}</section>
+      ${lab ? complementBlock(g, lab) : ""}
+      <section class="block"><h2>Todos los picks por nivel de confianza${lab ? ` <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">framework + ${esc(labName)}</small>` : ""}</h2>${picksTable(lab ? lab.picks : g.picks || [], g.pk)}</section>
+      ${lab ? `<a class="callout-link btn" href="#lab${lab.pk}">Ver el modelo del Pro-Lab (${esc(labName)}) →</a>` : ""}
       ${footer()}`;
     document.getElementById("toggle-all").addEventListener("click", () => {
       const open = store.get("mlbgs-open") !== "1";
@@ -1907,6 +1925,58 @@
     window.scrollTo(0, 0);
   }
 
+  // ---------------------------------------------------------------- Pro-Lab dentro del partido: cómo se complementan
+  function labModelSummary(lab) {
+    const k = labKey(lab);
+    if (k === "kronos") { const m = lab.kronos.mc; return { pHome: m.pHome, ra: m.meanRuns.away, rh: m.meanRuns.home, total: meanDist(m.total), nrfi: m.nrfi, kA: meanDist(m.k.away), kH: meanDist(m.k.home), n: m.n }; }
+    if (k === "prisma") { const P = lab.prisma, pr = P.predictive; return { pHome: pr.pHome, ra: P.posterior.muAway, rh: P.posterior.muHome, total: pr.meanTotal, nrfi: null, kA: null, kH: null, n: pr.sims }; }
+    const m = lab.mc; return { pHome: m.pHome, ra: m.meanRuns.away, rh: m.meanRuns.home, total: meanDist(m.total), nrfi: m.nrfi, kA: meanDist(m.k.away), kH: meanDist(m.k.home), n: m.n };
+  }
+
+  const LAB_ADDS = {
+    kronos: ["Juega el partido lanzamiento a lanzamiento: la cuenta de cada bateador contra cada pitcher, no promedios de equipo.", "Cuántos lanzamientos hace el abridor, cuándo sale y qué relevista entra (por rol, situación y fatiga).", "La distribución completa: ponches del abridor, total, F5, margen y extra innings, con su error de simulación."],
+    prisma: ["La incertidumbre de la propia probabilidad (intervalo creíble), no solo un número.", "Fuerzas de ataque y defensa de los 30 equipos con regresión bayesiana óptima.", "Validación fuera de muestra contra Log5."],
+    diamante: ["El partido turno por turno con la cadena de Markov de 24 estados.", "Lineup confirmado bateador por bateador y bullpen por rol.", "Distribución completa de carreras, ponches y F5."],
+  };
+
+  function complementBlock(g, lab) {
+    const s = g.summary, a = g.teams.away.abbr, h = g.teams.home.abbr, k = labKey(lab), name = LAB_INFO[k].name.join(""), m = labModelSummary(lab);
+    const kp = g.sections.s6.kprops || {};
+    const fwK = (side) => { const v = kp[side] || Object.values(kp).find((x) => x && x.side === side); return v ? v.exp : null; };
+    const dpp = (x, y) => (isNum(x) && isNum(y) ? `${y - x >= 0 ? "+" : ""}${(100 * (y - x)).toFixed(1)} pp` : "—");
+    const drun = (x, y) => (isNum(x) && isNum(y) ? signed(y - x, 2) : "—");
+    const rows = [
+      [`P(${h}) gana`, pc(s.pHome, 1), pc(m.pHome, 1), dpp(s.pHome, m.pHome)],
+      [`Carreras ${a}`, f(s.proj.away, 2), f(m.ra, 2), drun(s.proj.away, m.ra)],
+      [`Carreras ${h}`, f(s.proj.home, 2), f(m.rh, 2), drun(s.proj.home, m.rh)],
+      ["Total", f(s.proj.total, 2), f(m.total, 2), drun(s.proj.total, m.total)],
+      ["NRFI", pc(s.nrfi, 1), m.nrfi == null ? "—" : pc(m.nrfi, 1), dpp(s.nrfi, m.nrfi)],
+      [`Ponches ${s.probables.away.name || "abridor " + a}`, f(fwK("away"), 1), f(m.kA, 1), drun(fwK("away"), m.kA)],
+      [`Ponches ${s.probables.home.name || "abridor " + h}`, f(fwK("home"), 1), f(m.kH, 1), drun(fwK("home"), m.kH)],
+    ];
+    const agree = Math.abs(m.pHome - s.pHome);
+    const tp = (lab.topPicks || []).map((p) => `<li><b>${esc(p.pick)}</b> (${esc(p.market)}): ${Object.entries(p.methods).map(([mm, v]) => `${esc(mm)} ${pc(v, 1)}`).join(" · ")} → <b>${pc(p.p, 1)}</b>, ${icBadge(p)} <span class="muted">${esc(p.formula)}</span></li>`).join("");
+    return `<section class="block" id="complemento"><h2>Cómo se complementan el framework y ${esc(name)}</h2>
+      <p class="note">El framework y el modelo miran el mismo partido desde lados distintos. Donde coinciden, el pick gana confianza; donde discrepan, el índice de confianza baja y la página lo marca.</p>
+      <div class="two">
+        <div class="panel"><h3 class="sub">Lo que aporta el framework (secciones 1-10)</h3><ul class="clean">
+          <li>Contexto: qué se juegan en la tabla, serie, noticias y lesionados.</li>
+          <li>Triangulación Log5 · Elo · λ Binomial Negativa y el ajuste por abridor.</li>
+          <li>Filtros de contradicción (8.3), gate de completitud (9.3) y semáforo.</li>
+          <li>Momios, probabilidad implícita, edge y mínimo aceptable (sección 7).</li></ul></div>
+        <div class="panel"><h3 class="sub">Lo que aporta ${esc(name)}</h3><ul class="clean">${(LAB_ADDS[k] || []).map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>
+      </div>
+      <h3 class="sub">Número por número</h3>
+      ${table(["Mercado", "~Framework", `~${esc(name)}`, "~Diferencia"], rows.map((r) => tr([td(esc(r[0])), tdn(r[1]), tdn(r[2]), tdn(r[3])])))}
+      <p class="note">${agree <= 0.03 ? `Coinciden en el ganador: la diferencia es de ${(100 * agree).toFixed(1)} pp, dentro del error normal de dos modelos.` : agree <= 0.08 ? `Diferencia moderada (${(100 * agree).toFixed(1)} pp): el consenso del índice de confianza baja un poco.` : `Discrepan fuerte (${(100 * agree).toFixed(1)} pp): revisar el contexto antes de apostar.`}</p>
+      ${lab.reading && lab.reading.length ? `<h3 class="sub">Lectura integrada</h3><div class="panel"><dl class="kv" style="grid-template-columns:minmax(0,210px) minmax(0,1fr)">${lab.reading.map((r) => `<dt><b>${esc(r.k)}</b><br><span class="muted" style="font-size:12px">${esc(r.src)}</span></dt><dd style="text-align:left;font-weight:400">${esc(r.v)}</dd>`).join("")}</dl></div>` : ""}
+      <h3 class="sub">De dónde salen los dos picks finales</h3>
+      <ul class="clean">${tp}</ul>
+      <p class="note muted">Cada pick final promedia la probabilidad de los métodos del framework y del modelo. El índice de confianza premia el acuerdo entre ellos (Consenso), la ventaja sobre el precio (Fuerza) y castiga datos faltantes, poca muestra o contradicciones del framework. Con tus momios en el tablero de la sección 7 se recalcula todo.</p>
+      <a class="btn" href="#lab${lab.pk}">Ver el modelo del Pro-Lab (${esc(name)}) →</a>
+    </section>`;
+  }
+
   // ---------------------------------------------------------------- vista: en vivo
   const LV = D.live || { games: [] };
   let liveGames = (LV.games || []).slice();
@@ -2036,12 +2106,40 @@
         <span class="tm"><i class="abbr-mark home-mark"></i>${esc(hA)}${pre && pre.probables ? ` <small class="muted">${esc(pre.probables.home || "")}</small>` : ""}</span><span class="r ${hasScore ? lead(g.hr, g.ar) : ""}">${hasScore ? g.hr : ""}</span>
       </div>
       ${live ? `<div class="sit">${diamond(g.bases || 0)}<span class="outs" aria-label="${g.outs ?? 0} outs">${[0, 1, 2].map((i) => `<i class="${i < (g.outs || 0) ? "on" : ""}"></i>`).join("")}</span><span>${g.outs ?? 0} out${g.outs === 1 ? "" : "s"}</span></div>` : ""}
+      ${live && g.now && g.now.batter ? `<div class="nowplay">Al bate <b>${esc(g.now.batter)}</b>${g.now.onDeck ? ` · en cubierta ${esc(g.now.onDeck)}` : ""}<br>Lanza <b>${esc(g.now.pitcher || "—")}</b>${curPitches(g) != null ? ` (${curPitches(g)} lanzamientos)` : ""} · cuenta ${g.now.balls ?? 0}-${g.now.strikes ?? 0}</div>` : ""}
       ${ls}
+      ${boxDetails(g)}
       ${isNum(pH) && !off ? `<div class="wpbar"><span>${pc(1 - pH)}</span><div class="splitbar" role="img" aria-label="Probabilidad de victoria: ${esc(aA)} ${pc(1 - pH)}, ${esc(hA)} ${pc(pH)}"><span style="width:${((1 - pH) * 100).toFixed(1)}%"></span><span style="width:${(pH * 100).toFixed(1)}%"></span></div><span style="text-align:right">${pc(pH)}</span></div>
         <p class="muted" style="font-size:12px">${live ? `Probabilidad en vivo (situación + distribución por media entrada)${pre ? ` · antes del juego ${esc(hA)} ${pc(pre.pHome)}` : ""}` : fin ? `Antes del juego: ${esc(hA)} ${pc(pre ? pre.pHome : null)} · proyección ${f(pre && pre.projAway, 1)}–${f(pre && pre.projHome, 1)}` : `Probabilidad previa · proyección ${f(pre && pre.projAway, 1)}–${f(pre && pre.projHome, 1)} · total ${f(pre && pre.total, 1)}`}</p>` : ""}
       <div class="pk-live"><span class="eyebrow" style="font-size:12px">Los 2 picks principales${pre && pre.model ? ` · modelo ${esc(pre.model)}` : ""}</span>${picks}</div>
-      ${link ? `<a href="${link}" style="font-size:13px;font-weight:600">${LAB_BY_PK[String(g.pk)] ? "Ver el modelo del Pro-Lab →" : "Ver el análisis completo →"}</a>` : ""}
+      ${LAB_BY_PK[String(g.pk)] ? `<span style="display:flex;gap:14px;flex-wrap:wrap;font-size:13px;font-weight:600"><a href="#lab${g.pk}">Ver el modelo del Pro-Lab (${esc(LAB_INFO[labKey(LAB_BY_PK[String(g.pk)])].name.join(""))}) →</a>${BY_PK[String(g.pk)] ? `<a href="#g${g.pk}#complemento">Framework + modelo →</a>` : ""}</span>` : link ? `<a href="${link}" style="font-size:13px;font-weight:600">Ver el análisis completo →</a>` : ""}
     </article>`;
+  }
+
+  const liveOpen = new Set();
+  document.addEventListener("toggle", (e) => { const d = e.target; if (d && d.matches && d.matches("details[data-lk]")) { if (d.open) liveOpen.add(d.dataset.lk); else liveOpen.delete(d.dataset.lk); } }, true);
+  function curPitches(g) {
+    if (!g.box || !g.now || !g.now.pitcher) return null;
+    const fld = g.inningState === "Top" || g.inningState === "Middle" ? "home" : "away";
+    const p = (g.box[fld].pit || []).find((x) => x.name === g.now.pitcher);
+    return p ? p.pitches : null;
+  }
+  function boxDetails(g) {
+    const aA = g.awayAbbr, hA = g.homeAbbr;
+    if (g.box && (g.state === "Live" || g.state === "Final")) {
+      const k = "box" + g.pk;
+      const team = (sd) => { const b = g.box[sd]; return `<div><h4 class="lt">${esc(sd === "away" ? aA : hA)}</h4>
+        <div class="tbl"><table class="mini"><thead><tr><th>Bateador</th><th>Pos</th><th class="r">H-VB</th><th class="r">C</th><th class="r">CI</th><th class="r">BB</th><th class="r">K</th></tr></thead><tbody>${b.bat.map((p) => `<tr${g.now && g.now.batter === p.name ? ' class="hl"' : ""}><td>${p.sub ? '<span class="muted">↳ </span>' : ""}${esc(p.name)}${p.hr ? ` <span class="tag ok">${p.hr} HR</span>` : ""}</td><td class="muted">${esc(p.pos || "")}</td><td class="r num">${p.h}-${p.ab}</td><td class="r num">${p.r}</td><td class="r num">${p.rbi}</td><td class="r num">${p.bb}</td><td class="r num">${p.k}</td></tr>`).join("")}</tbody></table></div>
+        <div class="tbl"><table class="mini"><thead><tr><th>Pitcher</th><th class="r">EL</th><th class="r">Lanz.</th><th class="r">H</th><th class="r">CL</th><th class="r">BB</th><th class="r">K</th></tr></thead><tbody>${b.pit.map((p) => `<tr${g.now && g.now.pitcher === p.name && g.state === "Live" ? ' class="hl"' : ""}><td>${esc(p.name)}</td><td class="r num">${esc(p.ip)}</td><td class="r num">${p.pitches}</td><td class="r num">${p.h}</td><td class="r num">${p.er}</td><td class="r num">${p.bb}</td><td class="r num">${p.k}</td></tr>`).join("")}</tbody></table></div></div>`; };
+      return `<details class="lk" data-lk="${k}"${liveOpen.has(k) ? " open" : ""}><summary>Alineaciones y pitchers ${g.state === "Live" ? "en vivo" : "del juego"} <span class="muted">(↳ = cambio)</span></summary><div class="two lk-two">${team("away")}${team("home")}</div></details>`;
+    }
+    if (g.state === "Preview" && !isOff(g)) {
+      const k = "lu" + g.pk;
+      const has = g.lu && (g.lu.away.length || g.lu.home.length);
+      const list = (sd) => { const rows = (g.lu && g.lu[sd]) || []; return `<div><h4 class="lt">${esc(sd === "away" ? aA : hA)} ${rows.length ? '<span class="stamp-c">✓ Confirmado</span>' : '<span class="stamp-p">Pendiente</span>'}</h4>${rows.length ? `<ol class="lu-mini">${rows.map((p) => `<li><span class="pos">${esc(p.pos || "")}</span> ${esc(p.name)}</li>`).join("")}</ol>` : `<p class="muted" style="font-size:12.5px">El club aún no publica su lineup${g.probs && g.probs[sd] ? `; abridor: ${esc(g.probs[sd])}` : ""}.</p>`}</div>`; };
+      return `<details class="lk" data-lk="${k}"${liveOpen.has(k) ? " open" : ""}><summary>Lineups: ${has ? "oficiales publicados" : "pendientes"}</summary><div class="two lk-two">${list("away")}${list("home")}</div></details>`;
+    }
+    return "";
   }
 
   function viewLive() {
@@ -2055,12 +2153,13 @@
     const allPicks = [...liveNow, ...done].flatMap((g) => ((g.pred && g.pred.picks) || []).map((p) => pickNow(p, g)));
     const won = allPicks.filter((x) => x.cls === "win").length, lost = allPicks.filter((x) => x.cls === "lose").length;
     const provisional = allPicks.filter((x) => x.cls === "lead" || x.cls === "trail" || x.cls === "pend").length;
-    const src = liveInfo.source === "api" ? `En vivo desde statsapi.mlb.com · actualizado ${new Date(liveInfo.at).toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit", second: "2-digit" })} · se refresca cada minuto`
+    const src = liveInfo.source === "api" ? `En vivo desde statsapi.mlb.com · actualizado ${new Date(liveInfo.at).toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit", second: "2-digit" })} · marcador, jugada, lineups y box score se refrescan cada 30 s`
       : `Marcador del último corte de datos (${fmtStamp(liveInfo.at)})${liveInfo.error ? " · el navegador no pudo consultar statsapi.mlb.com desde aquí, así que se actualiza con cada corrida del workflow" : " · consultando statsapi.mlb.com…"}`;
     const group = (title, list, empty) => `<section class="block"><h2>${title} <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">${list.length}</small></h2>${list.length ? `<div class="live-grid">${list.map(liveCard).join("")}</div>` : `<div class="empty">${empty}</div>`}</section>`;
     app.innerHTML = `<div class="page-head"><p class="eyebrow">En vivo · ${fmtDateLong(today)}</p><h1>Partidos en juego, terminados y por jugar, con sus dos picks</h1>
       <p class="lede">Cada partido muestra los dos picks de mayor confianza que el modelo guardó <b>antes</b> del primer lanzamiento. En vivo se recalcula la probabilidad de cada pick con la situación real (entrada, outs, corredores) y la distribución de carreras por media entrada; al terminar se califica con el resultado oficial.</p>
-      <p class="fresh"><span class="dot ${liveInfo.source === "api" ? "ok" : "part"}" style="display:inline-block;vertical-align:middle;margin-right:6px"></span>${src}</p></div>
+      <p class="fresh"><span class="dot ${liveInfo.source === "api" ? "ok" : "part"}" style="display:inline-block;vertical-align:middle;margin-right:6px"></span>${src} <button type="button" class="btn" id="live-refresh" style="margin-left:8px;padding:2px 9px;font-size:12.5px">Actualizar ahora</button></p>
+      ${liveInfo.source !== "api" && liveInfo.error ? `<div class="notice"><span class="ic">!</span><div>Esta vista está dentro de claude.ai, que no deja a la página consultar sitios externos. La versión en <b>GitHub Pages</b> (gerardodst.github.io/MLBgs) sí consulta statsapi.mlb.com cada 30 s: marcador, bateador y pitcher actuales, cuenta, lanzamientos, alineaciones con su línea del juego y lineups de los partidos por jugar. Aquí se muestran los datos del último corte.</div></div>` : ""}</div>
       <div class="tiles t4">
         <div class="tile"><span class="eyebrow">En juego</span><span class="big">${liveNow.length}</span><span class="sub">${done.length} terminados · ${next.length} por jugar</span></div>
         <div class="tile"><span class="eyebrow">Picks ganados</span><span class="big" style="color:var(--verde)">${won}</span><span class="sub">calificados o ya asegurados</span></div>
@@ -2073,37 +2172,63 @@
       ${offList.length ? group("Pospuestos", offList, "") : ""}
       <p class="note muted">Probabilidad en vivo: P(gana el local) = Σ P(la visita anota i en lo que falta) · P(el local anota j) · 1[dif + j − i &gt; 0]. La media entrada en curso usa la matriz RE24 y P(≥1 carrera) de la liga según corredores y outs; las siguientes, la distribución empírica de carreras por media entrada escalada a la proyección de cada equipo. Push = línea exacta (se devuelve la apuesta).</p>
       ${footer()}`;
+    const rb = document.getElementById("live-refresh");
+    if (rb) rb.addEventListener("click", () => { rb.textContent = "Actualizando…"; rb.disabled = true; pullLive(); });
   }
 
   // marcador directo desde el navegador (funciona donde la política del sitio lo permite, p. ej. GitHub Pages)
-  async function pullLive() {
+  // box score reducido: orden al bate actual (con cambios) y pitchers usados con su línea del juego
+  function slimBox(b) {
+    const out = {};
+    ["away", "home"].forEach((sd) => {
+      const tm = (b.teams || {})[sd] || {}, P = tm.players || {};
+      const bat = (tm.battingOrder || []).map((id) => { const p = P["ID" + id] || {}, s = (p.stats || {}).batting || {};
+        return { name: (p.person || {}).fullName, pos: (p.position || {}).abbreviation, ab: s.atBats || 0, h: s.hits || 0, r: s.runs || 0, rbi: s.rbi || 0, bb: s.baseOnBalls || 0, k: s.strikeOuts || 0, hr: s.homeRuns || 0, sub: Number(p.battingOrder || 0) % 100 !== 0 }; });
+      const pit = (tm.pitchers || []).map((id) => { const p = P["ID" + id] || {}, s = (p.stats || {}).pitching || {};
+        return { name: (p.person || {}).fullName, ip: s.inningsPitched || "0.0", pitches: s.numberOfPitches ?? s.pitchesThrown ?? 0, k: s.strikeOuts || 0, bb: s.baseOnBalls || 0, h: s.hits || 0, er: s.earnedRuns || 0 }; });
+      out[sd] = { bat, pit };
+    });
+    return out;
+  }
+  const boxK = (box) => { const ks = {}; ["away", "home"].forEach((sd) => { const p = ((box || {})[sd] || {}).pit || []; if (p[0]) ks[p[0].name] = p[0].k; }); return ks; };
+  liveGames.forEach((g) => { if (g.box) kCache[g.pk] = boxK(g.box); });
+
+  async function getJSON(url, ms = 9000) {
     const ctl = typeof AbortController === "function" ? new AbortController() : null;
-    const timer = setTimeout(() => ctl && ctl.abort(), 8000);
+    const timer = setTimeout(() => ctl && ctl.abort(), ms);
     try {
-      const r = await fetch(`https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=${D.meta.today}&hydrate=linescore,team`, { signal: ctl ? ctl.signal : undefined });
+      const r = await fetch(url, { signal: ctl ? ctl.signal : undefined });
       if (!r.ok) throw new Error("HTTP " + r.status);
-      const js = await r.json();
+      return await r.json();
+    } finally { clearTimeout(timer); }
+  }
+
+  // marcador, jugada actual, lineups y box score directo desde statsapi.mlb.com (donde el navegador lo permite)
+  async function pullLive() {
+    const API = "https://statsapi.mlb.com/api/v1";
+    try {
+      const js = await getJSON(`${API}/schedule?sportId=1&date=${D.meta.today}&hydrate=linescore,team,lineups,probablePitcher`);
       const byPk = Object.fromEntries(liveGames.map((g) => [g.pk, g]));
       (js.dates || []).forEach((d) => d.games.forEach((x) => {
-        const ls = x.linescore || {}, off = ls.offense || {}, t = x.teams;
+        const ls = x.linescore || {}, off = ls.offense || {}, def = ls.defense || {}, t = x.teams, lu = x.lineups || {};
         const row = byPk[x.gamePk] || { pk: x.gamePk, date: x.officialDate, time: x.gameDate, awayAbbr: t.away.team.abbreviation, homeAbbr: t.home.team.abbreviation, venue: (x.venue || {}).name };
         Object.assign(row, { state: x.status.abstractGameState, detailed: x.status.detailedState, ar: t.away.score, hr: t.home.score, inning: ls.currentInning, top: ls.isTopInning, inningState: ls.inningState, outs: ls.outs,
-          bases: (off.first ? 1 : 0) | (off.second ? 2 : 0) | (off.third ? 4 : 0), inn: (ls.innings || []).map((i) => [(i.away || {}).runs ?? null, (i.home || {}).runs ?? null]) });
+          bases: (off.first ? 1 : 0) | (off.second ? 2 : 0) | (off.third ? 4 : 0), inn: (ls.innings || []).map((i) => [(i.away || {}).runs ?? null, (i.home || {}).runs ?? null]),
+          now: { batter: (off.batter || {}).fullName, onDeck: (off.onDeck || {}).fullName, pitcher: (def.pitcher || {}).fullName, balls: ls.balls, strikes: ls.strikes },
+          probs: { away: (t.away.probablePitcher || {}).fullName, home: (t.home.probablePitcher || {}).fullName } });
+        if (lu.awayPlayers || lu.homePlayers) row.lu = { away: (lu.awayPlayers || []).map((p) => ({ name: p.fullName, pos: (p.primaryPosition || {}).abbreviation })), home: (lu.homePlayers || []).map((p) => ({ name: p.fullName, pos: (p.primaryPosition || {}).abbreviation })) };
         if (!byPk[x.gamePk]) liveGames.push(row);
       }));
-      await Promise.all(liveGames.filter((g) => (g.state === "Live" || g.state === "Final") && g.date === D.meta.today && g.pred && g.pred.picks.some((p) => p.family === "K")).map(async (g) => {
+      await Promise.all(liveGames.filter((g) => g.date === D.meta.today && (g.state === "Live" || (g.state === "Final" && !g.boxFinal && !isOff(g)))).map(async (g) => {
         try {
-          const b = await (await fetch(`https://statsapi.mlb.com/api/v1/game/${g.pk}/boxscore`)).json();
-          const ks = {};
-          ["away", "home"].forEach((sd) => { const tm = b.teams[sd], id = (tm.pitchers || [])[0], pl = id && tm.players["ID" + id]; if (pl) ks[pl.person.fullName] = pl.stats.pitching.strikeOuts; });
-          kCache[g.pk] = ks;
+          g.box = slimBox(await getJSON(`${API}/game/${g.pk}/boxscore`));
+          if (g.state === "Final") g.boxFinal = true;
+          kCache[g.pk] = boxK(g.box);
         } catch { /* sin box score */ }
       }));
       liveInfo = { source: "api", at: new Date().toISOString(), error: null };
     } catch (e) {
       liveInfo = { ...liveInfo, error: String(e) };
-    } finally {
-      clearTimeout(timer);
     }
     if ((location.hash || "").slice(1) === "envivo") viewLive();
     markLiveTab();
@@ -2120,7 +2245,7 @@
   function startLive() {
     if (liveTimer) return;
     pullLive();
-    liveTimer = setInterval(() => { if (!document.hidden) pullLive(); }, 60000);
+    liveTimer = setInterval(() => { if (!document.hidden) pullLive(); }, 30000);
   }
   function stopLive() { if (liveTimer) { clearInterval(liveTimer); liveTimer = null; } }
 
@@ -2207,7 +2332,7 @@
 
   // ---------------------------------------------------------------- router
   function route() {
-    const h = (location.hash || "#partidos").slice(1);
+    const [h, anchor] = (location.hash || "#partidos").slice(1).split("#");
     let tab = "partidos";
     if (h.startsWith("g") && BY_PK[h.slice(1)]) viewGame(BY_PK[h.slice(1)]);
     else if (h === "prolab") { tab = "prolab"; viewProLabList(); }
@@ -2223,6 +2348,7 @@
     if (!h.startsWith("g") && !/^lab\d+base$/.test(h)) CURRENT_GAME = null;
     document.querySelectorAll("nav.tabs a").forEach((a) => a.setAttribute("aria-current", a.dataset.tab === tab ? "page" : "false"));
     tip.hidden = true;
+    if (anchor) setTimeout(() => { const el = document.getElementById(anchor); if (el) { if (el.tagName === "DETAILS") el.open = true; el.scrollIntoView({ block: "start" }); } }, 0);
   }
   window.addEventListener("hashchange", () => { route(); if (!location.hash.startsWith("#g")) window.scrollTo(0, 0); });
   markLiveTab();

@@ -77,8 +77,16 @@ def save_predictions(analyses: list[dict], generated: str) -> None:
         if os.path.exists(path):
             with open(path, encoding="utf-8") as f:
                 cur = {str(r["pk"]): r for r in json.load(f)}
+        changed = False
         for r in rows:
-            cur[str(r["pk"])] = rounded(r)  # la última versión antes del partido es la que cuenta
+            r = rounded(r)
+            old = cur.get(str(r["pk"]))
+            strip = lambda x: {k: v for k, v in (x or {}).items() if k != "generatedAt"}  # noqa: E731
+            if old is None or strip(old) != strip(r):
+                cur[str(r["pk"])] = r  # la última versión antes del partido es la que cuenta
+                changed = True
+        if not changed and os.path.exists(path):
+            continue  # sin cambios reales: no se reescribe (evita commits vacíos cada corrida)
         with open(path, "w", encoding="utf-8") as f:
             json.dump(sorted(cur.values(), key=lambda r: (r["time"] or "", r["pk"])), f, ensure_ascii=False, indent=0)
 
