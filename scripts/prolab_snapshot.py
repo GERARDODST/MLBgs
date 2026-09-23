@@ -102,6 +102,115 @@ grab("arsenalPitcher", lambda: csv(f"{S}/leaderboard/pitch-arsenal-stats?type=pi
 grab("arsenalBatter", lambda: csv(f"{S}/leaderboard/pitch-arsenal-stats?type=batter&pitchType=&year=2026&team=&min=1&csv=true"))
 grab("expectedBatter", lambda: csv(f"{S}/leaderboard/expected_statistics?type=batter&year=2026&position=&team=&min=1&csv=true"))
 
+# ---------------------------------------------------------------- KRONOS: datos por lanzamiento (Statcast)
+# Tablas de transición de la cuenta (bolas-strikes) por jugador y de la liga, agregadas aquí para no guardar
+# cientos de miles de filas: cuenta → {bola, strike cantado, strike tirándole, foul, foul de toque, pelotazo, en juego}.
+import csv as _csv  # noqa: E402
+import io as _io  # noqa: E402
+
+CAT = {"ball": "B", "blocked_ball": "B", "automatic_ball": "B", "pitchout": "B", "intent_ball": "B",
+       "called_strike": "CS", "automatic_strike": "CS",
+       "swinging_strike": "SS", "swinging_strike_blocked": "SS", "missed_bunt": "SS", "foul_tip": "SS", "bunt_foul_tip": "SS",
+       "foul": "F", "foul_pitchout": "F", "foul_bunt": "FB", "hit_by_pitch": "HBP", "hit_into_play": "X"}
+PREV_DAY = (dt.date.fromisoformat(GAME_DATE) - dt.timedelta(days=1)).isoformat()
+SC = (f"{S}/statcast_search/csv?all=true&hfPT=&hfAB=&hfBBT=&hfPR=&hfZ=&stadium=&hfBBL=&hfNewZones=&hfGT=R%7C&hfSea=&hfSit="
+      "&player_type={pt}&hfOuts=&opponent=&pitcher_throws=&batter_stands=&hfSA=&game_date_gt={d0}&game_date_lt={d1}"
+      "&team=&position=&hfRO=&home_road=&hfFlag=&metric_1=&hfInn=&min_pitches=0&min_results=0&group_by=name"
+      "&sort_col=pitches&player_event_sort=h_launch_speed&sort_order=desc&min_abs=0&type=details{who}")
+
+
+def statcast_rows(pt, d0, d1, who=""):
+    txt = F.get(SC.format(pt=pt, d0=d0, d1=d1, who=who), raw=True).decode("utf-8-sig", "replace")
+    return list(_csv.DictReader(_io.StringIO(txt)))
+
+
+def agg_pitches(rows, by_tto=False):
+    """Conteos por cuenta y categoría + eventos en juego + lanzamientos por turno y por juego."""
+    trans, inplay, tto, clock = {}, {}, {}, {"automatic_ball": 0, "automatic_strike": 0}
+    pa_len, games = {}, {}
+    for r in rows:
+        try:
+            b, st = int(r["balls"]), int(r["strikes"])
+        except (KeyError, ValueError):
+            continue
+        desc = r.get("description", "")
+        cat = CAT.get(desc, "O")
+        if desc in clock:
+            clock[desc] += 1
+        key = f"{b}-{st}"
+        d = trans.setdefault(key, {})
+        d[cat] = d.get(cat, 0) + 1
+        if cat == "X":
+            e = r.get("events") or "?"
+            inplay[e] = inplay.get(e, 0) + 1
+        if by_tto and r.get("n_thruorder_pitcher"):
+            k = min(3, int(r["n_thruorder_pitcher"] or 1))
+            dd = tto.setdefault(str(k), {})
+            dd[cat] = dd.get(cat, 0) + 1
+            if cat == "X":
+                ev = "HR" if r.get("events") == "home_run" else "H" if r.get("events") in ("single", "double", "triple") else "O"
+                dd["X_" + ev] = dd.get("X_" + ev, 0) + 1
+        ab = (r.get("game_pk"), r.get("at_bat_number"))
+        try:
+            pa_len[ab] = max(pa_len.get(ab, 0), int(r.get("pitch_number") or 0))
+        except ValueError:
+            pass
+        g = games.setdefault(r.get("game_pk"), {"date": r.get("game_date"), "n": 0, "pa": set(), "inn": 0})
+        g["n"] += 1
+        g["pa"].add(r.get("at_bat_number"))
+        try:
+            g["inn"] = max(g["inn"], int(r.get("inning") or 0))
+        except ValueError:
+            pass
+    hist = {}
+    for n in pa_len.values():
+        hist[str(n)] = hist.get(str(n), 0) + 1
+    glist = sorted(({"pk": k, "date": v["date"], "pitches": v["n"], "bf": len(v["pa"]), "lastInning": v["inn"]}
+                    for k, v in games.items()), key=lambda x: x["date"] or "")
+    return {"n": len(rows), "trans": trans, "inplay": inplay, "tto": tto, "clock": clock, "paLen": hist, "games": glist}
+
+
+def player_pitches(args):
+    pid, pt = args
+    who = f"&pitchers_lookup%5B%5D={pid}" if pt == "pitcher" else f"&batters_lookup%5B%5D={pid}"
+    try:
+        rows = statcast_rows(pt, "2026-03-20", PREV_DAY, who)
+        return f"{pt}:{pid}", agg_pitches(rows, by_tto=(pt == "pitcher"))
+    except Exception as e:  # noqa: BLE001
+        return f"{pt}:{pid}", {"error": repr(e)}
+
+
+kron_ids = []
+for side, opp in (("away", "home"), ("home", "away")):
+    for bid in list((box.get(side) or {}).get("battingOrder") or []) + list((box.get(side) or {}).get("bench") or []):
+        kron_ids.append((bid, "batter"))
+for t in TEAMS:
+    for r in ((snap.get(f"roster_{t}") or {}).get("roster") or []):
+        if ((r.get("position") or {}).get("type") == "Pitcher"):
+            kron_ids.append((r["person"]["id"], "pitcher"))
+for sd in ("away", "home"):
+    if pitchers.get(sd) and (pitchers[sd], "pitcher") not in kron_ids:
+        kron_ids.append((pitchers[sd], "pitcher"))
+snap["pitchData"] = dict(F.pmap(player_pitches, kron_ids, workers=4))
+F.log("statcast por jugador:", len(snap["pitchData"]), "errores:", sum(1 for v in snap["pitchData"].values() if "error" in v))
+
+
+def league_day(d):
+    try:
+        return d, agg_pitches(statcast_rows("pitcher", d, d), by_tto=True)
+    except Exception as e:  # noqa: BLE001
+        return d, {"error": repr(e)}
+
+
+days = [(dt.date.fromisoformat(GAME_DATE) - dt.timedelta(days=k)).isoformat() for k in range(1, 15)]
+snap["pitchLeague"] = dict(F.pmap(league_day, days, workers=3))
+F.log("statcast liga:", {d: v.get("n") for d, v in snap["pitchLeague"].items()})
+
+# MLB Stats API: códigos de situación (cuentas) y temporada avanzada de los jugadores del partido
+grab("situationCodes", lambda: F.get(f"{B}/situationCodes"))
+ids = sorted({str(i) for i, _ in kron_ids})
+grab("peopleAdvanced", lambda: F.get(f"{B}/people?personIds={','.join(ids)}&hydrate=stats(group=[hitting,pitching],type=[season,seasonAdvanced],season=2026)"))
+
 with gzip.open(f"{OUT}/snapshot_{PK}_{LABEL}.json.gz", "wt", encoding="utf-8") as f:
     json.dump(snap, f, separators=(",", ":"))
 F.log("snapshot extra listo; errores:", snap["errors"])
