@@ -73,6 +73,10 @@ def validate(bundle: dict) -> dict:
             if abs(tot.get("ip", 0) - sp.get("ip", 0) - rp.get("ip", 0)) > 0.01 or \
                     tot.get("runs", 0) != sp.get("runs", 0) + rp.get("runs", 0):
                 sprp.append(f"{abbr(t)}: IP {tot.get('ip', 0):.1f} vs {sp.get('ip', 0) + rp.get('ip', 0):.1f}")
+    live_teams = {t for g in bundle.get("live", []) for t in (g["away"], g["home"])}
+    if live_teams and sprp:
+        sprp = [x + (" · juego en curso: la API actualiza el total antes que los splits" if any(
+            x.startswith(abbr(t) + ":") for t in live_teams) else "") for x in sprp]
     checks.append(_check("splits", "Splits abridores/relevistas y vs mano para los 30 equipos",
                          "Falla" if missing else "Alerta" if sprp else "OK",
                          (f"Faltan splits de {', '.join(missing)}" if missing else

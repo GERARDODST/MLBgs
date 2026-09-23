@@ -59,6 +59,8 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
     a, h = game["teams"]["away"]["abbr"], game["teams"]["home"]["abbr"]
     tri = S["s5"]["triangulation"]
     gate = S["s9"]["gate"]["blocks"]
+    gate_odds = S["s9"]["gate"].get("blocksWithOdds") or gate
+    block_key_of = {}
     lu_ok = all(game["summary"]["lineupsConfirmed"].values())
     s3 = S["s3"]
     comp = {c["side"]: c for c in s3["comparison"]}
@@ -87,9 +89,13 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
     def add(family, label, pick, p, methods, ref_key, real_price, blocked, stability, contra, how, line=None):
         sc = score_pick(p, methods, REF_PRICE[ref_key], real_price, blocked, lu_ok, stability, len(contra), contra)
         d = decisions.get(fam_to_decision.get(family)) or {}
+        bkey = {"ML": "ml", "RL": "ml", "Total": "total", "Team total": "total", "F5 total": "f5", "F5": "f5",
+                "NRFI": "nrfi", "K": "props"}[family]
+        blocked_odds = bool(gate_odds.get(bkey))
         picks.append({"family": family, "market": label, "pick": pick, "p": p, "line": line,
                       "guion": d.get("guion"), "guionWhy": d.get("guionWhy"), "contradiction": d.get("contradiction"),
-                      "blocked": bool(blocked),
+                      "blocked": bool(blocked), "blockedWithOdds": blocked_odds,
+                      "datosWithOdds": (0.4 if blocked_odds else 1.0) * (1.0 if lu_ok else 0.8),
                       "methods": {MODEL_NAMES[k]: v for k, v in methods.items() if v is not None},
                       "fair": M.fair_american(p), "minPrice": M.fair_american(clip(p - 0.03, 0.01, 0.99)),
                       "refPrice": REF_PRICE[ref_key], "how": how, **sc})

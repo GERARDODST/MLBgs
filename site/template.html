@@ -384,13 +384,15 @@
     if (!o) return null;
     const edge = p.p - o.imp;
     const fuerza = Math.max(0, Math.min(1, edge / 0.12));
-    const ic = p.ic + 100 * PART_W.fuerza * (fuerza - p.parts.fuerza);
+    const datos = p.datosWithOdds != null ? p.datosWithOdds : p.parts.datos;   // con momio, el gate de la sección 7 queda cubierto
+    const ic = p.ic + 100 * PART_W.fuerza * (fuerza - p.parts.fuerza) + 100 * PART_W.datos * (datos - p.parts.datos);
+    const blocked = p.blockedWithOdds != null ? p.blockedWithOdds : p.blocked;
     const b = o.dec - 1;
     const kelly = Math.max(0, (b * p.p - (1 - p.p)) / b);
     let light = "Gris", why = "precio justo (edge < 3 pp)";
     if (edge < 0) { light = "Rojo"; why = "sin valor: el momio paga menos que la probabilidad"; }
     else if (edge >= 0.03) {
-      if (p.blocked) { light = "Amarillo"; why = "hay valor, pero falta un dato obligatorio (gate)"; }
+      if (blocked) { light = "Amarillo"; why = "hay valor, pero falta un dato obligatorio (gate: lineup, umpire, clima o abridor)"; }
       else if (p.guion === "No" || p.contradiction === "Alta") { light = "Amarillo"; why = "hay valor, pero el guion o las contradicciones no acompañan"; }
       else if (ic >= 55) { light = "Verde"; why = "modelo + guion + cuota con edge + baja contradicción"; }
       else { light = "Amarillo"; why = "hay valor, pero la confianza es baja"; }
@@ -413,7 +415,7 @@
   function pickCard(p, pk, rank, graded) {
     const partsHtml = Object.entries(p.parts).map(([k, v]) => `<span data-tip="${esc(PART_TIP[k])}">${PART_NAMES[k]} <span class="muted">×${PART_W[k]}</span></span><span class="bar"><i style="width:${(v * 100).toFixed(0)}%"></i></span><span class="num">${v.toFixed(2)}</span>`).join("");
     const res = graded ? `<span class="${graded.won ? "won" : graded.won === false ? "lost" : "muted"}">${graded.won ? "✓ Acertado" : graded.won === false ? "✗ Fallado" : "Push / sin dato"}</span>` : "";
-    return `<article class="pickcard" data-pick="${esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked }))}">
+    return `<article class="pickcard" data-pick="${esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked, blockedWithOdds: p.blockedWithOdds, datosWithOdds: p.datosWithOdds }))}">
       <div class="rank">Pick principal ${rank} · ${esc(p.market)} ${res}</div>
       <h3>${esc(p.pick)}</h3>
       <div class="meta"><span>Probabilidad <b class="num">${pc(p.p, 1)}</b></span><span>Momio justo <b class="num">${odds(p.fair)}</b></span><span>Mínimo aceptable <b class="num">${odds(p.minPrice)}</b></span>${icBadge(p)}</div>
@@ -436,7 +438,7 @@
         td(`<span class="muted" style="font-size:12px">${Object.entries(p.methods).map(([k, v]) => `${esc(k)} ${pc(v, 1)}`).join("<br>")}</span>`),
         tdn(odds(p.fair)), td(oddsInput(pk, p)), td(`<span class="odds-out">${oddsResult(p, oddsStore[`${pk}|${p.pick}`])}</span>`),
         ...(graded ? [td(g[p.pick] ? (g[p.pick].won ? '<span class="won">✓</span>' : g[p.pick].won === false ? '<span class="lost">✗</span>' : "push") : "—", "c")] : [])],
-        "").replace("<tr", `<tr data-pick="${esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked }))}"`)))}
+        "").replace("<tr", `<tr data-pick="${esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked, blockedWithOdds: p.blockedWithOdds, datosWithOdds: p.datosWithOdds }))}"`)))}
       <p class="note muted">IC = 100 · (0.35·Fuerza + 0.25·Consenso + 0.15·Datos + 0.15·Estabilidad + 0.10·Sin contradicciones). Niveles: ≥70 Alta · 55–69 Media · 40–54 Baja · &lt;40 Muy baja. Sin momio real la fuerza se mide contra un precio de referencia típico; en moneyline un favorito real cuesta más: escribe tu momio para medir el valor.</p>`;
   }
 

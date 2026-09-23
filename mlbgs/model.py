@@ -1500,8 +1500,10 @@ def section9(ctx, g, sps, lineups, bps, weather, ump, odds, park_idx):
         "The Odds API (ODDS_API_KEY)", "Sin edge calculable → no bet")
     missing = [f for f in fields if f["status"] == "faltante"]
 
-    def blocked(tag):
-        return any(tag in f["blocks"] for f in missing)
+    def blocked(tag, pool=None):
+        return any(tag in f["blocks"] for f in (missing if pool is None else pool))
+
+    no_odds = [f for f in missing if f["sec"] != "7"]   # el gate si el usuario escribe su momio
 
     gate = {
         "missing": len(missing), "total": len(fields),
@@ -1514,6 +1516,11 @@ def section9(ctx, g, sps, lineups, bps, weather, ump, odds, park_idx):
             "nrfi": blocked("NRFI") or blocked("ML/F5/props") or blocked("no bet"),
         },
         "campoFaltante": bool(missing),
+        "blocksWithOdds": {
+            "ml": blocked("ML/F5/props", no_odds) or blocked("ML tardío", no_odds),
+            "f5": blocked("ML/F5/props", no_odds), "props": blocked("ML/F5/props", no_odds),
+            "total": blocked("total", no_odds), "nrfi": blocked("NRFI", no_odds) or blocked("ML/F5/props", no_odds),
+        },
     }
     return {"fields": fields, "gate": gate,
             "rule": "Si falta un campo obligatorio, el mercado afectado nunca puede ser Verde (máximo Amarillo)."}

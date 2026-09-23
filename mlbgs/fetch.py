@@ -129,8 +129,12 @@ def upcoming_games(start: str, end: str) -> list[dict]:
     hyd = "probablePitcher,team,venue(location,fieldInfo),lineups,officials,weather,seriesStatus"
     data = get(f"{STATS}/schedule?sportId=1&startDate={start}&endDate={end}&gameType=R,F,D,L,W&hydrate={hyd}")
     out = []
+    live = []
     for d in data.get("dates", []):
         for g in d["games"]:
+            if g["status"].get("abstractGameState") == "Live":
+                live.append({"pk": g["gamePk"], "away": g["teams"]["away"]["team"]["id"],
+                             "home": g["teams"]["home"]["team"]["id"], "detailed": g["status"].get("detailedState")})
             if g["status"].get("abstractGameState") != "Preview":
                 continue
             s = slim_game(g)
@@ -162,6 +166,7 @@ def upcoming_games(start: str, end: str) -> list[dict]:
                 "seriesGameNumber": g.get("seriesGameNumber"),
             })
             out.append(s)
+    upcoming_games.live = live
     return out
 
 
@@ -498,6 +503,7 @@ def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int 
         "odds": attempt("odds", odds, None),
     }
     bundle["results"], bundle["remaining"] = attempt("schedule", lambda: season_schedule(season), ([], []))
+    bundle["live"] = getattr(upcoming_games, "live", [])
 
     playing = sorted({t for g in bundle["upcoming"] for t in (g["away"], g["home"])})
     rosters = attempt("rosters", lambda: pmap(lambda t: (t, roster(t, season)), playing, workers=6), [])
