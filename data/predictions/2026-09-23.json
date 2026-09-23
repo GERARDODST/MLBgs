@@ -61,20 +61,20 @@
 "generatedAt": "2026-09-23T16:09:50+00:00",
 "away": "TOR",
 "home": "BAL",
-"pHome": 0.5352,
+"pHome": 0.5351,
 "methods": {
 "log5": 0.5177,
 "elo": 0.5442,
-"lambda": 0.5438
+"lambda": 0.5435
 },
 "confidence": "alta",
-"projAway": 4.0699,
-"projHome": 4.5444,
-"total": 8.6143,
-"f5Away": 2.288,
-"f5Home": 2.7373,
+"projAway": 4.0748,
+"projHome": 4.5464,
+"total": 8.6213,
+"f5Away": 2.2901,
+"f5Home": 2.7381,
 "nrfi": 0.4884,
-"pOver85": 0.4566,
+"pOver85": 0.4572,
 "probables": {
 "away": "Max Scherzer",
 "home": "Chris Bassitt"
@@ -83,11 +83,31 @@
 "best": {
 "market": "F5",
 "pick": "BAL F5",
-"p": 0.5944,
+"p": 0.5941,
 "price": null,
 "edge": null,
 "light": "Gris"
+},
+"topPicks": [
+{
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "BAL F5",
+"p": 0.5941,
+"line": null,
+"ic": 56.2387,
+"level": "Media"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Max Scherzer Under 5.5 K",
+"p": 0.5685,
+"line": 5.5,
+"ic": 46.2459,
+"level": "Baja"
 }
+]
 },
 {
 "pk": 823168,
