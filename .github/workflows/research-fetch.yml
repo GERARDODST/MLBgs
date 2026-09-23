@@ -10,5 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt-get install -y poppler-utils > /dev/null 2>&1 || true
-      - run: python3 scripts/research_fetch.py
+      - name: ¿statsapi permite consultas desde el navegador (CORS)?
+        run: |
+          for u in "https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=2026-09-23&hydrate=linescore,team,lineups" "https://statsapi.mlb.com/api/v1.1/game/823410/feed/live"; do
+            echo "== $u"
+            curl -s -D - -o /dev/null -H "Origin: https://gerardodst.github.io" "$u" | grep -i -E "^HTTP|access-control|content-type|cache-control" || true
+            curl -s -D - -o /dev/null -X OPTIONS -H "Origin: https://gerardodst.github.io" -H "Access-Control-Request-Method: GET" "$u" | grep -i -E "^HTTP|access-control" || true
+          done
