@@ -1,0 +1,106 @@
+{
+ "stats": [
+  {
+   "type": {
+    "displayName": "season"
+   },
+   "group": {
+    "displayName": "hitting"
+   },
+   "totalSplits": 30,
+   "exemptions": [],
+   "splits": [
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 157,
+      "groundOuts": 1417,
+      "airOuts": 1475,
+      "runs": 713,
+      "doubles": 219,
+      "triples": 22,
+      "homeRuns": 164,
+      "strikeOuts": 1099,
+      "baseOnBalls": 497,
+      "intentionalWalks": 26,
+      "hits": 1359,
+      "hitByPitch": 58,
+      "avg": ".258",
+      "atBats": 5263,
+      "obp": ".327",
+      "slg": ".402",
+      "ops": ".729",
+      "caughtStealing": 53,
+      "stolenBases": 160,
+      "stolenBasePercentage": ".751",
+      "caughtStealingPercentage": ".249",
+      "groundIntoDoublePlay": 110,
+      "numberOfPitches": 22213,
+      "plateAppearances": 5908,
+      "totalBases": 2114,
+      "rbi": 678,
+      "leftOnBase": 1072,
+      "sacBunts": 45,
+      "sacFlies": 42,
+      "babip": ".296",
+      "groundOutsToAirouts": "0.96",
+      "catchersInterference": 3,
+      "atBatsPerHomeRun": "32.09"
+     },
+     "team": {
+      "id": 139,
+      "name": "Tampa Bay Rays",
+      "link": "/api/v1/teams/139"
+     },
+     "rank": 1
+    },
+    {
+     "season": "2026",
+     "stat": {
+      "gamesPlayed": 157,
+      "groundOuts": 1434,
+      "airOuts": 1269,
+      "runs": 806,
+      "doubles": 270,
+      "triples": 26,
+      "homeRuns": 149,
+      "strikeOuts": 1338,
+      "baseOnBalls": 650,
+      "intentionalWalks": 29,
+      "hits": 1375,
+      "hitByPitch": 39,
+      "avg": ".258",
+      "atBats": 5337,
+      "obp": ".340",
+      "slg": ".402",
+      "ops": ".742",
+      "caughtStealing": 51,
+      "stolenBases": 159,
+      "stolenBasePercentage": ".757",
+      "caughtStealingPercentage": ".243",
+      "groundIntoDoublePlay": 93,
+      "numberOfPitches": 24343,
+      "plateAppearances": 6112,
+      "totalBases": 2144,
+      "rbi": 762,
+      "leftOnBase": 1174,
+      "sacBunts": 35,
+      "sacFlies": 44,
+      "babip": ".315",
+      "groundOutsToAirouts": "1.13",
+      "catchersInterference": 7,
+      "atBatsPerHomeRun": "35.82"
+     },
+     "team": {
+      "id": 158,
+      "name": "Milwaukee Brewers",
+      "link": "/api/v1/teams/158"
+     },
+     "rank": 2
+    }
+   ],
+   "splitsTiedWithOffset": [],
+   "splitsTiedWithLimit": []
+  }
+ ]
+}
