@@ -36,6 +36,6 @@ jobs:
         run: |
           git config user.name "mlbgs-bot"
           git config user.email "mlbgs-bot@users.noreply.github.com"
-          git add -A dev data site 2>/dev/null || true
+          for p in dev data site; do if [ -e "$p" ]; then git add -A "$p"; fi; done
           git commit -m "Datos MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
           git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
