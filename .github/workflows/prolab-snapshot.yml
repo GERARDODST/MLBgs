@@ -2,7 +2,7 @@ name: Pro-Lab snapshot previo al partido
 on:
   push:
     branches: ["claude/eloquent-ride-7quneh"]
-    paths: ["scripts/prolab_snapshot.py", ".github/workflows/prolab-snapshot.yml"]
+    paths: ["scripts/prolab_snapshot.py", ".github/workflows/prolab-snapshot.yml", "prolab/request.env"]
   workflow_dispatch:
 permissions:
   contents: write
@@ -14,7 +14,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/prolab_snapshot.py
+      - run: |
+          set -a; [ -f prolab/request.env ] && . prolab/request.env; set +a
+          python scripts/prolab_snapshot.py
       - run: |
           git config user.name "mlbgs-bot"
           git config user.email "mlbgs-bot@users.noreply.github.com"

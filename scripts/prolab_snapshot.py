@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from mlbgs import fetch as F  # noqa: E402
 
 PK = int(os.environ.get("PROLAB_PK", "824223"))
-TEAMS = [120, 116]
+LABEL = os.environ.get("PROLAB_LABEL", "pre")        # "manana" / "tarde": dos pasadas (sección 5.7.6)
 OUT = "prolab"
 os.makedirs(OUT, exist_ok=True)
 B = F.STATS
@@ -26,14 +26,18 @@ def grab(name, fn):
 
 
 grab("feed", lambda: F.get(f"https://statsapi.mlb.com/api/v1.1/game/{PK}/feed/live"))
+_gd = (snap.get("feed") or {}).get("gameData") or {}
+TEAMS = [_gd["teams"]["away"]["id"], _gd["teams"]["home"]["id"]]
+GAME_DATE = (_gd.get("datetime") or {}).get("officialDate") or dt.date.today().isoformat()
+snap["status"] = _gd.get("status")
 grab("content", lambda: F.get(f"{B}/game/{PK}/content"))
 grab("standingsRaw", lambda: F.get(f"{B}/standings?leagueId=103,104&season=2026&standingsTypes=regularSeason&hydrate=team"))
-grab("remaining", lambda: F.get(f"{B}/schedule?sportId=1&season=2026&gameType=R&startDate=2026-09-23&endDate=2026-10-06"))
+grab("remaining", lambda: F.get(f"{B}/schedule?sportId=1&season=2026&gameType=R&startDate={GAME_DATE}&endDate=2026-10-06"))
 for t in TEAMS:
     grab(f"roster_{t}", lambda t=t: F.get(f"{B}/teams/{t}/roster?rosterType=active&hydrate=person(stats(type=[season,statSplits],sitCodes=[vl,vr],group=[hitting,pitching],season=2026))"))
     grab(f"roster40_{t}", lambda t=t: F.get(f"{B}/teams/{t}/roster?rosterType=40Man"))
-    grab(f"transactions_{t}", lambda t=t: F.get(f"{B}/transactions?teamId={t}&startDate=2026-08-20&endDate=2026-09-23"))
-    grab(f"injuries_{t}", lambda t=t: F.get(f"{B}/teams/{t}/roster?rosterType=fullRoster&date=2026-09-23"))
+    grab(f"transactions_{t}", lambda t=t: F.get(f"{B}/transactions?teamId={t}&startDate=2026-08-20&endDate={GAME_DATE}"))
+    grab(f"injuries_{t}", lambda t=t: F.get(f"{B}/teams/{t}/roster?rosterType=fullRoster&date={GAME_DATE}"))
 
 feed = snap.get("feed") or {}
 box = ((feed.get("liveData") or {}).get("boxscore") or {}).get("teams") or {}
@@ -58,7 +62,8 @@ snap["vsPlayer"] = vs
 
 # últimos 12 juegos de cada equipo con box score completo (orden al bate, bullpen, bancas)
 def last_pks():
-    sched = F.get(f"{B}/schedule?sportId=1&season=2026&gameType=R&startDate=2026-08-25&endDate=2026-09-22")
+    end = (dt.date.fromisoformat(GAME_DATE) - dt.timedelta(days=1)).isoformat()
+    sched = F.get(f"{B}/schedule?sportId=1&season=2026&gameType=R&startDate=2026-08-25&endDate={end}")
     out = {}
     for d in sched.get("dates", []):
         for g in d["games"]:
@@ -97,11 +102,13 @@ grab("arsenalPitcher", lambda: csv(f"{S}/leaderboard/pitch-arsenal-stats?type=pi
 grab("arsenalBatter", lambda: csv(f"{S}/leaderboard/pitch-arsenal-stats?type=batter&pitchType=&year=2026&team=&min=1&csv=true"))
 grab("expectedBatter", lambda: csv(f"{S}/leaderboard/expected_statistics?type=batter&year=2026&position=&team=&min=1&csv=true"))
 
-with gzip.open(f"{OUT}/snapshot_{PK}_pre.json.gz", "wt", encoding="utf-8") as f:
+with gzip.open(f"{OUT}/snapshot_{PK}_{LABEL}.json.gz", "wt", encoding="utf-8") as f:
     json.dump(snap, f, separators=(",", ":"))
 F.log("snapshot extra listo; errores:", snap["errors"])
 
-bundle = F.fetch_bundle(dt.date(2026, 9, 23), days=2)
-with gzip.open(f"{OUT}/bundle_{PK}_pre.json.gz", "wt", encoding="utf-8") as f:
+bundle = F.fetch_bundle(dt.date.fromisoformat(GAME_DATE), days=2)
+if not any(g["pk"] == PK for g in bundle["upcoming"]):
+    F.log("AVISO: el partido ya no está en 'Preview' (¿empezó?)")
+with gzip.open(f"{OUT}/bundle_{PK}_{LABEL}.json.gz", "wt", encoding="utf-8") as f:
     json.dump(bundle, f, separators=(",", ":"))
 F.log("bundle listo", bundle["meta"]["errors"])
