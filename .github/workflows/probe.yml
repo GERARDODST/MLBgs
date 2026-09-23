@@ -1,0 +1,24 @@
+name: probe-api
+on:
+  push:
+    branches: ["claude/eloquent-ride-7quneh"]
+    paths: ["scripts/probe_api.py", ".github/workflows/probe.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/probe_api.py
+      - name: Commit samples
+        run: |
+          git config user.name "mlbgs-bot"
+          git config user.email "mlbgs-bot@users.noreply.github.com"
+          git add samples
+          git commit -m "Muestras de la MLB Stats API (probe)" || echo "sin cambios"
+          git push
