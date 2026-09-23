@@ -1,0 +1,41 @@
+name: Actualizar datos MLBgs
+
+on:
+  schedule:
+    # 8am, 11am, 2pm, 5pm y 8pm hora del Este (antes de lineups y de los juegos de la costa oeste)
+    - cron: "0 12,15,18,21 * * *"
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+  push:
+    branches: ["claude/eloquent-ride-7quneh"]
+    paths: ["mlbgs/**", "site/**", ".github/workflows/update.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mlbgs-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Descargar datos oficiales (MLB Stats API + Baseball Savant)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python -m mlbgs.fetch --out .cache/raw_bundle.json.gz
+      - name: Guardar bundle crudo (solo rama de desarrollo)
+        if: github.ref != 'refs/heads/main'
+        run: mkdir -p dev && cp .cache/raw_bundle.json.gz dev/raw_bundle.json.gz
+      - name: Commit
+        run: |
+          git config user.name "mlbgs-bot"
+          git config user.email "mlbgs-bot@users.noreply.github.com"
+          git add -A dev data site 2>/dev/null || true
+          git commit -m "Datos MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
+          git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
