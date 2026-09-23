@@ -29,6 +29,7 @@ from . import markov as MK
 from . import mathlib as M
 from . import model
 from . import picks as P
+from . import prisma as PR
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, "prolab")
@@ -48,9 +49,22 @@ def assemble(pk: int) -> tuple[dict, dict, dict]:
     pre = load(os.path.join(DIR, f"bundle_1609_{pk}_pre.json.gz"))   # 16:09Z: el partido aún en "Preview"
     snap = load(os.path.join(DIR, f"snapshot_{pk}_pre.json.gz"))
     game = next(g for g in pre["upcoming"] if g["pk"] == pk)
+    _enrich(game, snap)
+    teams = (game["away"], game["home"])
+    base["upcoming"] = [game]
+    base["pitchers"] = {**base.get("pitchers", {}), **{k: v for k, v in pre["pitchers"].items()
+                                                       if int(k) in game["probable"].values()}}
+    base["rosters"] = {str(t): FE.parse_roster(snap[f"roster_{t}"], snap.get(f"roster40_{t}") or {}) for t in teams}
+    rows = [t for tid in teams for t in (snap.get(f"transactions_{tid}") or {}).get("transactions", [])]
+    base["transactions"] = FE.parse_transactions(rows, set(teams))
+    base["meta"] = {**base["meta"], "generatedAt": snap["takenAt"], "today": game["date"]}
+    return base, snap, game
+
+
+def _enrich(game: dict, snap: dict) -> None:
+    """Lineups, bullpen, banca, clima y umpires oficiales del feed del partido (publicados antes del juego)."""
     feed = snap["feed"]
     box = feed["liveData"]["boxscore"]["teams"]
-    teams = (game["away"], game["home"])
     # lineups y bullpen oficiales del feed del partido (publicados por el club antes del juego)
     for side in SIDES:
         order = box[side].get("battingOrder") or []
@@ -63,14 +77,108 @@ def assemble(pk: int) -> tuple[dict, dict, dict]:
     game["weather"] = feed["gameData"].get("weather") or game.get("weather")
     game["officials"] = [{"type": o["officialType"], "name": o["official"]["fullName"]}
                          for o in feed["liveData"]["boxscore"].get("officials", [])] or game.get("officials")
-    base["upcoming"] = [game]
-    base["pitchers"] = {**base.get("pitchers", {}), **{k: v for k, v in pre["pitchers"].items()
-                                                       if int(k) in game["probable"].values()}}
-    base["rosters"] = {str(t): FE.parse_roster(snap[f"roster_{t}"], snap.get(f"roster40_{t}") or {}) for t in teams}
-    rows = [t for tid in teams for t in (snap.get(f"transactions_{tid}") or {}).get("transactions", [])]
-    base["transactions"] = FE.parse_transactions(rows, set(teams))
-    base["meta"] = {**base["meta"], "generatedAt": snap["takenAt"], "today": game["date"]}
-    return base, snap, game
+
+
+def assemble_generic(pk: int, label: str) -> tuple[dict, dict, dict]:
+    """Pasada congelada `label` (manana/tarde): bundle completo con el partido en 'Preview' + feed oficial."""
+    bundle = load(os.path.join(DIR, f"bundle_{pk}_{label}.json.gz"))
+    snap = load(os.path.join(DIR, f"snapshot_{pk}_{label}.json.gz"))
+    game = next(g for g in bundle["upcoming"] if g["pk"] == pk)
+    _enrich(game, snap)
+    teams = (game["away"], game["home"])
+    bundle["upcoming"] = [game]
+    rosters = bundle.get("rosters") or {}
+    for t in teams:
+        if str(t) not in rosters and snap.get(f"roster_{t}"):
+            rosters[str(t)] = FE.parse_roster(snap[f"roster_{t}"], snap.get(f"roster40_{t}") or {})
+    bundle["rosters"] = rosters
+    bundle["meta"] = {**bundle["meta"], "generatedAt": snap["takenAt"], "today": game["date"]}
+    return bundle, snap, game
+
+
+def log5_before(results, cutoff, lg_home_default=0.53):
+    """Log5 con Pitágoras regresado usando SOLO juegos anteriores al corte (sin fuga para la validación)."""
+    agg = {}
+    hw = n = 0
+    for g in results:
+        if g["date"] >= cutoff:
+            continue
+        for t, rs, ra in ((g["away"], g["ar"], g["hr"]), (g["home"], g["hr"], g["ar"])):
+            a = agg.setdefault(t, [0, 0, 0])
+            a[0] += rs
+            a[1] += ra
+            a[2] += 1
+        hw += g["hr"] > g["ar"]
+        n += 1
+    true = {t: M.shrink(M.pythagorean(a[0], a[1], M.pythagenpat_exponent(a[0], a[1], a[2])), a[2], 70, 0.5)
+            for t, a in agg.items()}
+    home = hw / n if n else lg_home_default
+    orat = home / (1 - home)
+    return (lambda h, a: M.with_home_edge(M.log5(true.get(h, 0.5), true.get(a, 0.5)), orat)), home
+
+
+def run_prisma(pk: int, n_draws: int = 2000, n_sims: int = 200000, cutoff: str = "2026-09-01") -> dict:
+    t0 = time.time()
+    passes = [l for l in ("manana", "tarde") if os.path.exists(os.path.join(DIR, f"bundle_{pk}_{l}.json.gz"))]
+    runs = {}
+    for label in passes:
+        bundle, snap, game = assemble_generic(pk, label)
+        ctx = model.Context(bundle)
+        base = model.analyze(ctx, game)
+        pr = PR.run_game(bundle, ctx, game, base, n_draws=n_draws, n_sims=n_sims)
+        runs[label] = (bundle, snap, game, ctx, base, pr)
+    label = passes[-1]
+    bundle, snap, game, ctx, base, pr = runs[label]
+    extra = {**pr["extra"], "methodKey": "prisma"}
+    picks = P.build(base, extra)
+    tri = base["sections"]["s5"]["triangulation"]
+    consensus = {"log5": tri["log5"]["pHome"], "elo": tri["elo"]["pHome"], "lambda": tri["lambda"]["pHome"],
+                 "prisma": pr["predictive"]["pHome"]}
+    log5_fn, home_rate = log5_before(bundle["results"], cutoff)
+    teams_all = {int(t) for t in bundle["teams"]}
+    validation = PR.validate(bundle["results"], bundle.get("prevResults", []), dict(ctx.pf), teams_all,
+                             None, cutoff, home_rate, log5_fn)
+    validation["grid"] = PR.grid_search(bundle["results"], bundle.get("prevResults", []), dict(ctx.pf), teams_all, cutoff)
+    pass_rows = []
+    for lb in passes:
+        b_, s_, g_, c_, base_, pr_ = runs[lb]
+        pass_rows.append({
+            "label": lb, "takenAt": s_["takenAt"], "pHome": pr_["predictive"]["pHome"],
+            "posterior": {k: pr_["posterior"][k] for k in ("mean", "q05", "q95")},
+            "meanTotal": pr_["predictive"]["meanTotal"],
+            "lineups": {sd: [ (base_["sections"]["s5"]["lineups"][sd] or {}).get("status") ] for sd in SIDES},
+            "lineupIds": {sd: g_["lineups"][sd] for sd in SIDES}, "weather": g_.get("weather"),
+            "probables": {sd: g_["probable"][sd] for sd in SIDES}, "umpire": base_.get("umpire"),
+        })
+    changes = []
+    if len(pass_rows) == 2:
+        a_, b_ = pass_rows
+        for sd in SIDES:
+            if a_["lineupIds"][sd] != b_["lineupIds"][sd]:
+                changes.append(f"Cambió el lineup de {ctx.T.abbr(game[sd])}")
+            if a_["probables"][sd] != b_["probables"][sd]:
+                changes.append(f"Cambió el abridor de {ctx.T.abbr(game[sd])}")
+        if a_["weather"] != b_["weather"]:
+            changes.append(f"Clima: {a_['weather']} → {b_['weather']}")
+        if not changes:
+            changes.append("Sin cambios de lineup, abridores ni clima entre pasadas")
+    out = {
+        "model": "PRISMA", "modelKey": "prisma", "pk": pk, "frozenAt": snap["takenAt"], "firstPitch": game["time"],
+        "tagline": "Bayes jerárquico de ataque/defensa + posterior de Laplace + predictiva con fragilidad",
+        "builtAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "game": {k: base[k] for k in ("pk", "date", "time", "venue", "teams", "weather", "umpire", "series")},
+        "base": base, "picks": picks, "topPicks": picks[:2],
+        "consensus": {"methods": consensus, "pHome": sum(consensus.values()) / 4,
+                      "spread": max(consensus.values()) - min(consensus.values())},
+        "prisma": {k: v for k, v in pr.items() if k != "extra"}, "passes": pass_rows, "changes": changes,
+        "validation": validation, "summaryProb": {"pModel": pr["predictive"]["pHome"], "totalDist": pr["predictive"]["total"]},
+        "result": None, "secondsTotal": time.time() - t0,
+    }
+    rpath = os.path.join(DIR, f"result_{pk}.json")
+    if os.path.exists(rpath):
+        with open(rpath, encoding="utf-8") as f:
+            out["result"] = compare(json.load(f), out)
+    return out
 
 
 # ============================================================ tasas por turno
@@ -337,6 +445,8 @@ def run(pk: int = 824223, n_sims: int = 50000, n_morning: int = 20000) -> dict:
         "bench": {s: [batter(i, game[s])["name"] for i in game["officialBench"][s]] for s in SIDES},
         "pens": {s: [{k: v for k, v in r.items() if k not in ("stats", "vs")} for r in pens[s]] for s in SIDES},
         "bvp": bvp, "result": None, "secondsTotal": time.time() - t0,
+        "modelKey": "diamante", "summaryProb": {"pModel": p_home, "totalDist": total_view},
+        "tagline": "Cadena de Markov de 24 estados + Monte Carlo turno por turno",
     }
     rpath = os.path.join(DIR, f"result_{pk}.json")
     if os.path.exists(rpath):
@@ -364,7 +474,7 @@ def compare(res: dict, lab: dict) -> dict:
     """Resultado oficial vs lo que dijo el modelo antes del partido (usa solo lo guardado en el Pro-Lab)."""
     a, h = res["away"], res["home"]
     ab, hb = lab["game"]["teams"]["away"]["abbr"], lab["game"]["teams"]["home"]["abbr"]
-    mc = lab["mc"]
+    sp = lab.get("summaryProb") or {"pModel": lab["mc"]["pHome"], "totalDist": lab["mc"]["total"]}
     home_won = h > a
     total = a + h
     inn = res.get("innings") or []
@@ -372,10 +482,10 @@ def compare(res: dict, lab: dict) -> dict:
     f5h = sum((x[1] or 0) for x in inn[:5])
     graded = [{"pick": p["pick"], "market": p["market"], "p": p["p"], "ic": p["ic"], "level": p["level"],
                "won": P.grade(p, ab, hb, a, h, inn, res.get("starterK"))} for p in lab["picks"]]
-    tv = mc["total"]
+    tv = sp["totalDist"]
     return {**res, "homeWon": home_won, "total": total, "f5": [f5a, f5h],
             "brier": (lab["consensus"]["pHome"] - (1 if home_won else 0)) ** 2,
-            "brierMc": (mc["pHome"] - (1 if home_won else 0)) ** 2,
+            "brierMc": (sp["pModel"] - (1 if home_won else 0)) ** 2,
             "pTotalExact": tv[total] if total < len(tv) else 0.0, "percentileTotal": sum(tv[:total + 1]),
             "graded": graded, "hits": sum(1 for g in graded if g["won"]), "misses": sum(1 for g in graded if g["won"] is False)}
 
@@ -384,8 +494,20 @@ def main():
     import argparse
     ap = argparse.ArgumentParser(description="Pro-Lab: DIAMANTE-24 sobre un partido congelado")
     ap.add_argument("--pk", type=int, default=824223)
+    ap.add_argument("--model", choices=["diamante", "prisma"], default="diamante")
     ap.add_argument("--sims", type=int, default=50000)
     args = ap.parse_args()
+    if args.model == "prisma":
+        out = run_prisma(args.pk, n_sims=max(args.sims, 100000))
+        path = os.path.join(DIR, f"prolab_{args.pk}.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, separators=(",", ":"), default=float)
+        v = out["validation"]
+        print(f"PRISMA: P({out['game']['teams']['home']['abbr']}) = {out['prisma']['predictive']['pHome']:.3f} "
+              f"(IC90 {out['prisma']['posterior']['q05']:.3f}–{out['prisma']['posterior']['q95']:.3f}); validación "
+              f"{v['games']} juegos log-loss PRISMA {v['logloss']['prisma']:.4f} vs Log5 {v['logloss']['log5']:.4f} "
+              f"({out['secondsTotal']:.1f} s) → {path}", file=sys.stderr)
+        return
     out = run(args.pk, args.sims)
     path = os.path.join(DIR, f"prolab_{args.pk}.json")
     with open(path, "w", encoding="utf-8") as f:

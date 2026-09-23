@@ -15,8 +15,10 @@ import math
 import os
 import sys
 
+from . import markov as MK
 from . import model
 from . import picks as PK
+from . import prisma as PRI
 from . import prolab as PL
 from . import validate as V
 
@@ -176,7 +178,9 @@ def build(bundle: dict, save: bool = True) -> dict:
     if save:
         save_predictions(analyses, generated)
     checks = V.validate(bundle)
-    lab = load_prolab(bundle, save)
+    labs = load_prolabs(bundle, save)
+    lab = next((x for x in labs if x.get("modelKey") == "diamante"), labs[0] if labs else None)
+    live = live_view(bundle, ctx)
     track = evaluate(bundle)
     lg = ctx.lg
     payload = {
@@ -193,15 +197,70 @@ def build(bundle: dict, save: bool = True) -> dict:
         "track": track,
         "checks": checks,
         "prolab": lab,
+        "prolabs": labs,
+        "live": live,
     }
-    for a in payload["games"] + ([lab["base"]] if lab else []):
+    for a in payload["games"] + [x["base"] for x in labs]:
         a.pop("markets", None)   # tabla interna de mercados: los picks y las secciones ya la resumen
+    payload["prolab"] = None     # compatibilidad: la vista usa `prolabs`
     return rounded(payload)
 
 
-def load_prolab(bundle: dict, save: bool) -> dict | None:
-    """Carga el Pro-Lab congelado; si el partido ya terminó, lo califica con el resultado oficial."""
-    paths = sorted(glob.glob(os.path.join(PL.DIR, "prolab_*.json")))
+def live_view(bundle: dict, ctx: model.Context) -> dict:
+    """Partidos de ayer y hoy (programados, en vivo y finales) con sus 2 picks previos y su resultado."""
+    sb = bundle.get("scoreboard") or []
+    preds = {}
+    for date in sorted({g["date"] for g in sb}):
+        path = os.path.join(PRED_DIR, f"{date}.json")
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as f:
+                preds.update({r["pk"]: r for r in json.load(f)})
+    starter_k = {}
+    for b in bundle.get("boxscores", []):
+        starter_k[b["pk"]] = {b[s]["pitchers"][0]["name"]: b[s]["pitchers"][0]["k"] for s in ("away", "home") if b[s]["pitchers"]}
+    results = bundle.get("results", [])
+    hd = PRI.half_inning_dist(results)
+    exp_a = sum(sum(1 for x in (g.get("inn") or []) if x[0] is not None) or 9 for g in results) / max(1, len(results))
+    exp_h = sum(sum(1 for x in (g.get("inn") or []) if x[1] is not None) or 8.5 for g in results) / max(1, len(results))
+    lg = ctx.lg
+    rows = []
+    for g in sb:
+        p = preds.get(g["pk"])
+        row = dict(g)
+        if p:
+            picks = []
+            for tp in p.get("topPicks") or []:
+                won = None
+                if g["state"] == "Final" and g.get("ar") is not None:
+                    won = PK.grade(tp, p["away"], p["home"], g["ar"], g["hr"], g.get("inn") or [], starter_k.get(g["pk"]))
+                picks.append({**tp, "won": won})
+            row["pred"] = {"pHome": p["pHome"], "projAway": p["projAway"], "projHome": p["projHome"], "total": p["total"],
+                           "nrfi": p.get("nrfi"), "picks": picks, "generatedAt": p.get("generatedAt"),
+                           "probables": p.get("probables")}
+            row["halfAway"] = PRI.scaled_half(hd, p["projAway"] / exp_a)
+            row["halfHome"] = PRI.scaled_half(hd, p["projHome"] / exp_h)
+        rows.append(row)
+    L = MK.league_rates(lg.tot)
+    e = MK.calibrate_residual(L, lg.runs_per_half, lg.gb_rate)
+    re = MK.re24(MK.with_residual(L, e), lg.gb_rate)
+    order = {"Live": 0, "Final": 1, "Preview": 2}
+    rows.sort(key=lambda r: (order.get(r["state"], 3), r["date"] if r["state"] != "Final" else "", r["time"] or ""))
+    return {"games": rows, "halfLeague": hd, "re24": re["table"], "p1": re["p1table"],
+            "xHome": 0.5 * lg.extra_home_win + 0.25, "asOf": bundle["meta"]["generatedAt"]}
+
+
+def load_prolabs(bundle: dict, save: bool) -> list[dict]:
+    labs = []
+    for path in sorted(glob.glob(os.path.join(PL.DIR, "prolab_*.json"))):
+        lab = load_prolab(bundle, save, path)
+        if lab:
+            labs.append(lab)
+    return labs
+
+
+def load_prolab(bundle: dict, save: bool, path: str | None = None) -> dict | None:
+    """Carga un Pro-Lab congelado; si el partido ya terminó, lo califica con el resultado oficial."""
+    paths = [path] if path else sorted(glob.glob(os.path.join(PL.DIR, "prolab_*.json")))
     if not paths:
         return None
     with open(paths[-1], encoding="utf-8") as f:

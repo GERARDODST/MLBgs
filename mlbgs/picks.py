@@ -23,6 +23,7 @@ REF_PRICE = {"ml": -110, "rl_fav": 135, "rl_dog": -160, "total": -110, "f5ml": -
 MODEL_NAMES = {
     "log5": "Log5 (5.7.2)", "elo": "Elo + abridor (5.7.7)", "lambda": "λ + Binomial Negativa (5.3 · 5.7.5)",
     "poisson": "λ + Poisson (5.4)", "calib": "λ calibrado a ceros reales (6.8)", "mc": "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+    "prisma": "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
 }
 
 
@@ -56,6 +57,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
     """Picks de un partido ya analizado por model.analyze. `extra` = probabilidades del Monte Carlo del Pro-Lab."""
     S = game["sections"]
     extra = extra or {}
+    MK_ = extra.get("methodKey", "mc")
     a, h = game["teams"]["away"]["abbr"], game["teams"]["home"]["abbr"]
     tri = S["s5"]["triangulation"]
     gate = S["s9"]["gate"]["blocks"]
@@ -104,7 +106,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
     p_home = tri["pHome"]
     meth = {"log5": tri["log5"]["pHome"], "elo": tri["elo"]["pHome"], "lambda": tri["lambda"]["pHome"]}
     if extra.get("pHome") is not None:
-        meth["mc"] = extra["pHome"]
+        meth[MK_] = extra["pHome"]
         p_home = sum(meth.values()) / len(meth)
     side_home = p_home >= 0.5
     ml_methods = {k: (v if side_home else 1 - v) for k, v in meth.items()}
@@ -120,7 +122,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
         fav = "-1.5" in m["pick"]
         p = m["pNoPush"]
         mc_p = extra.get("rl", {}).get(m["pick"])
-        methods = {"lambda": p, **({"mc": mc_p} if mc_p is not None else {})}
+        methods = {"lambda": p, **({MK_: mc_p} if mc_p is not None else {})}
         pp = sum(methods.values()) / len(methods)
         gap = pp - M.american_to_prob(REF_PRICE["rl_fav" if fav else "rl_dog"])
         if best_rl is None or gap > best_rl[0]:
@@ -149,7 +151,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
             m = lines[ln][side]
             methods = {"lambda" if key in ("total",) or key.startswith("tt_") else "poisson": m["pNoPush"]}
             if mc_dist is not None:
-                methods["mc"] = _ou(mc_dist, ln, side)
+                methods[MK_] = _ou(mc_dist, ln, side)
             pp = sum(methods.values()) / len(methods)
             if best is None or pp > best[0]:
                 best = (pp, m, methods)
@@ -176,7 +178,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
         methods = {"poisson": m["pNoPush"]}
         if extra.get("f5"):
             f = extra["f5"]
-            methods["mc"] = f[side] / (f["away"] + f["home"]) if (f["away"] + f["home"]) else None
+            methods[MK_] = f[side] / (f["away"] + f["home"]) if (f["away"] + f["home"]) else None
         pp = sum(v for v in methods.values() if v is not None) / len([v for v in methods.values() if v is not None])
         add("F5", "F5 Moneyline", m["pick"], pp, methods, "f5ml", None, gate["f5"], stab_sp, contra_for("F5"),
             "Poisson de las primeras 5 entradas, empates como push" + (" + Monte Carlo" if extra.get("f5") else ""))
@@ -187,14 +189,14 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
         p_n = next(m["p"] for m in nr if m["pick"] == "NRFI")
         methods = {"calib": p_n}
         if extra.get("nrfi") is not None:
-            methods["mc"] = extra["nrfi"]
+            methods[MK_] = extra["nrfi"]
         pn = sum(methods.values()) / len(methods)
         edge_n = pn - M.american_to_prob(REF_PRICE["nrfi"])
         edge_y = (1 - pn) - M.american_to_prob(REF_PRICE["yrfi"])
         pick, pp = ("NRFI", pn) if edge_n >= edge_y else ("YRFI", 1 - pn)
         add("NRFI", "NRFI/YRFI", pick, pp, {k: (v if pick == "NRFI" else 1 - v) for k, v in methods.items()},
             "nrfi" if pick == "NRFI" else "yrfi", None, gate["nrfi"], stab_sp, contra_for("NRFI/YRFI"),
-            "Primera entrada calibrada con la frecuencia real de ceros de la liga" + (" + Monte Carlo" if "mc" in methods else ""))
+            "Primera entrada calibrada con la frecuencia real de ceros de la liga" + (" + Monte Carlo" if MK_ in methods else ""))
 
     # --- props de ponches (línea mediana)
     for side in ("away", "home"):
@@ -210,7 +212,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
             m = lines[ln][o_u]
             methods = {"poisson": m["pNoPush"]}
             if extra.get(f"k_{side}"):
-                methods["mc"] = _ou(extra[f"k_{side}"], ln, o_u)
+                methods[MK_] = _ou(extra[f"k_{side}"], ln, o_u)
             pp = sum(methods.values()) / len(methods)
             if best is None or pp > best[0]:
                 best = (pp, m, methods)
@@ -219,7 +221,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
         bf = c.get("bf") or 0
         add("K", "Prop de ponches", m["pick"], pp, methods, "k", None, gate["props"], bf / (bf + 70 * 4) if bf else 0.3,
             contra_for("Prop pitcher"), "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson" +
-            (" + Monte Carlo" if "mc" in methods else ""), line=ln)
+            (" + Monte Carlo" if MK_ in methods else ""), line=ln)
 
     picks.sort(key=lambda x: -x["ic"])
     for i, p in enumerate(picks):

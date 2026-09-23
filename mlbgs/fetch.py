@@ -170,6 +170,29 @@ def upcoming_games(start: str, end: str) -> list[dict]:
     return out
 
 
+def scoreboard(start: str, end: str) -> list[dict]:
+    """Marcador de todos los partidos (programados, en vivo y finales) con la situación actual."""
+    data = get(f"{STATS}/schedule?sportId=1&startDate={start}&endDate={end}&gameType=R,F,D,L,W&hydrate=linescore,team")
+    out = []
+    for d in data.get("dates", []):
+        for g in d["games"]:
+            t = g["teams"]
+            ls = g.get("linescore") or {}
+            off = ls.get("offense") or {}
+            out.append({
+                "pk": g["gamePk"], "date": g.get("officialDate"), "time": g.get("gameDate"),
+                "state": g["status"].get("abstractGameState"), "detailed": g["status"].get("detailedState"),
+                "away": t["away"]["team"]["id"], "home": t["home"]["team"]["id"],
+                "awayAbbr": t["away"]["team"].get("abbreviation"), "homeAbbr": t["home"]["team"].get("abbreviation"),
+                "ar": t["away"].get("score"), "hr": t["home"].get("score"),
+                "inning": ls.get("currentInning"), "top": ls.get("isTopInning"), "inningState": ls.get("inningState"),
+                "outs": ls.get("outs"), "bases": (1 if off.get("first") else 0) | (2 if off.get("second") else 0) | (4 if off.get("third") else 0),
+                "inn": [[(i.get("away") or {}).get("runs"), (i.get("home") or {}).get("runs")] for i in ls.get("innings", [])],
+                "venue": (g.get("venue") or {}).get("name"),
+            })
+    return out
+
+
 # ------------------------------------------------------------------ equipos y standings
 
 def teams(season: int) -> dict:
@@ -504,6 +527,8 @@ def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int 
     }
     bundle["results"], bundle["remaining"] = attempt("schedule", lambda: season_schedule(season), ([], []))
     bundle["live"] = getattr(upcoming_games, "live", [])
+    bundle["scoreboard"] = attempt("scoreboard", lambda: scoreboard((today - dt.timedelta(days=1)).isoformat(),
+                                                                  today.isoformat()), [])
 
     playing = sorted({t for g in bundle["upcoming"] for t in (g["away"], g["home"])})
     rosters = attempt("rosters", lambda: pmap(lambda t: (t, roster(t, season)), playing, workers=6), [])
