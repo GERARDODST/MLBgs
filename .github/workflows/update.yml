@@ -1,0 +1,65 @@
+name: Actualizar MLBgs
+
+on:
+  schedule:
+    # Días de juego: cada 20 minutos de 15:00 a 05:59 UTC (lineups, abridores, bullpen y modelo al día);
+    # el marcador en vivo lo consulta el navegador cada 30 s directo de statsapi.mlb.com.
+    - cron: "*/20 15-23 * * *"
+    - cron: "*/20 0-5 * * *"
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths: ["mlbgs/**", "site/template.html", "tests/**", "prolab/prolab_*.json", ".github/workflows/update.yml"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: mlbgs-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pruebas
+        run: python -m unittest discover -s tests
+      - name: Descargar datos oficiales (MLB Stats API + Baseball Savant)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python -m mlbgs.fetch --out .cache/raw_bundle.json.gz
+      - name: Correr el modelo y construir la página
+        run: python -m mlbgs.build --bundle .cache/raw_bundle.json.gz
+      - name: Guardar predicciones (seguimiento)
+        run: |
+          git config user.name "mlbgs-bot"
+          git config user.email "mlbgs-bot@users.noreply.github.com"
+          if [ -e data/predictions ]; then git add -A data/predictions; fi
+          git add prolab/result_*.json 2>/dev/null || true
+          git commit -m "Predicciones MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
+          git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Empaquetar la página
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    # Requiere Settings → Pages → Source: "GitHub Actions" (una sola vez)
+    if: github.ref == 'refs/heads/main'
+    needs: update
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
