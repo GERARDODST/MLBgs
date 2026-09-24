@@ -170,9 +170,11 @@ def upcoming_games(start: str, end: str) -> list[dict]:
     return out
 
 
-def scoreboard(start: str, end: str) -> list[dict]:
-    """Marcador de todos los partidos (programados, en vivo y finales) con la situación actual."""
-    data = get(f"{STATS}/schedule?sportId=1&startDate={start}&endDate={end}&gameType=R,F,D,L,W&hydrate=linescore,team,lineups,probablePitcher")
+def scoreboard(start: str, end: str, box_until: str | None = None) -> list[dict]:
+    """Marcador de todos los partidos (programados, en vivo y finales) con la situación actual, carreras-hits-errores
+    y pitchers de decisión. Trae el box score reducido de los juegos en vivo y terminados hasta `box_until`."""
+    data = get(f"{STATS}/schedule?sportId=1&startDate={start}&endDate={end}&gameType=R,F,D,L,W"
+               "&hydrate=linescore,team,lineups,probablePitcher,decisions")
     out = []
     for d in data.get("dates", []):
         for g in d["games"]:
@@ -197,9 +199,15 @@ def scoreboard(start: str, end: str) -> list[dict]:
                 "lu": ({s: [{"name": p.get("fullName"), "pos": (p.get("primaryPosition") or {}).get("abbreviation")}
                             for p in lu.get(f"{s}Players") or []] for s in ("away", "home")}
                        if (lu.get("awayPlayers") or lu.get("homePlayers")) else None),
+                "rhe": ({s: [(ls["teams"].get(s) or {}).get(k) for k in ("runs", "hits", "errors")] for s in ("away", "home")}
+                        if ls.get("teams") else None),
+                "decisions": ({k: (dec.get(k) or {}).get("fullName") for k in ("winner", "loser", "save") if dec.get(k)}
+                              if (dec := g.get("decisions")) else None),
+                "dh": g.get("doubleHeader"), "gameNumber": g.get("gameNumber"),
             })
-    today = end
-    live = [g for g in out if g["date"] == today and g["state"] in ("Live", "Final") and "Postponed" not in (g["detailed"] or "")]
+    until = box_until or end
+    live = [g for g in out if g["date"] <= until and g["state"] in ("Live", "Final")
+            and not re.search(r"Postponed|Cancel", g["detailed"] or "")]
     for g, box in zip(live, pmap(lambda g: _live_box(g["pk"]), live)):
         if box:
             g["box"] = box
@@ -569,8 +577,9 @@ def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int 
     }
     bundle["results"], bundle["remaining"] = attempt("schedule", lambda: season_schedule(season), ([], []))
     bundle["live"] = getattr(upcoming_games, "live", [])
+    # ayer, hoy y mañana (fecha oficial): la jornada de la página y la calificación de los tickets
     bundle["scoreboard"] = attempt("scoreboard", lambda: scoreboard((today - dt.timedelta(days=1)).isoformat(),
-                                                                  today.isoformat()), [])
+                                                                  end.isoformat(), today.isoformat()), [])
 
     playing = sorted({t for g in bundle["upcoming"] for t in (g["away"], g["home"])})
     rosters = attempt("rosters", lambda: pmap(lambda t: (t, roster(t, season)), playing, workers=6), [])

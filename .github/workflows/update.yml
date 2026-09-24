@@ -43,6 +43,7 @@ jobs:
           git config user.email "mlbgs-bot@users.noreply.github.com"
           if [ -e data/predictions ]; then git add -A data/predictions; fi
           git add prolab/result_*.json 2>/dev/null || true
+          if [ -e data/historial ]; then git add -A data/historial; fi
           git commit -m "Predicciones MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
           git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
       - name: Empaquetar la página
