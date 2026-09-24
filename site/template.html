@@ -542,6 +542,11 @@
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag.cl, :root:not([data-theme="light"]) .cb-head .eyebrow { color: #e59a7a; } }
   .tk-deci { display: flex; gap: 6px; align-items: baseline; flex-wrap: wrap; font-size: 13.5px; border-radius: 8px; padding: 5px 8px; background: var(--surface-2); }
   .tk-deci.on { background: var(--verde-soft); }
+  .lc-deci { font-size: 13px; border-radius: 8px; padding: 6px 9px; background: var(--surface-2); display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; }
+  .lc-deci.on { background: var(--verde-soft); }
+  .game .top .cd { color: var(--accent); font-weight: 600; }
+  .notice.started { border-color: var(--rojo-soft); }
+  .notice.started .ic { background: var(--rojo-soft); color: var(--rojo); font-size: 10px; }
   @media (prefers-reduced-motion: no-preference) { .game, .ticket, .chip, nav.tabs a { transition: border-color .15s, background .15s, color .15s; } }
 </style>
 
@@ -1059,7 +1064,9 @@
     });
   }
 
-  document.getElementById("stamp").textContent = `Datos: ${fmtStamp(D.meta.generatedAt)} · ${tz}`;
+  const setStamp = () => { document.getElementById("stamp").textContent = `Datos: ${fmtStamp(D.meta.generatedAt)} (${agoTxt(D.meta.generatedAt)}) · ${tz}`; };
+  setStamp();
+  setInterval(setStamp, 60000);
 
   // ---------------------------------------------------------------- tooltip
   const tip = document.getElementById("tip");
@@ -1288,7 +1295,7 @@ ${brief}`;
     const lab = LAB_BY_PK[String(g.pk)];
     const tops = lab ? lab.topPicks || [] : s.topPicks || [];
     return `<a class="game${lab ? " has-lab" : ""}" href="#g${g.pk}">
-      <div class="top"><span>${fmtTime(g.time)} · ${esc(g.venue.name)}${g.dh && g.dh !== "N" ? ` · juego ${g.gameNumber}` : ""}</span><span style="display:inline-flex;gap:6px;align-items:center">${lab ? `<span class="tag info" data-tip="Tiene modelo del Pro-Lab: los picks combinan framework + modelo">Pro-Lab · ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${light(s.light)}</span></div>
+      <div class="top"><span>${fmtTime(g.time)}${(() => { const t = startsTxt(effState(liveGames.find((x) => x.pk === g.pk) || null, g.time)); return t ? ` · <b class="cd">${esc(t)}</b>` : ""; })()} · ${esc(g.venue.name)}${g.dh && g.dh !== "N" ? ` · juego ${g.gameNumber}` : ""}</span><span style="display:inline-flex;gap:6px;align-items:center">${lab ? `<span class="tag info" data-tip="Tiene modelo del Pro-Lab: los picks combinan framework + modelo">Pro-Lab · ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${light(s.light)}</span></div>
       <div class="line"><span class="abbr"><i class="away-mark"></i>${esc(a.abbr)}</span><span class="who"><span class="rec">${esc(a.name)} · ${a.w}-${a.l}</span>${sp(s.probables.away)}</span><span class="prob ${pa >= 0.5 ? "fav" : "dog"}">${pc(pa)}</span></div>
       <div class="line"><span class="abbr"><i class="home-mark"></i>${esc(h.abbr)}</span><span class="who"><span class="rec">${esc(h.name)} · ${h.w}-${h.l}</span>${sp(s.probables.home)}</span><span class="prob ${ph > 0.5 ? "fav" : "dog"}">${pc(ph)}</span></div>
       <div class="splitbar" role="img" aria-label="Probabilidad de victoria: ${esc(a.abbr)} ${pc(pa)}, ${esc(h.abbr)} ${pc(ph)}"><span style="width:${(pa * 100).toFixed(1)}%"></span><span style="width:${(ph * 100).toFixed(1)}%"></span></div>
@@ -1311,7 +1318,7 @@ ${brief}`;
     GAMES.forEach((a) => { const k = `${a.pk}|${a.date}`; const r = rows.get(k) || { pk: a.pk, date: a.date, time: a.time }; r.an = a; rows.set(k, r); });
     return [...rows.values()];
   }
-  const rowState = (r) => (r.sb && isOff(r.sb) ? "off" : r.sb && r.sb.state === "Live" ? "live" : r.sb && r.sb.state === "Final" ? "final" : "pre");
+  const rowState = (r) => effState(r.sb || { state: "Preview" }, r.time).st;
   // los 2 picks principales del partido tal como se registraron (Pro-Lab si existe; si no, framework)
   function mainPicks(r) {
     if (r.sb && r.sb.pred && r.sb.pred.picks && r.sb.pred.picks.length) return r.sb.pred.picks;
@@ -1339,7 +1346,8 @@ ${brief}`;
     return dates.find((d) => d >= TODAY) || dates[dates.length - 1];
   }
   let DAY_RENDER = null;
-  const daySig = () => liveGames.map((g) => [g.pk, g.state, g.detailed, g.ar, g.hr, g.inning, g.inningState, g.outs, g.bases, (g.now || {}).batter, (g.now || {}).balls, (g.now || {}).strikes].join(",")).join(";");
+  const daySig = () => Math.floor(Date.now() / 60000) + "|" + liveGames.map((g) => [g.pk, g.state, g.detailed, g.ar, g.hr, g.inning, g.inningState, g.outs, g.bases, (g.now || {}).batter, (g.now || {}).balls, (g.now || {}).strikes].join(",")).join(";");
+  const typing = () => { const el = document.activeElement; return !!(el && app.contains(el) && /^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName)); };
 
   function viewGames() {
     let all = dayRows();
@@ -1382,7 +1390,7 @@ ${brief}`;
           <div class="db-cell db-src"><span class="eyebrow"><span class="dot ${liveInfo.source === "api" ? "ok" : "part"}" style="display:inline-block;vertical-align:middle;margin-right:6px"></span>Actualización</span><span>${src}</span><span style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button type="button" class="btn" id="day-refresh" style="padding:2px 9px;font-size:12.5px">Actualizar ahora</button><a href="#historial" style="font-size:13px;font-weight:600">Historial de tickets →</a></span></div>
         </div>
         ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>Sin momios conectados.</b> Sin cuotas no hay edge calculable, así que el framework marca los mercados en Gris («esperar cuota») o Rojo. Cada pick trae su <b>momio justo</b> y el <b>mínimo aceptable</b>; escribe el momio de tu casa en el partido para medir el valor.</div></div>` : ""}
-        ${carteraBlock(by.pre)}
+        ${carteraBlock(by.pre, by.live)}
         ${group("En juego", by.live, "live-grid", "")}
         ${group("Por jugar", preShown, "grid", by.pre.length ? "Ningún partido por jugar con ese semáforo." : "")}
         ${group("Terminados", by.final, "live-grid", "")}
@@ -1395,11 +1403,11 @@ ${brief}`;
       if (rb) rb.addEventListener("click", () => { rb.textContent = "Actualizando…"; rb.disabled = true; pullLive(true); });
     };
     render();
-    DAY_RENDER = (force) => { const s2 = daySig(); if (!force && s2 === sig) return; sig = s2; const y = window.scrollY; render(); window.scrollTo(0, y); };
+    DAY_RENDER = (force) => { const s2 = daySig(); if (!force && (s2 === sig || typing())) return; sig = s2; const y = window.scrollY; render(); window.scrollTo(0, y); };
   }
 
   // cartera del día: la decisión única de cada partido por jugar, con su stake
-  function carteraBlock(preRows) {
+  function carteraBlock(preRows, liveRows = []) {
     const items = [];
     preRows.filter((r) => r.an).forEach((r) => {
       const x = decisionNow(r.an);
@@ -1429,6 +1437,7 @@ ${brief}`;
         <div class="db-cell"><span class="eyebrow">Stake total</span><b class="num">${money(total)}</b><span>${bets} apuesta${bets === 1 ? "" : "s"} recomendada${bets === 1 ? "" : "s"}${total > SK.dayCap ? ` · <b style="color:var(--amarillo)">supera el tope sugerido de ${money(SK.dayCap)}: prioriza los de mayor stake</b>` : ""}</span></div>
         <div class="db-cell"><span class="eyebrow">Partidos</span><b class="num">${items.length}</b><span>${waits} esperando datos · ${withOdds} con tu momio · ${byClaude} con conclusión de Claude</span></div>
       </div>
+      ${liveRows.length ? `<p class="note muted">${liveRows.length} partido${liveRows.length === 1 ? " ya empezó" : "s ya empezaron"}: su decisión quedó registrada y se sigue en «En juego» (apuestas cerradas).</p>` : ""}
       <div class="cart-list"><div class="cart-row cart-head" aria-hidden="true"><div>Partido</div><div>Decisión</div><div>Escalera de stake</div><div>Tu momio</div><div>Stake</div></div>${rowsHtml}</div>
     </section>`;
   }
@@ -1437,6 +1446,7 @@ ${brief}`;
   function dayCard(r) {
     if (rowState(r) === "pre" && r.an) return gameCard(r.an);
     if (r.sb) return liveCard(r.sb);
+    if (r.an) return liveCard({ pk: r.pk, date: r.date, time: r.time, state: "Preview", awayAbbr: r.an.teams.away.abbr, homeAbbr: r.an.teams.home.abbr, venue: r.an.venue.name });
     return "";
   }
 
@@ -1507,8 +1517,10 @@ ${brief}`;
     const GROUPS = [["Contexto", "Secciones 1–2", [1, 2]], ["Pitcheo", "Secciones 3–4", [3, 4]], ["Modelo", "Secciones 5–6", [5, 6]], ["Mercado y decisión", "Secciones 7–8", [7, 8]], ["Control de calidad", "Secciones 9–10", [9, 10]]];
     const secsHtml = GROUPS.map(([name, sub, ns]) => `<div class="sec-group"><div class="sg-head"><span class="sg-name">${esc(name)}</span><span class="sg-sub">${esc(sub)}</span>${ns.map((n) => `<span class="dot ${ST[n].st}" data-tip="Sección ${n}: ${esc(ST[n].label)}"></span>`).join("")}</div>
       ${ns.map((n) => { const [, title, sum, fn] = SECS[n - 1]; return sec(n, title, sum, fn(g), openAll, ST[n]); }).join("")}</div>`).join("");
+    const gst = effState(liveGames.find((x) => x.pk === g.pk) || { state: "Preview" }, g.time);
     app.innerHTML = `
       <a class="back" href="${backHref}">${esc(backText)}</a>
+      ${gst.st !== "pre" ? `<div class="notice started"><span class="ic">▶</span><div><b>${gst.st === "final" ? "Este partido ya terminó" : "Este partido ya empezó"}</b> (primer lanzamiento ${fmtTime(g.time)}${gst.est ? ", según el horario" : ""}). La decisión y los picks quedaron registrados antes del juego y las apuestas previas están cerradas: esta es la lectura con la que se decidió. Síguelo en la <a href="#partidos">Jornada</a> o en <a href="#envivo">En vivo</a>.</div></div>` : ""}
       <div class="board">
         <div class="team away"><span class="eyebrow">Visitante</span><span class="big">${esc(a.abbr)}</span><span class="nm">${esc(a.name)}</span><span class="sub">${a.w}-${a.l} · ${esc(a.division || "")}${a.streak ? " · racha " + esc(a.streak) : ""} · Elo ${a.elo ?? "—"}</span></div>
         <div class="mid"><span class="at">@</span><b>${fmtDateLong(g.date)} · ${fmtTime(g.time)}</b><span>${esc(g.venue.name)}${g.venue.city ? ", " + esc(g.venue.city) : ""}${g.venue.neutral ? " · sede neutra" : ""}</span><span class="muted">${weather}</span><span class="muted">Umpire: ${esc(g.umpire || "no asignado aún")}${g.series && g.series.gameNumber ? ` · juego ${g.series.gameNumber} de ${g.series.totalGames}${g.series.result ? ` (${esc(g.series.result)})` : ""}` : ""}</span></div>
@@ -2456,6 +2468,22 @@ ${brief}`;
   const kCache = {};
   const meanOf = (d) => d.reduce((acc, v, k) => acc + k * v, 0);
   const isOff = (g) => /Postponed|Cancel|Suspended/i.test(g.detailed || "");
+  // Estado efectivo de un partido: manda el dato oficial (En vivo / Final); si el corte todavía lo tiene
+  // «por jugar», manda el reloj: pasada la hora del primer lanzamiento se da por empezado (apuestas cerradas)
+  // y ~3.5 h después, por terminado a la espera del resultado oficial. Funciona sin conexión.
+  const GAME_SPAN = 3.5 * 3600e3;
+  function effState(g, time) {
+    const now = Date.now(), t0 = Date.parse(time || (g && g.time));
+    if (g && isOff(g)) return { st: "off" };
+    if (g && g.state === "Final") return { st: "final" };
+    if (g && g.state === "Live") return isFinite(t0) && now - t0 > GAME_SPAN + 3600e3 ? { st: "final", est: true, since: t0 } : { st: "live", est: false };
+    if (isFinite(t0) && now >= t0) {
+      if (/Delayed/i.test((g && g.detailed) || "")) return { st: "pre", delayed: true, mins: 0 };
+      return now - t0 > GAME_SPAN ? { st: "final", est: true, since: t0 } : { st: "live", est: true, since: t0 };
+    }
+    return { st: "pre", mins: isFinite(t0) ? Math.round((t0 - now) / 60000) : null };
+  }
+  const startsTxt = (e) => (e.delayed ? "inicio retrasado" : e.mins == null ? "" : e.mins <= 1 ? "empieza ya" : e.mins < 60 ? `en ${e.mins} min` : e.mins < 24 * 60 ? `en ${Math.floor(e.mins / 60)} h ${e.mins % 60 ? `${e.mins % 60} min` : ""}`.trim() : "");
 
   function convJS(a, b, kmax = 40) {
     const out = new Array(Math.min(kmax + 1, a.length + b.length - 1)).fill(0);
@@ -2556,11 +2584,25 @@ ${brief}`;
 
   const diamond = (b) => `<svg viewBox="0 0 40 30" width="40" height="30" aria-label="Bases ocupadas: ${[b & 1 ? "1ª" : "", b & 2 ? "2ª" : "", b & 4 ? "3ª" : ""].filter(Boolean).join(", ") || "ninguna"}">${[[30, 16, 1], [20, 6, 2], [10, 16, 4]].map(([x, y, m]) => `<rect x="${x - 5.5}" y="${y - 5.5}" width="11" height="11" transform="rotate(45 ${x} ${y})" fill="${b & m ? "var(--amarillo)" : "none"}" stroke="var(--ink-2)" stroke-width="1.5"/>`).join("")}<rect x="16.5" y="22.5" width="7" height="7" transform="rotate(45 20 26)" fill="var(--surface-2)" stroke="var(--muted)"/></svg>`;
 
+  // la decisión única registrada para un partido (análisis vigente o ticket)
+  function decisionOfGame(pk) {
+    const an = BY_PK[String(pk)];
+    if (an && an.decision && an.decision.pick) { const x = decisionNow(an); if (x) return { pick: x.pick, level: x.level, status: x.status, p: x.p, src: x.src }; }
+    const t = (TK_BY_PK[String(pk)] || []).slice().sort((a, b) => modelOrder(a.model) - modelOrder(b.model)).find((x) => x.decision);
+    if (!t) return null;
+    const d = t.decision;
+    return { pick: d.pick, level: d.level, status: d.status, p: t.picks.find((q) => q.pick === d.pick), src: d.source };
+  }
+
   function liveCard(g) {
     const pre = g.pred, aA = g.awayAbbr, hA = g.homeAbbr;
-    const live = g.state === "Live", fin = g.state === "Final", off = isOff(g);
+    const e = effState(g), off = e.st === "off";
+    const live = e.st === "live" && !e.est, fin = e.st === "final" && !e.est;
+    const estLive = e.st === "live" && e.est, estFin = e.st === "final" && e.est;
     const inn = g.inningState === "Top" ? "▲" : g.inningState === "Bottom" ? "▼" : g.inningState === "Middle" ? "mitad" : g.inningState === "End" ? "fin" : "";
-    const hd = off ? `<span class="tag warn">Pospuesto</span>` : live ? `<span class="live-dot">En vivo · ${g.inning}ª ${inn}</span>` : fin ? `<b>Final${g.inning > 9 ? ` (${g.inning})` : ""}</b>` : `<span>${fmtTime(g.time)}${g.detailed && g.detailed !== "Scheduled" ? ` · ${esc(g.detailed === "Pre-Game" ? "Previa" : g.detailed === "Warmup" ? "Calentamiento" : g.detailed)}` : ""}</span>`;
+    const hd = off ? `<span class="tag warn">Pospuesto</span>` : live ? `<span class="live-dot">En vivo · ${g.inning}ª ${inn}</span>`
+      : estLive ? `<span class="live-dot">En juego · empezó ${fmtTime(g.time)} <small class="muted" style="font-weight:400">(por horario)</small></span>`
+      : estFin ? `<b>Terminado · resultado por confirmar</b>` : fin ? `<b>Final${g.inning > 9 ? ` (${g.inning})` : ""}</b>` : `<span>${fmtTime(g.time)}${g.detailed && g.detailed !== "Scheduled" ? ` · ${esc(g.detailed === "Pre-Game" ? "Previa" : g.detailed === "Warmup" ? "Calentamiento" : g.detailed)}` : ""}</span>`;
     const hasScore = (live || fin) && !off && g.ar != null;
     const lead = (x, y) => (x > y ? "lead" : x < y ? "trail" : "");
     const wp = hasScore ? pickProb({ family: "ML", pick: hA }, g) : null;
@@ -2571,9 +2613,13 @@ ${brief}`;
     const dec = fin && g.decisions ? `<p class="decis"><span><b>G</b> ${esc(g.decisions.winner || "—")}</span><span><b>P</b> ${esc(g.decisions.loser || "—")}</span>${g.decisions.save ? `<span><b>SV</b> ${esc(g.decisions.save)}</span>` : ""}</p>` : "";
     const link = LAB_BY_PK[String(g.pk)] ? `#lab${g.pk}` : BY_PK[String(g.pk)] ? `#g${g.pk}` : null;
     const tkLink = (TK_BY_PK[String(g.pk)] || []).length ? `<a href="#t${g.pk}">Ver ticket${(TK_BY_PK[String(g.pk)] || []).length > 1 ? "s" : ""} →</a>` : "";
-    const picks = pre && pre.picks && pre.picks.length ? pre.picks.map((p) => { const s = pickNow(p, g); return `<div class="p2">${icBadge(p)}<span class="t"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)}</span></span><span class="res-chip ${s.cls}">${esc(s.text)}</span></div>`; }).join("")
+    const estChip = estLive ? { cls: "pend", text: "En juego · sin marcador en este corte" } : estFin ? { cls: "pend", text: "Por confirmar" } : null;
+    const dx = decisionOfGame(g.pk), bet = dx && dx.status === "apostar" && dx.level;
+    const dchip = bet && dx.p ? (estChip || (e.st === "pre" ? null : pickNow(dx.p, g))) : null;
+    const decHtml = dx ? `<div class="lc-deci ${bet ? "on" : "off"}"><span class="deci-h">Decisión${dx.src === "Claude" ? " ✦ Claude" : ""}</span> ${bet ? `<b>${esc(dx.pick)}</b> ${stakeTag(dx.level)} <span class="muted">${money(amountOf(dx.level))}</span>${dchip ? ` <span class="res-chip ${dchip.cls}">${esc(dchip.text)}</span>` : ""}` : `<b>${dx.status === "esperar" ? "Esperar" : "No apostar"}</b>${dx.pick ? ` <span class="muted">(${esc(dx.pick)})</span>` : ""}`}${live || estLive ? '<br><span class="muted" style="font-size:12px">Apuesta cerrada: el partido ya empezó; quedó registrada antes del primer lanzamiento.</span>' : ""}</div>` : "";
+    const picks = pre && pre.picks && pre.picks.length ? pre.picks.map((p) => { const s = estChip || pickNow(p, g); return `<div class="p2">${icBadge(p)}<span class="t"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)}</span></span><span class="res-chip ${s.cls}">${esc(s.text)}</span></div>`; }).join("")
       : `<span class="muted" style="font-size:13px">Sin predicción guardada para este partido${g.date < D.meta.today ? " (el seguimiento arrancó el 23 de septiembre)" : ""}.</span>`;
-    return `<article class="live-card${live ? " is-live" : ""}">
+    return `<article class="live-card${live || estLive ? " is-live" : ""}">
       <div class="hd">${hd}<span>${esc(g.venue || "")}</span></div>
       <div class="score">
         <span class="tm"><i class="abbr-mark away-mark"></i>${esc(aA)}${pre && pre.probables ? ` <small class="muted">${esc(pre.probables.away || "")}</small>` : ""}</span><span class="r ${hasScore ? lead(g.ar, g.hr) : ""}">${hasScore ? g.ar : ""}</span>
@@ -2586,6 +2632,7 @@ ${brief}`;
       ${boxDetails(g)}
       ${isNum(pH) && !off ? `<div class="wpbar"><span>${pc(1 - pH)}</span><div class="splitbar" role="img" aria-label="Probabilidad de victoria: ${esc(aA)} ${pc(1 - pH)}, ${esc(hA)} ${pc(pH)}"><span style="width:${((1 - pH) * 100).toFixed(1)}%"></span><span style="width:${(pH * 100).toFixed(1)}%"></span></div><span style="text-align:right">${pc(pH)}</span></div>
         <p class="muted" style="font-size:12px">${live ? `Probabilidad en vivo (situación + distribución por media entrada)${pre ? ` · antes del juego ${esc(hA)} ${pc(pre.pHome)}` : ""}` : fin ? `Antes del juego: ${esc(hA)} ${pc(pre ? pre.pHome : null)} · proyección ${f(pre && pre.projAway, 1)}–${f(pre && pre.projHome, 1)}` : `Probabilidad previa · proyección ${f(pre && pre.projAway, 1)}–${f(pre && pre.projHome, 1)} · total ${f(pre && pre.total, 1)}`}</p>` : ""}
+      ${decHtml}
       <div class="pk-live"><span class="eyebrow" style="font-size:12px">Los 2 picks principales${pre && pre.model ? ` · modelo ${esc(pre.model)}` : ""}</span>${picks}</div>
       <span class="lc-links">${LAB_BY_PK[String(g.pk)] ? `<a href="#lab${g.pk}">Ver el modelo del Pro-Lab (${esc(LAB_INFO[labKey(LAB_BY_PK[String(g.pk)])].name.join(""))}) →</a>${BY_PK[String(g.pk)] ? `<a href="#g${g.pk}#complemento">Framework + modelo →</a>` : ""}` : link ? `<a href="${link}">Ver el análisis completo →</a>` : ""}${tkLink}</span>
     </article>`;
@@ -2627,11 +2674,11 @@ ${brief}`;
 
   function viewLive() {
     const today = curDay();
-    const gs = liveGames.filter((g) => g.date === today || (g.state === "Live" && !isOff(g)));
-    const liveNow = gs.filter((g) => g.state === "Live" && !isOff(g));
-    const offList = gs.filter(isOff);
-    const done = gs.filter((g) => g.state === "Final" && !isOff(g)).sort((x, y) => (y.date + y.time).localeCompare(x.date + x.time));
-    const next = gs.filter((g) => g.state === "Preview" && !isOff(g)).sort((x, y) => (x.time || "").localeCompare(y.time || ""));
+    const gs = liveGames.filter((g) => g.date === today || effState(g).st === "live");
+    const liveNow = gs.filter((g) => effState(g).st === "live");
+    const offList = gs.filter((g) => effState(g).st === "off");
+    const done = gs.filter((g) => effState(g).st === "final").sort((x, y) => (y.date + y.time).localeCompare(x.date + x.time));
+    const next = gs.filter((g) => effState(g).st === "pre").sort((x, y) => (x.time || "").localeCompare(y.time || ""));
     const allPicks = [...liveNow, ...done].flatMap((g) => ((g.pred && g.pred.picks) || []).map((p) => pickNow(p, g)));
     const won = allPicks.filter((x) => x.cls === "win").length, lost = allPicks.filter((x) => x.cls === "lose").length;
     const provisional = allPicks.filter((x) => x.cls === "lead" || x.cls === "trail" || x.cls === "pend").length;
@@ -2729,7 +2776,7 @@ ${brief}`;
   function markLiveTab() {
     const a = document.querySelector('nav.tabs a[data-tab="envivo"]');
     if (!a) return;
-    const n = liveGames.filter((g) => g.state === "Live").length;
+    const n = liveGames.filter((g) => effState(g).st === "live").length;
     a.innerHTML = n ? `<span class="live-dot">En vivo</span>` : "En vivo";
     a.setAttribute("aria-label", n ? `En vivo, ${n} partido${n === 1 ? "" : "s"} en juego` : "En vivo");
   }
@@ -2740,6 +2787,13 @@ ${brief}`;
     liveTimer = setInterval(() => { if (!document.hidden) pullLive(); }, 30000);
   }
   function stopLive() { if (liveTimer) { clearInterval(liveTimer); liveTimer = null; } }
+  setInterval(() => {
+    if (document.hidden) return;
+    const h = (location.hash || "#partidos").slice(1);
+    if ((h === "partidos" || h === "") && DAY_RENDER) DAY_RENDER();
+    else if (h === "envivo" && !typing()) viewLive();
+    markLiveTab();
+  }, 30000);
 
   // ---------------------------------------------------------------- vista: cotejo de datos
   function viewChecks() {
