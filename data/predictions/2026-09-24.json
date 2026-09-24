@@ -498,7 +498,7 @@
 "pk": 823087,
 "date": "2026-09-24",
 "time": "2026-09-25T01:40:00Z",
-"generatedAt": "2026-09-24T22:42:14+00:00",
+"generatedAt": "2026-09-24T22:58:02+00:00",
 "away": "LAA",
 "home": "SEA",
 "pHome": 0.6072,
@@ -508,11 +508,11 @@
 "lambda": 0.6107
 },
 "confidence": "media",
-"projAway": 3.1819,
-"projHome": 4.2827,
-"total": 7.4646,
-"f5Away": 1.5701,
-"f5Home": 2.6075,
+"projAway": 3.182,
+"projHome": 4.2829,
+"total": 7.4649,
+"f5Away": 1.5702,
+"f5Home": 2.6076,
 "nrfi": 0.5495,
 "pOver85": 0.3497,
 "probables": {
@@ -544,7 +544,7 @@
 "pick": "SEA",
 "p": 0.6072,
 "line": null,
-"ic": 57.4045,
+"ic": 57.4049,
 "level": "Media"
 }
 ]
@@ -553,7 +553,7 @@
 "pk": 824950,
 "date": "2026-09-24",
 "time": "2026-09-25T01:40:00Z",
-"generatedAt": "2026-09-24T22:42:14+00:00",
+"generatedAt": "2026-09-24T22:58:02+00:00",
 "away": "HOU",
 "home": "ATH",
 "pHome": 0.4225,
@@ -563,13 +563,13 @@
 "lambda": 0.4058
 },
 "confidence": "alta",
-"projAway": 5.9126,
-"projHome": 4.7913,
-"total": 10.704,
-"f5Away": 3.279,
-"f5Home": 2.7196,
+"projAway": 5.913,
+"projHome": 4.7915,
+"total": 10.7045,
+"f5Away": 3.2791,
+"f5Home": 2.7197,
 "nrfi": 0.4303,
-"pOver85": 0.6369,
+"pOver85": 0.637,
 "probables": {
 "away": "Peter Lambert",
 "home": "Mason Barnett"
@@ -588,9 +588,9 @@
 "family": "RL",
 "market": "Run Line",
 "pick": "HOU +1.5",
-"p": 0.7152,
+"p": 0.7153,
 "line": null,
-"ic": 63.5862,
+"ic": 63.587,
 "level": "Media"
 },
 {
@@ -599,7 +599,7 @@
 "pick": "HOU F5",
 "p": 0.6057,
 "line": null,
-"ic": 58.3464,
+"ic": 58.3483,
 "level": "Media"
 }
 ]
@@ -608,54 +608,54 @@
 "pk": 823895,
 "date": "2026-09-24",
 "time": "2026-09-25T02:10:00Z",
-"generatedAt": "2026-09-24T22:42:14+00:00",
+"generatedAt": "2026-09-24T22:58:02+00:00",
 "away": "SD",
 "home": "LAD",
-"pHome": 0.5487,
+"pHome": 0.5454,
 "methods": {
 "log5": 0.6061,
 "elo": 0.526,
-"lambda": 0.5141
+"lambda": 0.504
 },
-"confidence": "media",
-"projAway": 4.1545,
-"projHome": 4.3118,
-"total": 8.4663,
-"f5Away": 2.2096,
+"confidence": "baja",
+"projAway": 4.26,
+"projHome": 4.312,
+"total": 8.572,
+"f5Away": 2.2657,
 "f5Home": 2.5047,
-"nrfi": 0.5145,
-"pOver85": 0.4429,
+"nrfi": 0.5107,
+"pOver85": 0.4527,
 "probables": {
 "away": "Nick Pivetta",
 "home": "Tyler Glasnow"
 },
-"light": "Gris",
+"light": "Rojo",
 "best": {
 "market": "F5",
 "pick": "LAD F5",
-"p": 0.5647,
+"p": 0.5522,
 "price": null,
 "edge": null,
-"light": "Gris"
+"light": "Rojo"
 },
 "topPicks": [
-{
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "LAD F5",
-"p": 0.5647,
-"line": null,
-"ic": 43.952,
-"level": "Baja"
-},
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "SD +1.5",
-"p": 0.637,
+"p": 0.6451,
 "line": null,
-"ic": 38.3234,
-"level": "Muy baja"
+"ic": 41.8761,
+"level": "Baja"
+},
+{
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "LAD F5",
+"p": 0.5522,
+"line": null,
+"ic": 41.4826,
+"level": "Baja"
 }
 ]
 }
