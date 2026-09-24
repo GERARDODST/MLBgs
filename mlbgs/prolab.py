@@ -31,6 +31,7 @@ from . import model
 from . import picks as P
 from . import prisma as PR
 from . import kronos as KR
+from . import eigen as EG
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, "prolab")
@@ -495,10 +496,20 @@ def main():
     import argparse
     ap = argparse.ArgumentParser(description="Pro-Lab: DIAMANTE-24 sobre un partido congelado")
     ap.add_argument("--pk", type=int, default=824223)
-    ap.add_argument("--model", choices=["diamante", "prisma", "kronos"], default="diamante")
+    ap.add_argument("--model", choices=["diamante", "prisma", "kronos", "eigen"], default="diamante")
+    ap.add_argument("--dev-bundle", help="solo desarrollo: correr EIGEN con un bundle sin snapshot")
     ap.add_argument("--label", default="pre")
     ap.add_argument("--sims", type=int, default=50000)
     args = ap.parse_args()
+    if args.model == "eigen":
+        out = run_eigen(args.pk, args.label, dev_bundle=args.dev_bundle)
+        path = os.path.join(DIR, f"prolab_{args.pk}.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, separators=(",", ":"), default=float)
+        g = out["eigen"]["game"]
+        print(f"EIGEN: P({out['game']['teams']['home']['abbr']}) = {g['pHome']:.3f} (IC90 {g['ci90'][0]:.3f}–{g['ci90'][1]:.3f}) · carreras "
+              f"{g['lambda']['away']:.2f}-{g['lambda']['home']:.2f} · sin PCA {out['eigen']['ablation']['pHome']:.3f} ({out['secondsTotal']:.1f} s) → {path}", file=sys.stderr)
+        return
     if args.model == "kronos":
         out = run_kronos(args.pk, args.label, n_sims=args.sims)
         path = os.path.join(DIR, f"prolab_{args.pk}.json")
@@ -720,6 +731,157 @@ def run_kronos(pk: int, label: str = "pre", n_sims: int = 20000) -> dict:
     }
     lab["research"] = KR.REFERENCES
     lab["reading"] = KR.reading(base, lab["kronos"])
+    return lab
+
+
+# ============================================================ EIGEN (componentes principales de jugadores y equipos)
+
+def _refit(rows, key_w, key_y, k):
+    X, w, y = [r["x"] for r in rows], [r[key_w] for r in rows], [r[key_y] for r in rows]
+    Pc = EG.pca(X, w)
+    return Pc, EG.wls([sc[:k] for sc in Pc["scores"]], y, w)
+
+
+def run_eigen(pk: int, label: str = "pre", B: int = 120, n_boot: int = 80, dev_bundle: str | None = None) -> dict:
+    t0 = time.time()
+    if dev_bundle:
+        bundle = load(dev_bundle)
+        game = next(g for g in bundle["upcoming"] if g["pk"] == pk)
+        bundle["upcoming"] = [game]
+        snap = {"takenAt": bundle["meta"]["generatedAt"]}
+    else:
+        bundle, snap, game = assemble_generic(pk, label)
+    ctx = model.Context(bundle)
+    lg = ctx.lg
+    base = model.analyze(ctx, game)
+    Fit = EG.fit_all(bundle, B)
+    L = Fit["lg"]
+    hands, bats = bundle.get("hands") or {}, bundle.get("bats") or {}
+    sides = ("away", "home")
+    other = {"away": "home", "home": "away"}
+    s5 = base["sections"]["s5"]["lineups"]
+    lineups = {s: (game["lineups"].get(s) or [r["id"] for r in (s5.get(s) or {}).get("rows", [])])[:9] for s in sides}
+    lu_status = {s: "Confirmado" if game["lineups"].get(s) else "Proyectado" for s in sides}
+
+    def pen_ra9(tid):
+        rp = bundle["teamStats"][str(tid)]["rp"]
+        ip = EG.ip_float(rp.get("inningsPitched", "0"))
+        return 9 * ((rp.get("runs") or 0) + 250 * L["rpRa9"] / 9) / (ip + 250)
+
+    park = ctx.park_raw.get(game["venue"], {})
+    park_m = 1 + 0.5 * ((park.get("runs") or 100) / 100 - 1)
+    share = {s: {"f5": sum(lg.inning_runs[s][1:6]) / lg.rpg[s], "first": lg.inning_runs[s][1] / lg.rpg[s]} for s in sides}
+    vr5, _ = EG.var_ratio_f5(bundle["results"])
+    lam1_lg = (lg.inning_runs["away"][1] + lg.inning_runs["home"][1]) / 2
+    c1 = -math.log(lg.p_scoreless_half1) / lam1_lg
+
+    def evaluate(F, rng=None):
+        sp = {s: EG.pitcher_talent(game["probable"][s], bundle, F, L) if game["probable"].get(s) else
+              {"id": None, "bf": 0, "talent": L["ra9"] + 0.3, "fit": L["ra9"] + 0.3, "scores": [0, 0, 0], "ipStart": 5.0} for s in sides}
+        pen = {s: pen_ra9(game[s]) for s in sides}
+        if rng:   # incertidumbre de muestra de cada jugador (además de la del ajuste PCA)
+            for s in sides:
+                sp[s] = {**sp[s], "talent": max(2.0, sp[s]["talent"] + rng.gauss(0, 3.2 / math.sqrt((sp[s]["bf"] + EG.K_PIT) / 38)))}
+        eff = {s: EG.team_side(lineups[s], sp[other[s]], pen[other[s]], bundle, F, L, hands, bats,
+                               jitter=(lambda b: rng.gauss(0, 0.5 / math.sqrt(b["pa"] + EG.K_BAT))) if rng else None) for s in sides}
+        lam = {s: EG.lambdas(eff[s], lg.rpg[s], park_m, share[s]) for s in sides}
+        pa_, ph_, p_home, tie = EG.outcome(lam["away"][0], lam["home"][0], lg.var_ratio, lg.extra_home_win)
+        return sp, pen, eff, lam, pa_, ph_, p_home, tie
+
+    sp, pen, eff, lam, pa_, ph_, p_home, tie = evaluate(Fit)
+
+    # intervalo por bootstrap de jugadores: se re-estiman PCA + PCR en cada réplica
+    rng = __import__("random").Random(2026)
+    boots = []
+    Pr, Br = Fit["pitchers"]["rows"], Fit["batters"]["rows"]
+    for _ in range(n_boot):
+        pr = [Pr[rng.randrange(len(Pr))] for _ in Pr]
+        br = [Br[rng.randrange(len(Br))] for _ in Br]
+        pP, pb = _refit(pr, "bf", "ra9", Fit["pitchers"]["k"])
+        bP, bb = _refit(br, "pa", "woba", Fit["batters"]["k"])
+        Fb = {**Fit, "pitchers": {**Fit["pitchers"], "pca": pP, "beta": pb}, "batters": {**Fit["batters"], "pca": bP, "beta": bb}}
+        boots.append(evaluate(Fb, rng)[6])
+    boots.sort()
+    ci = [boots[int(0.05 * len(boots))], boots[int(0.95 * len(boots)) - 1]] if boots else [p_home, p_home]
+
+    # ablación: el mismo partido sin PCA (lo observado de cada jugador encogido a la liga)
+    raw_sp = {s: {**sp[s], "talent": ((sp[s]["bf"] * sp[s]["ra9Obs"] + EG.K_PIT * L["ra9"]) / (sp[s]["bf"] + EG.K_PIT)) if sp[s].get("ra9Obs") is not None else sp[s]["talent"]} for s in sides}
+    raw_eff = {}
+    for s in sides:
+        e = eff[s]
+        bt = e["batters"]
+        w = EG.SLOT_PA[:len(bt)]
+        tal = [((b["pa"] * b["wobaObs"] + EG.K_BAT * L["woba"]) / (b["pa"] + EG.K_BAT)) if b.get("wobaObs") is not None else b["talent"] for b in bt]
+        wo_sp = sum(wi * (t + b["platoon"]) for wi, t, b in zip(w, tal, bt)) / sum(w)
+        wo_bp = sum(wi * t for wi, t in zip(w, tal)) / sum(w)
+        off = lambda wo: (L["rpa"] + (wo - L["woba"]) / EG.WOBA_SCALE) / L["rpa"]  # noqa: E731
+        raw_eff[s] = {**e, "oSp": off(wo_sp), "oPen": off(wo_bp), "dSp": raw_sp[other[s]]["talent"] / L["ra9"]}
+    raw_lam = {s: EG.lambdas(raw_eff[s], lg.rpg[s], park_m, share[s]) for s in sides}
+    raw_p = EG.outcome(raw_lam["away"][0], raw_lam["home"][0], lg.var_ratio, lg.extra_home_win)[2]
+
+    # mercados
+    total = M.sum_pmf(pa_, ph_)
+    margin = M.margin_probs(ph_, pa_)                  # local − visita
+    f5a, f5h = M.negbin_pmf(lam["away"][1], vr5), M.negbin_pmf(lam["home"][1], vr5)
+    f5aw, f5tie, f5hw = M.outcome_probs(f5a, f5h)
+    nrfi = math.exp(-c1 * lam["away"][2]) * math.exp(-c1 * lam["home"][2])
+    a_ab, h_ab = base["teams"]["away"]["abbr"], base["teams"]["home"]["abbr"]
+    h_m15 = sum(v for k, v in margin.items() if k >= 2)
+    a_m15 = sum(v for k, v in margin.items() if k <= -2)
+    extra = {"methodKey": "eigen", "n": 100000, "label": "EIGEN · PCA", "pHome": p_home, "total": total,
+             "runs_away": pa_, "runs_home": ph_, "f5total": M.sum_pmf(f5a, f5h), "f5": {"away": f5aw, "home": f5hw, "tie": f5tie},
+             "nrfi": nrfi, "rl": {f"{h_ab} -1.5": h_m15, f"{a_ab} +1.5": 1 - h_m15, f"{a_ab} -1.5": a_m15, f"{h_ab} +1.5": 1 - a_m15}}
+    picks = P.build(base, extra)
+    tri = base["sections"]["s5"]["triangulation"]
+    consensus = {"log5": tri["log5"]["pHome"], "elo": tri["elo"]["pHome"], "lambda": tri["lambda"]["pHome"], "eigen": p_home}
+
+    # métodos del framework: ¿son tres opiniones o una?
+    pred_rows = []
+    for path in sorted(__import__("glob").glob(os.path.join(os.path.dirname(DIR), "data", "predictions", "*.json"))):
+        with open(path, encoding="utf-8") as f:
+            pred_rows += json.load(f)
+    meth = EG.methods_pca(pred_rows)
+
+    # estilo de cada lineup y abridor en los 3 primeros componentes
+    def lineup_scores(s):
+        bt = eff[s]["batters"]
+        w = EG.SLOT_PA[:len(bt)]
+        return [sum(wi * b["scores"][j] for wi, b in zip(w, bt)) / sum(w) for j in range(3)]
+
+    pS, bS, tS = Fit["pitchers"]["summary"], Fit["batters"]["summary"], Fit["teams"]["summary"]
+    abbr = {tid: (ctx.T.info.get(tid) or {}).get("abbr") or str(tid) for tid in Fit["teams"]["rows"]}
+    where = EG.where_verdict(pS, bS, tS, meth)
+    eig = {
+        "pitchers": {k: pS[k] for k in ("features", "n", "explained", "loadings", "labels", "corr", "k", "cvR2", "stability", "olsAll", "olsBase", "mu", "sd")},
+        "batters": {k: bS[k] for k in ("features", "n", "explained", "loadings", "labels", "corr", "k", "cvR2", "stability", "olsAll", "olsBase", "mu", "sd")},
+        "teams": {**{k: tS[k] for k in ("features", "n", "explained", "loadings", "labels", "k", "cvR2", "stability", "olsAll", "olsBase")},
+                  "points": [{"abbr": abbr.get(t["id"], str(t["id"])), "wp": t["wp"], "s": t["scores"],
+                              "hl": t["id"] in (game["away"], game["home"])} for t in tS["teams"]]},
+        "maps": {"pitchers": [[round(x, 3) for x in Fit["pitchers"]["pca"]["scores"][i][:2]] for i in range(len(Fit["pitchers"]["rows"]))],
+                 "batters": [[round(x, 3) for x in Fit["batters"]["pca"]["scores"][i][:2]] for i in range(len(Fit["batters"]["rows"]))]},
+        "methods": meth, "where": where, "league": L,
+        "starters": {s: {k: sp[s].get(k) for k in ("id", "name", "bf", "ra9Obs", "era", "fit", "talent", "scores", "feats", "ipStart")} for s in sides},
+        "lineups": {s: {"status": lu_status[s], "wobaVsSp": eff[s]["wobaVsSp"], "wobaVsPen": eff[s]["wobaVsPen"], "scores": lineup_scores(s),
+                        "batters": [{k: b.get(k) for k in ("id", "name", "pa", "wobaObs", "fit", "talent", "scores", "bats", "platoon")} for b in eff[s]["batters"]]} for s in sides},
+        "pens": pen,
+        "game": {"lambda": {s: lam[s][0] for s in sides}, "f5": {s: lam[s][1] for s in sides}, "first": {s: lam[s][2] for s in sides},
+                 "factors": {s: {k: eff[s][k] for k in ("oSp", "oPen", "dSp", "dPen", "fracSp")} for s in sides},
+                 "park": {"name": park.get("name"), "runs": park.get("runs"), "mult": park_m}, "varRatio": lg.var_ratio, "varRatioF5": vr5,
+                 "pHome": p_home, "tie": tie, "ci90": ci, "boot": len(boots), "nrfi": nrfi, "f5win": {"away": f5aw, "home": f5hw, "tie": f5tie},
+                 "total": total, "runs": {"away": pa_, "home": ph_}, "margin": {str(k): v for k, v in margin.items() if abs(k) <= 12}},
+        "ablation": {"pHome": raw_p, "lambda": {s: raw_lam[s][0] for s in sides}},
+    }
+    lab = {
+        "model": "EIGEN", "modelKey": "eigen", "pk": pk, "frozenAt": snap["takenAt"], "firstPitch": game["time"],
+        "tagline": "Componentes principales (PCA) de pitchers, bateadores y equipos: habilidad de cada jugador con regresión sobre componentes, lineup contra abridor y bullpen, e intervalo por bootstrap",
+        "builtAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "game": {k: base[k] for k in ("pk", "date", "time", "venue", "teams", "weather", "umpire", "series")},
+        "base": base, "picks": picks, "topPicks": picks[:2],
+        "consensus": {"methods": consensus, "pHome": sum(consensus.values()) / 4, "spread": max(consensus.values()) - min(consensus.values())},
+        "eigen": eig, "summaryProb": {"pModel": p_home, "totalDist": total},
+        "result": None, "secondsTotal": time.time() - t0,
+    }
+    lab["reading"] = EG.reading(base, eig)
     return lab
 
 
