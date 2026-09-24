@@ -76,7 +76,7 @@ MODELS = {
     },
 }
 LAB_EXTRA = ["Picks combinados con el framework"]
-ROUND = {"p": 4, "ic": 1, "fair": 0, "pHome": 4, "pModel": 4, "projAway": 2, "projHome": 2, "total": 2, "nrfi": 4, "w": 3}
+ROUND = {"p": 4, "ic": 1, "fair": 0, "pHome": 4, "pModel": 4, "projAway": 2, "projHome": 2, "total": 2, "nrfi": 4}
 
 
 def _r(obj):
@@ -96,8 +96,16 @@ def _pick_row(p: dict, rank: int) -> dict:
             "line": p.get("line"), "p": p["p"], "fair": p.get("fair"), "ic": p.get("ic"), "level": p.get("level"),
             "price": p.get("price") if p.get("priceIsReal") else None,
             "methods": sorted((p.get("methods") or {}).keys()), "how": p.get("how"), "res": None,
-            **({"stake": {"w": p["stake"]["w"], "ladder": p["stake"]["ladder"], "block": p["stake"]["block"]}}
-               if p.get("stake") else {})}
+            **({"stake": {k: p["stake"].get(k) for k in ("level", "ladder", "steps", "block", "a", "h")}} if p.get("stake") else {})}
+
+
+def _decision(d: dict | None) -> dict | None:
+    """La opción única del partido tal como se registró (pick + stake 1–10)."""
+    if not d or not d.get("pick"):
+        return None
+    return {"status": d["status"], "why": d.get("why"), "source": d.get("source"), "pick": d["pick"]["pick"],
+            "market": d["pick"]["market"], "p": d["pick"]["p"], "ic": d["pick"]["ic"], "level": d["stake"]["level"],
+            "amount": d["stake"]["amount"], "minPrice": d["stake"]["minPrice"], "ladder": d["stake"]["ladder"]}
 
 
 def _names(a: dict) -> dict:
@@ -119,7 +127,8 @@ def ticket_from_analysis(a: dict, generated: str) -> dict:
             "model": "framework", "modelName": MODELS["framework"]["full"], "kind": MODELS["framework"]["kind"],
             "analyses": [x[0] for x in MODELS["framework"]["analyses"]],
             "source": "modelo", "registeredAt": generated, "status": "abierto", "pred": _pred(a["summary"]),
-            "picks": [_pick_row(p, i + 1) for i, p in enumerate(a.get("picks") or [])], "result": None}
+            "picks": [_pick_row(p, i + 1) for i, p in enumerate(a.get("picks") or [])], "result": None,
+            **({"decision": _decision(a.get("decisionFramework"))} if a.get("decisionFramework") else {})}
 
 
 def ticket_from_prediction(r: dict) -> dict:
@@ -160,7 +169,8 @@ def ticket_from_lab(lab: dict) -> dict:
             "model": key, "modelName": info["full"], "kind": info["kind"],
             "analyses": [x[0] for x in info["analyses"]] + LAB_EXTRA,
             "source": "pro-lab", "registeredAt": lab.get("builtAt"), "frozenAt": lab.get("frozenAt"), "status": "cerrado",
-            "pred": pred, "picks": picks, "result": None}
+            "pred": pred, "picks": picks, "result": None,
+            **({"decision": _decision(lab.get("decision"))} if lab.get("decision") else {})}
 
 
 # ------------------------------------------------------------------ resultados oficiales
@@ -295,6 +305,8 @@ def update(bundle: dict, analyses: list[dict], labs: list[dict], generated: str,
             prev = {q["pick"]: q for q in old["picks"]}
             t = {**t, "picks": [{**p, **({"stake": prev[p["pick"]]["stake"]} if prev.get(p["pick"], {}).get("stake") else {}),
                                  "res": (prev.get(p["pick"]) or {}).get("res")} for p in t["picks"]]}
+            if old.get("decision"):
+                t = {**t, "decision": old["decision"]}
             if old.get("result"):
                 t = {**t, "status": old["status"], "result": old["result"]}
         tickets[t["id"]] = t

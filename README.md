@@ -97,22 +97,28 @@ perdedor y salvamento, y sus dos picks calificados), además del récord de pick
 Donde el navegador puede consultar statsapi.mlb.com, la jornada se refresca sola cada 30 s; si no,
 muestra el último corte y la hora a la que se tomó.
 
-## Stake: cuánto apostar (STAKE-K)
+## Decisión única por partido y stake 1–10
 
-Cada pick trae un stake entre **$500 y $1,500** (`mlbgs/stake.py`, misma cuenta en la página):
+Cada partido termina en **una sola opción**: un pick con su stake, «esperar» o «no apostar»
+(`mlbgs/decision.py`). Se llega a ella conectando todo, en orden: el framework completo (secciones
+1-10) → el modelo de apoyo del Pro-Lab si existe → las cuotas → la decisión (el pick con más
+confianza que pasa guion, contradicciones y datos obligatorios), con una lista de cómo pesa cada parte.
+En la página aparece en un recuadro al lado de los picks de cada partido, en el panel «Decisión del
+partido» y en la cartera del día. El protocolo completo está en `CLAUDE.md`.
 
-- **Kelly fraccional** sobre una probabilidad encogida hacia el mercado según la confianza:
-  `f = w · (p·d − 1)/(d − 1)` y `stake = ¼ · f · $50,000` (banca de referencia: $500 = 1 %, $1,500 = 3 %),
-  redondeado a $50 y acotado al rango; si ¼ Kelly da menos de $300 no se apuesta.
-- **Peso w** = (0.30 + 0.60·certeza) · A · H, con la certeza hecha de las partes del índice de confianza
-  que no dependen del precio (consenso, datos, estabilidad, contradicciones); **A** = acuerdo con el
-  modelo del Pro-Lab (0.70 si lo ve 10 pp peor); **H** = historial del modelo (acierto real contra
-  esperado, encogido n/(n+60), entre 0.85 y 1.05).
-- **Solo con semáforo Verde** a ese momio (edge ≥ 3 pp, IC ≥ 55, sin dato obligatorio faltante, guion
-  y contradicciones en orden). Topes: $2,000 por partido y $7,500 por día.
-- Sin momio capturado, cada pick muestra su **escalera** (desde qué momio conviene $500, $1,000 y
-  $1,500). Con tu momio en la tarjeta del pick, el tablero, el boleto o la cartera del día, el stake
-  sale exacto. La escalera queda guardada en el ticket para medir después la ganancia real.
+**Conclusión de Claude**: en la página publicada en claude.ai, el botón «Analizar con Claude» manda el
+expediente completo del partido (las 10 secciones, lineups, noticias, el modelo del Pro-Lab, los picks
+candidatos con su confianza y escalera, tus momios y el historial) a Claude con la capacidad `sample`
+del artefacto (usa la cuenta de Claude de quien mira) y muestra su decisión final: pick, stake, a favor,
+en contra y qué vigilar. Claude solo elige entre los candidatos y no puede subir el stake por encima de
+lo que permiten las reglas.
+
+**Stake 1–10 por confianza** (`mlbgs/stake.py`, misma cuenta en la página): stake 1 = $500, stake 5 =
+$1,000, stake 10 = $1,500. Nivel = redondeo((1 + 9·(IC − 55)/30) · A · H), con A = acuerdo con el
+modelo del Pro-Lab y H = historial del modelo; solo con semáforo Verde a ese momio (edge ≥ 3 pp,
+IC ≥ 55, datos completos, guion, sin contradicción alta). Sin momio capturado, cada pick trae su
+escalera (desde qué momio llega a stake 1, 5 y 10); con tu momio el stake se recalcula. Tope sugerido de $7,500
+por día.
 
 ## Historial de tickets (base de datos)
 
@@ -271,7 +277,8 @@ python -m unittest discover -s tests                        # pruebas
 | `mlbgs/mathlib.py` | Fórmulas: Poisson, Binomial Negativa, FIP, Log5, Elo, Kelly, momios |
 | `mlbgs/build.py` | Construye la página y el seguimiento de predicciones |
 | `site/template.html` | Interfaz (español, tema claro/oscuro) |
-| `mlbgs/stake.py` | STAKE-K: stake de $500 a $1,500 por pick, escalera de momios y factor de historial |
+| `mlbgs/stake.py` | Stake 1–10 por confianza ($500–$1,500), escalera de momios y factores de ajuste |
+| `mlbgs/decision.py` | Decisión única por partido: framework + Pro-Lab + cuotas, con la lista de cómo pesa cada parte |
 | `mlbgs/historial.py` | Base de datos de tickets: registro, congelamiento, calificación y anulación |
 | `data/historial/` | Tickets por día: picks, modelo, tipos de análisis y resultado oficial |
 | `data/predictions/` | Predicción previa de cada partido, para medir el modelo |
