@@ -152,6 +152,11 @@ la proyección de cada equipo (misma programación dinámica que PRISMA). Al ter
 califica con el resultado oficial (✓ ganó / ✗ perdió / push). Donde el navegador lo permite (GitHub
 Pages) el marcador se consulta directo a statsapi.mlb.com cada 30 s; si no, usa el último corte.
 
+Aun sin conexión (dentro de claude.ai), la página usa el reloj: cada tarjeta trae la cuenta regresiva al
+primer lanzamiento; al llegar la hora el partido pasa solo de «Por jugar» a «En juego» (apuestas
+cerradas, la decisión queda registrada) y ~3.5 h después a «Terminado · por confirmar» hasta que
+llegue el resultado oficial. Se redibuja cada 30 s sin interrumpir si estás escribiendo un momio.
+
 ## Pro-Lab: modelos de prueba
 
 Laboratorio para probar modelos nuevos contra partidos reales con los datos **congelados antes del
