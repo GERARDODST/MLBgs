@@ -1,0 +1,3094 @@
+[
+ {
+  "id": "2026-09-23-824223-framework",
+  "pk": 824223,
+  "date": "2026-09-23",
+  "time": "2026-09-23T17:10:00Z",
+  "away": "WSH",
+  "home": "DET",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T16:51:56+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5571,
+   "projAway": 4.85,
+   "projHome": 5.09,
+   "total": 9.94,
+   "nrfi": 0.4684,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Richard Lovelady",
+    "home": "Framber Valdez"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Framber Valdez Under 5.5 K",
+    "line": 5.5,
+    "p": 0.6109,
+    "fair": null,
+    "ic": 51.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "DET F5",
+    "line": null,
+    "p": 0.5452,
+    "fair": null,
+    "ic": 48.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "push"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 4,
+   "hr": 2,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "decisions": {
+    "winner": "Will Dion",
+    "loser": "Framber Valdez",
+    "save": "Yovanny Cruz"
+   },
+   "rhe": {
+    "away": [
+     4,
+     6,
+     0
+    ],
+    "home": [
+     2,
+     8,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-824223-diamante",
+  "pk": 824223,
+  "date": "2026-09-23",
+  "time": "2026-09-23T17:10:00Z",
+  "away": "WSH",
+  "home": "DET",
+  "awayName": "Washington Nationals",
+  "homeName": "Detroit Tigers",
+  "venue": "Comerica Park",
+  "model": "diamante",
+  "modelName": "Framework v2 + DIAMANTE-24",
+  "kind": "Cadenas de Markov + Monte Carlo",
+  "analyses": [
+   "Log5 multinomial por turno",
+   "Cadena de 24 estados base-out",
+   "Cadena por lineup (216 estados)",
+   "Monte Carlo del partido",
+   "Picks combinados con el framework"
+  ],
+  "source": "pro-lab",
+  "registeredAt": "2026-09-23T17:18:01+00:00",
+  "frozenAt": "2026-09-23T16:51:56+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5556,
+   "projAway": 4.79,
+   "projHome": 5.13,
+   "total": 9.92,
+   "nrfi": 0.5073,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Richard Lovelady",
+    "home": "Framber Valdez"
+   },
+   "lineups": "Confirmados",
+   "pModel": 0.551
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Framber Valdez Under 5.5 K",
+    "line": 5.5,
+    "p": 0.6109,
+    "fair": -157.0,
+    "ic": 51.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
+    "res": "perdido"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "DET F5",
+    "line": null,
+    "p": 0.5452,
+    "fair": -120.0,
+    "ic": 48.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
+    "res": "push"
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Under 9.5",
+    "line": 9.5,
+    "p": 0.5134,
+    "fair": -106.0,
+    "ic": 47.9,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "DET",
+    "line": null,
+    "p": 0.5556,
+    "fair": -125.0,
+    "ic": 47.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 4 métodos: Log5 (5.7.2) 58.6% · Elo + abridor (5.7.7) 56.4% · λ + Binomial Negativa (5.3 · 5.7.5) 52.1% · DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9) 55.1%",
+    "res": "perdido"
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "WSH +1.5",
+    "line": null,
+    "p": 0.6158,
+    "fair": -160.0,
+    "ic": 47.2,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
+    "res": "ganado"
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Richard Lovelady Under 2.5 K",
+    "line": 2.5,
+    "p": 0.5907,
+    "fair": -144.0,
+    "ic": 46.7,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total WSH",
+    "pick": "WSH Under 4.5",
+    "line": 4.5,
+    "p": 0.525,
+    "fair": -111.0,
+    "ic": 45.8,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de WSH + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.5121,
+    "fair": -105.0,
+    "ic": 43.4,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga + Monte Carlo",
+    "res": "perdido"
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total DET",
+    "pick": "DET Over 4.5",
+    "line": 4.5,
+    "p": 0.5116,
+    "fair": -105.0,
+    "ic": 43.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de DET + Monte Carlo",
+    "res": "perdido"
+   },
+   {
+    "rank": 10,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 5.5",
+    "line": 5.5,
+    "p": 0.5286,
+    "fair": -112.0,
+    "ic": 42.5,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
+    "res": "ganado"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 4,
+   "hr": 2,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "decisions": {
+    "winner": "Will Dion",
+    "loser": "Framber Valdez",
+    "save": "Yovanny Cruz"
+   },
+   "rhe": {
+    "away": [
+     4,
+     6,
+     0
+    ],
+    "home": [
+     2,
+     8,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-824785-framework",
+  "pk": 824785,
+  "date": "2026-09-23",
+  "time": "2026-09-23T17:35:00Z",
+  "away": "TOR",
+  "home": "BAL",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T16:09:50+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5351,
+   "projAway": 4.07,
+   "projHome": 4.55,
+   "total": 8.62,
+   "nrfi": 0.4884,
+   "light": "Gris",
+   "confidence": "alta",
+   "probables": {
+    "away": "Max Scherzer",
+    "home": "Chris Bassitt"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "BAL F5",
+    "line": null,
+    "p": 0.5941,
+    "fair": null,
+    "ic": 56.2,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Max Scherzer Under 5.5 K",
+    "line": 5.5,
+    "p": 0.5685,
+    "fair": null,
+    "ic": 46.2,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 2,
+   "hr": 4,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     null
+    ]
+   ],
+   "decisions": {
+    "winner": "Chris Bassitt",
+    "loser": "Max Scherzer",
+    "save": "Andrew Kittredge"
+   },
+   "rhe": {
+    "away": [
+     2,
+     10,
+     1
+    ],
+    "home": [
+     4,
+     5,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-823168-framework",
+  "pk": 823168,
+  "date": "2026-09-23",
+  "time": "2026-09-23T19:45:00Z",
+  "away": "MIN",
+  "home": "SF",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T17:16:50+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.505,
+   "projAway": 4.09,
+   "projHome": 3.81,
+   "total": 7.91,
+   "nrfi": 0.5547,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Connor Prielipp",
+    "home": "Cesar Perdomo"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Connor Prielipp Under 6.5 K",
+    "line": 6.5,
+    "p": 0.5798,
+    "fair": null,
+    "ic": 51.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 4.5",
+    "line": 4.5,
+    "p": 0.583,
+    "fair": null,
+    "ic": 48.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 4,
+   "hr": 2,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Yoendrys Gómez",
+    "loser": "Dylan Smith",
+    "save": "Andrew Morris"
+   },
+   "rhe": {
+    "away": [
+     4,
+     9,
+     0
+    ],
+    "home": [
+     2,
+     5,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-823168-prisma",
+  "pk": 823168,
+  "date": "2026-09-23",
+  "time": "2026-09-23T19:45:00Z",
+  "away": "MIN",
+  "home": "SF",
+  "awayName": "Minnesota Twins",
+  "homeName": "San Francisco Giants",
+  "venue": "Oracle Park",
+  "model": "prisma",
+  "modelName": "Framework v2 + PRISMA",
+  "kind": "Probabilidad bayesiana",
+  "analyses": [
+   "GLM jerárquico",
+   "Bayes empírico",
+   "Posterior de Laplace",
+   "Predictiva con fragilidad",
+   "Picks combinados con el framework"
+  ],
+  "source": "pro-lab",
+  "registeredAt": "2026-09-23T17:39:22+00:00",
+  "frozenAt": "2026-09-23T17:33:09+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5019,
+   "projAway": 4.09,
+   "projHome": 3.81,
+   "total": 8.1,
+   "nrfi": 0.5547,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Connor Prielipp",
+    "home": "Cesar Perdomo"
+   },
+   "lineups": "Confirmados",
+   "pModel": 0.4924
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 4.5",
+    "line": 4.5,
+    "p": 0.5742,
+    "fair": -135.0,
+    "ic": 54.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIN +1.5",
+    "line": null,
+    "p": 0.6725,
+    "fair": -205.0,
+    "ic": 52.2,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
+    "res": "ganado"
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Connor Prielipp Under 6.5 K",
+    "line": 6.5,
+    "p": 0.5798,
+    "fair": -138.0,
+    "ic": 51.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": "ganado"
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total MIN",
+    "pick": "MIN Over 3.5",
+    "line": 3.5,
+    "p": 0.501,
+    "fair": -100.0,
+    "ic": 46.4,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de MIN + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Under 7.5",
+    "line": 7.5,
+    "p": 0.5138,
+    "fair": -106.0,
+    "ic": 45.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total SF",
+    "pick": "SF Under 3.5",
+    "line": 3.5,
+    "p": 0.523,
+    "fair": -110.0,
+    "ic": 40.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de SF + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "NRFI",
+    "line": null,
+    "p": 0.5547,
+    "fair": -125.0,
+    "ic": 36.7,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": "ganado"
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "SF",
+    "line": null,
+    "p": 0.5019,
+    "fair": -101.0,
+    "ic": 35.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 4 métodos: Log5 (5.7.2) 53.2% · Elo + abridor (5.7.7) 51.2% · λ + Binomial Negativa (5.3 · 5.7.5) 47.1% · PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9) 49.2%",
+    "res": "perdido"
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "MIN F5",
+    "line": null,
+    "p": 0.4984,
+    "fair": 101.0,
+    "ic": 34.7,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
+    "res": "push"
+   },
+   {
+    "rank": 10,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Cesar Perdomo Over 3.5 K",
+    "line": 3.5,
+    "p": 0.5254,
+    "fair": -111.0,
+    "ic": 31.9,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": "perdido"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 4,
+   "hr": 2,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Yoendrys Gómez",
+    "loser": "Dylan Smith",
+    "save": "Andrew Morris"
+   },
+   "rhe": {
+    "away": [
+     4,
+     9,
+     0
+    ],
+    "home": [
+     2,
+     5,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-824784-framework",
+  "pk": 824784,
+  "date": "2026-09-23",
+  "time": "2026-09-23T22:35:00Z",
+  "away": "TOR",
+  "home": "BAL",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T21:34:48+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5052,
+   "projAway": 4.39,
+   "projHome": 4.34,
+   "total": 8.73,
+   "nrfi": 0.4613,
+   "light": "Gris",
+   "confidence": "alta",
+   "probables": {
+    "away": "CJ Van Eyk",
+    "home": "Trey Gibson"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Trey Gibson Over 3.5 K",
+    "line": 3.5,
+    "p": 0.5922,
+    "fair": null,
+    "ic": 50.7,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 5.5",
+    "line": 5.5,
+    "p": 0.5787,
+    "fair": null,
+    "ic": 44.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 2,
+   "hr": 4,
+   "inn": [
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     null
+    ]
+   ],
+   "decisions": {
+    "winner": "Trey Gibson",
+    "loser": "CJ Van Eyk"
+   },
+   "rhe": {
+    "away": [
+     2,
+     6,
+     0
+    ],
+    "home": [
+     4,
+     4,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-823327-framework",
+  "pk": 823327,
+  "date": "2026-09-23",
+  "time": "2026-09-23T22:40:00Z",
+  "away": "STL",
+  "home": "PIT",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T21:34:48+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5598,
+   "projAway": 4.24,
+   "projHome": 4.52,
+   "total": 8.76,
+   "nrfi": 0.5112,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Matthew Liberatore",
+    "home": "Lake Bachar"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "PIT F5",
+    "line": null,
+    "p": 0.5765,
+    "fair": null,
+    "ic": 52.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "PIT",
+    "line": null,
+    "p": 0.5598,
+    "fair": null,
+    "ic": 44.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 5,
+   "hr": 1,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Matthew Liberatore",
+    "loser": "Brandon Eisert"
+   },
+   "rhe": {
+    "away": [
+     5,
+     10,
+     0
+    ],
+    "home": [
+     1,
+     6,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-823410-framework",
+  "pk": 823410,
+  "date": "2026-09-23",
+  "time": "2026-09-23T22:40:00Z",
+  "away": "MIL",
+  "home": "PHI",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T21:34:48+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.4118,
+   "projAway": 5.02,
+   "projHome": 3.72,
+   "total": 8.74,
+   "nrfi": 0.5101,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Logan Henderson",
+    "home": "Aaron Nola"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL +1.5",
+    "line": null,
+    "p": 0.7534,
+    "fair": null,
+    "ic": 71.8,
+    "level": "Alta",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "MIL F5",
+    "line": null,
+    "p": 0.6435,
+    "fair": null,
+    "ic": 71.7,
+    "level": "Alta",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 4,
+   "hr": 1,
+   "inn": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Logan Henderson",
+    "loser": "Aaron Nola",
+    "save": "Trevor Megill"
+   },
+   "rhe": {
+    "away": [
+     4,
+     6,
+     0
+    ],
+    "home": [
+     1,
+     6,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-823410-kronos",
+  "pk": 823410,
+  "date": "2026-09-23",
+  "time": "2026-09-23T22:40:00Z",
+  "away": "MIL",
+  "home": "PHI",
+  "awayName": "Milwaukee Brewers",
+  "homeName": "Philadelphia Phillies",
+  "venue": "Citizens Bank Park",
+  "model": "kronos",
+  "modelName": "Framework v2 + KRONOS",
+  "kind": "Procesos estocásticos",
+  "analyses": [
+   "Cadena de la cuenta",
+   "Cadena base-out calibrada",
+   "Salida del abridor",
+   "Deriva por vuelta al lineup",
+   "Fragilidad del partido",
+   "Monte Carlo por lanzamiento",
+   "Picks combinados con el framework"
+  ],
+  "source": "pro-lab",
+  "registeredAt": "2026-09-23T21:14:37+00:00",
+  "frozenAt": "2026-09-23T20:57:21+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.4081,
+   "projAway": 5.19,
+   "projHome": 3.8,
+   "total": 8.99,
+   "nrfi": 0.5081,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Logan Henderson",
+    "home": "Aaron Nola"
+   },
+   "lineups": "Confirmados",
+   "pModel": 0.3971
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL +1.5",
+    "line": null,
+    "p": 0.7575,
+    "fair": -312.0,
+    "ic": 82.6,
+    "level": "Alta",
+    "price": null,
+    "methods": [
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
+    "res": "ganado"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "MIL F5",
+    "line": null,
+    "p": 0.6393,
+    "fair": -177.0,
+    "ic": 81.3,
+    "level": "Alta",
+    "price": null,
+    "methods": [
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "MIL",
+    "line": null,
+    "p": 0.5919,
+    "fair": -145.0,
+    "ic": 57.3,
+    "level": "Media",
+    "price": null,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 4 métodos: Log5 (5.7.2) 55.2% · Elo + abridor (5.7.7) 58.9% · λ + Binomial Negativa (5.3 · 5.7.5) 62.3% · KRONOS estocástico (5.7.3 · 5.7.9) 60.3%",
+    "res": "ganado"
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.4909,
+    "fair": 104.0,
+    "ic": 48.9,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Logan Henderson Over 5.5 K",
+    "line": 5.5,
+    "p": 0.5695,
+    "fair": -132.0,
+    "ic": 48.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
+    "res": "perdido"
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 8.0",
+    "line": 8.0,
+    "p": 0.5289,
+    "fair": -112.0,
+    "ic": 45.5,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
+    "res": "perdido"
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total PHI",
+    "pick": "PHI Under 3.5",
+    "line": 3.5,
+    "p": 0.5385,
+    "fair": -117.0,
+    "ic": 44.5,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de PHI + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total MIL",
+    "pick": "MIL Over 4.5",
+    "line": 4.5,
+    "p": 0.5046,
+    "fair": -102.0,
+    "ic": 44.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de MIL + Monte Carlo",
+    "res": "perdido"
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Aaron Nola Over 5.5 K",
+    "line": 5.5,
+    "p": 0.5122,
+    "fair": -105.0,
+    "ic": 38.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
+    "res": "ganado"
+   },
+   {
+    "rank": 10,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 4.5",
+    "line": 4.5,
+    "p": 0.5042,
+    "fair": -102.0,
+    "ic": 37.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "KRONOS estocástico (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
+    "res": "ganado"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 4,
+   "hr": 1,
+   "inn": [
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Logan Henderson",
+    "loser": "Aaron Nola",
+    "save": "Trevor Megill"
+   },
+   "rhe": {
+    "away": [
+     4,
+     6,
+     0
+    ],
+    "home": [
+     1,
+     6,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-823492-framework",
+  "pk": 823492,
+  "date": "2026-09-23",
+  "time": "2026-09-23T23:05:00Z",
+  "away": "TB",
+  "home": "NYY",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T21:34:48+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5383,
+   "projAway": 4.56,
+   "projHome": 4.54,
+   "total": 9.1,
+   "nrfi": 0.472,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Mason Englert",
+    "home": "Gerrit Cole"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Gerrit Cole Under 5.5 K",
+    "line": 5.5,
+    "p": 0.5526,
+    "fair": null,
+    "ic": 43.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.528,
+    "fair": null,
+    "ic": 42.9,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 2,
+   "hr": 9,
+   "inn": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     null
+    ]
+   ],
+   "decisions": {
+    "winner": "Gerrit Cole",
+    "loser": "Mason Englert"
+   },
+   "rhe": {
+    "away": [
+     2,
+     6,
+     1
+    ],
+    "home": [
+     9,
+     12,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-824710-framework",
+  "pk": 824710,
+  "date": "2026-09-23",
+  "time": "2026-09-23T23:10:00Z",
+  "away": "CLE",
+  "home": "BOS",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T21:34:48+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5598,
+   "projAway": 3.87,
+   "projHome": 4.0,
+   "total": 7.87,
+   "nrfi": 0.5269,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Foster Griffin",
+    "home": "Sonny Gray"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Foster Griffin Under 4.5 K",
+    "line": 4.5,
+    "p": 0.5705,
+    "fair": null,
+    "ic": 49.6,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "BOS F5",
+    "line": null,
+    "p": 0.5561,
+    "fair": null,
+    "ic": 47.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "push"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 0,
+   "hr": 1,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     null
+    ]
+   ],
+   "decisions": {
+    "winner": "Sonny Gray",
+    "loser": "Foster Griffin",
+    "save": "Aroldis Chapman"
+   },
+   "rhe": {
+    "away": [
+     0,
+     5,
+     1
+    ],
+    "home": [
+     1,
+     12,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-824868-framework",
+  "pk": 824868,
+  "date": "2026-09-23",
+  "time": "2026-09-23T23:15:00Z",
+  "away": "CIN",
+  "home": "ATL",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T21:34:48+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.6651,
+   "projAway": 3.45,
+   "projHome": 5.12,
+   "total": 8.57,
+   "nrfi": 0.5086,
+   "light": "Gris",
+   "confidence": "alta",
+   "probables": {
+    "away": "Andrew Abbott",
+    "home": "Chris Sale"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "ATL",
+    "line": null,
+    "p": 0.6651,
+    "fair": null,
+    "ic": 75.9,
+    "level": "Alta",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "ATL F5",
+    "line": null,
+    "p": 0.7504,
+    "fair": null,
+    "ic": 72.9,
+    "level": "Alta",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 2,
+   "hr": 3,
+   "inn": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "decisions": {
+    "winner": "Brent Suter",
+    "loser": "Luis Mey"
+   },
+   "rhe": {
+    "away": [
+     2,
+     5,
+     1
+    ],
+    "home": [
+     3,
+     7,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-824060-framework",
+  "pk": 824060,
+  "date": "2026-09-23",
+  "time": "2026-09-23T23:40:00Z",
+  "away": "CWS",
+  "home": "KC",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T23:16:53+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.4378,
+   "projAway": 5.47,
+   "projHome": 4.19,
+   "total": 9.66,
+   "nrfi": 0.4883,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Bryan Hudson",
+    "home": "Seth Lugo"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "CWS +1.5",
+    "line": null,
+    "p": 0.7379,
+    "fair": null,
+    "ic": 71.4,
+    "level": "Alta",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "CWS F5",
+    "line": null,
+    "p": 0.5937,
+    "fair": null,
+    "ic": 56.7,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "push"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 4,
+   "hr": 5,
+   "inn": [
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     null
+    ]
+   ],
+   "decisions": {
+    "winner": "Connor Thomas",
+    "loser": "Hagen Smith",
+    "save": "Steven Cruz"
+   },
+   "rhe": {
+    "away": [
+     4,
+     9,
+     1
+    ],
+    "home": [
+     5,
+     12,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-824625-framework",
+  "pk": 824625,
+  "date": "2026-09-23",
+  "time": "2026-09-23T23:40:00Z",
+  "away": "MIA",
+  "home": "CHC",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T23:16:53+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.6151,
+   "projAway": 4.11,
+   "projHome": 4.93,
+   "total": 9.04,
+   "nrfi": 0.4812,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Ryan Gusto",
+    "home": "Kevin Gausman"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "CHC F5",
+    "line": null,
+    "p": 0.6642,
+    "fair": null,
+    "ic": 71.9,
+    "level": "Alta",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "push"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "CHC",
+    "line": null,
+    "p": 0.6151,
+    "fair": null,
+    "ic": 55.4,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 3,
+   "hr": 2,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Cade Gibson",
+    "loser": "Ryan Rolison",
+    "save": "Sandy Alcantara"
+   },
+   "rhe": {
+    "away": [
+     3,
+     10,
+     0
+    ],
+    "home": [
+     2,
+     8,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-822841-framework",
+  "pk": 822841,
+  "date": "2026-09-23",
+  "time": "2026-09-24T00:05:00Z",
+  "away": "NYM",
+  "home": "TEX",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T23:16:53+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.4755,
+   "projAway": 4.13,
+   "projHome": 3.46,
+   "total": 7.59,
+   "nrfi": 0.5582,
+   "light": "Gris",
+   "confidence": "baja",
+   "probables": {
+    "away": "Nolan McLean",
+    "home": "Cody Bradford"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "NYM +1.5",
+    "line": null,
+    "p": 0.7213,
+    "fair": null,
+    "ic": 63.1,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Cody Bradford Under 3.5 K",
+    "line": 3.5,
+    "p": 0.6093,
+    "fair": null,
+    "ic": 55.9,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 7,
+   "hr": 2,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     4,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Nolan McLean",
+    "loser": "Jacob Latz"
+   },
+   "rhe": {
+    "away": [
+     7,
+     8,
+     0
+    ],
+    "home": [
+     2,
+     4,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-824301-framework",
+  "pk": 824301,
+  "date": "2026-09-23",
+  "time": "2026-09-24T00:40:00Z",
+  "away": "AZ",
+  "home": "COL",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T23:56:20+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.4509,
+   "projAway": 6.11,
+   "projHome": 5.96,
+   "total": 12.07,
+   "nrfi": 0.3761,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Merrill Kelly",
+    "home": "Mason Adams"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 9.5",
+    "line": 9.5,
+    "p": 0.657,
+    "fair": null,
+    "ic": 69.7,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 5.5",
+    "line": 5.5,
+    "p": 0.6868,
+    "fair": null,
+    "ic": 69.7,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 5,
+   "hr": 3,
+   "inn": [
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Merrill Kelly",
+    "loser": "Mason Adams",
+    "save": "Jonathan Loáisiga"
+   },
+   "rhe": {
+    "away": [
+     5,
+     8,
+     0
+    ],
+    "home": [
+     3,
+     7,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-824951-framework",
+  "pk": 824951,
+  "date": "2026-09-23",
+  "time": "2026-09-24T01:40:00Z",
+  "away": "LAA",
+  "home": "ATH",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T23:56:20+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.4723,
+   "projAway": 5.59,
+   "projHome": 4.69,
+   "total": 10.27,
+   "nrfi": 0.4514,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Walbert Ureña",
+    "home": "Jeffrey Springs"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "LAA +1.5",
+    "line": null,
+    "p": 0.7032,
+    "fair": null,
+    "ic": 63.2,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Walbert Ureña Under 5.5 K",
+    "line": 5.5,
+    "p": 0.5819,
+    "fair": null,
+    "ic": 52.5,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "ganado"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 3,
+   "hr": 7,
+   "inn": [
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     null
+    ]
+   ],
+   "decisions": {
+    "winner": "Geoff Hartlieb",
+    "loser": "Walbert Ureña"
+   },
+   "rhe": {
+    "away": [
+     3,
+     8,
+     1
+    ],
+    "home": [
+     7,
+     13,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-823086-framework",
+  "pk": 823086,
+  "date": "2026-09-23",
+  "time": "2026-09-24T02:10:00Z",
+  "away": "HOU",
+  "home": "SEA",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T23:56:20+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5266,
+   "projAway": 3.66,
+   "projHome": 4.36,
+   "total": 8.02,
+   "nrfi": 0.5187,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Ethan Pecko",
+    "home": "George Kirby"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "SEA F5",
+    "line": null,
+    "p": 0.6621,
+    "fair": null,
+    "ic": 68.8,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "push"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "Team total",
+    "market": "Team total HOU",
+    "pick": "HOU Under 3.5",
+    "line": 3.5,
+    "p": 0.5611,
+    "fair": null,
+    "ic": 41.4,
+    "level": "Baja",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 5,
+   "hr": 6,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "decisions": {
+    "winner": "Cooper Criswell",
+    "loser": "Josh Hader"
+   },
+   "rhe": {
+    "away": [
+     5,
+     10,
+     0
+    ],
+    "home": [
+     6,
+     9,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ },
+ {
+  "id": "2026-09-23-823894-framework",
+  "pk": 823894,
+  "date": "2026-09-23",
+  "time": "2026-09-24T02:10:00Z",
+  "away": "SD",
+  "home": "LAD",
+  "awayName": null,
+  "homeName": null,
+  "venue": null,
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "seguimiento",
+  "registeredAt": "2026-09-23T23:56:20+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5941,
+   "projAway": 4.04,
+   "projHome": 4.88,
+   "total": 8.92,
+   "nrfi": 0.4819,
+   "light": "Gris",
+   "confidence": "alta",
+   "probables": {
+    "away": "Robbie Ray",
+    "home": "Yoshinobu Yamamoto"
+   },
+   "lineups": null
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "LAD F5",
+    "line": null,
+    "p": 0.6938,
+    "fair": null,
+    "ic": 73.0,
+    "level": "Alta",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "LAD",
+    "line": null,
+    "p": 0.5941,
+    "fair": null,
+    "ic": 64.2,
+    "level": "Media",
+    "price": null,
+    "methods": [],
+    "how": null,
+    "res": "perdido"
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 5,
+   "hr": 1,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Bradgley Rodriguez",
+    "loser": "Yoshinobu Yamamoto"
+   },
+   "rhe": {
+    "away": [
+     5,
+     8,
+     0
+    ],
+    "home": [
+     1,
+     10,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  }
+ }
+]
