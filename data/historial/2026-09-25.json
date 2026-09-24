@@ -25,7 +25,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5253,
@@ -60,9 +60,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -83,9 +86,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -106,9 +112,12 @@
     "how": "Binomial Negativa de carreras de CHC",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -129,9 +138,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -152,9 +164,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -164,7 +179,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 5.5",
     "line": 5.5,
-    "p": 0.5312,
+    "p": 0.5311,
     "fair": -113.0,
     "ic": 31.8,
     "level": "Muy baja",
@@ -175,9 +190,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -198,9 +216,12 @@
     "how": "Binomial Negativa de carreras de BOS",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -223,13 +244,29 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 50.2% · Elo + abridor (5.7.7) 57.1% · λ + Binomial Negativa (5.3 · 5.7.5) 50.3%",
     "res": null,
     "stake": {
-     "w": 0.557,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "YRFI",
+   "market": "NRFI/YRFI",
+   "p": 0.5392,
+   "ic": 39.9,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-824706-framework",
@@ -257,7 +294,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5253,
@@ -292,9 +329,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -315,9 +355,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -338,9 +381,12 @@
     "how": "Binomial Negativa de carreras de CHC",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -361,9 +407,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -384,9 +433,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -396,7 +448,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 5.5",
     "line": 5.5,
-    "p": 0.5312,
+    "p": 0.5311,
     "fair": -113.0,
     "ic": 31.8,
     "level": "Muy baja",
@@ -407,9 +459,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -430,9 +485,12 @@
     "how": "Binomial Negativa de carreras de BOS",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -455,13 +513,29 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 50.2% · Elo + abridor (5.7.7) 57.1% · λ + Binomial Negativa (5.3 · 5.7.5) 50.3%",
     "res": null,
     "stake": {
-     "w": 0.557,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "YRFI",
+   "market": "NRFI/YRFI",
+   "p": 0.5392,
+   "ic": 39.9,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-823409-framework",
@@ -489,7 +563,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5469,
@@ -524,22 +598,34 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.622,
+     "level": 6,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -163
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": -154
-      },
-      {
-       "stake": 1500,
-       "from": -135
+       "from": -136
       }
      ],
-     "block": null
+     "steps": [
+      -163,
+      -158,
+      -151,
+      -143,
+      -136,
+      -130,
+      -124,
+      -118,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -562,22 +648,34 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.4% · Elo + abridor (5.7.7) 56.5% · λ + Binomial Negativa (5.3 · 5.7.5) 56.1%",
     "res": null,
     "stake": {
-     "w": 0.639,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -107
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 107
-      },
-      {
-       "stake": 1500,
-       "from": 126
+       "from": 111
       }
      ],
-     "block": null
+     "steps": [
+      -107,
+      -104,
+      101,
+      106,
+      111,
+      116,
+      122,
+      128,
+      134,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -598,22 +696,34 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.622,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -106
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 106
-      },
-      {
-       "stake": 1500,
-       "from": 124
+       "from": 112
       }
      ],
-     "block": null
+     "steps": [
+      -106,
+      -103,
+      102,
+      106,
+      112,
+      117,
+      123,
+      129,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -634,22 +744,34 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.604,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -101
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 109
-      },
-      {
-       "stake": 1500,
-       "from": 129
+       "from": 117
       }
      ],
-     "block": null
+     "steps": [
+      -101,
+      102,
+      107,
+      112,
+      117,
+      123,
+      129,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -670,9 +792,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.622,
+     "level": 0,
      "ladder": [],
-     "block": "el guion del partido no acompaña"
+     "steps": null,
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -693,9 +818,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.622,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -716,9 +844,12 @@
     "how": "Binomial Negativa de carreras de PHI",
     "res": null,
     "stake": {
-     "w": 0.562,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -739,22 +870,34 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.6,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": 118
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 133
-      },
-      {
-       "stake": 1500,
-       "from": 161
+       "from": 140
       }
      ],
-     "block": null
+     "steps": [
+      118,
+      121,
+      127,
+      133,
+      140,
+      147,
+      154,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -775,9 +918,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.592,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -798,13 +944,40 @@
     "how": "Binomial Negativa de carreras de TB",
     "res": null,
     "stake": {
-     "w": 0.562,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios",
+   "source": "Framework v2",
+   "pick": "PHI F5",
+   "market": "F5 Moneyline",
+   "p": 0.6563,
+   "ic": 72.2,
+   "level": 6,
+   "amount": 1100,
+   "minPrice": -163,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -163
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -136
+    }
+   ]
+  }
  },
  {
   "id": "2026-09-25-824220-framework",
@@ -832,14 +1005,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5342,
+   "pHome": 0.5341,
    "projAway": 4.7,
    "projHome": 4.68,
    "total": 9.38,
-   "nrfi": 0.4639,
+   "nrfi": 0.4638,
    "light": "Gris",
    "confidence": "media",
    "probables": {
@@ -856,9 +1029,9 @@
     "market": "Run Line",
     "pick": "PIT +1.5",
     "line": null,
-    "p": 0.6435,
+    "p": 0.6436,
     "fair": -181.0,
-    "ic": 42.4,
+    "ic": 42.5,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -867,22 +1040,34 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.596,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -148
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": -143
-      },
-      {
-       "stake": 1500,
        "from": -124
       }
      ],
-     "block": null
+     "steps": [
+      -148,
+      -144,
+      -137,
+      -131,
+      -124,
+      -119,
+      -113,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -892,7 +1077,7 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5361,
+    "p": 0.5362,
     "fair": -116.0,
     "ic": 41.4,
     "level": "Baja",
@@ -903,9 +1088,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.566,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -926,49 +1114,16 @@
     "how": "Binomial Negativa de carreras de DET",
     "res": null,
     "stake": {
-     "w": 0.596,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
     "rank": 4,
-    "principal": false,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "DET F5",
-    "line": null,
-    "p": 0.5398,
-    "fair": -117.0,
-    "ic": 38.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "Poisson de las primeras 5 entradas, empates como push",
-    "res": null,
-    "stake": {
-     "w": 0.596,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 103
-      },
-      {
-       "stake": 1000,
-       "from": 113
-      },
-      {
-       "stake": 1500,
-       "from": 135
-      }
-     ],
-     "block": null
-    }
-   },
-   {
-    "rank": 5,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -985,22 +1140,82 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.555,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -101
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 102
-      },
-      {
-       "stake": 1500,
-       "from": 123
+       "from": 117
       }
      ],
-     "block": null
+     "steps": [
+      -101,
+      101,
+      106,
+      111,
+      117,
+      122,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "DET F5",
+    "line": null,
+    "p": 0.5395,
+    "fair": -117.0,
+    "ic": 38.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson de las primeras 5 entradas, empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 103
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 122
+      }
+     ],
+     "steps": [
+      103,
+      106,
+      111,
+      116,
+      122,
+      128,
+      134,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1010,9 +1225,9 @@
     "market": "Team total PIT",
     "pick": "PIT Under 4.5",
     "line": 4.5,
-    "p": 0.5485,
+    "p": 0.5483,
     "fair": -121.0,
-    "ic": 38.2,
+    "ic": 38.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1021,9 +1236,12 @@
     "how": "Binomial Negativa de carreras de PIT",
     "res": null,
     "stake": {
-     "w": 0.596,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1033,9 +1251,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 5.5",
     "line": 5.5,
-    "p": 0.5424,
-    "fair": -119.0,
-    "ic": 36.4,
+    "p": 0.5421,
+    "fair": -118.0,
+    "ic": 36.3,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1044,9 +1262,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.596,
+     "level": 0,
      "ladder": [],
-     "block": "el guion del partido no acompaña"
+     "steps": null,
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1056,7 +1277,7 @@
     "market": "Moneyline",
     "pick": "DET",
     "line": null,
-    "p": 0.5342,
+    "p": 0.5341,
     "fair": -115.0,
     "ic": 35.8,
     "level": "Muy baja",
@@ -1069,22 +1290,34 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.4% · Elo + abridor (5.7.7) 54.2% · λ + Binomial Negativa (5.3 · 5.7.5) 49.7%",
     "res": null,
     "stake": {
-     "w": 0.583,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": 108
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 117
-      },
-      {
-       "stake": 1500,
-       "from": 141
+       "from": 127
       }
      ],
-     "block": null
+     "steps": [
+      108,
+      110,
+      116,
+      121,
+      127,
+      134,
+      140,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1105,22 +1338,34 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.598,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": 106
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 116
-      },
-      {
-       "stake": 1500,
-       "from": 139
+       "from": 125
       }
      ],
-     "block": null
+     "steps": [
+      106,
+      108,
+      113,
+      119,
+      125,
+      131,
+      137,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1130,7 +1375,7 @@
     "market": "Total completo",
     "pick": "Under 9.0",
     "line": 9.0,
-    "p": 0.5193,
+    "p": 0.5192,
     "fair": -108.0,
     "ic": 34.2,
     "level": "Muy baja",
@@ -1141,13 +1386,40 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.596,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "no apostar",
+   "why": "confianza 42 (< 55): solo entra con un momio mejor (stake 1 desde -148)",
+   "source": "Framework v2",
+   "pick": "PIT +1.5",
+   "market": "Run Line",
+   "p": 0.6436,
+   "ic": 42.5,
+   "level": 0,
+   "amount": 0,
+   "minPrice": -148,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -148
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -124
+    }
+   ]
+  }
  },
  {
   "id": "2026-09-25-822681-framework",
@@ -1175,7 +1447,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5321,
@@ -1210,9 +1482,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.589,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1224,7 +1499,7 @@
     "line": 5.5,
     "p": 0.585,
     "fair": -141.0,
-    "ic": 48.2,
+    "ic": 48.1,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -1233,9 +1508,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.589,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1258,9 +1536,12 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.4% · Elo + abridor (5.7.7) 54.0% · λ + Binomial Negativa (5.3 · 5.7.5) 53.3%",
     "res": null,
     "stake": {
-     "w": 0.64,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1281,9 +1562,12 @@
     "how": "Binomial Negativa de carreras de NYM",
     "res": null,
     "stake": {
-     "w": 0.589,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1304,9 +1588,12 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.587,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1327,9 +1614,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.56,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1350,9 +1640,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.589,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1373,9 +1666,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.589,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1396,13 +1692,29 @@
     "how": "Binomial Negativa de carreras de WSH",
     "res": null,
     "stake": {
-     "w": 0.589,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "WSH F5",
+   "market": "F5 Moneyline",
+   "p": 0.6671,
+   "ic": 68.5,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-823491-framework",
@@ -1430,7 +1742,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6218,
@@ -1465,9 +1777,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1490,9 +1805,12 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 63.2% · Elo + abridor (5.7.7) 65.7% · λ + Binomial Negativa (5.3 · 5.7.5) 57.6%",
     "res": null,
     "stake": {
-     "w": 0.534,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1504,7 +1822,7 @@
     "line": 3.5,
     "p": 0.5613,
     "fair": -128.0,
-    "ic": 32.8,
+    "ic": 32.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1513,9 +1831,12 @@
     "how": "Binomial Negativa de carreras de NYY",
     "res": null,
     "stake": {
-     "w": 0.514,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1536,9 +1857,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1559,9 +1883,12 @@
     "how": "Binomial Negativa de carreras de BAL",
     "res": null,
     "stake": {
-     "w": 0.514,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1582,9 +1909,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1605,9 +1935,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1628,13 +1961,29 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "NYY F5",
+   "market": "F5 Moneyline",
+   "p": 0.6637,
+   "ic": 63.5,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-822760-framework",
@@ -1662,11 +2011,11 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5816,
-   "projAway": 4.01,
+   "projAway": 4.02,
    "projHome": 4.69,
    "total": 8.71,
    "nrfi": 0.4946,
@@ -1697,9 +2046,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.56,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1722,9 +2074,12 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 58.1% · Elo + abridor (5.7.7) 60.1% · λ + Binomial Negativa (5.3 · 5.7.5) 56.3%",
     "res": null,
     "stake": {
-     "w": 0.632,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1745,9 +2100,12 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.587,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1757,7 +2115,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.553,
+    "p": 0.5531,
     "fair": -124.0,
     "ic": 38.9,
     "level": "Muy baja",
@@ -1768,9 +2126,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.59,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1791,9 +2152,12 @@
     "how": "Binomial Negativa de carreras de TOR",
     "res": null,
     "stake": {
-     "w": 0.59,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1814,9 +2178,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.59,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1826,7 +2193,7 @@
     "market": "Total completo",
     "pick": "Over 8.0",
     "line": 8.0,
-    "p": 0.513,
+    "p": 0.5131,
     "fair": -105.0,
     "ic": 33.6,
     "level": "Muy baja",
@@ -1837,9 +2204,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.59,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1860,9 +2230,12 @@
     "how": "Binomial Negativa de carreras de CIN",
     "res": null,
     "stake": {
-     "w": 0.59,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1883,13 +2256,29 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.56,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "TOR F5",
+   "market": "F5 Moneyline",
+   "p": 0.6195,
+   "ic": 58.1,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-823816-framework",
@@ -1917,7 +2306,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4682,
@@ -1952,9 +2341,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.595,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1975,9 +2367,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.595,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -1998,9 +2393,12 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.597,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2023,9 +2421,12 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.3% · Elo + abridor (5.7.7) 51.6% · λ + Binomial Negativa (5.3 · 5.7.5) 54.7%",
     "res": null,
     "stake": {
-     "w": 0.648,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2046,9 +2447,12 @@
     "how": "Binomial Negativa de carreras de ATL",
     "res": null,
     "stake": {
-     "w": 0.595,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2069,9 +2473,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.565,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2092,9 +2499,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.595,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2104,7 +2514,7 @@
     "market": "Team total MIA",
     "pick": "MIA Over 3.5",
     "line": 3.5,
-    "p": 0.519,
+    "p": 0.5191,
     "fair": -108.0,
     "ic": 34.1,
     "level": "Muy baja",
@@ -2115,9 +2525,12 @@
     "how": "Binomial Negativa de carreras de MIA",
     "res": null,
     "stake": {
-     "w": 0.595,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2138,13 +2551,29 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.565,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "ATL +1.5",
+   "market": "Run Line",
+   "p": 0.6871,
+   "ic": 55.0,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-823735-framework",
@@ -2172,7 +2601,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6377,
@@ -2207,22 +2636,34 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.611,
+     "level": 6,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -157
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": -151
-      },
-      {
-       "stake": 1500,
        "from": -132
       }
      ],
-     "block": null
+     "steps": [
+      -157,
+      -153,
+      -146,
+      -139,
+      -132,
+      -126,
+      -120,
+      -115,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2245,22 +2686,34 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 65.0% · Elo + abridor (5.7.7) 66.7% · λ + Binomial Negativa (5.3 · 5.7.5) 59.6%",
     "res": null,
     "stake": {
-     "w": 0.59,
+     "level": 4,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -143
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": -139
-      },
-      {
-       "stake": 1500,
        "from": -120
       }
      ],
-     "block": null
+     "steps": [
+      -143,
+      -139,
+      -132,
+      -126,
+      -120,
+      -115,
+      -109,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2281,9 +2734,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.581,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2304,22 +2760,34 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.586,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -110
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": -104
-      },
-      {
-       "stake": 1500,
-       "from": 114
+       "from": 107
       }
      ],
-     "block": null
+     "steps": [
+      -110,
+      -107,
+      -102,
+      102,
+      107,
+      112,
+      118,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2340,22 +2808,34 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.611,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": 145
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 171
-      },
-      {
-       "stake": 1500,
-       "from": 215
+       "from": 173
       }
      ],
-     "block": null
+     "steps": [
+      145,
+      149,
+      156,
+      164,
+      173,
+      182,
+      191,
+      202,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2376,9 +2856,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.611,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2388,7 +2871,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 5.5",
     "line": 5.5,
-    "p": 0.5308,
+    "p": 0.5307,
     "fair": -113.0,
     "ic": 36.0,
     "level": "Muy baja",
@@ -2399,22 +2882,34 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.611,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": 105
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 117
-      },
-      {
-       "stake": 1500,
-       "from": 139
+       "from": 124
       }
      ],
-     "block": null
+     "steps": [
+      105,
+      107,
+      112,
+      118,
+      124,
+      130,
+      136,
+      143,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2435,22 +2930,34 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.599,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": 116
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 129
-      },
-      {
-       "stake": 1500,
-       "from": 157
+       "from": 137
       }
      ],
-     "block": null
+     "steps": [
+      116,
+      119,
+      124,
+      130,
+      137,
+      144,
+      151,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2460,7 +2967,7 @@
     "market": "Team total STL",
     "pick": "STL Over 3.5",
     "line": 3.5,
-    "p": 0.5118,
+    "p": 0.5119,
     "fair": -105.0,
     "ic": 29.3,
     "level": "Muy baja",
@@ -2471,9 +2978,12 @@
     "how": "Binomial Negativa de carreras de STL",
     "res": null,
     "stake": {
-     "w": 0.552,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2494,13 +3004,40 @@
     "how": "Binomial Negativa de carreras de MIL",
     "res": null,
     "stake": {
-     "w": 0.552,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios",
+   "source": "Framework v2",
+   "pick": "MIL F5",
+   "market": "F5 Moneyline",
+   "p": 0.6529,
+   "ic": 71.0,
+   "level": 6,
+   "amount": 1100,
+   "minPrice": -157,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -157
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -132
+    }
+   ]
+  }
  },
  {
   "id": "2026-09-25-824058-framework",
@@ -2528,7 +3065,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4779,
@@ -2563,9 +3100,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.597,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2586,9 +3126,12 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.6,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2611,9 +3154,12 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.7% · Elo + abridor (5.7.7) 50.4% · λ + Binomial Negativa (5.3 · 5.7.5) 54.6%",
     "res": null,
     "stake": {
-     "w": 0.629,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2634,9 +3180,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.597,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2646,7 +3195,7 @@
     "market": "Team total CLE",
     "pick": "CLE Over 3.5",
     "line": 3.5,
-    "p": 0.5593,
+    "p": 0.5594,
     "fair": -127.0,
     "ic": 34.8,
     "level": "Muy baja",
@@ -2657,9 +3206,12 @@
     "how": "Binomial Negativa de carreras de CLE",
     "res": null,
     "stake": {
-     "w": 0.537,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2669,7 +3221,7 @@
     "market": "Total completo",
     "pick": "Under 8.0",
     "line": 8.0,
-    "p": 0.5003,
+    "p": 0.5002,
     "fair": -100.0,
     "ic": 34.4,
     "level": "Muy baja",
@@ -2680,9 +3232,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.597,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2703,9 +3258,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.597,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2726,9 +3284,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.567,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2749,13 +3310,29 @@
     "how": "Binomial Negativa de carreras de KC",
     "res": null,
     "stake": {
-     "w": 0.537,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "CLE +1.5",
+   "market": "Run Line",
+   "p": 0.688,
+   "ic": 55.5,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-824544-framework",
@@ -2783,7 +3360,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6538,
@@ -2818,22 +3395,34 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.617,
+     "level": 6,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -198
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": -194
-      },
-      {
-       "stake": 1500,
-       "from": -172
+       "from": -165
       }
      ],
-     "block": null
+     "steps": [
+      -198,
+      -192,
+      -183,
+      -173,
+      -165,
+      -157,
+      -149,
+      -142,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2856,18 +3445,34 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 64.8% · Elo + abridor (5.7.7) 69.8% · λ + Binomial Negativa (5.3 · 5.7.5) 61.5%",
     "res": null,
     "stake": {
-     "w": 0.575,
+     "level": 4,
      "ladder": [
       {
-       "stake": 1000,
+       "level": 1,
+       "stake": 500,
        "from": -149
       },
       {
-       "stake": 1500,
-       "from": -129
+       "level": 5,
+       "stake": 1000,
+       "from": -125
       }
      ],
-     "block": null
+     "steps": [
+      -149,
+      -145,
+      -138,
+      -132,
+      -125,
+      -120,
+      -114,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2888,22 +3493,34 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.617,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": 131
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 153
-      },
-      {
-       "stake": 1500,
-       "from": 188
+       "from": 155
       }
      ],
-     "block": null
+     "steps": [
+      131,
+      134,
+      141,
+      148,
+      155,
+      163,
+      172,
+      181,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2924,9 +3541,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.588,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2936,8 +3556,8 @@
     "market": "Total completo",
     "pick": "Over 9.0",
     "line": 9.0,
-    "p": 0.5012,
-    "fair": -100.0,
+    "p": 0.5013,
+    "fair": -101.0,
     "ic": 36.7,
     "level": "Muy baja",
     "price": null,
@@ -2947,9 +3567,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.617,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -2970,22 +3593,34 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.617,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": 112
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 128
-      },
-      {
-       "stake": 1500,
-       "from": 154
+       "from": 133
       }
      ],
-     "block": null
+     "steps": [
+      112,
+      115,
+      121,
+      127,
+      133,
+      139,
+      146,
+      154,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3006,9 +3641,12 @@
     "how": "Binomial Negativa de carreras de CWS",
     "res": null,
     "stake": {
-     "w": 0.588,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3029,9 +3667,12 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.599,
+     "level": 0,
      "ladder": [],
-     "block": "el guion del partido no acompaña"
+     "steps": null,
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3052,9 +3693,12 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.597,
+     "level": 0,
      "ladder": [],
-     "block": "el guion del partido no acompaña"
+     "steps": null,
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3075,13 +3719,40 @@
     "how": "Binomial Negativa de carreras de COL",
     "res": null,
     "stake": {
-     "w": 0.588,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios",
+   "source": "Framework v2",
+   "pick": "CWS F5",
+   "market": "F5 Moneyline",
+   "p": 0.7031,
+   "ic": 71.7,
+   "level": 6,
+   "amount": 1100,
+   "minPrice": -198,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -198
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -165
+    }
+   ]
+  }
  },
  {
   "id": "2026-09-25-823652-framework",
@@ -3109,13 +3780,13 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5218,
    "projAway": 4.4,
    "projHome": 4.77,
-   "total": 9.16,
+   "total": 9.17,
    "nrfi": 0.5051,
    "light": "Gris",
    "confidence": "alta",
@@ -3144,9 +3815,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.594,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3169,9 +3843,12 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 50.3% · Elo + abridor (5.7.7) 52.9% · λ + Binomial Negativa (5.3 · 5.7.5) 53.4%",
     "res": null,
     "stake": {
-     "w": 0.617,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3192,9 +3869,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.594,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3215,9 +3895,12 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.595,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3238,9 +3921,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.594,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3261,9 +3947,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.594,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3284,9 +3973,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.564,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3307,9 +3999,12 @@
     "how": "Binomial Negativa de carreras de TEX",
     "res": null,
     "stake": {
-     "w": 0.534,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3330,13 +4025,29 @@
     "how": "Binomial Negativa de carreras de MIN",
     "res": null,
     "stake": {
-     "w": 0.534,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "MIN F5",
+   "market": "F5 Moneyline",
+   "p": 0.6115,
+   "ic": 59.6,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-823248-framework",
@@ -3364,7 +4075,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5481,
@@ -3401,9 +4112,12 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 55.2% · Elo + abridor (5.7.7) 56.9% · λ + Binomial Negativa (5.3 · 5.7.5) 52.4%",
     "res": null,
     "stake": {
-     "w": 0.602,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3424,9 +4138,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3436,7 +4153,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5531,
+    "p": 0.5532,
     "fair": -124.0,
     "ic": 37.1,
     "level": "Muy baja",
@@ -3447,9 +4164,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3470,9 +4190,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3493,9 +4216,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3516,9 +4242,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3539,9 +4268,12 @@
     "how": "Binomial Negativa de carreras de AZ",
     "res": null,
     "stake": {
-     "w": 0.514,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3551,7 +4283,7 @@
     "market": "Team total SD",
     "pick": "SD Over 3.5",
     "line": 3.5,
-    "p": 0.5305,
+    "p": 0.5306,
     "fair": -113.0,
     "ic": 25.1,
     "level": "Muy baja",
@@ -3562,13 +4294,29 @@
     "how": "Binomial Negativa de carreras de SD",
     "res": null,
     "stake": {
-     "w": 0.514,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "SD",
+   "market": "Moneyline",
+   "p": 0.5481,
+   "ic": 42.0,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-824947-framework",
@@ -3596,7 +4344,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.429,
@@ -3631,9 +4379,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3654,9 +4405,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3677,9 +4431,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3700,9 +4457,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.574,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3725,9 +4485,12 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 54.9% · Elo + abridor (5.7.7) 59.5% · λ + Binomial Negativa (5.3 · 5.7.5) 56.9%",
     "res": null,
     "stake": {
-     "w": 0.57,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3748,9 +4511,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.544,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3771,9 +4537,12 @@
     "how": "Binomial Negativa de carreras de HOU",
     "res": null,
     "stake": {
-     "w": 0.514,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3794,13 +4563,29 @@
     "how": "Binomial Negativa de carreras de ATH",
     "res": null,
     "stake": {
-     "w": 0.514,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "F5 Over 5.5",
+   "market": "Total primeras 5",
+   "p": 0.6486,
+   "ic": 65.0,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  },
  {
   "id": "2026-09-25-823085-framework",
@@ -3828,7 +4613,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5184,
@@ -3863,9 +4648,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.613,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3886,9 +4674,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.553,
+     "level": 0,
      "ladder": [],
-     "block": "el guion del partido no acompaña"
+     "steps": null,
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3909,9 +4700,12 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.583,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3932,22 +4726,34 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.587,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -111
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": -104
-      },
-      {
-       "stake": 1500,
-       "from": 113
+       "from": 107
       }
      ],
-     "block": null
+     "steps": [
+      -111,
+      -108,
+      -103,
+      102,
+      107,
+      112,
+      117,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -3968,22 +4774,34 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.6,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -105
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 104
-      },
-      {
-       "stake": 1500,
-       "from": 123
+       "from": 113
       }
      ],
-     "block": null
+     "steps": [
+      -105,
+      -102,
+      103,
+      108,
+      113,
+      118,
+      124,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4004,22 +4822,34 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.583,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": -100
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 108
-      },
-      {
-       "stake": 1500,
-       "from": 129
+       "from": 118
       }
      ],
-     "block": null
+     "steps": [
+      -100,
+      103,
+      108,
+      113,
+      118,
+      124,
+      130,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4040,9 +4870,12 @@
     "how": "Binomial Negativa de carreras de LAA",
     "res": null,
     "stake": {
-     "w": 0.553,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4063,22 +4896,34 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.613,
+     "level": 0,
      "ladder": [
       {
+       "level": 1,
        "stake": 500,
        "from": 108
       },
       {
+       "level": 5,
        "stake": 1000,
-       "from": 122
-      },
-      {
-       "stake": 1500,
-       "from": 146
+       "from": 128
       }
      ],
-     "block": null
+     "steps": [
+      108,
+      111,
+      116,
+      122,
+      128,
+      134,
+      141,
+      148,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4099,9 +4944,12 @@
     "how": "Binomial Negativa de carreras de SEA",
     "res": null,
     "stake": {
-     "w": 0.553,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4124,13 +4972,40 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.6% · Elo + abridor (5.7.7) 53.2% · λ + Binomial Negativa (5.3 · 5.7.5) 45.7%",
     "res": null,
     "stake": {
-     "w": 0.463,
+     "level": 0,
      "ladder": [],
-     "block": "el guion del partido no acompaña"
+     "steps": null,
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "no apostar",
+   "why": "confianza 45 (< 55): solo entra con un momio mejor (stake 1 desde -111)",
+   "source": "Framework v2",
+   "pick": "Bryce Miller Under 5.5 K",
+   "market": "Prop de ponches",
+   "p": 0.5764,
+   "ic": 45.4,
+   "level": 0,
+   "amount": 0,
+   "minPrice": -111,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -111
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": 107
+    }
+   ]
+  }
  },
  {
   "id": "2026-09-25-823167-framework",
@@ -4158,7 +5033,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-24T17:38:19+00:00",
+  "registeredAt": "2026-09-24T17:54:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.3805,
@@ -4193,9 +5068,12 @@
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "w": 0.565,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4218,9 +5096,12 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 61.1% · Elo + abridor (5.7.7) 65.5% · λ + Binomial Negativa (5.3 · 5.7.5) 59.2%",
     "res": null,
     "stake": {
-     "w": 0.559,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4241,9 +5122,12 @@
     "how": "Poisson de las primeras 5 entradas, empates como push",
     "res": null,
     "stake": {
-     "w": 0.536,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4264,9 +5148,12 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "w": 0.535,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4287,9 +5174,12 @@
     "how": "Binomial Negativa de carreras de LAD",
     "res": null,
     "stake": {
-     "w": 0.565,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4299,7 +5189,7 @@
     "market": "Team total SF",
     "pick": "SF Under 3.5",
     "line": 3.5,
-    "p": 0.5537,
+    "p": 0.5536,
     "fair": -124.0,
     "ic": 36.3,
     "level": "Muy baja",
@@ -4310,9 +5200,12 @@
     "how": "Binomial Negativa de carreras de SF",
     "res": null,
     "stake": {
-     "w": 0.565,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4333,9 +5226,12 @@
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "w": 0.565,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4356,9 +5252,12 @@
     "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "w": 0.565,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    },
    {
@@ -4379,12 +5278,28 @@
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
-     "w": 0.536,
+     "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)"
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.967
     }
    }
   ],
-  "result": null
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "LAD +1.5",
+   "market": "Run Line",
+   "p": 0.7311,
+   "ic": 64.6,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
  }
 ]
