@@ -15,6 +15,7 @@ import math
 import os
 import sys
 
+from . import decision as DE
 from . import historial as HI
 from . import markov as MK
 from . import model
@@ -195,6 +196,7 @@ def build(bundle: dict, save: bool = True) -> dict:
     # stake de cada pick (usa el historial ya calificado) antes de registrar los tickets, para que quede guardado
     prev = HI.load() or HI.update(bundle, analyses, labs, generated, save_files=False)
     stake_cfg = ST.attach(analyses, labs, prev)
+    DE.attach(analyses, labs, stake_cfg["track"])     # una decisión por partido: framework + modelo + cuotas
     tickets = HI.update(bundle, analyses, labs, generated, save_files=save)
     lg = ctx.lg
     payload = {

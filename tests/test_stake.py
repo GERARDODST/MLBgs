@@ -1,4 +1,4 @@
-"""STAKE-K: montos entre $500 y $1,500, reglas del semáforo, escalera de momios y factores de confianza."""
+"""Stake 1–10 por confianza: montos, reglas del semáforo, escalera de momios y factores de ajuste."""
 import unittest
 
 from mlbgs import stake as ST
@@ -17,43 +17,33 @@ def dec(am):
 
 
 class Stake(unittest.TestCase):
-    def test_monto_dentro_del_rango_y_redondeado(self):
-        pk = pick()
-        w = ST.weight(pk)
-        for am in (-150, -130, -110, 100, 120, 150, 200):
-            s = ST.stake_at(pk, w, dec(am))["stake"]
-            self.assertTrue(s == 0 or ST.MIN <= s <= ST.MAX, (am, s))
-            self.assertEqual(s % ST.STEP, 0)
+    def test_escala_de_montos(self):
+        self.assertEqual(ST.AMOUNTS[1], 500)
+        self.assertEqual(ST.AMOUNTS[5], 1000)
+        self.assertEqual(ST.AMOUNTS[10], 1500)
+        self.assertEqual(list(ST.AMOUNTS.values()), sorted(ST.AMOUNTS.values()))
 
-    def test_sube_con_la_ventaja(self):
+    def test_nivel_por_confianza(self):
+        self.assertEqual(ST.level_from_ic(54.9), 0)
+        self.assertEqual(ST.level_from_ic(55), 1)
+        self.assertEqual(ST.level_from_ic(70), 6)      # 1 + 9·15/30 = 5.5 → 6
+        self.assertEqual(ST.level_from_ic(85), 10)
+        self.assertEqual(ST.level_from_ic(99), 10)
+        self.assertLess(ST.level_from_ic(80, a=0.7), ST.level_from_ic(80))
+
+    def test_sube_con_mejor_momio(self):
         pk = pick()
-        w = ST.weight(pk)
-        stakes = [ST.stake_at(pk, w, dec(am))["stake"] for am in (-135, -125, -115, -105)]
-        self.assertEqual(stakes, sorted(stakes))
-        self.assertGreater(stakes[-1], stakes[0])
+        levels = [ST.stake_at(pk, dec(am))["level"] for am in (-135, -120, -105, 110)]
+        self.assertEqual(levels, sorted(levels))
+        self.assertGreater(levels[-1], levels[0])
 
     def test_reglas_del_semaforo(self):
-        w = 0.8
-        self.assertEqual(ST.stake_at(pick(), w, dec(-160))["stake"], 0)              # edge < 3 pp
-        self.assertEqual(ST.stake_at(pick(blocked=True), w, dec(120))["stake"], 0)   # falta un dato obligatorio
-        self.assertEqual(ST.stake_at(pick(guion="No"), w, dec(120))["stake"], 0)
-        self.assertEqual(ST.stake_at(pick(contradiction="Alta"), w, dec(120))["stake"], 0)
-        self.assertEqual(ST.stake_at(pick(ic=30, fuerza=0.9), w, dec(-120))["stake"], 0)  # IC < 55 con ese momio
-        self.assertGreater(ST.stake_at(pick(), w, dec(120))["stake"], 0)
-
-    def test_ventaja_minima_no_se_infla_al_minimo(self):
-        # ¼ Kelly por debajo de $300: no se apuesta en lugar de subirlo a $500
-        pk = pick(p=0.55, ic=70)
-        s = ST.stake_at(pk, 0.3, dec(-108))
-        self.assertEqual(s["stake"], 0)
-        self.assertLess(s["raw"], ST.FLOOR)
-
-    def test_confianza_baja_reduce_el_stake(self):
-        alta = pick(consenso=1.0, estabilidad=1.0)
-        baja = pick(consenso=0.2, estabilidad=0.2, datos=0.8)
-        d = dec(-110)
-        self.assertGreater(ST.weight(alta), ST.weight(baja))
-        self.assertGreaterEqual(ST.stake_at(alta, ST.weight(alta), d)["stake"], ST.stake_at(baja, ST.weight(baja), d)["stake"])
+        self.assertEqual(ST.stake_at(pick(), dec(-160))["level"], 0)              # edge < 3 pp
+        self.assertEqual(ST.stake_at(pick(blocked=True), dec(120))["level"], 0)   # falta un dato obligatorio
+        self.assertEqual(ST.stake_at(pick(guion="No"), dec(120))["level"], 0)
+        self.assertEqual(ST.stake_at(pick(contradiction="Alta"), dec(120))["level"], 0)
+        self.assertEqual(ST.stake_at(pick(ic=30, fuerza=0.9), dec(-120))["level"], 0)  # IC < 55 con ese momio
+        self.assertGreater(ST.stake_at(pick(), dec(120))["level"], 0)
 
     def test_acuerdo_con_el_modelo_del_pro_lab(self):
         name = ST.LAB_METHODS["kronos"]
@@ -77,19 +67,24 @@ class Stake(unittest.TestCase):
         pk = pick()
         plan = ST.plan(pk)
         self.assertTrue(plan["ladder"])
-        w = plan["w"]
+        self.assertEqual(len(plan["steps"]), 10)
         prev = None
         for step in plan["ladder"]:
-            self.assertGreaterEqual(ST.stake_at(pk, w, dec(step["from"]))["stake"], step["stake"])
+            self.assertGreaterEqual(ST.stake_at(pk, dec(step["from"]))["level"], step["level"])
             worse = step["from"] - 1 if step["from"] != 101 else -101
-            self.assertLess(ST.stake_at(pk, w, dec(worse))["stake"], step["stake"])
+            self.assertLess(ST.stake_at(pk, dec(worse))["level"], step["level"])
             if prev:
                 self.assertGreater(dec(step["from"]), dec(prev["from"]))
             prev = step
 
+    def test_stake_mostrado_sale_del_ic_del_pick(self):
+        self.assertEqual(ST.plan(pick(ic=66))["level"], ST.level_from_ic(66))
+        self.assertEqual(ST.plan(pick(ic=50))["level"], 0)
+
     def test_sin_escalera_si_falta_un_dato(self):
         plan = ST.plan(pick(blocked=True))
         self.assertEqual(plan["ladder"], [])
+        self.assertEqual(plan["level"], 0)
         self.assertIn("dato obligatorio", plan["block"])
 
 
