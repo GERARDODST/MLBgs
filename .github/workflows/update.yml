@@ -63,3 +63,25 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  relevo:
+    # El cron de GitHub no garantiza la frecuencia (en repos nuevos puede saltarse corridas): en horario de
+    # juegos, cada corrida en main espera ~15 min y lanza la siguiente. La concurrencia deja una sola en fila.
+    if: always() && github.ref == 'refs/heads/main'
+    needs: [update, deploy]
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Lanzar la siguiente actualización en horario de juegos
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          h=$(date -u +%-H)
+          if [ "$h" -ge 15 ] || [ "$h" -le 5 ]; then
+            sleep 900
+            gh workflow run update.yml --repo "${GITHUB_REPOSITORY}" --ref main
+            echo "siguiente corrida lanzada ($(date -u +%H:%MZ))"
+          else
+            echo "fuera del horario de juegos: la reanuda el cron de las 12:00 o 15:00 UTC"
+          fi
