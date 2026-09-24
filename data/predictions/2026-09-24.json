@@ -168,23 +168,23 @@
 "pk": 822842,
 "date": "2026-09-24",
 "time": "2026-09-24T18:35:00Z",
-"generatedAt": "2026-09-24T16:02:28+00:00",
+"generatedAt": "2026-09-24T16:18:31+00:00",
 "away": "NYM",
 "home": "TEX",
-"pHome": 0.51,
+"pHome": 0.5064,
 "methods": {
 "log5": 0.5278,
 "elo": 0.4952,
-"lambda": 0.5071
+"lambda": 0.4961
 },
 "confidence": "alta",
-"projAway": 4.1541,
+"projAway": 4.2684,
 "projHome": 4.244,
-"total": 8.398,
-"f5Away": 2.2677,
+"total": 8.5124,
+"f5Away": 2.3301,
 "f5Home": 2.6313,
-"nrfi": 0.4984,
-"pOver85": 0.4366,
+"nrfi": 0.4943,
+"pOver85": 0.4472,
 "probables": {
 "away": "Zac Thornton",
 "home": "Kumar Rocker"
@@ -192,8 +192,8 @@
 "light": "Gris",
 "best": {
 "market": "Prop pitcher",
-"pick": "Kumar Rocker Under 4.5 K",
-"p": 0.592,
+"pick": "Kumar Rocker Over 3.5 K",
+"p": 0.5748,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -202,19 +202,19 @@
 {
 "family": "K",
 "market": "Prop de ponches",
-"pick": "Kumar Rocker Under 4.5 K",
-"p": 0.592,
-"line": 4.5,
-"ic": 50.9949,
+"pick": "Kumar Rocker Over 3.5 K",
+"p": 0.5748,
+"line": 3.5,
+"ic": 50.5116,
 "level": "Baja"
 },
 {
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "TEX F5",
-"p": 0.5778,
+"family": "RL",
+"market": "Run Line",
+"pick": "NYM +1.5",
+"p": 0.6514,
 "line": null,
-"ic": 47.626,
+"ic": 46.9114,
 "level": "Baja"
 }
 ]
