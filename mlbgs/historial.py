@@ -74,6 +74,18 @@ MODELS = {
             ["Monte Carlo por lanzamiento", "20,000 partidos simulados lanzamiento a lanzamiento con las reglas de 2026."],
         ],
     },
+    "eigen": {
+        "name": "EIGEN", "full": "Framework v2 + EIGEN", "kind": "Componentes principales (PCA)",
+        "analyses": [
+            ["PCA de pitchers", "Perfil de 9 métricas Statcast (K, BB, HR, GB, barrel, hard-hit, EV, whiff, velocidad) reducido a componentes; regresión sobre componentes (PCR) para RA9."],
+            ["PCA de bateadores", "8 métricas (K, BB, ISO, HR, barrel, hard-hit, EV, SB) reducidas a componentes; PCR para wOBA."],
+            ["Talento encogido", "Cada jugador mezcla lo observado con lo que predicen sus componentes según su muestra (600 BF · 300 PA)."],
+            ["Lineup por lugar", "Ofensiva del lineup con las apariciones esperadas por lugar en el orden y ajuste de mano."],
+            ["Abridor + bullpen", "Carreras por la parte del partido de cada uno (IP esperadas del abridor) y parque a media fuerza."],
+            ["Binomial Negativa + bootstrap", "Marcador, F5 y NRFI; intervalo por bootstrap que re-ajusta el PCA y la muestra de cada jugador."],
+            ["PCA de equipos y de métodos", "Dónde conviene PCA: equipos (descriptivo) y el acuerdo entre los métodos del framework."],
+        ],
+    },
 }
 LAB_EXTRA = ["Picks combinados con el framework"]
 ROUND = {"p": 4, "ic": 1, "fair": 0, "pHome": 4, "pModel": 4, "projAway": 2, "projHome": 2, "total": 2, "nrfi": 4}

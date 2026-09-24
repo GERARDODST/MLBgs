@@ -16,6 +16,7 @@
     --accent: #1e4fa3;
     --accent-soft: rgba(30, 79, 163, 0.10);
     --heat: 30, 79, 163;
+    --heat-neg: 200, 97, 42;
     --away: #2f6fd0;
     --home: #c8612a;
     --verde: #23794b;
@@ -35,7 +36,7 @@
     :root:not([data-theme="light"]) {
       --ground: #0e1419; --surface: #151d24; --surface-2: #1c2630; --ink: #e8edf0; --ink-2: #c3ccd3;
       --muted: #93a0aa; --border: #2a3540; --grid: #212b35; --accent: #7fa8f2; --accent-soft: rgba(127, 168, 242, 0.13);
-      --heat: 127, 168, 242; --away: #5a93ea; --home: #c66a33;
+      --heat: 127, 168, 242; --heat-neg: 214, 128, 74; --away: #5a93ea; --home: #c66a33;
       --verde: #5cc98e; --verde-soft: rgba(76, 192, 130, 0.15); --amarillo: #e9bd4c; --amarillo-soft: rgba(229, 181, 58, 0.16);
       --gris: #a3adb5; --gris-soft: rgba(142, 153, 161, 0.16); --rojo: #f07a73; --rojo-soft: rgba(232, 98, 91, 0.16);
       --shadow: none; color-scheme: dark;
@@ -44,7 +45,7 @@
   :root[data-theme="dark"] {
     --ground: #0e1419; --surface: #151d24; --surface-2: #1c2630; --ink: #e8edf0; --ink-2: #c3ccd3;
     --muted: #93a0aa; --border: #2a3540; --grid: #212b35; --accent: #7fa8f2; --accent-soft: rgba(127, 168, 242, 0.13);
-    --heat: 127, 168, 242; --away: #5a93ea; --home: #c66a33;
+    --heat: 127, 168, 242; --heat-neg: 214, 128, 74; --away: #5a93ea; --home: #c66a33;
     --verde: #5cc98e; --verde-soft: rgba(76, 192, 130, 0.15); --amarillo: #e9bd4c; --amarillo-soft: rgba(229, 181, 58, 0.16);
     --gris: #a3adb5; --gris-soft: rgba(142, 153, 161, 0.16); --rojo: #f07a73; --rojo-soft: rgba(232, 98, 91, 0.16);
     --shadow: none; color-scheme: dark;
@@ -181,6 +182,7 @@
   .kv { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 14px; font-size: 14px; }
   .kv dt { color: var(--ink-2); }
   .kv dd { margin: 0; text-align: right; font-weight: 600; }
+  @media (max-width: 560px) { .kv.kv-read { grid-template-columns: minmax(0, 1fr) !important; gap: 2px 0; } .kv.kv-read dd { margin-bottom: 8px; } }
 
   .tbl { overflow-x: auto; border: 1px solid var(--grid); border-radius: 8px; }
   table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
@@ -454,6 +456,7 @@
   .m-diamante { --mc: var(--away); }
   .m-prisma { --mc: var(--home); }
   .m-kronos { --mc: var(--verde); }
+  .m-eigen { --mc: var(--amarillo); }
   .mdot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--mc); margin-right: 7px; vertical-align: baseline; }
   .tk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 12px; }
   .ticket { position: relative; display: flex; flex-direction: column; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--mc); border-radius: 12px; padding: 12px 14px; color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
@@ -1914,6 +1917,57 @@ ${brief}`;
     return `<div style="display:grid;grid-template-columns:minmax(0,190px) 1fr 52px;gap:5px 10px;align-items:center;font-size:13px">${items.map((i) => `<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(i.label)}${i.sub ? ` <span class="muted">${esc(i.sub)}</span>` : ""}</span><span style="height:8px;background:var(--surface-2);border-radius:4px;position:relative"><i style="position:absolute;inset:0 auto 0 0;width:${(100 * i.value / max).toFixed(1)}%;background:${color};border-radius:4px"></i></span><span class="num" style="text-align:right">${pc(i.value)}</span>`).join("")}</div>`;
   }
 
+  // matriz con signo (cargas, correlaciones): azul positivo, naranja negativo
+  function divHeat(M, rows, cols, o = {}) {
+    const cw = o.cell || 46, ch = o.cellH || 22, L = o.left || 120, T = o.top || 24;
+    const W = L + cols.length * cw + 6, H = T + rows.length * ch + 6;
+    const max = o.max || Math.max(...M.flat().map(Math.abs), 1e-9);
+    let sv = `<svg class="chart heat" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || "matriz")}" style="max-width:${o.maxW || W}px">`;
+    cols.forEach((c, j) => { sv += `<text x="${L + j * cw + cw / 2}" y="${T - 7}" text-anchor="middle">${esc(c)}</text>`; });
+    rows.forEach((r, i) => {
+      sv += `<text x="${L - 5}" y="${T + i * ch + ch / 2 + 4}" text-anchor="end">${esc(r)}</text>`;
+      M[i].forEach((v, j) => {
+        const al = 0.05 + 0.8 * Math.min(1, Math.abs(v) / max);
+        sv += `<rect x="${L + j * cw}" y="${T + i * ch}" width="${cw - 1}" height="${ch - 1}" rx="2" fill="rgba(var(${v >= 0 ? "--heat" : "--heat-neg"}), ${al.toFixed(3)})" data-tip="${esc(r)} · ${esc(cols[j])}: ${v.toFixed(3)}"/>`;
+        sv += `<text class="v" x="${L + j * cw + cw / 2}" y="${T + i * ch + ch / 2 + 4}" text-anchor="middle">${(o.fmt || ((x) => x.toFixed(2)))(v)}</text>`;
+      });
+    });
+    return sv + "</svg>";
+  }
+
+  // dispersión: nube gris (todos) + puntos resaltados con etiqueta
+  function scatter(o) {
+    const W = o.w || 620, H = o.h || 330, L = 34, R = 12, T = 12, B = 34;
+    const all = o.bg.concat(o.pts.map((p) => [p.x, p.y]));
+    const ext = (i) => { const v = all.map((q) => q[i]).sort((x, y) => x - y); const lo = v[Math.floor(v.length * 0.005)], hi = v[Math.ceil(v.length * 0.995) - 1]; const pad = (hi - lo) * 0.06 || 1; return [Math.min(lo, ...o.pts.map((p) => (i ? p.y : p.x))) - pad, Math.max(hi, ...o.pts.map((p) => (i ? p.y : p.x))) + pad]; };
+    const [x0, x1] = ext(0), [y0, y1] = ext(1);
+    const X = (v) => L + (W - L - R) * (Math.max(x0, Math.min(x1, v)) - x0) / (x1 - x0), Y = (v) => T + (H - T - B) * (1 - (Math.max(y0, Math.min(y1, v)) - y0) / (y1 - y0));
+    let sv = `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.label || "dispersión")}" style="max-width:${o.maxW || 720}px">`;
+    if (x0 < 0 && x1 > 0) sv += `<line x1="${X(0)}" x2="${X(0)}" y1="${T}" y2="${H - B}" stroke="var(--grid)"/>`;
+    if (y0 < 0 && y1 > 0) sv += `<line x1="${L}" x2="${W - R}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--grid)"/>`;
+    sv += `<rect x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" fill="none" stroke="var(--border)"/>`;
+    o.bg.forEach((q) => { sv += `<circle cx="${X(q[0]).toFixed(1)}" cy="${Y(q[1]).toFixed(1)}" r="${o.bgR || 2.2}" fill="var(--muted)" fill-opacity="0.28"/>`; });
+    const boxes = [];   // etiquetas ya puestas: se prueba derecha, izquierda, arriba y abajo; si todas chocan, queda solo el punto (con tooltip)
+    const hit = (b) => boxes.some((q) => b[0] < q[2] && b[2] > q[0] && b[1] < q[3] && b[3] > q[1]);
+    o.pts.forEach((p) => {
+      const cx = X(p.x), cy = Y(p.y), r = p.r || 5;
+      sv += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${p.color}" stroke="var(--surface)" stroke-width="1.5" data-tip="${esc(p.tip || p.label)}"/>`;
+      if (!p.label) return;
+      const tw = 6.2 * p.label.length, th = 11;
+      const opts = [[cx + r + 3, cy + 4, "start"], [cx - r - 3, cy + 4, "end"], [cx - tw / 2, cy - r - 4, "start"], [cx - tw / 2, cy + r + 12, "start"]];
+      for (const [tx, ty, anc] of opts) {
+        const x0b = anc === "end" ? tx - tw : tx, b = [x0b, ty - th + 2, x0b + tw, ty + 2];
+        if (b[0] < L || b[2] > W - R || b[1] < T || b[3] > H - B || hit(b)) continue;
+        boxes.push(b);
+        sv += `<text class="lbl" x="${tx}" y="${ty}" text-anchor="${anc}" style="fill:${p.color};font-weight:600">${esc(p.label)}</text>`;
+        break;
+      }
+    });
+    sv += `<text x="${(L + W - R) / 2}" y="${H - 8}" text-anchor="middle">${esc(o.xLabel || "")}</text>`;
+    sv += `<text x="12" y="${(T + H - B) / 2}" text-anchor="middle" transform="rotate(-90 12 ${(T + H - B) / 2})">${esc(o.yLabel || "")}</text>`;
+    return sv + "</svg>";
+  }
+
   // ---------------------------------------------------------------- vista: Pro-Lab
   const LABS = D.prolabs || [];
   const LAB_BY_PK = Object.fromEntries(LABS.map((l) => [String(l.pk), l]));
@@ -1921,9 +1975,10 @@ ${brief}`;
   const LAB_INFO = {
     diamante: { name: ["DIAMANTE", "-24"], kind: "Cadenas de Markov + Monte Carlo", tagline: "Probabilidad de cada turno al bate + cadena de Markov de 24 situaciones base-out + Monte Carlo del partido completo", tech: ["24 estados base-out", "Matriz fundamental (I − Q)⁻¹", "Cadena de 216 estados", "Log5 multinomial", "Monte Carlo 50,000"] },
     prisma: { name: ["PRISMA", ""], kind: "Probabilidad bayesiana avanzada", tech: ["GLM jerárquico", "Bayes empírico (EM)", "Laplace + Cholesky", "Predictiva con fragilidad", "WP en vivo", "Validación fuera de muestra"] },
+    eigen: { name: ["EIGEN", ""], kind: "Componentes principales (PCA)", tech: ["PCA de pitchers", "PCA de bateadores", "Regresión sobre componentes", "Validación cruzada 10 folds", "Bootstrap de estabilidad", "Binomial Negativa", "PCA de equipos y métodos"] },
     kronos: { name: ["KRONOS", ""], kind: "Procesos estocásticos", tech: ["Cadena de Markov de la cuenta", "N = (I − Q)⁻¹", "Cadena base-out", "Proceso de conteo del abridor", "HMM y fragilidad", "Browniano de Stern", "Monte Carlo por lanzamiento"] },
   };
-  const labTotal = (lab) => (labKey(lab) === "diamante" ? lab.mc.total.reduce((acc, v, k) => acc + k * v, 0) : labKey(lab) === "kronos" ? lab.kronos.mc.total.reduce((acc, v, k) => acc + k * v, 0) : lab.prisma.predictive.meanTotal);
+  const labTotal = (lab) => (labKey(lab) === "diamante" ? lab.mc.total.reduce((acc, v, k) => acc + k * v, 0) : labKey(lab) === "kronos" ? lab.kronos.mc.total.reduce((acc, v, k) => acc + k * v, 0) : labKey(lab) === "eigen" ? lab.eigen.game.total.reduce((acc, v, k) => acc + k * v, 0) : lab.prisma.predictive.meanTotal);
   const liveOf = (pk) => ((D.live && D.live.games) || []).find((x) => x.pk === pk);
 
   function labCard(lab) {
@@ -1934,7 +1989,8 @@ ${brief}`;
       : `<span class="stpill ok">Congelado ${fmtStamp(lab.frozenAt)}</span>`;
     const kpis = [[pc(cons.pHome, 1), `P(${h.abbr}) consenso`], [f(labTotal(lab), 1), "Total esperado"],
       k === "prisma" ? [`${pc(P.posterior.q05, 0)}–${pc(P.posterior.q95, 0)}`, "Intervalo creíble 90%"]
-        : k === "kronos" ? [f(lab.kronos.league.pitchesPA, 2), "Lanzamientos por turno (liga)"] : [pc(lab.mc.nrfi, 0), "NRFI simulado"]];
+        : k === "kronos" ? [f(lab.kronos.league.pitchesPA, 2), "Lanzamientos por turno (liga)"]
+        : k === "eigen" ? [`${pc(lab.eigen.game.ci90[0], 0)}–${pc(lab.eigen.game.ci90[1], 0)}`, "Intervalo 90% (bootstrap)"] : [pc(lab.mc.nrfi, 0), "NRFI simulado"]];
     return `<a class="lab-card" href="#lab${lab.pk}">
       <div class="lc-top"><span class="eyebrow">${esc(info.kind)}</span>${state}</div>
       <span class="mname">${esc(info.name[0])}<span>${esc(info.name[1])}</span></span>
@@ -1950,14 +2006,14 @@ ${brief}`;
   function viewProLabList() {
     app.innerHTML = `<div class="page-head"><p class="eyebrow">Pro-Lab · pruebas de modelo</p><h1>Modelos de prueba con datos congelados antes del primer lanzamiento</h1>
       <p class="lede">Cada modelo se corre sobre un partido real con los datos congelados antes del juego (sin fuga de información) y se califica contra el resultado oficial. Toca una tarjeta para ver todo el modelo: matrices, distribuciones, validación y picks.</p></div>
-      ${LABS.length ? `<div class="lab-cards">${LABS.slice().sort((x, y) => ["diamante", "prisma", "kronos"].indexOf(labKey(x)) - ["diamante", "prisma", "kronos"].indexOf(labKey(y))).map(labCard).join("")}</div>` : `<div class="empty">El Pro-Lab todavía no tiene partidos congelados.</div>`}
+      ${LABS.length ? `<div class="lab-cards">${LABS.slice().sort((x, y) => ["diamante", "prisma", "kronos", "eigen"].indexOf(labKey(x)) - ["diamante", "prisma", "kronos", "eigen"].indexOf(labKey(y))).map(labCard).join("")}</div>` : `<div class="empty">El Pro-Lab todavía no tiene partidos congelados.</div>`}
       ${footer()}`;
   }
 
   function viewLab(lab, showBase) {
     if (showBase) { viewGame(lab.base, `#lab${lab.pk}`, "← Volver al modelo"); return; }
     const k = labKey(lab);
-    if (k === "prisma") viewPrisma(lab); else if (k === "kronos") viewKronos(lab); else viewDiamante(lab);
+    if (k === "prisma") viewPrisma(lab); else if (k === "kronos") viewKronos(lab); else if (k === "eigen") viewEigen(lab); else viewDiamante(lab);
   }
 
   function viewDiamante(lab) {
@@ -2329,7 +2385,7 @@ ${brief}`;
       </div>
 
       <section class="block"><h2>Lectura integrada: el modelo con todo el contexto del partido</h2>
-        <div class="panel"><dl class="kv" style="grid-template-columns:minmax(0,220px) minmax(0,1fr)">${(lab.reading || []).map((r) => `<dt><b>${esc(r.k)}</b><br><span class="muted" style="font-size:12px">${esc(r.src)}</span></dt><dd style="text-align:left;font-weight:400">${esc(r.v)}</dd>`).join("")}</dl></div>
+        <div class="panel"><dl class="kv kv-read" style="grid-template-columns:minmax(0,220px) minmax(0,1fr)">${(lab.reading || []).map((r) => `<dt><b>${esc(r.k)}</b><br><span class="muted" style="font-size:12px">${esc(r.src)}</span></dt><dd style="text-align:left;font-weight:400">${esc(r.v)}</dd>`).join("")}</dl></div>
         ${importanceBlock(base.sections.s1.importance)}
       </section>
 
@@ -2408,15 +2464,176 @@ ${brief}`;
     window.scrollTo(0, 0);
   }
 
+  function viewEigen(lab) {
+    const g = lab.game, a = g.teams.away, h = g.teams.home, E = lab.eigen, G = E.game, cons = lab.consensus, res = lab.result, base = lab.base;
+    const frozen = new Date(lab.frozenAt), first = new Date(lab.firstPitch), built = new Date(lab.builtAt);
+    const mins = Math.round((first - frozen) / 60000), minsBuilt = Math.round((first - built) / 60000);
+    const gmap = Object.fromEntries(((res && res.graded) || []).map((x) => [x.pick, x]));
+    const top = (lab.topPicks || []).map((p, i) => pickCard(p, lab.pk, i + 1, gmap[p.pick])).join("");
+    const Pp = E.pitchers, Bt = E.batters, Tm = E.teams, Mt = E.methods, Lg = E.league, S = E.starters, LU = E.lineups, F = G.factors;
+    const total = meanDist(G.total);
+    const col = { away: "var(--away)", home: "var(--home)" }, ab = { away: a.abbr, home: h.abbr };
+    const PC = (n) => [...Array(n).keys()].map((i) => `PC${i + 1}`);
+    const nEff = 1 / Mt.explained.reduce((x, e) => x + e * e, 0);
+    const TAG = { pitchers: ["ok", "Sí: pronóstico"], batters: ["ok", "Sí: pronóstico"], methods: ["info", "Sí: corrige el consenso"], teams: ["warn", "Solo para describir"] };
+    const last = (n) => String(n || "").split(" ").slice(-1)[0];
+    const sg = (v, d = 2) => (isNum(v) ? signed(v, d) : "—");
+    // tabla de componentes: qué mide cada uno, varianza, estabilidad y R² con k componentes
+    const compTable = (S_, n) => {
+      let cum = 0;
+      return table(["Componente", "Qué mide (variables que más pesan)", "~Varianza", "~Acumulada", "~Estabilidad", "~R² fuera de muestra con 1…k"],
+        S_.labels.slice(0, n).map((lb, j) => { cum += S_.explained[j]; return tr([td(`<b>PC${j + 1}</b>`), td(esc(lb)), tdn(pc(S_.explained[j], 1)), tdn(pc(cum, 0)),
+          tdn(isNum(S_.stability[j]) ? f(S_.stability[j], 2) : "—"), tdn(isNum(S_.cvR2[j]) ? f(S_.cvR2[j], 3) : "—")], j + 1 === S_.k ? "hl" : ""); }));
+    };
+    const loadHeat = (S_, n) => `<div class="tbl" style="padding:8px">${divHeat(S_.loadings.map((r) => r.slice(0, n)), S_.features, PC(n), { cell: 58, cellH: 25, left: 140, label: "Cargas", maxW: 520 })}</div>`;
+    const scree = (S_, color) => groupedBars([{ name: "Varianza", color, values: S_.explained }], PC(S_.explained.length), { w: 420, h: 160, label: "Varianza por componente" });
+    const r2Line = (S_, what) => `<p class="formula">R² fuera de muestra (10 folds) para ${what}: regresión sobre ${S_.k} componentes <b>${f(S_.cvR2[S_.k - 1], 3)}</b> · todas las métricas ${f(S_.olsAll, 3)} · solo las clásicas ${f(S_.olsBase, 3)}</p>`;
+    const whereCards = E.where.map((w) => `<div class="panel"><div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap">
+        <h3 class="sub" style="margin:0">${w.rank}. ${esc(w.level)} <span class="muted" style="font-weight:400">n = ${w.n}</span></h3><span class="tag ${TAG[w.key][0]}">${esc(TAG[w.key][1])}</span></div>
+        <p class="note">${esc(w.verdict)}</p><p class="note"><b>Uso en EIGEN:</b> ${esc(w.use)}.</p>
+        ${w.stability ? `<div class="methods">${w.stability.map((v, j) => `<span${v >= 0.9 ? "" : ' style="opacity:.55"'}>PC${j + 1} ${f(v, 2)}</span>`).join("")}</div>` : ""}</div>`).join("");
+    const whereRows = E.where.map((w) => tr([td(`<b>${esc(w.level)}</b>`), tdn(w.n), tdn(w.stable != null ? w.stable : "—"), tdn(pc(w.explained3, 0)), tdn(isNum(w.pcr) ? `${f(w.pcr, 2)} (k=${w.k})` : "—"),
+      tdn(isNum(w.ols) ? f(w.ols, 2) : "—"), tdn(isNum(w.base) ? f(w.base, 2) : "—"), td(`<span class="tag ${TAG[w.key][0]}">${esc(TAG[w.key][1])}</span>`)]));
+    const P_FMT = { "K%": 1, "BB%": 1, "HR%": 2, "Rodados %": 1, "Barrel %": 1, "Hard-hit %": 1, "Velocidad de salida": 1, "Whiff %": 1, "Uso de rectas": 1 };
+    const fkeys = Object.keys(S.away.feats);
+    const spFeat = table(["Métrica", `~${esc(S.away.name)} (${esc(a.abbr)})`, `~${esc(S.home.name)} (${esc(h.abbr)})`, "~Liga"],
+      Pp.features.map((nm, i) => { const k = fkeys[i]; const z = (sd) => (S[sd].feats[k] - Pp.mu[i]) / Pp.sd[i];
+        const cell = (sd) => tdn(`${f(S[sd].feats[k], P_FMT[nm] ?? 1)} <span class="muted">(${sg(z(sd), 1)} σ)</span>`);
+        return tr([td(esc(nm)), cell("away"), cell("home"), tdn(f(Pp.mu[i], P_FMT[nm] ?? 1))]); }));
+    const spRows = ["away", "home"].map((sd) => { const s = S[sd]; return tr([td(`<span class="mdot" style="--mc:${col[sd]}"></span><b>${esc(s.name)}</b> <span class="muted">${esc(ab[sd])}</span>`), tdn(s.bf), tdn(f(s.ra9Obs, 2)), tdn(f(s.era, 2)), tdn(f(s.fit, 2)), tdn(`<b>${f(s.talent, 2)}</b>`), tdn(f(s.ipStart, 1)), ...s.scores.map((v) => tdn(sg(v)))]); });
+    const luTable = (sd) => { const L_ = LU[sd]; return `<h3 class="sub">${esc(ab[sd])} contra ${esc(S[sd === "away" ? "home" : "away"].name)} <span class="code">lineup ${esc(L_.status.toLowerCase())}</span></h3>
+      ${table(["#", "Bateador", "B", "~PA 2026", "~wOBA observado", "~wOBA por componentes", "~wOBA de habilidad", "~Mano", "~PC1", "~PC2", "~PC3"], L_.batters.map((b, i) => tr([tdn(i + 1), td(esc(b.name)), td(esc(b.bats || "")), tdn(b.pa), tdn(f(b.wobaObs, 3)), tdn(f(b.fit, 3)), tdn(`<b>${f(b.talent, 3)}</b>`), tdn(sg(1000 * b.platoon, 0)), ...b.scores.map((v) => tdn(sg(v)))])))}
+      <p class="formula">Lineup ponderado por turnos esperados de cada lugar del orden: wOBA ${f(L_.wobaVsSp, 3)} contra el abridor y ${f(L_.wobaVsPen, 3)} contra el bullpen (liga ${f(Lg.woba, 3)}) · perfil PC1 ${sg(L_.scores[0])} · PC2 ${sg(L_.scores[1])} · PC3 ${sg(L_.scores[2])}</p>`; };
+    const facRows = ["away", "home"].map((sd) => { const x = F[sd], o = sd === "away" ? "home" : "away"; return tr([td(`<b>${esc(ab[sd])}</b> <span class="muted">vs ${esc(last(S[o].name))} + bullpen</span>`), tdn(f(x.oSp, 3)), tdn(f(x.dSp, 3)), tdn(pc(x.fracSp, 0)), tdn(f(x.oPen, 3)), tdn(f(x.dPen, 3)), tdn(f(G.park.mult, 3)), tdn(`<b>${f(G.lambda[sd], 2)}</b>`), tdn(f(E.ablation.lambda[sd], 2))]); });
+    const mNames = ["Log5", "Elo", "λ"];
+    const bLab = Bt.labels, pLab = Pp.labels;
+    const clash = (sd) => { const o = sd === "away" ? "home" : "away", sp = S[o], L_ = LU[sd];
+      const pow = L_.scores[0], cont = sp.scores[0], dom = sp.scores[1];
+      const txt = `${pow > 0.5 ? "lineup con poder por encima de la liga" : pow < -0.5 ? "lineup con poco poder" : "lineup de poder promedio"} contra un abridor que ${cont > 0.8 ? "permite contacto fuerte" : cont < -0.8 ? "evita el contacto fuerte" : "permite contacto promedio"} y ${dom > 0.8 ? "domina con whiffs y ponches" : dom < -0.8 ? "poncha poco" : "poncha como la liga"}`;
+      return `<li><b>${esc(ab[sd])} batea contra ${esc(sp.name)}:</b> ${esc(txt)} → ${pc(F[sd].fracSp, 0)} del juego contra el abridor con factor ${f(F[sd].oSp * F[sd].dSp, 2)} × liga, y el resto contra un bullpen de RA9 ${f(E.pens[o], 2)} (factor ${f(F[sd].oPen * F[sd].dPen, 2)}).</li>`; };
+    app.innerHTML = `
+      <a class="back" href="#prolab">← Pro-Lab: todos los modelos</a>
+      <div class="lab-hero">
+        <p class="eyebrow">Pro-Lab · prueba de modelo · ${esc(a.abbr)} @ ${esc(h.abbr)}</p>
+        <span class="name">EIGEN</span>
+        <p class="lede"><b>Análisis de componentes principales (PCA)</b>: decenas de métricas Statcast están muy correlacionadas (barrel, hard-hit y velocidad de salida miden casi lo mismo); PCA las rota a unos pocos ejes independientes (los vectores propios de la matriz de correlación) que resumen el estilo de cada jugador. Con esos ejes se estima la <b>habilidad</b> de cada abridor y bateador (regresión sobre componentes), se arma el partido con el lineup y el bullpen, y se prueba <b>en qué nivel conviene usar PCA</b>: jugadores, equipos o los propios métodos del framework. Partido: <b>${esc(a.name)} @ ${esc(h.name)}</b>, ${fmtDateLong(g.date)}, ${esc(g.venue.name)}.</p>
+        <div class="notice"><span class="ic" style="background:var(--verde-soft);color:var(--verde)">✓</span><div><b>Sin fuga de información:</b> datos congelados el ${fmtStamp(lab.frozenAt)} (${mins} min antes del primer lanzamiento) y predicción registrada en el repositorio ${minsBuilt > 0 ? `${minsBuilt} min antes del juego` : "después del inicio (solo con los datos congelados)"}.</div></div>
+      </div>
+
+      ${res ? `<section class="block"><h2>Resultado real contra el modelo</h2><div class="res">
+        <div class="tile"><span class="eyebrow">Final</span><span class="big">${esc(a.abbr)} ${res.away} – ${res.home} ${esc(h.abbr)}</span><span class="sub">esperado ${f(G.lambda.away, 1)} – ${f(G.lambda.home, 1)}</span></div>
+        <div class="tile"><span class="eyebrow">Ganador</span><span class="big">${esc(res.homeWon ? h.abbr : a.abbr)}</span><span class="sub">EIGEN daba ${pc(res.homeWon ? G.pHome : 1 - G.pHome, 1)} · Brier ${f(res.brierMc, 3)}</span></div>
+        <div class="tile"><span class="eyebrow">Total</span><span class="big">${res.total}</span><span class="sub">percentil ${pc(res.percentileTotal)} de la distribución</span></div>
+        <div class="tile"><span class="eyebrow">Picks calificados</span><span class="big">${res.hits} ✓ · ${res.misses} ✗</span><span class="sub">F5 real ${res.f5[0]}–${res.f5[1]}</span></div></div></section>` : ""}
+
+      <section class="block"><h2>Los dos picks de mayor confianza</h2><div class="toppicks">${top}</div></section>
+
+      <div class="tiles">
+        <div class="tile"><span class="eyebrow">P(${esc(h.abbr)}) EIGEN</span><span class="big">${pc(G.pHome, 1)}</span><span class="sub">intervalo 90% ${pc(G.ci90[0], 0)}–${pc(G.ci90[1], 0)} (${G.boot} re-ajustes bootstrap) · sin PCA ${pc(E.ablation.pHome, 1)}</span></div>
+        <div class="tile"><span class="eyebrow">Carreras esperadas</span><span class="big">${f(G.lambda.away, 2)} – ${f(G.lambda.home, 2)}</span><span class="sub">total ${f(total, 2)} · F5 ${f(G.f5.away, 2)} – ${f(G.f5.home, 2)} · NRFI ${pc(G.nrfi, 0)}</span></div>
+        <div class="tile"><span class="eyebrow">Abridores: RA9 de habilidad</span><span class="big" style="font-size:24px">${f(S.away.talent, 2)} · ${f(S.home.talent, 2)}</span><span class="sub">${esc(S.away.name)} · ${esc(S.home.name)} (liga ${f(Lg.ra9, 2)})</span></div>
+        <div class="tile"><span class="eyebrow">Consenso de 4 métodos</span><span class="big">${pc(cons.pHome, 1)}</span><span class="sub">divergencia ${pc(cons.spread, 1)} · Log5/Elo/λ valen ${f(nEff, 1)} opiniones</span></div>
+      </div>
+
+      <section class="block"><h2>¿Dónde conviene usar PCA? Jugadores, equipos o métodos</h2>
+        <p class="note">PCA sirve cuando hay <b>muchas métricas correlacionadas y suficientes observaciones</b> para que los ejes sean estables. Se probó en cuatro niveles con la misma receta: componentes, estabilidad por bootstrap (|cos| entre las cargas originales y las re-muestreadas; ≥ 0.90 = eje confiable) y R² fuera de muestra con validación cruzada de 10 folds contra la regresión con todas las métricas y contra solo las clásicas.</p>
+        <div class="two">${whereCards}</div>
+        ${table(["Nivel", "~n", "~Ejes estables", "~Varianza en 3 ejes", "~R² PCR", "~R² todas", "~R² clásicas", "Veredicto"], whereRows)}
+        <p class="rule">Conclusión: PCA rinde en los <b>jugadores</b> (cientos de pitchers y bateadores, ejes muy estables): primero en los <b>pitchers</b>, donde separa contacto permitido, dominio y control y corrige muestras cortas; después en los <b>bateadores</b> (poder, velocidad, disciplina). En los <b>métodos del framework</b> sirve para no contar tres veces la misma opinión. En los <b>equipos</b> (solo 30) los ejes después del primero no son estables y no pronostican mejor que carreras anotadas y permitidas: ahí queda como descripción de estilos.</p>
+      </section>
+
+      <section class="block"><h2>Lectura integrada: el modelo con todo el contexto del partido</h2>
+        <div class="panel"><dl class="kv kv-read" style="grid-template-columns:minmax(0,220px) minmax(0,1fr)">${(lab.reading || []).map((r) => `<dt><b>${esc(r.k)}</b><br><span class="muted" style="font-size:12px">${esc(r.src)}</span></dt><dd style="text-align:left;font-weight:400">${esc(r.v)}</dd>`).join("")}</dl></div>
+        ${importanceBlock(base.sections.s1.importance)}
+      </section>
+
+      <div class="step"><span class="n">1</span><div><h2>PCA de pitchers: ${Pp.n} con al menos 120 bateadores enfrentados</h2>
+        <p class="note">Cada pitcher es un vector de ${Pp.features.length} métricas (Stats API + Statcast + arsenal) estandarizadas y ponderadas por bateadores enfrentados. Los componentes son los vectores propios de la matriz de correlación (Jacobi); la carga dice cuánto pesa cada métrica en cada eje (azul positivo, naranja negativo).</p>
+        <div class="two"><div><h3 class="sub">Cargas de los primeros 4 componentes</h3>${loadHeat(Pp, 4)}</div>
+          <div><h3 class="sub">Varianza explicada por componente</h3>${scree(Pp, "var(--accent)")}
+          ${r2Line(Pp, "carreras por 9 (RA9)")}<p class="note muted">La regresión sobre componentes (PCR) usa los primeros k ejes, con k elegido por validación cruzada (el más simple a 0.005 del mejor). Lo importante no es ganarle a la regresión con todo, sino que con pocos ejes estables el ajuste de un pitcher con poca muestra no se dispara.</p></div></div>
+        ${compTable(Pp, Math.min(6, Pp.labels.length))}
+        <h3 class="sub">Mapa de los ${Pp.n} pitchers: PC1 × PC2</h3>
+        ${scatter({ bg: E.maps.pitchers, pts: ["away", "home"].map((sd) => ({ x: S[sd].scores[0], y: S[sd].scores[1], label: `${last(S[sd].name)} (${ab[sd]})`, color: col[sd], r: 6, tip: `${S[sd].name}: PC1 ${S[sd].scores[0].toFixed(2)}, PC2 ${S[sd].scores[1].toFixed(2)}` })), xLabel: `PC1: ${pLab[0]}`, yLabel: `PC2: ${pLab[1]}`, label: "Mapa de pitchers" })}
+        <h3 class="sub">Los dos abridores</h3>
+        ${table(["Abridor", "~BF", "~RA9 observado", "~ERA", "~RA9 por componentes", "~RA9 de habilidad", "~IP por apertura", "~PC1", "~PC2", "~PC3"], spRows)}
+        <p class="formula">Habilidad = (BF · observado + ${600} · componentes) / (BF + ${600}): con pocos bateadores manda lo que dicen sus métricas de contacto y dominio; con muchos, lo que realmente permitió.</p>
+        ${spFeat}
+      </div></div>
+
+      <div class="step"><span class="n">2</span><div><h2>PCA de bateadores: ${Bt.n} con al menos 150 apariciones</h2>
+        <p class="note">${Bt.features.length} métricas por bateador. El primer eje (${esc(bLab[0])}) explica ${pc(Bt.explained[0], 0)} de la variación: el poder es lo que más separa a los bateadores. El segundo (${esc(bLab[1])}) separa a los veloces que se ponchan de los que hacen contacto.</p>
+        <div class="two"><div><h3 class="sub">Cargas de los primeros 4 componentes</h3>${loadHeat(Bt, 4)}</div>
+          <div><h3 class="sub">Varianza explicada por componente</h3>${scree(Bt, "var(--accent)")}${r2Line(Bt, "wOBA")}</div></div>
+        ${compTable(Bt, Math.min(6, Bt.labels.length))}
+        <h3 class="sub">Mapa de los ${Bt.n} bateadores con los dos lineups</h3>
+        ${scatter({ bg: E.maps.batters, pts: ["away", "home"].flatMap((sd) => LU[sd].batters.map((b) => ({ x: b.scores[0], y: b.scores[1], label: last(b.name), color: col[sd], r: 4.5, tip: `${b.name} (${ab[sd]}): wOBA de habilidad ${b.talent.toFixed(3)}` }))), xLabel: `PC1: ${bLab[0]}`, yLabel: `PC2: ${bLab[1]}`, label: "Mapa de bateadores", h: 360 })}
+        <div class="legend"><span><i style="background:var(--away)"></i>${esc(a.abbr)}</span><span><i style="background:var(--home)"></i>${esc(h.abbr)}</span><span><i style="background:var(--muted);opacity:.4"></i>resto de la liga</span></div>
+        ${luTable("away")}${luTable("home")}
+        <p class="formula">wOBA de habilidad = (PA · observado + 300 · componentes) / (PA + 300), más el ajuste de mano contra el abridor (±0.008 con ventaja o desventaja de lado).</p>
+      </div></div>
+
+      <div class="step"><span class="n">3</span><div><h2>Choque de estilos y carreras esperadas</h2>
+        <ul class="clean">${clash("away")}${clash("home")}</ul>
+        <p class="note">λ = carreras por juego de la liga × parque × [fracción del abridor · ofensiva vs abridor · pitcheo del abridor + resto · ofensiva vs bullpen · bullpen]. La ofensiva es el wOBA del lineup sobre el de la liga en escala de carreras (1.23); el pitcheo es RA9 de habilidad sobre el de la liga; el parque entra a media fuerza.</p>
+        ${table(["Ataque", "~Ofensiva vs abridor", "~Abridor rival", "~Parte del abridor", "~Ofensiva vs bullpen", "~Bullpen rival", "~Parque", "~λ EIGEN", "~λ sin PCA"], facRows)}
+        <h3 class="sub">Carreras por equipo (Binomial Negativa, varianza/media ${f(G.varRatio, 2)} medida en 2026)</h3>
+        ${groupedBars([{ name: a.abbr, color: "var(--away)", values: G.runs.away.slice(0, 15) }, { name: h.abbr, color: "var(--home)", values: G.runs.home.slice(0, 15) }], [...Array(15).keys()].map(String), { label: "Carreras" })}
+        <h3 class="sub">Total de carreras (media ${f(total, 2)})</h3>
+        ${groupedBars([{ name: "Total", color: "var(--accent)", values: G.total.slice(0, 22) }], [...Array(22).keys()].map(String), { marks: [{ at: 7.5, label: "7.5" }, { at: 8.5, label: "8.5" }, { at: 9.5, label: "9.5" }], label: "Total" })}
+        <dl class="kv"><dt>P(${esc(h.abbr)}) · empate a 9</dt><dd class="num">${pc(G.pHome, 1)} · ${pc(G.tie, 1)}</dd>
+          <dt>F5 ${esc(a.abbr)} / empate / ${esc(h.abbr)}</dt><dd class="num">${pc(G.f5win.away, 1)} / ${pc(G.f5win.tie, 1)} / ${pc(G.f5win.home, 1)}</dd>
+          <dt>NRFI</dt><dd class="num">${pc(G.nrfi, 1)}</dd>
+          <dt>Parque</dt><dd>${esc(G.park.name || "—")} · carreras ${G.park.runs ?? "—"} · ×${f(G.park.mult, 3)}</dd></dl>
+      </div></div>
+
+      <div class="step"><span class="n">4</span><div><h2>Cuánto aporta PCA: ablación e incertidumbre</h2>
+        <p class="note">Mismo partido, misma cuenta, pero sin componentes: la habilidad de cada jugador es lo observado encogido a la liga (sin la información de sus métricas Statcast). La diferencia es lo que PCA agrega.</p>
+        ${table(["", `~Carreras ${esc(a.abbr)}`, `~Carreras ${esc(h.abbr)}`, `~P(${esc(h.abbr)})`], [tr([td("<b>EIGEN (con PCA)</b>"), tdn(f(G.lambda.away, 2)), tdn(f(G.lambda.home, 2)), tdn(pc(G.pHome, 1))]), tr([td("Sin PCA (observado encogido)"), tdn(f(E.ablation.lambda.away, 2)), tdn(f(E.ablation.lambda.home, 2)), tdn(pc(E.ablation.pHome, 1))]), tr([td("Diferencia"), tdn(sg(G.lambda.away - E.ablation.lambda.away)), tdn(sg(G.lambda.home - E.ablation.lambda.home)), tdn(`${sg(100 * (G.pHome - E.ablation.pHome), 1)} pp`)])])}
+        <p class="note">Intervalo de 90%: ${G.boot} veces se re-muestrean los pitchers y bateadores de la liga, se re-ajustan PCA y la regresión, y se agrega el ruido de muestra de cada jugador del partido. P(${esc(h.abbr)}) queda entre <b>${pc(G.ci90[0], 1)}</b> y <b>${pc(G.ci90[1], 1)}</b>: con un momio que implique menos de ${pc(G.ci90[0], 0)}, el valor sobrevive aun en el extremo pesimista.</p>
+      </div></div>
+
+      <div class="step"><span class="n">5</span><div><h2>PCA de equipos: estilos de los 30 clubes</h2>
+        <p class="note">${Tm.features.length} métricas por equipo (ofensiva, abridores, bullpen y tipo de pitcheo). Con solo 30 observaciones, el primer eje (${esc(Tm.labels[0])}) es estable (${f(Tm.stability[0], 2)}) pero del tercero en adelante cambia al re-muestrear. Sirve para ver estilos, no para pronosticar.</p>
+        <div class="two"><div><h3 class="sub">Mapa de equipos: PC1 × PC2</h3>
+          ${scatter({ bg: [], pts: Tm.points.map((t) => ({ x: t.s[0], y: t.s[1], label: t.abbr, color: t.hl ? (t.abbr === a.abbr ? "var(--away)" : "var(--home)") : "var(--muted)", r: t.hl ? 6 : 3.5, tip: `${t.abbr}: win% ${(t.wp * 100).toFixed(1)}` })), xLabel: `PC1: ${Tm.labels[0]}`, yLabel: `PC2: ${Tm.labels[1]}`, label: "Mapa de equipos", w: 480, h: 360 })}</div>
+          <div><h3 class="sub">Cargas de los primeros 3 componentes</h3>${loadHeat(Tm, 3)}</div></div>
+        ${compTable(Tm, Math.min(5, Tm.labels.length))}
+        <p class="formula">Win% fuera de muestra: regresión sobre ${Tm.k} componentes R² ${f(Tm.cvR2[Tm.k - 1], 2)} · las 14 métricas ${f(Tm.olsAll, 2)} · solo carreras anotadas y permitidas (Pitágoras) ${f(Tm.olsBase, 2)}.</p>
+      </div></div>
+
+      <div class="step"><span class="n">6</span><div><h2>PCA de los métodos del framework</h2>
+        <p class="note">Con las ${Mt.n} predicciones guardadas del framework, se estudia qué tan independientes son Log5, Elo y λ-Binomial Negativa. Si fueran tres opiniones distintas, cada componente explicaría cerca de un tercio.</p>
+        <div class="two"><div><h3 class="sub">Correlación entre métodos</h3><div class="tbl" style="padding:8px">${divHeat(Mt.corr, mNames, mNames, { cell: 64, left: 60, max: 1, label: "Correlación" })}</div></div>
+          <div><h3 class="sub">Varianza por componente</h3>${groupedBars([{ name: "Varianza", color: "var(--accent)", values: Mt.explained }], PC(Mt.explained.length), { w: 360, h: 150, label: "Varianza de los métodos" })}</div></div>
+        <p class="note">El primer componente explica <b>${pc(Mt.explained[0], 0)}</b>: los tres métodos equivalen a unas <b>${f(nEff, 1)} opiniones independientes</b> (número efectivo 1/Σλ²). Por eso, cuando los tres coinciden, no es una triple confirmación; el acuerdo que más informa es el de un modelo con otra fuente de datos (como EIGEN, con métricas de jugadores).</p>
+      </div></div>
+
+      <section class="block"><h2>Consenso de cuatro métodos</h2><div class="panel">
+        ${[["Log5 (5.7.2)", cons.methods.log5], ["Elo + abridor (5.7.7)", cons.methods.elo], ["λ + Binomial Negativa (5.3 · 5.7.5)", cons.methods.lambda], ["EIGEN componentes principales", cons.methods.eigen]].map(([n, v]) => `<div class="mbar" style="grid-template-columns:minmax(0,260px) 1fr 52px"><span>${n}</span><span class="track"><i style="width:${(v * 100).toFixed(1)}%"></i></span><span class="num">${pc(v, 1)}</span></div>`).join("")}
+        <p class="note">P(${esc(h.abbr)}) de consenso <b>${pc(cons.pHome, 1)}</b> · divergencia ${pc(cons.spread, 1)}.</p></div></section>
+
+      ${newsBlock(base.sections.s1.news)}
+      <section class="block"><h2 class="bh">Alineaciones ${stPill(sectionStatus(base).lu)}</h2>
+        <div class="lineups">${lineupCard(a.abbr, base.sections.s5.lineups.away, base.summary.probables.home.name)}${lineupCard(h.abbr, base.sections.s5.lineups.home, base.summary.probables.away.name)}</div></section>
+
+      <section class="block"><h2>Todos los picks del partido por nivel de confianza</h2>${picksTable(lab.picks, lab.pk, res ? res.graded : null)}</section>
+      <a class="callout-link btn" href="#lab${lab.pk}base">Ver el análisis completo del framework (10 secciones) para este partido →</a>
+      ${footer()}`;
+    window.scrollTo(0, 0);
+  }
+
   // ---------------------------------------------------------------- Pro-Lab dentro del partido: cómo se complementan
   function labModelSummary(lab) {
     const k = labKey(lab);
+    if (k === "eigen") { const G = lab.eigen.game; return { pHome: G.pHome, ra: G.lambda.away, rh: G.lambda.home, total: meanDist(G.total), nrfi: G.nrfi, kA: null, kH: null, n: G.boot }; }
     if (k === "kronos") { const m = lab.kronos.mc; return { pHome: m.pHome, ra: m.meanRuns.away, rh: m.meanRuns.home, total: meanDist(m.total), nrfi: m.nrfi, kA: meanDist(m.k.away), kH: meanDist(m.k.home), n: m.n }; }
     if (k === "prisma") { const P = lab.prisma, pr = P.predictive; return { pHome: pr.pHome, ra: P.posterior.muAway, rh: P.posterior.muHome, total: pr.meanTotal, nrfi: null, kA: null, kH: null, n: pr.sims }; }
     const m = lab.mc; return { pHome: m.pHome, ra: m.meanRuns.away, rh: m.meanRuns.home, total: meanDist(m.total), nrfi: m.nrfi, kA: meanDist(m.k.away), kH: meanDist(m.k.home), n: m.n };
   }
 
   const LAB_ADDS = {
+    eigen: ["La habilidad de cada jugador (no solo su promedio): el PCA resume sus métricas Statcast y la regresión sobre componentes corrige muestras cortas.", "El lineup confirmado bateador por bateador contra el abridor y contra el bullpen, con las entradas que se espera cubra el abridor.", "Cuánto cambia el partido sin PCA (ablación), un intervalo por bootstrap de jugadores y cuántas opiniones independientes aportan Log5, Elo y λ."],
     kronos: ["Juega el partido lanzamiento a lanzamiento: la cuenta de cada bateador contra cada pitcher, no promedios de equipo.", "Cuántos lanzamientos hace el abridor, cuándo sale y qué relevista entra (por rol, situación y fatiga).", "La distribución completa: ponches del abridor, total, F5, margen y extra innings, con su error de simulación."],
     prisma: ["La incertidumbre de la propia probabilidad (intervalo creíble), no solo un número.", "Fuerzas de ataque y defensa de los 30 equipos con regresión bayesiana óptima.", "Validación fuera de muestra contra Log5."],
     diamante: ["El partido turno por turno con la cadena de Markov de 24 estados.", "Lineup confirmado bateador por bateador y bullpen por rol.", "Distribución completa de carreras, ponches y F5."],
@@ -2452,7 +2669,7 @@ ${brief}`;
       <h3 class="sub">Número por número</h3>
       ${table(["Mercado", "~Framework", `~${esc(name)}`, "~Diferencia"], rows.map((r) => tr([td(esc(r[0])), tdn(r[1]), tdn(r[2]), tdn(r[3])])))}
       <p class="note">${agree <= 0.03 ? `Coinciden en el ganador: la diferencia es de ${(100 * agree).toFixed(1)} pp, dentro del error normal de dos modelos.` : agree <= 0.08 ? `Diferencia moderada (${(100 * agree).toFixed(1)} pp): el consenso del índice de confianza baja un poco.` : `Discrepan fuerte (${(100 * agree).toFixed(1)} pp): revisar el contexto antes de apostar.`}</p>
-      ${lab.reading && lab.reading.length ? `<h3 class="sub">Lectura integrada</h3><div class="panel"><dl class="kv" style="grid-template-columns:minmax(0,210px) minmax(0,1fr)">${lab.reading.map((r) => `<dt><b>${esc(r.k)}</b><br><span class="muted" style="font-size:12px">${esc(r.src)}</span></dt><dd style="text-align:left;font-weight:400">${esc(r.v)}</dd>`).join("")}</dl></div>` : ""}
+      ${lab.reading && lab.reading.length ? `<h3 class="sub">Lectura integrada</h3><div class="panel"><dl class="kv kv-read" style="grid-template-columns:minmax(0,210px) minmax(0,1fr)">${lab.reading.map((r) => `<dt><b>${esc(r.k)}</b><br><span class="muted" style="font-size:12px">${esc(r.src)}</span></dt><dd style="text-align:left;font-weight:400">${esc(r.v)}</dd>`).join("")}</dl></div>` : ""}
       <h3 class="sub">De dónde salen los dos picks finales</h3>
       <ul class="clean">${tp}</ul>
       <p class="note muted">Cada pick final promedia la probabilidad de los métodos del framework y del modelo. El índice de confianza premia el acuerdo entre ellos (Consenso), la ventaja sobre el precio (Fuerza) y castiga datos faltantes, poca muestra o contradicciones del framework. Con tus momios en el tablero de la sección 7 se recalcula todo.</p>
@@ -2849,7 +3066,7 @@ ${brief}`;
   const STATUS_TXT = { abierto: "Abierto: se actualiza hasta el primer lanzamiento", cerrado: "Cerrado: el partido empezó y el ticket quedó congelado", calificado: "Calificado con el resultado oficial", anulado: "Anulado: partido pospuesto o cancelado" };
   const AN_EXTRA = { "Picks combinados con el framework": "Cada pick final promedia la probabilidad de los métodos del framework y del modelo; el índice de confianza premia el acuerdo entre ellos." };
   const liveByPk = (pk, date) => liveGames.find((g) => g.pk === pk && g.date === date) || liveGames.find((g) => g.pk === pk && !isOff(g));
-  const modelOrder = (m) => ["kronos", "prisma", "diamante", "framework"].indexOf(m);
+  const modelOrder = (m) => ["eigen", "kronos", "prisma", "diamante", "framework"].indexOf(m);
   let HIST_RENDER = null, TK_RENDER = null;
   // descargas: dentro del visor de claude.ai pasan por su capacidad `downloads`; fuera (GitHub Pages) por un enlace normal
   let DL = null, DL_STATE = window.claude && typeof window.claude.use === "function" ? "pending" : "browser";

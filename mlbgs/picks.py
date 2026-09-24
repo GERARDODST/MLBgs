@@ -25,6 +25,7 @@ MODEL_NAMES = {
     "poisson": "λ + Poisson (5.4)", "calib": "λ calibrado a ceros reales (6.8)", "mc": "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
     "prisma": "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
     "kronos": "KRONOS estocástico (5.7.3 · 5.7.9)",
+    "eigen": "EIGEN · componentes principales (5.7.4 · 5.7.9)",
 }
 
 

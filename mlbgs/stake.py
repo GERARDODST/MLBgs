@@ -30,7 +30,8 @@ LADDER = (1, 5, 10)
 GAME_CAP, DAY_CAP = 2_000, 7_500
 CONFIG = {"amounts": AMOUNTS, "edgeMin": EDGE_MIN, "icMin": IC_MIN, "icTop": IC_TOP, "ladder": list(LADDER),
           "gameCap": GAME_CAP, "dayCap": DAY_CAP}
-LAB_METHODS = {"diamante": PK.MODEL_NAMES["mc"], "prisma": PK.MODEL_NAMES["prisma"], "kronos": PK.MODEL_NAMES["kronos"]}
+LAB_METHODS = {"diamante": PK.MODEL_NAMES["mc"], "prisma": PK.MODEL_NAMES["prisma"], "kronos": PK.MODEL_NAMES["kronos"],
+               "eigen": PK.MODEL_NAMES["eigen"]}
 
 
 def clip(x, lo, hi):

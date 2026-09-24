@@ -14,7 +14,7 @@ Nunca se da un pick sin haber conectado antes todas las partes:
    noticias y lesionados), forma e historial, abridores (regresión a la media), bullpen y fatiga, modelo
    de carreras y triangulación (Log5 · Elo · λ-Binomial Negativa), totales y desarrollo por entradas,
    parque/clima/umpire, lineups, mercado, contradicciones y gate de datos obligatorios.
-2. **Modelo de apoyo del Pro-Lab** cuando el partido lo tiene (DIAMANTE-24, PRISMA, KRONOS u otro):
+2. **Modelo de apoyo del Pro-Lab** cuando el partido lo tiene (DIAMANTE-24, PRISMA, KRONOS, EIGEN u otro):
    sus probabilidades entran a los picks y su acuerdo con el framework mueve el stake.
 3. **Cuotas**: el índice de confianza (IC) se recalcula con el momio real; sin momio, cada pick dice
    desde qué momio conviene (escalera de stake).
