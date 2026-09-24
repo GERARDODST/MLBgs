@@ -168,7 +168,7 @@
 "pk": 822842,
 "date": "2026-09-24",
 "time": "2026-09-24T18:35:00Z",
-"generatedAt": "2026-09-24T17:38:19+00:00",
+"generatedAt": "2026-09-24T17:54:12+00:00",
 "away": "NYM",
 "home": "TEX",
 "pHome": 0.5064,
@@ -178,9 +178,9 @@
 "lambda": 0.4961
 },
 "confidence": "alta",
-"projAway": 4.2686,
-"projHome": 4.244,
-"total": 8.5126,
+"projAway": 4.2687,
+"projHome": 4.2441,
+"total": 8.5128,
 "f5Away": 2.3302,
 "f5Home": 2.6314,
 "nrfi": 0.4943,
@@ -223,7 +223,7 @@
 "pk": 824298,
 "date": "2026-09-24",
 "time": "2026-09-24T19:10:00Z",
-"generatedAt": "2026-09-24T17:38:19+00:00",
+"generatedAt": "2026-09-24T18:41:54+00:00",
 "away": "AZ",
 "home": "COL",
 "pHome": 0.4116,
@@ -233,13 +233,13 @@
 "lambda": 0.4318
 },
 "confidence": "alta",
-"projAway": 5.9211,
-"projHome": 5.0979,
-"total": 11.019,
-"f5Away": 3.1834,
-"f5Home": 3.0313,
+"projAway": 5.9215,
+"projHome": 5.0981,
+"total": 11.0196,
+"f5Away": 3.1835,
+"f5Home": 3.0314,
 "nrfi": 0.4184,
-"pOver85": 0.6612,
+"pOver85": 0.6613,
 "probables": {
 "away": "Eduardo Rodriguez",
 "home": "Tanner Gordon"
@@ -260,7 +260,7 @@
 "pick": "YRFI",
 "p": 0.5816,
 "line": null,
-"ic": 61.1675,
+"ic": 61.1712,
 "level": "Media"
 },
 {
@@ -269,7 +269,7 @@
 "pick": "AZ",
 "p": 0.5884,
 "line": null,
-"ic": 59.9987,
+"ic": 60.0001,
 "level": "Media"
 }
 ]
@@ -278,23 +278,23 @@
 "pk": 823411,
 "date": "2026-09-24",
 "time": "2026-09-24T22:05:00Z",
-"generatedAt": "2026-09-24T17:38:19+00:00",
+"generatedAt": "2026-09-24T19:13:51+00:00",
 "away": "MIL",
 "home": "PHI",
-"pHome": 0.4309,
+"pHome": 0.4365,
 "methods": {
 "log5": 0.4449,
 "elo": 0.4349,
-"lambda": 0.4129
+"lambda": 0.4298
 },
 "confidence": "alta",
-"projAway": 5.3539,
-"projHome": 4.3798,
-"total": 9.7338,
-"f5Away": 2.9946,
-"f5Home": 2.6544,
-"nrfi": 0.4516,
-"pOver85": 0.5571,
+"projAway": 5.0865,
+"projHome": 4.3209,
+"total": 9.4074,
+"f5Away": 2.8449,
+"f5Home": 2.6186,
+"nrfi": 0.463,
+"pOver85": 0.5285,
 "probables": {
 "away": "Shane Drohan",
 "home": "Andrew Painter"
@@ -303,7 +303,7 @@
 "best": {
 "market": "ML",
 "pick": "MIL",
-"p": 0.5691,
+"p": 0.5635,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -313,19 +313,19 @@
 "family": "RL",
 "market": "Run Line",
 "pick": "MIL +1.5",
-"p": 0.7148,
+"p": 0.7028,
 "line": null,
-"ic": 64.764,
+"ic": 61.2792,
 "level": "Media"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "MIL",
-"p": 0.5691,
+"p": 0.5635,
 "line": null,
-"ic": 54.8172,
-"level": "Baja"
+"ic": 56.691,
+"level": "Media"
 }
 ]
 },
@@ -333,23 +333,23 @@
 "pk": 824707,
 "date": "2026-09-24",
 "time": "2026-09-24T22:45:00Z",
-"generatedAt": "2026-09-24T17:38:19+00:00",
+"generatedAt": "2026-09-24T19:13:51+00:00",
 "away": "CLE",
 "home": "BOS",
-"pHome": 0.5587,
+"pHome": 0.5586,
 "methods": {
 "log5": 0.5782,
 "elo": 0.5854,
-"lambda": 0.5124
+"lambda": 0.5121
 },
 "confidence": "media",
-"projAway": 3.9185,
-"projHome": 4.0565,
-"total": 7.9751,
-"f5Away": 2.1734,
-"f5Home": 2.3906,
-"nrfi": 0.5221,
-"pOver85": 0.3972,
+"projAway": 3.7227,
+"projHome": 3.8553,
+"total": 7.5781,
+"f5Away": 2.0648,
+"f5Home": 2.272,
+"nrfi": 0.5393,
+"pOver85": 0.3602,
 "probables": {
 "away": "Daniel Espino",
 "home": "Ranger Suarez"
@@ -358,28 +358,28 @@
 "best": {
 "market": "ML",
 "pick": "BOS",
-"p": 0.5587,
+"p": 0.5586,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Daniel Espino Over 3.5 K",
-"p": 0.5936,
-"line": 3.5,
-"ic": 43.7029,
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Under 4.5",
+"p": 0.5633,
+"line": 4.5,
+"ic": 41.0428,
 "level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "BOS",
-"p": 0.5587,
+"p": 0.5586,
 "line": null,
-"ic": 40.216,
+"ic": 40.1056,
 "level": "Baja"
 }
 ]
@@ -388,7 +388,7 @@
 "pk": 823493,
 "date": "2026-09-24",
 "time": "2026-09-24T23:05:00Z",
-"generatedAt": "2026-09-24T17:38:19+00:00",
+"generatedAt": "2026-09-24T19:13:51+00:00",
 "away": "TB",
 "home": "NYY",
 "pHome": 0.5769,
@@ -398,9 +398,9 @@
 "lambda": 0.5767
 },
 "confidence": "alta",
-"projAway": 3.8593,
-"projHome": 4.6725,
-"total": 8.5318,
+"projAway": 3.8594,
+"projHome": 4.6726,
+"total": 8.532,
 "f5Away": 2.0123,
 "f5Home": 2.7234,
 "nrfi": 0.5115,
@@ -434,7 +434,7 @@
 "pick": "NYY",
 "p": 0.5769,
 "line": null,
-"ic": 62.3408,
+"ic": 62.3407,
 "level": "Media"
 }
 ]
@@ -443,7 +443,7 @@
 "pk": 824866,
 "date": "2026-09-24",
 "time": "2026-09-24T23:15:00Z",
-"generatedAt": "2026-09-24T17:38:19+00:00",
+"generatedAt": "2026-09-24T19:13:51+00:00",
 "away": "CIN",
 "home": "ATL",
 "pHome": 0.6591,
@@ -453,11 +453,11 @@
 "lambda": 0.6692
 },
 "confidence": "alta",
-"projAway": 3.6255,
-"projHome": 5.5118,
-"total": 9.1373,
-"f5Away": 1.9224,
-"f5Home": 3.3625,
+"projAway": 3.6256,
+"projHome": 5.5122,
+"total": 9.1378,
+"f5Away": 1.9225,
+"f5Home": 3.3627,
 "nrfi": 0.4673,
 "pOver85": 0.5044,
 "probables": {
@@ -480,7 +480,7 @@
 "pick": "ATL",
 "p": 0.6591,
 "line": null,
-"ic": 79.5521,
+"ic": 79.5496,
 "level": "Alta"
 },
 {
@@ -498,7 +498,7 @@
 "pk": 823087,
 "date": "2026-09-24",
 "time": "2026-09-25T01:40:00Z",
-"generatedAt": "2026-09-24T17:38:19+00:00",
+"generatedAt": "2026-09-24T19:13:51+00:00",
 "away": "LAA",
 "home": "SEA",
 "pHome": 0.6062,
@@ -508,13 +508,13 @@
 "lambda": 0.6078
 },
 "confidence": "media",
-"projAway": 3.0879,
-"projHome": 4.1422,
-"total": 7.2301,
-"f5Away": 1.5142,
+"projAway": 3.0881,
+"projHome": 4.1424,
+"total": 7.2305,
+"f5Away": 1.5143,
 "f5Home": 2.5157,
 "nrfi": 0.5621,
-"pOver85": 0.328,
+"pOver85": 0.3281,
 "probables": {
 "away": "Grayson Rodriguez",
 "home": "Bryan Woo"
@@ -544,7 +544,7 @@
 "pick": "SEA",
 "p": 0.6062,
 "line": null,
-"ic": 55.879,
+"ic": 55.8789,
 "level": "Media"
 }
 ]
@@ -553,23 +553,23 @@
 "pk": 824950,
 "date": "2026-09-24",
 "time": "2026-09-25T01:40:00Z",
-"generatedAt": "2026-09-24T17:38:19+00:00",
+"generatedAt": "2026-09-24T19:13:51+00:00",
 "away": "HOU",
 "home": "ATH",
 "pHome": 0.4204,
 "methods": {
 "log5": 0.4513,
 "elo": 0.4101,
-"lambda": 0.3998
+"lambda": 0.3997
 },
 "confidence": "media",
-"projAway": 5.95,
-"projHome": 4.7557,
-"total": 10.7057,
-"f5Away": 3.2796,
+"projAway": 5.9503,
+"projHome": 4.7559,
+"total": 10.7063,
+"f5Away": 3.2797,
 "f5Home": 2.6856,
 "nrfi": 0.434,
-"pOver85": 0.6372,
+"pOver85": 0.6373,
 "probables": {
 "away": "Peter Lambert",
 "home": "Mason Barnett"
@@ -590,7 +590,7 @@
 "pick": "HOU +1.5",
 "p": 0.7205,
 "line": null,
-"ic": 65.114,
+"ic": 65.1147,
 "level": "Media"
 },
 {
@@ -599,7 +599,7 @@
 "pick": "HOU F5",
 "p": 0.6124,
 "line": null,
-"ic": 60.3094,
+"ic": 60.3114,
 "level": "Media"
 }
 ]
@@ -608,7 +608,7 @@
 "pk": 823895,
 "date": "2026-09-24",
 "time": "2026-09-25T02:10:00Z",
-"generatedAt": "2026-09-24T17:38:19+00:00",
+"generatedAt": "2026-09-24T19:13:51+00:00",
 "away": "SD",
 "home": "LAD",
 "pHome": 0.5503,
@@ -618,9 +618,9 @@
 "lambda": 0.519
 },
 "confidence": "media",
-"projAway": 4.1734,
-"projHome": 4.382,
-"total": 8.5555,
+"projAway": 4.1736,
+"projHome": 4.3822,
+"total": 8.5558,
 "f5Away": 2.2066,
 "f5Home": 2.5373,
 "nrfi": 0.5134,
@@ -645,7 +645,7 @@
 "pick": "LAD F5",
 "p": 0.5722,
 "line": null,
-"ic": 46.132,
+"ic": 46.1319,
 "level": "Baja"
 },
 {

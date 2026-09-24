@@ -584,6 +584,30 @@
     ]
    },
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "decision": {
+   "status": "no apostar",
+   "why": "confianza 51 (< 55): solo entra con un momio mejor (stake 1 desde -123)",
+   "source": "Framework v2 + DIAMANTE-24",
+   "pick": "Framber Valdez Under 5.5 K",
+   "market": "Prop de ponches",
+   "p": 0.6109,
+   "ic": 51.0,
+   "level": 0,
+   "amount": 0,
+   "minPrice": -123,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -123
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -104
+    }
+   ]
   }
  },
  {
@@ -1306,6 +1330,35 @@
     ]
    },
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "decision": {
+   "status": "no apostar",
+   "why": "confianza 54 (< 55): solo entra con un momio mejor (stake 1 desde -119)",
+   "source": "Framework v2 + PRISMA",
+   "pick": "F5 Under 4.5",
+   "market": "Total primeras 5",
+   "p": 0.5742,
+   "ic": 54.3,
+   "level": 0,
+   "amount": 0,
+   "minPrice": -119,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -119
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -110
+    },
+    {
+     "level": 10,
+     "stake": 1500,
+     "from": 114
+    }
+   ]
   }
  },
  {
@@ -2191,6 +2244,35 @@
     ]
    },
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "decision": {
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios",
+   "source": "Framework v2 + KRONOS",
+   "pick": "MIL +1.5",
+   "market": "Run Line",
+   "p": 0.7575,
+   "ic": 82.6,
+   "level": 9,
+   "amount": 1400,
+   "minPrice": -266,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -266
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -261
+    },
+    {
+     "level": 10,
+     "stake": 1500,
+     "from": -200
+    }
+   ]
   }
  },
  {
