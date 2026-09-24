@@ -15,6 +15,7 @@ import math
 import os
 import sys
 
+from . import historial as HI
 from . import markov as MK
 from . import model
 from . import picks as PK
@@ -190,6 +191,7 @@ def build(bundle: dict, save: bool = True) -> dict:
     lab = next((x for x in labs if x.get("modelKey") == "diamante"), labs[0] if labs else None)
     live = live_view(bundle, ctx, labs)
     track = evaluate(bundle)
+    tickets = HI.update(bundle, analyses, labs, generated, save_files=save)
     lg = ctx.lg
     payload = {
         "meta": {**bundle["meta"], "builtAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
@@ -207,6 +209,7 @@ def build(bundle: dict, save: bool = True) -> dict:
         "prolab": lab,
         "prolabs": labs,
         "live": live,
+        "historial": HI.page_view(tickets, generated),
     }
     for a in payload["games"] + [x["base"] for x in labs]:
         a.pop("markets", None)   # tabla interna de mercados: los picks y las secciones ya la resumen

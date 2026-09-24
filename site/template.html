@@ -437,7 +437,56 @@
   .wpbar .splitbar { height: 8px; }
   nav.tabs a .live-dot { color: inherit; font-weight: inherit; }
   nav.tabs a .live-dot::before { background: var(--rojo); }
-  @media (prefers-reduced-motion: no-preference) { .game, .chip, nav.tabs a { transition: border-color .15s, background .15s, color .15s; } }
+  /* jornada del día */
+  .dayboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .db-cell { display: flex; flex-direction: column; gap: 4px; padding: 12px 16px; border-right: 1px solid var(--grid); min-width: 0; font-size: 13px; color: var(--muted); }
+  .db-cell:last-child { border-right: 0; }
+  .db-cell > b { font-family: var(--display); font-size: 30px; font-weight: 700; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .db-src { grid-column: span 2; }
+  @media (max-width: 700px) { .db-src { grid-column: 1 / -1; } .db-cell { border-bottom: 1px solid var(--grid); padding: 10px 12px; } .db-cell:nth-child(2n) { border-right: 0; } .db-src { border-bottom: 0; } .db-cell > b { font-size: 26px; } }
+  .decis { display: flex; gap: 6px 14px; flex-wrap: wrap; font-size: 13px; color: var(--ink-2); }
+  .decis b { font-family: var(--display); color: var(--muted); letter-spacing: 0.04em; margin-right: 2px; }
+  .lc-links { display: flex; gap: 6px 14px; flex-wrap: wrap; font-size: 13px; font-weight: 600; }
+  .lc-links:empty { display: none; }
+
+  /* historial: tickets */
+  .m-framework { --mc: var(--ink-2); }
+  .m-diamante { --mc: var(--away); }
+  .m-prisma { --mc: var(--home); }
+  .m-kronos { --mc: var(--verde); }
+  .mdot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--mc); margin-right: 7px; vertical-align: baseline; }
+  .tk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 12px; }
+  .ticket { position: relative; display: flex; flex-direction: column; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--mc); border-radius: 12px; padding: 12px 14px; color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+  .ticket:hover { border-color: var(--accent); border-left-color: var(--mc); text-decoration: none; }
+  .tk-top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .tk-model { font-family: var(--display); font-weight: 700; font-size: 15px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--mc); }
+  .tk-model { flex: none; }
+  .tk-kind { font-size: 12px; color: var(--muted); text-align: right; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tk-game { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .tk-teams { font-family: var(--display); font-size: 24px; font-weight: 600; line-height: 1.05; }
+  .tk-teams .num { font-family: var(--display); font-weight: 700; font-size: 24px; }
+  .tk-state { font-size: 12.5px; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+  .tk-meta { font-size: 12.5px; color: var(--muted); }
+  .tk-cut { position: relative; border-top: 2px dashed var(--grid); margin: 2px -14px; }
+  .tk-cut::before, .tk-cut::after { content: ""; position: absolute; top: -8px; width: 14px; height: 14px; border-radius: 50%; background: var(--ground); border: 1px solid var(--border); }
+  .tk-cut::before { left: -8px; clip-path: inset(0 0 0 50%); }
+  .tk-cut::after { right: -8px; clip-path: inset(0 50% 0 0); }
+  .tk-picks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; }
+  .tk-picks li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px; align-items: baseline; }
+  .tk-picks .res-chip { min-width: 84px; text-align: center; }
+  .tk-p { min-width: 0; }
+  .tk-an { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tk-an span { font-size: 11.5px; color: var(--ink-2); background: var(--surface-2); border-radius: 5px; padding: 1px 7px; }
+  .hist-tools { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; }
+  .hist-q { font: inherit; font-size: 13.5px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--ground); color: var(--ink); min-width: 0; width: 170px; }
+  @media (max-width: 640px) { .hist-q { width: 100%; } }
+  .tk-detail > h2 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-family: var(--display); font-size: 26px; }
+  .tk-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr)); gap: 8px; }
+  .tk-kpis div { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
+  .tk-kpis b { font-family: var(--display); font-size: 22px; font-weight: 700; }
+  .tk-kpis span { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .an-list li { line-height: 1.4; }
+  @media (prefers-reduced-motion: no-preference) { .game, .ticket, .chip, nav.tabs a { transition: border-color .15s, background .15s, color .15s; } }
 </style>
 
 <header class="topbar">
@@ -449,6 +498,7 @@
     <nav class="tabs" aria-label="Secciones">
       <a href="#partidos" data-tab="partidos">Partidos</a>
       <a href="#envivo" data-tab="envivo">En vivo</a>
+      <a href="#historial" data-tab="historial">Historial</a>
       <a href="#prolab" data-tab="prolab">Pro-Lab</a>
       <a href="#posiciones" data-tab="posiciones">Posiciones</a>
       <a href="#seguimiento" data-tab="seguimiento">Seguimiento</a>
@@ -469,6 +519,10 @@
   const app = document.getElementById("app");
   const GAMES = D.games || [];
   const BY_PK = Object.fromEntries(GAMES.map((g) => [String(g.pk), g]));
+  const HI = D.historial || { tickets: [], models: {} };
+  const TICKETS = HI.tickets || [];
+  const TK_BY_PK = {};
+  TICKETS.forEach((t) => (TK_BY_PK[String(t.pk)] = TK_BY_PK[String(t.pk)] || []).push(t));
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch { return null; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch { /* sin almacenamiento */ } },
@@ -494,13 +548,12 @@
   const fmtDateLong = (d) => { const dt = new Date(d + "T12:00:00"); return dt.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }); };
   const fmtShort = (d) => { const dt = new Date(d + "T12:00:00"); return dt.toLocaleDateString("es-MX", { day: "numeric", month: "short" }); };
   const fmtStamp = (iso) => { try { return new Date(iso).toLocaleString("es-MX", { day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }); } catch { return iso; } };
-  const dayLabel = (d) => {
-    const t = D.meta.today;
-    if (d === t) return "Hoy";
-    const n = new Date(t + "T12:00:00"); n.setDate(n.getDate() + 1);
-    if (d === n.toISOString().slice(0, 10)) return "Mañana";
-    return fmtShort(d);
-  };
+  // el día de quien abre la página (su zona horaria), no el de los servidores
+  const isoLocal = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  const TODAY = isoLocal(new Date());
+  const addDays = (d, n) => { const x = new Date(d + "T12:00:00"); x.setDate(x.getDate() + n); return isoLocal(x); };
+  const dayLabel = (d) => (d === TODAY ? "Hoy" : d === addDays(TODAY, 1) ? "Mañana" : d === addDays(TODAY, -1) ? "Ayer" : fmtShort(d));
+  const agoTxt = (iso) => { const m = Math.round((Date.now() - Date.parse(iso)) / 60000); return !isFinite(m) ? "" : m < 1 ? "hace un momento" : m < 60 ? `hace ${m} min` : m < 1440 ? `hace ${Math.floor(m / 60)} h ${m % 60 ? `${m % 60} min` : ""}`.trim() : `hace ${Math.floor(m / 1440)} d`; };
   const table = (head, rows, opts = {}) => `<div class="tbl"><table${opts.cls ? ` class="${opts.cls}"` : ""}><thead><tr>${head.map((h) => `<th${h.startsWith("~") ? ' class="r"' : ""}>${esc(h.replace(/^~/, ""))}</th>`).join("")}</tr></thead><tbody>${rows.join("") || `<tr><td colspan="${head.length}" class="muted">Sin datos</td></tr>`}</tbody></table></div>`;
   const tr = (cells, cls = "") => `<tr${cls ? ` class="${cls}"` : ""}>${cells.join("")}</tr>`;
   const td = (v, cls = "") => `<td${cls ? ` class="${cls}"` : ""}>${v}</td>`;
@@ -941,34 +994,105 @@
     </a>`;
   }
 
+  // ---------------------------------------------------------------- vista: jornada del día
+  // Une el marcador oficial (ayer, hoy y mañana) con el análisis previo de los partidos que no han empezado.
+  function dayRows() {
+    const rows = new Map();
+    liveGames.forEach((g) => rows.set(`${g.pk}|${g.date}`, { pk: g.pk, date: g.date, time: g.time, sb: g }));
+    GAMES.forEach((a) => { const k = `${a.pk}|${a.date}`; const r = rows.get(k) || { pk: a.pk, date: a.date, time: a.time }; r.an = a; rows.set(k, r); });
+    return [...rows.values()];
+  }
+  const rowState = (r) => (r.sb && isOff(r.sb) ? "off" : r.sb && r.sb.state === "Live" ? "live" : r.sb && r.sb.state === "Final" ? "final" : "pre");
+  // los 2 picks principales del partido tal como se registraron (Pro-Lab si existe; si no, framework)
+  function mainPicks(r) {
+    if (r.sb && r.sb.pred && r.sb.pred.picks && r.sb.pred.picks.length) return r.sb.pred.picks;
+    const lab = LAB_BY_PK[String(r.pk)];
+    if (lab) return lab.topPicks || [];
+    if (r.an) return r.an.summary.topPicks || [];
+    const t = (TK_BY_PK[String(r.pk)] || []).find((x) => x.date === r.date);
+    return t ? t.picks.filter((p) => p.principal) : [];
+  }
+  function pickTally(rows) {
+    let win = 0, lose = 0, push = 0, pend = 0;
+    rows.forEach((r) => mainPicks(r).forEach((p) => {
+      const g = r.sb || { state: "Preview" };
+      if (isOff(g)) return;
+      const s = pickNow(p, g);
+      const done = g.state === "Final";
+      if (done && s.cls === "win") win++; else if (done && s.cls === "lose") lose++; else if (done && s.text === "Push") push++; else pend++;
+    }));
+    return { win, lose, push, pend };
+  }
+  function pickDay(dates) {
+    const saved = (store.get("mlbgs-day") || "").split("|");
+    if (saved[0] === TODAY && dates.includes(saved[1])) return saved[1];
+    if (dates.includes(TODAY)) return TODAY;
+    return dates.find((d) => d >= TODAY) || dates[dates.length - 1];
+  }
+  let DAY_RENDER = null;
+  const daySig = () => liveGames.map((g) => [g.pk, g.state, g.detailed, g.ar, g.hr, g.inning, g.inningState, g.outs, g.bases, (g.now || {}).batter, (g.now || {}).balls, (g.now || {}).strikes].join(",")).join(";");
+
   function viewGames() {
-    const dates = [...new Set(GAMES.map((g) => g.date))].sort();
-    let sel = store.get("mlbgs-day");
-    if (sel !== "todos" && !dates.includes(sel)) sel = dates[0] || "todos";
+    let all = dayRows();
+    let dates = [...new Set(all.map((r) => r.date))].filter(Boolean).sort();
+    let sel = pickDay(dates);
     let lightSel = store.get("mlbgs-light") || "todos";
+    let sig = daySig();
     const render = () => {
-      const games = GAMES.filter((g) => (sel === "todos" || g.date === sel) && (lightSel === "todos" || g.summary.light === lightSel));
-      const days = [...new Set(games.map((g) => g.date))].sort();
-      const noOdds = !D.meta.hasOdds;
+      all = dayRows();
+      dates = [...new Set(all.map((r) => r.date))].filter(Boolean).sort();
+      const rows = all.filter((r) => r.date === sel).sort((x, y) => (x.time || "").localeCompare(y.time || "") || x.pk - y.pk);
+      const by = { live: [], pre: [], final: [], off: [] };
+      rows.forEach((r) => by[rowState(r)].push(r));
+      const preShown = by.pre.filter((r) => lightSel === "todos" || (r.an && r.an.summary.light === lightSel));
+      const tally = pickTally(rows);
+      const rel = sel === TODAY ? "hoy" : sel === addDays(TODAY, -1) ? "ayer" : sel === addDays(TODAY, 1) ? "mañana" : null;
+      const title = rel === "ayer" ? "Así quedó la jornada de ayer" : rel === "mañana" ? "Los partidos de mañana, analizados" : rel === "hoy" ? "La jornada de hoy en la MLB" : `La jornada del ${fmtShort(sel)}`;
+      const lede = by.pre.length && !by.final.length && !by.live.length
+        ? "Análisis previo de cada partido con el Framework MLB Picks v2. Los picks se siguen afinando hasta el primer lanzamiento (lineups, abridores y momios); en ese momento el ticket se congela y queda en el Historial."
+        : "Todos los partidos del día en tu horario: los que terminaron con su marcador final y sus dos picks calificados, los que están en juego con la probabilidad en vivo, y los que faltan con su análisis previo.";
+      const src = liveInfo.source === "api" ? `En vivo desde statsapi.mlb.com · ${new Date(liveInfo.at).toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit", second: "2-digit" })} · se refresca cada 30 s`
+        : `Marcador del corte ${fmtStamp(liveInfo.at)} (${agoTxt(liveInfo.at)})${liveInfo.error ? " · se actualiza con cada corrida (~15 min en horario de juegos)" : ""}`;
+      const group = (title, list, body, empty) => list.length || empty ? `<section class="day"><h2>${title} <small>${list.length}</small></h2>${list.length ? `<div class="${body}">${list.map(dayCard).join("")}</div>` : `<div class="empty">${empty}</div>`}</section>` : "";
+      const noOdds = !D.meta.hasOdds && by.pre.some((r) => r.an);
+      const chipCount = (d) => all.filter((r) => r.date === d).length;
       app.innerHTML = `
         <div class="page-head">
-          <p class="eyebrow">Framework MLB Picks v2 · datos oficiales de MLB</p>
-          <h1>Próximos partidos de la MLB, analizados antes del primer lanzamiento</h1>
-          <p class="lede">Cada juego pasa por las 10 secciones del framework: contexto, historial, abridores con regresión a la media, bullpen y fatiga, modelo de carreras (Poisson / Binomial Negativa), Over/Under, valor contra el mercado y auditoría de contradicciones. El semáforo nunca es Verde si falta un dato obligatorio.</p>
+          <p class="eyebrow">Jornada · ${esc(fmtDateLong(sel))}${rel ? ` · ${esc(dayLabel(sel))}` : ""}</p>
+          <h1>${esc(title)}</h1>
+          <p class="lede">${lede}</p>
         </div>
-        ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>Sin momios conectados.</b> Sin cuotas no hay edge calculable, así que el framework marca los mercados en Gris («esperar cuota») o Rojo. Cada pick trae su <b>momio justo</b> y el <b>mínimo aceptable</b> para compararlo con tu casa de apuestas. Para activar el valor automático agrega el secreto <code>ODDS_API_KEY</code> (The Odds API) al repositorio.</div></div>` : ""}
         <div class="toolbar">
-          <div class="chips" role="group" aria-label="Día">${dates.map((d) => `<button class="chip" data-day="${d}" aria-pressed="${sel === d}">${dayLabel(d)} · ${GAMES.filter((g) => g.date === d).length}</button>`).join("")}<button class="chip" data-day="todos" aria-pressed="${sel === "todos"}">Todos</button></div>
-          <div class="chips" role="group" aria-label="Semáforo">${["todos", "Verde", "Amarillo", "Gris", "Rojo"].map((l) => `<button class="chip" data-light="${l}" aria-pressed="${lightSel === l}">${l === "todos" ? "Todo semáforo" : l}</button>`).join("")}</div>
+          <div class="chips" role="group" aria-label="Día">${dates.map((d) => `<button class="chip" data-day="${d}" aria-pressed="${sel === d}">${esc(dayLabel(d))} · ${chipCount(d)}</button>`).join("")}</div>
+          ${by.pre.some((r) => r.an) ? `<div class="chips" role="group" aria-label="Semáforo">${["todos", "Verde", "Amarillo", "Gris", "Rojo"].map((l) => `<button class="chip" data-light="${l}" aria-pressed="${lightSel === l}">${l === "todos" ? "Todo semáforo" : l}</button>`).join("")}</div>` : ""}
         </div>
-        ${days.length ? days.map((d) => `<section class="day"><h2>${dayLabel(d)} <small>${fmtDateLong(d)} · ${games.filter((g) => g.date === d).length} partidos</small></h2>
-          <div class="grid">${games.filter((g) => g.date === d).map(gameCard).join("")}</div></section>`).join("")
-          : `<div class="empty">No hay partidos con ese filtro.</div>`}
+        <div class="dayboard">
+          <div class="db-cell"><span class="eyebrow">Partidos</span><b class="num">${rows.length}</b><span>${by.final.length} terminados · ${by.live.length} en juego · ${by.pre.length} por jugar${by.off.length ? ` · ${by.off.length} pospuestos` : ""}</span></div>
+          <div class="db-cell"><span class="eyebrow">Picks principales</span><b class="num"><span style="color:var(--verde)">${tally.win}</span>–<span style="color:var(--rojo)">${tally.lose}</span></b><span>ganados–perdidos${tally.push ? ` · ${tally.push} push` : ""}${tally.pend ? ` · ${tally.pend} por decidir` : ""}</span></div>
+          <div class="db-cell"><span class="eyebrow">Acierto del día</span><b class="num">${tally.win + tally.lose ? pc(tally.win / (tally.win + tally.lose)) : "—"}</b><span>${tally.win + tally.lose ? "solo picks ya calificados" : "todavía no hay picks calificados"}</span></div>
+          <div class="db-cell db-src"><span class="eyebrow"><span class="dot ${liveInfo.source === "api" ? "ok" : "part"}" style="display:inline-block;vertical-align:middle;margin-right:6px"></span>Actualización</span><span>${src}</span><span style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button type="button" class="btn" id="day-refresh" style="padding:2px 9px;font-size:12.5px">Actualizar ahora</button><a href="#historial" style="font-size:13px;font-weight:600">Historial de tickets →</a></span></div>
+        </div>
+        ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>Sin momios conectados.</b> Sin cuotas no hay edge calculable, así que el framework marca los mercados en Gris («esperar cuota») o Rojo. Cada pick trae su <b>momio justo</b> y el <b>mínimo aceptable</b>; escribe el momio de tu casa en el partido para medir el valor.</div></div>` : ""}
+        ${group("En juego", by.live, "live-grid", "")}
+        ${group("Por jugar", preShown, "grid", by.pre.length ? "Ningún partido por jugar con ese semáforo." : "")}
+        ${group("Terminados", by.final, "live-grid", "")}
+        ${group("Pospuestos", by.off, "live-grid", "")}
+        ${!rows.length ? `<div class="empty">No hay partidos programados este día.</div>` : ""}
         ${footer()}`;
-      app.querySelectorAll("[data-day]").forEach((b) => b.addEventListener("click", () => { sel = b.dataset.day; store.set("mlbgs-day", sel); render(); }));
+      app.querySelectorAll("[data-day]").forEach((b) => b.addEventListener("click", () => { sel = b.dataset.day; store.set("mlbgs-day", `${TODAY}|${sel}`); render(); }));
       app.querySelectorAll("[data-light]").forEach((b) => b.addEventListener("click", () => { lightSel = b.dataset.light; store.set("mlbgs-light", lightSel); render(); }));
+      const rb = document.getElementById("day-refresh");
+      if (rb) rb.addEventListener("click", () => { rb.textContent = "Actualizando…"; rb.disabled = true; pullLive(true); });
     };
     render();
+    DAY_RENDER = (force) => { const s2 = daySig(); if (!force && s2 === sig) return; sig = s2; const y = window.scrollY; render(); window.scrollTo(0, y); };
+  }
+
+  // tarjeta según el estado: análisis previo, en juego, final o pospuesto
+  function dayCard(r) {
+    if (rowState(r) === "pre" && r.an) return gameCard(r.an);
+    if (r.sb) return liveCard(r.sb);
+    return "";
   }
 
   function footer() {
@@ -2095,8 +2219,11 @@
     const wp = hasScore ? pickProb({ family: "ML", pick: hA }, g) : null;
     const pH = wp ? wp.w : pre ? pre.pHome : null;
     const nInn = Math.max(9, (g.inn || []).length);
-    const ls = hasScore ? `<div class="tbl"><table class="linescore mini"><thead><tr><th></th>${[...Array(nInn).keys()].map((i) => `<th>${i + 1}</th>`).join("")}<th>R</th></tr></thead><tbody>${["away", "home"].map((sd, k) => `<tr><td class="team-cell">${esc(sd === "away" ? aA : hA)}</td>${[...Array(nInn).keys()].map((i) => { const v = ((g.inn || [])[i] || [])[k]; return `<td class="num">${v ?? ""}</td>`; }).join("")}<td class="num tot">${sd === "away" ? g.ar : g.hr}</td></tr>`).join("")}</tbody></table></div>` : "";
+    const rhe = g.rhe && g.rhe.away && g.rhe.home;
+    const ls = hasScore ? `<div class="tbl"><table class="linescore mini"><thead><tr><th></th>${[...Array(nInn).keys()].map((i) => `<th>${i + 1}</th>`).join("")}<th>C</th>${rhe ? "<th>H</th><th>E</th>" : ""}</tr></thead><tbody>${["away", "home"].map((sd, k) => `<tr><td class="team-cell">${esc(sd === "away" ? aA : hA)}</td>${[...Array(nInn).keys()].map((i) => { const v = ((g.inn || [])[i] || [])[k]; return `<td class="num">${v ?? ""}</td>`; }).join("")}<td class="num tot">${sd === "away" ? g.ar : g.hr}</td>${rhe ? `<td class="num">${g.rhe[sd][1] ?? ""}</td><td class="num">${g.rhe[sd][2] ?? ""}</td>` : ""}</tr>`).join("")}</tbody></table></div>` : "";
+    const dec = fin && g.decisions ? `<p class="decis"><span><b>G</b> ${esc(g.decisions.winner || "—")}</span><span><b>P</b> ${esc(g.decisions.loser || "—")}</span>${g.decisions.save ? `<span><b>SV</b> ${esc(g.decisions.save)}</span>` : ""}</p>` : "";
     const link = LAB_BY_PK[String(g.pk)] ? `#lab${g.pk}` : BY_PK[String(g.pk)] ? `#g${g.pk}` : null;
+    const tkLink = (TK_BY_PK[String(g.pk)] || []).length ? `<a href="#t${g.pk}">Ver ticket${(TK_BY_PK[String(g.pk)] || []).length > 1 ? "s" : ""} →</a>` : "";
     const picks = pre && pre.picks && pre.picks.length ? pre.picks.map((p) => { const s = pickNow(p, g); return `<div class="p2">${icBadge(p)}<span class="t"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)}</span></span><span class="res-chip ${s.cls}">${esc(s.text)}</span></div>`; }).join("")
       : `<span class="muted" style="font-size:13px">Sin predicción guardada para este partido${g.date < D.meta.today ? " (el seguimiento arrancó el 23 de septiembre)" : ""}.</span>`;
     return `<article class="live-card${live ? " is-live" : ""}">
@@ -2108,11 +2235,12 @@
       ${live ? `<div class="sit">${diamond(g.bases || 0)}<span class="outs" aria-label="${g.outs ?? 0} outs">${[0, 1, 2].map((i) => `<i class="${i < (g.outs || 0) ? "on" : ""}"></i>`).join("")}</span><span>${g.outs ?? 0} out${g.outs === 1 ? "" : "s"}</span></div>` : ""}
       ${live && g.now && g.now.batter ? `<div class="nowplay">Al bate <b>${esc(g.now.batter)}</b>${g.now.onDeck ? ` · en cubierta ${esc(g.now.onDeck)}` : ""}<br>Lanza <b>${esc(g.now.pitcher || "—")}</b>${curPitches(g) != null ? ` (${curPitches(g)} lanzamientos)` : ""} · cuenta ${g.now.balls ?? 0}-${g.now.strikes ?? 0}</div>` : ""}
       ${ls}
+      ${dec}
       ${boxDetails(g)}
       ${isNum(pH) && !off ? `<div class="wpbar"><span>${pc(1 - pH)}</span><div class="splitbar" role="img" aria-label="Probabilidad de victoria: ${esc(aA)} ${pc(1 - pH)}, ${esc(hA)} ${pc(pH)}"><span style="width:${((1 - pH) * 100).toFixed(1)}%"></span><span style="width:${(pH * 100).toFixed(1)}%"></span></div><span style="text-align:right">${pc(pH)}</span></div>
         <p class="muted" style="font-size:12px">${live ? `Probabilidad en vivo (situación + distribución por media entrada)${pre ? ` · antes del juego ${esc(hA)} ${pc(pre.pHome)}` : ""}` : fin ? `Antes del juego: ${esc(hA)} ${pc(pre ? pre.pHome : null)} · proyección ${f(pre && pre.projAway, 1)}–${f(pre && pre.projHome, 1)}` : `Probabilidad previa · proyección ${f(pre && pre.projAway, 1)}–${f(pre && pre.projHome, 1)} · total ${f(pre && pre.total, 1)}`}</p>` : ""}
       <div class="pk-live"><span class="eyebrow" style="font-size:12px">Los 2 picks principales${pre && pre.model ? ` · modelo ${esc(pre.model)}` : ""}</span>${picks}</div>
-      ${LAB_BY_PK[String(g.pk)] ? `<span style="display:flex;gap:14px;flex-wrap:wrap;font-size:13px;font-weight:600"><a href="#lab${g.pk}">Ver el modelo del Pro-Lab (${esc(LAB_INFO[labKey(LAB_BY_PK[String(g.pk)])].name.join(""))}) →</a>${BY_PK[String(g.pk)] ? `<a href="#g${g.pk}#complemento">Framework + modelo →</a>` : ""}</span>` : link ? `<a href="${link}" style="font-size:13px;font-weight:600">Ver el análisis completo →</a>` : ""}
+      <span class="lc-links">${LAB_BY_PK[String(g.pk)] ? `<a href="#lab${g.pk}">Ver el modelo del Pro-Lab (${esc(LAB_INFO[labKey(LAB_BY_PK[String(g.pk)])].name.join(""))}) →</a>${BY_PK[String(g.pk)] ? `<a href="#g${g.pk}#complemento">Framework + modelo →</a>` : ""}` : link ? `<a href="${link}">Ver el análisis completo →</a>` : ""}${tkLink}</span>
     </article>`;
   }
 
@@ -2142,10 +2270,17 @@
     return "";
   }
 
+  // jornada actual: la del día local de quien mira si tiene partidos; si no, la de los servidores
+  function curDay() {
+    const dates = new Set(liveGames.map((g) => g.date));
+    if (dates.has(TODAY)) return TODAY;
+    const live = liveGames.filter((g) => g.state === "Live" && !isOff(g)).map((g) => g.date).sort();
+    return live[0] || D.meta.today;
+  }
+
   function viewLive() {
-    const today = D.meta.today;
-    const withPred = (g) => g.date === today || (g.pred && g.pred.picks && g.pred.picks.length);
-    const gs = liveGames.filter(withPred);
+    const today = curDay();
+    const gs = liveGames.filter((g) => g.date === today || (g.state === "Live" && !isOff(g)));
     const liveNow = gs.filter((g) => g.state === "Live" && !isOff(g));
     const offList = gs.filter(isOff);
     const done = gs.filter((g) => g.state === "Final" && !isOff(g)).sort((x, y) => (y.date + y.time).localeCompare(x.date + x.time));
@@ -2191,7 +2326,7 @@
     return out;
   }
   const boxK = (box) => { const ks = {}; ["away", "home"].forEach((sd) => { const p = ((box || {})[sd] || {}).pit || []; if (p[0]) ks[p[0].name] = p[0].k; }); return ks; };
-  liveGames.forEach((g) => { if (g.box) kCache[g.pk] = boxK(g.box); });
+  liveGames.forEach((g) => { if (g.box) { kCache[g.pk] = boxK(g.box); if (g.state === "Final") g.boxFinal = true; } });
 
   async function getJSON(url, ms = 9000) {
     const ctl = typeof AbortController === "function" ? new AbortController() : null;
@@ -2204,10 +2339,11 @@
   }
 
   // marcador, jugada actual, lineups y box score directo desde statsapi.mlb.com (donde el navegador lo permite)
-  async function pullLive() {
+  let liveFails = 0;
+  async function pullLive(force = false) {
     const API = "https://statsapi.mlb.com/api/v1";
     try {
-      const js = await getJSON(`${API}/schedule?sportId=1&date=${D.meta.today}&hydrate=linescore,team,lineups,probablePitcher`);
+      const js = await getJSON(`${API}/schedule?sportId=1&startDate=${addDays(TODAY, -1)}&endDate=${addDays(TODAY, 1)}&gameType=R,F,D,L,W&hydrate=linescore,team,lineups,probablePitcher,decisions`);
       const byPk = Object.fromEntries(liveGames.map((g) => [g.pk, g]));
       (js.dates || []).forEach((d) => d.games.forEach((x) => {
         const ls = x.linescore || {}, off = ls.offense || {}, def = ls.defense || {}, t = x.teams, lu = x.lineups || {};
@@ -2215,11 +2351,13 @@
         Object.assign(row, { state: x.status.abstractGameState, detailed: x.status.detailedState, ar: t.away.score, hr: t.home.score, inning: ls.currentInning, top: ls.isTopInning, inningState: ls.inningState, outs: ls.outs,
           bases: (off.first ? 1 : 0) | (off.second ? 2 : 0) | (off.third ? 4 : 0), inn: (ls.innings || []).map((i) => [(i.away || {}).runs ?? null, (i.home || {}).runs ?? null]),
           now: { batter: (off.batter || {}).fullName, onDeck: (off.onDeck || {}).fullName, pitcher: (def.pitcher || {}).fullName, balls: ls.balls, strikes: ls.strikes },
-          probs: { away: (t.away.probablePitcher || {}).fullName, home: (t.home.probablePitcher || {}).fullName } });
+          probs: { away: (t.away.probablePitcher || {}).fullName, home: (t.home.probablePitcher || {}).fullName },
+          rhe: ls.teams ? { away: ["runs", "hits", "errors"].map((k) => (ls.teams.away || {})[k]), home: ["runs", "hits", "errors"].map((k) => (ls.teams.home || {})[k]) } : row.rhe,
+          decisions: x.decisions ? { winner: (x.decisions.winner || {}).fullName, loser: (x.decisions.loser || {}).fullName, save: (x.decisions.save || {}).fullName } : row.decisions });
         if (lu.awayPlayers || lu.homePlayers) row.lu = { away: (lu.awayPlayers || []).map((p) => ({ name: p.fullName, pos: (p.primaryPosition || {}).abbreviation })), home: (lu.homePlayers || []).map((p) => ({ name: p.fullName, pos: (p.primaryPosition || {}).abbreviation })) };
         if (!byPk[x.gamePk]) liveGames.push(row);
       }));
-      await Promise.all(liveGames.filter((g) => g.date === D.meta.today && (g.state === "Live" || (g.state === "Final" && !g.boxFinal && !isOff(g)))).map(async (g) => {
+      await Promise.all(liveGames.filter((g) => !isOff(g) && (g.state === "Live" || (g.state === "Final" && !g.boxFinal && g.date >= addDays(TODAY, -1)))).map(async (g) => {
         try {
           g.box = slimBox(await getJSON(`${API}/game/${g.pk}/boxscore`));
           if (g.state === "Final") g.boxFinal = true;
@@ -2227,11 +2365,18 @@
         } catch { /* sin box score */ }
       }));
       liveInfo = { source: "api", at: new Date().toISOString(), error: null };
+      liveFails = 0;
     } catch (e) {
       liveInfo = { ...liveInfo, error: String(e) };
+      liveFails++;
     }
-    if ((location.hash || "").slice(1) === "envivo") viewLive();
+    const h = (location.hash || "#partidos").slice(1);
+    if (h === "envivo") viewLive();
+    else if ((h === "partidos" || h === "") && DAY_RENDER) DAY_RENDER(force);
+    else if (h === "historial" && HIST_RENDER) HIST_RENDER();
     markLiveTab();
+    // donde el navegador no puede consultar statsapi (p. ej. dentro de claude.ai) no se insiste
+    if (liveFails >= 3 && liveInfo.source !== "api") stopLive();
   }
 
   function markLiveTab() {
@@ -2296,6 +2441,198 @@
           td(`${r.ar}-${r.hr}`, `num r ${(r.pHome >= 0.5) === r.homeWon ? "w" : "l"}`), tdn(`${f(r.total, 1)} / ${r.actualTotal}`), td(r.nrfiHit ? "Sí" : "No"), td(light(r.light))])))}</section>` + footer();
   }
 
+  // ---------------------------------------------------------------- vista: historial de tickets
+  const FAM_NAMES = { ML: "Moneyline", RL: "Run line", Total: "Total", F5: "F5 moneyline", "F5 total": "F5 total", "Team total": "Total por equipo", NRFI: "NRFI / YRFI", K: "Ponches del abridor" };
+  const RES_TXT = { ganado: ["win", "✓ Ganado"], perdido: ["lose", "✗ Perdido"], push: ["pend", "Push"], "sin dato": ["pend", "Sin dato"], anulado: ["pend", "Anulado"] };
+  const SOURCE_TXT = { modelo: "Corrida del framework (todos los picks)", seguimiento: "Seguimiento previo a esta base (solo los 2 picks principales)", "pro-lab": "Pro-Lab congelado antes del juego" };
+  const STATUS_TXT = { abierto: "Abierto: se actualiza hasta el primer lanzamiento", cerrado: "Cerrado: el partido empezó y el ticket quedó congelado", calificado: "Calificado con el resultado oficial", anulado: "Anulado: partido pospuesto o cancelado" };
+  const AN_EXTRA = { "Picks combinados con el framework": "Cada pick final promedia la probabilidad de los métodos del framework y del modelo; el índice de confianza premia el acuerdo entre ellos." };
+  const liveByPk = (pk, date) => liveGames.find((g) => g.pk === pk && g.date === date) || liveGames.find((g) => g.pk === pk && !isOff(g));
+  const modelOrder = (m) => ["kronos", "prisma", "diamante", "framework"].indexOf(m);
+  let HIST_RENDER = null;
+
+  // resultado de un pick: el calificado en el servidor o, si el partido terminó después del corte, el del marcador en vivo
+  function pickRes(p, t) {
+    if (p.res) { const [cls, text] = RES_TXT[p.res] || ["pend", p.res]; return { key: p.res, cls, text }; }
+    const g = liveByPk(t.pk, t.date);
+    if (g && (g.state === "Live" || g.state === "Final") && g.ar != null && !isOff(g)) {
+      const s = pickNow(p, g);
+      const fin = g.state === "Final";
+      const key = fin && s.cls === "win" ? "ganado" : fin && s.cls === "lose" ? "perdido" : fin && s.text === "Push" ? "push" : "pendiente";
+      return { key, cls: s.cls, text: s.text, live: true };
+    }
+    return { key: "pendiente", cls: "pend", text: t.status === "cerrado" ? "En juego" : "Pendiente" };
+  }
+  function tally(list) {
+    const r = { n: 0, win: 0, lose: 0, push: 0, pend: 0, pSum: 0, pN: 0 };
+    list.forEach(([p, t]) => {
+      const k = pickRes(p, t).key;
+      r.n++;
+      if (k === "ganado") r.win++; else if (k === "perdido") r.lose++; else if (k === "push") r.push++; else if (k !== "anulado" && k !== "sin dato") r.pend++;
+      if (k === "ganado" || k === "perdido") { r.pSum += p.p; r.pN++; }
+    });
+    r.hit = r.win + r.lose ? r.win / (r.win + r.lose) : null;
+    r.exp = r.pN ? r.pSum / r.pN : null;
+    return r;
+  }
+  const recTxt = (r) => `<span style="color:var(--verde)">${r.win}</span>–<span style="color:var(--rojo)">${r.lose}</span>${r.push ? `–${r.push}` : ""}`;
+  function regTxt(t) {
+    if (!t.registeredAt) return "—";
+    const m = Math.round((Date.parse(t.time) - Date.parse(t.registeredAt)) / 60000);
+    const lead = isFinite(m) && m > 0 ? ` · ${m >= 60 ? `${Math.floor(m / 60)} h ${m % 60} min` : `${m} min`} antes del juego` : "";
+    return `${t.status === "abierto" ? "última versión " : ""}${fmtStamp(t.registeredAt)}${lead}`;
+  }
+  function scoreOf(t) {
+    if (t.result && t.result.state === "Final") return { a: t.result.ar, h: t.result.hr, txt: "Final" };
+    const g = liveByPk(t.pk, t.date);
+    if (g && !isOff(g) && g.ar != null && (g.state === "Live" || g.state === "Final")) return { a: g.ar, h: g.hr, txt: g.state === "Final" ? "Final · por calificar" : `En vivo · ${g.inning}ª` };
+    return null;
+  }
+
+  function ticketCard(t, scope) {
+    const picks = t.picks.filter((p) => scope === "todos" || p.principal);
+    const sc = scoreOf(t);
+    const st = t.status === "anulado" ? `<span class="tag warn">${esc((t.result && t.result.detailed) || "Anulado")}</span>` : sc ? `<span class="tk-state">${esc(sc.txt)}</span>` : `<span class="tk-state">${t.status === "cerrado" ? "En juego" : `Sale ${esc(fmtTime(t.time))}`}</span>`;
+    return `<a class="ticket m-${esc(t.model)}" href="#t${t.pk}">
+      <div class="tk-top"><span class="tk-model">${esc(t.model === "framework" ? "Framework v2" : t.modelName)}</span><span class="tk-kind">${esc(t.kind || "")}</span></div>
+      <div class="tk-game"><span class="tk-teams"><b>${esc(t.away)}</b>${sc ? ` <span class="num">${sc.a}</span>` : ""} <span class="muted">@</span> <b>${esc(t.home)}</b>${sc ? ` <span class="num">${sc.h}</span>` : ""}</span>${st}</div>
+      <div class="tk-meta">${esc(fmtShort(t.date))} · ${esc(fmtTime(t.time))} · registrado ${esc(regTxt(t))}</div>
+      <div class="tk-cut" aria-hidden="true"></div>
+      <ul class="tk-picks">${picks.map((p) => { const r = pickRes(p, t); return `<li><span class="res-chip ${r.cls}">${esc(r.text)}</span><span class="tk-p"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)}${isNum(p.ic) ? ` · IC ${Math.round(p.ic)}` : ""}</span></span></li>`; }).join("") || `<li class="muted">Sin picks en este filtro</li>`}</ul>
+      <div class="tk-an">${t.analyses.slice(0, 3).map((x) => `<span>${esc(x)}</span>`).join("")}${t.analyses.length > 3 ? `<span>+${t.analyses.length - 3} análisis</span>` : ""}</div>
+    </a>`;
+  }
+
+  function csvOf(list, scope) {
+    const head = ["fecha", "hora", "partido", "modelo", "tipo_modelo", "analisis", "principal", "mercado", "pick", "linea", "probabilidad", "momio_justo", "ic", "nivel", "resultado", "marcador", "registrado", "estado"];
+    const rows = list.flatMap((t) => t.picks.filter((p) => scope === "todos" || p.principal).map((p) => {
+      const sc = scoreOf(t);
+      return [t.date, fmtTime(t.time), `${t.away} @ ${t.home}`, t.modelName, t.kind, t.analyses.join(" | "), p.principal ? "sí" : "no", p.market, p.pick, p.line ?? "", p.p, p.fair ?? "", p.ic ?? "", p.level ?? "", pickRes(p, t).key, sc ? `${sc.a}-${sc.h}` : "", t.registeredAt || "", t.status];
+    }));
+    return [head, ...rows].map((r) => r.map((v) => `"${String(v ?? "").replace(/"/g, '""')}"`).join(",")).join("\n");
+  }
+
+  function viewHistory() {
+    const all = TICKETS.slice();
+    let model = store.get("mlbgs-h-model") || "todos";
+    let scope = store.get("mlbgs-h-scope") || "principales";
+    let estado = "todos", q = "", days = 7;
+    const render = () => {
+      const inScope = (p) => scope === "todos" || p.principal;
+      const list = all.filter((t) => (model === "todos" || t.model === model)
+        && (!q || `${t.away} ${t.home} ${t.awayName || ""} ${t.homeName || ""}`.toLowerCase().includes(q))
+        && (estado === "todos" || t.picks.some((p) => inScope(p) && (estado === "pendiente" ? pickRes(p, t).key === "pendiente" : pickRes(p, t).key === estado))));
+      const pairs = (ts, pred = inScope) => ts.flatMap((t) => t.picks.filter(pred).map((p) => [p, t]));
+      const main = tally(pairs(list, (p) => p.principal)), every = tally(pairs(list, () => true));
+      const games = new Set(list.map((t) => t.pk)).size;
+      const models = Object.keys(HI.models || {}).sort((a, b) => modelOrder(b) - modelOrder(a));
+      const byModel = models.map((m) => {
+        const ts = all.filter((t) => t.model === m);
+        const fin = ts.filter((t) => t.result && t.result.state === "Final" && isNum(t.pred && t.pred.pHome));
+        const brier = fin.length ? fin.reduce((s2, t) => s2 + (t.pred.pHome - (t.result.hr > t.result.ar ? 1 : 0)) ** 2, 0) / fin.length : null;
+        return { m, ts, main: tally(pairs(ts, (p) => p.principal)), every: tally(pairs(ts, () => true)), brier, n: fin.length };
+      }).filter((x) => x.ts.length);
+      const fams = {};
+      pairs(list).forEach(([p, t]) => (fams[p.family] = fams[p.family] || []).push([p, t]));
+      const dates = [...new Set(list.map((t) => t.date))].sort().reverse();
+      const shown = dates.slice(0, days);
+      app.innerHTML = `<div class="page-head"><p class="eyebrow">Historial · base de datos de tickets</p><h1>Cada pick registrado antes del primer lanzamiento, con su modelo y su resultado</h1>
+        <p class="lede">Un ticket es un partido visto por un modelo: guarda los picks con su probabilidad e índice de confianza, los tipos de análisis que los produjeron, la hora en que se registraron y el marcador oficial con el que se calificaron. Mientras el partido no empieza el ticket se actualiza; al primer lanzamiento se congela. La base vive en <code>data/historial/</code> del repositorio (un archivo por día).</p></div>
+        <div class="tiles t4">
+          <div class="tile"><span class="eyebrow">Tickets</span><span class="big">${list.length}</span><span class="sub">${games} partidos · ${dates.length} día${dates.length === 1 ? "" : "s"}</span></div>
+          <div class="tile"><span class="eyebrow">Picks principales</span><span class="big">${recTxt(main)}</span><span class="sub">ganados–perdidos${main.push ? "–push" : ""} · ${main.pend} pendientes</span></div>
+          <div class="tile"><span class="eyebrow">Acierto principales</span><span class="big">${main.hit != null ? pc(main.hit) : "—"}</span><span class="sub">${main.exp != null ? `el modelo esperaba ${pc(main.exp)}` : "sin picks calificados"}</span></div>
+          <div class="tile"><span class="eyebrow">Todos los picks</span><span class="big">${recTxt(every)}</span><span class="sub">${every.hit != null ? `acierto ${pc(every.hit)} · esperado ${pc(every.exp)}` : "sin picks calificados"}</span></div>
+        </div>
+        <section class="block"><h2>Por modelo</h2>
+        ${table(["Modelo", "Tipo", "~Tickets", "~Principales G–P", "~Acierto", "~Esperado", "~Todos G–P", "~Brier P(local)"], byModel.map((x) => tr([
+          td(`<span class="mdot m-${esc(x.m)}"></span><b>${esc(HI.models[x.m].name)}</b>`), td(esc(HI.models[x.m].kind)), tdn(x.ts.length), tdn(recTxt(x.main)), tdn(x.main.hit != null ? pc(x.main.hit) : "—"), tdn(x.main.exp != null ? pc(x.main.exp) : "—"), tdn(recTxt(x.every)),
+          tdn(x.brier != null ? `${f(x.brier, 3)} <span class="muted">(${x.n})</span>` : "—")])))}
+        <p class="note muted">Los tickets del Pro-Lab usan los picks finales framework + modelo. Brier = promedio de (P(local) − resultado)²: 0.25 es una moneda, menos es mejor. Muestra todavía chica: pocos partidos no bastan para declarar un modelo mejor que otro.</p></section>
+        <section class="block"><h2>Por mercado <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">${scope === "todos" ? "todos los picks" : "picks principales"} del filtro</small></h2>
+        ${table(["Mercado", "~Picks", "~G–P–Push", "~Acierto", "~Esperado", "~Pendientes"], Object.entries(fams).sort((a, b) => b[1].length - a[1].length).map(([k, v]) => { const r = tally(v); return tr([td(esc(FAM_NAMES[k] || k)), tdn(r.n), tdn(`${recTxt(r)}${r.push ? "" : "–0"}`), tdn(r.hit != null ? pc(r.hit) : "—"), tdn(r.exp != null ? pc(r.exp) : "—"), tdn(r.pend)]); }))}</section>
+        <div class="toolbar hist-tools">
+          <div class="chips" role="group" aria-label="Modelo">${["todos", ...models].map((m) => `<button class="chip" data-hm="${m}" aria-pressed="${model === m}">${m === "todos" ? "Todos los modelos" : esc(HI.models[m].name)}</button>`).join("")}</div>
+          <div class="chips" role="group" aria-label="Resultado">${[["todos", "Todo"], ["ganado", "Ganados"], ["perdido", "Perdidos"], ["pendiente", "Pendientes"], ["anulado", "Anulados"]].map(([k, l]) => `<button class="chip" data-he="${k}" aria-pressed="${estado === k}">${l}</button>`).join("")}</div>
+          <div class="chips" role="group" aria-label="Picks">${[["principales", "Picks principales"], ["todos", "Todos los picks"]].map(([k, l]) => `<button class="chip" data-hs="${k}" aria-pressed="${scope === k}">${l}</button>`).join("")}</div>
+          <input type="search" class="hist-q" placeholder="Buscar equipo" value="${esc(q)}" aria-label="Buscar equipo">
+          <button type="button" class="btn" id="hist-csv">Descargar CSV</button>
+        </div>
+        ${shown.length ? shown.map((d) => { const ts = list.filter((t) => t.date === d).sort((a, b) => (a.time || "").localeCompare(b.time || "") || a.pk - b.pk || modelOrder(a.model) - modelOrder(b.model)); const r = tally(pairs(ts, (p) => p.principal));
+          return `<section class="day"><h2>${esc(dayLabel(d))} <small>${esc(fmtDateLong(d))} · ${ts.length} ticket${ts.length === 1 ? "" : "s"} · principales ${recTxt(r)}${r.pend ? ` · ${r.pend} pendientes` : ""}</small></h2><div class="tk-grid">${ts.map((t) => ticketCard(t, scope)).join("")}</div></section>`; }).join("")
+          : `<div class="empty">No hay tickets con ese filtro.</div>`}
+        ${dates.length > shown.length ? `<button type="button" class="btn" id="hist-more">Ver ${Math.min(7, dates.length - shown.length)} días más</button>` : ""}
+        ${footer()}`;
+      app.querySelectorAll("[data-hm]").forEach((b) => b.addEventListener("click", () => { model = b.dataset.hm; store.set("mlbgs-h-model", model); render(); }));
+      app.querySelectorAll("[data-he]").forEach((b) => b.addEventListener("click", () => { estado = b.dataset.he; render(); }));
+      app.querySelectorAll("[data-hs]").forEach((b) => b.addEventListener("click", () => { scope = b.dataset.hs; store.set("mlbgs-h-scope", scope); render(); }));
+      const qi = app.querySelector(".hist-q");
+      qi.addEventListener("input", () => { clearTimeout(qi._t); qi._t = setTimeout(() => { q = qi.value.trim().toLowerCase(); render(); const n = app.querySelector(".hist-q"); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 300); });
+      const more = document.getElementById("hist-more");
+      if (more) more.addEventListener("click", () => { days += 7; render(); });
+      document.getElementById("hist-csv").addEventListener("click", (e) => {
+        try {
+          const url = URL.createObjectURL(new Blob(["﻿" + csvOf(list, scope)], { type: "text/csv;charset=utf-8" }));
+          const a = document.createElement("a");
+          a.href = url; a.download = `mlbgs-historial-${TODAY}.csv`;
+          document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 4000);
+        } catch { e.target.textContent = "Descarga no disponible aquí"; }
+      });
+    };
+    render();
+    HIST_RENDER = () => { const y = window.scrollY; render(); window.scrollTo(0, y); };
+  }
+
+  function viewTicket(pk) {
+    const list = (TK_BY_PK[pk] || []).slice().sort((a, b) => modelOrder(a.model) - modelOrder(b.model));
+    if (!list.length) { app.innerHTML = `<a class="back" href="#historial">← Historial</a><div class="empty">No hay tickets de este partido.</div>${footer()}`; return; }
+    const t0 = list[0], g = liveByPk(t0.pk, t0.date), res = list.find((t) => t.result && t.result.state === "Final");
+    const sc = scoreOf(res || t0);
+    const R = res ? res.result : g && g.ar != null && !isOff(g) ? { ar: g.ar, hr: g.hr, inn: g.inn, rhe: g.rhe, decisions: g.decisions } : null;
+    const nInn = R ? Math.max(9, (R.inn || []).length) : 0;
+    const rhe = R && R.rhe && R.rhe.away && R.rhe.home;
+    const ls = R ? `<div class="tbl"><table class="linescore mini"><thead><tr><th></th>${[...Array(nInn).keys()].map((i) => `<th>${i + 1}</th>`).join("")}<th>C</th>${rhe ? "<th>H</th><th>E</th>" : ""}</tr></thead><tbody>${["away", "home"].map((sd, k) => `<tr><td class="team-cell">${esc(sd === "away" ? t0.away : t0.home)}</td>${[...Array(nInn).keys()].map((i) => `<td class="num">${((R.inn || [])[i] || [])[k] ?? ""}</td>`).join("")}<td class="num tot">${sd === "away" ? R.ar : R.hr}</td>${rhe ? `<td class="num">${R.rhe[sd][1] ?? ""}</td><td class="num">${R.rhe[sd][2] ?? ""}</td>` : ""}</tr>`).join("")}</tbody></table></div>` : "";
+    const dec = R && R.decisions ? `<p class="decis"><span><b>G</b> ${esc(R.decisions.winner || "—")}</span><span><b>P</b> ${esc(R.decisions.loser || "—")}</span>${R.decisions.save ? `<span><b>SV</b> ${esc(R.decisions.save)}</span>` : ""}</p>` : "";
+    const lab = LAB_BY_PK[String(pk)];
+    const anDesc = (m, name) => { const x = ((HI.models[m] || {}).analyses || []).find((a) => a[0] === name); return x ? x[1] : AN_EXTRA[name] || ""; };
+    const block = (t) => {
+      const P = t.pred || {}, M = HI.models[t.model] || {};
+      const r = tally(t.picks.filter((p) => p.principal).map((p) => [p, t])), all2 = tally(t.picks.map((p) => [p, t]));
+      const hows = t.picks.filter((p) => p.principal && p.how);
+      return `<section class="block tk-detail m-${esc(t.model)}"><h2><span class="mdot m-${esc(t.model)}"></span>${esc(t.modelName)} <span class="tag">${esc(t.kind || "")}</span></h2>
+        <dl class="kv panel"><dt>Registrado</dt><dd>${esc(regTxt(t))}</dd>${t.frozenAt ? `<dt>Datos congelados</dt><dd>${esc(fmtStamp(t.frozenAt))}</dd>` : ""}
+          <dt>Fuente</dt><dd>${esc(SOURCE_TXT[t.source] || t.source)}</dd><dt>Estado</dt><dd>${esc(STATUS_TXT[t.status] || t.status)}</dd>
+          <dt>Picks principales</dt><dd class="num">${recTxt(r)}${r.pend ? ` · ${r.pend} pendientes` : ""}</dd><dt>Todos los picks</dt><dd class="num">${recTxt(all2)}${all2.pend ? ` · ${all2.pend} pendientes` : ""}</dd></dl>
+        <div class="kpis tk-kpis">
+          <div><b>${pc(P.pHome, 1)}</b><span>P(${esc(t.home)}) ${t.source === "pro-lab" ? "combinada" : ""}</span></div>
+          ${isNum(P.pModel) ? `<div><b>${pc(P.pModel, 1)}</b><span>P(${esc(t.home)}) ${esc(M.name || "")}</span></div>` : ""}
+          <div><b>${f(P.projAway, 1)}–${f(P.projHome, 1)}</b><span>Carreras ${esc(t.away)}–${esc(t.home)}</span></div>
+          <div><b>${f(P.total, 1)}</b><span>Total esperado</span></div>
+          <div><b>${pc(P.nrfi)}</b><span>NRFI</span></div>
+          ${P.light ? `<div><b>${light(P.light)}</b><span>Semáforo</span></div>` : ""}
+        </div>
+        <p class="note">Abridores: <b>${esc((P.probables || {}).away || "—")}</b> (${esc(t.away)}) vs <b>${esc((P.probables || {}).home || "—")}</b> (${esc(t.home)})${P.lineups ? ` · lineups ${esc(P.lineups.toLowerCase())}` : ""}${P.confidence ? ` · triangulación ${esc(P.confidence)}` : ""}</p>
+        <h3 class="sub">Tipos de análisis que usó</h3>
+        <ul class="clean an-list">${t.analyses.map((a) => `<li><b>${esc(a)}</b>${anDesc(t.model, a) ? ` <span class="muted">— ${esc(anDesc(t.model, a))}</span>` : ""}</li>`).join("")}</ul>
+        <h3 class="sub">Picks del ticket</h3>
+        ${table(["#", "Mercado", "Pick", "~Prob.", "~Justo", "Confianza", "Métodos que lo respaldan", "Resultado"], t.picks.map((p) => { const rr = pickRes(p, t);
+          return tr([tdn(p.rank), td(esc(p.market)), td(`<b>${esc(p.pick)}</b>${p.principal ? ' <span class="tag info">principal</span>' : ""}`), tdn(pc(p.p, 1)), tdn(odds(p.fair)), td(isNum(p.ic) ? icBadge(p) : "—"),
+            td(`<span class="muted" style="font-size:12px">${(p.methods || []).map(esc).join("<br>") || "—"}</span>`), td(`<span class="res-chip ${rr.cls}">${esc(rr.text)}</span>`)], p.principal ? "hl" : ""); }))}
+        ${hows.length ? `<h3 class="sub">Cómo se llegó a los picks principales</h3><ul class="clean">${hows.map((p) => `<li><b>${esc(p.pick)}:</b> ${esc(p.how)}</li>`).join("")}</ul>` : ""}
+        ${t.source === "seguimiento" ? `<p class="note muted">Este partido se jugó antes de que existiera la base de tickets: de su predicción previa solo se conservaron los 2 picks principales.</p>` : ""}
+      </section>`;
+    };
+    app.innerHTML = `<div style="display:flex;gap:16px;flex-wrap:wrap"><a class="back" href="#historial">← Historial</a><a class="back" href="#partidos">← Jornada</a></div>
+      <div class="page-head"><p class="eyebrow">Ticket · ${esc(fmtDateLong(t0.date))} · ${esc(fmtTime(t0.time))}${t0.venue ? ` · ${esc(t0.venue)}` : ""}</p>
+        <h1>${esc(t0.awayName || t0.away)} ${sc ? `<span class="num">${sc.a}–${sc.h}</span>` : "@"} ${esc(t0.homeName || t0.home)}</h1>
+        <p class="lede">${res ? `Final. Los picks se calificaron con el marcador oficial.` : sc ? `${esc(sc.txt)}: los picks se evalúan con el marcador en vivo y se califican al terminar.` : t0.status === "anulado" ? "Partido pospuesto o cancelado: los picks no cuentan." : "Por jugar: el ticket del framework se sigue actualizando hasta el primer lanzamiento; en ese momento se congela."} ${list.length > 1 ? `Este partido tiene ${list.length} tickets: uno por modelo.` : ""}</p></div>
+      ${ls || dec ? `<section class="block"><h2>Resultado</h2>${ls}${dec}</section>` : ""}
+      ${list.map(block).join("")}
+      <p style="display:flex;gap:16px;flex-wrap:wrap;font-weight:600">${lab ? `<a href="#lab${pk}">Ver el modelo del Pro-Lab (${esc(LAB_INFO[labKey(lab)].name.join(""))}) →</a>` : ""}${BY_PK[String(pk)] ? `<a href="#g${pk}">Ver el análisis completo del partido →</a>` : ""}</p>
+      ${footer()}`;
+  }
+
   // ---------------------------------------------------------------- vista: metodología
   function viewMethod() {
     const L = D.league;
@@ -2333,8 +2670,10 @@
   // ---------------------------------------------------------------- router
   function route() {
     const [h, anchor] = (location.hash || "#partidos").slice(1).split("#");
-    let tab = "partidos";
+    let tab = "partidos", day = false;
     if (h.startsWith("g") && BY_PK[h.slice(1)]) viewGame(BY_PK[h.slice(1)]);
+    else if (/^[gt]\d+$/.test(h) && TK_BY_PK[h.slice(1)]) { tab = "historial"; viewTicket(h.slice(1)); }
+    else if (h === "historial") { tab = h; viewHistory(); }
     else if (h === "prolab") { tab = "prolab"; viewProLabList(); }
     else if (h === "prolabbase" && LABS.length) { tab = "prolab"; viewLab(LABS.find((l) => labKey(l) === "diamante") || LABS[0], true); }
     else if (/^lab\d+(base)?$/.test(h) && LAB_BY_PK[h.match(/\d+/)[0]]) { tab = "prolab"; viewLab(LAB_BY_PK[h.match(/\d+/)[0]], h.endsWith("base")); }
@@ -2343,8 +2682,10 @@
     else if (h === "posiciones") { tab = h; viewStandings(); }
     else if (h === "seguimiento") { tab = h; viewTrack(); }
     else if (h === "metodologia") { tab = h; viewMethod(); }
-    else viewGames();
-    if (h !== "envivo") stopLive();
+    else { day = true; viewGames(); startLive(); }
+    if (h !== "envivo" && !day) stopLive();
+    if (!day) DAY_RENDER = null;
+    if (h !== "historial") HIST_RENDER = null;
     if (!h.startsWith("g") && !/^lab\d+base$/.test(h)) CURRENT_GAME = null;
     document.querySelectorAll("nav.tabs a").forEach((a) => a.setAttribute("aria-current", a.dataset.tab === tab ? "page" : "false"));
     tip.hidden = true;

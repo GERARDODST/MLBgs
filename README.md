@@ -88,6 +88,35 @@ parcial, proyectado o sustituido, y **rojo** si falta un dato obligatorio del ga
 se agrupan en Contexto (1-2), Pitcheo (3-4), Modelo (5-6), Mercado y decisión (7-8) y Control de
 calidad (9-10). Al capturar momios, las secciones 7-9 cambian de color al instante.
 
+## Jornada del día
+
+La pestaña *Partidos* es la jornada del **día local de quien abre la página** (su zona horaria, no la
+de los servidores): Ayer, Hoy y Mañana. Cada día separa los partidos en juego, por jugar (con su
+análisis previo y semáforo) y terminados (marcador final con carreras-hits-errores, pitchers ganador,
+perdedor y salvamento, y sus dos picks calificados), además del récord de picks principales del día.
+Donde el navegador puede consultar statsapi.mlb.com, la jornada se refresca sola cada 30 s; si no,
+muestra el último corte y la hora a la que se tomó.
+
+## Historial de tickets (base de datos)
+
+Cada partido visto por un modelo es un **ticket** guardado en `data/historial/AAAA-MM-DD.json` (un
+archivo por día, versionado en git). Un ticket guarda:
+
+- el **modelo** que lo produjo (Framework v2, o Framework v2 + DIAMANTE-24 / PRISMA / KRONOS en el Pro-Lab)
+  y los **tipos de análisis** que usó (Pitágoras + Log5, Elo con abridor, λ + Binomial Negativa,
+  cadena de la cuenta, Monte Carlo por lanzamiento, etc.);
+- todos sus **picks** con probabilidad, momio justo, índice de confianza, los métodos que respaldan
+  cada uno y la explicación de cómo se llegó; los dos principales van marcados;
+- los números previos (P(local), carreras esperadas, total, NRFI, semáforo, abridores, lineups) y la
+  hora en que se registró;
+- el **resultado**: marcador oficial y cada pick como ganado, perdido, push o anulado.
+
+Ciclo: *abierto* (se actualiza en cada corrida hasta el primer lanzamiento) → *cerrado* (el juego
+empezó; queda congelado) → *calificado* (terminó) o *anulado* (pospuesto). Los partidos jugados antes
+de que existiera la base se recuperan de `data/predictions/` (solo los 2 picks principales). La
+pestaña *Historial* muestra el récord por modelo y por mercado, filtros por modelo, resultado y equipo,
+los tickets por fecha, el detalle de cada ticket y una descarga CSV.
+
 ## En vivo
 
 La pestaña *En vivo* muestra los partidos de hoy en juego, terminados y por jugar con los **dos picks
@@ -96,7 +125,7 @@ pick con la situación real: la media entrada en curso usa la RE24 y P(≥1 carr
 corredores y outs, y las siguientes la distribución empírica de carreras por media entrada escalada a
 la proyección de cada equipo (misma programación dinámica que PRISMA). Al terminar, cada pick se
 califica con el resultado oficial (✓ ganó / ✗ perdió / push). Donde el navegador lo permite (GitHub
-Pages) el marcador se consulta directo a statsapi.mlb.com cada minuto; si no, usa el último corte.
+Pages) el marcador se consulta directo a statsapi.mlb.com cada 30 s; si no, usa el último corte.
 
 ## Pro-Lab: modelos de prueba
 
@@ -223,6 +252,8 @@ python -m unittest discover -s tests                        # pruebas
 | `mlbgs/mathlib.py` | Fórmulas: Poisson, Binomial Negativa, FIP, Log5, Elo, Kelly, momios |
 | `mlbgs/build.py` | Construye la página y el seguimiento de predicciones |
 | `site/template.html` | Interfaz (español, tema claro/oscuro) |
+| `mlbgs/historial.py` | Base de datos de tickets: registro, congelamiento, calificación y anulación |
+| `data/historial/` | Tickets por día: picks, modelo, tipos de análisis y resultado oficial |
 | `data/predictions/` | Predicción previa de cada partido, para medir el modelo |
 | `.github/workflows/update.yml` | Actualización programada y despliegue a GitHub Pages |
 
