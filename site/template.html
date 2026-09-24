@@ -1702,7 +1702,7 @@
 
       ${res ? `<section class="block"><h2>Resultado real contra el modelo</h2><div class="res">
         <div class="tile"><span class="eyebrow">Final</span><span class="big">${esc(a.abbr)} ${res.away} – ${res.home} ${esc(h.abbr)}</span><span class="sub">esperado ${f(post.muAway, 1)} – ${f(post.muHome, 1)}</span></div>
-        <div class="tile"><span class="eyebrow">Ganador</span><span class="big">${esc(res.homeWon ? h.abbr : a.abbr)}</span><span class="sub">PRISMA daba ${pc(res.homeWon ? pred.pHome : 1 - pred.pHome, 1)} · Brier ${f(res.brier, 3)}</span></div>
+        <div class="tile"><span class="eyebrow">Ganador</span><span class="big">${esc(res.homeWon ? h.abbr : a.abbr)}</span><span class="sub">PRISMA daba ${pc(res.homeWon ? pred.pHome : 1 - pred.pHome, 1)} · Brier ${f(res.brierMc ?? res.brier, 3)} (consenso ${f(res.brier, 3)})</span></div>
         <div class="tile"><span class="eyebrow">Total</span><span class="big">${res.total}</span><span class="sub">percentil ${pc(res.percentileTotal)} de la predictiva</span></div>
         <div class="tile"><span class="eyebrow">Picks calificados</span><span class="big">${res.hits} ✓ · ${res.misses} ✗</span></div></div></section>` : ""}
 
