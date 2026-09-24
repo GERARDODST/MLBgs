@@ -2450,6 +2450,9 @@
   const liveByPk = (pk, date) => liveGames.find((g) => g.pk === pk && g.date === date) || liveGames.find((g) => g.pk === pk && !isOff(g));
   const modelOrder = (m) => ["kronos", "prisma", "diamante", "framework"].indexOf(m);
   let HIST_RENDER = null;
+  // descargas: dentro del visor de claude.ai pasan por su capacidad `downloads`; fuera (GitHub Pages) por un enlace normal
+  let DL = null, DL_STATE = window.claude && typeof window.claude.use === "function" ? "pending" : "browser";
+  if (DL_STATE === "pending") window.claude.use("downloads").then((d) => { DL = d; DL_STATE = d ? "ok" : "none"; if (!d && HIST_RENDER) HIST_RENDER(); }).catch(() => { DL_STATE = "none"; });
 
   // resultado de un pick: el calificado en el servidor o, si el partido terminó después del corte, el del marcador en vivo
   function pickRes(p, t) {
@@ -2556,7 +2559,7 @@
           <div class="chips" role="group" aria-label="Resultado">${[["todos", "Todo"], ["ganado", "Ganados"], ["perdido", "Perdidos"], ["pendiente", "Pendientes"], ["anulado", "Anulados"]].map(([k, l]) => `<button class="chip" data-he="${k}" aria-pressed="${estado === k}">${l}</button>`).join("")}</div>
           <div class="chips" role="group" aria-label="Picks">${[["principales", "Picks principales"], ["todos", "Todos los picks"]].map(([k, l]) => `<button class="chip" data-hs="${k}" aria-pressed="${scope === k}">${l}</button>`).join("")}</div>
           <input type="search" class="hist-q" placeholder="Buscar equipo" value="${esc(q)}" aria-label="Buscar equipo">
-          <button type="button" class="btn" id="hist-csv">Descargar CSV</button>
+          ${DL_STATE !== "none" ? `<button type="button" class="btn" id="hist-csv">Descargar CSV</button>` : ""}
         </div>
         ${shown.length ? shown.map((d) => { const ts = list.filter((t) => t.date === d).sort((a, b) => (a.time || "").localeCompare(b.time || "") || a.pk - b.pk || modelOrder(a.model) - modelOrder(b.model)); const r = tally(pairs(ts, (p) => p.principal));
           return `<section class="day"><h2>${esc(dayLabel(d))} <small>${esc(fmtDateLong(d))} · ${ts.length} ticket${ts.length === 1 ? "" : "s"} · principales ${recTxt(r)}${r.pend ? ` · ${r.pend} pendientes` : ""}</small></h2><div class="tk-grid">${ts.map((t) => ticketCard(t, scope)).join("")}</div></section>`; }).join("")
@@ -2570,14 +2573,26 @@
       qi.addEventListener("input", () => { clearTimeout(qi._t); qi._t = setTimeout(() => { q = qi.value.trim().toLowerCase(); render(); const n = app.querySelector(".hist-q"); n.focus(); n.setSelectionRange(n.value.length, n.value.length); }, 300); });
       const more = document.getElementById("hist-more");
       if (more) more.addEventListener("click", () => { days += 7; render(); });
-      document.getElementById("hist-csv").addEventListener("click", (e) => {
+      const csvBtn = document.getElementById("hist-csv");
+      if (csvBtn) csvBtn.addEventListener("click", () => {
+        const csv = "\ufeff" + csvOf(list, scope), filename = `mlbgs-historial-${TODAY}.csv`;
+        if (DL_STATE !== "browser") {
+          if (!DL) { csvBtn.textContent = "Descarga no disponible aquí"; csvBtn.disabled = true; return; }
+          DL.save({ filename, data: csv }).catch((err) => {
+            const code = err && err.code;
+            if (code === "declined") return;
+            csvBtn.textContent = code === "rate_limited" ? "Espera un momento e intenta de nuevo" : "Descarga no disponible aquí";
+            if (code !== "rate_limited") csvBtn.disabled = true;
+          });
+          return;
+        }
         try {
-          const url = URL.createObjectURL(new Blob(["﻿" + csvOf(list, scope)], { type: "text/csv;charset=utf-8" }));
+          const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
           const a = document.createElement("a");
-          a.href = url; a.download = `mlbgs-historial-${TODAY}.csv`;
+          a.href = url; a.download = filename;
           document.body.appendChild(a); a.click(); a.remove();
           setTimeout(() => URL.revokeObjectURL(url), 4000);
-        } catch { e.target.textContent = "Descarga no disponible aquí"; }
+        } catch { csvBtn.textContent = "Descarga no disponible aquí"; }
       });
     };
     render();
