@@ -21,6 +21,7 @@ from . import model
 from . import picks as PK
 from . import prisma as PRI
 from . import prolab as PL
+from . import stake as ST
 from . import validate as V
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -191,6 +192,9 @@ def build(bundle: dict, save: bool = True) -> dict:
     lab = next((x for x in labs if x.get("modelKey") == "diamante"), labs[0] if labs else None)
     live = live_view(bundle, ctx, labs)
     track = evaluate(bundle)
+    # stake de cada pick (usa el historial ya calificado) antes de registrar los tickets, para que quede guardado
+    prev = HI.load() or HI.update(bundle, analyses, labs, generated, save_files=False)
+    stake_cfg = ST.attach(analyses, labs, prev)
     tickets = HI.update(bundle, analyses, labs, generated, save_files=save)
     lg = ctx.lg
     payload = {
@@ -210,6 +214,7 @@ def build(bundle: dict, save: bool = True) -> dict:
         "prolabs": labs,
         "live": live,
         "historial": HI.page_view(tickets, generated),
+        "stakeCfg": stake_cfg,
     }
     for a in payload["games"] + [x["base"] for x in labs]:
         a.pop("markets", None)   # tabla interna de mercados: los picks y las secciones ya la resumen
