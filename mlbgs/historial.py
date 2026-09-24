@@ -76,7 +76,7 @@ MODELS = {
     },
 }
 LAB_EXTRA = ["Picks combinados con el framework"]
-ROUND = {"p": 4, "ic": 1, "fair": 0, "pHome": 4, "pModel": 4, "projAway": 2, "projHome": 2, "total": 2, "nrfi": 4}
+ROUND = {"p": 4, "ic": 1, "fair": 0, "pHome": 4, "pModel": 4, "projAway": 2, "projHome": 2, "total": 2, "nrfi": 4, "w": 3}
 
 
 def _r(obj):
@@ -95,7 +95,9 @@ def _pick_row(p: dict, rank: int) -> dict:
     return {"rank": rank, "principal": rank <= 2, "family": p["family"], "market": p["market"], "pick": p["pick"],
             "line": p.get("line"), "p": p["p"], "fair": p.get("fair"), "ic": p.get("ic"), "level": p.get("level"),
             "price": p.get("price") if p.get("priceIsReal") else None,
-            "methods": sorted((p.get("methods") or {}).keys()), "how": p.get("how"), "res": None}
+            "methods": sorted((p.get("methods") or {}).keys()), "how": p.get("how"), "res": None,
+            **({"stake": {"w": p["stake"]["w"], "ladder": p["stake"]["ladder"], "block": p["stake"]["block"]}}
+               if p.get("stake") else {})}
 
 
 def _names(a: dict) -> dict:
@@ -288,9 +290,13 @@ def update(bundle: dict, analyses: list[dict], labs: list[dict], generated: str,
     for lab in labs:
         t = _r(ticket_from_lab(lab))
         old = tickets.get(t["id"])
-        if old and old.get("result"):
-            t = {**t, "status": old["status"], "result": old["result"],
-                 "picks": [{**p, "res": next((q.get("res") for q in old["picks"] if q["pick"] == p["pick"]), None)} for p in t["picks"]]}
+        if old:
+            # la escalera de stake y el resultado ya registrados no cambian con corridas posteriores
+            prev = {q["pick"]: q for q in old["picks"]}
+            t = {**t, "picks": [{**p, **({"stake": prev[p["pick"]]["stake"]} if prev.get(p["pick"], {}).get("stake") else {}),
+                                 "res": (prev.get(p["pick"]) or {}).get("res")} for p in t["picks"]]}
+            if old.get("result"):
+                t = {**t, "status": old["status"], "result": old["result"]}
         tickets[t["id"]] = t
     # 3) partidos previos a esta base: salen del seguimiento (solo los 2 picks principales)
     for path in sorted(glob.glob(os.path.join(pred_dir, "*.json"))):
