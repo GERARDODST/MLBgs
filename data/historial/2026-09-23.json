@@ -194,7 +194,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": "perdido"
+    "res": "perdido",
+    "stake": {
+     "w": 0.56,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -123
+      },
+      {
+       "stake": 1000,
+       "from": -121
+      },
+      {
+       "stake": 1500,
+       "from": -102
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 2,
@@ -213,7 +231,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
-    "res": "push"
+    "res": "push",
+    "stake": {
+     "w": 0.681,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -106
+      },
+      {
+       "stake": 1000,
+       "from": 106
+      },
+      {
+       "stake": 1500,
+       "from": 123
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 3,
@@ -232,7 +268,12 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.734,
+     "ladder": [],
+     "block": "el guion del partido no acompaña"
+    }
    },
    {
     "rank": 4,
@@ -253,7 +294,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 4 métodos: Log5 (5.7.2) 58.6% · Elo + abridor (5.7.7) 56.4% · λ + Binomial Negativa (5.3 · 5.7.5) 52.1% · DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9) 55.1%",
-    "res": "perdido"
+    "res": "perdido",
+    "stake": {
+     "w": 0.645,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -110
+      },
+      {
+       "stake": 1000,
+       "from": 103
+      },
+      {
+       "stake": 1500,
+       "from": 120
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 5,
@@ -272,7 +331,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.727,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -141
+      },
+      {
+       "stake": 1000,
+       "from": -132
+      },
+      {
+       "stake": 1500,
+       "from": -118
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 6,
@@ -291,7 +368,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.575,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -116
+      },
+      {
+       "stake": 1000,
+       "from": -111
+      },
+      {
+       "stake": 1500,
+       "from": 107
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 7,
@@ -310,7 +405,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de WSH + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.716,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 103
+      },
+      {
+       "stake": 1000,
+       "from": 115
+      },
+      {
+       "stake": 1500,
+       "from": 132
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 8,
@@ -329,7 +442,25 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga + Monte Carlo",
-    "res": "perdido"
+    "res": "perdido",
+    "stake": {
+     "w": 0.636,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 108
+      },
+      {
+       "stake": 1000,
+       "from": 126
+      },
+      {
+       "stake": 1500,
+       "from": 150
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 9,
@@ -348,7 +479,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de DET + Monte Carlo",
-    "res": "perdido"
+    "res": "perdido",
+    "stake": {
+     "w": 0.692,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 108
+      },
+      {
+       "stake": 1000,
+       "from": 123
+      },
+      {
+       "stake": 1500,
+       "from": 144
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 10,
@@ -367,7 +516,12 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.686,
+     "ladder": [],
+     "block": "el guion del partido no acompaña"
+    }
    }
   ],
   "result": {
@@ -765,7 +919,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.704,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -119
+      },
+      {
+       "stake": 1000,
+       "from": -108
+      },
+      {
+       "stake": 1500,
+       "from": 105
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 2,
@@ -784,7 +956,12 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.636,
+     "ladder": [],
+     "block": "el guion del partido no acompaña"
+    }
    },
    {
     "rank": 3,
@@ -802,7 +979,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.661,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -122
+      },
+      {
+       "stake": 1000,
+       "from": -109
+      },
+      {
+       "stake": 1500,
+       "from": 105
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 4,
@@ -821,7 +1016,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de MIN + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.737,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 113
+      },
+      {
+       "stake": 1000,
+       "from": 127
+      },
+      {
+       "stake": 1500,
+       "from": 147
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 5,
@@ -840,7 +1053,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.724,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 107
+      },
+      {
+       "stake": 1000,
+       "from": 120
+      },
+      {
+       "stake": 1500,
+       "from": 139
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 6,
@@ -859,7 +1090,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de SF + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.673,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 103
+      },
+      {
+       "stake": 1000,
+       "from": 118
+      },
+      {
+       "stake": 1500,
+       "from": 138
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 7,
@@ -877,7 +1126,25 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.621,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -105
+      },
+      {
+       "stake": 1000,
+       "from": 104
+      },
+      {
+       "stake": 1500,
+       "from": 123
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 8,
@@ -898,7 +1165,12 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 4 métodos: Log5 (5.7.2) 53.2% · Elo + abridor (5.7.7) 51.2% · λ + Binomial Negativa (5.3 · 5.7.5) 47.1% · PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9) 49.2%",
-    "res": "perdido"
+    "res": "perdido",
+    "stake": {
+     "w": 0.63,
+     "ladder": [],
+     "block": "el guion del partido no acompaña"
+    }
    },
    {
     "rank": 9,
@@ -917,7 +1189,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
-    "res": "push"
+    "res": "push",
+    "stake": {
+     "w": 0.6,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 118
+      },
+      {
+       "stake": 1000,
+       "from": 137
+      },
+      {
+       "stake": 1500,
+       "from": 167
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 10,
@@ -935,7 +1225,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": "perdido"
+    "res": "perdido",
+    "stake": {
+     "w": 0.602,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 110
+      },
+      {
+       "stake": 1000,
+       "from": 120
+      },
+      {
+       "stake": 1500,
+       "from": 145
+      }
+     ],
+     "block": null
+    }
    }
   ],
   "result": {
@@ -1471,7 +1779,21 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.747,
+     "ladder": [
+      {
+       "stake": 1000,
+       "from": -266
+      },
+      {
+       "stake": 1500,
+       "from": -247
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 2,
@@ -1490,7 +1812,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.746,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -155
+      },
+      {
+       "stake": 1000,
+       "from": -148
+      },
+      {
+       "stake": 1500,
+       "from": -133
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 3,
@@ -1511,7 +1851,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 4 métodos: Log5 (5.7.2) 55.2% · Elo + abridor (5.7.7) 58.9% · λ + Binomial Negativa (5.3 · 5.7.5) 62.3% · KRONOS estocástico (5.7.3 · 5.7.9) 60.3%",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.652,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -128
+      },
+      {
+       "stake": 1000,
+       "from": -115
+      },
+      {
+       "stake": 1500,
+       "from": -100
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 4,
@@ -1530,7 +1888,25 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.758,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 117
+      },
+      {
+       "stake": 1000,
+       "from": 132
+      },
+      {
+       "stake": 1500,
+       "from": 152
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 5,
@@ -1549,7 +1925,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": "perdido"
+    "res": "perdido",
+    "stake": {
+     "w": 0.657,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -117
+      },
+      {
+       "stake": 1000,
+       "from": -104
+      },
+      {
+       "stake": 1500,
+       "from": 111
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 6,
@@ -1568,7 +1962,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
-    "res": "perdido"
+    "res": "perdido",
+    "stake": {
+     "w": 0.713,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 101
+      },
+      {
+       "stake": 1000,
+       "from": 113
+      },
+      {
+       "stake": 1500,
+       "from": 130
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 7,
@@ -1587,7 +1999,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de PHI + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.708,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -103
+      },
+      {
+       "stake": 1000,
+       "from": 108
+      },
+      {
+       "stake": 1500,
+       "from": 125
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 8,
@@ -1606,7 +2036,25 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de MIL + Monte Carlo",
-    "res": "perdido"
+    "res": "perdido",
+    "stake": {
+     "w": 0.713,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 111
+      },
+      {
+       "stake": 1000,
+       "from": 126
+      },
+      {
+       "stake": 1500,
+       "from": 147
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 9,
@@ -1625,7 +2073,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.556,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 108
+      },
+      {
+       "stake": 1000,
+       "from": 132
+      },
+      {
+       "stake": 1500,
+       "from": 163
+      }
+     ],
+     "block": null
+    }
    },
    {
     "rank": 10,
@@ -1644,7 +2110,25 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
-    "res": "ganado"
+    "res": "ganado",
+    "stake": {
+     "w": 0.585,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 111
+      },
+      {
+       "stake": 1000,
+       "from": 134
+      },
+      {
+       "stake": 1500,
+       "from": 164
+      }
+     ],
+     "block": null
+    }
    }
   ],
   "result": {
