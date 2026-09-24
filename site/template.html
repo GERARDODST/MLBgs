@@ -1013,14 +1013,15 @@
     return t ? t.picks.filter((p) => p.principal) : [];
   }
   function pickTally(rows) {
-    let win = 0, lose = 0, pend = 0;
+    let win = 0, lose = 0, push = 0, pend = 0;
     rows.forEach((r) => mainPicks(r).forEach((p) => {
       const g = r.sb || { state: "Preview" };
+      if (isOff(g)) return;
       const s = pickNow(p, g);
-      const done = g.state === "Final" && !isOff(g);
-      if (done && s.cls === "win") win++; else if (done && s.cls === "lose") lose++; else pend++;
+      const done = g.state === "Final";
+      if (done && s.cls === "win") win++; else if (done && s.cls === "lose") lose++; else if (done && s.text === "Push") push++; else pend++;
     }));
-    return { win, lose, pend };
+    return { win, lose, push, pend };
   }
   function pickDay(dates) {
     const saved = (store.get("mlbgs-day") || "").split("|");
@@ -1067,7 +1068,7 @@
         </div>
         <div class="dayboard">
           <div class="db-cell"><span class="eyebrow">Partidos</span><b class="num">${rows.length}</b><span>${by.final.length} terminados · ${by.live.length} en juego · ${by.pre.length} por jugar${by.off.length ? ` · ${by.off.length} pospuestos` : ""}</span></div>
-          <div class="db-cell"><span class="eyebrow">Picks principales</span><b class="num"><span style="color:var(--verde)">${tally.win}</span>–<span style="color:var(--rojo)">${tally.lose}</span></b><span>ganados–perdidos · ${tally.pend} por decidir</span></div>
+          <div class="db-cell"><span class="eyebrow">Picks principales</span><b class="num"><span style="color:var(--verde)">${tally.win}</span>–<span style="color:var(--rojo)">${tally.lose}</span></b><span>ganados–perdidos${tally.push ? ` · ${tally.push} push` : ""}${tally.pend ? ` · ${tally.pend} por decidir` : ""}</span></div>
           <div class="db-cell"><span class="eyebrow">Acierto del día</span><b class="num">${tally.win + tally.lose ? pc(tally.win / (tally.win + tally.lose)) : "—"}</b><span>${tally.win + tally.lose ? "solo picks ya calificados" : "todavía no hay picks calificados"}</span></div>
           <div class="db-cell db-src"><span class="eyebrow"><span class="dot ${liveInfo.source === "api" ? "ok" : "part"}" style="display:inline-block;vertical-align:middle;margin-right:6px"></span>Actualización</span><span>${src}</span><span style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button type="button" class="btn" id="day-refresh" style="padding:2px 9px;font-size:12.5px">Actualizar ahora</button><a href="#historial" style="font-size:13px;font-weight:600">Historial de tickets →</a></span></div>
         </div>
