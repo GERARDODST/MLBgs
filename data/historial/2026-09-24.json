@@ -5703,7 +5703,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-25T01:05:38+00:00",
-  "status": "cerrado",
+  "status": "calificado",
   "pred": {
    "pHome": 0.6071,
    "projAway": 3.18,
@@ -5735,7 +5735,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 6,
      "ladder": [
@@ -5785,7 +5785,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.6% · Elo + abridor (5.7.7) 64.5% · λ + Binomial Negativa (5.3 · 5.7.5) 61.1%",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 2,
      "ladder": [
@@ -5833,7 +5833,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -5881,7 +5881,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -5929,7 +5929,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -5977,7 +5977,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -6003,7 +6003,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6051,7 +6051,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6099,7 +6099,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de LAA",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -6125,7 +6125,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de SEA",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -6136,7 +6136,67 @@
     }
    }
   ],
-  "result": null,
+  "result": {
+   "state": "Final",
+   "ar": 6,
+   "hr": 4,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Grayson Rodriguez",
+    "loser": "Bryan Woo",
+    "save": "Ryan Watson"
+   },
+   "rhe": {
+    "away": [
+     6,
+     9,
+     0
+    ],
+    "home": [
+     4,
+     7,
+     1
+    ]
+   },
+   "gradedAt": "2026-09-25T04:31:38+00:00"
+  },
   "decision": {
    "status": "apostar",
    "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios",
@@ -6189,7 +6249,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-25T01:05:38+00:00",
-  "status": "cerrado",
+  "status": "calificado",
   "pred": {
    "pHome": 0.4194,
    "projAway": 6.06,
@@ -6221,7 +6281,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 4,
      "ladder": [
@@ -6269,7 +6329,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 3,
      "ladder": [
@@ -6317,7 +6377,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 2,
      "ladder": [
@@ -6367,7 +6427,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 54.9% · Elo + abridor (5.7.7) 59.0% · λ + Binomial Negativa (5.3 · 5.7.5) 60.3%",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -6393,7 +6453,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6441,7 +6501,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6489,7 +6549,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -6515,7 +6575,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de HOU",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6563,7 +6623,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de ATH",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6611,7 +6671,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -6622,7 +6682,67 @@
     }
    }
   ],
-  "result": null,
+  "result": {
+   "state": "Final",
+   "ar": 7,
+   "hr": 5,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     1,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Miguel Ullola",
+    "loser": "Scott Blewett",
+    "save": "Bryan Abreu"
+   },
+   "rhe": {
+    "away": [
+     7,
+     10,
+     0
+    ],
+    "home": [
+     5,
+     11,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-25T04:31:38+00:00"
+  },
   "decision": {
    "status": "apostar",
    "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios",
@@ -6675,7 +6795,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-25T01:37:25+00:00",
-  "status": "cerrado",
+  "status": "calificado",
   "pred": {
    "pHome": 0.5451,
    "projAway": 4.25,
@@ -6707,7 +6827,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6755,7 +6875,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push",
-    "res": null,
+    "res": "push",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6803,7 +6923,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6851,7 +6971,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6899,7 +7019,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6947,7 +7067,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -6995,7 +7115,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de SD",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -7043,7 +7163,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de LAD",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -7091,7 +7211,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -7141,7 +7261,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 60.6% · Elo + abridor (5.7.7) 52.6% · λ + Binomial Negativa (5.3 · 5.7.5) 50.4%",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -7169,7 +7289,67 @@
     }
    }
   ],
-  "result": null,
+  "result": {
+   "state": "Final",
+   "ar": 4,
+   "hr": 2,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "decisions": {
+    "winner": "Yuki Matsui",
+    "loser": "Tyler Glasnow",
+    "save": "Mason Miller"
+   },
+   "rhe": {
+    "away": [
+     4,
+     6,
+     0
+    ],
+    "home": [
+     2,
+     7,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-25T05:03:43+00:00"
+  },
   "decision": {
    "status": "no apostar",
    "why": "confianza 42 (< 55): solo entra con un momio mejor (stake 1 desde -151)",
