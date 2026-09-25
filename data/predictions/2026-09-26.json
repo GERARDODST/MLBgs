@@ -3,13 +3,13 @@
 "pk": 824219,
 "date": "2026-09-26",
 "time": "2026-09-26T17:10:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "PIT",
 "home": "DET",
 "pHome": 0.5056,
 "methods": {
 "log5": 0.5626,
-"elo": 0.4905,
+"elo": 0.4904,
 "lambda": 0.4639
 },
 "confidence": "media",
@@ -40,7 +40,7 @@
 "pick": "PIT +1.5",
 "p": 0.6785,
 "line": null,
-"ic": 48.2978,
+"ic": 48.2981,
 "level": "Baja"
 },
 {
@@ -49,7 +49,7 @@
 "pick": "F5 Over 4.5",
 "p": 0.577,
 "line": 4.5,
-"ic": 42.1727,
+"ic": 42.1754,
 "level": "Baja"
 }
 ]
@@ -58,7 +58,7 @@
 "pk": 822759,
 "date": "2026-09-26",
 "time": "2026-09-26T19:07:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "CIN",
 "home": "TOR",
 "pHome": 0.5906,
@@ -70,7 +70,7 @@
 "confidence": "alta",
 "projAway": 3.864,
 "projHome": 4.9358,
-"total": 8.7997,
+"total": 8.7999,
 "f5Away": 2.105,
 "f5Home": 2.9648,
 "nrfi": 0.4838,
@@ -104,7 +104,7 @@
 "pick": "TOR",
 "p": 0.5906,
 "line": null,
-"ic": 63.2662,
+"ic": 63.266,
 "level": "Media"
 }
 ]
@@ -113,53 +113,53 @@
 "pk": 822678,
 "date": "2026-09-26",
 "time": "2026-09-26T20:05:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "NYM",
 "home": "WSH",
-"pHome": 0.4868,
+"pHome": 0.5206,
 "methods": {
 "log5": 0.5238,
-"elo": 0.4796,
-"lambda": 0.4569
+"elo": 0.5212,
+"lambda": 0.517
 },
-"confidence": "media",
-"projAway": 5.2649,
-"projHome": 4.7765,
-"total": 10.0414,
-"f5Away": 2.8472,
+"confidence": "alta",
+"projAway": 4.5867,
+"projHome": 4.7766,
+"total": 9.3633,
+"f5Away": 2.2554,
 "f5Home": 2.8059,
-"nrfi": 0.4517,
-"pOver85": 0.5833,
+"nrfi": 0.4906,
+"pOver85": 0.5246,
 "probables": {
 "away": "Jonah Tong",
-"home": "Jake Irvin"
+"home": "Connelly Early"
 },
-"light": "Rojo",
+"light": "Gris",
 "best": {
-"market": "Team total",
-"pick": "WSH Under 4.5",
-"p": 0.539,
+"market": "F5",
+"pick": "WSH F5",
+"p": 0.6147,
 "price": null,
 "edge": null,
-"light": "Rojo"
+"light": "Gris"
 },
 "topPicks": [
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "NYM +1.5",
-"p": 0.6743,
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "WSH F5",
+"p": 0.6147,
 "line": null,
-"ic": 50.0996,
-"level": "Baja"
+"ic": 59.1758,
+"level": "Media"
 },
 {
-"family": "NRFI",
-"market": "NRFI/YRFI",
-"pick": "YRFI",
-"p": 0.5483,
-"line": null,
-"ic": 43.661,
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Over 4.5",
+"p": 0.5702,
+"line": 4.5,
+"ic": 42.9673,
 "level": "Baja"
 }
 ]
@@ -168,7 +168,7 @@
 "pk": 823165,
 "date": "2026-09-26",
 "time": "2026-09-26T20:05:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "LAD",
 "home": "SF",
 "pHome": 0.3914,
@@ -180,11 +180,11 @@
 "confidence": "alta",
 "projAway": 4.352,
 "projHome": 3.3877,
-"total": 7.7397,
-"f5Away": 2.3057,
-"f5Home": 1.8391,
+"total": 7.7398,
+"f5Away": 2.3058,
+"f5Home": 1.8392,
 "nrfi": 0.5662,
-"pOver85": 0.3752,
+"pOver85": 0.3753,
 "probables": {
 "away": "Blake Snell",
 "home": "Matt Wilkinson"
@@ -223,7 +223,7 @@
 "pk": 823653,
 "date": "2026-09-26",
 "time": "2026-09-26T20:10:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "TEX",
 "home": "MIN",
 "pHome": 0.501,
@@ -233,9 +233,9 @@
 "lambda": 0.5144
 },
 "confidence": "alta",
-"projAway": 4.5726,
+"projAway": 4.5727,
 "projHome": 4.7355,
-"total": 9.3081,
+"total": 9.3082,
 "f5Away": 2.3993,
 "f5Home": 2.6947,
 "nrfi": 0.4897,
@@ -258,18 +258,18 @@
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Bailey Ober Over 3.5 K",
-"p": 0.5865,
+"p": 0.5864,
 "line": 3.5,
-"ic": 48.868,
+"ic": 48.8389,
 "level": "Baja"
 },
 {
 "family": "F5 total",
 "market": "Total primeras 5",
 "pick": "F5 Over 4.5",
-"p": 0.5758,
+"p": 0.5759,
 "line": 4.5,
-"ic": 45.7886,
+"ic": 45.7915,
 "level": "Baja"
 }
 ]
@@ -278,7 +278,7 @@
 "pk": 823813,
 "date": "2026-09-26",
 "time": "2026-09-26T20:10:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "ATL",
 "home": "MIA",
 "pHome": 0.4715,
@@ -290,7 +290,7 @@
 "confidence": "alta",
 "projAway": 4.5299,
 "projHome": 4.2291,
-"total": 8.759,
+"total": 8.7591,
 "f5Away": 2.4699,
 "f5Home": 2.5201,
 "nrfi": 0.4944,
@@ -315,7 +315,7 @@
 "pick": "ATL +1.5",
 "p": 0.673,
 "line": null,
-"ic": 48.6001,
+"ic": 48.6,
 "level": "Baja"
 },
 {
@@ -333,7 +333,7 @@
 "pk": 823733,
 "date": "2026-09-26",
 "time": "2026-09-26T23:10:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "STL",
 "home": "MIL",
 "pHome": 0.6263,
@@ -344,10 +344,10 @@
 },
 "confidence": "media",
 "projAway": 4.0437,
-"projHome": 4.7995,
-"total": 8.8432,
+"projHome": 4.7996,
+"total": 8.8433,
 "f5Away": 2.2534,
-"f5Home": 2.7028,
+"f5Home": 2.7029,
 "nrfi": 0.4934,
 "pOver85": 0.4777,
 "probables": {
@@ -370,7 +370,7 @@
 "pick": "MIL",
 "p": 0.6263,
 "line": null,
-"ic": 58.4845,
+"ic": 58.4854,
 "level": "Media"
 },
 {
@@ -379,7 +379,7 @@
 "pick": "MIL F5",
 "p": 0.5952,
 "line": null,
-"ic": 55.0704,
+"ic": 55.0718,
 "level": "Media"
 }
 ]
@@ -388,7 +388,7 @@
 "pk": 824057,
 "date": "2026-09-26",
 "time": "2026-09-26T23:10:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "CLE",
 "home": "KC",
 "pHome": 0.4866,
@@ -399,9 +399,9 @@
 },
 "confidence": "media",
 "projAway": 4.7787,
-"projHome": 4.2493,
-"total": 9.028,
-"f5Away": 2.4528,
+"projHome": 4.2494,
+"total": 9.0281,
+"f5Away": 2.4529,
 "f5Home": 2.5456,
 "nrfi": 0.4949,
 "pOver85": 0.4945,
@@ -425,7 +425,7 @@
 "pick": "CLE +1.5",
 "p": 0.6872,
 "line": null,
-"ic": 58.1053,
+"ic": 58.1054,
 "level": "Media"
 },
 {
@@ -443,7 +443,7 @@
 "pk": 824543,
 "date": "2026-09-26",
 "time": "2026-09-26T23:10:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "COL",
 "home": "CWS",
 "pHome": 0.6389,
@@ -455,10 +455,10 @@
 "confidence": "media",
 "projAway": 4.1351,
 "projHome": 5.2366,
-"total": 9.3716,
+"total": 9.3718,
 "f5Away": 2.298,
-"f5Home": 3.1077,
-"nrfi": 0.4609,
+"f5Home": 3.1078,
+"nrfi": 0.4608,
 "pOver85": 0.5254,
 "probables": {
 "away": "Jose Quintana",
@@ -489,7 +489,7 @@
 "pick": "CWS",
 "p": 0.6389,
 "line": null,
-"ic": 66.265,
+"ic": 66.2657,
 "level": "Media"
 }
 ]
@@ -498,7 +498,7 @@
 "pk": 823407,
 "date": "2026-09-26",
 "time": "2026-09-26T23:15:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "TB",
 "home": "PHI",
 "pHome": 0.5203,
@@ -509,10 +509,10 @@
 },
 "confidence": "media",
 "projAway": 4.4705,
-"projHome": 4.4099,
-"total": 8.8804,
+"projHome": 4.41,
+"total": 8.8805,
 "f5Away": 2.3368,
-"f5Home": 2.4862,
+"f5Home": 2.4863,
 "nrfi": 0.5102,
 "pOver85": 0.4811,
 "probables": {
@@ -535,7 +535,7 @@
 "pick": "TB +1.5",
 "p": 0.6518,
 "line": null,
-"ic": 44.1325,
+"ic": 44.1315,
 "level": "Baja"
 },
 {
@@ -553,7 +553,7 @@
 "pk": 824705,
 "date": "2026-09-26",
 "time": "2026-09-26T23:15:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "CHC",
 "home": "BOS",
 "pHome": 0.5209,
@@ -563,13 +563,13 @@
 "lambda": 0.4919
 },
 "confidence": "media",
-"projAway": 4.8602,
+"projAway": 4.8609,
 "projHome": 4.7767,
-"total": 9.6369,
-"f5Away": 2.6575,
-"f5Home": 2.8055,
-"nrfi": 0.4627,
-"pOver85": 0.5487,
+"total": 9.6377,
+"f5Away": 2.6582,
+"f5Home": 2.8056,
+"nrfi": 0.4626,
+"pOver85": 0.5488,
 "probables": {
 "away": "Por anunciar",
 "home": "Por anunciar"
@@ -588,18 +588,18 @@
 "family": "RL",
 "market": "Run Line",
 "pick": "CHC +1.5",
-"p": 0.6462,
+"p": 0.6463,
 "line": null,
-"ic": 40.7948,
+"ic": 40.8107,
 "level": "Baja"
 },
 {
 "family": "NRFI",
 "market": "NRFI/YRFI",
 "pick": "YRFI",
-"p": 0.5373,
+"p": 0.5374,
 "line": null,
-"ic": 39.3507,
+"ic": 39.3649,
 "level": "Muy baja"
 }
 ]
@@ -608,7 +608,7 @@
 "pk": 823245,
 "date": "2026-09-26",
 "time": "2026-09-27T00:40:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "AZ",
 "home": "SD",
 "pHome": 0.5372,
@@ -618,13 +618,13 @@
 "lambda": 0.5177
 },
 "confidence": "alta",
-"projAway": 4.0671,
+"projAway": 4.0672,
 "projHome": 4.2613,
-"total": 8.3284,
+"total": 8.3285,
 "f5Away": 2.3493,
 "f5Home": 2.5579,
 "nrfi": 0.4946,
-"pOver85": 0.4301,
+"pOver85": 0.4302,
 "probables": {
 "away": "Corbin Burnes",
 "home": "Por anunciar"
@@ -645,7 +645,7 @@
 "pick": "SD",
 "p": 0.5372,
 "line": null,
-"ic": 39.9733,
+"ic": 39.974,
 "level": "Muy baja"
 },
 {
@@ -663,7 +663,7 @@
 "pk": 823083,
 "date": "2026-09-26",
 "time": "2026-09-27T01:40:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "LAA",
 "home": "SEA",
 "pHome": 0.5702,
@@ -673,9 +673,9 @@
 "lambda": 0.545
 },
 "confidence": "media",
-"projAway": 3.5708,
-"projHome": 4.0283,
-"total": 7.5991,
+"projAway": 3.5709,
+"projHome": 4.0284,
+"total": 7.5992,
 "f5Away": 1.9264,
 "f5Home": 2.4263,
 "nrfi": 0.539,
@@ -700,7 +700,7 @@
 "pick": "SEA F5",
 "p": 0.614,
 "line": null,
-"ic": 59.2493,
+"ic": 59.2491,
 "level": "Media"
 },
 {
@@ -709,7 +709,7 @@
 "pick": "SEA",
 "p": 0.5702,
 "line": null,
-"ic": 46.9526,
+"ic": 46.9525,
 "level": "Baja"
 }
 ]
@@ -718,22 +718,22 @@
 "pk": 824949,
 "date": "2026-09-26",
 "time": "2026-09-27T01:40:00Z",
-"generatedAt": "2026-09-25T21:22:10+00:00",
+"generatedAt": "2026-09-25T21:38:11+00:00",
 "away": "HOU",
 "home": "ATH",
-"pHome": 0.4266,
+"pHome": 0.4265,
 "methods": {
 "log5": 0.4492,
 "elo": 0.4011,
 "lambda": 0.4294
 },
 "confidence": "alta",
-"projAway": 6.1651,
+"projAway": 6.1652,
 "projHome": 5.2953,
-"total": 11.4604,
-"f5Away": 3.471,
+"total": 11.4606,
+"f5Away": 3.4711,
 "f5Home": 3.1854,
-"nrfi": 0.3904,
+"nrfi": 0.3903,
 "pOver85": 0.6934,
 "probables": {
 "away": "Por anunciar",
@@ -743,7 +743,7 @@
 "best": {
 "market": "Total",
 "pick": "Over 9.5",
-"p": 0.612,
+"p": 0.6121,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -755,16 +755,16 @@
 "pick": "F5 Over 5.5",
 "p": 0.6533,
 "line": 5.5,
-"ic": 66.3312,
+"ic": 66.3344,
 "level": "Media"
 },
 {
 "family": "NRFI",
 "market": "NRFI/YRFI",
 "pick": "YRFI",
-"p": 0.6096,
+"p": 0.6097,
 "line": null,
-"ic": 60.4471,
+"ic": 60.4484,
 "level": "Media"
 }
 ]
