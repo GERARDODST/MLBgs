@@ -3,32 +3,32 @@
 "pk": 824703,
 "date": "2026-09-25",
 "time": "2026-09-25T17:05:00Z",
-"generatedAt": "2026-09-25T05:03:43+00:00",
+"generatedAt": "2026-09-25T15:12:35+00:00",
 "away": "CHC",
 "home": "BOS",
-"pHome": 0.4856,
+"pHome": 0.4878,
 "methods": {
 "log5": 0.5001,
 "elo": 0.4794,
-"lambda": 0.4774
+"lambda": 0.4838
 },
 "confidence": "alta",
-"projAway": 4.8364,
-"projHome": 4.5945,
-"total": 9.4309,
-"f5Away": 2.7361,
-"f5Home": 2.6686,
-"nrfi": 0.4577,
-"pOver85": 0.5306,
+"projAway": 4.7591,
+"projHome": 4.5887,
+"total": 9.3478,
+"f5Away": 2.6924,
+"f5Home": 2.6652,
+"nrfi": 0.4607,
+"pOver85": 0.5232,
 "probables": {
 "away": "Clay Holmes",
 "home": "Alec Gamboa"
 },
 "light": "Gris",
 "best": {
-"market": "Team total",
-"pick": "BOS Under 4.5",
-"p": 0.5623,
+"market": "Prop pitcher",
+"pick": "Alec Gamboa Under 2.5 K",
+"p": 0.6079,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -37,19 +37,19 @@
 {
 "family": "K",
 "market": "Prop de ponches",
-"pick": "Clay Holmes Over 3.5 K",
-"p": 0.5941,
-"line": 3.5,
-"ic": 50.0525,
+"pick": "Alec Gamboa Under 2.5 K",
+"p": 0.6079,
+"line": 2.5,
+"ic": 54.3226,
 "level": "Baja"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "CHC +1.5",
-"p": 0.6617,
+"p": 0.6567,
 "line": null,
-"ic": 46.3004,
+"ic": 46.0449,
 "level": "Baja"
 }
 ]
@@ -58,32 +58,32 @@
 "pk": 823491,
 "date": "2026-09-25",
 "time": "2026-09-25T20:05:00Z",
-"generatedAt": "2026-09-25T08:24:26+00:00",
+"generatedAt": "2026-09-25T15:12:35+00:00",
 "away": "BAL",
 "home": "NYY",
-"pHome": 0.6216,
+"pHome": 0.5923,
 "methods": {
 "log5": 0.632,
-"elo": 0.6588,
-"lambda": 0.5741
+"elo": 0.6163,
+"lambda": 0.5286
 },
-"confidence": "media",
+"confidence": "baja",
 "projAway": 3.805,
-"projHome": 4.5874,
-"total": 8.3924,
+"projHome": 4.1035,
+"total": 7.9085,
 "f5Away": 1.9769,
-"f5Home": 2.792,
-"nrfi": 0.5075,
-"pOver85": 0.4361,
+"f5Home": 2.3715,
+"nrfi": 0.5425,
+"pOver85": 0.391,
 "probables": {
-"away": "Brandon Young",
+"away": "Trevor Rogers",
 "home": "Por anunciar"
 },
 "light": "Gris",
 "best": {
-"market": "ML",
-"pick": "NYY",
-"p": 0.6216,
+"market": "F5",
+"pick": "NYY F5",
+"p": 0.5905,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -93,64 +93,9 @@
 "family": "F5",
 "market": "F5 Moneyline",
 "pick": "NYY F5",
-"p": 0.6727,
+"p": 0.5905,
 "line": null,
-"ic": 65.8595,
-"level": "Media"
-},
-{
-"family": "ML",
-"market": "Moneyline",
-"pick": "NYY",
-"p": 0.6216,
-"line": null,
-"ic": 57.5872,
-"level": "Media"
-}
-]
-},
-{
-"pk": 823489,
-"date": "2026-09-25",
-"time": "2026-09-25T20:10:00Z",
-"generatedAt": "2026-09-25T08:24:26+00:00",
-"away": "BAL",
-"home": "NYY",
-"pHome": 0.5367,
-"methods": {
-"log5": 0.632,
-"elo": 0.5142,
-"lambda": 0.4637
-},
-"confidence": "baja",
-"projAway": 4.4732,
-"projHome": 4.1035,
-"total": 8.5767,
-"f5Away": 2.5967,
-"f5Home": 2.3715,
-"nrfi": 0.4941,
-"pOver85": 0.4532,
-"probables": {
-"away": "Trevor Rogers",
-"home": "Brendan Beck"
-},
-"light": "Gris",
-"best": {
-"market": "Prop pitcher",
-"pick": "Trevor Rogers Under 6.5 K",
-"p": 0.5741,
-"price": null,
-"edge": null,
-"light": "Gris"
-},
-"topPicks": [
-{
-"family": "RL",
-"market": "Run Line",
-"pick": "BAL +1.5",
-"p": 0.6824,
-"line": null,
-"ic": 48.8263,
+"ic": 50.3893,
 "level": "Baja"
 },
 {
@@ -165,10 +110,65 @@
 ]
 },
 {
+"pk": 823489,
+"date": "2026-09-25",
+"time": "2026-09-25T20:10:00Z",
+"generatedAt": "2026-09-25T15:12:35+00:00",
+"away": "BAL",
+"home": "NYY",
+"pHome": 0.5672,
+"methods": {
+"log5": 0.632,
+"elo": 0.56,
+"lambda": 0.5095
+},
+"confidence": "baja",
+"projAway": 4.4732,
+"projHome": 4.5874,
+"total": 9.0606,
+"f5Away": 2.5967,
+"f5Home": 2.792,
+"nrfi": 0.4623,
+"pOver85": 0.4975,
+"probables": {
+"away": "Brandon Young",
+"home": "Brendan Beck"
+},
+"light": "Gris",
+"best": {
+"market": "Team total",
+"pick": "NYY Under 4.5",
+"p": 0.5632,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Brandon Young Over 4.5 K",
+"p": 0.5762,
+"line": 4.5,
+"ic": 46.5011,
+"level": "Baja"
+},
+{
+"family": "Team total",
+"market": "Team total NYY",
+"pick": "NYY Under 4.5",
+"p": 0.5632,
+"line": 4.5,
+"ic": 40.7852,
+"level": "Baja"
+}
+]
+},
+{
 "pk": 824706,
 "date": "2026-09-25",
-"time": "2026-09-25T22:05:00Z",
-"generatedAt": "2026-09-25T05:03:43+00:00",
+"time": "2026-09-25T21:35:00Z",
+"generatedAt": "2026-09-25T15:12:35+00:00",
 "away": "CHC",
 "home": "BOS",
 "pHome": 0.4833,
