@@ -4978,14 +4978,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-25T23:13:41+00:00",
-  "status": "abierto",
+  "registeredAt": "2026-09-25T23:45:30+00:00",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.4725,
    "projAway": 4.74,
    "projHome": 4.14,
    "total": 8.88,
-   "nrfi": 0.511,
+   "nrfi": 0.5109,
    "light": "Rojo",
    "confidence": "media",
    "probables": {
@@ -5249,7 +5249,7 @@
     "market": "Total completo",
     "pick": "Under 8.5",
     "line": 8.5,
-    "p": 0.5188,
+    "p": 0.5187,
     "fair": -108.0,
     "ic": 38.2,
     "level": "Muy baja",
@@ -5275,7 +5275,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5222,
+    "p": 0.5223,
     "fair": -109.0,
     "ic": 38.2,
     "level": "Muy baja",
@@ -5349,7 +5349,7 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.489,
+    "p": 0.4891,
     "fair": 104.0,
     "ic": 38.2,
     "level": "Muy baja",
@@ -5978,7 +5978,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-25T23:29:40+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5094,
    "projAway": 4.37,
@@ -7015,7 +7015,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-25T23:29:40+00:00",
+  "registeredAt": "2026-09-25T23:45:30+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4177,
@@ -7193,7 +7193,7 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 55.1% · Elo + abridor (5.7.7) 58.1% · λ + Binomial Negativa (5.3 · 5.7.5) 61.4%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 55.1% · Elo + abridor (5.7.7) 58.1% · λ + Binomial Negativa (5.3 · 5.7.5) 61.5%",
     "res": null,
     "stake": {
      "level": 0,
@@ -7211,7 +7211,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 5.5",
     "line": 5.5,
-    "p": 0.5753,
+    "p": 0.5752,
     "fair": -135.0,
     "ic": 48.4,
     "level": "Baja",
@@ -7429,7 +7429,7 @@
     "market": "Total completo",
     "pick": "Under 9.5",
     "line": 9.5,
-    "p": 0.5132,
+    "p": 0.5131,
     "fair": -105.0,
     "ic": 33.3,
     "level": "Muy baja",
@@ -7501,7 +7501,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-25T23:29:40+00:00",
+  "registeredAt": "2026-09-25T23:45:30+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5137,
@@ -7573,7 +7573,7 @@
     "market": "Run Line",
     "pick": "LAA +1.5",
     "line": null,
-    "p": 0.7094,
+    "p": 0.7093,
     "fair": -244.0,
     "ic": 58.1,
     "level": "Media",
@@ -7647,7 +7647,7 @@
     "market": "Prop de ponches",
     "pick": "Bryce Miller Under 5.5 K",
     "line": 5.5,
-    "p": 0.5763,
+    "p": 0.5764,
     "fair": -136.0,
     "ic": 49.9,
     "level": "Baja",
@@ -7697,7 +7697,7 @@
     "line": 3.5,
     "p": 0.5607,
     "fair": -128.0,
-    "ic": 44.9,
+    "ic": 44.8,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -7791,7 +7791,7 @@
     "market": "Prop de ponches",
     "pick": "Reid Detmers Under 6.5 K",
     "line": 6.5,
-    "p": 0.5248,
+    "p": 0.5249,
     "fair": -110.0,
     "ic": 39.3,
     "level": "Muy baja",
@@ -7839,7 +7839,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
     "line": 3.5,
-    "p": 0.5086,
+    "p": 0.5087,
     "fair": -104.0,
     "ic": 37.3,
     "level": "Muy baja",
@@ -7860,7 +7860,7 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": 129
+       "from": 128
       }
      ],
      "steps": [
@@ -7868,7 +7868,7 @@
       112,
       117,
       123,
-      129,
+      128,
       135,
       141,
       148,
@@ -7887,7 +7887,7 @@
     "market": "Team total SEA",
     "pick": "SEA Over 2.5",
     "line": 2.5,
-    "p": 0.5291,
+    "p": 0.5292,
     "fair": -112.0,
     "ic": 37.3,
     "level": "Muy baja",
@@ -8009,12 +8009,12 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-25T23:29:40+00:00",
+  "registeredAt": "2026-09-25T23:45:30+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.3555,
    "projAway": 4.56,
-   "projHome": 2.96,
+   "projHome": 2.97,
    "total": 7.52,
    "nrfi": 0.5723,
    "light": "Gris",
@@ -8204,7 +8204,7 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": 108
+       "from": 107
       }
      ],
      "steps": [
@@ -8212,7 +8212,7 @@
       -107,
       -102,
       103,
-      108,
+      107,
       113,
       118,
       123,
@@ -8327,7 +8327,7 @@
     "market": "Prop de ponches",
     "pick": "Tarik Skubal Over 7.5 K",
     "line": 7.5,
-    "p": 0.5369,
+    "p": 0.5368,
     "fair": -116.0,
     "ic": 39.3,
     "level": "Muy baja",
@@ -8360,7 +8360,7 @@
       118,
       123,
       129,
-      135,
+      136,
       null
      ],
      "block": null,
@@ -8401,7 +8401,7 @@
     "market": "Team total SF",
     "pick": "SF Under 2.5",
     "line": 2.5,
-    "p": 0.52,
+    "p": 0.5199,
     "fair": -108.0,
     "ic": 34.3,
     "level": "Muy baja",
@@ -8427,7 +8427,7 @@
      ],
      "steps": [
       109,
-      111,
+      112,
       117,
       122,
       128,
