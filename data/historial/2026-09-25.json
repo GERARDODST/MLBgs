@@ -25,14 +25,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-25T15:12:35+00:00",
+  "registeredAt": "2026-09-25T16:16:51+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4878,
-   "projAway": 4.76,
-   "projHome": 4.59,
-   "total": 9.35,
-   "nrfi": 0.4607,
+   "projAway": 4.52,
+   "projHome": 4.36,
+   "total": 8.88,
+   "nrfi": 0.4789,
    "light": "Gris",
    "confidence": "alta",
    "probables": {
@@ -97,9 +97,9 @@
     "market": "Run Line",
     "pick": "CHC +1.5",
     "line": null,
-    "p": 0.6567,
-    "fair": -191.0,
-    "ic": 46.0,
+    "p": 0.6609,
+    "fair": -195.0,
+    "ic": 47.3,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -113,23 +113,23 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -160
+       "from": -162
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -135
+       "from": -137
       }
      ],
      "steps": [
-      -160,
-      -156,
-      -148,
-      -141,
-      -135,
-      -128,
-      -122,
-      -117,
+      -162,
+      -158,
+      -151,
+      -144,
+      -137,
+      -130,
+      -124,
+      -119,
       null,
       null
      ],
@@ -141,19 +141,19 @@
    {
     "rank": 3,
     "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "YRFI",
-    "line": null,
-    "p": 0.5393,
-    "fair": -117.0,
-    "ic": 45.4,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 4.5",
+    "line": 4.5,
+    "p": 0.5751,
+    "fair": -135.0,
+    "ic": 45.7,
     "level": "Baja",
     "price": null,
     "methods": [
-     "λ calibrado a ceros reales (6.8)"
+     "λ + Poisson (5.4)"
     ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "how": "Poisson con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
      "level": 0,
@@ -161,23 +161,23 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 101
+       "from": -114
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 119
+       "from": 103
       }
      ],
      "steps": [
-      101,
-      104,
-      109,
-      114,
+      -114,
+      -111,
+      -106,
+      -101,
+      103,
+      108,
+      113,
       119,
-      125,
-      131,
-      137,
       null,
       null
      ],
@@ -188,54 +188,6 @@
    },
    {
     "rank": 4,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total BOS",
-    "pick": "BOS Under 4.5",
-    "line": 4.5,
-    "p": 0.563,
-    "fair": -129.0,
-    "ic": 42.2,
-    "level": "Baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de BOS",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -109
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 109
-      }
-     ],
-     "steps": [
-      -109,
-      -106,
-      -101,
-      104,
-      109,
-      114,
-      119,
-      125,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9796
-    }
-   },
-   {
-    "rank": 5,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -290,21 +242,21 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 5,
     "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Under 5.5",
-    "line": 5.5,
-    "p": 0.5535,
-    "fair": -124.0,
-    "ic": 39.4,
-    "level": "Muy baja",
+    "family": "Team total",
+    "market": "Team total CHC",
+    "pick": "CHC Over 3.5",
+    "line": 3.5,
+    "p": 0.5588,
+    "fair": -127.0,
+    "ic": 41.0,
+    "level": "Baja",
     "price": null,
     "methods": [
-     "λ + Poisson (5.4)"
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Poisson con λ de las primeras 5 entradas",
+    "how": "Binomial Negativa de carreras de CHC",
     "res": null,
     "stake": {
      "level": 0,
@@ -312,23 +264,71 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -105
+       "from": -107
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 113
+       "from": 110
       }
      ],
      "steps": [
-      -105,
-      -102,
-      103,
-      108,
-      113,
-      118,
-      124,
-      130,
+      -107,
+      -104,
+      101,
+      105,
+      110,
+      116,
+      121,
+      127,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9796
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.5211,
+    "fair": -109.0,
+    "ic": 40.1,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 109
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 128
+      }
+     ],
+     "steps": [
+      109,
+      112,
+      117,
+      122,
+      128,
+      135,
+      141,
+      148,
       null,
       null
      ],
@@ -389,18 +389,18 @@
     "rank": 8,
     "principal": false,
     "family": "Team total",
-    "market": "Team total CHC",
-    "pick": "CHC Under 4.5",
-    "line": 4.5,
-    "p": 0.5412,
-    "fair": -118.0,
-    "ic": 35.8,
+    "market": "Team total BOS",
+    "pick": "BOS Over 3.5",
+    "line": 3.5,
+    "p": 0.5374,
+    "fair": -116.0,
+    "ic": 34.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Binomial Negativa de carreras de CHC",
+    "how": "Binomial Negativa de carreras de BOS",
     "res": null,
     "stake": {
      "level": 0,
@@ -408,23 +408,23 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -100
+       "from": 102
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 118
+       "from": 120
       }
      ],
      "steps": [
-      -100,
-      103,
-      108,
-      113,
-      118,
-      124,
-      130,
-      136,
+      102,
+      105,
+      110,
+      115,
+      120,
+      126,
+      132,
+      139,
       null,
       null
      ],
@@ -438,10 +438,10 @@
     "principal": false,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Under 9.0",
-    "line": 9.0,
-    "p": 0.5225,
-    "fair": -109.0,
+    "pick": "Under 8.5",
+    "line": 8.5,
+    "p": 0.5189,
+    "fair": -108.0,
     "ic": 34.0,
     "level": "Muy baja",
     "price": null,
@@ -456,23 +456,23 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 108
+       "from": 110
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 128
+       "from": 130
       }
      ],
      "steps": [
-      108,
-      111,
-      116,
-      122,
-      128,
-      134,
-      140,
-      147,
+      110,
+      113,
+      118,
+      124,
+      130,
+      136,
+      142,
+      149,
       null,
       null
      ],
@@ -488,7 +488,7 @@
     "market": "F5 Moneyline",
     "pick": "CHC F5",
     "line": null,
-    "p": 0.5055,
+    "p": 0.5054,
     "fair": -102.0,
     "ic": 34.0,
     "level": "Muy baja",
@@ -518,7 +518,7 @@
       124,
       130,
       137,
-      143,
+      144,
       151,
       158,
       null,
