@@ -43,6 +43,12 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   stake, decisión única y resultado oficial. Un ticket se congela al primer lanzamiento.
 - Las predicciones del Pro-Lab se registran ANTES del primer lanzamiento y no se cambian después.
 - El Historial de la página solo muestra partidos terminados; hoy y mañana viven en la Jornada.
+- **Boletos** (`mlbgs/boleto.py`, repetido en la página): un boleto por partido con la decisión única
+  (manda el ticket del Pro-Lab). Momio decimal a 2 cifras (−137 → 1.73), pago = stake × decimal;
+  ganado: neto = pago − stake; perdido: −stake; push o anulado: se devuelve el stake. Momio: el que
+  registró el usuario; si no, el capturado antes del juego; si no, el de referencia (el más bajo con el
+  que valía ese stake). Lo que registra el usuario vive en la base `db` del artefacto, colección
+  `boletos` (doc = gamePk: odds, amount, played); leerla con `ArtifactData` para sacar las cuentas reales.
 
 ## Flujo de trabajo
 
@@ -52,4 +58,4 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 - El contenedor no llega a statsapi.mlb.com: el bundle fresco se genera con `dev-bundle.yml` (se
   dispara al cambiar su línea de comentario en la rama) y no se sube a `main`
   (`git rm --cached dev/raw_bundle.json.gz` antes del PR).
-- Al publicar el artefacto, conservar sus capacidades (`downloads`, `sample`).
+- Al publicar el artefacto, conservar sus capacidades (`downloads`, `sample`, `db`).

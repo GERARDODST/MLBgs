@@ -494,6 +494,48 @@
   .stake-amt { color: var(--verde); font-family: var(--display); font-size: 16px; letter-spacing: 0.02em; }
   .stake-no { color: var(--muted); font-weight: 700; }
   .tk-bet-l { font-size: 12.5px; color: var(--ink-2); }
+
+  /* boletos tipo casino: la decisión única de cada partido */
+  .slip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 14px; }
+  .slip { position: relative; display: flex; flex-direction: column; gap: 7px; background: var(--surface); border: 1px solid var(--border); border-top: 5px solid var(--sc, var(--gris)); border-radius: 10px 10px 4px 4px; padding: 12px 14px 12px; color: var(--ink); text-decoration: none; box-shadow: var(--shadow); overflow: hidden; }
+  a.slip:hover { border-color: var(--accent); border-top-color: var(--sc, var(--gris)); text-decoration: none; }
+  .slip.win { --sc: var(--verde); } .slip.lose { --sc: var(--rojo); } .slip.push { --sc: var(--amarillo); } .slip.pend { --sc: var(--accent); }
+  .slip.off { opacity: 0.62; }
+  .slip-h { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .slip-h b { color: var(--ink-2); }
+  .slip-game { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-family: var(--display); font-size: 20px; font-weight: 600; line-height: 1.1; }
+  .slip-game .st { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+  .slip-sel { display: flex; flex-direction: column; gap: 1px; background: var(--surface-2); border-radius: 7px; padding: 6px 9px; }
+  .slip-sel b { font-family: var(--display); font-size: 22px; font-weight: 700; letter-spacing: 0.01em; }
+  .slip-sel span { font-size: 12px; color: var(--muted); }
+  .slip-rows { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 3px 10px; margin: 0; font-size: 13px; }
+  .slip-rows dt { color: var(--muted); }
+  .slip-rows dd { margin: 0; text-align: right; font-family: var(--mono); font-size: 12.5px; }
+  .slip-rows dd b { font-family: var(--mono); color: var(--ink); }
+  .slip-src { display: inline-block; font-family: var(--sans); font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 4px; padding: 0 5px; margin-left: 4px; vertical-align: 1px; color: var(--gris); background: var(--gris-soft); }
+  .slip-src.mine { color: var(--verde); background: var(--verde-soft); }
+  .slip-cut { position: relative; border-top: 2px dashed var(--grid); margin: 3px -14px; }
+  .slip-cut::before, .slip-cut::after { content: ""; position: absolute; top: -8px; width: 14px; height: 14px; border-radius: 50%; background: var(--ground); border: 1px solid var(--border); }
+  .slip-cut::before { left: -8px; clip-path: inset(0 0 0 50%); }
+  .slip-cut::after { right: -8px; clip-path: inset(0 50% 0 0); }
+  .slip-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .slip-foot div { display: flex; flex-direction: column; gap: 1px; }
+  .slip-foot div + div { text-align: right; }
+  .slip-foot span { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .slip-foot b { font-family: var(--mono); font-size: 17px; }
+  .slip-sel { position: relative; }
+  .slip-sel.stamped { padding-right: 112px; }
+  .slip-h span { white-space: nowrap; }
+  .slip-sel .slip-stamp { position: absolute; right: 8px; top: 50%; transform: translateY(-50%) rotate(-8deg); font-family: var(--display); font-weight: 800; font-size: 17px; letter-spacing: 0.1em; color: var(--sc); border: 2.5px solid var(--sc); border-radius: 6px; padding: 0 7px; opacity: 0.85; background: var(--surface); pointer-events: none; }
+  .ledger-t td.won, .ledger-t td.lost { font-family: var(--mono); }
+  .slip-edit { display: flex; flex-direction: column; gap: 9px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
+  .slip-edit label { display: flex; flex-direction: column; gap: 3px; font-size: 13px; color: var(--ink-2); }
+  .slip-edit label.inline { flex-direction: row; align-items: center; gap: 7px; }
+  .slip-edit input[type="text"] { font: 600 15px var(--mono); padding: 6px 9px; border: 1px solid var(--border); border-radius: 7px; background: var(--ground); color: var(--ink); max-width: 200px; }
+  .slip-edit .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .slip-wrap { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 14px; align-items: start; }
+  @media (max-width: 700px) { .slip-wrap { grid-template-columns: minmax(0, 1fr); } }
+  details.tk-more > summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--ink-2); margin: 14px 0 10px; }
   .cart-list { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
   .cart-row { display: grid; grid-template-columns: 150px minmax(0, 1.3fr) minmax(0, 1.3fr) 104px minmax(0, 1fr); gap: 6px 12px; align-items: center; padding: 8px 12px; border-top: 1px solid var(--grid); font-size: 13.5px; }
   .cart-row:first-child { border-top: 0; }
@@ -3100,19 +3142,135 @@ ${brief}`;
     const pnl = !amt ? 0 : k === "ganado" ? amt * (b.o.dec - 1) : k === "perdido" ? -amt : 0;
     return { b, amt, level, pnl, est, key: k };
   }
-  function betTally(pairs) {
-    // una apuesta por pick y partido aunque aparezca en dos tickets (framework y Pro-Lab): manda el del Pro-Lab
-    const r = { n: 0, staked: 0, pnl: 0, captured: 0 }, seen = new Set();
-    pairs.slice().sort((a, b) => modelOrder(a[1].model) - modelOrder(b[1].model)).forEach(([p, t]) => {
-      const k = `${t.pk}|${p.pick}`;
-      if (seen.has(k)) return;
-      seen.add(k);
-      const x = betOf(p, t); if (!x) return; r.captured++; if (!x.amt || !["ganado", "perdido", "push"].includes(x.key)) return; r.n++; r.staked += x.amt; r.pnl += x.pnl;
+  const signedMoney = (x) => (x >= 0 ? "+" : "−") + money(Math.abs(x));
+
+  // ------------------------------------------------ boletos tipo casino (mismas cuentas que mlbgs/boleto.py)
+  // Boleto = la decisión única del partido. Momio: el que registraste; si no, el que capturaste antes del juego;
+  // si no, el de referencia (el más bajo con el que valía el stake recomendado). Pago = stake · decimal (2 cifras).
+  // Lo registrado se guarda en la base de datos del artefacto (claude.ai: cualquier dispositivo, Claude lo lee);
+  // fuera de claude.ai, en este navegador.
+  const money2 = (x) => "$" + Number(x).toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const signed2 = (x) => (x > 0 ? "+" : x < 0 ? "−" : "") + money2(Math.abs(x));
+  const dec2 = (am) => Math.round(amDec(am) * 100) / 100;
+  const REG_LOCAL = (() => { try { return JSON.parse(store.get("mlbgs-boletos") || "{}"); } catch { return {}; } })();
+  const REG_REMOTE = {};
+  let REG_DB = null, REG_STATE = window.claude && typeof window.claude.use === "function" ? "pending" : "local";
+  const regOf = (pk) => REG_REMOTE[String(pk)] || REG_LOCAL[String(pk)] || null;
+  const regRender = () => { if (HIST_RENDER) HIST_RENDER(); if (TK_RENDER) TK_RENDER(); };
+  if (REG_STATE === "pending") window.claude.use("db").then((db) => {
+    if (!db) { REG_STATE = "local"; regRender(); return; }
+    REG_DB = db; REG_STATE = "db";
+    db.collection("boletos").onSnapshot((snap) => {
+      Object.keys(REG_REMOTE).forEach((k) => delete REG_REMOTE[k]);
+      snap.docs.forEach((d) => { if (d.exists) REG_REMOTE[d.id] = d.data(); });
+      regRender();
+    }, () => { REG_DB = null; REG_STATE = "local"; regRender(); });
+  }).catch(() => { REG_STATE = "local"; });
+  async function saveReg(pk, body) {
+    const k = String(pk);
+    if (REG_DB) {
+      if (body) await REG_DB.doc("boletos/" + k).set(body); else await REG_DB.doc("boletos/" + k).delete();
+      return "db";
+    }
+    if (body) REG_LOCAL[k] = body; else delete REG_LOCAL[k];
+    store.set("mlbgs-boletos", JSON.stringify(REG_LOCAL));
+    regRender();
+    return "local";
+  }
+  const levelAt = (steps, dec) => { let l = 0; (steps || []).forEach((frm, i) => { if (frm != null && dec >= amDec(frm) - 1e-9) l = i + 1; }); return l; };
+  function refOdds(t, p) {
+    const d = t.decision, steps = p && p.stake && p.stake.steps, lv = d.level || 0;
+    if (steps && lv >= 1 && steps[lv - 1] != null) return steps[lv - 1];
+    const lad = (d.ladder || []).filter((x) => (x.level || 0) <= lv);
+    return lad.length ? lad[lad.length - 1].from : d.minPrice ?? null;
+  }
+  function slipOf(t) {
+    const d = t.decision;
+    if (!d || d.status !== "apostar" || !d.level) return null;
+    const p = t.picks.find((x) => x.pick === d.pick) || {};
+    const steps = p.stake && p.stake.steps;
+    const reg = regOf(t.pk) || {};
+    let raw = reg.odds, o = parseOdds(raw), source = o ? "tuyo" : "", level = d.level;
+    if (!o) { const b = bestOdds(t.pk, d.pick); if (b) { o = b.o; raw = b.raw; source = `capturado en ${b.book}`; } }
+    if (o) { if (steps) level = levelAt(steps, o.dec); }
+    else { const ref = refOdds(t, p); if (ref == null) return null; o = { am: ref, dec: amDec(ref) }; raw = null; source = "referencia"; }
+    const dec = raw != null && String(raw).includes(".") ? o.dec : dec2(o.am);   // decimal tal como lo escribiste; americano → 2 cifras
+    const amount = Number(reg.amount) > 0 ? Number(reg.amount) : amountOf(level);
+    const r = isNum(p.p) ? pickRes(p, t) : { key: "pendiente", cls: "pend", text: "Pendiente" };
+    const key = t.status === "anulado" ? "anulado" : r.key;
+    const payout = amount * dec;
+    const cobro = key === "ganado" ? payout : key === "perdido" ? 0 : key === "push" || key === "anulado" ? amount : null;
+    return { t, d, p, am: Math.round(o.am), dec, source, level, amount, payout, profit: payout - amount, key, r, cobro, neto: cobro == null ? null : cobro - amount, played: reg.played !== false, reg };
+  }
+  // un boleto por partido: si hay ticket del Pro-Lab y del framework, manda el del Pro-Lab
+  function slipsOf(ts) {
+    const seen = new Set(), out = [];
+    ts.slice().sort((a, b) => (a.date || "").localeCompare(b.date || "") || (a.time || "").localeCompare(b.time || "") || a.pk - b.pk || modelOrder(a.model) - modelOrder(b.model)).forEach((t) => {
+      if (seen.has(t.pk) || !t.decision) return;
+      seen.add(t.pk);
+      const s = slipOf(t);
+      if (s) out.push(s);
     });
-    r.roi = r.staked ? r.pnl / r.staked : null;
+    return out;
+  }
+  const SETTLED = ["ganado", "perdido", "push", "anulado"];
+  function ledgerOf(ss) {
+    const done = ss.filter((s) => s.played && SETTLED.includes(s.key));
+    const r = { n: done.length, pend: ss.filter((s) => s.played && !SETTLED.includes(s.key)).length, skip: ss.filter((s) => !s.played).length,
+      win: done.filter((s) => s.key === "ganado").length, lose: done.filter((s) => s.key === "perdido").length, push: done.filter((s) => s.key === "push" || s.key === "anulado").length,
+      staked: done.reduce((a, s) => a + s.amount, 0), cobro: done.reduce((a, s) => a + s.cobro, 0), mine: ss.filter((s) => s.source !== "referencia").length };
+    r.net = r.cobro - r.staked;
+    r.roi = r.staked ? r.net / r.staked : null;
     return r;
   }
-  const signedMoney = (x) => (x >= 0 ? "+" : "−") + money(Math.abs(x));
+  const SLIP_STAMP = { ganado: ["win", "Ganado"], perdido: ["lose", "Perdido"], push: ["push", "Push"], anulado: ["push", "Anulado"] };
+  function slipCard(s, asLink = true) {
+    const t = s.t, sc = scoreOf(t), st = SLIP_STAMP[s.key];
+    const cls = !s.played ? "off pend" : st ? st[0] : "pend";
+    const tag = asLink ? "a" : "div";
+    const src = s.source === "referencia" ? `<span class="slip-src" data-tip="No registraste momio: se usa el más bajo con el que valía este stake (escalera guardada antes del juego). Con un momio mejor se cobra más.">referencia</span>`
+      : `<span class="slip-src mine">${esc(s.source === "tuyo" ? "tu momio" : s.source)}</span>`;
+    const cobroTxt = !s.played ? "No jugado" : s.cobro == null ? "Pendiente" : money2(s.cobro) + (s.key === "push" || s.key === "anulado" ? " (devuelto)" : "");
+    const netoTxt = !s.played || s.neto == null ? "—" : signed2(s.neto);
+    return `<${tag} class="slip ${cls}"${asLink ? ` href="#t${t.pk}"` : ""}>
+      <div class="slip-h"><span>Boleto <b>#${esc(String(t.pk))}</b></span><span>${esc(fmtShort(t.date))} · ${esc(fmtTime(t.time))}</span></div>
+      <div class="slip-game"><span><b>${esc(t.away)}</b>${sc ? ` ${sc.a}` : ""} <span class="muted">@</span> <b>${esc(t.home)}</b>${sc ? ` ${sc.h}` : ""}</span><span class="st">${sc ? esc(sc.txt) : t.status === "cerrado" ? "En juego" : ""}</span></div>
+      <div class="slip-sel${!s.played || st ? " stamped" : ""}"><b>${esc(s.d.pick)}</b><span>${esc(s.d.market || "")} · ${esc(t.model === "framework" ? "Framework v2" : t.modelName)}</span>${!s.played ? `<span class="slip-stamp">No jugado</span>` : st ? `<span class="slip-stamp">${esc(st[1])}</span>` : ""}</div>
+      <dl class="slip-rows">
+        <dt>Momio</dt><dd><b>${odds(s.am)}</b> = <b>${s.dec.toFixed(2)}</b> ${src}</dd>
+        <dt>Stake</dt><dd>${s.level ? `${s.level} · ` : ""}<b>${money2(s.amount)}</b></dd>
+        <dt>Pago potencial</dt><dd><b>${money2(s.payout)}</b></dd>
+        <dt>Ganancia si gana</dt><dd>${signed2(s.profit)}</dd>
+      </dl>
+      <div class="slip-cut" aria-hidden="true"></div>
+      <div class="slip-foot"><div><span>Cobro</span><b>${esc(cobroTxt)}</b></div><div><span>Neto</span><b class="${s.played && s.neto > 0 ? "won" : s.played && s.neto < 0 ? "lost" : ""}">${esc(netoTxt)}</b></div></div>
+    </${tag}>`;
+  }
+  function boletosCsv(ss) {
+    const head = ["fecha", "hora", "boleto", "partido", "modelo", "pick", "mercado", "momio_americano", "momio_decimal", "fuente_momio", "nivel", "stake", "pago_potencial", "resultado", "cobro", "neto", "jugado"];
+    const rows = ss.map((s) => [s.t.date, fmtTime(s.t.time), s.t.pk, `${s.t.away} @ ${s.t.home}`, s.t.modelName, s.d.pick, s.d.market, s.am, s.dec.toFixed(2), s.source, s.level, s.amount.toFixed(2), s.payout.toFixed(2), s.key, s.cobro == null ? "" : s.cobro.toFixed(2), s.neto == null ? "" : s.neto.toFixed(2), s.played ? "sí" : "no"]);
+    return [head, ...rows].map((r) => r.map((v) => `"${String(v ?? "").replace(/"/g, '""')}"`).join(",")).join("\n");
+  }
+  function saveCsv(btn, csv, filename) {
+    csv = "﻿" + csv;
+    if (DL_STATE !== "browser") {
+      if (!DL) { btn.textContent = "Descarga no disponible aquí"; btn.disabled = true; return; }
+      DL.save({ filename, data: csv }).catch((err) => {
+        const code = err && err.code;
+        if (code === "declined") return;
+        btn.textContent = code === "rate_limited" ? "Espera un momento e intenta de nuevo" : "Descarga no disponible aquí";
+        if (code !== "rate_limited") btn.disabled = true;
+      });
+      return;
+    }
+    try {
+      const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+      const a = document.createElement("a");
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+    } catch { btn.textContent = "Descarga no disponible aquí"; }
+  }
 
   function tally(list) {
     const r = { n: 0, win: 0, lose: 0, push: 0, pend: 0, pSum: 0, pN: 0 };
@@ -3205,7 +3363,10 @@ ${brief}`;
       pairs(list).forEach(([p, t]) => (fams[p.family] = fams[p.family] || []).push([p, t]));
       const dates = [...new Set(list.map((t) => t.date))].sort().reverse();
       const shown = dates.slice(0, days);
-      const bet = betTally(pairs(list, (p) => p.principal));
+      const ss = slipsOf(list), L = ledgerOf(ss);
+      const slipDays = [...new Set(ss.map((x) => x.t.date))].sort();
+      let acc = 0;
+      const dayRows = slipDays.map((d) => { const r = ledgerOf(ss.filter((x) => x.t.date === d)); acc += r.net; return { d, r, acc }; }).reverse();
       // decisión única por partido (manda la del Pro-Lab si el partido tiene los dos tickets)
       const dSeen = new Set(), dec = { win: 0, lose: 0, push: 0, n: 0, lv: 0, skip: 0 };
       list.slice().sort((x, y) => modelOrder(x.model) - modelOrder(y.model)).forEach((t) => {
@@ -3225,8 +3386,19 @@ ${brief}`;
           <div class="tile"><span class="eyebrow">Acierto principales</span><span class="big">${main.hit != null ? pc(main.hit) : "—"}</span><span class="sub">${main.exp != null ? `el modelo esperaba ${pc(main.exp)}` : "sin picks calificados"}</span></div>
           <div class="tile"><span class="eyebrow">Todos los picks</span><span class="big">${recTxt(every)}</span><span class="sub">${every.hit != null ? `acierto ${pc(every.hit)} · esperado ${pc(every.exp)}` : "sin picks calificados"}</span></div>
           <div class="tile"><span class="eyebrow">Decisión única</span><span class="big">${dec.n ? recTxt(dec) : "—"}</span><span class="sub">${dec.n ? `${dec.n} apuesta${dec.n === 1 ? "" : "s"} · stake medio ${f(dec.lv / dec.n, 1)}${dec.win + dec.lose ? ` · acierto ${pc(dec.win / (dec.win + dec.lose))}` : ""}${dec.skip ? ` · ${dec.skip} sin apuesta` : ""}` : "las decisiones se registran desde el 24-sep"}</span></div>
-          <div class="tile"><span class="eyebrow">Stake con tus momios</span><span class="big ${bet.pnl > 0 ? "won" : bet.pnl < 0 ? "lost" : ""}">${bet.n ? signedMoney(bet.pnl) : "—"}</span><span class="sub">${bet.n ? `${bet.n} apuesta${bet.n === 1 ? "" : "s"} · ${money(bet.staked)} apostado · ROI ${pc(bet.roi, 1)}` : bet.captured ? "ningún pick con momio capturado alcanzó stake" : "captura en cada ticket el momio que te dieron para medir la ganancia real"}</span></div>
+          <div class="tile"><span class="eyebrow">Neto de los boletos</span><span class="big ${L.net > 0 ? "won" : L.net < 0 ? "lost" : ""}">${L.n ? signed2(L.net) : "—"}</span><span class="sub">${L.n ? `${money2(L.staked)} apostado · ${money2(L.cobro)} cobrado · ROI ${pc(L.roi, 1)}` : "todavía no hay boletos calificados"}</span></div>
         </div>
+        <section class="block" id="cartera"><h2>Cartera de boletos <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">un boleto por partido: la decisión única con su stake</small></h2>
+          <div class="tiles t4">
+            <div class="tile"><span class="eyebrow">Boletos</span><span class="big">${L.n}</span><span class="sub">${L.win} ganados · ${L.lose} perdidos · ${L.push} push${L.pend ? ` · ${L.pend} en juego` : ""}${L.skip ? ` · ${L.skip} no jugados` : ""}</span></div>
+            <div class="tile"><span class="eyebrow">Apostado</span><span class="big">${money2(L.staked)}</span><span class="sub">suma de los stakes jugados</span></div>
+            <div class="tile"><span class="eyebrow">Cobrado</span><span class="big">${money2(L.cobro)}</span><span class="sub">pagos de los ganados + stakes devueltos (push)</span></div>
+            <div class="tile"><span class="eyebrow">Neto · ROI</span><span class="big ${L.net > 0 ? "won" : L.net < 0 ? "lost" : ""}">${signed2(L.net)}</span><span class="sub">ROI ${pc(L.roi, 1)} · ${L.mine} de ${ss.length} con tu momio</span></div>
+          </div>
+          ${dayRows.length ? table(["Día", "~Boletos", "~G–P–Push", "~Apostado", "~Cobrado", "~Neto", "~Acumulado"], dayRows.map((x) => tr([td(`<b>${esc(dayLabel(x.d))}</b> <span class="muted">${esc(fmtShort(x.d))}</span>`), tdn(x.r.n + (x.r.pend ? ` + ${x.r.pend}` : "")), tdn(recTxt(x.r)), tdn(money2(x.r.staked)), tdn(money2(x.r.cobro)), td(signed2(x.r.net), `r num ${x.r.net > 0 ? "won" : x.r.net < 0 ? "lost" : ""}`), td(signed2(x.acc), `r num ${x.acc > 0 ? "won" : x.acc < 0 ? "lost" : ""}`)])), { cls: "ledger-t" }) : ""}
+          <p class="note">Momio decimal = 1 + 100/|m| si el momio americano es negativo · 1 + m/100 si es positivo (a 2 cifras: −137 → 1.73). <b>Pago</b> = stake × decimal; <b>ganado</b>: cobras el pago (neto = pago − stake); <b>perdido</b>: neto = −stake; <b>push</b> o partido anulado: te devuelven el stake (neto $0). Sin momio registrado se usa el de <b>referencia</b>: el más bajo con el que valía ese stake según la escalera guardada antes del juego, así que la ganancia real con tu momio es igual o mayor. Abre un boleto para registrar el momio y el monto que realmente jugaste${REG_STATE === "db" ? " (se guarda en la base de datos de esta página y se ve en cualquier dispositivo)" : REG_STATE === "local" ? " (se guarda en este navegador)" : ""}.</p>
+          ${ss.length && DL_STATE !== "none" ? `<button type="button" class="btn" id="slip-csv">Descargar boletos (CSV)</button>` : ""}
+        </section>
         <section class="block"><h2>Por modelo</h2>
         ${table(["Modelo", "Tipo", "~Tickets", "~Principales G–P", "~Acierto", "~Esperado", "~Todos G–P", "~Brier P(local)", "~Factor de stake H"], byModel.map((x) => tr([
           td(`<span class="mdot m-${esc(x.m)}"></span><b>${esc(HI.models[x.m].name)}</b>`), td(esc(HI.models[x.m].kind)), tdn(x.ts.length), tdn(recTxt(x.main)), tdn(x.main.hit != null ? pc(x.main.hit) : "—"), tdn(x.main.exp != null ? pc(x.main.exp) : "—"), tdn(recTxt(x.every)),
@@ -3242,8 +3414,10 @@ ${brief}`;
           ${DL_STATE !== "none" ? `<button type="button" class="btn" id="hist-csv">Descargar CSV</button>` : ""}
         </div>
         ${shown.length ? shown.map((d) => { const ts = list.filter((t) => t.date === d).sort((a, b) => (a.time || "").localeCompare(b.time || "") || a.pk - b.pk || modelOrder(a.model) - modelOrder(b.model)); const r = tally(pairs(ts, (p) => p.principal));
-          const bd = betTally(pairs(ts, (p) => p.principal));
-          return `<section class="day"><h2>${esc(dayLabel(d))} <small>${esc(fmtDateLong(d))} · ${ts.length} ticket${ts.length === 1 ? "" : "s"} · principales ${recTxt(r)}${r.pend ? ` · ${r.pend} por calificar` : ""}${bd.n ? ` · stake ${signedMoney(bd.pnl)}` : ""}</small></h2><div class="tk-grid">${ts.map((t) => ticketCard(t, scope)).join("")}</div></section>`; }).join("")
+          const ds = ss.filter((x) => x.t.date === d), dl = ledgerOf(ds), sinApuesta = new Set(ts.map((t) => t.pk)).size - ds.length;
+          return `<section class="day"><h2>${esc(dayLabel(d))} <small>${esc(fmtDateLong(d))} · ${ds.length} boleto${ds.length === 1 ? "" : "s"}${dl.n ? ` · apostado ${money2(dl.staked)} · cobrado ${money2(dl.cobro)} · neto <b class="${dl.net > 0 ? "won" : dl.net < 0 ? "lost" : ""}">${signed2(dl.net)}</b>` : ""}${sinApuesta > 0 ? ` · ${sinApuesta} partido${sinApuesta === 1 ? "" : "s"} sin apuesta` : ""}</small></h2>
+            ${ds.length ? `<div class="slip-grid">${ds.map((x) => slipCard(x)).join("")}</div>` : `<p class="note muted">Sin boletos: ese día ninguna decisión fue «apostar» (o los tickets son anteriores a la decisión única).</p>`}
+            <details class="tk-more"${ds.length ? "" : " open"}><summary>Tickets por modelo (${ts.length}) · picks principales ${recTxt(r)}${r.pend ? ` · ${r.pend} por calificar` : ""}</summary><div class="tk-grid">${ts.map((t) => ticketCard(t, scope)).join("")}</div></details></section>`; }).join("")
           : `<div class="empty">${all.length ? "No hay tickets con ese filtro." : "Todavía no termina ningún partido con ticket."}</div>`}
         ${dates.length > shown.length ? `<button type="button" class="btn" id="hist-more">Ver ${Math.min(7, dates.length - shown.length)} días más</button>` : ""}
         ${footer()}`;
@@ -3255,29 +3429,51 @@ ${brief}`;
       const more = document.getElementById("hist-more");
       if (more) more.addEventListener("click", () => { days += 7; render(); });
       const csvBtn = document.getElementById("hist-csv");
-      if (csvBtn) csvBtn.addEventListener("click", () => {
-        const csv = "\ufeff" + csvOf(list, scope), filename = `mlbgs-historial-${TODAY}.csv`;
-        if (DL_STATE !== "browser") {
-          if (!DL) { csvBtn.textContent = "Descarga no disponible aquí"; csvBtn.disabled = true; return; }
-          DL.save({ filename, data: csv }).catch((err) => {
-            const code = err && err.code;
-            if (code === "declined") return;
-            csvBtn.textContent = code === "rate_limited" ? "Espera un momento e intenta de nuevo" : "Descarga no disponible aquí";
-            if (code !== "rate_limited") csvBtn.disabled = true;
-          });
-          return;
-        }
-        try {
-          const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
-          const a = document.createElement("a");
-          a.href = url; a.download = filename;
-          document.body.appendChild(a); a.click(); a.remove();
-          setTimeout(() => URL.revokeObjectURL(url), 4000);
-        } catch { csvBtn.textContent = "Descarga no disponible aquí"; }
-      });
+      if (csvBtn) csvBtn.addEventListener("click", () => saveCsv(csvBtn, csvOf(list, scope), `mlbgs-historial-${TODAY}.csv`));
+      const slipBtn = document.getElementById("slip-csv");
+      if (slipBtn) slipBtn.addEventListener("click", () => saveCsv(slipBtn, boletosCsv(ss), `mlbgs-boletos-${TODAY}.csv`));
     };
     render();
     HIST_RENDER = () => { const y = window.scrollY; render(); window.scrollTo(0, y); };
+  }
+
+  function boletoBlock(t) {
+    const d = t && t.decision;
+    if (!d) return "";
+    if (d.status !== "apostar" || !d.level) return `<section class="block" id="boleto"><h2>Boleto</h2><p class="note">Sin boleto: la decisión de este partido fue <b>${d.status === "esperar" ? "esperar" : "no apostar"}</b>${d.pick ? ` (el mejor candidato era ${esc(d.pick)})` : ""}.</p></section>`;
+    const s = slipOf(t);
+    if (!s) return "";
+    const reg = s.reg || {}, ref = refOdds(t, s.p);
+    const where = REG_STATE === "db" ? "Se guarda en la base de datos de esta página: lo ves en cualquier dispositivo y Claude lo puede leer para sacar las cuentas." : REG_STATE === "pending" ? "Conectando con la base de datos de la página…" : "Se guarda en este navegador.";
+    return `<section class="block" id="boleto"><h2>Boleto <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">decisión única · ${esc(d.source || t.modelName)}</small></h2>
+      <div class="slip-wrap">${slipCard(s, false)}
+      <form class="slip-edit" autocomplete="off">
+        <b>¿Lo jugaste? Registra tu boleto real</b>
+        <p class="note muted" style="margin:0">Sin datos, el boleto usa el momio de referencia (${odds(ref)}, el más bajo con el que valía el stake ${d.level}) y el stake recomendado (${money(amountOf(d.level))}). Con tu momio, el stake sale de la escalera guardada antes del juego (a mejor momio, más stake); si apostaste otro monto, escríbelo.</p>
+        <div class="row"><label>Momio que te dieron<input type="text" name="odds" inputmode="decimal" placeholder="−137 o 1.73" value="${esc(reg.odds || "")}"></label>
+          <label>Monto apostado<input type="text" name="amount" inputmode="decimal" placeholder="${esc(String(amountOf(s.level)))}" value="${esc(reg.amount || "")}"></label></div>
+        <label class="inline"><input type="checkbox" name="skip"${reg.played === false ? " checked" : ""}> No lo jugué (no cuenta en la cartera)</label>
+        <div class="row"><button type="submit" class="btn">Guardar boleto</button>${Object.keys(reg).length ? `<button type="button" class="btn" data-clear>Quitar lo registrado</button>` : ""}<span class="slip-msg muted" role="status"></span></div>
+        <p class="note muted" style="margin:0">${where}</p>
+      </form></div></section>`;
+  }
+  function bindBoleto(t) {
+    const form = app.querySelector(".slip-edit");
+    if (!form || !t) return;
+    const msg = form.querySelector(".slip-msg"), el = form.elements;
+    const fail = (err) => { msg.textContent = err && err.code === "invalid_argument" ? "No tienes permiso para guardar en esta página" : "No se pudo guardar; intenta de nuevo"; };
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const oddsRaw = el.odds.value.trim(), amtRaw = el.amount.value.trim().replace(/[$,\s]/g, "");
+      if (oddsRaw && !parseOdds(oddsRaw)) { msg.textContent = "No entiendo ese momio: escribe −137, +120 o 1.73"; return; }
+      const amt = amtRaw ? Number(amtRaw) : null;
+      if (amtRaw && !(amt > 0)) { msg.textContent = "El monto debe ser un número mayor a 0"; return; }
+      msg.textContent = "Guardando…";
+      try { await saveReg(t.pk, { pk: t.pk, date: t.date, pick: t.decision.pick, odds: oddsRaw ? oddsRaw.replace("−", "-") : null, amount: amt, played: !el.skip.checked, at: new Date().toISOString() }); msg.textContent = "Guardado"; }
+      catch (err) { fail(err); }
+    });
+    const clr = form.querySelector("[data-clear]");
+    if (clr) clr.addEventListener("click", async () => { msg.textContent = "Quitando…"; try { await saveReg(t.pk, null); msg.textContent = "Listo"; } catch (err) { fail(err); } });
   }
 
   function viewTicket(pk) {
@@ -3330,9 +3526,11 @@ ${brief}`;
         <h1>${esc(t0.awayName || t0.away)} ${sc ? `<span class="num">${sc.a}–${sc.h}</span>` : "@"} ${esc(t0.homeName || t0.home)}</h1>
         <p class="lede">${res ? `Final. Los picks se calificaron con el marcador oficial.` : sc ? `${esc(sc.txt)}: los picks se evalúan con el marcador en vivo y se califican al terminar.` : t0.status === "anulado" ? "Partido pospuesto o cancelado: los picks no cuentan." : "Por jugar: el ticket del framework se sigue actualizando hasta el primer lanzamiento; en ese momento se congela."} ${list.length > 1 ? `Este partido tiene ${list.length} tickets: uno por modelo.` : ""}</p></div>
       ${ls || dec ? `<section class="block"><h2>Resultado</h2>${ls}${dec}</section>` : ""}
+      ${boletoBlock(list.find((t) => t.decision))}
       ${list.map(block).join("")}
       <p style="display:flex;gap:16px;flex-wrap:wrap;font-weight:600">${lab ? `<a href="#lab${pk}">Ver el modelo del Pro-Lab (${esc(LAB_INFO[labKey(lab)].name.join(""))}) →</a>` : ""}${BY_PK[String(pk)] ? `<a href="#g${pk}">Ver el análisis completo del partido →</a>` : ""}</p>
       ${footer()}`;
+    bindBoleto(list.find((t) => t.decision && t.decision.status === "apostar"));
   }
 
   // ---------------------------------------------------------------- vista: metodología
@@ -3350,7 +3548,7 @@ ${brief}`;
         <p class="note">Cada partido termina en <b>una sola opción</b>: un pick con su stake, «esperar» o «no apostar». Se llega a ella en este orden:</p>
         <ol class="clean">
           <li><b>Framework completo</b> (secciones 1-10): contexto y motivación, forma, abridores, bullpen y fatiga, modelo de carreras y triangulación, totales, parque/clima/umpire, mercado, contradicciones y gate de datos. De ahí salen los picks con su índice de confianza (IC).</li>
-          <li><b>Modelo de apoyo del Pro-Lab</b> (DIAMANTE-24, PRISMA o KRONOS) cuando el partido lo tiene: sus probabilidades entran a los picks y, si ve el pick peor que el framework, el stake baja.</li>
+          <li><b>Modelo de apoyo del Pro-Lab</b> (DIAMANTE-24, PRISMA, KRONOS o EIGEN) cuando el partido lo tiene: sus probabilidades entran a los picks y, si ve el pick peor que el framework, el stake baja.</li>
           <li><b>Cuotas</b>: el IC se recalcula con el momio que te dan; sin momio, cada pick dice desde qué momio conviene.</li>
           <li><b>Decisión</b>: el pick con más confianza que pasa guion, contradicciones y datos obligatorios. Si el mejor solo espera un dato (lineup, umpire…), «esperar»; si ninguno alcanza, «no apostar».</li>
           <li><b>Conclusión de Claude</b> (opcional, en la página de claude.ai): Claude recibe el expediente completo del partido y devuelve la decisión final con su porqué; nunca puede subir el stake por encima de lo que permiten las reglas.</li>
@@ -3361,6 +3559,7 @@ ${brief}`;
           <li><b>H</b> = historial del modelo: acierto real contra esperado de sus picks principales calificados, encogido n/(n+60), entre 0.85 y 1.05.</li>
           <li>Tope sugerido de ${money(SK.dayCap)} por día (la cartera avisa si se pasa); en el boleto, ${money(SK.gameCap)} por partido.</li>
           <li>La decisión, su stake y la escalera quedan guardados en el ticket antes del juego; el Historial mide cómo salieron.</li>
+          <li><b>Boleto</b> de cada decisión: momio decimal = 1 + 100/|m| (americano negativo) o 1 + m/100 (positivo), a 2 cifras · pago = stake × decimal · ganado: neto = pago − stake · perdido: neto = −stake · push o anulado: se devuelve el stake (neto $0). Sin momio registrado se usa el de referencia: el más bajo con el que valía ese stake.</li>
         </ul></div></section>
       <section class="block"><h2>Fuentes</h2>${table(["Dato", "Fuente", "Uso"], [
         ["Calendario, abridores probables, lineups, umpires, clima", "MLB Stats API · /schedule", "Secciones 1, 3, 6"],
