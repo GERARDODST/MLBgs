@@ -58,32 +58,87 @@
 "pk": 823491,
 "date": "2026-09-25",
 "time": "2026-09-25T20:05:00Z",
-"generatedAt": "2026-09-25T15:12:35+00:00",
+"generatedAt": "2026-09-25T16:48:44+00:00",
 "away": "BAL",
 "home": "NYY",
-"pHome": 0.5923,
+"pHome": 0.5375,
 "methods": {
 "log5": 0.632,
-"elo": 0.6163,
-"lambda": 0.5286
+"elo": 0.5142,
+"lambda": 0.4662
 },
 "confidence": "baja",
-"projAway": 3.805,
-"projHome": 4.1035,
-"total": 7.9085,
-"f5Away": 1.9769,
-"f5Home": 2.3715,
-"nrfi": 0.5425,
-"pOver85": 0.391,
+"projAway": 4.4732,
+"projHome": 4.1294,
+"total": 8.6026,
+"f5Away": 2.5967,
+"f5Home": 2.3865,
+"nrfi": 0.493,
+"pOver85": 0.4556,
 "probables": {
 "away": "Trevor Rogers",
+"home": "Brendan Beck"
+},
+"light": "Rojo",
+"best": {
+"market": "F5",
+"pick": "BAL F5",
+"p": 0.5447,
+"price": null,
+"edge": null,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "BAL +1.5",
+"p": 0.6799,
+"line": null,
+"ic": 48.104,
+"level": "Baja"
+},
+{
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Over 4.5",
+"p": 0.5566,
+"line": 4.5,
+"ic": 38.936,
+"level": "Muy baja"
+}
+]
+},
+{
+"pk": 823489,
+"date": "2026-09-25",
+"time": "2026-09-25T20:10:00Z",
+"generatedAt": "2026-09-25T16:48:44+00:00",
+"away": "BAL",
+"home": "NYY",
+"pHome": 0.6216,
+"methods": {
+"log5": 0.632,
+"elo": 0.6588,
+"lambda": 0.5741
+},
+"confidence": "media",
+"projAway": 3.805,
+"projHome": 4.5874,
+"total": 8.3924,
+"f5Away": 1.9769,
+"f5Home": 2.792,
+"nrfi": 0.5075,
+"pOver85": 0.4361,
+"probables": {
+"away": "Brandon Young",
 "home": "Por anunciar"
 },
 "light": "Gris",
 "best": {
-"market": "F5",
-"pick": "NYY F5",
-"p": 0.5905,
+"market": "ML",
+"pick": "NYY",
+"p": 0.6216,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -93,74 +148,19 @@
 "family": "F5",
 "market": "F5 Moneyline",
 "pick": "NYY F5",
-"p": 0.5905,
+"p": 0.6727,
 "line": null,
-"ic": 50.3893,
-"level": "Baja"
+"ic": 65.8595,
+"level": "Media"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Trevor Rogers Under 6.5 K",
-"p": 0.5741,
-"line": 6.5,
-"ic": 46.0388,
-"level": "Baja"
-}
-]
-},
-{
-"pk": 823489,
-"date": "2026-09-25",
-"time": "2026-09-25T20:10:00Z",
-"generatedAt": "2026-09-25T15:12:35+00:00",
-"away": "BAL",
-"home": "NYY",
-"pHome": 0.5672,
-"methods": {
-"log5": 0.632,
-"elo": 0.56,
-"lambda": 0.5095
-},
-"confidence": "baja",
-"projAway": 4.4732,
-"projHome": 4.5874,
-"total": 9.0606,
-"f5Away": 2.5967,
-"f5Home": 2.792,
-"nrfi": 0.4623,
-"pOver85": 0.4975,
-"probables": {
-"away": "Brandon Young",
-"home": "Brendan Beck"
-},
-"light": "Gris",
-"best": {
-"market": "Team total",
-"pick": "NYY Under 4.5",
-"p": 0.5632,
-"price": null,
-"edge": null,
-"light": "Gris"
-},
-"topPicks": [
-{
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Brandon Young Over 4.5 K",
-"p": 0.5762,
-"line": 4.5,
-"ic": 46.5011,
-"level": "Baja"
-},
-{
-"family": "Team total",
-"market": "Team total NYY",
-"pick": "NYY Under 4.5",
-"p": 0.5632,
-"line": 4.5,
-"ic": 40.7852,
-"level": "Baja"
+"family": "ML",
+"market": "Moneyline",
+"pick": "NYY",
+"p": 0.6216,
+"line": null,
+"ic": 57.5872,
+"level": "Media"
 }
 ]
 },
