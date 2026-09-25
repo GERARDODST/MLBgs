@@ -113,32 +113,32 @@
 "pk": 823489,
 "date": "2026-09-25",
 "time": "2026-09-25T20:10:00Z",
-"generatedAt": "2026-09-25T22:57:45+00:00",
+"generatedAt": "2026-09-25T23:13:41+00:00",
 "away": "BAL",
 "home": "NYY",
-"pHome": 0.6117,
+"pHome": 0.58,
 "methods": {
 "log5": 0.6245,
-"elo": 0.6433,
-"lambda": 0.5672
+"elo": 0.5774,
+"lambda": 0.5382
 },
 "confidence": "media",
-"projAway": 3.9032,
-"projHome": 4.6179,
-"total": 8.5211,
-"f5Away": 2.0148,
-"f5Home": 2.7863,
-"nrfi": 0.5062,
-"pOver85": 0.448,
+"projAway": 4.2004,
+"projHome": 4.6181,
+"total": 8.8184,
+"f5Away": 2.2871,
+"f5Home": 2.7864,
+"nrfi": 0.4862,
+"pOver85": 0.4754,
 "probables": {
 "away": "Brandon Young",
-"home": "Por anunciar"
+"home": "Ryan Yarbrough"
 },
 "light": "Gris",
 "best": {
-"market": "ML",
-"pick": "NYY",
-"p": 0.6117,
+"market": "F5",
+"pick": "NYY F5",
+"p": 0.6041,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -148,19 +148,19 @@
 "family": "F5",
 "market": "F5 Moneyline",
 "pick": "NYY F5",
-"p": 0.6634,
+"p": 0.6041,
 "line": null,
-"ic": 65.8595,
+"ic": 58.2982,
 "level": "Media"
 },
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "NYY",
-"p": 0.6117,
-"line": null,
-"ic": 56.4577,
-"level": "Media"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Brandon Young Over 4.5 K",
+"p": 0.5779,
+"line": 4.5,
+"ic": 46.997,
+"level": "Baja"
 }
 ]
 },
@@ -553,7 +553,7 @@
 "pk": 824058,
 "date": "2026-09-25",
 "time": "2026-09-25T23:40:00Z",
-"generatedAt": "2026-09-25T22:57:45+00:00",
+"generatedAt": "2026-09-25T23:13:41+00:00",
 "away": "CLE",
 "home": "KC",
 "pHome": 0.4725,
@@ -563,13 +563,13 @@
 "lambda": 0.4434
 },
 "confidence": "media",
-"projAway": 4.7397,
-"projHome": 4.1413,
-"total": 8.881,
+"projAway": 4.7398,
+"projHome": 4.1414,
+"total": 8.8812,
 "f5Away": 2.3545,
-"f5Home": 2.4369,
+"f5Home": 2.437,
 "nrfi": 0.511,
-"pOver85": 0.4811,
+"pOver85": 0.4812,
 "probables": {
 "away": "Gavin Williams",
 "home": "Noah Cameron"
@@ -590,7 +590,7 @@
 "pick": "CLE +1.5",
 "p": 0.6943,
 "line": null,
-"ic": 61.1756,
+"ic": 61.1757,
 "level": "Media"
 },
 {
@@ -608,7 +608,7 @@
 "pk": 824544,
 "date": "2026-09-25",
 "time": "2026-09-25T23:40:00Z",
-"generatedAt": "2026-09-25T22:57:45+00:00",
+"generatedAt": "2026-09-25T23:13:41+00:00",
 "away": "COL",
 "home": "CWS",
 "pHome": 0.6613,
@@ -618,11 +618,11 @@
 "lambda": 0.6295
 },
 "confidence": "media",
-"projAway": 4.1741,
-"projHome": 5.6616,
-"total": 9.8358,
+"projAway": 4.1742,
+"projHome": 5.6618,
+"total": 9.836,
 "f5Away": 2.3125,
-"f5Home": 3.4517,
+"f5Home": 3.4518,
 "nrfi": 0.4366,
 "pOver85": 0.5659,
 "probables": {
@@ -654,7 +654,7 @@
 "pick": "CWS",
 "p": 0.6613,
 "line": null,
-"ic": 69.9471,
+"ic": 69.9477,
 "level": "Media"
 }
 ]
@@ -663,7 +663,7 @@
 "pk": 823652,
 "date": "2026-09-25",
 "time": "2026-09-26T00:10:00Z",
-"generatedAt": "2026-09-25T22:57:45+00:00",
+"generatedAt": "2026-09-25T23:13:41+00:00",
 "away": "TEX",
 "home": "MIN",
 "pHome": 0.5094,
@@ -673,9 +673,9 @@
 "lambda": 0.5224
 },
 "confidence": "alta",
-"projAway": 4.3653,
+"projAway": 4.3654,
 "projHome": 4.611,
-"total": 8.9762,
+"total": 8.9764,
 "f5Away": 2.1972,
 "f5Home": 2.5694,
 "nrfi": 0.5152,
@@ -688,7 +688,7 @@
 "best": {
 "market": "Team total",
 "pick": "MIN Under 4.5",
-"p": 0.5602,
+"p": 0.5601,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -700,16 +700,16 @@
 "pick": "MIN F5",
 "p": 0.5809,
 "line": null,
-"ic": 50.9228,
+"ic": 50.9227,
 "level": "Baja"
 },
 {
 "family": "Team total",
 "market": "Team total MIN",
 "pick": "MIN Under 4.5",
-"p": 0.5602,
+"p": 0.5601,
 "line": 4.5,
-"ic": 44.9635,
+"ic": 44.9603,
 "level": "Baja"
 }
 ]
@@ -718,7 +718,7 @@
 "pk": 823248,
 "date": "2026-09-25",
 "time": "2026-09-26T01:40:00Z",
-"generatedAt": "2026-09-25T22:57:45+00:00",
+"generatedAt": "2026-09-25T23:13:41+00:00",
 "away": "AZ",
 "home": "SD",
 "pHome": 0.556,
@@ -729,8 +729,8 @@
 },
 "confidence": "alta",
 "projAway": 3.6898,
-"projHome": 4.0398,
-"total": 7.7295,
+"projHome": 4.0399,
+"total": 7.7297,
 "f5Away": 2.0414,
 "f5Home": 2.3665,
 "nrfi": 0.5357,
@@ -773,7 +773,7 @@
 "pk": 824947,
 "date": "2026-09-25",
 "time": "2026-09-26T01:40:00Z",
-"generatedAt": "2026-09-25T22:57:45+00:00",
+"generatedAt": "2026-09-25T23:13:41+00:00",
 "away": "HOU",
 "home": "ATH",
 "pHome": 0.4222,
@@ -783,10 +783,10 @@
 "lambda": 0.3991
 },
 "confidence": "alta",
-"projAway": 5.4529,
+"projAway": 5.4531,
 "projHome": 4.311,
-"total": 9.7638,
-"f5Away": 2.8378,
+"total": 9.7641,
+"f5Away": 2.8379,
 "f5Home": 2.3051,
 "nrfi": 0.4927,
 "pOver85": 0.5597,
@@ -810,7 +810,7 @@
 "pick": "HOU +1.5",
 "p": 0.7276,
 "line": null,
-"ic": 68.1748,
+"ic": 68.1766,
 "level": "Media"
 },
 {
@@ -819,7 +819,7 @@
 "pick": "HOU F5",
 "p": 0.6101,
 "line": null,
-"ic": 60.6051,
+"ic": 60.6092,
 "level": "Media"
 }
 ]
@@ -828,7 +828,7 @@
 "pk": 823085,
 "date": "2026-09-25",
 "time": "2026-09-26T02:10:00Z",
-"generatedAt": "2026-09-25T22:57:45+00:00",
+"generatedAt": "2026-09-25T23:13:41+00:00",
 "away": "LAA",
 "home": "SEA",
 "pHome": 0.5183,
@@ -838,9 +838,9 @@
 "lambda": 0.4698
 },
 "confidence": "media",
-"projAway": 3.5314,
-"projHome": 3.2654,
-"total": 6.7968,
+"projAway": 3.5315,
+"projHome": 3.2655,
+"total": 6.797,
 "f5Away": 1.8944,
 "f5Home": 1.7486,
 "nrfi": 0.602,
@@ -865,7 +865,7 @@
 "pick": "Under 7.5",
 "p": 0.6274,
 "line": 7.5,
-"ic": 66.3483,
+"ic": 66.3428,
 "level": "Media"
 },
 {
@@ -874,7 +874,7 @@
 "pick": "LAA +1.5",
 "p": 0.6998,
 "line": null,
-"ic": 54.0646,
+"ic": 54.0647,
 "level": "Baja"
 }
 ]
@@ -883,7 +883,7 @@
 "pk": 823167,
 "date": "2026-09-25",
 "time": "2026-09-26T02:15:00Z",
-"generatedAt": "2026-09-25T22:57:45+00:00",
+"generatedAt": "2026-09-25T23:13:41+00:00",
 "away": "LAD",
 "home": "SF",
 "pHome": 0.3555,
@@ -894,10 +894,10 @@
 },
 "confidence": "media",
 "projAway": 4.5577,
-"projHome": 2.9646,
-"total": 7.5223,
+"projHome": 2.9647,
+"total": 7.5224,
 "f5Away": 2.5035,
-"f5Home": 1.5439,
+"f5Home": 1.544,
 "nrfi": 0.5723,
 "pOver85": 0.355,
 "probables": {
@@ -920,7 +920,7 @@
 "pick": "LAD",
 "p": 0.6445,
 "line": null,
-"ic": 71.1967,
+"ic": 71.1966,
 "level": "Alta"
 },
 {
