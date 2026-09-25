@@ -55,65 +55,10 @@
 ]
 },
 {
-"pk": 823489,
-"date": "2026-09-25",
-"time": "2026-09-25T20:05:00Z",
-"generatedAt": "2026-09-25T05:03:43+00:00",
-"away": "BAL",
-"home": "NYY",
-"pHome": 0.5367,
-"methods": {
-"log5": 0.632,
-"elo": 0.5142,
-"lambda": 0.4637
-},
-"confidence": "baja",
-"projAway": 4.4732,
-"projHome": 4.1035,
-"total": 8.5767,
-"f5Away": 2.5967,
-"f5Home": 2.3715,
-"nrfi": 0.4941,
-"pOver85": 0.4532,
-"probables": {
-"away": "Trevor Rogers",
-"home": "Brendan Beck"
-},
-"light": "Gris",
-"best": {
-"market": "Prop pitcher",
-"pick": "Trevor Rogers Under 6.5 K",
-"p": 0.5741,
-"price": null,
-"edge": null,
-"light": "Gris"
-},
-"topPicks": [
-{
-"family": "RL",
-"market": "Run Line",
-"pick": "BAL +1.5",
-"p": 0.6824,
-"line": null,
-"ic": 48.8263,
-"level": "Baja"
-},
-{
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Trevor Rogers Under 6.5 K",
-"p": 0.5741,
-"line": 6.5,
-"ic": 46.0388,
-"level": "Baja"
-}
-]
-},
-{
 "pk": 823491,
 "date": "2026-09-25",
-"time": "2026-09-25T20:10:00Z",
-"generatedAt": "2026-09-25T05:03:43+00:00",
+"time": "2026-09-25T20:05:00Z",
+"generatedAt": "2026-09-25T08:24:26+00:00",
 "away": "BAL",
 "home": "NYY",
 "pHome": 0.6216,
@@ -161,6 +106,61 @@
 "line": null,
 "ic": 57.5872,
 "level": "Media"
+}
+]
+},
+{
+"pk": 823489,
+"date": "2026-09-25",
+"time": "2026-09-25T20:10:00Z",
+"generatedAt": "2026-09-25T08:24:26+00:00",
+"away": "BAL",
+"home": "NYY",
+"pHome": 0.5367,
+"methods": {
+"log5": 0.632,
+"elo": 0.5142,
+"lambda": 0.4637
+},
+"confidence": "baja",
+"projAway": 4.4732,
+"projHome": 4.1035,
+"total": 8.5767,
+"f5Away": 2.5967,
+"f5Home": 2.3715,
+"nrfi": 0.4941,
+"pOver85": 0.4532,
+"probables": {
+"away": "Trevor Rogers",
+"home": "Brendan Beck"
+},
+"light": "Gris",
+"best": {
+"market": "Prop pitcher",
+"pick": "Trevor Rogers Under 6.5 K",
+"p": 0.5741,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "BAL +1.5",
+"p": 0.6824,
+"line": null,
+"ic": 48.8263,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Trevor Rogers Under 6.5 K",
+"p": 0.5741,
+"line": 6.5,
+"ic": 46.0388,
+"level": "Baja"
 }
 ]
 },
@@ -333,23 +333,23 @@
 "pk": 822681,
 "date": "2026-09-25",
 "time": "2026-09-25T22:45:00Z",
-"generatedAt": "2026-09-25T05:03:43+00:00",
+"generatedAt": "2026-09-25T08:24:26+00:00",
 "away": "NYM",
 "home": "WSH",
-"pHome": 0.5372,
+"pHome": 0.5382,
 "methods": {
 "log5": 0.5236,
 "elo": 0.5434,
-"lambda": 0.5446
+"lambda": 0.5478
 },
 "confidence": "alta",
-"projAway": 4.4965,
+"projAway": 4.4613,
 "projHome": 4.9926,
-"total": 9.4891,
-"f5Away": 2.158,
+"total": 9.4539,
+"f5Away": 2.1411,
 "f5Home": 3.0005,
-"nrfi": 0.4819,
-"pOver85": 0.5358,
+"nrfi": 0.4829,
+"pOver85": 0.5327,
 "probables": {
 "away": "Por anunciar",
 "home": "Andrew Alvarez"
@@ -358,7 +358,7 @@
 "best": {
 "market": "F5",
 "pick": "WSH F5",
-"p": 0.6705,
+"p": 0.674,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -368,7 +368,7 @@
 "family": "F5",
 "market": "F5 Moneyline",
 "pick": "WSH F5",
-"p": 0.6705,
+"p": 0.674,
 "line": null,
 "ic": 68.5206,
 "level": "Media"
@@ -377,9 +377,9 @@
 "family": "F5 total",
 "market": "Total primeras 5",
 "pick": "F5 Over 4.5",
-"p": 0.5869,
+"p": 0.584,
 "line": 4.5,
-"ic": 48.6811,
+"ic": 47.8429,
 "level": "Baja"
 }
 ]
