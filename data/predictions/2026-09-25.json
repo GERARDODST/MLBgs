@@ -773,54 +773,54 @@
 "pk": 824947,
 "date": "2026-09-25",
 "time": "2026-09-26T01:40:00Z",
-"generatedAt": "2026-09-25T05:03:43+00:00",
+"generatedAt": "2026-09-25T05:51:57+00:00",
 "away": "HOU",
 "home": "ATH",
-"pHome": 0.4896,
+"pHome": 0.4215,
 "methods": {
 "log5": 0.449,
-"elo": 0.5329,
-"lambda": 0.4868
+"elo": 0.4185,
+"lambda": 0.397
 },
 "confidence": "media",
 "projAway": 5.4654,
-"projHome": 5.3066,
-"total": 10.772,
+"projHome": 4.2993,
+"total": 9.7647,
 "f5Away": 2.8368,
-"f5Home": 3.1865,
-"nrfi": 0.4275,
-"pOver85": 0.6424,
+"f5Home": 2.2907,
+"nrfi": 0.4939,
+"pOver85": 0.5598,
 "probables": {
-"away": "Por anunciar",
+"away": "Hunter Brown",
 "home": "Jacob Lopez"
 },
 "light": "Gris",
 "best": {
 "market": "F5",
-"pick": "ATH F5",
-"p": 0.5664,
+"pick": "HOU F5",
+"p": 0.613,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
-"family": "NRFI",
-"market": "NRFI/YRFI",
-"pick": "YRFI",
-"p": 0.5725,
+"family": "RL",
+"market": "Run Line",
+"pick": "HOU +1.5",
+"p": 0.7294,
 "line": null,
-"ic": 51.6336,
-"level": "Baja"
+"ic": 68.6909,
+"level": "Media"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Jacob Lopez Over 4.5 K",
-"p": 0.5805,
-"line": 4.5,
-"ic": 47.0798,
-"level": "Baja"
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "HOU F5",
+"p": 0.613,
+"line": null,
+"ic": 61.448,
+"level": "Media"
 }
 ]
 },
