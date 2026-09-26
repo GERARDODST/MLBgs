@@ -37,8 +37,9 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   acompaña y contradicción no alta. Tope sugerido de $7,500 por día (la cartera avisa; no recorta).
 - Filtro contra el mercado: con edge ≥ 10 pp no hay stake (se verifica: lesión, descanso, lineup). La
   escalera guarda `maxPrice`, el momio más alto que todavía pasa el filtro.
-- Momios automáticos como SofaScore (`mlbgs/odds.py`): feed con licencia de odds-api.net (secreto
-  `ODDS_API_NET_KEY`; respaldo The Odds API con `ODDS_API_KEY`), nunca raspando casas. `data/odds/<fecha>.json`
+- Momios automáticos como SofaScore (`mlbgs/odds.py`): ESPN sin clave (su marcador público publica los de
+  su casa socia, DraftKings, con apertura y actual; una llamada por fecha; `ODDS_ESPN=0` lo apaga) y, con
+  clave, odds-api.net (`ODDS_API_NET_KEY`) o The Odds API (`ODDS_API_KEY`); nunca raspando casas. `data/odds/<fecha>.json`
   guarda por partido y casa la apertura (`open`) y el último momio (`last`); al primer lanzamiento se
   congela (cierre). Cadencia: > 6 h cada 3 h, 1–6 h cada hora, < 1 h cada corrida; topes por corrida y día.
   El edge/IC/stake/decisión usan el **momio de referencia** = mediana de las casas MX (marca de la API
