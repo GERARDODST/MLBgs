@@ -718,53 +718,53 @@
 "pk": 824949,
 "date": "2026-09-26",
 "time": "2026-09-27T01:40:00Z",
-"generatedAt": "2026-09-26T05:03:36+00:00",
+"generatedAt": "2026-09-26T05:20:06+00:00",
 "away": "HOU",
 "home": "ATH",
-"pHome": 0.4863,
+"pHome": 0.4496,
 "methods": {
 "log5": 0.451,
-"elo": 0.534,
-"lambda": 0.474
+"elo": 0.4532,
+"lambda": 0.4447
 },
-"confidence": "media",
+"confidence": "alta",
 "projAway": 5.5612,
-"projHome": 5.2517,
-"total": 10.8129,
+"projHome": 4.9142,
+"total": 10.4753,
 "f5Away": 2.9319,
-"f5Home": 3.1727,
-"nrfi": 0.422,
-"pOver85": 0.6455,
+"f5Home": 2.8656,
+"nrfi": 0.4439,
+"pOver85": 0.619,
 "probables": {
-"away": "Por anunciar",
+"away": "Hayden Wesneski",
 "home": "Jack Perkins"
 },
 "light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Over 9.5",
-"p": 0.5606,
+"market": "Prop pitcher",
+"pick": "Hayden Wesneski Over 3.5 K",
+"p": 0.5953,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
-"family": "NRFI",
-"market": "NRFI/YRFI",
-"pick": "YRFI",
-"p": 0.578,
-"line": null,
-"ic": 53.1901,
-"level": "Baja"
-},
-{
 "family": "RL",
 "market": "Run Line",
 "pick": "HOU +1.5",
-"p": 0.6524,
+"p": 0.6817,
 "line": null,
-"ic": 44.5925,
+"ic": 53.5413,
+"level": "Baja"
+},
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "HOU",
+"p": 0.5504,
+"line": null,
+"ic": 49.3211,
 "level": "Baja"
 }
 ]
