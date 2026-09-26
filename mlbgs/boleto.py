@@ -10,7 +10,9 @@ Un boleto por partido (la decisión «apostar»; si el partido tiene ticket del 
 
 Momio del boleto, en este orden:
   1. el que registraste (momio real que te dieron, americano o decimal, y el monto si fue otro);
-  2. si no, el de referencia: el momio más bajo con el que valía el stake recomendado
+  2. si no, el del mercado: el momio de referencia del feed (mediana de las casas MX, mlbgs/odds.py)
+     con el que se congeló el ticket al primer lanzamiento;
+  3. si no, el de referencia: el momio más bajo con el que valía el stake recomendado
      (escalera guardada antes del juego). Es conservador: con un momio mejor se cobra más.
 Con tu momio, el stake sale de la misma escalera (a mejor momio, más stake), salvo que registres el monto.
 La página (`site/template.html`) repite estas cuentas en JavaScript: si se cambia una, cambiar la otra.
@@ -80,6 +82,8 @@ def slip(t: dict, reg: dict | None = None) -> dict | None:
     if mine:
         o, source = mine, "tuyo"
         level = level_at((p.get("stake") or {}).get("steps"), o["dec"]) if (p.get("stake") or {}).get("steps") else d["level"]
+    elif p.get("price") is not None:        # momio del feed al congelarse el ticket (mediana de las casas MX)
+        o, source, level = {"am": round(p["price"]), "dec": dec_of(p["price"])}, "mercado", d["level"]
     else:
         ref = reference_odds(t)
         if ref is None:

@@ -30,6 +30,14 @@ class Boleto(unittest.TestCase):
         self.assertAlmostEqual(s["payout"], 1400 * 1.73)
         self.assertAlmostEqual(s["neto"], 1400 * 0.73)
 
+    def test_momio_del_mercado_antes_que_el_minimo(self):
+        t = ticket()
+        t["picks"][0]["price"] = -125                      # mediana de las casas MX al congelarse el ticket
+        s = BO.slip(t)
+        self.assertEqual((s["source"], s["am"], s["dec"]), ("mercado", -125, 1.8))
+        self.assertAlmostEqual(s["neto"], 1400 * 0.8)
+        self.assertEqual(BO.slip(t, {"odds": "-140"})["source"], "tuyo")     # el tuyo manda
+
     def test_perdido_push_y_anulado(self):
         self.assertEqual(BO.slip(ticket("perdido"))["neto"], -1400)
         self.assertEqual(BO.slip(ticket("perdido"))["cobro"], 0)

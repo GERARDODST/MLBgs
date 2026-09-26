@@ -111,7 +111,7 @@ class Context:
 # ============================================================ momios (sección 7)
 
 def index_odds(raw, teams: dict) -> dict:
-    """Agrupa los momios de The Odds API por (visitante, local)."""
+    """Agrupa los momios (forma de The Odds API; ver mlbgs/odds.py) por (visitante, local)."""
     if not raw:
         return {}
     by_club = {}
@@ -135,7 +135,8 @@ def index_odds(raw, teams: dict) -> dict:
             continue
         books = []
         for bk in ev.get("bookmakers", []):
-            row = {"book": bk.get("title"), "ml": {}, "rl": {}, "total": {}}
+            row = {"book": bk.get("title"), "key": bk.get("key"), "mx": bool(bk.get("mx")), "at": bk.get("last_update"),
+                   "ml": {}, "rl": {}, "total": {}, "open": bk.get("open"), "openAt": bk.get("openAt")}
             for m in bk.get("markets", []):
                 for o in m.get("outcomes", []):
                     side = "home" if tid(o.get("name", "")) == h else "away" if tid(o.get("name", "")) == a else None
@@ -146,17 +147,24 @@ def index_odds(raw, teams: dict) -> dict:
                     elif m["key"] == "totals":
                         row["total"][o["name"].lower()] = {"price": o["price"], "point": o.get("point")}
             books.append(row)
-        out[(a, h)].append({"commence": ev.get("commence_time"), "books": books})
+        out[(a, h)].append({"commence": ev.get("commence_time"), "books": books, "pk": ev.get("pk"),
+                            "provider": ev.get("provider") or "The Odds API", "checked": ev.get("checked"),
+                            "closed": bool(ev.get("closed"))})
     return out
 
 
 def odds_for_game(ctx: Context, g: dict) -> dict | None:
+    """Momios del partido. El precio con el que se calcula el edge es el de referencia: la mediana de las casas
+    que operan en México (marca «MX» de la API) o, si ninguna lo tiene, la de todas. El mejor precio solo se muestra:
+    con 27 casas, el mejor casi nunca es el que te dan en tu casa y exageraría el edge."""
     evs = ctx.odds.get((g["away"], g["home"]))
     if not evs:
         return None
     t0 = dt.datetime.fromisoformat(g["time"].replace("Z", "+00:00"))
 
     def gap(ev):
+        if ev.get("pk") == g["pk"]:
+            return -1
         try:
             return abs((dt.datetime.fromisoformat(ev["commence"].replace("Z", "+00:00")) - t0).total_seconds())
         except Exception:  # noqa: BLE001
@@ -166,22 +174,48 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
     if gap(ev) > 6 * 3600:
         return None
     books = [b for b in ev["books"] if b["ml"] or b["total"]]
+    if not books:
+        return None
     lines = [b["total"]["over"]["point"] for b in books if b["total"].get("over")]
     main_line = statistics.mode(lines) if lines else None
+    rl_pts = [(b["rl"].get("home") or {}).get("point") for b in books]
+    rl_pts = [p for p in rl_pts if p is not None and abs(p) == 1.5]
+    rl_home = statistics.mode(rl_pts) if rl_pts else None
+    rl_point = {"home": rl_home, "away": -rl_home if rl_home is not None else None}
 
     def best(get):
         vals = [(get(b), b["book"]) for b in books if get(b) is not None]
         return max(vals, key=lambda v: M.american_to_decimal(v[0])) if vals else None
 
+    def ref(get):
+        for pool, who in (([b for b in books if b.get("mx")], "casas MX"), (books, "casas")):
+            vals = [get(b) for b in pool if get(b) is not None]
+            if vals:
+                d = statistics.median(M.american_to_decimal(v) for v in vals)
+                return (M.decimal_to_american(d), f"mediana de {len(vals)} {who}" if len(vals) > 1 else
+                        next(b["book"] for b in pool if get(b) is not None))
+        return None
+
+    def rl_get(s):
+        return lambda b: ((b["rl"].get(s) or {}).get("price") if (b["rl"].get(s) or {}).get("point") == rl_point[s]
+                          and rl_point[s] is not None else None)
+
+    def tot_get(k):
+        return lambda b: b["total"][k]["price"] if b["total"].get(k) and b["total"][k]["point"] == main_line else None
+
+    def ml_get(s):
+        return lambda b: b["ml"].get(s)
+
     return {
-        "books": books, "nBooks": len(books), "totalLine": main_line,
-        "bestMl": {s: best(lambda b, s=s: b["ml"].get(s)) for s in SIDES},
-        "bestRl": {s: best(lambda b, s=s: (b["rl"].get(s) or {}).get("price")
-                            if abs(((b["rl"].get(s) or {}).get("point") or 0)) == 1.5 else None) for s in SIDES},
-        "rlPoint": {s: next(((b["rl"].get(s) or {}).get("point") for b in books if b["rl"].get(s)), None) for s in SIDES},
-        "bestTotal": {k: best(lambda b, k=k: b["total"][k]["price"]
-                              if b["total"].get(k) and b["total"][k]["point"] == main_line else None)
-                      for k in ("over", "under")},
+        "books": books, "nBooks": len(books), "nMx": sum(1 for b in books if b.get("mx")), "totalLine": main_line,
+        "provider": ev.get("provider"), "checked": ev.get("checked"), "closed": ev.get("closed"),
+        "bestMl": {s: best(ml_get(s)) for s in SIDES},
+        "bestRl": {s: best(rl_get(s)) for s in SIDES},
+        "bestTotal": {k: best(tot_get(k)) for k in ("over", "under")},
+        "refMl": {s: ref(ml_get(s)) for s in SIDES},
+        "refRl": {s: ref(rl_get(s)) for s in SIDES},
+        "refTotal": {k: ref(tot_get(k)) for k in ("over", "under")},
+        "rlPoint": rl_point,
     }
 
 
@@ -672,12 +706,12 @@ def market_table(ctx, g, p_tri, methods, margin, tie9, total_pmf, pmf_full, f5h,
                      "fair": M.fair_american(p_win), "minPrice": M.fair_american(clip(p_win - EDGE_MIN, 0.01, 0.99)),
                      **(extra or {})})
 
-    ml_price = {s: (odds["bestMl"][s][0] if odds and odds["bestMl"].get(s) else None) for s in SIDES}
+    ml_price = {s: (odds["refMl"][s][0] if odds and odds["refMl"].get(s) else None) for s in SIDES}
     add("Moneyline", "ml", ab, 1 - p_tri, ml_price["away"], extra={"methods": {k: 1 - v for k, v in methods.items()}})
     add("Moneyline", "ml", hb, p_tri, ml_price["home"], extra={"methods": dict(methods)})
     p_h_rl = sum(p for m, p in margin.items() if m >= 2)
     p_a_rl = sum(p for m, p in margin.items() if m <= -2)
-    rl_price = {s: (odds["bestRl"][s][0] if odds and odds["bestRl"].get(s) else None) for s in SIDES}
+    rl_price = {s: (odds["refRl"][s][0] if odds and odds["refRl"].get(s) else None) for s in SIDES}
     rl_point = odds["rlPoint"] if odds else {"away": None, "home": None}
     if (rl_point.get("home") or -1.5) < 0:
         add("Run Line", "rl", f"{hb} -1.5", p_h_rl, rl_price["home"], -1.5)
@@ -690,10 +724,10 @@ def market_table(ctx, g, p_tri, methods, margin, tie9, total_pmf, pmf_full, f5h,
         ou = M.over_under(total_pmf, ln)
         is_mkt = ln == line
         add("Total completo", "total", f"Over {ln}", ou["over"],
-            odds["bestTotal"]["over"][0] if is_mkt and odds["bestTotal"].get("over") else None, ln,
+            odds["refTotal"]["over"][0] if is_mkt and odds["refTotal"].get("over") else None, ln,
             {"market_line": is_mkt}, push=ou["push"])
         add("Total completo", "total", f"Under {ln}", ou["under"],
-            odds["bestTotal"]["under"][0] if is_mkt and odds["bestTotal"].get("under") else None, ln,
+            odds["refTotal"]["under"][0] if is_mkt and odds["refTotal"].get("under") else None, ln,
             {"market_line": is_mkt}, push=ou["push"])
     add("F5 Moneyline", "f5ml", f"{ab} F5", f5a, extra={"tie": f5t, "noTie": f5a / (1 - f5t) if f5t < 1 else None},
         push=f5t)
@@ -1411,15 +1445,22 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
     books = []
     if odds:
         for b in odds["books"]:
-            books.append({"book": b["book"], "mlAway": b["ml"].get("away"), "mlHome": b["ml"].get("home"),
+            o = b.get("open") or {}
+            books.append({"book": b["book"], "key": b.get("key"), "mx": b.get("mx"), "at": b.get("at"),
+                          "mlAway": b["ml"].get("away"), "mlHome": b["ml"].get("home"),
                           "rlAway": b["rl"].get("away"), "rlHome": b["rl"].get("home"),
-                          "over": b["total"].get("over"), "under": b["total"].get("under")})
+                          "over": b["total"].get("over"), "under": b["total"].get("under"),
+                          "open": {"at": b.get("openAt"), "mlAway": (o.get("ml") or {}).get("away"),
+                                   "mlHome": (o.get("ml") or {}).get("home"),
+                                   "rlAway": (o.get("rl") or {}).get("away"), "rlHome": (o.get("rl") or {}).get("home"),
+                                   "over": (o.get("total") or {}).get("over"),
+                                   "under": (o.get("total") or {}).get("under")} if o else None})
     priced = [m for m in markets if m["price"] is not None]
     value = sorted(priced, key=lambda m: m["edge"], reverse=True)
     fav_side = "home" if p_tri >= 0.5 else "away"
     fav_price = None
-    if odds and odds["bestMl"].get(fav_side):
-        fav_price = odds["bestMl"][fav_side][0]
+    if odds and odds["refMl"].get(fav_side):
+        fav_price = odds["refMl"][fav_side][0]
     expensive = fav_price is not None and fav_price <= -170
     low_total = total_proj < 8.0
     fair = []
@@ -1434,6 +1475,11 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
     return {
         "marketTotal": odds.get("totalLine") if odds else None,
         "hasOdds": odds is not None, "nBooks": odds["nBooks"] if odds else 0, "books": books,
+        "nMx": odds["nMx"] if odds else 0, "provider": odds.get("provider") if odds else None,
+        "checked": odds.get("checked") if odds else None, "closed": odds.get("closed") if odds else None,
+        "ref": ({"ml": odds["refMl"], "rl": odds["refRl"], "total": odds["refTotal"], "rlPoint": odds["rlPoint"]}
+                if odds else None),
+        "best": ({"ml": odds["bestMl"], "rl": odds["bestRl"], "total": odds["bestTotal"]} if odds else None),
         "value": value[:12], "fair": fair, "edgeMin": EDGE_MIN,
         "expensiveFav": {"on": expensive and low_total, "favPrice": fav_price, "lowTotal": low_total,
                          "text": "Favorito caro + total bajo = buscar Under, F5 Under, props de pitcher o no bet"},
@@ -1443,7 +1489,8 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
             {"q": "¿El total proyectado es bajo?", "a": "Sí" if low_total else "No", "adj": "Evitar Run Line · revisar Under o F5"},
         ],
         "note": (None if odds else
-                 "Sin momios conectados (agrega el secreto ODDS_API_KEY de The Odds API): sin edge calculable → no bet. "
+                 "Sin momios de la API (secreto ODDS_API_NET_KEY de odds-api.net u ODDS_API_KEY de The Odds API): "
+                 "sin edge calculable → no bet. "
                  "Usa el momio justo y el momio mínimo aceptable para comparar con tu casa de apuestas."),
     }
 

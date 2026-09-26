@@ -31,8 +31,10 @@ jobs:
           python-version: "3.12"
       - name: Pruebas
         run: python -m unittest discover -s tests
-      - name: Descargar datos oficiales (MLB Stats API + Baseball Savant)
+      - name: Descargar datos oficiales (MLB Stats API + Baseball Savant) y momios previos al partido
         env:
+          # Momios con licencia (como el feed de socios de SofaScore): odds-api.net y, de respaldo, The Odds API.
+          ODDS_API_NET_KEY: ${{ secrets.ODDS_API_NET_KEY }}
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python -m mlbgs.fetch --out .cache/raw_bundle.json.gz
       - name: Correr el modelo y construir la página
@@ -44,6 +46,7 @@ jobs:
           if [ -e data/predictions ]; then git add -A data/predictions; fi
           git add prolab/result_*.json 2>/dev/null || true
           if [ -e data/historial ]; then git add -A data/historial; fi
+          if [ -e data/odds ]; then git add -A data/odds; fi
           git commit -m "Predicciones MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
           git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
       - name: Empaquetar la página

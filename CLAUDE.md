@@ -37,10 +37,17 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   acompaña y contradicción no alta. Tope sugerido de $7,500 por día (la cartera avisa; no recorta).
 - Filtro contra el mercado: con edge ≥ 10 pp no hay stake (se verifica: lesión, descanso, lineup). La
   escalera guarda `maxPrice`, el momio más alto que todavía pasa el filtro.
-- La página NO trae momios de casinos (sin proveedor conectado; Playdoit, la casa principal del usuario,
-  no tiene API). El «justo» y el «mín.» salen del modelo; nunca presentarlos como el momio del casino.
-  Sin momio real el stake es un rango según la escalera; con el momio que escribe el usuario, la decisión
-  se recalcula entre todos los candidatos.
+- Momios automáticos como SofaScore (`mlbgs/odds.py`): feed con licencia de odds-api.net (secreto
+  `ODDS_API_NET_KEY`; respaldo The Odds API con `ODDS_API_KEY`), nunca raspando casas. `data/odds/<fecha>.json`
+  guarda por partido y casa la apertura (`open`) y el último momio (`last`); al primer lanzamiento se
+  congela (cierre). Cadencia: > 6 h cada 3 h, 1–6 h cada hora, < 1 h cada corrida; topes por corrida y día.
+  El edge/IC/stake/decisión usan el **momio de referencia** = mediana de las casas MX (marca de la API
+  `country_code=MX`) o de todas si ninguna; el mejor precio solo se muestra. La decisión elige, por IC, el
+  primer candidato que llega a stake a su momio real. El boleto usa ese momio («mercado») si el usuario
+  no registró el suyo. Sin feed ni momio del usuario, el «justo» y el «mín.» salen del modelo: nunca
+  presentarlos como el momio del casino; el stake es un rango según la escalera y, con el momio que
+  escribe el usuario, la decisión se recalcula entre todos los candidatos.
+  Playdoit, Caliente y Team México no están en ningún feed: su momio lo captura el usuario y manda.
 - Momios de Playdoit: su sitio bloquea el acceso automático (Cloudflare, 403 «Acceso bloqueado» desde
   GitHub Actions); no evadirlo. La Jornada tiene «Momios de Playdoit»: el usuario sube una captura o pega
   el texto y Claude (capacidad `sample` con imágenes) los lee y los aplica solo a partidos que no han
@@ -57,8 +64,8 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 - **Boletos** (`mlbgs/boleto.py`, repetido en la página): un boleto por partido con la decisión única
   (manda el ticket del Pro-Lab). Momio decimal a 2 cifras (−137 → 1.73), pago = stake × decimal;
   ganado: neto = pago − stake; perdido: −stake; push o anulado: se devuelve el stake. Momio: el que
-  registró el usuario; si no, el capturado antes del juego; si no, el de referencia (el más bajo con el
-  que valía ese stake). Lo que registra el usuario vive en la base `db` del artefacto, colección
+  registró el usuario; si no, el capturado antes del juego; si no, el del mercado (feed al congelarse
+  el ticket); si no, el de referencia (el más bajo con el que valía ese stake). Lo que registra el usuario vive en la base `db` del artefacto, colección
   `boletos` (doc = gamePk: odds, amount, played); leerla con `ArtifactData` para sacar las cuentas reales.
 
 ## Flujo de trabajo

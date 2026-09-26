@@ -4,7 +4,8 @@ Fuentes (todas de MLB salvo los momios, que son opcionales):
   * MLB Stats API (statsapi.mlb.com): calendario, abridores probables, lineups,
     umpires, clima, standings, box scores, stats de equipos y jugadores.
   * Baseball Savant (baseballsavant.mlb.com): xERA, Barrel%, Hard Hit% y park factors.
-  * The Odds API (opcional, variable de entorno ODDS_API_KEY): momios de varias casas.
+  * Momios (opcionales, `mlbgs/odds.py`): odds-api.net (secreto ODDS_API_NET_KEY) o The Odds API
+    (ODDS_API_KEY), con apertura y último momio antes del partido guardados en data/odds/.
 
 El resultado es un "bundle" con solo los campos que usa el modelo, para que el
 modelo sea una función pura y reproducible de ese bundle.
@@ -19,13 +20,11 @@ import os
 import re
 import sys
 import time
-import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
 STATS = "https://statsapi.mlb.com/api/v1"
 SAVANT = "https://baseballsavant.mlb.com"
-ODDS = "https://api.the-odds-api.com/v4/sports/baseball_mlb/odds"
 UA = {"User-Agent": "MLBgs/1.0 (+https://github.com/GERARDODST/MLBgs)"}
 
 PITCH_KEYS = [
@@ -524,13 +523,11 @@ def savant(season: int) -> dict:
 
 # ------------------------------------------------------------------ momios (opcional)
 
-def odds() -> list[dict] | None:
-    key = os.environ.get("ODDS_API_KEY")
-    if not key:
-        return None
-    q = urllib.parse.urlencode({"apiKey": key, "regions": "us", "markets": "h2h,spreads,totals",
-                                "oddsFormat": "american"})
-    return get(f"{ODDS}?{q}")
+def odds(bundle: dict) -> list[dict] | None:
+    """Pide los momios que tocan (odds-api.net o The Odds API) y devuelve los guardados de estos partidos."""
+    from . import odds as O
+    bundle["meta"]["odds"] = O.update(bundle, log=log)
+    return O.to_bundle(bundle)
 
 
 # ------------------------------------------------------------------ orquestación
@@ -573,10 +570,10 @@ def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int 
         "playersHitting": attempt("playersHitting", lambda: players(season, "hitting"), []),
         "savant": attempt("savant", lambda: savant(season), {}),
         "arsenal": attempt("arsenal", lambda: arsenal(season), {}),
-        "odds": attempt("odds", odds, None),
     }
     bundle["results"], bundle["remaining"] = attempt("schedule", lambda: season_schedule(season), ([], []))
     bundle["live"] = getattr(upcoming_games, "live", [])
+    bundle["odds"] = attempt("odds", lambda: odds(bundle), None)
     # ayer, hoy y mañana (fecha oficial): la jornada de la página y la calificación de los tickets
     bundle["scoreboard"] = attempt("scoreboard", lambda: scoreboard((today - dt.timedelta(days=1)).isoformat(),
                                                                   end.isoformat(), today.isoformat()), [])

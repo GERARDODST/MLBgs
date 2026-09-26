@@ -135,11 +135,18 @@ def decide(a: dict, picks: list[dict], lab: dict | None = None, track: dict | No
     ok = [p for p in cands if not (p.get("stake") or {}).get("block") and (p.get("stake") or {}).get("ladder")]
     wait = [p for p in cands if "dato obligatorio" in ((p.get("stake") or {}).get("block") or "")]
     if ok:
-        p = ok[0]
-        lvl = (p.get("stake") or {}).get("level", 0)
+        # con momios reales, el de más confianza que además llega a stake a su precio; si ninguno, el de más confianza
+        p = next((q for q in ok if (q.get("stake") or {}).get("level")), ok[0])
+        st0 = p.get("stake") or {}
+        lvl = st0.get("level", 0)
         status = "apostar" if lvl else "no apostar"
-        why = ("el pick con más confianza que pasa guion, contradicciones y datos obligatorios" if lvl else
-               f"confianza {p['ic']:.0f} (< 55): solo entra con un momio mejor (stake 1 desde {p['stake']['ladder'][0]['from']:+d})")
+        if lvl:
+            why = "el pick con más confianza que pasa guion, contradicciones y datos obligatorios" + (
+                f" y llega a stake con el momio de referencia ({st0['price']:+d})" if st0.get("price") is not None else "")
+        elif st0.get("why") and st0.get("price") is not None:
+            why = f"con el momio de referencia ({st0['price']:+d}): {st0['why']} (stake 1 desde {st0['ladder'][0]['from']:+d})"
+        else:
+            why = f"confianza {p['ic']:.0f} (< 55): solo entra con un momio mejor (stake 1 desde {st0['ladder'][0]['from']:+d})"
     elif wait:
         p, status = wait[0], "esperar"
         why = "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento"
