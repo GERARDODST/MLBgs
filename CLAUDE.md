@@ -41,6 +41,11 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   no tiene API). El «justo» y el «mín.» salen del modelo; nunca presentarlos como el momio del casino.
   Sin momio real el stake es un rango según la escalera; con el momio que escribe el usuario, la decisión
   se recalcula entre todos los candidatos.
+- Momios de Playdoit: su sitio bloquea el acceso automático (Cloudflare, 403 «Acceso bloqueado» desde
+  GitHub Actions); no evadirlo. La Jornada tiene «Momios de Playdoit»: el usuario sube una captura o pega
+  el texto y Claude (capacidad `sample` con imágenes) los lee y los aplica solo a partidos que no han
+  empezado. Se guardan en la base `db`, colección `momios` (doc = fecha: games por gamePk con ml, rl,
+  total y f5); leerla con `ArtifactData` para usar los momios reales en un análisis.
 - La página (`site/template.html`) repite estas cuentas en JavaScript: si se cambia una, cambiar la otra.
 
 ## Datos y registro

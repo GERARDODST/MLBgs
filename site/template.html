@@ -565,6 +565,10 @@
   details.tk-model-d > summary { cursor: pointer; padding: 11px 0; display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; font-size: 14px; }
   details.tk-model-d > .tk-detail { border-top: 1px solid var(--grid); padding-top: 4px; }
   details.tk-model-d > .tk-detail > h2 { display: none; }
+  .mom-row { display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+  .mom-paste > summary { cursor: pointer; font-size: 13.5px; font-weight: 600; color: var(--ink-2); padding: 5px 0; }
+  .mom-paste textarea { display: block; width: min(100%, 520px); font: 13px var(--mono); border: 1px solid var(--border); border-radius: 8px; padding: 8px; background: var(--ground); color: var(--ink); margin: 6px 0; }
+  #mom-status { align-self: center; font-size: 13px; }
   /* plan del día y cadena de la decisión (framework → Pro-Lab → cuota → Claude) */
   .plan-list { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
   .plan-row { display: grid; grid-template-columns: 92px 150px minmax(0, 1.5fr) 100px minmax(0, 1.1fr); grid-template-areas: "when game deci odds stake" ". chain chain chain chain"; gap: 5px 12px; align-items: center; padding: 9px 12px 10px 10px; border-top: 1px solid var(--grid); border-left: 4px solid transparent; font-size: 13.5px; }
@@ -1205,7 +1209,11 @@
       if (scored.length) {
         name = scored[0].q.pick; status = "apostar";
         if (name !== prev) why = scored[0].bq ? `recalculado con tus momios: ${name} es el de más confianza que pasa las reglas a su momio (${prev} ya no)` : `con tus momios ${prev} ya no conviene; el siguiente candidato es ${name}, que falta confirmar con su momio`;
-      } else { status = "no apostar"; why = `con tus momios ${prev} ya no conviene y ningún otro candidato llega a stake (sin momio o por debajo de la confianza mínima); si quieres revisar otro mercado, escribe su momio`; }
+      } else {
+        status = "no apostar";
+        why = bestOdds(g.pk, prev) ? `con tu momio ${prev} ya no conviene y ningún otro candidato llega a stake; si quieres revisar otro mercado, escribe su momio`
+          : `los mercados con tu momio no pasan las reglas y ${prev} (sin momio) no alcanza la confianza mínima; escribe su momio si quieres revisarlo`;
+      }
     }
     const p = cands.find((x) => x.pick === name) || cands.find((x) => x.pick === d.pick.pick);
     const b = p ? bestOdds(g.pk, p.pick) : null;
@@ -1511,6 +1519,7 @@ ${brief}`;
           <div class="db-cell db-src"><span class="eyebrow"><span class="dot ${liveInfo.source === "api" ? "ok" : "part"}" style="display:inline-block;vertical-align:middle;margin-right:6px"></span>Actualización</span><span>${src}</span><span style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button type="button" class="btn" id="day-refresh" style="padding:2px 9px;font-size:12.5px">Actualizar ahora</button><a href="#historial" style="font-size:13px;font-weight:600">Historial de tickets →</a></span></div>
         </div>
         ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>La página no trae momios de ningún casino.</b> Los momios que ves salen del modelo: el <b>justo</b> (su probabilidad convertida a momio) y el <b>mín.</b> (lo menos que debe pagar el casino para que convenga). No son lo que paga ${esc(bookSel())}. Escribe el momio de ${esc(bookSel())} en el plan del día o en el partido: la decisión y el stake se recalculan con él, y si el casino ve el partido 10 pp o más distinto que el modelo, no hay stake (filtro contra el mercado).</div></div>` : ""}
+        ${momPanel(by.pre.filter((r) => r.an), sel)}
         ${planBlock(plans.filter((q) => q.x && decMatch(q.x, flt)).map((q) => q.x))}
         ${flt !== "todos" && !plans.some((q) => q.x && decMatch(q.x, flt)) ? `<div class="empty">Ningún partido con ese filtro.</div>` : ""}
         ${group("En juego", by.live.filter(shownRow), "live-grid", "")}
@@ -1521,6 +1530,7 @@ ${brief}`;
         ${footer()}`;
       app.querySelectorAll("[data-day]").forEach((b) => b.addEventListener("click", () => { sel = b.dataset.day; store.set("mlbgs-day", `${TODAY}|${sel}`); render(); }));
       app.querySelectorAll("[data-dflt]").forEach((b) => b.addEventListener("click", () => { flt = b.dataset.dflt; store.set("mlbgs-dfilter", flt); render(); }));
+      bindMomios(by.pre.filter((r) => r.an), sel);
       const rb = document.getElementById("day-refresh");
       if (rb) rb.addEventListener("click", () => { rb.textContent = "Actualizando…"; rb.disabled = true; pullLive(true); });
     };
@@ -1611,6 +1621,130 @@ ${brief}`;
   }
   const DEC_FILTERS = [["todos", "Todas"], ["apostar", "Apostar"], ["esperar", "Esperar"], ["no", "No apostar"], ["lab", "Con Pro-Lab"]];
   const decMatch = (x, flt) => flt === "todos" || !x ? true : flt === "lab" ? !!x.lab : !x.fin ? flt === "no" : flt === "apostar" ? x.fin.status === "apostar" && x.fin.level > 0 : flt === "esperar" ? x.fin.status === "esperar" : !(x.fin.status === "apostar" && x.fin.level > 0) && x.fin.status !== "esperar";
+  // ------------------------------------------------ momios de Playdoit leídos de tu pantalla (captura o texto) por Claude
+  // Playdoit bloquea el acceso automático (su sistema de seguridad corta lo que no es una persona). Los momios se toman
+  // de lo que tú ves: una captura de la lista de béisbol o el texto copiado. Solo cuentan para partidos que no han empezado.
+  const PD = "Playdoit";
+  const MOM = {};                                  // fecha → {date, book, at, games: {pk: {...}}}
+  let MOM_DB = null, MOM_RUN = null, MOM_LAST = null, MOM_ERR = "", IMG_CAPS = null;
+  if (window.claude && typeof window.claude.use === "function") {
+    window.claude.use("db").then((db) => {
+      if (!db) return;
+      MOM_DB = db;
+      db.collection("momios").onSnapshot((snap) => {
+        snap.docs.forEach((d) => { if (d.exists) { MOM[d.id] = d.data(); applyMomios(d.data(), false); } });
+        if (DAY_RENDER && !typing()) DAY_RENDER(true);
+      }, () => { MOM_DB = null; });
+    }).catch(() => {});
+    window.claude.use("sample").then((sm) => (sm && sm.limits ? sm.limits() : null)).then((c) => { IMG_CAPS = c && c.images ? c.images : null; if (DAY_RENDER) DAY_RENDER(true); }).catch(() => {});
+  }
+  const lineTxt = (v, signed_) => { const n = Number(String(v).replace(",", ".")); return isFinite(n) ? (signed_ && n > 0 ? "+" : "") + n.toFixed(1) : null; };
+  // un partido leído → los picks del framework con su momio (mismas claves que el tablero de momios)
+  function momPicks(m) {
+    const out = [], A = m.away, H = m.home;
+    const push = (pick, raw) => { if (raw != null && raw !== "" && parseOdds(raw)) out.push([pick, String(raw).replace("−", "-")]); };
+    if (m.ml) { push(A, m.ml.away); push(H, m.ml.home); }
+    if (m.rl) [["away", A], ["home", H]].forEach(([sd, ab]) => { const x = m.rl[sd], ln = x && lineTxt(x.line, true); if (ln) push(`${ab} ${ln}`, x.odds); });
+    if (m.total && lineTxt(m.total.line)) { push(`Over ${lineTxt(m.total.line)}`, m.total.over); push(`Under ${lineTxt(m.total.line)}`, m.total.under); }
+    if (m.f5) { push(`${A} F5`, m.f5.away); push(`${H} F5`, m.f5.home); }
+    return out;
+  }
+  function applyMomios(doc, overwrite) {
+    Object.entries((doc && doc.games) || {}).forEach(([pk, m]) => momPicks(m).forEach(([pick, raw]) => {
+      const k = oddsKey(pk, pick, PD);
+      if (overwrite || !oddsStore[k]) oddsStore[k] = raw;
+    }));
+    saveOdds();
+  }
+  function momPrompt(games, text) {
+    const list = games.map((g) => `${g.pk} | ${g.time} | ${g.away.abbr} (${g.away.name}) @ ${g.home.abbr} (${g.home.name})`).join("\n");
+    return `Lee los momios PREVIOS AL PARTIDO de Playdoit (casa de apuestas de México) que aparecen en ${text ? "el texto copiado de su página" : "las capturas de pantalla"} y empátalos con estos partidos de la MLB. Ignora todo lo que sea «En vivo». No inventes nada: si un momio no se ve con claridad, pon null. Copia cada momio tal como aparece: americano con signo ("-150", "+130") o decimal si así se muestra ("1.67"). Playdoit puede escribir los equipos en español o solo con la ciudad o el apodo (Dodgers, Gigantes, Yankees, Cachorros…). En run line, la línea va con signo ("-1.5" o "+1.5"). En total, la línea es el número de carreras (por ejemplo 8.5).
+
+PARTIDOS (pk | hora | visitante @ local):
+${list}
+
+Responde SOLO con JSON, así (los valores son de ejemplo):
+{"partidos":[{"pk":123456,"ml":{"visita":"-150","local":"+130"},"runline":{"visita":{"linea":"-1.5","momio":"+140"},"local":{"linea":"+1.5","momio":"-165"}},"total":{"linea":8.5,"over":"-110","under":"-110"},"f5":{"visita":null,"local":null}}],"sin_emparejar":["partidos que viste y no están en la lista"]}${text ? `\n\nTEXTO COPIADO DE PLAYDOIT:\n${text.slice(0, 40000)}` : ""}`;
+  }
+  async function readMomios(preRows, date, files, text) {
+    if (!SAMPLE || MOM_RUN) return;
+    const games = preRows.map((r) => ({ pk: r.pk, time: fmtTime(r.time), t: r.time, away: r.an.teams.away, home: r.an.teams.home }));
+    const ctl = new AbortController();
+    MOM_RUN = { ctl, t0: Date.now() }; MOM_ERR = "";
+    if (DAY_RENDER) DAY_RENDER(true);
+    const tick = setInterval(() => { const el = document.getElementById("mom-status"); if (el && MOM_RUN) el.textContent = `Claude está leyendo ${files ? "la captura" : "el texto"}… ${Math.round((Date.now() - MOM_RUN.t0) / 1000)} s`; }, 1000);
+    try {
+      const opts = { modelTier: "default", cache: false, signal: ctl.signal };
+      if (files && files.length) opts.images = files;
+      const res = await SAMPLE.json(momPrompt(games, text), opts);
+      const at = new Date().toISOString(), byPk = Object.fromEntries(games.map((g) => [String(g.pk), g]));
+      const read = [], started = [], out = {};
+      ((res && res.partidos) || []).forEach((x) => {
+        const g = byPk[String(x && x.pk)];
+        if (!g) return;
+        const m = { away: g.away.abbr, home: g.home.abbr, at,
+          ml: x.ml ? { away: x.ml.visita ?? null, home: x.ml.local ?? null } : null,
+          rl: x.runline ? { away: x.runline.visita ? { line: x.runline.visita.linea, odds: x.runline.visita.momio } : null, home: x.runline.local ? { line: x.runline.local.linea, odds: x.runline.local.momio } : null } : null,
+          total: x.total ? { line: x.total.linea, over: x.total.over ?? null, under: x.total.under ?? null } : null,
+          f5: x.f5 ? { away: x.f5.visita ?? null, home: x.f5.local ?? null } : null };
+        if (!momPicks(m).length) return;
+        if (Date.parse(g.t) <= Date.now()) { started.push(`${g.away.abbr} @ ${g.home.abbr}`); return; }   // solo momios previos al partido
+        out[String(g.pk)] = m; read.push({ g, m });
+      });
+      const doc = { date, book: PD, at, games: { ...((MOM[date] || {}).games || {}), ...out } };
+      MOM[date] = doc;
+      applyMomios({ games: out }, true);
+      if (MOM_DB) { try { await MOM_DB.doc("momios/" + date).set(doc); } catch { MOM_ERR = "Se aplicaron en este navegador, pero no se pudieron guardar en la base de la página."; } }
+      MOM_LAST = { at, read, started, unmatched: Array.isArray(res && res.sin_emparejar) ? res.sin_emparejar.map(String).slice(0, 10) : [], missing: games.filter((g) => !out[String(g.pk)] && !started.includes(`${g.away.abbr} @ ${g.home.abbr}`)).map((g) => `${g.away.abbr} @ ${g.home.abbr}`) };
+    } catch (e) {
+      const code = e && e.code;
+      if (code !== "cancelled") MOM_ERR = code === "image_rejected" ? "La imagen no se pudo leer (tipo o tamaño): usa una captura JPG o PNG." : code === "invalid_json" ? "Claude no devolvió los momios en el formato esperado: intenta de nuevo con una captura más nítida." : CLAUDE_ERRORS[code] || "No se pudo leer: intenta de nuevo.";
+    } finally {
+      clearInterval(tick);
+      MOM_RUN = null;
+      if (DAY_RENDER) DAY_RENDER(true);
+    }
+  }
+  function momPanel(preRows, date) {
+    if (!preRows.length) return "";
+    const can = !!SAMPLE && SAMPLE_STATE !== "none";
+    const n = Object.keys((MOM[date] || {}).games || {}).length;
+    const L = MOM_LAST;
+    const cell = (a, b) => `${a != null ? esc(String(a)) : "—"} / ${b != null ? esc(String(b)) : "—"}`;
+    const rows = L ? L.read.map(({ g, m }) => tr([td(`<b>${esc(g.away.abbr)} @ ${esc(g.home.abbr)}</b> <span class="muted">${esc(g.time)}</span>`), tdn(m.ml ? cell(m.ml.away, m.ml.home) : "—"),
+      tdn(m.rl ? cell(m.rl.away && `${m.rl.away.line} ${m.rl.away.odds}`, m.rl.home && `${m.rl.home.line} ${m.rl.home.odds}`) : "—"), tdn(m.total ? `${esc(String(m.total.line ?? "—"))}: ${cell(m.total.over, m.total.under)}` : "—"), tdn(m.f5 ? cell(m.f5.away, m.f5.home) : "—")])) : [];
+    return `<section class="block mom-panel" id="momios"><h2>Momios de Playdoit <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">previos al partido, leídos de tu pantalla</small></h2>
+      <p class="note">Playdoit bloquea la lectura automática: su sistema de seguridad corta cualquier acceso que no sea una persona. Por eso los momios se toman de lo que tú ves: <b>toma una captura</b> de la lista de béisbol de Playdoit (antes de los partidos; puedes subir varias) o <b>copia el texto</b> de la página, y Claude lee los momios de línea de dinero, run line, total y F5 y los pone en cada partido. Solo se usan en partidos que no han empezado. Revisa la tabla: si un número salió mal, corrígelo en el plan del día.</p>
+      ${can ? `<div class="mom-row">
+        ${IMG_CAPS ? `<button type="button" class="btn" id="mom-pick"${MOM_RUN ? " disabled" : ""}>Subir captura de Playdoit</button><input type="file" id="mom-file" accept="${esc((IMG_CAPS.mediaTypes || ["image/png", "image/jpeg"]).join(","))}" multiple hidden>` : ""}
+        <details class="mom-paste"><summary>O pega el texto de la página</summary><textarea id="mom-text" rows="5" placeholder="En Playdoit: selecciona la lista de béisbol, cópiala y pégala aquí"></textarea><button type="button" class="btn" id="mom-read-text"${MOM_RUN ? " disabled" : ""}>Leer texto</button></details>
+        ${MOM_RUN ? `<button type="button" class="btn" id="mom-stop">Detener</button>` : ""}
+        <span id="mom-status" class="muted" role="status">${MOM_RUN ? "Claude está leyendo…" : MOM_ERR ? esc(MOM_ERR) : n ? `${n} partido${n === 1 ? "" : "s"} de hoy con momios de Playdoit${(MOM[date] || {}).at ? ` · última lectura ${esc(fmtStamp(MOM[date].at))}` : ""}` : "Todavía no hay momios de Playdoit para este día."}</span>
+      </div>` : `<p class="note muted">Esta lectura usa a Claude y solo funciona en la página de claude.ai. Aquí escribe los momios de Playdoit a mano en el plan del día.</p>`}
+      ${L ? `<h3 class="sub">Última lectura (${esc(fmtStamp(L.at))}): ${L.read.length} partido${L.read.length === 1 ? "" : "s"} aplicado${L.read.length === 1 ? "" : "s"}</h3>
+        ${rows.length ? table(["Partido", "~Dinero (visita / local)", "~Run line", "~Total: over / under", "~F5"], rows) : ""}
+        ${L.started.length ? `<p class="note muted">No se aplicaron porque ya empezaron (serían momios en vivo): ${L.started.map(esc).join(", ")}.</p>` : ""}
+        ${L.missing.length ? `<p class="note muted">Sin momios en la lectura: ${L.missing.map(esc).join(", ")}.</p>` : ""}
+        ${L.unmatched.length ? `<p class="note muted">Claude vio y no pudo emparejar: ${L.unmatched.map(esc).join(", ")}.</p>` : ""}` : ""}
+      ${n ? `<button type="button" class="btn" id="mom-clear">Quitar los momios de Playdoit de este día</button>` : ""}
+    </section>`;
+  }
+  function bindMomios(preRows, date) {
+    const pick = document.getElementById("mom-pick"), file = document.getElementById("mom-file");
+    if (pick && file) { pick.addEventListener("click", () => file.click()); file.addEventListener("change", () => { if (file.files && file.files.length) readMomios(preRows, date, [...file.files].slice(0, (IMG_CAPS && IMG_CAPS.maxCount) || 4), null); }); }
+    const rt = document.getElementById("mom-read-text");
+    if (rt) rt.addEventListener("click", () => { const t = (document.getElementById("mom-text") || {}).value || ""; if (t.trim().length > 20) readMomios(preRows, date, null, t); });
+    const stop = document.getElementById("mom-stop");
+    if (stop) stop.addEventListener("click", () => { if (MOM_RUN) MOM_RUN.ctl.abort(); });
+    const clr = document.getElementById("mom-clear");
+    if (clr) clr.addEventListener("click", async () => {
+      Object.entries((MOM[date] || {}).games || {}).forEach(([pk, m]) => momPicks(m).forEach(([pk2]) => { delete oddsStore[oddsKey(pk, pk2, PD)]; }));
+      saveOdds(); delete MOM[date]; MOM_LAST = null;
+      if (MOM_DB) { try { await MOM_DB.doc("momios/" + date).delete(); } catch { /* se quitó en este navegador */ } }
+      if (DAY_RENDER) DAY_RENDER(true);
+    });
+  }
+
   function planBlock(plans) {
     if (!plans.length) return "";
     return `<section class="block cartera" id="plan"><h2>Plan del día <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">una decisión por partido y cómo se llegó a ella</small></h2>
