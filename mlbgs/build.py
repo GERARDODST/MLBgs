@@ -202,6 +202,8 @@ def build(bundle: dict, save: bool = True) -> dict:
     payload = {
         "meta": {**bundle["meta"], "builtAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                  "analysisErrors": errors, "hasOdds": bool(bundle.get("odds")),
+                 "oddsProvider": next((e.get("provider") for e in bundle.get("odds") or [] if e.get("provider")),
+                                      "The Odds API" if bundle.get("odds") else None),
                  "counts": {"games": len(analyses), "results": len(bundle.get("results", [])),
                             "boxscores": len(bundle.get("boxscores", [])), "pitchers": len(bundle.get("pitchers", {}))}},
         "league": {"era": lg.era, "ra9": lg.ra9, "cFip": lg.c_fip, "varRatio": lg.var_ratio, "homeWin": lg.home_win,

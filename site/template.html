@@ -323,6 +323,36 @@
   .fresh { font-size: 12px; color: var(--muted); }
 
   /* ---------- tablero de momios (estilo casino) ---------- */
+  /* momios tipo SofaScore: casa destacada, apertura → actual y comparación de casas */
+  .oc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; box-shadow: var(--shadow); }
+  .oc-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+  .oc-head h2 { margin-right: auto; }
+  .oc-head .st { font-size: 13px; color: var(--muted); }
+  .oc-mk { display: grid; grid-template-columns: 118px minmax(0, 1fr) minmax(0, 1fr); gap: 8px; align-items: stretch; }
+  .oc-mk .lbl { font-size: 13px; color: var(--muted); font-weight: 600; align-self: center; }
+  .ob { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1px solid var(--border); border-radius: 8px; padding: 7px 10px; background: var(--surface-2); min-width: 0; }
+  .ob .who { font-size: 13.5px; color: var(--ink-2); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ob .who small { display: block; font-weight: 400; color: var(--muted); font-size: 11.5px; }
+  .ob .px { font-family: var(--mono); font-size: 17px; font-weight: 700; display: inline-flex; align-items: center; gap: 3px; text-align: right; }
+  .ob .px small { display: block; font-size: 11px; font-weight: 400; color: var(--muted); }
+  .ob.val { border-color: var(--verde); box-shadow: inset 0 0 0 1px var(--verde); }
+  .ob.chk { border-color: var(--amarillo); box-shadow: inset 0 0 0 1px var(--amarillo); }
+  .ob.na { opacity: 0.55; }
+  .mv { font-size: 12px; line-height: 1; }
+  .mv.up { color: var(--verde); }
+  .mv.down { color: var(--rojo); }
+  .oc-ref { font-size: 13px; color: var(--ink-2); }
+  .oc table td.bestp { color: var(--amarillo); font-weight: 700; }
+  .mx { font-size: 10.5px; font-weight: 700; border-radius: 4px; padding: 0 4px; background: var(--verde-soft); color: var(--verde); margin-left: 4px; vertical-align: 1px; }
+  .oddsline { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; color: var(--ink-2); align-items: baseline; }
+  .oddsline b { font-family: var(--mono); }
+  .ob .px small { white-space: nowrap; }
+  @media (max-width: 560px) {
+    .oc-mk { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .oc-mk .lbl { grid-column: 1 / -1; }
+    .ob { flex-direction: column; align-items: stretch; gap: 2px; padding: 7px 9px; }
+    .ob .who { white-space: normal; } .ob .who small { display: inline; margin-left: 4px; }
+    .ob .px { justify-content: space-between; text-align: left; }
+  }
   .felt { --felt: #0f3a2d; --felt-2: #134836; --gold: #e2bd57; --chalk: #f3efe2; --chalk-2: #b9c8bf; --tile: rgba(255,255,255,0.07); --tile-b: rgba(255,255,255,0.16); --good: #57d892; --bad: #ff8a80;
     background: radial-gradient(120% 140% at 0% 0%, var(--felt-2), var(--felt)); color: var(--chalk); border-radius: 14px; padding: 16px; border: 1px solid #0a2a20; box-shadow: inset 0 0 0 1px rgba(226,189,87,0.18); display: flex; flex-direction: column; gap: 12px; }
   .felt h3 { font-family: var(--display); font-size: 20px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--gold); }
@@ -963,7 +993,7 @@
     st[4] = mk(worst(fieldsSt(by("4")), hasOff ? "ok" : "part"), hasOff ? "Lista oficial de bullpen publicada + fatiga de 3 días" : "Lista oficial de bullpen aún no publicada: uso predicho por rol y fatiga");
     st[5] = mk(worst(fieldsSt(by("5")), nLu === 2 ? "ok" : "part"), nLu === 2 ? "λ con lineups confirmados y park factor" : "λ con lineups proyectados", nLu === 2 ? "Confirmado" : "Proyectado");
     st[6] = mk(fieldsSt(by("6")), fieldsWhy(by("6")) || "Lineups, clima y umpire confirmados");
-    st[7] = mk(oddsSt, nb ? `Momios de ${nb} casa${nb === 1 ? "" : "s"}${S.s7.hasOdds ? " (The Odds API)" : " capturados por ti"}` : "Sin momios: captúralos en el tablero de la sección 7", nb >= 2 ? "Con momios" : nb === 1 ? "1 casa" : "Sin momios");
+    st[7] = mk(oddsSt, nb ? `Momios de ${nb} casa${nb === 1 ? "" : "s"}${S.s7.hasOdds ? ` (${S.s7.provider || "API"})` : " capturados por ti"}` : "Sin momios: captúralos en el tablero de la sección 7", nb >= 2 ? "Con momios" : nb === 1 ? "1 casa" : "Sin momios");
     const alerts = S.s8.audit.filter((x) => x.status === "Alerta").length;
     st[8] = mk(gateMissing ? "part" : "ok", `${alerts} alerta${alerts === 1 ? "" : "s"} de ${S.s8.audit.length} filtros${gateMissing ? " · depende de datos faltantes" : ""}`, gateMissing ? "Parcial" : "Al día");
     st[9] = mk(missNoOdds ? "miss" : gateMissing ? "part" : "ok", `${F.length - gateMissing} de ${F.length} campos obligatorios`, gateMissing ? `${gateMissing} faltante${gateMissing === 1 ? "" : "s"}` : "Completo");
@@ -1033,6 +1063,99 @@
     return { ...o, edge, ic: null, light: edge < 0 ? "Rojo" : edge >= 0.03 ? "Amarillo" : "Gris", why: edge >= 0.03 ? "hay valor, pero este mercado no está entre los picks evaluados con IC" : edge < 0 ? "sin valor" : "precio justo" };
   }
 
+  // ---------------------------------------------------------------- momios tipo SofaScore
+  // El feed con licencia (odds-api.net o The Odds API) guarda la apertura y el último momio antes del juego:
+  // la flecha dice hacia dónde se movió el momio desde la apertura (▲ paga más, ▼ paga menos).
+  const decOfAm = (m) => (isNum(m) ? (m > 0 ? 1 + m / 100 : 1 + 100 / Math.abs(m)) : null);
+  const d2 = (m) => (isNum(m) ? decOfAm(m).toFixed(2) : "—");
+  const priceOf = (x) => (x && typeof x === "object" ? x.price : x);
+  function mvArrow(now, was) {
+    const a = decOfAm(priceOf(now)), b = decOfAm(priceOf(was));
+    if (!isNum(a) || !isNum(b) || Math.abs(a - b) < 0.005) return "";
+    return a > b ? `<span class="mv up" title="Subió desde la apertura (${b.toFixed(2)})">▲</span>` : `<span class="mv down" title="Bajó desde la apertura (${b.toFixed(2)})">▼</span>`;
+  }
+  function ocBook(g) {
+    const books = g.sections.s7.books || [];
+    const want = store.get("mlbgs-odds-book");
+    return books.find((b) => b.key === want || b.book === want) || books[0] || null;
+  }
+  function ocProb(g, pick) {
+    const r = (g.sections.s7.fair || []).find((x) => x.pick === pick);
+    return r ? r.p : null;
+  }
+  function ocBox(g, who, sub, cur, was, pick) {
+    const price = priceOf(cur);
+    if (!isNum(price)) return `<div class="ob na"><span class="who">${esc(who)}${sub ? `<small>${esc(sub)}</small>` : ""}</span><span class="px">—</span></div>`;
+    const p = pick ? ocProb(g, pick) : null;
+    const edge = isNum(p) ? p - 1 / decOfAm(price) : null;
+    const open = priceOf(was);
+    const moved = isNum(open) && Math.abs(decOfAm(open) - decOfAm(price)) >= 0.005;
+    const tip = `${who}: ${d2(price)} (${odds(price)})${isNum(open) ? ` · apertura ${d2(open)}` : ""}${isNum(edge) ? ` · modelo ${pc(p, 1)}, ${edge >= 0 ? "+" : ""}${(100 * edge).toFixed(1)} pp` : ""}`;
+    const cls = !isNum(edge) || edge < SK.edgeMin ? "" : edge >= (SK.edgeMax || 0.10) ? " chk" : " val";
+    return `<div class="ob${cls}" title="${esc(tip + (cls === " chk" ? " · 10 pp o más: verificar lesiones, descansos y lineup antes de apostar" : ""))}"><span class="who">${esc(who)}${sub ? `<small>${esc(sub)}</small>` : ""}</span>
+      <span class="px"><span>${d2(price)}<small>${odds(price)}${moved ? ` · abrió ${d2(open)}` : ""}</small></span>${mvArrow(price, open)}</span></div>`;
+  }
+  const ptTxt = (x) => (x && isNum(x.point) ? (x.point > 0 ? "+" : "") + Number(x.point).toFixed(1) : "");
+  function oddsCard(g) {
+    const S = g.sections.s7, a = g.teams.away.abbr, h = g.teams.home.abbr;
+    if (!S.hasOdds) {
+      return `<section class="oc" data-oc="${g.pk}"><div class="oc-head"><h2>Momios</h2><span class="st">sin feed automático todavía</span></div>
+        <p class="note">Los momios automáticos (varias casas, con apertura y cierre, como en SofaScore) se activan con la clave gratuita de odds-api.net guardada en GitHub. Mientras, captura los de ${esc(bookSel())} en la Jornada o escríbelos en el tablero de la sección 7.</p></section>`;
+    }
+    const b = ocBook(g);
+    const o = (b && b.open) || {};
+    const ref = S.ref || {};
+    const st = S.closed ? `Cierre: último momio antes del primer lanzamiento${S.checked ? ` (${fmtStamp(S.checked)})` : ""}` : S.checked ? `Actualizado ${agoTxt(S.checked)}` : "";
+    const chips = (S.books || []).map((x) => `<button type="button" class="chip" data-oc-book="${esc(x.key || x.book)}" aria-pressed="${x === b}">${esc(x.book)}${x.mx ? '<span class="mx">MX</span>' : ""}</button>`).join("");
+    const rl = (x) => (x ? `${ptTxt(x)}` : "");
+    const tl = b && (b.over || b.under) ? Number((b.over || b.under).point).toFixed(1) : null;
+    const refTxt = (() => {
+      const bits = [];
+      const m = ref.ml || {};
+      if (m.away || m.home) bits.push(`ML ${a} <b>${d2((m.away || [])[0])}</b> · ${h} <b>${d2((m.home || [])[0])}</b>`);
+      const t = ref.total || {};
+      if (t.over) bits.push(`Total ${esc(S.marketTotal ?? "")} más <b>${d2(t.over[0])}</b> · menos <b>${d2((t.under || [])[0])}</b>`);
+      const who = (m.home || m.away || [])[1];
+      return bits.length ? `<p class="oc-ref">El modelo calcula el edge con el <b>momio de referencia</b> (${esc(who || "")}): ${bits.join(" · ")}.</p>` : "";
+    })();
+    const cols = [["ML " + a, (x) => x.mlAway, (x) => (x.open || {}).mlAway], ["ML " + h, (x) => x.mlHome, (x) => (x.open || {}).mlHome],
+      ["RL " + a, (x) => x.rlAway, (x) => (x.open || {}).rlAway], ["RL " + h, (x) => x.rlHome, (x) => (x.open || {}).rlHome],
+      ["Más", (x) => x.over, (x) => (x.open || {}).over], ["Menos", (x) => x.under, (x) => (x.open || {}).under]];
+    const bestOf = cols.map(([, get]) => Math.max(...(S.books || []).map((x) => decOfAm(priceOf(get(x))) || 0)));
+    const cmp = `<div class="tbl"><table><thead><tr><th>Casa</th>${cols.map(([t]) => `<th class="c">${esc(t)}</th>`).join("")}</tr></thead><tbody>${(S.books || []).map((x) => `<tr><td>${esc(x.book)}${x.mx ? '<span class="mx">MX</span>' : ""}</td>${cols.map(([, get, was], i) => {
+      const v = get(x), pr = priceOf(v);
+      const pt = v && typeof v === "object" ? `<span class="muted">${esc(i < 4 ? ptTxt(v) : Number(v.point).toFixed(1))}</span> ` : "";
+      return `<td class="c num${isNum(pr) && Math.abs(decOfAm(pr) - bestOf[i]) < 0.005 ? " bestp" : ""}">${isNum(pr) ? `${pt}${d2(pr)}${mvArrow(pr, was(x))}` : "—"}</td>`;
+    }).join("")}</tr>`).join("")}</tbody></table></div>`;
+    return `<section class="oc" data-oc="${g.pk}">
+      <div class="oc-head"><h2>Momios</h2><span class="tag info">${esc(S.provider || "API")} · ${S.nBooks} casa${S.nBooks === 1 ? "" : "s"}${S.nMx ? ` · ${S.nMx} en México` : ""}</span><span class="st">${esc(st)}</span></div>
+      <div class="chips" role="group" aria-label="Casa de apuestas">${chips}</div>
+      ${b ? `<div class="oc-mk"><span class="lbl">Ganador</span>${ocBox(g, a, "visita", b.mlAway, o.mlAway, a)}${ocBox(g, h, "local", b.mlHome, o.mlHome, h)}</div>
+      <div class="oc-mk"><span class="lbl">Run line</span>${ocBox(g, `${a} ${rl(b.rlAway)}`, "hándicap", b.rlAway, o.rlAway, b.rlAway ? `${a} ${ptTxt(b.rlAway)}` : null)}${ocBox(g, `${h} ${rl(b.rlHome)}`, "hándicap", b.rlHome, o.rlHome, b.rlHome ? `${h} ${ptTxt(b.rlHome)}` : null)}</div>
+      <div class="oc-mk"><span class="lbl">Total${tl ? ` ${esc(tl)}` : ""}</span>${ocBox(g, "Más", tl ? `over ${tl}` : "", b.over, o.over, tl ? `Over ${tl}` : null)}${ocBox(g, "Menos", tl ? `under ${tl}` : "", b.under, o.under, tl ? `Under ${tl}` : null)}</div>` : ""}
+      ${refTxt}
+      <details><summary class="muted" style="cursor:pointer;font-size:13px">Comparar las ${S.nBooks} casas (dorado = mejor pago)</summary>${cmp}</details>
+      <p class="note muted">Momio decimal grande y americano abajo · ▲ paga más que en la apertura, ▼ paga menos · borde verde = el modelo le ve ${Math.round(100 * SK.edgeMin)} pp o más de edge a ese precio (ámbar si llega a ${Math.round(100 * (SK.edgeMax || 0.10))} pp: verificar, filtro contra el mercado). Como en SofaScore, vienen del feed con licencia de un proveedor de momios (no se leen las páginas de las casas). Playdoit y Caliente no están en el feed: si capturas su momio, la decisión usa el tuyo.</p>
+    </section>`;
+  }
+  function oddsLine(g) {
+    const S = g.sections.s7;
+    if (!S.hasOdds) return "";
+    const b = ocBook(g);
+    if (!b) return "";
+    const o = b.open || {}, a = g.teams.away.abbr, h = g.teams.home.abbr;
+    const tl = b.over ? Number(b.over.point).toFixed(1) : null;
+    return `<div class="oddsline"><span class="muted">${esc(b.book)}${b.mx ? '<span class="mx">MX</span>' : ""}</span><span>${esc(a)} <b>${d2(b.mlAway)}</b>${mvArrow(b.mlAway, o.mlAway)}</span><span>${esc(h)} <b>${d2(b.mlHome)}</b>${mvArrow(b.mlHome, o.mlHome)}</span>${tl ? `<span>O/U ${esc(tl)} <b>${d2(priceOf(b.over))}</b>/<b>${d2(priceOf(b.under))}</b></span>` : ""}${S.closed ? '<span class="muted">cierre</span>' : ""}</div>`;
+  }
+  document.addEventListener("click", (e) => {
+    const c = e.target.closest("[data-oc-book]");
+    if (!c) return;
+    store.set("mlbgs-odds-book", c.dataset.ocBook);
+    const card = c.closest("[data-oc]");
+    const g = card && (D.games || []).find((x) => String(x.pk) === card.dataset.oc);
+    if (g) card.outerHTML = oddsCard(g);
+  });
+
   function oddsBoard(g) {
     const S = g.sections.s7;
     const api = (S.books || []).filter((b) => b.book);
@@ -1059,7 +1182,7 @@
     return `<div class="felt" data-board="${g.pk}" data-mode="${mode}">
       <div class="felt-head"><h3>Tablero de momios</h3>
         <div class="seg" role="group" aria-label="Modo del tablero"><button type="button" data-mode-set="capturar" aria-pressed="${mode === "capturar"}">✎ Capturar momios</button><button type="button" data-mode-set="elegir" aria-pressed="${mode === "elegir"}">☑ Elegir apuesta</button></div></div>
-      <p style="font-size:13px">${S.hasOdds ? `Momios de ${S.nBooks} casa(s) conectadas por API y casillas libres para las casas mexicanas.` : "Las casas mexicanas no publican API: cada casilla queda libre para que escribas el momio que ves en la app (americano −150 / +130 o decimal 1.91)."} Verde = edge ≥ 3 pp sobre la probabilidad del modelo · dorado = mejor precio del renglón · rojo = paga menos de lo que vale. En <b>Elegir apuesta</b> toca un momio para mandarlo al boleto.</p>
+      <p style="font-size:13px">${S.hasOdds ? `Momios de ${S.nBooks} casa(s) de ${esc(S.provider || "la API")} y casillas libres para Playdoit, Caliente y las casas que no están en el feed.` : "Las casas mexicanas no publican API: cada casilla queda libre para que escribas el momio que ves en la app (americano −150 / +130 o decimal 1.91)."} Verde = edge ≥ 3 pp sobre la probabilidad del modelo · dorado = mejor precio del renglón · rojo = paga menos de lo que vale. En <b>Elegir apuesta</b> toca un momio para mandarlo al boleto.</p>
       <div class="tbl"><table><thead><tr><th>Selección</th><th>Modelo</th>${cols.map((c) => `<th class="c">${esc(c.book)}${c.api ? " ·API" : ""}</th>`).join("")}<th>Mejor precio</th></tr></thead><tbody>${body}</tbody></table></div>
       <div class="slip" data-slip="${g.pk}"></div>
     </div>`;
@@ -1193,6 +1316,13 @@
   const CLAUDE_RUN = {}, CLAUDE_ERR = {};
   const candPicks = (g) => { const lab = LAB_BY_PK[String(g.pk)]; return ((lab ? lab.picks : g.picks) || []).slice().sort((x, y) => y.ic - x.ic); };
 
+  // de dónde sale el momio de referencia de un pick (mediana de las casas MX del feed)
+  function refLabel(g, pick) {
+    const r = (g.sections.s7 || {}).ref;
+    const all = r ? [...Object.values(r.ml || {}), ...Object.values(r.rl || {}), ...Object.values(r.total || {})].filter(Boolean) : [];
+    const who = all.length ? all[0][1] : null;
+    return who ? `mercado: ${who}` : "mercado";
+  }
   function decisionNow(g) {
     const d = g.decision;
     if (!d || !d.pick) return null;
@@ -1216,14 +1346,18 @@
       }
     }
     const p = cands.find((x) => x.pick === name) || cands.find((x) => x.pick === d.pick.pick);
-    const b = p ? bestOdds(g.pk, p.pick) : null;
+    let b = p ? bestOdds(g.pk, p.pick) : null;
+    if (!b && p && p.priceIsReal && isNum(p.price)) {      // feed de momios: la mediana de las casas MX (ver sección 7)
+      const raw = String(Math.round(p.price)), o = parseOdds(raw);
+      if (o) b = { o, raw, book: refLabel(g, p.pick), api: true };
+    }
     const s = b && p ? stakeFor(p, b.raw) : null;
     const rules = s ? s.level : p && p.stake ? p.stake.level || 0 : 0;      // lo que permiten las reglas con tu momio o con el IC
     let level = status === "apostar" ? (cl ? Math.min(cl.result.stake, rules) : rules) : 0;
     if (status === "apostar" && !level) { status = "no apostar"; why = s ? `con ${odds(b.o.am)}: ${s.why}` : p && p.stake && p.stake.block ? p.stake.block : "la confianza no alcanza para stake 1"; }
     const ladder = p && p.stake ? p.stake.ladder || [] : [];
     const lvls = ((p && p.stake && p.stake.steps) || []).map((v, i) => (v != null ? i + 1 : 0)).filter(Boolean);
-    const pending = status === "apostar" && !b;   // sin momio del casino el stake todavía no está fijo: depende de lo que paguen
+    const pending = status === "apostar" && !b;   // sin momio (tuyo ni del feed) el stake todavía no está fijo: depende de lo que paguen
     return { src, status, p, pick: name, level, amt: amountOf(level), b, s, cl, why, minPrice: ladder.length ? ladder[0].from : null, ladder, d,
       pending, range: lvls.length ? [lvls[0], lvls[lvls.length - 1]] : null, maxPrice: p && p.stake ? p.stake.maxPrice ?? null : null };
   }
@@ -1235,7 +1369,7 @@
     if (x.status === "esperar") return `<div class="deci wait">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Esperar</span><span class="deci-sub">falta un dato obligatorio</span></div>`;
     if (x.status !== "apostar") return `<div class="deci off">${head}<b class="deci-pick">No apostar</b><span class="deci-sub">${esc(x.why || "")}</span></div>`;
     if (x.pending) return `<div class="deci on pend" data-tip="Sin momio de ${esc(bookSel())}: conviene solo si pagan ${odds(x.minPrice)} o mejor (es el mínimo del modelo, no el momio del casino). Escribe el momio y se fija el stake.">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span><span class="deci-sub">según tu momio · mín. ${odds(x.minPrice)}</span></div>`;
-    return `<div class="deci on" data-tip="Stake ${x.level} de 10 = ${money(x.amt)} · ${esc(x.why || "")}">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Stake ${x.level}</span><span class="deci-amt">${money(x.amt)}</span><span class="deci-sub">con tu ${odds(x.b.o.am)} en ${esc(x.b.book)}</span></div>`;
+    return `<div class="deci on" data-tip="Stake ${x.level} de 10 = ${money(x.amt)} · ${esc(x.why || "")}">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Stake ${x.level}</span><span class="deci-amt">${money(x.amt)}</span><span class="deci-sub">${x.b.api ? `con ${odds(x.b.o.am)} · ${esc(x.b.book)}` : `con tu ${odds(x.b.o.am)} en ${esc(x.b.book)}`}</span></div>`;
   }
 
   function decisionPanel(g) {
@@ -1243,7 +1377,7 @@
     if (!x) return "";
     const d = x.d, p = x.p;
     const cls = x.status === "apostar" ? "on" : x.status === "esperar" ? "wait" : "off";
-    const head = x.status === "apostar" ? (x.pending ? `${esc(x.pick)} <span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span> <span class="deci-amt">según tu momio</span>` : `${esc(x.pick)} <span class="deci-stk">Stake ${x.level}</span> <span class="deci-amt">${money(x.amt)} con ${odds(x.b.o.am)}</span>`) : x.status === "esperar" ? `${esc(x.pick)} <span class="deci-stk">Esperar</span>` : `No apostar${x.pick ? ` <span class="muted" style="font-size:.55em">(mejor opción: ${esc(x.pick)})</span>` : ""}`;
+    const head = x.status === "apostar" ? (x.pending ? `${esc(x.pick)} <span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span> <span class="deci-amt">según tu momio</span>` : `${esc(x.pick)} <span class="deci-stk">Stake ${x.level}</span> <span class="deci-amt">${money(x.amt)} con ${odds(x.b.o.am)}${x.b.api ? " (mercado)" : ""}</span>`) : x.status === "esperar" ? `${esc(x.pick)} <span class="deci-stk">Esperar</span>` : `No apostar${x.pick ? ` <span class="muted" style="font-size:.55em">(mejor opción: ${esc(x.pick)})</span>` : ""}`;
     const data = p ? esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked, blockedWithOdds: p.blockedWithOdds, datosWithOdds: p.datosWithOdds, stake: p.stake })) : "";
     const tone = { pro: ["✓", "a favor"], contra: ["✗", "en contra"], neutral: ["•", "contexto"] };
     return `<section class="block deci-panel" id="decision"><h2>Decisión del partido <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">una sola opción: framework completo${LAB_BY_PK[String(g.pk)] ? " + modelo del Pro-Lab" : ""} + cuotas${x.cl ? " + conclusión de Claude" : ""}</small></h2>
@@ -1418,6 +1552,7 @@ ${brief}`;
       <div class="line"><span class="abbr"><i class="away-mark"></i>${esc(a.abbr)}</span><span class="who"><span class="rec">${esc(a.name)} · ${a.w}-${a.l}</span>${sp(s.probables.away)}</span><span class="prob ${pa >= 0.5 ? "fav" : "dog"}">${pc(pa)}</span></div>
       <div class="line"><span class="abbr"><i class="home-mark"></i>${esc(h.abbr)}</span><span class="who"><span class="rec">${esc(h.name)} · ${h.w}-${h.l}</span>${sp(s.probables.home)}</span><span class="prob ${ph > 0.5 ? "fav" : "dog"}">${pc(ph)}</span></div>
       <div class="splitbar" role="img" aria-label="Probabilidad de victoria: ${esc(a.abbr)} ${pc(pa)}, ${esc(h.abbr)} ${pc(ph)}"><span style="width:${(pa * 100).toFixed(1)}%"></span><span style="width:${(ph * 100).toFixed(1)}%"></span></div>
+      ${oddsLine(g)}
       <div class="facts">
         <div class="fact"><b>${f(s.proj.away, 1)}–${f(s.proj.home, 1)}</b><span>Marcador</span></div>
         <div class="fact"><b>${f(s.proj.total, 1)}</b><span>Total</span></div>
@@ -1518,6 +1653,8 @@ ${brief}`;
           <div class="db-cell"><span class="eyebrow">Boletos cobrados</span><b class="num ${dl.net > 0 ? "won" : dl.net < 0 ? "lost" : ""}">${dl.n ? signed2(dl.net) : "—"}</b><span>${dl.n ? `${dl.win}–${dl.lose}${dl.push ? `–${dl.push}` : ""} · ${money(dl.staked)} apostado` : "ninguno terminado"}${dl.pend ? ` · ${dl.pend} en juego` : ""}</span></div>
           <div class="db-cell db-src"><span class="eyebrow"><span class="dot ${liveInfo.source === "api" ? "ok" : "part"}" style="display:inline-block;vertical-align:middle;margin-right:6px"></span>Actualización</span><span>${src}</span><span style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button type="button" class="btn" id="day-refresh" style="padding:2px 9px;font-size:12.5px">Actualizar ahora</button><a href="#historial" style="font-size:13px;font-weight:600">Historial de tickets →</a></span></div>
         </div>
+        ${D.meta.odds && D.meta.odds.error ? `<div class="notice"><span class="ic">!</span><div><b>El feed de momios (${esc(D.meta.odds.provider || "API")}) no respondió en la última corrida:</b> ${esc(D.meta.odds.error)}. Se muestran los últimos momios guardados${D.meta.hasOdds ? "" : " (ninguno todavía)"}; si dice HTTP 401 o 403, revisa la clave guardada en GitHub.</div></div>` : ""}
+        ${D.meta.hasOdds && by.pre.some((r) => r.an) ? `<div class="notice"><span class="ic">✓</span><div><b>Momios automáticos de ${esc(D.meta.oddsProvider || "la API")}</b>, como en SofaScore: varias casas (las que operan en México van marcadas MX), con apertura, flechas de movimiento y cierre al primer lanzamiento. El modelo calcula el edge con la mediana de las casas MX. Playdoit y Caliente no están en el feed: si capturas su momio, la decisión usa el tuyo.</div></div>` : ""}
         ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>La página no trae momios de ningún casino.</b> Los momios que ves salen del modelo: el <b>justo</b> (su probabilidad convertida a momio) y el <b>mín.</b> (lo menos que debe pagar el casino para que convenga). No son lo que paga ${esc(bookSel())}. Escribe el momio de ${esc(bookSel())} en el plan del día o en el partido: la decisión y el stake se recalculan con él, y si el casino ve el partido 10 pp o más distinto que el modelo, no hay stake (filtro contra el mercado).</div></div>` : ""}
         ${momPanel(by.pre.filter((r) => r.an), sel)}
         ${planBlock(plans.filter((q) => q.x && decMatch(q.x, flt)).map((q) => q.x))}
@@ -1567,7 +1704,7 @@ ${brief}`;
       const fw = decNorm(r.an.decisionFramework || r.an.decision), comb = decNorm(r.an.decision);
       const fin = { status: x.status, pick: x.pick, level: x.level };
       return { r, e, pre: true, lab, labName, x, p: x.p, fw, comb, fin, amt: x.status === "apostar" && !x.pending ? x.amt : 0, pending: x.pending,
-        labP: lab ? labProb(lab, r.an.picks, comb.pick) : null, odds: x.b ? { am: x.b.o.am, src: "tuyo", book: x.b.book } : x.minPrice != null ? { am: x.minPrice, src: "min" } : null,
+        labP: lab ? labProb(lab, r.an.picks, comb.pick) : null, odds: x.b ? { am: x.b.o.am, src: x.b.api ? "mercado" : "tuyo", book: x.b.book } : x.minPrice != null ? { am: x.minPrice, src: "min" } : null,
         claude: x.cl ? { pick: x.pick, level: x.level, status: x.status } : null };
     }
     const ts = (TK_BY_PK[String(r.pk)] || []).filter((t) => t.date === r.date && t.decision);
@@ -1575,8 +1712,8 @@ ${brief}`;
     const tk = labT || fwT;
     if (!tk) return { r, e, pre: false, lab, labName, fin: null };
     const fw = decNorm((fwT || tk).decision), fin = decNorm(tk.decision), sl = slipOf(tk);
-    return { r, e, pre: false, lab, labName, tk, fw, comb: fin, fin, slip: sl, amt: sl && sl.played && sl.source !== "referencia" ? sl.amount : 0, p: tk.picks.find((q) => q.pick === fin.pick) || null,
-      odds: sl ? { am: sl.am, src: sl.source === "referencia" ? "referencia" : "tuyo" } : null, claude: null };
+    return { r, e, pre: false, lab, labName, tk, fw, comb: fin, fin, slip: sl, amt: sl && sl.played && mineSlip(sl) ? sl.amount : 0, p: tk.picks.find((q) => q.pick === fin.pick) || null,
+      odds: sl ? { am: sl.am, src: sl.source === "referencia" || sl.source === "mercado" ? sl.source : "tuyo" } : null, claude: null };
   }
   function chainHtml(x) {
     if (!x || !x.fw) return "";
@@ -1584,12 +1721,12 @@ ${brief}`;
     const fwCls = x.fw.status === "apostar" ? "on" : x.fw.status === "esperar" ? "wait" : "off";
     const eff = x.lab ? labEffect(x.fw, x.comb) : "";
     const labCls = !x.lab ? "none" : eff === "confirma" || eff.startsWith("sube") || eff.startsWith("activa") ? "on" : eff.startsWith("baja") || eff === "la descarta" ? "warn" : "wait";
-    const oddsTxt = !x.odds ? "—" : x.odds.src === "tuyo" ? `tu ${odds(x.odds.am)}` : `sin momio · mín. ${odds(x.odds.am)}`;
+    const oddsTxt = !x.odds ? "—" : x.odds.src === "tuyo" ? `tu ${odds(x.odds.am)}` : x.odds.src === "mercado" ? `mercado ${odds(x.odds.am)}` : `sin momio · mín. ${odds(x.odds.am)}`;
     const cl = x.claude;
     return `<div class="chain" aria-label="Cómo se llegó a la decisión">
       ${step(fwCls, "Framework", decTxt(x.fw), "Las 10 secciones del framework: su decisión por sí solo")}<span class="ch-arr" aria-hidden="true">›</span>
       ${step(labCls, x.lab ? x.labName : "Pro-Lab", x.lab ? `${isNum(x.labP) ? pc(x.labP) + " · " : ""}${eff}` : "—", x.lab ? `Modelo del Pro-Lab: su probabilidad entra a los picks y su acuerdo mueve el stake` : "Este partido no tiene modelo del Pro-Lab")}<span class="ch-arr" aria-hidden="true">›</span>
-      ${step(x.odds && x.odds.src === "tuyo" ? "on" : "none", "Cuota", oddsTxt, x.odds && x.odds.src === "tuyo" ? "Tu momio: el IC y el stake se recalculan con él" : "No es el momio del casino: es el mínimo que acepta el modelo. Escribe el de tu casa y se recalcula")}<span class="ch-arr" aria-hidden="true">›</span>
+      ${step(x.odds && (x.odds.src === "tuyo" || x.odds.src === "mercado") ? "on" : "none", "Cuota", oddsTxt, x.odds && x.odds.src === "tuyo" ? "Tu momio: el IC y el stake se recalculan con él" : x.odds && x.odds.src === "mercado" ? "Momio del feed (mediana de las casas MX): el IC y el stake salen de él; si escribes el de tu casa, manda el tuyo" : "No es el momio del casino: es el mínimo que acepta el modelo. Escribe el de tu casa y se recalcula")}<span class="ch-arr" aria-hidden="true">›</span>
       ${step(cl ? "on" : "none", "Claude", cl ? decTxt(cl) : "—", cl ? "Conclusión de Claude con el expediente completo" : "Pulsa «Analizar con Claude» en el partido para su conclusión")}
     </div>`;
   }
@@ -1614,7 +1751,7 @@ ${brief}`;
       <div class="pl-when"><span class="num">${esc(fmtTime(r.time))}</span><span class="pl-st st-${e.st}">${esc(stTxt)}</span></div>
       <div class="pl-game"><a href="${link}"><b>${esc(aA || "")}</b>${score ? ` <span class="num">${score[0]}</span>` : ""} <span class="muted">@</span> <b>${esc(hA || "")}</b>${score ? ` <span class="num">${score[1]}</span>` : ""}</a>${x.lab ? ` <span class="tag info">${esc(x.labName)}</span>` : ""}</div>
       <div class="pl-deci">${deci}</div>
-      <div class="pl-odds">${x.pre && x.p && cls !== "off" ? oddsInput(r.pk, x.p) : x.odds && !x.pre ? `<span class="num">${odds(x.odds.am)}</span> <span class="muted">${x.odds.src === "referencia" ? "mín." : "tuyo"}</span>` : ""}</div>
+      <div class="pl-odds">${x.pre && x.p && cls !== "off" ? oddsInput(r.pk, x.p) : x.odds && !x.pre ? `<span class="num">${odds(x.odds.am)}</span> <span class="muted">${x.odds.src === "referencia" ? "mín." : x.odds.src === "mercado" ? "mercado" : "tuyo"}</span>` : ""}</div>
       <div class="pl-stake">${money_}</div>
       <div class="pl-chain">${chainHtml(x)}</div>
     </div>`;
@@ -1763,7 +1900,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
 
   function footer() {
     const m = D.meta;
-    return `<p class="foot">Fuentes: MLB Stats API (statsapi.mlb.com) y Baseball Savant (baseballsavant.mlb.com)${m.hasOdds ? " · The Odds API" : ""}. Datos generados ${fmtStamp(m.generatedAt)}: ${m.counts.results} resultados de la temporada ${m.season}, ${m.counts.boxscores} box scores recientes, ${m.counts.pitchers} abridores probables. Herramienta de análisis estadístico: no garantiza resultados y apostar implica riesgo financiero real.</p>`;
+    return `<p class="foot">Fuentes: MLB Stats API (statsapi.mlb.com) y Baseball Savant (baseballsavant.mlb.com)${m.hasOdds ? ` · momios: ${esc(m.oddsProvider || "API")}` : ""}. Datos generados ${fmtStamp(m.generatedAt)}: ${m.counts.results} resultados de la temporada ${m.season}, ${m.counts.boxscores} box scores recientes, ${m.counts.pitchers} abridores probables. Herramienta de análisis estadístico: no garantiza resultados y apostar implica riesgo financiero real.</p>`;
   }
 
   // ---------------------------------------------------------------- gráficas
@@ -1839,6 +1976,8 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
       </div>
 
       ${decisionPanel(g)}
+
+      ${oddsCard(g)}
 
       <section class="block"><h2>${lab ? `Picks finales: framework + ${esc(labName)}` : "Picks principales"}</h2>
         ${lab ? `<div class="notice labnote"><span class="ic" style="background:var(--accent-soft);color:var(--accent)">★</span><div>Este partido tiene modelo del Pro-Lab: <b>${esc(labName)}</b> (${esc(LAB_INFO[labKey(lab)].kind.toLowerCase())}), con datos congelados el ${fmtStamp(lab.frozenAt)}; estos dos picks ya combinan los métodos del framework (Log5, Elo, λ, Poisson) con el modelo; al final de la página se explica cómo se complementan. <a href="#lab${lab.pk}"><b>Ver el modelo del Pro-Lab →</b></a></div></div>` : ""}
@@ -2125,12 +2264,12 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
       ${s.hasOdds ? `<details><summary class="muted" style="cursor:pointer;font-size:13px">Momios crudos de la API</summary>${books}</details>` : ""}
       <h3 class="sub"><span class="code">7.2 · 7.3 · 7.4</span> Probabilidad implícita, edge y precio máximo aceptable</h3>
       <p class="note">P<sub>implícita</sub> = |m|/(|m|+100) si m &lt; 0 · 100/(m+100) si m &gt; 0 · Edge = P<sub>estimada</sub> − P<sub>implícita</sub> · Momio justo = −100p/(1−p) si p ≥ 0.5, 100(1−p)/p si p &lt; 0.5 · Mínimo aceptable = momio justo exigiendo ${pc(s.edgeMin)} de edge.</p>
-      ${table(["Mercado", "Pick", "~P. estimada", "~Momio justo", "~Mínimo aceptable", "~Mejor momio", "~Edge"], s.fair.map((r) => tr([td(esc(r.market)), td(`<b>${esc(r.pick)}</b>`), tdn(pc(r.p, 1)), tdn(odds(r.fair)), tdn(odds(r.minPrice)), tdn(odds(r.price)), tdn(isNum(r.edge) ? signed(100 * r.edge, 1) + " pp" : "—")])))}
-      <p class="note muted">Si el mercado ofrece peor precio que el momio mínimo aceptable, no hay valor.</p>
+      ${table(["Mercado", "Pick", "~P. estimada", "~Momio justo", "~Mínimo aceptable", "~Momio de referencia", "~Edge"], s.fair.map((r) => tr([td(esc(r.market)), td(`<b>${esc(r.pick)}</b>`), tdn(pc(r.p, 1)), tdn(odds(r.fair)), tdn(odds(r.minPrice)), tdn(odds(r.price)), tdn(isNum(r.edge) ? signed(100 * r.edge, 1) + " pp" : "—")])))}
+      <p class="note muted">Si el mercado ofrece peor precio que el momio mínimo aceptable, no hay valor.${s.hasOdds ? " Momio de referencia = mediana de las casas que operan en México (o de todas si ninguna lo tiene): el mejor precio de todas las casas casi nunca es el que te dan en tu casa y exageraría el edge." : ""}</p>
       <h3 class="sub"><span class="code">7.5</span> Filtro contra favoritos caros</h3>
       <p class="rule">${esc(s.expensiveFav.text)}</p>
       ${table(["Pregunta", "Respuesta", "Ajuste"], s.questions.map((q) => tr([td(esc(q.q)), td(`<b>${esc(q.a)}</b>`), td(esc(q.adj), "muted")])))}
-      ${s.value.length ? `<h3 class="sub"><span class="code">7.8</span> Tabla final de valor</h3>${table(["Mercado", "Pick", "~Mejor momio", "~P. implícita", "~P. estimada", "~Edge"], s.value.map((m) => tr([td(esc(m.market)), td(esc(m.pick)), tdn(odds(m.price)), tdn(pc(m.implied, 1)), tdn(pc(m.pNoPush, 1)), tdn(signed(100 * m.edge, 1) + " pp")])))}` : ""}`;
+      ${s.value.length ? `<h3 class="sub"><span class="code">7.8</span> Tabla final de valor</h3>${table(["Mercado", "Pick", "~Momio de referencia", "~P. implícita", "~P. estimada", "~Edge"], s.value.map((m) => tr([td(esc(m.market)), td(esc(m.pick)), tdn(odds(m.price)), tdn(pc(m.implied, 1)), tdn(pc(m.pNoPush, 1)), tdn(signed(100 * m.edge, 1) + " pp")])))}` : ""}`;
   }
 
   // ------------------------------------------------ sección 8
@@ -3450,6 +3589,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const lad = (d.ladder || []).filter((x) => (x.level || 0) <= lv);
     return lad.length ? lad[lad.length - 1].from : d.minPrice ?? null;
   }
+  const mineSlip = (s) => s.source !== "referencia" && s.source !== "mercado";   // momio tuyo o capturado de tu casa
   function slipOf(t) {
     const d = t.decision;
     if (!d || d.status !== "apostar" || !d.level) return null;
@@ -3458,7 +3598,8 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const reg = regOf(t.pk) || {};
     let raw = reg.odds, o = parseOdds(raw), source = o ? "tuyo" : "", level = d.level;
     if (!o) { const b = bestOdds(t.pk, d.pick); if (b) { o = b.o; raw = b.raw; source = `capturado en ${b.book}`; } }
-    if (o) { if (steps) level = levelAt(steps, o.dec); }
+    if (!o && isNum(p.price)) { o = { am: p.price, dec: amDec(p.price) }; raw = null; source = "mercado"; }
+    if (o) { if (steps && source !== "mercado") level = levelAt(steps, o.dec); }
     else { const ref = refOdds(t, p); if (ref == null) return null; o = { am: ref, dec: amDec(ref) }; raw = null; source = "referencia"; }
     const dec = raw != null && String(raw).includes(".") ? o.dec : dec2(o.am);   // decimal tal como lo escribiste; americano → 2 cifras
     const amount = Number(reg.amount) > 0 ? Number(reg.amount) : amountOf(level);
@@ -3484,7 +3625,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const done = ss.filter((s) => s.played && SETTLED.includes(s.key));
     const r = { n: done.length, pend: ss.filter((s) => s.played && !SETTLED.includes(s.key)).length, skip: ss.filter((s) => !s.played).length,
       win: done.filter((s) => s.key === "ganado").length, lose: done.filter((s) => s.key === "perdido").length, push: done.filter((s) => s.key === "push" || s.key === "anulado").length,
-      staked: done.reduce((a, s) => a + s.amount, 0), cobro: done.reduce((a, s) => a + s.cobro, 0), mine: ss.filter((s) => s.source !== "referencia").length };
+      staked: done.reduce((a, s) => a + s.amount, 0), cobro: done.reduce((a, s) => a + s.cobro, 0), mine: ss.filter(mineSlip).length };
     r.net = r.cobro - r.staked;
     r.roi = r.staked ? r.net / r.staked : null;
     return r;
@@ -3495,6 +3636,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const cls = !s.played ? "off pend" : st ? st[0] : "pend";
     const tag = asLink ? "a" : "div";
     const src = s.source === "referencia" ? `<span class="slip-src" data-tip="No es el momio del casino: es el más bajo con el que valía este stake (escalera guardada antes del juego). Si el casino pagaba peor, la regla era no apostar. Registra el momio real.">mínimo · estimado</span>`
+      : s.source === "mercado" ? `<span class="slip-src" data-tip="Momio del feed al primer lanzamiento (mediana de las casas que operan en México). Registra el de tu casa si fue otro.">mercado · estimado</span>`
       : `<span class="slip-src mine">${esc(s.source === "tuyo" ? "tu momio" : s.source)}</span>`;
     const cobroTxt = !s.played ? "No jugado" : s.cobro == null ? "Pendiente" : money2(s.cobro) + (s.key === "push" || s.key === "anulado" ? " (devuelto)" : "");
     const netoTxt = !s.played || s.neto == null ? "—" : signed2(s.neto);
@@ -3659,7 +3801,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
       pairs(list).forEach(([p, t]) => (fams[p.family] = fams[p.family] || []).push([p, t]));
       const dates = [...new Set(list.map((t) => t.date))].sort().reverse();
       const shown = dates.slice(0, days);
-      const ss = slipsOf(list), L = ledgerOf(ss), Lm = ledgerOf(ss.filter((x) => x.source !== "referencia"));
+      const ss = slipsOf(list), L = ledgerOf(ss), Lm = ledgerOf(ss.filter(mineSlip));
       const slipDays = [...new Set(ss.map((x) => x.t.date))].sort();
       let acc = 0;
       const dayRows = slipDays.map((d) => { const r = ledgerOf(ss.filter((x) => x.t.date === d)); acc += r.net; return { d, r, acc }; }).reverse();
@@ -3689,7 +3831,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
           <div class="tiles t4">
             <div class="tile"><span class="eyebrow">Boletos</span><span class="big">${L.n}</span><span class="sub">${L.win} ganados · ${L.lose} perdidos · ${L.push} push${L.pend ? ` · ${L.pend} en juego` : ""}${L.skip ? ` · ${L.skip} no jugados` : ""}</span></div>
             <div class="tile"><span class="eyebrow">Con tus momios</span><span class="big ${Lm.net > 0 ? "won" : Lm.net < 0 ? "lost" : ""}">${Lm.n ? signed2(Lm.net) : "—"}</span><span class="sub">${Lm.n ? `${Lm.n} boleto${Lm.n === 1 ? "" : "s"} · ${money2(Lm.staked)} apostado · ${money2(Lm.cobro)} cobrado · ROI ${pc(Lm.roi, 1)}` : `registra el momio de ${esc(bookSel())} en cada boleto para ver lo real`}</span></div>
-            <div class="tile"><span class="eyebrow">Estimado al momio mínimo</span><span class="big ${L.net > 0 ? "won" : L.net < 0 ? "lost" : ""}">${signed2(L.net)}</span><span class="sub">${money2(L.staked)} apostado · ${money2(L.cobro)} cobrado · ROI ${pc(L.roi, 1)}</span></div>
+            <div class="tile"><span class="eyebrow">Estimado (mercado o mínimo)</span><span class="big ${L.net > 0 ? "won" : L.net < 0 ? "lost" : ""}">${signed2(L.net)}</span><span class="sub">${money2(L.staked)} apostado · ${money2(L.cobro)} cobrado · ROI ${pc(L.roi, 1)}</span></div>
             <div class="tile"><span class="eyebrow">Qué es el estimado</span><span class="sub" style="font-size:13px">Supone que te pagaron justo el <b>mínimo</b> que aceptaba el modelo. No es el momio del casino: si pagaba peor (LAD a −300 cuando el mínimo era −138), la regla era <b>no apostar</b> y ese boleto no existe.</span></div>
           </div>
           ${dayRows.length ? table(["Día", "~Boletos", "~G–P–Push", "~Apostado", "~Cobrado", "~Neto (estimado)", "~Acumulado"], dayRows.map((x) => tr([td(`<b>${esc(dayLabel(x.d))}</b> <span class="muted">${esc(fmtShort(x.d))}</span>`), tdn(x.r.n + (x.r.pend ? ` + ${x.r.pend}` : "")), tdn(recTxt(x.r)), tdn(money2(x.r.staked)), tdn(money2(x.r.cobro)), td(signed2(x.r.net), `r num ${x.r.net > 0 ? "won" : x.r.net < 0 ? "lost" : ""}`), td(signed2(x.acc), `r num ${x.acc > 0 ? "won" : x.acc < 0 ? "lost" : ""}`)])), { cls: "ledger-t" }) : ""}
@@ -3960,7 +4102,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
         ["Uso de relevistas últimos 7 días", "MLB Stats API · /game/{pk}/boxscore", "Sección 4 (fatiga)"],
         ["xERA, xwOBA, Barrel%, Hard Hit%", "Baseball Savant · leaderboards", "Secciones 3, 5"],
         ["Park factors (índice 3 años)", "Baseball Savant · statcast-park-factors", "Secciones 5, 6"],
-        ["Momios de varias casas (opcional)", "The Odds API · ODDS_API_KEY", "Sección 7"],
+        ["Momios de varias casas con apertura y cierre (opcional)", "odds-api.net · ODDS_API_NET_KEY (respaldo: The Odds API · ODDS_API_KEY)", "Sección 7 · momio de referencia = mediana de las casas MX"],
         ["Tendencias de umpires, SIERA, props de bateadores", "No conectadas", "Marcadas como faltantes/sustituidas"]].map((r) => tr(r.map((c) => td(esc(c))))))}</section>
       <section class="block"><h2>Decisiones de modelado</h2><ul class="clean panel">
         <li>Regresión a la media con los puntos de estabilización del framework (K% 70 BF, BB% 170 BF, HR ≈1150 BF) y la temporada anterior al 50%.</li>

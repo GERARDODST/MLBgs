@@ -162,7 +162,10 @@ def plan(pick: dict, a: float = 1.0, h: float = 1.0) -> dict:
         else:
             out["ladder"].append(step)
     if pick.get("priceIsReal") and pick.get("price") is not None:     # con momio real conectado, manda ese precio
-        out["level"] = stake_at(pick, M.american_to_decimal(pick["price"]), a, h)["level"]
+        at = stake_at(pick, M.american_to_decimal(pick["price"]), a, h)
+        out["level"], out["price"] = at["level"], round(pick["price"])
+        if not at["level"]:
+            out["why"] = at.get("why")
     if not out["ladder"]:
         out["level"] = 0
     return out

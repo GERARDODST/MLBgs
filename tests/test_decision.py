@@ -39,8 +39,24 @@ class Decision(unittest.TestCase):
             d = g["decision"]
             if d["status"] != "apostar":
                 continue
-            ok = [p for p in g["picks"] if not p["stake"]["block"] and p["stake"]["ladder"]]
+            ok = [p for p in g["picks"] if not p["stake"]["block"] and p["stake"]["ladder"] and p["stake"]["level"]]
             self.assertEqual(d["pick"]["ic"], max(p["ic"] for p in ok))
+
+    def test_con_momio_real_elige_el_que_llega_a_stake(self):
+        g = self.games[0]
+        a, b = (copy.deepcopy(p) for p in g["picks"][:2])
+        lad = [{"level": 1, "stake": 500, "from": -150}]
+        a.update(ic=80.0, stake={"block": None, "ladder": lad, "level": 0, "price": -105,
+                                 "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"})
+        b.update(ic=70.0, stake={"block": None, "ladder": lad, "level": 4, "price": -120})
+        d = DE.decide(g, [a, b])
+        self.assertEqual((d["status"], d["pick"]["pick"], d["stake"]["level"]), ("apostar", b["pick"], 4))
+        self.assertIn("-120", d["why"])
+        b["stake"].update(level=0, why="edge menor a 3 pp con ese momio")
+        d = DE.decide(g, [a, b])
+        self.assertEqual((d["status"], d["pick"]["pick"]), ("no apostar", a["pick"]))
+        self.assertIn("momio de referencia (-105)", d["why"])
+        self.assertIn("verificar", d["why"])
 
     def test_checklist_conecta_todo_el_analisis(self):
         keys = {"Contexto y motivación", "Forma e historial", "Abridores", "Bullpen y fatiga", "Modelo de carreras",

@@ -184,6 +184,13 @@ def american_to_decimal(m: float) -> float:
     return 1.0 + (100.0 / abs(m) if m < 0 else m / 100.0)
 
 
+def decimal_to_american(d: float) -> int | None:
+    """Momio decimal → americano entero (1.73 → −137 · 2.15 → +115)."""
+    if not d or d <= 1.0:
+        return None
+    return round((d - 1) * 100) if d >= 2 else round(-100 / (d - 1))
+
+
 def fair_american(p: float) -> float | None:
     """Momio justo (ecuación 29)."""
     if p <= 0 or p >= 1:
