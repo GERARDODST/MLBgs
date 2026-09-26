@@ -1085,21 +1085,21 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T15:31:53+00:00",
+  "registeredAt": "2026-09-26T16:03:48+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5943,
-   "projAway": 3.92,
+   "pHome": 0.5888,
+   "projAway": 4.09,
    "projHome": 5.07,
-   "total": 8.99,
-   "nrfi": 0.4775,
+   "total": 9.17,
+   "nrfi": 0.4717,
    "light": "Gris",
    "confidence": "alta",
    "probables": {
     "away": "Rhett Lowder",
     "home": "Trey Yesavage"
    },
-   "lineups": "Proyectados"
+   "lineups": "Confirmados"
   },
   "picks": [
    {
@@ -1109,9 +1109,9 @@
     "market": "F5 Moneyline",
     "pick": "TOR F5",
     "line": null,
-    "p": 0.6847,
-    "fair": -217.0,
-    "ic": 70.5,
+    "p": 0.6654,
+    "fair": -199.0,
+    "ic": 71.7,
     "level": "Alta",
     "price": null,
     "methods": [
@@ -1125,24 +1125,24 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -179
+       "from": -172
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -151
+       "from": -145
       }
      ],
      "steps": [
-      -179,
-      -175,
-      -166,
-      -158,
-      -151,
-      -144,
-      -137,
-      -131,
-      null,
+      -172,
+      -168,
+      -160,
+      -152,
+      -145,
+      -138,
+      -132,
+      -126,
+      -120,
       null
      ],
      "block": null,
@@ -1157,9 +1157,9 @@
     "market": "Moneyline",
     "pick": "TOR",
     "line": null,
-    "p": 0.5943,
-    "fair": -147.0,
-    "ic": 63.3,
+    "p": 0.5888,
+    "fair": -143.0,
+    "ic": 64.8,
     "level": "Media",
     "price": null,
     "methods": [
@@ -1167,38 +1167,38 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 58.1% · Elo + abridor (5.7.7) 59.7% · λ + Binomial Negativa (5.3 · 5.7.5) 60.6%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 58.1% · Elo + abridor (5.7.7) 59.7% · λ + Binomial Negativa (5.3 · 5.7.5) 58.9%",
     "res": null,
     "stake": {
-     "level": 3,
+     "level": 4,
      "ladder": [
       {
        "level": 1,
        "stake": 500,
-       "from": -129
+       "from": -126
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -115
+       "from": -121
       },
       {
        "level": 10,
        "stake": 1500,
-       "from": 109
+       "from": 104
       }
      ],
      "steps": [
-      -129,
-      -129,
-      -127,
+      -126,
+      -126,
+      -126,
+      -126,
       -121,
       -115,
       -110,
       -105,
       -100,
-      104,
-      109
+      104
      ],
      "block": null,
      "a": 1.0,
@@ -1208,13 +1208,39 @@
    {
     "rank": 3,
     "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Trey Yesavage Over 4.5 K",
+    "line": 4.5,
+    "p": 0.5746,
+    "fair": -135.0,
+    "ic": 48.8,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9929
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
-    "pick": "F5 Over 4.5",
-    "line": 4.5,
-    "p": 0.5873,
-    "fair": -142.0,
-    "ic": 50.7,
+    "pick": "F5 Under 5.5",
+    "line": 5.5,
+    "p": 0.5714,
+    "fair": -133.0,
+    "ic": 47.3,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -1228,72 +1254,24 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -119
+       "from": -117
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -101
+       "from": 101
       }
      ],
      "steps": [
-      -119,
-      -116,
-      -111,
-      -106,
-      -101,
-      103,
-      108,
-      113,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9929
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "TOR -1.5",
-    "line": null,
-    "p": 0.4563,
-    "fair": 119.0,
-    "ic": 44.4,
-    "level": "Baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 142
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 168
-      }
-     ],
-     "steps": [
-      142,
-      146,
-      153,
-      160,
-      168,
-      177,
-      186,
-      195,
-      null,
+      -117,
+      -114,
+      -109,
+      -104,
+      101,
+      106,
+      111,
+      116,
+      121,
       null
      ],
      "block": null,
@@ -1306,11 +1284,11 @@
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
-    "pick": "Trey Yesavage Over 4.5 K",
-    "line": 4.5,
-    "p": 0.5726,
-    "fair": -134.0,
-    "ic": 43.7,
+    "pick": "Rhett Lowder Under 3.5 K",
+    "line": 3.5,
+    "p": 0.5624,
+    "fair": -129.0,
+    "ic": 46.6,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -1330,40 +1308,14 @@
    {
     "rank": 6,
     "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Rhett Lowder Under 3.5 K",
-    "line": 3.5,
-    "p": 0.5624,
-    "fair": -129.0,
-    "ic": 42.1,
-    "level": "Baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9929
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5225,
-    "fair": -109.0,
-    "ic": 38.7,
-    "level": "Muy baja",
+    "p": 0.5283,
+    "fair": -112.0,
+    "ic": 44.9,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ calibrado a ceros reales (6.8)"
@@ -1372,9 +1324,79 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 102
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 120
+      }
+     ],
+     "steps": [
+      102,
+      104,
+      109,
+      114,
+      120,
+      126,
+      131,
+      138,
+      144,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9929
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "TOR -1.5",
+    "line": null,
+    "p": 0.4418,
+    "fair": 126.0,
+    "ic": 41.4,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 145
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 171
+      }
+     ],
+     "steps": [
+      145,
+      148,
+      155,
+      163,
+      171,
+      180,
+      189,
+      199,
+      210,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9929
     }
@@ -1384,11 +1406,11 @@
     "principal": false,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Under 8.5",
+    "pick": "Over 8.5",
     "line": 8.5,
-    "p": 0.5085,
+    "p": 0.5071,
     "fair": -103.0,
-    "ic": 35.5,
+    "ic": 36.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1398,9 +1420,31 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 111
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 131
+      }
+     ],
+     "steps": [
+      111,
+      114,
+      119,
+      125,
+      131,
+      137,
+      143,
+      150,
+      158,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9929
     }
@@ -1410,11 +1454,11 @@
     "principal": false,
     "family": "Team total",
     "market": "Team total CIN",
-    "pick": "CIN Under 3.5",
+    "pick": "CIN Over 3.5",
     "line": 3.5,
-    "p": 0.5235,
-    "fair": -110.0,
-    "ic": 35.5,
+    "p": 0.5008,
+    "fair": -100.0,
+    "ic": 36.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1424,9 +1468,31 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 114
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 134
+      }
+     ],
+     "steps": [
+      114,
+      117,
+      122,
+      128,
+      134,
+      140,
+      147,
+      154,
+      162,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9929
     }
@@ -1440,7 +1506,7 @@
     "line": 4.5,
     "p": 0.5015,
     "fair": -101.0,
-    "ic": 35.5,
+    "ic": 36.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1450,9 +1516,31 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 113
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 134
+      }
+     ],
+     "steps": [
+      113,
+      116,
+      122,
+      127,
+      134,
+      140,
+      147,
+      154,
+      162,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9929
     }
@@ -1465,21 +1553,21 @@
    "source": "Framework v2",
    "pick": "TOR F5",
    "market": "F5 Moneyline",
-   "p": 0.6847,
-   "ic": 70.5,
+   "p": 0.6654,
+   "ic": 71.7,
    "level": 6,
    "amount": 1100,
-   "minPrice": -179,
+   "minPrice": -172,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -179
+     "from": -172
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -151
+     "from": -145
     }
    ]
   }
