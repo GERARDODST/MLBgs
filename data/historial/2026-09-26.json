@@ -4870,7 +4870,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-26T23:14:16+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.4819,
    "projAway": 4.73,
@@ -5693,14 +5693,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T23:14:16+00:00",
+  "registeredAt": "2026-09-26T23:30:04+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5536,
    "projAway": 4.15,
    "projHome": 4.39,
    "total": 8.53,
-   "nrfi": 0.4888,
+   "nrfi": 0.4889,
    "light": "Gris",
    "confidence": "media",
    "probables": {
@@ -5743,9 +5743,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5634,
+    "p": 0.5633,
     "fair": -129.0,
-    "ic": 43.7,
+    "ic": 43.6,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -5769,7 +5769,7 @@
     "market": "Prop de ponches",
     "pick": "Walker Buehler Over 3.5 K",
     "line": 3.5,
-    "p": 0.5012,
+    "p": 0.5011,
     "fair": -100.0,
     "ic": 38.9,
     "level": "Muy baja",
@@ -5795,7 +5795,7 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5112,
+    "p": 0.5111,
     "fair": -105.0,
     "ic": 38.6,
     "level": "Muy baja",
@@ -5821,7 +5821,7 @@
     "market": "Total completo",
     "pick": "Over 7.5",
     "line": 7.5,
-    "p": 0.542,
+    "p": 0.5419,
     "fair": -118.0,
     "ic": 34.7,
     "level": "Muy baja",
@@ -5988,7 +5988,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T23:14:16+00:00",
+  "registeredAt": "2026-09-26T23:30:04+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5703,
@@ -6012,7 +6012,7 @@
     "market": "F5 Moneyline",
     "pick": "SEA F5",
     "line": null,
-    "p": 0.6221,
+    "p": 0.622,
     "fair": -165.0,
     "ic": 62.8,
     "level": "Media",
@@ -6231,7 +6231,7 @@
      "steps": [
       -130,
       -127,
-      -121,
+      -122,
       -116,
       -111,
       -106,
@@ -6300,7 +6300,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 4.5",
     "line": 4.5,
-    "p": 0.5273,
+    "p": 0.5274,
     "fair": -112.0,
     "ic": 34.1,
     "level": "Muy baja",
@@ -6473,7 +6473,7 @@
    "source": "Framework v2",
    "pick": "SEA F5",
    "market": "F5 Moneyline",
-   "p": 0.6221,
+   "p": 0.622,
    "ic": 62.8,
    "level": 3,
    "amount": 750,
@@ -6518,7 +6518,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T23:14:16+00:00",
+  "registeredAt": "2026-09-26T23:30:04+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4459,
@@ -6590,7 +6590,7 @@
     "market": "Prop de ponches",
     "pick": "Jack Perkins Under 5.5 K",
     "line": 5.5,
-    "p": 0.5516,
+    "p": 0.5517,
     "fair": -123.0,
     "ic": 43.1,
     "level": "Baja",
@@ -6620,7 +6620,7 @@
       -103,
       102,
       107,
-      112,
+      111,
       117,
       null,
       null,
@@ -6762,7 +6762,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 5.5",
     "line": 5.5,
-    "p": 0.538,
+    "p": 0.5379,
     "fair": -116.0,
     "ic": 36.3,
     "level": "Muy baja",
@@ -6826,7 +6826,7 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 104
+       "from": 105
       },
       {
        "level": 5,
@@ -6835,7 +6835,7 @@
       }
      ],
      "steps": [
-      104,
+      105,
       107,
       112,
       117,
