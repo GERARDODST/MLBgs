@@ -3153,7 +3153,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-25T22:10:08+00:00",
-  "status": "cerrado",
+  "status": "calificado",
   "pred": {
    "pHome": 0.5353,
    "projAway": 4.56,
@@ -3185,7 +3185,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -3211,7 +3211,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -3237,7 +3237,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -3265,7 +3265,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.4% · Elo + abridor (5.7.7) 54.3% · λ + Binomial Negativa (5.3 · 5.7.5) 53.9%",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -3291,7 +3291,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -3317,7 +3317,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de NYM",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -3343,7 +3343,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -3369,7 +3369,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -3417,7 +3417,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de WSH",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -3428,7 +3428,67 @@
     }
    }
   ],
-  "result": null,
+  "result": {
+   "state": "Final",
+   "ar": 6,
+   "hr": 7,
+   "inn": [
+    [
+     1,
+     2
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     null
+    ]
+   ],
+   "decisions": {
+    "winner": "Gus Varland",
+    "loser": "Jonathan Pintaro",
+    "save": "Josiah Gray"
+   },
+   "rhe": {
+    "away": [
+     6,
+     9,
+     1
+    ],
+    "home": [
+     7,
+     11,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-26T01:52:32+00:00"
+  },
   "decision": {
    "status": "no apostar",
    "why": "confianza 35 (< 55): solo entra con un momio mejor (stake 1 desde +116)",
@@ -7680,7 +7740,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-26T01:36:47+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5139,
    "projAway": 3.65,
@@ -8188,7 +8248,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-26T01:36:47+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.3554,
    "projAway": 4.56,
