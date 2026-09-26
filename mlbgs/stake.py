@@ -8,6 +8,8 @@ que te dan (a mejor momio, más Fuerza y más IC), ajustado por los demás model
 
   1. Solo si el pick queda en semáforo Verde con ese momio: edge ≥ 3 pp, IC ≥ 55, sin dato
      obligatorio faltante (lineup, umpire, clima, abridor), guion que acompaña y contradicción no alta.
+     Filtro contra el mercado: si el edge llega a 10 pp o más, no hay stake. Una diferencia así con el
+     casino casi siempre es algo que el modelo no ve (lesión, descanso, lineup), no una ganga.
   2. Nivel base = 1 + 9 · (IC − 55) / 30        (IC 55 → 1 · IC 70 → 5.5 · IC 85 o más → 10)
   3. Nivel = redondeo(base · A · H), entre 1 y 10
        A = acuerdo con el modelo del Pro-Lab: 1.00 si coincide; baja a 0.70 si lo ve ≥ 10 pp peor
@@ -25,10 +27,11 @@ from . import picks as PK
 
 AMOUNTS = {1: 500, 2: 625, 3: 750, 4: 875, 5: 1000, 6: 1100, 7: 1200, 8: 1300, 9: 1400, 10: 1500}
 EDGE_MIN = 0.03
+EDGE_MAX = 0.10          # filtro contra el mercado: más ventaja que esto se verifica, no se apuesta
 IC_MIN, IC_TOP = 55, 85
 LADDER = (1, 5, 10)
 GAME_CAP, DAY_CAP = 2_000, 7_500
-CONFIG = {"amounts": AMOUNTS, "edgeMin": EDGE_MIN, "icMin": IC_MIN, "icTop": IC_TOP, "ladder": list(LADDER),
+CONFIG = {"amounts": AMOUNTS, "edgeMin": EDGE_MIN, "edgeMax": EDGE_MAX, "icMin": IC_MIN, "icTop": IC_TOP, "ladder": list(LADDER),
           "gameCap": GAME_CAP, "dayCap": DAY_CAP}
 LAB_METHODS = {"diamante": PK.MODEL_NAMES["mc"], "prisma": PK.MODEL_NAMES["prisma"], "kronos": PK.MODEL_NAMES["kronos"],
                "eigen": PK.MODEL_NAMES["eigen"]}
@@ -101,6 +104,8 @@ def stake_at(pick: dict, dec: float, a: float = 1.0, h: float = 1.0) -> dict:
         return {"level": 0, "stake": 0, "why": why}
     if pick["p"] - 1 / dec < EDGE_MIN:
         return {"level": 0, "stake": 0, "why": "edge menor a 3 pp con ese momio"}
+    if pick["p"] - 1 / dec >= EDGE_MAX:
+        return {"level": 0, "stake": 0, "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"}
     ic = ic_at(pick, dec)
     lvl = level_from_ic(ic, a, h)
     if not lvl:
@@ -108,8 +113,19 @@ def stake_at(pick: dict, dec: float, a: float = 1.0, h: float = 1.0) -> dict:
     return {"level": lvl, "stake": AMOUNTS[lvl], "ic": ic}
 
 
+def max_dec(pick: dict) -> float:
+    """Momio decimal más alto que todavía pasa el filtro contra el mercado (edge < 10 pp)."""
+    return 1 / (pick["p"] - EDGE_MAX) - 1e-9 if pick["p"] > EDGE_MAX + 0.01 else 50.0
+
+
+def american_cap(dec: float) -> int:
+    """El momio americano entero más alto que no pasa de `dec` (hacia el lado que paga menos)."""
+    am = (dec - 1) * 100 if dec >= 2 else -100 / (dec - 1)
+    return int(am // 1)
+
+
 def _min_dec(pick: dict, level: int, a: float, h: float) -> float | None:
-    lo, hi = 1.01, 50.0
+    lo, hi = 1.01, min(50.0, max_dec(pick))
     if stake_at(pick, hi, a, h)["level"] < level:
         return None
     for _ in range(60):
@@ -133,6 +149,7 @@ def plan(pick: dict, a: float = 1.0, h: float = 1.0) -> dict:
     if out["block"]:
         return out
     out["level"] = level_from_ic(pick["ic"], a, h)
+    out["maxPrice"] = american_cap(max_dec(pick)) if max_dec(pick) < 50 else None     # arriba de esto: verificar
     # momio mínimo de cada nivel 1..10 (None si no se alcanza): sirve para calificar después con tu momio
     out["steps"] = [(american_floor(d) if (d := _min_dec(pick, lv, a, h)) else None) for lv in range(1, 11)]
     for level in LADDER:

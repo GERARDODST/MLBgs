@@ -35,6 +35,12 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   (acierto real vs esperado, encogido n/(n+60), entre 0.85 y 1.05).
 - Solo con semáforo Verde a ese momio: edge ≥ 3 pp, IC ≥ 55, sin dato obligatorio faltante, guion que
   acompaña y contradicción no alta. Tope sugerido de $7,500 por día (la cartera avisa; no recorta).
+- Filtro contra el mercado: con edge ≥ 10 pp no hay stake (se verifica: lesión, descanso, lineup). La
+  escalera guarda `maxPrice`, el momio más alto que todavía pasa el filtro.
+- La página NO trae momios de casinos (sin proveedor conectado; Playdoit, la casa principal del usuario,
+  no tiene API). El «justo» y el «mín.» salen del modelo; nunca presentarlos como el momio del casino.
+  Sin momio real el stake es un rango según la escalera; con el momio que escribe el usuario, la decisión
+  se recalcula entre todos los candidatos.
 - La página (`site/template.html`) repite estas cuentas en JavaScript: si se cambia una, cambiar la otra.
 
 ## Datos y registro
