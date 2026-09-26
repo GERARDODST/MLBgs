@@ -33,17 +33,27 @@ class Stake(unittest.TestCase):
 
     def test_sube_con_mejor_momio(self):
         pk = pick()
-        levels = [ST.stake_at(pk, dec(am))["level"] for am in (-135, -120, -105, 110)]
+        levels = [ST.stake_at(pk, dec(am))["level"] for am in (-135, -125, -115, -105)]
         self.assertEqual(levels, sorted(levels))
         self.assertGreater(levels[-1], levels[0])
 
     def test_reglas_del_semaforo(self):
         self.assertEqual(ST.stake_at(pick(), dec(-160))["level"], 0)              # edge < 3 pp
-        self.assertEqual(ST.stake_at(pick(blocked=True), dec(120))["level"], 0)   # falta un dato obligatorio
-        self.assertEqual(ST.stake_at(pick(guion="No"), dec(120))["level"], 0)
-        self.assertEqual(ST.stake_at(pick(contradiction="Alta"), dec(120))["level"], 0)
+        self.assertEqual(ST.stake_at(pick(blocked=True), dec(-110))["level"], 0)   # falta un dato obligatorio
+        self.assertEqual(ST.stake_at(pick(guion="No"), dec(-110))["level"], 0)
+        self.assertEqual(ST.stake_at(pick(contradiction="Alta"), dec(-110))["level"], 0)
         self.assertEqual(ST.stake_at(pick(ic=30, fuerza=0.9), dec(-120))["level"], 0)  # IC < 55 con ese momio
-        self.assertGreater(ST.stake_at(pick(), dec(120))["level"], 0)
+        self.assertGreater(ST.stake_at(pick(), dec(-110))["level"], 0)
+
+    def test_filtro_contra_el_mercado(self):
+        pk = pick(p=0.61)
+        self.assertGreater(ST.stake_at(pk, dec(-120))["level"], 0)                 # 6.5 pp de edge: normal
+        muy = ST.stake_at(pk, dec(110))                                           # 13 pp: el casino ve algo distinto
+        self.assertEqual(muy["level"], 0)
+        self.assertIn("10 pp", muy["why"])
+        plan = ST.plan(pk)
+        self.assertEqual(plan["maxPrice"], -105)                                  # 1/(0.61−0.10) = 1.96 → −105
+        self.assertTrue(all(s is None or dec(s) <= ST.max_dec(pk) + 1e-6 for s in plan["steps"]))
 
     def test_acuerdo_con_el_modelo_del_pro_lab(self):
         name = ST.LAB_METHODS["kronos"]
