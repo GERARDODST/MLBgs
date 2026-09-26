@@ -1,773 +1,9 @@
 [
  {
-  "id": "2026-09-26-824219-framework",
-  "pk": 824219,
-  "date": "2026-09-26",
-  "time": "2026-09-26T17:10:00Z",
-  "away": "PIT",
-  "home": "DET",
-  "awayName": "Pittsburgh Pirates",
-  "homeName": "Detroit Tigers",
-  "venue": "Comerica Park",
-  "model": "framework",
-  "modelName": "Framework MLB Picks v2",
-  "kind": "Modelo estadístico por secciones",
-  "analyses": [
-   "Contexto del partido",
-   "Pitágoras + Log5",
-   "Elo con abridor",
-   "Abridores regresados",
-   "Bullpen y fatiga",
-   "λ + Binomial Negativa",
-   "Poisson F5 y NRFI",
-   "Parque, clima y umpire",
-   "Valor contra el mercado",
-   "Contradicciones y semáforo"
-  ],
-  "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
-  "status": "abierto",
-  "pred": {
-   "pHome": 0.5049,
-   "projAway": 4.66,
-   "projHome": 4.26,
-   "total": 8.92,
-   "nrfi": 0.4866,
-   "light": "Gris",
-   "confidence": "baja",
-   "probables": {
-    "away": "Por anunciar",
-    "home": "Justin Verlander"
-   },
-   "lineups": "Proyectados"
-  },
-  "picks": [
-   {
-    "rank": 1,
-    "principal": true,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "PIT +1.5",
-    "line": null,
-    "p": 0.6805,
-    "fair": -213.0,
-    "ic": 48.9,
-    "level": "Baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Over 4.5",
-    "line": 4.5,
-    "p": 0.5773,
-    "fair": -137.0,
-    "ic": 42.3,
-    "level": "Baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "Poisson con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Justin Verlander Over 4.5 K",
-    "line": 4.5,
-    "p": 0.5749,
-    "fair": -135.0,
-    "ic": 36.6,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total PIT",
-    "pick": "PIT Under 4.5",
-    "line": 4.5,
-    "p": 0.5534,
-    "fair": -124.0,
-    "ic": 35.3,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de PIT",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "PIT F5",
-    "line": null,
-    "p": 0.5373,
-    "fair": -116.0,
-    "ic": 30.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "Poisson de las primeras 5 entradas, empates como push",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "YRFI",
-    "line": null,
-    "p": 0.5134,
-    "fair": -106.0,
-    "ic": 30.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Under 8.5",
-    "line": 8.5,
-    "p": 0.5149,
-    "fair": -106.0,
-    "ic": 29.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total DET",
-    "pick": "DET Over 3.5",
-    "line": 3.5,
-    "p": 0.524,
-    "fair": -110.0,
-    "ic": 29.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de DET",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 9,
-    "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "DET",
-    "line": null,
-    "p": 0.5049,
-    "fair": -102.0,
-    "ic": 18.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.3% · Elo + abridor (5.7.7) 49.1% · λ + Binomial Negativa (5.3 · 5.7.5) 46.1%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   }
-  ],
-  "result": null,
-  "decision": {
-   "status": "esperar",
-   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
-   "source": "Framework v2",
-   "pick": "PIT +1.5",
-   "market": "Run Line",
-   "p": 0.6805,
-   "ic": 48.9,
-   "level": 0,
-   "amount": 0,
-   "minPrice": null,
-   "ladder": []
-  }
- },
- {
-  "id": "2026-09-26-822759-framework",
-  "pk": 822759,
-  "date": "2026-09-26",
-  "time": "2026-09-26T19:07:00Z",
-  "away": "CIN",
-  "home": "TOR",
-  "awayName": "Cincinnati Reds",
-  "homeName": "Toronto Blue Jays",
-  "venue": "Rogers Centre",
-  "model": "framework",
-  "modelName": "Framework MLB Picks v2",
-  "kind": "Modelo estadístico por secciones",
-  "analyses": [
-   "Contexto del partido",
-   "Pitágoras + Log5",
-   "Elo con abridor",
-   "Abridores regresados",
-   "Bullpen y fatiga",
-   "λ + Binomial Negativa",
-   "Poisson F5 y NRFI",
-   "Parque, clima y umpire",
-   "Valor contra el mercado",
-   "Contradicciones y semáforo"
-  ],
-  "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
-  "status": "abierto",
-  "pred": {
-   "pHome": 0.59,
-   "projAway": 3.86,
-   "projHome": 4.92,
-   "total": 8.78,
-   "nrfi": 0.4854,
-   "light": "Gris",
-   "confidence": "alta",
-   "probables": {
-    "away": "Rhett Lowder",
-    "home": "Trey Yesavage"
-   },
-   "lineups": "Proyectados"
-  },
-  "picks": [
-   {
-    "rank": 1,
-    "principal": true,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "TOR F5",
-    "line": null,
-    "p": 0.6743,
-    "fair": -207.0,
-    "ic": 70.5,
-    "level": "Alta",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "Poisson de las primeras 5 entradas, empates como push",
-    "res": null,
-    "stake": {
-     "level": 6,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -171
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": -144
-      }
-     ],
-     "steps": [
-      -171,
-      -167,
-      -159,
-      -151,
-      -144,
-      -138,
-      -131,
-      -125,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "TOR",
-    "line": null,
-    "p": 0.59,
-    "fair": -144.0,
-    "ic": 63.4,
-    "level": "Media",
-    "price": null,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 57.9% · Elo + abridor (5.7.7) 59.3% · λ + Binomial Negativa (5.3 · 5.7.5) 59.8%",
-    "res": null,
-    "stake": {
-     "level": 4,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -127
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": -116
-      },
-      {
-       "level": 10,
-       "stake": 1500,
-       "from": 109
-      }
-     ],
-     "steps": [
-      -127,
-      -127,
-      -127,
-      -121,
-      -116,
-      -110,
-      -105,
-      -101,
-      104,
-      109
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Rhett Lowder Under 3.5 K",
-    "line": 3.5,
-    "p": 0.5767,
-    "fair": -136.0,
-    "ic": 46.3,
-    "level": "Baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -112
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 105
-      }
-     ],
-     "steps": [
-      -112,
-      -110,
-      -105,
-      -100,
-      105,
-      110,
-      115,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Over 4.5",
-    "line": 4.5,
-    "p": 0.5688,
-    "fair": -132.0,
-    "ic": 45.4,
-    "level": "Baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "Poisson con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -111
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 106
-      }
-     ],
-     "steps": [
-      -111,
-      -108,
-      -103,
-      101,
-      106,
-      111,
-      116,
-      122,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Trey Yesavage Over 4.5 K",
-    "line": 4.5,
-    "p": 0.5724,
-    "fair": -134.0,
-    "ic": 43.7,
-    "level": "Baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -108
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 109
-      }
-     ],
-     "steps": [
-      -108,
-      -106,
-      -101,
-      104,
-      109,
-      114,
-      119,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "TOR -1.5",
-    "line": null,
-    "p": 0.4459,
-    "fair": 124.0,
-    "ic": 41.4,
-    "level": "Baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 148
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 176
-      }
-     ],
-     "steps": [
-      148,
-      152,
-      159,
-      167,
-      176,
-      185,
-      194,
-      205,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "YRFI",
-    "line": null,
-    "p": 0.5146,
-    "fair": -106.0,
-    "ic": 36.4,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 8.0",
-    "line": 8.0,
-    "p": 0.5204,
-    "fair": -108.0,
-    "ic": 35.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 9,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total CIN",
-    "pick": "CIN Under 3.5",
-    "line": 3.5,
-    "p": 0.5314,
-    "fair": -113.0,
-    "ic": 35.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de CIN",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total TOR",
-    "pick": "TOR Under 4.5",
-    "line": 4.5,
-    "p": 0.5212,
-    "fair": -109.0,
-    "ic": 35.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de TOR",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "steps": null,
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9937
-    }
-   }
-  ],
-  "result": null,
-  "decision": {
-   "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios",
-   "source": "Framework v2",
-   "pick": "TOR F5",
-   "market": "F5 Moneyline",
-   "p": 0.6743,
-   "ic": 70.5,
-   "level": 6,
-   "amount": 1100,
-   "minPrice": -171,
-   "ladder": [
-    {
-     "level": 1,
-     "stake": 500,
-     "from": -171
-    },
-    {
-     "level": 5,
-     "stake": 1000,
-     "from": -144
-    }
-   ]
-  }
- },
- {
   "id": "2026-09-26-822678-framework",
   "pk": 822678,
   "date": "2026-09-26",
-  "time": "2026-09-26T20:05:00Z",
+  "time": "2026-09-26T16:35:00Z",
   "away": "NYM",
   "home": "WSH",
   "awayName": "New York Mets",
@@ -789,14 +25,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5206,
-   "projAway": 4.58,
+   "pHome": 0.5208,
+   "projAway": 4.57,
    "projHome": 4.77,
-   "total": 9.35,
-   "nrfi": 0.4916,
+   "total": 9.34,
+   "nrfi": 0.4919,
    "light": "Gris",
    "confidence": "alta",
    "probables": {
@@ -813,9 +49,9 @@
     "market": "F5 Moneyline",
     "pick": "WSH F5",
     "line": null,
-    "p": 0.6137,
-    "fair": -159.0,
-    "ic": 58.9,
+    "p": 0.6148,
+    "fair": -160.0,
+    "ic": 59.2,
     "level": "Media",
     "price": null,
     "methods": [
@@ -834,15 +70,15 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": -108
+       "from": -109
       }
      ],
      "steps": [
       -128,
       -125,
-      -119,
+      -120,
       -114,
-      -108,
+      -109,
       -104,
       101,
       null,
@@ -851,7 +87,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -861,9 +97,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5685,
-    "fair": -132.0,
-    "ic": 42.5,
+    "p": 0.5679,
+    "fair": -131.0,
+    "ic": 42.3,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -882,15 +118,15 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": 110
+       "from": 111
       }
      ],
      "steps": [
       -106,
       -104,
       101,
-      105,
-      110,
+      106,
+      111,
       116,
       121,
       null,
@@ -899,7 +135,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -909,9 +145,9 @@
     "market": "Team total NYM",
     "pick": "NYM Under 4.5",
     "line": 4.5,
-    "p": 0.5644,
+    "p": 0.565,
     "fair": -130.0,
-    "ic": 41.3,
+    "ic": 41.5,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -925,7 +161,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -935,9 +171,9 @@
     "market": "Moneyline",
     "pick": "WSH",
     "line": null,
-    "p": 0.5206,
+    "p": 0.5208,
     "fair": -109.0,
-    "ic": 40.4,
+    "ic": 40.5,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -945,7 +181,7 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.4% · Elo + abridor (5.7.7) 52.1% · λ + Binomial Negativa (5.3 · 5.7.5) 51.7%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.4% · Elo + abridor (5.7.7) 52.1% · λ + Binomial Negativa (5.3 · 5.7.5) 51.8%",
     "res": null,
     "stake": {
      "level": 0,
@@ -953,7 +189,7 @@
      "steps": null,
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -963,9 +199,9 @@
     "market": "Run Line",
     "pick": "NYM +1.5",
     "line": null,
-    "p": 0.6243,
+    "p": 0.6238,
     "fair": -166.0,
-    "ic": 35.3,
+    "ic": 35.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -991,7 +227,7 @@
       -133,
       -130,
       -124,
-      -119,
+      -118,
       -113,
       -108,
       -103,
@@ -1001,7 +237,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1011,9 +247,9 @@
     "market": "Team total WSH",
     "pick": "WSH Under 4.5",
     "line": 4.5,
-    "p": 0.5401,
+    "p": 0.54,
     "fair": -117.0,
-    "ic": 34.2,
+    "ic": 34.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1027,7 +263,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1075,7 +311,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1083,8 +319,8 @@
     "principal": false,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Under 9.0",
-    "line": 9.0,
+    "pick": "Over 8.5",
+    "line": 8.5,
     "p": 0.5227,
     "fair": -110.0,
     "ic": 32.7,
@@ -1101,7 +337,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1111,9 +347,9 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5084,
+    "p": 0.5081,
     "fair": -103.0,
-    "ic": 31.8,
+    "ic": 31.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1127,7 +363,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1175,7 +411,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -1186,8 +422,8 @@
    "source": "Framework v2",
    "pick": "WSH F5",
    "market": "F5 Moneyline",
-   "p": 0.6137,
-   "ic": 58.9,
+   "p": 0.6148,
+   "ic": 59.2,
    "level": 2,
    "amount": 625,
    "minPrice": -128,
@@ -1200,7 +436,771 @@
     {
      "level": 5,
      "stake": 1000,
-     "from": -108
+     "from": -109
+    }
+   ]
+  }
+ },
+ {
+  "id": "2026-09-26-824219-framework",
+  "pk": 824219,
+  "date": "2026-09-26",
+  "time": "2026-09-26T17:10:00Z",
+  "away": "PIT",
+  "home": "DET",
+  "awayName": "Pittsburgh Pirates",
+  "homeName": "Detroit Tigers",
+  "venue": "Comerica Park",
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "modelo",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
+  "status": "abierto",
+  "pred": {
+   "pHome": 0.5048,
+   "projAway": 4.66,
+   "projHome": 4.26,
+   "total": 8.93,
+   "nrfi": 0.4866,
+   "light": "Gris",
+   "confidence": "baja",
+   "probables": {
+    "away": "Por anunciar",
+    "home": "Justin Verlander"
+   },
+   "lineups": "Proyectados"
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "PIT +1.5",
+    "line": null,
+    "p": 0.6806,
+    "fair": -213.0,
+    "ic": 48.9,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 4.5",
+    "line": 4.5,
+    "p": 0.5773,
+    "fair": -137.0,
+    "ic": 42.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Justin Verlander Over 4.5 K",
+    "line": 4.5,
+    "p": 0.5749,
+    "fair": -135.0,
+    "ic": 36.6,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total PIT",
+    "pick": "PIT Under 4.5",
+    "line": 4.5,
+    "p": 0.5533,
+    "fair": -124.0,
+    "ic": 35.3,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de PIT",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "PIT F5",
+    "line": null,
+    "p": 0.5375,
+    "fair": -116.0,
+    "ic": 30.6,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson de las primeras 5 entradas, empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.5134,
+    "fair": -106.0,
+    "ic": 30.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Under 8.5",
+    "line": 8.5,
+    "p": 0.5149,
+    "fair": -106.0,
+    "ic": 29.9,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total DET",
+    "pick": "DET Over 3.5",
+    "line": 3.5,
+    "p": 0.5239,
+    "fair": -110.0,
+    "ic": 29.9,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de DET",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "DET",
+    "line": null,
+    "p": 0.5048,
+    "fair": -102.0,
+    "ic": 18.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.3% · Elo + abridor (5.7.7) 49.1% · λ + Binomial Negativa (5.3 · 5.7.5) 46.1%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   }
+  ],
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "PIT +1.5",
+   "market": "Run Line",
+   "p": 0.6806,
+   "ic": 48.9,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
+ },
+ {
+  "id": "2026-09-26-822759-framework",
+  "pk": 822759,
+  "date": "2026-09-26",
+  "time": "2026-09-26T19:07:00Z",
+  "away": "CIN",
+  "home": "TOR",
+  "awayName": "Cincinnati Reds",
+  "homeName": "Toronto Blue Jays",
+  "venue": "Rogers Centre",
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Poisson F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "modelo",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
+  "status": "abierto",
+  "pred": {
+   "pHome": 0.5899,
+   "projAway": 3.87,
+   "projHome": 4.92,
+   "total": 8.78,
+   "nrfi": 0.4852,
+   "light": "Gris",
+   "confidence": "alta",
+   "probables": {
+    "away": "Rhett Lowder",
+    "home": "Trey Yesavage"
+   },
+   "lineups": "Proyectados"
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "TOR F5",
+    "line": null,
+    "p": 0.6739,
+    "fair": -207.0,
+    "ic": 70.5,
+    "level": "Alta",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson de las primeras 5 entradas, empates como push",
+    "res": null,
+    "stake": {
+     "level": 6,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -171
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -144
+      }
+     ],
+     "steps": [
+      -171,
+      -167,
+      -159,
+      -151,
+      -144,
+      -137,
+      -131,
+      -125,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "TOR",
+    "line": null,
+    "p": 0.5899,
+    "fair": -144.0,
+    "ic": 63.5,
+    "level": "Media",
+    "price": null,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 57.9% · Elo + abridor (5.7.7) 59.3% · λ + Binomial Negativa (5.3 · 5.7.5) 59.7%",
+    "res": null,
+    "stake": {
+     "level": 4,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -127
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -116
+      },
+      {
+       "level": 10,
+       "stake": 1500,
+       "from": 109
+      }
+     ],
+     "steps": [
+      -127,
+      -127,
+      -127,
+      -121,
+      -116,
+      -110,
+      -105,
+      -101,
+      104,
+      109
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Rhett Lowder Under 3.5 K",
+    "line": 3.5,
+    "p": 0.5767,
+    "fair": -136.0,
+    "ic": 46.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -112
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 105
+      }
+     ],
+     "steps": [
+      -112,
+      -110,
+      -105,
+      -100,
+      105,
+      110,
+      115,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 4.5",
+    "line": 4.5,
+    "p": 0.5692,
+    "fair": -132.0,
+    "ic": 45.5,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -111
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 106
+      }
+     ],
+     "steps": [
+      -111,
+      -108,
+      -103,
+      101,
+      106,
+      111,
+      116,
+      122,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Trey Yesavage Over 4.5 K",
+    "line": 4.5,
+    "p": 0.5724,
+    "fair": -134.0,
+    "ic": 43.7,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -108
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 109
+      }
+     ],
+     "steps": [
+      -108,
+      -106,
+      -101,
+      104,
+      109,
+      114,
+      119,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "TOR -1.5",
+    "line": null,
+    "p": 0.4457,
+    "fair": 124.0,
+    "ic": 41.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 148
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 176
+      }
+     ],
+     "steps": [
+      148,
+      152,
+      160,
+      168,
+      176,
+      185,
+      195,
+      205,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.5148,
+    "fair": -106.0,
+    "ic": 36.4,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 8.0",
+    "line": 8.0,
+    "p": 0.5206,
+    "fair": -109.0,
+    "ic": 35.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total CIN",
+    "pick": "CIN Under 3.5",
+    "line": 3.5,
+    "p": 0.5311,
+    "fair": -113.0,
+    "ic": 35.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de CIN",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   },
+   {
+    "rank": 10,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total TOR",
+    "pick": "TOR Under 4.5",
+    "line": 4.5,
+    "p": 0.5212,
+    "fair": -109.0,
+    "ic": 35.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de TOR",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "steps": null,
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9916
+    }
+   }
+  ],
+  "result": null,
+  "decision": {
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios",
+   "source": "Framework v2",
+   "pick": "TOR F5",
+   "market": "F5 Moneyline",
+   "p": 0.6739,
+   "ic": 70.5,
+   "level": 6,
+   "amount": 1100,
+   "minPrice": -171,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -171
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -144
     }
    ]
   }
@@ -1231,7 +1231,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.391,
@@ -1295,7 +1295,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1321,7 +1321,7 @@
      "steps": null,
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1331,7 +1331,7 @@
     "market": "F5 Moneyline",
     "pick": "LAD F5",
     "line": null,
-    "p": 0.6105,
+    "p": 0.6106,
     "fair": -157.0,
     "ic": 56.2,
     "level": "Media",
@@ -1352,7 +1352,7 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": -105
+       "from": -104
       }
      ],
      "steps": [
@@ -1360,7 +1360,7 @@
       -120,
       -115,
       -109,
-      -105,
+      -104,
       -100,
       null,
       null,
@@ -1369,7 +1369,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1417,7 +1417,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1443,7 +1443,7 @@
      "steps": null,
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1469,7 +1469,7 @@
      "steps": null,
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1495,7 +1495,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1505,7 +1505,7 @@
     "market": "Total completo",
     "pick": "Under 7.5",
     "line": 7.5,
-    "p": 0.5336,
+    "p": 0.5335,
     "fair": -114.0,
     "ic": 30.4,
     "level": "Muy baja",
@@ -1521,7 +1521,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1547,7 +1547,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1557,7 +1557,7 @@
     "market": "Team total LAD",
     "pick": "LAD Over 3.5",
     "line": 3.5,
-    "p": 0.5373,
+    "p": 0.5374,
     "fair": -116.0,
     "ic": 25.0,
     "level": "Muy baja",
@@ -1573,7 +1573,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -1629,14 +1629,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5007,
    "projAway": 4.58,
    "projHome": 4.73,
    "total": 9.31,
-   "nrfi": 0.4902,
+   "nrfi": 0.49,
    "light": "Gris",
    "confidence": "alta",
    "probables": {
@@ -1669,7 +1669,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1679,9 +1679,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5755,
+    "p": 0.5759,
     "fair": -136.0,
-    "ic": 45.7,
+    "ic": 45.8,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -1695,7 +1695,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1705,9 +1705,9 @@
     "market": "F5 Moneyline",
     "pick": "MIN F5",
     "line": null,
-    "p": 0.5618,
+    "p": 0.5622,
     "fair": -128.0,
-    "ic": 44.9,
+    "ic": 45.0,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -1721,7 +1721,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1747,7 +1747,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1757,9 +1757,9 @@
     "market": "Run Line",
     "pick": "TEX +1.5",
     "line": null,
-    "p": 0.6296,
+    "p": 0.6294,
     "fair": -170.0,
-    "ic": 38.0,
+    "ic": 37.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1773,7 +1773,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1785,7 +1785,7 @@
     "line": null,
     "p": 0.5007,
     "fair": -100.0,
-    "ic": 37.7,
+    "ic": 37.6,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1801,7 +1801,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1811,9 +1811,9 @@
     "market": "Team total MIN",
     "pick": "MIN Under 4.5",
     "line": 4.5,
-    "p": 0.5451,
+    "p": 0.5448,
     "fair": -120.0,
-    "ic": 36.8,
+    "ic": 36.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -1827,7 +1827,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1837,7 +1837,7 @@
     "market": "Total completo",
     "pick": "Over 8.5",
     "line": 8.5,
-    "p": 0.5195,
+    "p": 0.5197,
     "fair": -108.0,
     "ic": 33.8,
     "level": "Muy baja",
@@ -1853,7 +1853,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1863,7 +1863,7 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5098,
+    "p": 0.51,
     "fair": -104.0,
     "ic": 33.4,
     "level": "Muy baja",
@@ -1879,7 +1879,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -1924,14 +1924,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4713,
    "projAway": 4.54,
    "projHome": 4.23,
    "total": 8.76,
-   "nrfi": 0.4936,
+   "nrfi": 0.4937,
    "light": "Rojo",
    "confidence": "alta",
    "probables": {
@@ -1948,9 +1948,9 @@
     "market": "Run Line",
     "pick": "ATL +1.5",
     "line": null,
-    "p": 0.6734,
+    "p": 0.6736,
     "fair": -206.0,
-    "ic": 48.7,
+    "ic": 48.8,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -1964,7 +1964,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -1992,7 +1992,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2002,9 +2002,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5602,
+    "p": 0.5601,
     "fair": -127.0,
-    "ic": 39.2,
+    "ic": 39.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -2018,7 +2018,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2044,7 +2044,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2054,7 +2054,7 @@
     "market": "Total completo",
     "pick": "Over 8.0",
     "line": 8.0,
-    "p": 0.5185,
+    "p": 0.5184,
     "fair": -108.0,
     "ic": 31.8,
     "level": "Muy baja",
@@ -2070,7 +2070,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2080,7 +2080,7 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5064,
+    "p": 0.5063,
     "fair": -103.0,
     "ic": 30.3,
     "level": "Muy baja",
@@ -2096,7 +2096,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2106,7 +2106,7 @@
     "market": "F5 Moneyline",
     "pick": "MIA F5",
     "line": null,
-    "p": 0.509,
+    "p": 0.5088,
     "fair": -104.0,
     "ic": 28.5,
     "level": "Muy baja",
@@ -2122,7 +2122,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2132,7 +2132,7 @@
     "market": "Team total MIA",
     "pick": "MIA Over 3.5",
     "line": 3.5,
-    "p": 0.5195,
+    "p": 0.5194,
     "fair": -108.0,
     "ic": 25.1,
     "level": "Muy baja",
@@ -2148,7 +2148,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -2159,8 +2159,8 @@
    "source": "Framework v2",
    "pick": "ATL +1.5",
    "market": "Run Line",
-   "p": 0.6734,
-   "ic": 48.7,
+   "p": 0.6736,
+   "ic": 48.8,
    "level": 0,
    "amount": 0,
    "minPrice": null,
@@ -2193,14 +2193,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.6261,
+   "pHome": 0.6262,
    "projAway": 4.04,
    "projHome": 4.79,
    "total": 8.82,
-   "nrfi": 0.4935,
+   "nrfi": 0.4934,
    "light": "Gris",
    "confidence": "media",
    "probables": {
@@ -2217,9 +2217,9 @@
     "market": "Moneyline",
     "pick": "MIL",
     "line": null,
-    "p": 0.6261,
-    "fair": -167.0,
-    "ic": 58.3,
+    "p": 0.6262,
+    "fair": -168.0,
+    "ic": 58.4,
     "level": "Media",
     "price": null,
     "methods": [
@@ -2257,7 +2257,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2267,9 +2267,9 @@
     "market": "F5 Moneyline",
     "pick": "MIL F5",
     "line": null,
-    "p": 0.5941,
-    "fair": -146.0,
-    "ic": 54.7,
+    "p": 0.5948,
+    "fair": -147.0,
+    "ic": 55.0,
     "level": "Baja",
     "price": null,
     "methods": [
@@ -2288,15 +2288,15 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": -102
+       "from": -103
       }
      ],
      "steps": [
       -121,
       -118,
-      -112,
-      -107,
-      -102,
+      -113,
+      -108,
+      -103,
       102,
       107,
       null,
@@ -2305,7 +2305,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2315,7 +2315,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5515,
+    "p": 0.5516,
     "fair": -123.0,
     "ic": 39.1,
     "level": "Muy baja",
@@ -2353,7 +2353,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2363,9 +2363,9 @@
     "market": "Team total MIL",
     "pick": "MIL Under 4.5",
     "line": 4.5,
-    "p": 0.5378,
+    "p": 0.5376,
     "fair": -116.0,
-    "ic": 35.1,
+    "ic": 35.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -2379,7 +2379,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2389,7 +2389,7 @@
     "market": "Total completo",
     "pick": "Under 8.5",
     "line": 8.5,
-    "p": 0.5243,
+    "p": 0.5242,
     "fair": -110.0,
     "ic": 34.4,
     "level": "Muy baja",
@@ -2405,7 +2405,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2415,7 +2415,7 @@
     "market": "Run Line",
     "pick": "MIL -1.5",
     "line": null,
-    "p": 0.4172,
+    "p": 0.4175,
     "fair": 140.0,
     "ic": 34.2,
     "level": "Muy baja",
@@ -2441,8 +2441,8 @@
      ],
      "steps": [
       170,
-      175,
-      184,
+      174,
+      183,
       193,
       203,
       214,
@@ -2453,7 +2453,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2463,7 +2463,7 @@
     "market": "Team total STL",
     "pick": "STL Under 3.5",
     "line": 3.5,
-    "p": 0.507,
+    "p": 0.5073,
     "fair": -103.0,
     "ic": 34.2,
     "level": "Muy baja",
@@ -2479,7 +2479,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2527,7 +2527,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2537,7 +2537,7 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5065,
+    "p": 0.5066,
     "fair": -103.0,
     "ic": 32.8,
     "level": "Muy baja",
@@ -2553,7 +2553,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2601,7 +2601,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -2612,8 +2612,8 @@
    "source": "Framework v2",
    "pick": "MIL",
    "market": "Moneyline",
-   "p": 0.6261,
-   "ic": 58.3,
+   "p": 0.6262,
+   "ic": 58.4,
    "level": 2,
    "amount": 625,
    "minPrice": -127,
@@ -2657,10 +2657,10 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.4866,
+   "pHome": 0.4867,
    "projAway": 4.76,
    "projHome": 4.24,
    "total": 9.0,
@@ -2681,7 +2681,7 @@
     "market": "Run Line",
     "pick": "CLE +1.5",
     "line": null,
-    "p": 0.6872,
+    "p": 0.6871,
     "fair": -220.0,
     "ic": 58.1,
     "level": "Media",
@@ -2719,7 +2719,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2767,7 +2767,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2777,7 +2777,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.559,
+    "p": 0.5589,
     "fair": -127.0,
     "ic": 44.2,
     "level": "Baja",
@@ -2793,7 +2793,7 @@
      "steps": null,
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2841,7 +2841,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2851,7 +2851,7 @@
     "market": "Team total CLE",
     "pick": "CLE Under 4.5",
     "line": 4.5,
-    "p": 0.5408,
+    "p": 0.5409,
     "fair": -118.0,
     "ic": 38.9,
     "level": "Muy baja",
@@ -2867,7 +2867,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2877,7 +2877,7 @@
     "market": "Total completo",
     "pick": "Under 8.5",
     "line": 8.5,
-    "p": 0.5081,
+    "p": 0.5082,
     "fair": -103.0,
     "ic": 37.2,
     "level": "Muy baja",
@@ -2893,7 +2893,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2919,7 +2919,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2929,7 +2929,7 @@
     "market": "F5 Moneyline",
     "pick": "KC F5",
     "line": null,
-    "p": 0.5191,
+    "p": 0.5193,
     "fair": -108.0,
     "ic": 37.2,
     "level": "Muy baja",
@@ -2967,7 +2967,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -2993,7 +2993,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3003,7 +3003,7 @@
     "market": "Moneyline",
     "pick": "CLE",
     "line": null,
-    "p": 0.5134,
+    "p": 0.5133,
     "fair": -105.0,
     "ic": 32.9,
     "level": "Muy baja",
@@ -3021,7 +3021,7 @@
      "steps": null,
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -3032,7 +3032,7 @@
    "source": "Framework v2",
    "pick": "CLE +1.5",
    "market": "Run Line",
-   "p": 0.6872,
+   "p": 0.6871,
    "ic": 58.1,
    "level": 2,
    "amount": 625,
@@ -3077,14 +3077,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6389,
    "projAway": 4.12,
    "projHome": 5.22,
    "total": 9.35,
-   "nrfi": 0.4613,
+   "nrfi": 0.4612,
    "light": "Gris",
    "confidence": "media",
    "probables": {
@@ -3101,7 +3101,7 @@
     "market": "F5 Moneyline",
     "pick": "CWS F5",
     "line": null,
-    "p": 0.6593,
+    "p": 0.6596,
     "fair": -194.0,
     "ic": 69.3,
     "level": "Media",
@@ -3139,7 +3139,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3189,7 +3189,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3199,7 +3199,7 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5387,
+    "p": 0.5388,
     "fair": -117.0,
     "ic": 42.3,
     "level": "Baja",
@@ -3215,7 +3215,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3225,7 +3225,7 @@
     "market": "Run Line",
     "pick": "CWS -1.5",
     "line": null,
-    "p": 0.4524,
+    "p": 0.4525,
     "fair": 121.0,
     "ic": 42.2,
     "level": "Baja",
@@ -3263,7 +3263,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3311,7 +3311,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3322,7 +3322,7 @@
     "pick": "Under 9.0",
     "line": 9.0,
     "p": 0.5227,
-    "fair": -110.0,
+    "fair": -109.0,
     "ic": 34.3,
     "level": "Muy baja",
     "price": null,
@@ -3337,7 +3337,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3347,7 +3347,7 @@
     "market": "Prop de ponches",
     "pick": "Davis Martin Under 3.5 K",
     "line": 3.5,
-    "p": 0.53,
+    "p": 0.5301,
     "fair": -113.0,
     "ic": 34.2,
     "level": "Muy baja",
@@ -3378,14 +3378,14 @@
       120,
       126,
       132,
-      138,
+      139,
       null,
       null,
       null
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3411,7 +3411,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3421,7 +3421,7 @@
     "market": "Team total CWS",
     "pick": "CWS Over 4.5",
     "line": 4.5,
-    "p": 0.5166,
+    "p": 0.5167,
     "fair": -107.0,
     "ic": 31.0,
     "level": "Muy baja",
@@ -3437,7 +3437,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3447,7 +3447,7 @@
     "market": "Prop de ponches",
     "pick": "Jose Quintana Under 3.5 K",
     "line": 3.5,
-    "p": 0.5348,
+    "p": 0.5349,
     "fair": -115.0,
     "ic": 30.2,
     "level": "Muy baja",
@@ -3485,7 +3485,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -3496,7 +3496,7 @@
    "source": "Framework v2",
    "pick": "CWS F5",
    "market": "F5 Moneyline",
-   "p": 0.6593,
+   "p": 0.6596,
    "ic": 69.3,
    "level": 5,
    "amount": 1000,
@@ -3541,14 +3541,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.52,
+   "pHome": 0.5201,
    "projAway": 4.47,
-   "projHome": 4.4,
-   "total": 8.87,
-   "nrfi": 0.51,
+   "projHome": 4.41,
+   "total": 8.88,
+   "nrfi": 0.5097,
    "light": "Rojo",
    "confidence": "media",
    "probables": {
@@ -3565,7 +3565,7 @@
     "market": "Run Line",
     "pick": "TB +1.5",
     "line": null,
-    "p": 0.6524,
+    "p": 0.6523,
     "fair": -188.0,
     "ic": 44.3,
     "level": "Baja",
@@ -3581,7 +3581,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3607,7 +3607,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3617,7 +3617,7 @@
     "market": "Total completo",
     "pick": "Under 8.5",
     "line": 8.5,
-    "p": 0.5195,
+    "p": 0.519,
     "fair": -108.0,
     "ic": 33.5,
     "level": "Muy baja",
@@ -3633,7 +3633,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3643,8 +3643,8 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5288,
-    "fair": -112.0,
+    "p": 0.5296,
+    "fair": -113.0,
     "ic": 33.5,
     "level": "Muy baja",
     "price": null,
@@ -3659,7 +3659,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3669,7 +3669,7 @@
     "market": "Moneyline",
     "pick": "PHI",
     "line": null,
-    "p": 0.52,
+    "p": 0.5201,
     "fair": -108.0,
     "ic": 33.2,
     "level": "Muy baja",
@@ -3687,7 +3687,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3697,7 +3697,7 @@
     "market": "F5 Moneyline",
     "pick": "PHI F5",
     "line": null,
-    "p": 0.5317,
+    "p": 0.5319,
     "fair": -114.0,
     "ic": 32.5,
     "level": "Muy baja",
@@ -3713,7 +3713,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3723,9 +3723,9 @@
     "market": "Team total TB",
     "pick": "TB Over 3.5",
     "line": 3.5,
-    "p": 0.5522,
+    "p": 0.5525,
     "fair": -123.0,
-    "ic": 31.9,
+    "ic": 32.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -3739,7 +3739,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3749,7 +3749,7 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.49,
+    "p": 0.4903,
     "fair": 104.0,
     "ic": 30.2,
     "level": "Muy baja",
@@ -3765,7 +3765,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -3775,9 +3775,9 @@
     "market": "Team total PHI",
     "pick": "PHI Over 3.5",
     "line": 3.5,
-    "p": 0.5432,
+    "p": 0.5436,
     "fair": -119.0,
-    "ic": 29.3,
+    "ic": 29.4,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -3791,7 +3791,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -3802,7 +3802,7 @@
    "source": "Framework v2",
    "pick": "TB +1.5",
    "market": "Run Line",
-   "p": 0.6524,
+   "p": 0.6523,
    "ic": 44.3,
    "level": 0,
    "amount": 0,
@@ -4105,7 +4105,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5638,
@@ -4145,7 +4145,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4173,7 +4173,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4199,7 +4199,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4225,7 +4225,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4251,7 +4251,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4277,7 +4277,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4303,7 +4303,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4329,7 +4329,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4355,7 +4355,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -4400,7 +4400,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5702,
@@ -4462,7 +4462,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4512,7 +4512,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4538,7 +4538,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4586,7 +4586,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4596,9 +4596,9 @@
     "market": "Prop de ponches",
     "pick": "Kade Anderson Under 5.5 K",
     "line": 5.5,
-    "p": 0.5726,
+    "p": 0.5727,
     "fair": -134.0,
-    "ic": 39.7,
+    "ic": 39.8,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -4624,7 +4624,7 @@
       -102,
       -100,
       105,
-      110,
+      109,
       115,
       120,
       null,
@@ -4634,7 +4634,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4660,7 +4660,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4686,7 +4686,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4696,7 +4696,7 @@
     "market": "Prop de ponches",
     "pick": "Ryan Johnson Under 4.5 K",
     "line": 4.5,
-    "p": 0.506,
+    "p": 0.5061,
     "fair": -102.0,
     "ic": 32.9,
     "level": "Muy baja",
@@ -4734,7 +4734,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4760,7 +4760,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4786,7 +4786,7 @@
      "steps": null,
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
@@ -4842,7 +4842,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-26T00:17:19+00:00",
+  "registeredAt": "2026-09-26T00:33:18+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4856,
@@ -4882,7 +4882,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4908,7 +4908,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4934,7 +4934,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4960,7 +4960,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -4970,7 +4970,7 @@
     "market": "F5 Moneyline",
     "pick": "ATH F5",
     "line": null,
-    "p": 0.5494,
+    "p": 0.5493,
     "fair": -122.0,
     "ic": 41.2,
     "level": "Baja",
@@ -4986,7 +4986,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -5012,7 +5012,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -5038,7 +5038,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -5064,7 +5064,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    },
    {
@@ -5092,7 +5092,7 @@
      "steps": null,
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9937
+     "h": 0.9916
     }
    }
   ],
