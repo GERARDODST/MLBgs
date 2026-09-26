@@ -1,0 +1,411 @@
+{
+ "events": [
+  {
+   "id": "9001",
+   "date": "2026-09-23T17:10Z",
+   "competitions": [
+    {
+     "date": "2026-09-23T17:10Z",
+     "competitors": [
+      {
+       "homeAway": "home",
+       "team": {
+        "abbreviation": "DET",
+        "displayName": "Detroit Tigers"
+       }
+      },
+      {
+       "homeAway": "away",
+       "team": {
+        "abbreviation": "WSH",
+        "displayName": "Washington Nationals"
+       }
+      }
+     ],
+     "odds": [
+      {
+       "provider": {
+        "id": "100",
+        "name": "DraftKings",
+        "priority": 1,
+        "displayName": "DraftKings"
+       },
+       "details": "CLE -112",
+       "overUnder": 8.5,
+       "spread": 1.5,
+       "awayTeamOdds": {
+        "favorite": false,
+        "underdog": false,
+        "team": {
+         "id": "5",
+         "abbreviation": "CLE",
+         "name": "Guardians",
+         "displayName": "Cleveland Guardians"
+        },
+        "favoriteAtOpen": true
+       },
+       "homeTeamOdds": {
+        "favorite": true,
+        "underdog": true,
+        "team": {
+         "id": "7",
+         "abbreviation": "KC",
+         "name": "Royals",
+         "displayName": "Kansas City Royals"
+        },
+        "favoriteAtOpen": false
+       },
+       "moneyline": {
+        "displayName": "Moneyline",
+        "shortDisplayName": "ML",
+        "home": {
+         "close": {
+          "odds": "-108"
+         },
+         "open": {
+          "odds": "+108"
+         }
+        },
+        "away": {
+         "close": {
+          "odds": "-112"
+         },
+         "open": {
+          "odds": "-131"
+         }
+        }
+       },
+       "pointSpread": {
+        "displayName": "Runline",
+        "shortDisplayName": "RL",
+        "home": {
+         "close": {
+          "line": "+1.5",
+          "odds": "-175"
+         },
+         "open": {
+          "line": "+1.5",
+          "odds": "-163"
+         }
+        },
+        "away": {
+         "close": {
+          "line": "-1.5",
+          "odds": "+144"
+         },
+         "open": {
+          "line": "-1.5",
+          "odds": "+135"
+         }
+        }
+       },
+       "total": {
+        "displayName": "Total Runs",
+        "shortDisplayName": "Total",
+        "over": {
+         "close": {
+          "line": "o8.5",
+          "odds": "-102"
+         },
+         "open": {
+          "line": "o8",
+          "odds": "-115"
+         }
+        },
+        "under": {
+         "close": {
+          "line": "u8.5",
+          "odds": "-118"
+         },
+         "open": {
+          "line": "u8",
+          "odds": "-105"
+         }
+        }
+       }
+      }
+     ],
+     "status": {
+      "type": {
+       "name": "STATUS_SCHEDULED"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "9003",
+   "date": "2026-09-23T22:35Z",
+   "competitions": [
+    {
+     "date": "2026-09-23T22:35Z",
+     "competitors": [
+      {
+       "homeAway": "home",
+       "team": {
+        "abbreviation": "BAL",
+        "displayName": "Baltimore Orioles"
+       }
+      },
+      {
+       "homeAway": "away",
+       "team": {
+        "abbreviation": "TOR",
+        "displayName": "Toronto Blue Jays"
+       }
+      }
+     ],
+     "odds": [
+      {
+       "provider": {
+        "id": "100",
+        "name": "DraftKings",
+        "priority": 1,
+        "displayName": "DraftKings"
+       },
+       "details": "CLE -112",
+       "overUnder": 8.5,
+       "spread": 1.5,
+       "awayTeamOdds": {
+        "favorite": false,
+        "underdog": false,
+        "team": {
+         "id": "5",
+         "abbreviation": "CLE",
+         "name": "Guardians",
+         "displayName": "Cleveland Guardians"
+        },
+        "favoriteAtOpen": true
+       },
+       "homeTeamOdds": {
+        "favorite": true,
+        "underdog": true,
+        "team": {
+         "id": "7",
+         "abbreviation": "KC",
+         "name": "Royals",
+         "displayName": "Kansas City Royals"
+        },
+        "favoriteAtOpen": false
+       },
+       "moneyline": {
+        "displayName": "Moneyline",
+        "shortDisplayName": "ML",
+        "home": {
+         "close": {
+          "odds": "-120"
+         },
+         "open": {
+          "odds": "+108"
+         }
+        },
+        "away": {
+         "close": {
+          "odds": "EVEN"
+         },
+         "open": {
+          "odds": "-131"
+         }
+        }
+       },
+       "pointSpread": {
+        "displayName": "Runline",
+        "shortDisplayName": "RL",
+        "home": {
+         "close": {
+          "line": "+1.5",
+          "odds": "-175"
+         },
+         "open": {
+          "line": "+1.5",
+          "odds": "-163"
+         }
+        },
+        "away": {
+         "close": {
+          "line": "-1.5",
+          "odds": "+144"
+         },
+         "open": {
+          "line": "-1.5",
+          "odds": "+135"
+         }
+        }
+       },
+       "total": {
+        "displayName": "Total Runs",
+        "shortDisplayName": "Total",
+        "over": {
+         "close": {
+          "line": "o8.5",
+          "odds": "-102"
+         },
+         "open": {
+          "line": "o8",
+          "odds": "-115"
+         }
+        },
+        "under": {
+         "close": {
+          "line": "u8.5",
+          "odds": "-118"
+         },
+         "open": {
+          "line": "u8",
+          "odds": "-105"
+         }
+        }
+       }
+      }
+     ],
+     "status": {
+      "type": {
+       "name": "STATUS_SCHEDULED"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "9002",
+   "date": "2026-09-23T17:35Z",
+   "competitions": [
+    {
+     "date": "2026-09-23T17:35Z",
+     "competitors": [
+      {
+       "homeAway": "home",
+       "team": {
+        "abbreviation": "BAL",
+        "displayName": "Baltimore Orioles"
+       }
+      },
+      {
+       "homeAway": "away",
+       "team": {
+        "abbreviation": "TOR",
+        "displayName": "Toronto Blue Jays"
+       }
+      }
+     ],
+     "odds": [
+      {
+       "provider": {
+        "id": "100",
+        "name": "DraftKings",
+        "priority": 1,
+        "displayName": "DraftKings"
+       },
+       "details": "CLE -112",
+       "overUnder": 8.5,
+       "spread": 1.5,
+       "awayTeamOdds": {
+        "favorite": false,
+        "underdog": false,
+        "team": {
+         "id": "5",
+         "abbreviation": "CLE",
+         "name": "Guardians",
+         "displayName": "Cleveland Guardians"
+        },
+        "favoriteAtOpen": true
+       },
+       "homeTeamOdds": {
+        "favorite": true,
+        "underdog": true,
+        "team": {
+         "id": "7",
+         "abbreviation": "KC",
+         "name": "Royals",
+         "displayName": "Kansas City Royals"
+        },
+        "favoriteAtOpen": false
+       },
+       "moneyline": {
+        "displayName": "Moneyline",
+        "shortDisplayName": "ML",
+        "home": {
+         "close": {
+          "odds": "-142"
+         },
+         "open": {
+          "odds": "+108"
+         }
+        },
+        "away": {
+         "close": {
+          "odds": "+120"
+         },
+         "open": {
+          "odds": "-131"
+         }
+        }
+       },
+       "pointSpread": {},
+       "total": {
+        "displayName": "Total Runs",
+        "shortDisplayName": "Total",
+        "over": {
+         "close": {
+          "line": "o8.5",
+          "odds": "-102"
+         },
+         "open": {
+          "line": "o8",
+          "odds": "-115"
+         }
+        },
+        "under": {
+         "close": {
+          "line": "u8.5",
+          "odds": "-118"
+         },
+         "open": {
+          "line": "u8",
+          "odds": "-105"
+         }
+        }
+       }
+      }
+     ],
+     "status": {
+      "type": {
+       "name": "STATUS_SCHEDULED"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "id": "9004",
+   "date": "2026-09-23T16:05Z",
+   "competitions": [
+    {
+     "date": "2026-09-23T16:05Z",
+     "competitors": [
+      {
+       "homeAway": "home",
+       "team": {
+        "abbreviation": "MIA",
+        "displayName": "Miami Marlins"
+       }
+      },
+      {
+       "homeAway": "away",
+       "team": {
+        "abbreviation": "NYM",
+        "displayName": "New York Mets"
+       }
+      }
+     ],
+     "odds": [],
+     "status": {
+      "type": {
+       "name": "STATUS_SCHEDULED"
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

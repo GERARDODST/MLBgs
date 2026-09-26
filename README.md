@@ -26,7 +26,8 @@ Varias veces al día un workflow de GitHub Actions:
 | [Baseball Savant](https://baseballsavant.mlb.com) | xERA, xwOBA, Barrel%, Hard Hit%, park factors (índice 3 años) |
 | [MLB Stats API](https://statsapi.mlb.com) — rosters y transacciones | Roster activo con splits, lista de lesionados, movimientos oficiales (noticias) |
 | [Baseball Savant](https://baseballsavant.mlb.com) — arsenal | Run value por tipo de pitcheo de abridores y bateadores |
-| [odds-api.net](https://odds-api.net) (opcional; respaldo [The Odds API](https://the-odds-api.com)) | Momios previos al partido de varias casas (las que operan en México marcadas MX): moneyline, run line y total, con apertura y cierre |
+| ESPN (marcador público, sin clave) | Momios previos al partido de su casa socia (DraftKings): moneyline, run line y total, con apertura y actual |
+| [odds-api.net](https://odds-api.net) o [The Odds API](https://the-odds-api.com) (opcionales, con clave) | Más casas (las que operan en México marcadas MX) |
 
 ## El modelo, sección por sección
 
@@ -81,8 +82,9 @@ solo en tu navegador (con el feed de momios conectado, las casas del feed aparec
 
 **Momios automáticos como SofaScore (`mlbgs/odds.py`):** SofaScore no lee las páginas de las casas:
 muestra el feed con licencia de sus socios de apuestas y guarda la apertura para marcar el movimiento.
-MLBgs hace lo mismo con [odds-api.net](https://odds-api.net) (27 casas para MLB; las que operan en
-México se piden a la API y van marcadas MX) y, de respaldo, The Odds API. Cada corrida guarda en
+MLBgs hace lo mismo: **sin clave**, con el marcador público de ESPN, que publica los momios de su casa
+socia (DraftKings) con la apertura y el actual; y, si agregas una clave, con [odds-api.net](https://odds-api.net)
+(27 casas para MLB; las que operan en México se piden a la API y van marcadas MX) o The Odds API. Cada corrida guarda en
 `data/odds/<fecha>.json` la **apertura** y el **último momio** de cada casa y partido; al primer
 lanzamiento ya no se pide y queda como **cierre**. Para no gastar el plan gratuito, cada partido se
 refresca según lo que falta (más de 6 h: cada 3 h; de 1 a 6 h: cada hora; menos de 1 h: cada corrida)
@@ -260,7 +262,7 @@ ATL y SF) y un límite de 50 filas en las stats por equipo que dejaba a 15 equip
 
 1. **GitHub Pages:** *Settings → Pages → Build and deployment → Source: GitHub Actions*. A partir de
    ahí cada corrida del workflow en `main` publica la página en `https://gerardodst.github.io/MLBgs/`.
-2. **Momios automáticos (opcional):** crea una clave gratis en [odds-api.net](https://odds-api.net) y
+2. **Más casas de momios (opcional):** los de DraftKings llegan solos desde ESPN. Para sumar más casas, crea una clave gratis en [odds-api.net](https://odds-api.net) y
    agrégala como secreto `ODDS_API_NET_KEY` en *Settings → Secrets and variables → Actions*. De
    respaldo sirve una clave de [the-odds-api.com](https://the-odds-api.com) como `ODDS_API_KEY` (una
    llamada cada 2 h como mucho). Los topes se ajustan con las variables `ODDS_API_NET_DAILY` (300
@@ -285,7 +287,7 @@ python -m unittest discover -s tests                        # pruebas
 | Ruta | Qué contiene |
 | --- | --- |
 | `mlbgs/fetch.py` | Ingesta (MLB Stats API, Baseball Savant, momios) → bundle de datos |
-| `mlbgs/odds.py` | Momios previos al partido (odds-api.net / The Odds API): apertura, último y cierre por casa en `data/odds/` |
+| `mlbgs/odds.py` | Momios previos al partido (ESPN sin clave; odds-api.net / The Odds API con clave): apertura, último y cierre por casa en `data/odds/` |
 | `mlbgs/features.py` | Liga, Pitágoras, Elo, perfiles de abridores con shrinkage, bullpen y fatiga |
 | `mlbgs/model.py` | Análisis de cada partido: secciones 1-10 del framework |
 | `mlbgs/context.py` | Lineup proyectado, bullpen completo, importancia (simulación de playoffs), noticias, arsenal |
