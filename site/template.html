@@ -549,6 +549,54 @@
     .cart-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "game odds" "pick pick" "ladder ladder" "stake stake"; }
     .cr-game { grid-area: game; } .cr-pick { grid-area: pick; } .cr-ladder { grid-area: ladder; } .cr-odds { grid-area: odds; justify-self: end; text-align: right; } .cr-stake { grid-area: stake; }
   }
+  /* revisión de un partido anterior */
+  .subnav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+  .subnav a { font-size: 13px; font-weight: 600; color: var(--ink-2); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 3px 11px; text-decoration: none; }
+  .subnav a:hover { border-color: var(--accent); color: var(--accent); }
+  .cmp-flow { display: flex; align-items: stretch; gap: 8px; flex-wrap: wrap; }
+  .cmp-flow .ch-arr { align-self: center; font-size: 22px; }
+  .cmp-step { flex: 1 1 200px; display: flex; flex-direction: column; gap: 3px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; min-width: 0; }
+  .cmp-step b { font-family: var(--display); font-size: 20px; font-weight: 700; line-height: 1.1; }
+  .cmp-step > span:last-child { font-size: 12.5px; color: var(--muted); }
+  .cmp-step.on { border-color: var(--verde); } .cmp-step.on b { color: var(--verde); }
+  .cmp-step.warn { border-color: var(--rojo); } .cmp-step.warn b { color: var(--rojo); }
+  details.tk-model-d { border: 1px solid var(--border); border-radius: 12px; background: var(--surface); padding: 0 14px; }
+  details.tk-model-d + details.tk-model-d { margin-top: 10px; }
+  details.tk-model-d > summary { cursor: pointer; padding: 11px 0; display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; font-size: 14px; }
+  details.tk-model-d > .tk-detail { border-top: 1px solid var(--grid); padding-top: 4px; }
+  details.tk-model-d > .tk-detail > h2 { display: none; }
+  /* plan del día y cadena de la decisión (framework → Pro-Lab → cuota → Claude) */
+  .plan-list { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .plan-row { display: grid; grid-template-columns: 92px 150px minmax(0, 1.5fr) 100px minmax(0, 1.1fr); grid-template-areas: "when game deci odds stake" ". chain chain chain chain"; gap: 5px 12px; align-items: center; padding: 9px 12px 10px 10px; border-top: 1px solid var(--grid); border-left: 4px solid transparent; font-size: 13.5px; }
+  .plan-row:first-child { border-top: 0; }
+  .plan-row.on { border-left-color: var(--verde); }
+  .plan-row.wait { border-left-color: var(--amarillo); }
+  .plan-row.on.st-pre { background: var(--verde-soft); }
+  .plan-row.st-final, .plan-row.st-off { background: var(--surface-2); }
+  .plan-head { grid-template-areas: "when game deci odds stake"; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; background: var(--surface-2); padding-block: 7px; }
+  .pl-when { grid-area: when; display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .pl-when .num { font-size: 12.5px; color: var(--ink-2); }
+  .pl-st { font-size: 11.5px; font-weight: 700; color: var(--muted); }
+  .pl-st.st-pre { color: var(--accent); } .pl-st.st-live { color: var(--rojo); } .pl-st.st-final { color: var(--ink-2); }
+  .pl-game { grid-area: game; min-width: 0; } .pl-game a { color: var(--ink); }
+  .pl-game .num { font-family: var(--display); font-weight: 700; font-size: 16px; }
+  .pl-deci { grid-area: deci; min-width: 0; } .pl-odds { grid-area: odds; } .pl-stake { grid-area: stake; min-width: 0; } .pl-chain { grid-area: chain; min-width: 0; }
+  .plan-row .odds-in { width: 86px; }
+  .chain { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+  .ch-step { display: inline-flex; align-items: baseline; gap: 5px; font-size: 12px; line-height: 1.5; border: 1px solid var(--border); border-radius: 6px; padding: 0 7px; background: var(--surface); color: var(--ink-2); max-width: 100%; }
+  .ch-step i { font-style: normal; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+  .ch-step b { font-weight: 600; overflow-wrap: anywhere; }
+  .ch-step.on { border-color: color-mix(in srgb, var(--verde) 55%, var(--border)); } .ch-step.on b { color: var(--verde); }
+  .ch-step.wait { border-color: var(--amarillo); border-style: dashed; } .ch-step.wait b { color: var(--amarillo); }
+  .ch-step.warn { border-color: color-mix(in srgb, var(--rojo) 50%, var(--border)); } .ch-step.warn b { color: var(--rojo); }
+  .ch-step.off b, .ch-step.none b { color: var(--muted); font-weight: 500; }
+  .ch-arr { color: var(--muted); font-size: 14px; line-height: 1; }
+  .game .chain { border-top: 1px solid var(--grid); padding-top: 8px; }
+  @media (max-width: 760px) {
+    .plan-head { display: none; }
+    .plan-row { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "game when" "deci odds" "stake stake" "chain chain"; }
+    .pl-when { align-items: flex-end; text-align: right; } .pl-odds { justify-self: end; }
+  }
   /* decisión única */
   .pk-row { display: grid; grid-template-columns: minmax(0, 1fr) 124px; gap: 10px; border-top: 1px solid var(--grid); padding-top: 9px; align-items: stretch; }
   .pk-row .picks2 { border-top: 0; padding-top: 0; justify-content: center; }
@@ -1351,6 +1399,7 @@ ${brief}`;
         <div class="fact"><b>${pc(s.nrfi)}</b><span>NRFI</span></div>
       </div>
       <div class="bestline"><span>Abridor: <b>${edgeTxt}</b> · triangulación ${esc(s.confidence)}</span><span class="muted">${s.gate.missing} dato${s.gate.missing === 1 ? "" : "s"} faltante${s.gate.missing === 1 ? "" : "s"}</span></div>
+      ${chainHtml(planOf({ pk: g.pk, date: g.date, time: g.time, an: g, sb: liveGames.find((x) => x.pk === g.pk) }))}
       <div class="pk-row"><div class="picks2">${lab ? `<span class="eyebrow" style="font-size:11.5px">Picks finales · framework + ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${tops.map((p) => `<div class="p2">${icBadge(p)}<span class="t"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)} · justo ${odds(p.fair)}</span></span></div>`).join("") || `<span class="muted">${bestTxt}</span>`}</div>${decisionBox(g)}</div>
     </a>`;
   }
@@ -1398,16 +1447,23 @@ ${brief}`;
     let all = dayRows();
     let dates = [...new Set(all.map((r) => r.date))].filter(Boolean).sort();
     let sel = pickDay(dates);
-    let lightSel = store.get("mlbgs-light") || "todos";
+    let flt = store.get("mlbgs-dfilter") || "todos";
+    if (!DEC_FILTERS.some(([k]) => k === flt)) flt = "todos";
     let sig = daySig();
     const render = () => {
       all = dayRows();
       dates = [...new Set(all.map((r) => r.date))].filter(Boolean).sort();
       const rows = all.filter((r) => r.date === sel).sort((x, y) => (x.time || "").localeCompare(y.time || "") || x.pk - y.pk);
+      const plans = rows.map((r) => ({ r, x: planOf(r) }));
+      const planBy = Object.fromEntries(plans.map((q) => [`${q.r.pk}|${q.r.date}`, q.x]));
+      const shownRow = (r) => decMatch(planBy[`${r.pk}|${r.date}`], flt);
       const by = { live: [], pre: [], final: [], off: [] };
       rows.forEach((r) => by[rowState(r)].push(r));
-      const preShown = by.pre.filter((r) => lightSel === "todos" || (r.an && r.an.summary.light === lightSel));
       const tally = pickTally(rows);
+      const xs = plans.map((q) => q.x).filter(Boolean);
+      const nBet = xs.filter((x) => x.fin && x.fin.status === "apostar" && x.fin.level).length, nWait = xs.filter((x) => x.fin && x.fin.status === "esperar").length;
+      const nLab = xs.filter((x) => x.lab).length, stakeDay = xs.reduce((acc, x) => acc + (x.fin && x.fin.status === "apostar" ? x.amt || 0 : 0), 0);
+      const daySlips = xs.filter((x) => x.slip && x.fin && x.fin.status === "apostar").map((x) => x.slip), dl = ledgerOf(daySlips);
       const rel = sel === TODAY ? "hoy" : sel === addDays(TODAY, -1) ? "ayer" : sel === addDays(TODAY, 1) ? "mañana" : null;
       const title = rel === "ayer" ? "Así quedó la jornada de ayer" : rel === "mañana" ? "Los partidos de mañana, analizados" : rel === "hoy" ? "La jornada de hoy en la MLB" : `La jornada del ${fmtShort(sel)}`;
       const lede = by.pre.length && !by.final.length && !by.live.length
@@ -1426,24 +1482,26 @@ ${brief}`;
         </div>
         <div class="toolbar">
           <div class="chips" role="group" aria-label="Día">${dates.map((d) => `<button class="chip" data-day="${d}" aria-pressed="${sel === d}">${esc(dayLabel(d))} · ${chipCount(d)}</button>`).join("")}</div>
-          ${by.pre.some((r) => r.an) ? `<div class="chips" role="group" aria-label="Semáforo">${["todos", "Verde", "Amarillo", "Gris", "Rojo"].map((l) => `<button class="chip" data-light="${l}" aria-pressed="${lightSel === l}">${l === "todos" ? "Todo semáforo" : l}</button>`).join("")}</div>` : ""}
+          ${xs.length ? `<div class="chips" role="group" aria-label="Decisión">${DEC_FILTERS.map(([k, l]) => `<button class="chip" data-dflt="${k}" aria-pressed="${flt === k}">${esc(l)}</button>`).join("")}</div>` : ""}
         </div>
         <div class="dayboard">
           <div class="db-cell"><span class="eyebrow">Partidos</span><b class="num">${rows.length}</b><span>${by.final.length} terminados · ${by.live.length} en juego · ${by.pre.length} por jugar${by.off.length ? ` · ${by.off.length} pospuestos` : ""}</span></div>
-          <div class="db-cell"><span class="eyebrow">Picks principales</span><b class="num"><span style="color:var(--verde)">${tally.win}</span>–<span style="color:var(--rojo)">${tally.lose}</span></b><span>ganados–perdidos${tally.push ? ` · ${tally.push} push` : ""}${tally.pend ? ` · ${tally.pend} por decidir` : ""}</span></div>
-          <div class="db-cell"><span class="eyebrow">Acierto del día</span><b class="num">${tally.win + tally.lose ? pc(tally.win / (tally.win + tally.lose)) : "—"}</b><span>${tally.win + tally.lose ? "solo picks ya calificados" : "todavía no hay picks calificados"}</span></div>
+          <div class="db-cell"><span class="eyebrow">Decisiones</span><b class="num">${nBet} <small>apuesta${nBet === 1 ? "" : "s"}</small></b><span>${nWait} esperando datos · ${xs.length - nBet - nWait} sin apuesta · ${nLab} con Pro-Lab</span></div>
+          <div class="db-cell"><span class="eyebrow">Stake del día</span><b class="num">${money(stakeDay)}</b><span>${stakeDay > SK.dayCap ? `<b style="color:var(--amarillo)">pasa el tope sugerido de ${money(SK.dayCap)}</b>` : `tope sugerido ${money(SK.dayCap)}`}</span></div>
+          <div class="db-cell"><span class="eyebrow">Boletos cobrados</span><b class="num ${dl.net > 0 ? "won" : dl.net < 0 ? "lost" : ""}">${dl.n ? signed2(dl.net) : "—"}</b><span>${dl.n ? `${dl.win}–${dl.lose}${dl.push ? `–${dl.push}` : ""} · ${money(dl.staked)} apostado` : "ninguno terminado"}${dl.pend ? ` · ${dl.pend} en juego` : ""}</span></div>
           <div class="db-cell db-src"><span class="eyebrow"><span class="dot ${liveInfo.source === "api" ? "ok" : "part"}" style="display:inline-block;vertical-align:middle;margin-right:6px"></span>Actualización</span><span>${src}</span><span style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button type="button" class="btn" id="day-refresh" style="padding:2px 9px;font-size:12.5px">Actualizar ahora</button><a href="#historial" style="font-size:13px;font-weight:600">Historial de tickets →</a></span></div>
         </div>
         ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>Sin momios conectados.</b> Sin cuotas no hay edge calculable, así que el framework marca los mercados en Gris («esperar cuota») o Rojo. Cada pick trae su <b>momio justo</b> y el <b>mínimo aceptable</b>; escribe el momio de tu casa en el partido para medir el valor.</div></div>` : ""}
-        ${carteraBlock(by.pre, by.live)}
-        ${group("En juego", by.live, "live-grid", "")}
-        ${group("Por jugar", preShown, "grid", by.pre.length ? "Ningún partido por jugar con ese semáforo." : "")}
-        ${group("Terminados", by.final, "live-grid", "")}
-        ${group("Pospuestos", by.off, "live-grid", "")}
+        ${planBlock(plans.filter((q) => q.x && decMatch(q.x, flt)).map((q) => q.x))}
+        ${flt !== "todos" && !plans.some((q) => q.x && decMatch(q.x, flt)) ? `<div class="empty">Ningún partido con ese filtro.</div>` : ""}
+        ${group("En juego", by.live.filter(shownRow), "live-grid", "")}
+        ${group("Por jugar", by.pre.filter(shownRow), "grid", "")}
+        ${group("Terminados", by.final.filter(shownRow), "live-grid", "")}
+        ${group("Pospuestos", by.off.filter(shownRow), "live-grid", "")}
         ${!rows.length ? `<div class="empty">No hay partidos programados este día.</div>` : ""}
         ${footer()}`;
       app.querySelectorAll("[data-day]").forEach((b) => b.addEventListener("click", () => { sel = b.dataset.day; store.set("mlbgs-day", `${TODAY}|${sel}`); render(); }));
-      app.querySelectorAll("[data-light]").forEach((b) => b.addEventListener("click", () => { lightSel = b.dataset.light; store.set("mlbgs-light", lightSel); render(); }));
+      app.querySelectorAll("[data-dflt]").forEach((b) => b.addEventListener("click", () => { flt = b.dataset.dflt; store.set("mlbgs-dfilter", flt); render(); }));
       const rb = document.getElementById("day-refresh");
       if (rb) rb.addEventListener("click", () => { rb.textContent = "Actualizando…"; rb.disabled = true; pullLive(true); });
     };
@@ -1451,39 +1509,94 @@ ${brief}`;
     DAY_RENDER = (force) => { const s2 = daySig(); if (!force && (s2 === sig || typing())) return; sig = s2; const y = window.scrollY; render(); window.scrollTo(0, y); };
   }
 
-  // cartera del día: la decisión única de cada partido por jugar, con su stake
-  function carteraBlock(preRows, liveRows = []) {
-    const items = [];
-    preRows.filter((r) => r.an).forEach((r) => {
+  // ------------------------------------------------ plan del día: una fila por partido con la cadena de su decisión
+  // framework (10 secciones) → modelo del Pro-Lab → cuota → conclusión de Claude → decisión única y boleto
+  const decNorm = (d) => (d ? { status: d.status, pick: d.pick && typeof d.pick === "object" ? d.pick.pick : d.pick || "", level: d.status === "apostar" ? (d.stake ? d.stake.level : d.level) || 0 : 0 } : null);
+  const decTxt = (d) => (!d ? "—" : d.status === "apostar" && d.level ? `${d.pick} · stake ${d.level}` : d.status === "esperar" ? `esperar${d.pick ? ` (${d.pick})` : ""}` : "no apostar");
+  // qué hizo el modelo del Pro-Lab con la decisión del framework
+  function labEffect(fw, fin) {
+    if (!fw || !fin) return "";
+    if (fin.pick !== fw.pick && fin.status === "apostar") return `cambia a ${fin.pick}`;
+    if (fin.status !== fw.status) return fin.status === "apostar" ? `activa stake ${fin.level}` : fin.status === "esperar" ? "pide esperar" : "la descarta";
+    if (fin.level > fw.level) return `sube a stake ${fin.level}`;
+    if (fin.level < fw.level) return `baja a stake ${fin.level}`;
+    return "confirma";
+  }
+  // la probabilidad propia del modelo para un pick (el método que el framework no tiene)
+  function labProb(lab, fwPicks, pick) {
+    const lp = ((lab && lab.picks) || []).find((x) => x.pick === pick), fp = (fwPicks || []).find((x) => x.pick === pick);
+    if (!lp || !lp.methods || Array.isArray(lp.methods)) return null;
+    const k = Object.keys(lp.methods).find((m) => !fp || !fp.methods || !(m in fp.methods));
+    return k ? lp.methods[k] : null;
+  }
+  function planOf(r) {
+    const e = effState(r.sb || { state: "Preview" }, r.time), lab = LAB_BY_PK[String(r.pk)];
+    const labName = lab ? LAB_INFO[labKey(lab)].name.join("") : "";
+    if (e.st === "pre" && r.an) {
       const x = decisionNow(r.an);
-      if (x) items.push({ pk: r.pk, r, x, amt: x.status === "apostar" ? x.amt : 0, lab: LAB_BY_PK[String(r.pk)] });
-    });
-    if (!items.length) return "";
-    const total = applyCaps(items);
-    const bets = items.filter((i) => i.final).length, waits = items.filter((i) => i.x.status === "esperar").length;
-    const withOdds = items.filter((i) => i.x.b).length, byClaude = items.filter((i) => i.x.src === "Claude").length;
-    const rowsHtml = items.sort((u, v) => (u.r.time || "").localeCompare(v.r.time || "")).map((i) => {
-      const x = i.x, p = x.p, a = i.r.an.teams.away.abbr, h = i.r.an.teams.home.abbr;
-      const other = x.b && x.b.book !== bookSel() ? `<br><span class="muted" style="font-size:12px">mejor: ${odds(x.b.o.am)} en ${esc(x.b.book)}</span>` : "";
-      const res = x.status === "esperar" ? `<span class="deci-stk wait-t">Esperar</span> <span class="muted" style="font-size:12px">${esc(x.why || "")}</span>`
-        : !i.final ? `<span class="stake-no">No apostar</span> <span class="muted" style="font-size:12px">${esc(x.why || "")}</span>`
-        : `${stakeTag(i.finalLevel)} <b class="stake-amt">${money(i.final)}</b> <span class="muted" style="font-size:12px">${x.b ? `con ${odds(x.b.o.am)}` : x.minPrice != null ? `si pagan ${odds(x.minPrice)} o mejor` : ""}${i.capped ? ` · ${esc(i.capped)}` : ""}</span>`;
-      return `<div class="cart-row${i.final ? " on" : ""}">
-        <div class="cr-game"><span class="num">${esc(fmtTime(i.r.time))}</span> <a href="#g${i.pk}#decision"><b>${esc(a)} @ ${esc(h)}</b></a></div>
-        <div class="cr-pick"><b>${esc(x.pick || "—")}</b>${p ? ` <span class="muted">${esc(p.market)} · ${pc(p.p, 1)}</span> ${icBadge(p)}` : ""}${x.src === "Claude" ? ' <span class="tag cl">✦ Claude</span>' : ""}${i.lab ? ` <span class="tag info">+ ${esc(LAB_INFO[labKey(i.lab)].name.join(""))}</span>` : ""}</div>
-        <div class="cr-ladder">${p ? esc(ladderTxt(p.stake)) : ""}</div>
-        <div class="cr-odds">${p ? oddsInput(i.pk, p) + other : ""}</div>
-        <div class="cr-stake">${res}</div>
-      </div>`;
-    }).join("");
-    return `<section class="block cartera"><h2>Decisiones del día <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">una opción por partido, con su stake</small></h2>
-      <p class="note">Cada partido por jugar queda en <b>una sola opción</b>: el pick con más confianza después de conectar las 10 secciones del framework, el modelo del Pro-Lab si existe y las cuotas (o la conclusión de Claude, si la pediste en el partido). El stake va de 1 a 10 según la confianza: stake 1 = ${money(amountOf(1))}, stake 5 = ${money(amountOf(5))}, stake 10 = ${money(amountOf(10))}. Sin momio capturado vale solo desde el momio indicado; escribe el momio de ${esc(bookSel())} y se recalcula. Tope sugerido: ${money(SK.dayCap)} por día.</p>
-      <div class="dayboard">
-        <div class="db-cell"><span class="eyebrow">Stake total</span><b class="num">${money(total)}</b><span>${bets} apuesta${bets === 1 ? "" : "s"} recomendada${bets === 1 ? "" : "s"}${total > SK.dayCap ? ` · <b style="color:var(--amarillo)">supera el tope sugerido de ${money(SK.dayCap)}: prioriza los de mayor stake</b>` : ""}</span></div>
-        <div class="db-cell"><span class="eyebrow">Partidos</span><b class="num">${items.length}</b><span>${waits} esperando datos · ${withOdds} con tu momio · ${byClaude} con conclusión de Claude</span></div>
-      </div>
-      ${liveRows.length ? `<p class="note muted">${liveRows.length} partido${liveRows.length === 1 ? " ya empezó" : "s ya empezaron"}: su decisión quedó registrada y se sigue en «En juego» (apuestas cerradas).</p>` : ""}
-      <div class="cart-list"><div class="cart-row cart-head" aria-hidden="true"><div>Partido</div><div>Decisión</div><div>Escalera de stake</div><div>Tu momio</div><div>Stake</div></div>${rowsHtml}</div>
+      if (!x) return null;
+      const fw = decNorm(r.an.decisionFramework || r.an.decision), comb = decNorm(r.an.decision);
+      const fin = { status: x.status, pick: x.pick, level: x.level };
+      return { r, e, pre: true, lab, labName, x, p: x.p, fw, comb, fin, amt: x.status === "apostar" ? x.amt : 0,
+        labP: lab ? labProb(lab, r.an.picks, comb.pick) : null, odds: x.b ? { am: x.b.o.am, src: "tuyo" } : x.minPrice != null ? { am: x.minPrice, src: "desde" } : null,
+        claude: x.cl ? { pick: x.pick, level: x.level, status: x.status } : null };
+    }
+    const ts = (TK_BY_PK[String(r.pk)] || []).filter((t) => t.date === r.date && t.decision);
+    const fwT = ts.find((t) => t.model === "framework"), labT = ts.find((t) => t.model !== "framework");
+    const tk = labT || fwT;
+    if (!tk) return { r, e, pre: false, lab, labName, fin: null };
+    const fw = decNorm((fwT || tk).decision), fin = decNorm(tk.decision), sl = slipOf(tk);
+    return { r, e, pre: false, lab, labName, tk, fw, comb: fin, fin, slip: sl, amt: sl && sl.played ? sl.amount : 0, p: tk.picks.find((q) => q.pick === fin.pick) || null,
+      odds: sl ? { am: sl.am, src: sl.source === "referencia" ? "referencia" : "tuyo" } : null, claude: null };
+  }
+  function chainHtml(x) {
+    if (!x || !x.fw) return "";
+    const step = (cls, k, v, tip) => `<span class="ch-step ${cls}" data-tip="${esc(tip)}"><i>${esc(k)}</i><b>${esc(v)}</b></span>`;
+    const fwCls = x.fw.status === "apostar" ? "on" : x.fw.status === "esperar" ? "wait" : "off";
+    const eff = x.lab ? labEffect(x.fw, x.comb) : "";
+    const labCls = !x.lab ? "none" : eff === "confirma" || eff.startsWith("sube") || eff.startsWith("activa") ? "on" : eff.startsWith("baja") || eff === "la descarta" ? "warn" : "wait";
+    const oddsTxt = !x.odds ? "—" : x.odds.src === "tuyo" ? `tu ${odds(x.odds.am)}` : x.odds.src === "referencia" ? `ref. ${odds(x.odds.am)}` : `desde ${odds(x.odds.am)}`;
+    const cl = x.claude;
+    return `<div class="chain" aria-label="Cómo se llegó a la decisión">
+      ${step(fwCls, "Framework", decTxt(x.fw), "Las 10 secciones del framework: su decisión por sí solo")}<span class="ch-arr" aria-hidden="true">›</span>
+      ${step(labCls, x.lab ? x.labName : "Pro-Lab", x.lab ? `${isNum(x.labP) ? pc(x.labP) + " · " : ""}${eff}` : "—", x.lab ? `Modelo del Pro-Lab: su probabilidad entra a los picks y su acuerdo mueve el stake` : "Este partido no tiene modelo del Pro-Lab")}<span class="ch-arr" aria-hidden="true">›</span>
+      ${step(x.odds && x.odds.src === "tuyo" ? "on" : "none", "Cuota", oddsTxt, x.odds && x.odds.src === "tuyo" ? "Tu momio: el IC y el stake se recalculan con él" : x.pre ? "Sin momio capturado: el stake vale solo desde ese momio" : "Momio del boleto")}<span class="ch-arr" aria-hidden="true">›</span>
+      ${step(cl ? "on" : "none", "Claude", cl ? decTxt(cl) : "—", cl ? "Conclusión de Claude con el expediente completo" : "Pulsa «Analizar con Claude» en el partido para su conclusión")}
+    </div>`;
+  }
+  function planRowHtml(x) {
+    const r = x.r, e = x.e, sb = r.sb || {}, an = r.an;
+    const aA = an ? an.teams.away.abbr : sb.awayAbbr, hA = an ? an.teams.home.abbr : sb.homeAbbr;
+    const score = !x.pre && sb.ar != null && !isOff(sb) ? [sb.ar, sb.hr] : null;
+    const stTxt = e.st === "pre" ? startsTxt(e) || "por jugar" : e.st === "off" ? "pospuesto" : e.st === "final" ? (e.est ? "terminado" : "final") : sb.inning ? `en vivo · ${sb.inning}ª` : "en juego";
+    const link = x.pre || !x.tk ? `#g${r.pk}#decision` : `#t${r.pk}`;
+    const f = x.fin;
+    const cls = !f ? "off" : f.status === "apostar" && f.level ? "on" : f.status === "esperar" ? "wait" : "off";
+    const deci = !f ? `<span class="muted">sin decisión registrada</span>` : f.status === "apostar" && f.level
+      ? `<b>${esc(f.pick)}</b>${x.p ? ` <span class="muted">${esc(x.p.market)}${isNum(x.p.p) ? ` · ${pc(x.p.p, 1)}` : ""}</span> ${isNum(x.p.ic) ? icBadge(x.p) : ""}` : ""}`
+      : f.status === "esperar" ? `<span class="wait-t">Esperar</span> <span class="muted">${esc(f.pick || "")}</span>` : `<span class="stake-no">No apostar</span>${f.pick ? ` <span class="muted">(mejor: ${esc(f.pick)})</span>` : ""}`;
+    let money_ = "";
+    if (x.pre) money_ = cls === "on" ? `${stakeTag(f.level)} <b class="stake-amt">${money(x.amt)}</b>` : cls === "wait" ? `<span class="muted">se confirma cerca del inicio</span>` : `<span class="muted">${esc((x.x && x.x.why) || "")}</span>`;
+    else if (x.slip && cls === "on") {
+      const sl = x.slip, st = SLIP_STAMP[sl.key];
+      money_ = `${stakeTag(sl.level)} <b class="stake-amt">${money(sl.amount)}</b> ${st ? `<span class="res-chip ${sl.key === "ganado" ? "win" : sl.key === "perdido" ? "lose" : "pend"}">${esc(st[1])} ${sl.neto != null ? esc(signed2(sl.neto)) : ""}</span>` : `<span class="res-chip ${sl.r.cls}">${esc(sl.r.text)}</span>`}`;
+    }
+    return `<div class="plan-row ${cls} st-${e.st}">
+      <div class="pl-when"><span class="num">${esc(fmtTime(r.time))}</span><span class="pl-st st-${e.st}">${esc(stTxt)}</span></div>
+      <div class="pl-game"><a href="${link}"><b>${esc(aA || "")}</b>${score ? ` <span class="num">${score[0]}</span>` : ""} <span class="muted">@</span> <b>${esc(hA || "")}</b>${score ? ` <span class="num">${score[1]}</span>` : ""}</a>${x.lab ? ` <span class="tag info">${esc(x.labName)}</span>` : ""}</div>
+      <div class="pl-deci">${deci}</div>
+      <div class="pl-odds">${x.pre && x.p && cls !== "off" ? oddsInput(r.pk, x.p) : x.odds && !x.pre ? `<span class="num">${odds(x.odds.am)}</span> <span class="muted">${x.odds.src === "referencia" ? "ref." : "tuyo"}</span>` : ""}</div>
+      <div class="pl-stake">${money_}</div>
+      <div class="pl-chain">${chainHtml(x)}</div>
+    </div>`;
+  }
+  const DEC_FILTERS = [["todos", "Todas"], ["apostar", "Apostar"], ["esperar", "Esperar"], ["no", "No apostar"], ["lab", "Con Pro-Lab"]];
+  const decMatch = (x, flt) => flt === "todos" || !x ? true : flt === "lab" ? !!x.lab : !x.fin ? flt === "no" : flt === "apostar" ? x.fin.status === "apostar" && x.fin.level > 0 : flt === "esperar" ? x.fin.status === "esperar" : !(x.fin.status === "apostar" && x.fin.level > 0) && x.fin.status !== "esperar";
+  function planBlock(plans) {
+    if (!plans.length) return "";
+    return `<section class="block cartera" id="plan"><h2>Plan del día <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">una decisión por partido y cómo se llegó a ella</small></h2>
+      <p class="note">Cada fila sigue el mismo orden del protocolo: primero la decisión del <b>framework</b> (10 secciones), después lo que hace el <b>modelo del Pro-Lab</b> si el partido lo tiene (confirma, sube o baja el stake, o cambia el pick), luego la <b>cuota</b> (tu momio o desde qué momio vale) y, si la pediste, la <b>conclusión de Claude</b>. Stake 1 = ${money(amountOf(1))} · 5 = ${money(amountOf(5))} · 10 = ${money(amountOf(10))}. Los partidos que ya empezaron muestran su boleto congelado y cómo va.</p>
+      <div class="plan-list"><div class="plan-row plan-head" aria-hidden="true"><div>Hora</div><div>Partido</div><div>Decisión</div><div>Momio</div><div>Stake y boleto</div></div>${plans.map(planRowHtml).join("")}</div>
     </section>`;
   }
 
@@ -3338,6 +3451,36 @@ ${brief}`;
     return [head, ...rows].map((r) => r.map((v) => `"${String(v ?? "").replace(/"/g, '""')}"`).join(",")).join("\n");
   }
 
+  // partidos con ticket del framework y del Pro-Lab: qué aportó el modelo en cada uno
+  function complementHist(ts) {
+    const by = {};
+    ts.forEach((t) => (by[`${t.pk}|${t.date}`] = by[`${t.pk}|${t.date}`] || []).push(t));
+    const rows = Object.values(by).map((l) => ({ fwT: l.find((t) => t.model === "framework"), labT: l.find((t) => t.model !== "framework") }))
+      .filter((x) => x.fwT && x.labT && x.labT.result && x.labT.result.state === "Final").sort((a, b) => b.labT.date.localeCompare(a.labT.date) || (b.labT.time || "").localeCompare(a.labT.time || ""));
+    if (!rows.length) return "";
+    const agg = { n: 0, same: 0, changed: 0, bF: 0, bM: 0, bC: 0, nM: 0, net: 0, nSlip: 0 };
+    const body = rows.map(({ fwT, labT }) => {
+      const R = labT.result, hw = R.hr > R.ar, y = hw ? 1 : 0, win = hw ? labT.home : labT.away;
+      const lab = LAB_BY_PK[String(labT.pk)], ms = lab ? labModelSummary(lab) : null;
+      const pF = fwT.pred && fwT.pred.pHome, pM = ms ? ms.pHome : labT.pred && labT.pred.pModel, pC = labT.pred && labT.pred.pHome;
+      const pw = (p) => (isNum(p) ? (hw ? p : 1 - p) : null);
+      const fw = decNorm(fwT.decision), fin = decNorm(labT.decision), eff = labEffect(fw, fin), sl = slipOf(labT);
+      agg.n++; if (isNum(pF) && isNum(pM) && (pF >= 0.5) === (pM >= 0.5)) agg.same++; if (eff && eff !== "confirma") agg.changed++;
+      if (isNum(pF)) agg.bF += (pF - y) ** 2; if (isNum(pM)) { agg.bM += (pM - y) ** 2; agg.nM++; } if (isNum(pC)) agg.bC += (pC - y) ** 2;
+      if (sl && sl.played && sl.neto != null) { agg.net += sl.neto; agg.nSlip++; }
+      const cands = [["Framework", pw(pF)], [(HI.models[labT.model] || {}).name || labT.model, pw(pM)], ["Combinada", pw(pC)]].filter((c) => c[1] != null).sort((a, b) => b[1] - a[1]);
+      const cellP = (p) => td(pc(pw(p), 1), `r num ${pw(p) >= 0.5 ? "won" : "lost"}`);
+      return tr([td(`${esc(fmtShort(labT.date))}`), td(`<a href="#t${labT.pk}"><b>${esc(labT.away)} ${R.ar}–${R.hr} ${esc(labT.home)}</b></a>`), td(`<span class="mdot m-${esc(labT.model)}"></span>${esc((HI.models[labT.model] || {}).name || labT.model)}`),
+        cellP(pF), cellP(pM), cellP(pC), td(esc(cands.length ? cands[0][0] : "—")),
+        td(`${esc(decTxt(fw))} <span class="muted">›</span> <b>${esc(decTxt(fin))}</b>${eff && eff !== "confirma" ? ` <span class="tag info">${esc(eff)}</span>` : ""}`),
+        td(sl && sl.neto != null ? signed2(sl.neto) : "—", `r num ${sl && sl.neto > 0 ? "won" : sl && sl.neto < 0 ? "lost" : ""}`)]);
+    });
+    return `<section class="block" id="h-complemento"><h2>Framework + Pro-Lab: cómo se complementaron</h2>
+      <p class="note">Partidos con los dos tickets: el del framework solo y el del modelo del Pro-Lab (congelado antes del juego). Las columnas de probabilidad dicen cuánto le daba cada uno al <b>ganador real</b> (verde si lo tenía de favorito). En ${agg.n} partido${agg.n === 1 ? "" : "s"}: coincidieron en el favorito ${agg.same} ${agg.same === 1 ? "vez" : "veces"}, el modelo movió la decisión en ${agg.changed}; Brier medio framework ${f(agg.bF / agg.n, 3)} · modelo ${agg.nM ? f(agg.bM / agg.nM, 3) : "—"} · combinada ${f(agg.bC / agg.n, 3)} (menos es mejor)${agg.nSlip ? `; boletos ${signed2(agg.net)}` : ""}.</p>
+      ${table(["Fecha", "Partido", "Modelo", "~Framework", "~Modelo", "~Combinada", "Más cerca", "Decisión: framework › final", "~Boleto"], body)}
+    </section>`;
+  }
+
   function viewHistory() {
     const all = TICKETS.filter(isPast);
     const upcoming = TICKETS.filter((t) => !isPast(t)).length;
@@ -3388,6 +3531,7 @@ ${brief}`;
           <div class="tile"><span class="eyebrow">Decisión única</span><span class="big">${dec.n ? recTxt(dec) : "—"}</span><span class="sub">${dec.n ? `${dec.n} apuesta${dec.n === 1 ? "" : "s"} · stake medio ${f(dec.lv / dec.n, 1)}${dec.win + dec.lose ? ` · acierto ${pc(dec.win / (dec.win + dec.lose))}` : ""}${dec.skip ? ` · ${dec.skip} sin apuesta` : ""}` : "las decisiones se registran desde el 24-sep"}</span></div>
           <div class="tile"><span class="eyebrow">Neto de los boletos</span><span class="big ${L.net > 0 ? "won" : L.net < 0 ? "lost" : ""}">${L.n ? signed2(L.net) : "—"}</span><span class="sub">${L.n ? `${money2(L.staked)} apostado · ${money2(L.cobro)} cobrado · ROI ${pc(L.roi, 1)}` : "todavía no hay boletos calificados"}</span></div>
         </div>
+        <nav class="subnav" aria-label="Secciones del historial"><a href="#historial#cartera">Cartera</a><a href="#historial#h-dias">Boletos por día</a><a href="#historial#h-complemento">Framework + Pro-Lab</a><a href="#historial#h-modelos">Por modelo</a><a href="#historial#h-mercados">Por mercado</a></nav>
         <section class="block" id="cartera"><h2>Cartera de boletos <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">un boleto por partido: la decisión única con su stake</small></h2>
           <div class="tiles t4">
             <div class="tile"><span class="eyebrow">Boletos</span><span class="big">${L.n}</span><span class="sub">${L.win} ganados · ${L.lose} perdidos · ${L.push} push${L.pend ? ` · ${L.pend} en juego` : ""}${L.skip ? ` · ${L.skip} no jugados` : ""}</span></div>
@@ -3399,14 +3543,7 @@ ${brief}`;
           <p class="note">Momio decimal = 1 + 100/|m| si el momio americano es negativo · 1 + m/100 si es positivo (a 2 cifras: −137 → 1.73). <b>Pago</b> = stake × decimal; <b>ganado</b>: cobras el pago (neto = pago − stake); <b>perdido</b>: neto = −stake; <b>push</b> o partido anulado: te devuelven el stake (neto $0). Sin momio registrado se usa el de <b>referencia</b>: el más bajo con el que valía ese stake según la escalera guardada antes del juego, así que la ganancia real con tu momio es igual o mayor. Abre un boleto para registrar el momio y el monto que realmente jugaste${REG_STATE === "db" ? " (se guarda en la base de datos de esta página y se ve en cualquier dispositivo)" : REG_STATE === "local" ? " (se guarda en este navegador)" : ""}.</p>
           ${ss.length && DL_STATE !== "none" ? `<button type="button" class="btn" id="slip-csv">Descargar boletos (CSV)</button>` : ""}
         </section>
-        <section class="block"><h2>Por modelo</h2>
-        ${table(["Modelo", "Tipo", "~Tickets", "~Principales G–P", "~Acierto", "~Esperado", "~Todos G–P", "~Brier P(local)", "~Factor de stake H"], byModel.map((x) => tr([
-          td(`<span class="mdot m-${esc(x.m)}"></span><b>${esc(HI.models[x.m].name)}</b>`), td(esc(HI.models[x.m].kind)), tdn(x.ts.length), tdn(recTxt(x.main)), tdn(x.main.hit != null ? pc(x.main.hit) : "—"), tdn(x.main.exp != null ? pc(x.main.exp) : "—"), tdn(recTxt(x.every)),
-          tdn(x.brier != null ? `${f(x.brier, 3)} <span class="muted">(${x.n})</span>` : "—"), tdn(isNum(x.h) ? f(x.h, 3) : "1.000")])))}
-        <p class="note muted">Los tickets del Pro-Lab usan los picks finales framework + modelo. Brier = promedio de (P(local) − resultado)²: 0.25 es una moneda, menos es mejor. <b>Factor de stake H</b> = 1 + (acierto − esperado) · n/(n+60), acotado a [0.85, 1.05]: si un modelo acierta menos de lo que promete, el stake de sus picks baja un poco; con pocos partidos casi no se mueve. Muestra todavía chica: pocos partidos no bastan para declarar un modelo mejor que otro.</p></section>
-        <section class="block"><h2>Por mercado <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">${scope === "todos" ? "todos los picks" : "picks principales"} del filtro</small></h2>
-        ${table(["Mercado", "~Picks", "~G–P–Push", "~Acierto", "~Esperado", "~Pendientes"], Object.entries(fams).sort((a, b) => b[1].length - a[1].length).map(([k, v]) => { const r = tally(v); return tr([td(esc(FAM_NAMES[k] || k)), tdn(r.n), tdn(`${recTxt(r)}${r.push ? "" : "–0"}`), tdn(r.hit != null ? pc(r.hit) : "—"), tdn(r.exp != null ? pc(r.exp) : "—"), tdn(r.pend)]); }))}</section>
-        <div class="toolbar hist-tools">
+        <div class="toolbar hist-tools" id="h-dias">
           <div class="chips" role="group" aria-label="Modelo">${["todos", ...models].map((m) => `<button class="chip" data-hm="${m}" aria-pressed="${model === m}">${m === "todos" ? "Todos los modelos" : esc(HI.models[m].name)}</button>`).join("")}</div>
           <div class="chips" role="group" aria-label="Resultado">${[["todos", "Todo"], ["ganado", "Ganados"], ["perdido", "Perdidos"], ["push", "Push"], ["anulado", "Anulados"]].map(([k, l]) => `<button class="chip" data-he="${k}" aria-pressed="${estado === k}">${l}</button>`).join("")}</div>
           <div class="chips" role="group" aria-label="Picks">${[["principales", "Picks principales"], ["todos", "Todos los picks"]].map(([k, l]) => `<button class="chip" data-hs="${k}" aria-pressed="${scope === k}">${l}</button>`).join("")}</div>
@@ -3420,6 +3557,15 @@ ${brief}`;
             <details class="tk-more"${ds.length ? "" : " open"}><summary>Tickets por modelo (${ts.length}) · picks principales ${recTxt(r)}${r.pend ? ` · ${r.pend} por calificar` : ""}</summary><div class="tk-grid">${ts.map((t) => ticketCard(t, scope)).join("")}</div></details></section>`; }).join("")
           : `<div class="empty">${all.length ? "No hay tickets con ese filtro." : "Todavía no termina ningún partido con ticket."}</div>`}
         ${dates.length > shown.length ? `<button type="button" class="btn" id="hist-more">Ver ${Math.min(7, dates.length - shown.length)} días más</button>` : ""}
+        <h2 class="sec-title" id="h-analisis" style="margin-top:28px">Análisis de los partidos jugados</h2>
+        ${complementHist(all)}
+        <section class="block" id="h-modelos"><h2>Por modelo</h2>
+        ${table(["Modelo", "Tipo", "~Tickets", "~Principales G–P", "~Acierto", "~Esperado", "~Todos G–P", "~Brier P(local)", "~Factor de stake H"], byModel.map((x) => tr([
+          td(`<span class="mdot m-${esc(x.m)}"></span><b>${esc(HI.models[x.m].name)}</b>`), td(esc(HI.models[x.m].kind)), tdn(x.ts.length), tdn(recTxt(x.main)), tdn(x.main.hit != null ? pc(x.main.hit) : "—"), tdn(x.main.exp != null ? pc(x.main.exp) : "—"), tdn(recTxt(x.every)),
+          tdn(x.brier != null ? `${f(x.brier, 3)} <span class="muted">(${x.n})</span>` : "—"), tdn(isNum(x.h) ? f(x.h, 3) : "1.000")])))}
+        <p class="note muted">Los tickets del Pro-Lab usan los picks finales framework + modelo. Brier = promedio de (P(local) − resultado)²: 0.25 es una moneda, menos es mejor. <b>Factor de stake H</b> = 1 + (acierto − esperado) · n/(n+60), acotado a [0.85, 1.05]: si un modelo acierta menos de lo que promete, el stake de sus picks baja un poco; con pocos partidos casi no se mueve. Muestra todavía chica: pocos partidos no bastan para declarar un modelo mejor que otro.</p></section>
+        <section class="block" id="h-mercados"><h2>Por mercado <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">${scope === "todos" ? "todos los picks" : "picks principales"} del filtro</small></h2>
+        ${table(["Mercado", "~Picks", "~G–P–Push", "~Acierto", "~Esperado", "~Pendientes"], Object.entries(fams).sort((a, b) => b[1].length - a[1].length).map(([k, v]) => { const r = tally(v); return tr([td(esc(FAM_NAMES[k] || k)), tdn(r.n), tdn(`${recTxt(r)}${r.push ? "" : "–0"}`), tdn(r.hit != null ? pc(r.hit) : "—"), tdn(r.exp != null ? pc(r.exp) : "—"), tdn(r.pend)]); }))}</section>
         ${footer()}`;
       app.querySelectorAll("[data-hm]").forEach((b) => b.addEventListener("click", () => { model = b.dataset.hm; store.set("mlbgs-h-model", model); render(); }));
       app.querySelectorAll("[data-he]").forEach((b) => b.addEventListener("click", () => { estado = b.dataset.he; render(); }));
@@ -3476,6 +3622,90 @@ ${brief}`;
     if (clr) clr.addEventListener("click", async () => { msg.textContent = "Quitando…"; try { await saveReg(t.pk, null); msg.textContent = "Listo"; } catch (err) { fail(err); } });
   }
 
+  // ------------------------------------------------ revisión de un partido: lo que esperaba cada modelo contra lo que pasó
+  const TK_OPEN = new Set();
+  document.addEventListener("toggle", (e) => { const d = e.target; if (d.matches && d.matches("details.tk-model-d")) { if (d.open) TK_OPEN.add(d.id); else TK_OPEN.delete(d.id); } }, true);
+  // lo que dijo cada fuente: framework solo, el modelo del Pro-Lab solo y la combinación (picks finales)
+  function viewsOf(list) {
+    const fwT = list.find((t) => t.model === "framework"), labT = list.find((t) => t.model !== "framework");
+    const lab = labT ? LAB_BY_PK[String(labT.pk)] : null, ms = lab ? labModelSummary(lab) : null;
+    const out = [];
+    if (fwT && fwT.pred) out.push({ k: "fw", name: "Framework v2", t: fwT, pHome: fwT.pred.pHome, ra: fwT.pred.projAway, rh: fwT.pred.projHome, total: fwT.pred.total, nrfi: fwT.pred.nrfi });
+    if (labT && labT.pred) {
+      const mName = (HI.models[labT.model] || {}).name || labT.model;
+      out.push({ k: "model", name: mName, t: labT, pHome: ms ? ms.pHome : labT.pred.pModel, ra: ms ? ms.ra : null, rh: ms ? ms.rh : null, total: ms ? ms.total : null, nrfi: ms ? ms.nrfi : null });
+      out.push({ k: "comb", name: `Framework + ${mName}`, t: labT, pHome: labT.pred.pHome, ra: labT.pred.projAway, rh: labT.pred.projHome, total: labT.pred.total, nrfi: labT.pred.nrfi });
+    }
+    return out;
+  }
+  function predBlock(list, R, final) {
+    const vs = viewsOf(list), t0 = list[0];
+    if (!vs.length) return "";
+    const fin = !!(final && R && R.ar != null);
+    const homeWon = fin ? R.hr > R.ar : null, win = fin ? (homeWon ? t0.home : t0.away) : null;
+    const inn1 = fin && (R.inn || [])[0] ? (R.inn[0][0] || 0) + (R.inn[0][1] || 0) : null;
+    const pWin = (v) => (!isNum(v.pHome) ? null : homeWon ? v.pHome : 1 - v.pHome);
+    const cell = (v, fn) => { const x = fn(v); return x == null ? td("—", "r num") : x; };
+    const rows = [
+      ["Ganador", (v) => { const pw = fin ? pWin(v) : null; return fin ? td(`${pc(pw, 1)} <span class="muted">a ${esc(win)}</span>`, `r num ${pw >= 0.5 ? "won" : "lost"}`) : isNum(v.pHome) ? td(`${esc(v.pHome >= 0.5 ? t0.home : t0.away)} ${pc(Math.max(v.pHome, 1 - v.pHome), 1)}`, "r num") : null; }, fin ? `<b>${esc(win)}</b>` : "pendiente"],
+      ["Carreras", (v) => (isNum(v.ra) ? tdn(`${f(v.ra, 1)}–${f(v.rh, 1)}`) : null), fin ? `<b>${R.ar}–${R.hr}</b>` : "—"],
+      ["Total", (v) => (isNum(v.total) ? tdn(`${f(v.total, 1)}${fin ? ` <span class="muted">(${signed(R.ar + R.hr - v.total, 1)})</span>` : ""}`) : null), fin ? `<b>${R.ar + R.hr}</b>` : "—"],
+      ["Primera entrada sin carrera (NRFI)", (v) => (isNum(v.nrfi) ? td(pc(v.nrfi), `r num ${fin && inn1 != null ? ((v.nrfi >= 0.5) === (inn1 === 0) ? "won" : "lost") : ""}`) : null), fin && inn1 != null ? `<b>${inn1 === 0 ? "sin carrera" : `${inn1} carrera${inn1 === 1 ? "" : "s"}`}</b>` : "—"],
+      ["Brier P(local)", (v) => (fin && isNum(v.pHome) ? tdn(f((v.pHome - (homeWon ? 1 : 0)) ** 2, 3)) : null), fin ? '<span class="muted">0.25 = moneda</span>' : "—"],
+    ];
+    const best = fin ? vs.filter((v) => isNum(v.pHome)).sort((x, y) => pWin(y) - pWin(x))[0] : null;
+    return `<section class="block" id="prediccion"><h2>Lo que se esperaba contra lo que pasó</h2>
+      ${table(["", ...vs.map((v) => `~${v.name}`), "~Real"], rows.map(([k, fn, real]) => tr([td(`<b>${esc(k)}</b>`), ...vs.map((v) => cell(v, fn)), tdn(real)])))}
+      <p class="note">${vs.length > 1 ? `<b>Framework v2</b> es la lectura de las 10 secciones sola; <b>${esc(vs[1].name)}</b> es el modelo del Pro-Lab solo (datos congelados antes del juego); la tercera columna es la que se usó para los picks y la decisión.` : "Solo el framework evaluó este partido."}${best && vs.length > 1 ? ` El más cercano al resultado fue <b>${esc(best.name)}</b> (le daba ${pc(pWin(best), 1)} a ${esc(win)}).` : ""}</p>
+    </section>`;
+  }
+  function complementReview(list) {
+    const fwT = list.find((t) => t.model === "framework"), labT = list.find((t) => t.model !== "framework");
+    if (!fwT || !labT) return "";
+    const mName = (HI.models[labT.model] || {}).name || labT.model;
+    const fw = decNorm(fwT.decision), fin = decNorm(labT.decision), eff = labEffect(fw, fin), sl = slipOf(labT);
+    const pF = fwT.pred && fwT.pred.pHome, pM = labT.pred && labT.pred.pModel;
+    const same = isNum(pF) && isNum(pM) ? (pF >= 0.5) === (pM >= 0.5) : null;
+    const mainF = fwT.picks.filter((q) => q.principal).map((q) => q.pick), mainL = labT.picks.filter((q) => q.principal).map((q) => q.pick);
+    const added = mainL.filter((q) => !mainF.includes(q)), dropped = mainF.filter((q) => !mainL.includes(q));
+    const rF = tally(fwT.picks.map((q) => [q, fwT])), rL = tally(labT.picks.map((q) => [q, labT]));
+    const card = (eyebrow, big, sub, cls = "") => `<div class="cmp-step ${cls}"><span class="eyebrow">${eyebrow}</span><b>${big}</b><span>${sub}</span></div>`;
+    const fwPick = fwT.picks.find((q) => q.pick === fw.pick);
+    return `<section class="block" id="complemento"><h2>Cómo se complementaron el framework y ${esc(mName)}</h2>
+      <div class="cmp-flow">
+        ${card("1 · Framework solo", esc(decTxt(fw)), fwPick ? `${esc(fwPick.market)} · ${pc(fwPick.p, 1)} · IC ${Math.round(fwPick.ic)}` : "sin pick con stake", fw.status === "apostar" ? "on" : "")}
+        <span class="ch-arr" aria-hidden="true">›</span>
+        ${card(`2 · ${esc(mName)}`, esc(eff || "—"), `P(${esc(labT.home)}) ${pc(pM, 1)} del modelo contra ${pc(pF, 1)} del framework`, eff === "confirma" || eff.startsWith("sube") ? "on" : eff.startsWith("baja") || eff === "la descarta" ? "warn" : "")}
+        <span class="ch-arr" aria-hidden="true">›</span>
+        ${card("3 · Decisión final", esc(decTxt(fin)), sl ? `${odds(sl.am)} = ${sl.dec.toFixed(2)} · ${esc((SLIP_STAMP[sl.key] || ["", "en juego"])[1])}${sl.neto != null ? ` · ${signed2(sl.neto)}` : ""}` : "sin boleto", sl && sl.key === "ganado" ? "on" : sl && sl.key === "perdido" ? "warn" : "")}
+      </div>
+      <ul class="clean">
+        <li>${same == null ? "Sin probabilidades para comparar." : same ? `Coincidieron en el favorito (${esc((pF >= 0.5 ? labT.home : labT.away))}); la diferencia fue de ${(100 * Math.abs(pM - pF)).toFixed(1)} pp.` : `Discreparon en el favorito: el framework iba con ${esc(pF >= 0.5 ? labT.home : labT.away)} y el modelo con ${esc(pM >= 0.5 ? labT.home : labT.away)}.`}</li>
+        <li>Picks principales: framework ${mainF.map(esc).join(" y ") || "—"}; con el modelo ${mainL.map(esc).join(" y ") || "—"}${added.length ? ` (entró ${added.map(esc).join(", ")}` : ""}${dropped.length ? `${added.length ? "; " : " ("}salió ${dropped.map(esc).join(", ")}` : ""}${added.length || dropped.length ? ")" : ""}.</li>
+        <li>Todos los picks: framework ${recTxt(rF)}${rF.pend ? ` (${rF.pend} pendientes)` : ""} · con el modelo ${recTxt(rL)}${rL.pend ? ` (${rL.pend} pendientes)` : ""}.</li>
+      </ul>
+    </section>`;
+  }
+  function picksCompare(list) {
+    const fwT = list.find((t) => t.model === "framework"), labT = list.find((t) => t.model !== "framework");
+    const base = labT || fwT;
+    if (!base) return "";
+    const names = [...new Set([...(labT ? labT.picks : []), ...(fwT ? fwT.picks : [])].map((q) => q.pick))];
+    const get = (t, n) => (t ? t.picks.find((q) => q.pick === n) : null);
+    const rows = names.map((n) => ({ n, F: get(fwT, n), L: get(labT, n) })).sort((x, y) => ((y.L || y.F).ic || 0) - ((x.L || x.F).ic || 0));
+    const pv = (q) => (q ? `${pc(q.p, 1)} ${isNum(q.ic) ? `<span class="muted">IC ${Math.round(q.ic)}</span>` : ""}` : '<span class="muted">—</span>');
+    const mName = labT ? (HI.models[labT.model] || {}).name || labT.model : "";
+    const dec = base.decision && base.decision.pick;
+    return `<section class="block" id="picks"><h2>Picks del partido${labT && fwT ? ` <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">framework contra framework + ${esc(mName)}</small>` : ""}</h2>
+      ${table(["Pick", "Mercado", ...(fwT ? ["~Framework"] : []), ...(labT ? [`~Con ${esc(mName)}`] : []), "Principal", "Resultado"], rows.map((x) => {
+        const q = x.L || x.F, t = x.L ? labT : fwT, rr = pickRes(q, t);
+        const where = [x.F && x.F.principal ? "framework" : "", x.L && x.L.principal ? esc(mName) : ""].filter(Boolean).join(" · ");
+        return tr([td(`<b>${esc(x.n)}</b>${x.n === dec ? ' <span class="tag ok">decisión</span>' : ""}`), td(esc(q.market)), ...(fwT ? [tdn(pv(x.F))] : []), ...(labT ? [tdn(pv(x.L))] : []), td(where ? `<span class="tag info">${where}</span>` : '<span class="muted">—</span>'), td(`<span class="res-chip ${rr.cls}">${esc(rr.text)}</span>`)], x.n === dec ? "hl" : "");
+      }))}
+      <p class="note muted">Una fila por pick: la probabilidad y el índice de confianza con el framework solo y con el modelo del Pro-Lab (sus métodos se promedian con los del framework). «—» = ese lado no evaluó el mercado. Ordenados por confianza final.</p>
+    </section>`;
+  }
+
   function viewTicket(pk) {
     TK_RENDER = () => { const y = window.scrollY; viewTicket(pk); window.scrollTo(0, y); };
     const list = (TK_BY_PK[pk] || []).slice().sort((a, b) => modelOrder(a.model) - modelOrder(b.model));
@@ -3525,9 +3755,16 @@ ${brief}`;
       <div class="page-head"><p class="eyebrow">Ticket · ${esc(fmtDateLong(t0.date))} · ${esc(fmtTime(t0.time))}${t0.venue ? ` · ${esc(t0.venue)}` : ""}</p>
         <h1>${esc(t0.awayName || t0.away)} ${sc ? `<span class="num">${sc.a}–${sc.h}</span>` : "@"} ${esc(t0.homeName || t0.home)}</h1>
         <p class="lede">${res ? `Final. Los picks se calificaron con el marcador oficial.` : sc ? `${esc(sc.txt)}: los picks se evalúan con el marcador en vivo y se califican al terminar.` : t0.status === "anulado" ? "Partido pospuesto o cancelado: los picks no cuentan." : "Por jugar: el ticket del framework se sigue actualizando hasta el primer lanzamiento; en ese momento se congela."} ${list.length > 1 ? `Este partido tiene ${list.length} tickets: uno por modelo.` : ""}</p></div>
-      ${ls || dec ? `<section class="block"><h2>Resultado</h2>${ls}${dec}</section>` : ""}
+      <nav class="subnav" aria-label="Secciones del partido">${[["resultado", "Resultado", ls || dec], ["boleto", "Boleto", list.some((t) => t.decision)], ["prediccion", "Esperado contra real", true], ["complemento", "Cómo se complementaron", list.length > 1], ["picks", "Picks", true], ["detalle", "Detalle por modelo", true]].filter((x) => x[2]).map(([id, l]) => `<a href="#t${pk}#${id}">${esc(l)}</a>`).join("")}</nav>
+      ${ls || dec ? `<section class="block" id="resultado"><h2>Resultado</h2>${ls}${dec}</section>` : ""}
       ${boletoBlock(list.find((t) => t.decision))}
-      ${list.map(block).join("")}
+      ${predBlock(list, R, !!res || !!(g && g.state === "Final"))}
+      ${complementReview(list)}
+      ${picksCompare(list)}
+      <section class="block" id="detalle"><h2>Detalle por modelo</h2>
+        <p class="note">Lo que registró cada ticket antes del juego: cuándo, con qué datos, qué análisis usó, su escalera de stake por pick y dónde escribir el momio que te dieron.</p>
+        ${list.map((t) => { const id = `md-${t.pk}-${t.model}`; const r2 = tally(t.picks.filter((q) => q.principal).map((q) => [q, t])); return `<details class="tk-model-d m-${esc(t.model)}" id="${id}"${TK_OPEN.has(id) ? " open" : ""}><summary><span class="mdot m-${esc(t.model)}"></span><b>${esc(t.modelName)}</b> <span class="muted">${esc(t.kind || "")} · registrado ${esc(regTxt(t))} · principales ${recTxt(r2)}</span></summary>${block(t)}</details>`; }).join("")}
+      </section>
       <p style="display:flex;gap:16px;flex-wrap:wrap;font-weight:600">${lab ? `<a href="#lab${pk}">Ver el modelo del Pro-Lab (${esc(LAB_INFO[labKey(lab)].name.join(""))}) →</a>` : ""}${BY_PK[String(pk)] ? `<a href="#g${pk}">Ver el análisis completo del partido →</a>` : ""}</p>
       ${footer()}`;
     bindBoleto(list.find((t) => t.decision && t.decision.status === "apostar"));
