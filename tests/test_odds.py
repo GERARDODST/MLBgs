@@ -12,6 +12,7 @@ from mlbgs import model
 from mlbgs import odds as O
 
 FIXTURE = os.path.join(os.path.dirname(__file__), "fixtures", "bundle_small.json.gz")
+ESPN_FX = os.path.join(os.path.dirname(__file__), "fixtures", "espn_scoreboard.json")   # respuesta real de ESPN (26-sep), movida a estos partidos
 UTC = dt.timezone.utc
 
 
@@ -86,7 +87,7 @@ class MomiosOddsApiNet(unittest.TestCase):
             self.bundle = json.load(f)
         self.dir = tempfile.mkdtemp()
         self.api = FakeNet(self.bundle)
-        self.env = {"ODDS_API_NET_KEY": "clave-de-prueba"}
+        self.env = {"ODDS_API_NET_KEY": "clave-de-prueba", "ODDS_ESPN": "0"}     # aquí solo odds-api.net
         self.logs = []
 
     def run_at(self, when, env=None):
@@ -160,7 +161,7 @@ class MomiosOddsApiNet(unittest.TestCase):
             O.DAILY.update(old)
 
     def test_sin_llave_no_llama(self):
-        st = self.run_at("2026-09-23T15:00:00", env={})
+        st = self.run_at("2026-09-23T15:00:00", env={"ODDS_ESPN": "0"})
         self.assertEqual((st["provider"], st["calls"]), (None, 0))
         self.assertEqual(self.api.calls, [])
         self.assertIsNone(O.to_bundle(self.bundle, base=self.dir))
@@ -205,15 +206,77 @@ class MomiosOddsApiNet(unittest.TestCase):
         def fetch(url, headers=None):
             calls.append(url)
             return evs
-        env = {"ODDS_API_KEY": "k"}
+        env = {"ODDS_API_KEY": "k", "ODDS_ESPN": "0"}
         now = dt.datetime(2026, 9, 23, 15, 0, tzinfo=UTC)
         st = O.update(self.bundle, now=now, base=self.dir, env=env, fetch=fetch, log=self.logs.append)
-        self.assertEqual((st["provider"], st["calls"], st["refreshed"]), ("the-odds-api", 1, 1))
+        self.assertEqual((st["provider"], st["calls"], st["refreshed"]), ("The Odds API", 1, 1))
         st = O.update(self.bundle, now=now + dt.timedelta(minutes=30), base=self.dir, env=env, fetch=fetch, log=self.logs.append)
         self.assertEqual(st["calls"], 0)                                      # una llamada cada 2 h como mucho
         row = O.load_day("2026-09-23", self.dir)["games"]["824223"]["books"]["draftkings"]["last"]
         self.assertEqual(row["ml"], {"home": -140, "away": 120})
         self.assertEqual(row["rl"]["home"], {"point": -1.5, "price": 135})
+
+
+
+class MomiosEspn(unittest.TestCase):
+    """ESPN publica sin clave los momios de su casa socia (DraftKings) con apertura y actual."""
+
+    def setUp(self):
+        with gzip.open(FIXTURE, "rt", encoding="utf-8") as f:
+            self.bundle = json.load(f)
+        with open(ESPN_FX, encoding="utf-8") as f:
+            self.sb = json.load(f)
+        self.dir = tempfile.mkdtemp()
+        self.urls = []
+
+    def fetch(self, url, headers=None):
+        self.urls.append(url)
+        assert url.startswith(O.ESPN), url
+        return self.sb
+
+    def run_at(self, when, env=None):
+        return O.update(self.bundle, now=dt.datetime.fromisoformat(when).replace(tzinfo=UTC), base=self.dir,
+                        env={} if env is None else env, fetch=self.fetch, log=lambda *a: None)
+
+    def test_parser_de_la_respuesta_real(self):
+        evs = {e["id"]: e for e in O.espn_events(self.sb)}
+        dk = evs["9001"]["rows"]["draftkings"]
+        self.assertEqual(dk["title"], "DraftKings")
+        self.assertEqual(dk["ml"], {"away": -112, "home": -108})
+        self.assertEqual(dk["rl"], {"away": {"point": -1.5, "price": 144}, "home": {"point": 1.5, "price": -175}})
+        self.assertEqual(dk["total"], {"over": {"point": 8.5, "price": -102}, "under": {"point": 8.5, "price": -118}})
+        op = evs["9001"]["opens"]["draftkings"]
+        self.assertEqual(op["ml"], {"away": -131, "home": 108})               # la apertura de la casa
+        self.assertEqual(op["total"]["over"]["point"], 8.0)
+        self.assertEqual(evs["9002"]["rows"]["draftkings"]["rl"], {})         # sin run line publicado
+        self.assertEqual(evs["9003"]["rows"]["draftkings"]["ml"]["away"], 100)  # EVEN
+        self.assertEqual(evs["9004"]["rows"], {})                             # ya empezó: sin momios
+
+    def test_sin_clave_trae_momios_con_apertura_de_la_casa(self):
+        st = self.run_at("2026-09-23T15:00:00")
+        self.assertEqual((st["provider"], st["calls"], st["refreshed"], st["error"]), ("ESPN", 1, 3, None))
+        self.assertIn("dates=20260923", self.urls[0])
+        g = O.load_day("2026-09-23", self.dir)["games"]
+        dk = g["824223"]["books"]["draftkings"]
+        self.assertEqual(dk["open"]["ml"], {"away": -131, "home": 108})       # apertura de DraftKings, no la nuestra
+        self.assertEqual(dk["last"]["ml"], {"away": -112, "home": -108})
+        self.assertEqual(g["824223"]["providers"], ["espn"])
+        # doble cartelera por hora: 17:35 → evento 9002, 22:35 → 9003
+        self.assertEqual((g["824785"]["espn"], g["824784"]["espn"]), ("9002", "9003"))
+        self.assertEqual(self.run_at("2026-09-23T15:10:00")["calls"], 0)      # nada toca todavía
+        b = copy.deepcopy(self.bundle)
+        b["odds"] = O.to_bundle(b, base=self.dir, now=dt.datetime(2026, 9, 23, 15, 5, tzinfo=UTC))
+        self.assertEqual(b["odds"][0]["provider"], "ESPN")
+        ctx = model.Context(b)
+        up = {x["pk"]: x for x in b["upcoming"]}
+        o = model.odds_for_game(ctx, up[824223])
+        self.assertEqual(o["refMl"]["home"], (-108, "DraftKings"))            # una casa: ese es el de referencia
+        a = model.analyze(ctx, up[824223])
+        self.assertEqual(a["sections"]["s7"]["books"][0]["open"]["mlAway"], -131)
+
+    def test_se_puede_apagar(self):
+        self.assertEqual(self.run_at("2026-09-23T15:00:00", env={"ODDS_ESPN": "0"})["calls"], 0)
+        self.assertEqual(self.urls, [])
 
 
 if __name__ == "__main__":

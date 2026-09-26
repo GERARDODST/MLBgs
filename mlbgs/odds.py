@@ -1,12 +1,13 @@
 """Momios automáticos antes del partido, como SofaScore: apertura, actual y cierre por casa.
 
 SofaScore no raspa las casas: muestra el feed de momios de sus socios de apuestas (datos con licencia)
-y guarda el momio de apertura para marcar el movimiento (flechas ▲▼). Aquí se hace lo mismo con APIs
-de momios con licencia:
+y guarda el momio de apertura para marcar el movimiento (flechas ▲▼). Aquí se hace lo mismo:
 
-  * odds-api.net (principal, secreto ODDS_API_NET_KEY): 27 casas para MLB; las que operan en México
+  * ESPN (siempre, sin clave): el marcador público de ESPN publica los momios de su casa socia
+    (DraftKings) con apertura y actual de moneyline, run line y total. Una llamada por fecha.
+  * odds-api.net (opcional, secreto ODDS_API_NET_KEY): 27 casas para MLB; las que operan en México
     se piden a la API (/bookmakers?country_code=MX) y se marcan «MX».
-  * The Odds API (respaldo, secreto ODDS_API_KEY): casas de EE. UU. en una sola llamada.
+  * The Odds API (opcional, secreto ODDS_API_KEY): casas de EE. UU. en una sola llamada.
 
 Playdoit, Caliente y Team México bloquean el acceso automático y no tienen API pública: su momio lo
 captura el usuario en la página (captura o texto) y manda sobre este.
@@ -35,9 +36,11 @@ ODDS_DIR = os.path.join(ROOT, "data", "odds")
 NET = "https://api.odds-api.net/v1"
 THE = "https://api.the-odds-api.com/v4/sports/baseball_mlb/odds"
 UA = "MLBgs/1.0 (+https://github.com/GERARDODST/MLBgs)"
-PROVIDERS = {"odds-api.net": "odds-api.net", "the-odds-api": "The Odds API"}
+ESPN = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"
+PROVIDERS = {"espn": "ESPN", "odds-api.net": "odds-api.net", "the-odds-api": "The Odds API"}
 DAILY = {"odds-api.net": int(os.environ.get("ODDS_API_NET_DAILY", "300")),
-         "the-odds-api": int(os.environ.get("ODDS_API_DAILY", "6"))}
+         "the-odds-api": int(os.environ.get("ODDS_API_DAILY", "6")),
+         "espn": int(os.environ.get("ODDS_ESPN_DAILY", "300"))}
 PER_RUN = int(os.environ.get("ODDS_API_NET_PER_RUN", "40"))
 THE_GAP_MIN = 120          # The Odds API trae todos los partidos en una llamada: como mucho cada 2 h
 MATCH_HOURS = 6            # un evento de la API es el partido si empieza a menos de 6 h
@@ -196,6 +199,73 @@ def flip(row: dict) -> dict:
                 rl={sw[k]: v for k, v in (row.get("rl") or {}).items()})
 
 
+# ------------------------------------------------------------------ ESPN (marcador público, sin clave)
+
+def _espn_am(x) -> int | None:
+    """'+108', '-112', 'EVEN' → americano entero."""
+    t = str(x or "").strip().upper().replace("−", "-")
+    if t in ("EVEN", "EV", "PK"):
+        return 100
+    try:
+        v = float(t)
+    except ValueError:
+        return None
+    return round(v) if abs(v) >= 100 else None
+
+
+def _espn_line(x) -> float | None:
+    """'o8.5', 'u8', '+1.5', '-1.5' → número."""
+    t = str(x or "").strip().lower().lstrip("ou")
+    try:
+        return float(t)
+    except ValueError:
+        return None
+
+
+def _espn_row(o: dict, when: str) -> dict:
+    ml, rl, tot = o.get("moneyline") or {}, o.get("pointSpread") or {}, o.get("total") or {}
+    get = lambda blk, side: ((blk.get(side) or {}).get(when) or {})  # noqa: E731
+    row = {"ml": {}, "rl": {}, "total": {}}
+    for s in ("away", "home"):
+        am = _espn_am(get(ml, s).get("odds"))
+        if am is None and when == "close":     # respaldo: el moneyline suelto del equipo
+            am = _espn_am((o.get(f"{s}TeamOdds") or {}).get("moneyLine"))
+        if am is not None:
+            row["ml"][s] = am
+        pt, pr = _espn_line(get(rl, s).get("line")), _espn_am(get(rl, s).get("odds"))
+        if pt is not None and pr is not None:
+            row["rl"][s] = {"point": pt, "price": pr}
+    for k in ("over", "under"):
+        pt, pr = _espn_line(get(tot, k).get("line")), _espn_am(get(tot, k).get("odds"))
+        if pt is not None and pr is not None:
+            row["total"][k] = {"point": pt, "price": pr}
+    if len(row["rl"]) < 2:
+        row["rl"] = {}
+    if len(row["total"]) < 2 or row["total"]["over"]["point"] != row["total"]["under"]["point"]:
+        row["total"] = {}
+    return row
+
+
+def espn_events(sb: dict) -> list[dict]:
+    """Marcador de ESPN → eventos con renglón actual (close) y apertura (open) por casa."""
+    out = []
+    for ev in (sb or {}).get("events", []):
+        comp = (ev.get("competitions") or [{}])[0]
+        teams = {c.get("homeAway"): (c.get("team") or {}).get("displayName") for c in comp.get("competitors", [])}
+        rows, opens = {}, {}
+        for o in comp.get("odds") or []:
+            prov = o.get("provider") or {}
+            name = prov.get("displayName") or prov.get("name") or "ESPN"
+            key = _norm(name).replace(" ", "")
+            cur, opn = _espn_row(o, "close"), _espn_row(o, "open")
+            if cur["ml"] or cur["rl"] or cur["total"]:
+                rows[key] = dict(cur, title=name)
+                opens[key] = opn
+        out.append({"id": str(ev.get("id")), "away_team": teams.get("away") or "", "home_team": teams.get("home") or "",
+                    "commence_time": comp.get("date") or ev.get("date"), "rows": rows, "opens": opens})
+    return out
+
+
 # ------------------------------------------------------------------ emparejar eventos con partidos (gamePk)
 
 def match(games: list[dict], events: list[dict], tid) -> dict:
@@ -233,15 +303,24 @@ def _fill(dst: dict, src: dict) -> dict:
     return dst
 
 
-def merge(entry: dict, rows: dict, now: dt.datetime, mx: set) -> dict:
+def merge(entry: dict, rows: dict, now: dt.datetime, mx: set, opens: dict | None = None,
+          provider: str | None = None) -> dict:
+    """Actualiza el último momio de cada casa. La apertura es la que publica la casa si viene (ESPN);
+    si no, el primer momio que se vio."""
     books = entry.setdefault("books", {})
     at = _iso(now)
     for bk, row in rows.items():
         cur = {k: row[k] for k in ("ml", "rl", "total")}
         b = books.setdefault(bk, {"title": row.get("title") or bk})
         b["mx"] = bk in mx
-        b["open"] = _fill(b.get("open") or {"at": at}, cur)
+        own = {k: v for k, v in ((opens or {}).get(bk) or {}).items() if k in ("ml", "rl", "total") and v}
+        b["open"] = _fill(_fill(dict(own, at=b.get("open", {}).get("at") or at), b.get("open") or {}), cur) if own \
+            else _fill(b.get("open") or {"at": at}, cur)
         b["last"] = dict(cur, at=at)
+        if provider:
+            b["src"] = provider
+    if provider and provider not in entry.setdefault("providers", []):
+        entry["providers"] = sorted(entry["providers"] + [provider])
     entry["checked"] = at
     return entry
 
@@ -378,7 +457,8 @@ def games_of(bundle: dict) -> list[dict]:
 
 def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, env=None, fetch=http_json,
            log=print) -> dict:
-    """Pide los momios que tocan, actualiza data/odds/ y devuelve el estado de la corrida."""
+    """Pide los momios que tocan (ESPN siempre; odds-api.net o The Odds API si hay clave), actualiza
+    data/odds/ y devuelve el estado de la corrida."""
     env = os.environ if env is None else env
     now = now or dt.datetime.now(dt.timezone.utc)
     games = games_of(bundle)
@@ -387,76 +467,102 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
     for g in games:
         e = days[g["date"]]["games"].setdefault(str(g["pk"]), {})
         e.update({"pk": g["pk"], "away": g["away"], "home": g["home"], "start": g["time"]})
+    entry = lambda g: days[g["date"]]["games"][str(g["pk"])]  # noqa: E731
+    todo = sorted((g for g in games if due(entry(g), now)), key=lambda g: g["time"])   # primero los que empiezan antes
     usage = load_usage(base)
     status = {"provider": None, "calls": 0, "refreshed": 0, "error": None}
+    used, errors, budgets, fresh = [], [], [], set()
+
+    # 1) ESPN: momios públicos de su casa socia, con apertura (una llamada por fecha, sin clave)
+    if todo and env.get("ODDS_ESPN", "1") != "0":
+        budget = Budget(usage, "espn", now, 4)
+        budgets.append(budget)
+        used.append("espn")
+        try:
+            for date in sorted({g["date"] for g in todo}):
+                if not budget.ok():
+                    break
+                budget.spend()
+                day_todo = [g for g in todo if g["date"] == date]
+                evs = espn_events(fetch(f"{ESPN}?dates={date.replace('-', '')}"))
+                for pk, (ev, sw) in match(day_todo, evs, tid).items():
+                    rows, opens = ev["rows"], ev["opens"]
+                    if sw:
+                        rows, opens = {k: flip(v) for k, v in rows.items()}, {k: flip(v) for k, v in opens.items()}
+                    if rows:
+                        g = next(x for x in day_todo if x["pk"] == pk)
+                        merge(entry(g), rows, now, set(), opens, "espn")
+                        entry(g)["espn"] = ev["id"]
+                        fresh.add(pk)
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"ESPN: {e}")
+
+    # 2) odds-api.net (con clave): más casas, las de México marcadas
     key_net, key_the = env.get("ODDS_API_NET_KEY"), env.get("ODDS_API_KEY")
-    budget = None
-    try:
-        if key_net:
-            status["provider"] = "odds-api.net"
-            budget = Budget(usage, "odds-api.net", now, PER_RUN)
+    if todo and key_net:
+        used.append("odds-api.net")
+        budget = Budget(usage, "odds-api.net", now, PER_RUN)
+        budgets.append(budget)
+        try:
             get = net_client(key_net, budget, fetch)
-            mx_cache = usage.get("mx") or {}
-            if mx_cache.get("day") != budget.day:
+            if (usage.get("mx") or {}).get("day") != budget.day:
                 try:
                     usage["mx"] = {"day": budget.day, "books": net_mx_books(get)}
                 except Exception as e:  # noqa: BLE001 - sin la lista, las casas solo no llevan la marca MX
                     log(f"odds: lista MX no disponible ({e})")
             mx = set((usage.get("mx") or {}).get("books") or [])
-            todo = [g for g in games if due(days[g["date"]]["games"][str(g["pk"])], now)]
-            if todo and any(not days[g["date"]]["games"][str(g["pk"])].get("event") for g in todo):
+            if any(not entry(g).get("event") for g in todo):
                 t0 = min(_ts(g["time"]) for g in todo) - dt.timedelta(hours=MATCH_HOURS)
                 t1 = max(_ts(g["time"]) for g in todo) + dt.timedelta(hours=MATCH_HOURS)
-                found = match(todo, net_events(get, t0, t1), tid)
-                for g in todo:
-                    e = days[g["date"]]["games"][str(g["pk"])]
-                    if g["pk"] in found:
-                        ev, sw = found[g["pk"]]
-                        e.update({"event": str(ev["event_id"]), "swapped": sw, "provider": "odds-api.net"})
-                    elif not e.get("event"):
-                        e["checked"] = _iso(now)     # aún no lo publica la API: se vuelve a buscar según la cadencia
-            todo.sort(key=lambda g: g["time"])    # primero los que empiezan antes
+                for pk, (ev, sw) in match(todo, net_events(get, t0, t1), tid).items():
+                    g = next(x for x in todo if x["pk"] == pk)
+                    entry(g).update({"event": str(ev["event_id"]), "swapped": sw})
             for g in todo:
-                e = days[g["date"]]["games"][str(g["pk"])]
-                if not e.get("event") or e.get("provider") not in (None, "odds-api.net"):
+                e = entry(g)
+                if not e.get("event"):
                     continue
                 if not budget.ok():
-                    log("odds: tope de llamadas; el resto queda con su último momio")
+                    log("odds: tope de llamadas de odds-api.net; el resto queda con su último momio")
                     break
                 rows = rows_from_net(net_snapshot(get, e["event"]))
                 if e.get("swapped"):
                     rows = {k: flip(v) for k, v in rows.items()}
                 if rows:
-                    merge(e, rows, now, mx)
-                    status["refreshed"] += 1
-                else:
-                    e["checked"] = _iso(now)
-        elif key_the:
-            status["provider"] = "the-odds-api"
-            budget = Budget(usage, "the-odds-api", now, 1)
-            last = _ts(usage.get("theLast"))
-            soon = any(due(days[g["date"]]["games"][str(g["pk"])], now) for g in games)
-            if soon and budget.ok() and (last is None or (now - last).total_seconds() / 60 >= THE_GAP_MIN):
+                    merge(e, rows, now, mx, provider="odds-api.net")
+                    fresh.add(g["pk"])
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"odds-api.net: {e}")
+
+    # 3) The Odds API (con clave): una llamada trae todos los partidos; como mucho cada 2 h
+    elif todo and key_the:
+        used.append("the-odds-api")
+        budget = Budget(usage, "the-odds-api", now, 1)
+        budgets.append(budget)
+        last = _ts(usage.get("theLast"))
+        try:
+            if budget.ok() and (last is None or (now - last).total_seconds() / 60 >= THE_GAP_MIN):
                 budget.spend()
                 q = urllib.parse.urlencode({"apiKey": key_the, "regions": "us", "markets": "h2h,spreads,totals",
                                             "oddsFormat": "american"})
                 evs = fetch(f"{THE}?{q}") or []
                 usage["theLast"] = _iso(now)
-                live = [g for g in games if (_ts(g["time"]) or now) > now]
-                for pk, (ev, sw) in match(live, evs, tid).items():
-                    g = next(x for x in live if x["pk"] == pk)
+                for pk, (ev, sw) in match(todo, evs, tid).items():
+                    g = next(x for x in todo if x["pk"] == pk)
                     rows = rows_from_the(ev, tid)
                     if sw:
                         rows = {k: flip(v) for k, v in rows.items()}
-                    e = days[g["date"]]["games"][str(pk)]
-                    e["provider"] = "the-odds-api"
                     if rows:
-                        merge(e, rows, now, set())
-                        status["refreshed"] += 1
-    except Exception as e:  # noqa: BLE001 - sin momios nuevos la página sigue con los guardados
-        status["error"] = str(e)
-        log(f"odds: {e}")
-    status["calls"] = budget.run if budget else 0
+                        merge(entry(g), rows, now, set(), provider="the-odds-api")
+                        fresh.add(pk)
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"The Odds API: {e}")
+
+    for g in todo:                     # intentado en esta corrida: se vuelve a pedir según la cadencia
+        entry(g)["checked"] = _iso(now)
+    for msg in errors:
+        log(f"odds: {msg}")
+    status.update(provider=" + ".join(PROVIDERS[p] for p in used) or None, calls=sum(b.run for b in budgets),
+                  refreshed=len(fresh), error="; ".join(errors) or None)
     for d in days.values():
         d["games"] = {pk: e for pk, e in d["games"].items() if e.get("books") or e.get("event") or e.get("checked")}
         if d["games"]:
@@ -484,7 +590,9 @@ def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None
                               "last_update": b["last"].get("at"), "markets": _markets(b["last"], name(g["away"]), name(g["home"])),
                               "open": {k: b["open"].get(k) or {} for k in ("ml", "rl", "total")}, "openAt": b["open"].get("at")})
             start = _ts(e.get("start"))
-            out.append({"id": e.get("event") or str(g["pk"]), "pk": g["pk"], "provider": PROVIDERS.get(e.get("provider"), e.get("provider")),
+            provs = e.get("providers") or ([e["provider"]] if e.get("provider") else [])
+            out.append({"id": e.get("event") or e.get("espn") or str(g["pk"]), "pk": g["pk"],
+                        "provider": " + ".join(PROVIDERS.get(p, p) for p in provs) or None,
                         "commence_time": e.get("start"), "home_team": name(g["home"]), "away_team": name(g["away"]),
                         "checked": e.get("checked"), "closed": bool(start and start <= now), "bookmakers": books})
     return out or None
