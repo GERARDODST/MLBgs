@@ -38,8 +38,12 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 - Filtro contra el mercado: con edge ≥ 10 pp no hay stake (se verifica: lesión, descanso, lineup). La
   escalera guarda `maxPrice`, el momio más alto que todavía pasa el filtro.
 - Momios automáticos como SofaScore (`mlbgs/odds.py`): ESPN sin clave (su marcador público publica los de
-  su casa socia, DraftKings, con apertura y actual; una llamada por fecha; `ODDS_ESPN=0` lo apaga) y, con
-  clave, odds-api.net (`ODDS_API_NET_KEY`) o The Odds API (`ODDS_API_KEY`); nunca raspando casas. `data/odds/<fecha>.json`
+  su casa socia, DraftKings, con apertura y actual; una llamada por fecha; `ODDS_ESPN=0` lo apaga);
+  The Odds API (`ODDS_API_KEY`, plan gratis de 500 créditos/mes, sin tarjeta) SOLO para el F5 que ESPN no
+  trae: el mercado del pick F5 (`h2h_1st_5_innings` o `totals_1st_5_innings`) de los partidos cuyos dos
+  picks del último análisis (`data/predictions/`) son F5, una vez a ≤ 6 h y un refresco a ≤ 90 min; 1 crédito
+  por mercado y partido; topes `ODDS_API_DAY_CREDITS` (16) y `ODDS_API_MONTH_CREDITS` (470). odds-api.net
+  (`ODDS_API_NET_KEY`) queda como opción de pago. Nunca raspando casas. `data/odds/<fecha>.json`
   guarda por partido y casa la apertura (`open`) y el último momio (`last`); al primer lanzamiento se
   congela (cierre). Cadencia: > 6 h cada 3 h, 1–6 h cada hora, < 1 h cada corrida; topes por corrida y día.
   El edge/IC/stake/decisión usan el **momio de referencia** = mediana de las casas MX (marca de la API

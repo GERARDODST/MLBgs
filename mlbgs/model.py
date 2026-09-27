@@ -136,7 +136,7 @@ def index_odds(raw, teams: dict) -> dict:
         books = []
         for bk in ev.get("bookmakers", []):
             row = {"book": bk.get("title"), "key": bk.get("key"), "mx": bool(bk.get("mx")), "at": bk.get("last_update"),
-                   "ml": {}, "rl": {}, "total": {}, "open": bk.get("open"), "openAt": bk.get("openAt")}
+                   "ml": {}, "rl": {}, "total": {}, "f5ml": {}, "f5total": {}, "open": bk.get("open"), "openAt": bk.get("openAt")}
             for m in bk.get("markets", []):
                 for o in m.get("outcomes", []):
                     side = "home" if tid(o.get("name", "")) == h else "away" if tid(o.get("name", "")) == a else None
@@ -146,6 +146,10 @@ def index_odds(raw, teams: dict) -> dict:
                         row["rl"][side] = {"price": o["price"], "point": o.get("point")}
                     elif m["key"] == "totals":
                         row["total"][o["name"].lower()] = {"price": o["price"], "point": o.get("point")}
+                    elif m["key"] == "h2h_1st_5_innings" and side:
+                        row["f5ml"][side] = o["price"]
+                    elif m["key"] == "totals_1st_5_innings":
+                        row["f5total"][o["name"].lower()] = {"price": o["price"], "point": o.get("point")}
             books.append(row)
         out[(a, h)].append({"commence": ev.get("commence_time"), "books": books, "pk": ev.get("pk"),
                             "provider": ev.get("provider") or "The Odds API", "checked": ev.get("checked"),
@@ -173,11 +177,14 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
     ev = min(evs, key=gap)
     if gap(ev) > 6 * 3600:
         return None
-    books = [b for b in ev["books"] if b["ml"] or b["total"]]
+    books = [b for b in ev["books"] if b["ml"] or b["total"] or b.get("f5ml") or b.get("f5total")]
     if not books:
         return None
+    main_books = [b for b in books if b["ml"] or b["total"]]
     lines = [b["total"]["over"]["point"] for b in books if b["total"].get("over")]
     main_line = statistics.mode(lines) if lines else None
+    f5_lines = [b["f5total"]["over"]["point"] for b in books if (b.get("f5total") or {}).get("over")]
+    f5_line = statistics.mode(f5_lines) if f5_lines else None
     rl_pts = [(b["rl"].get("home") or {}).get("point") for b in books]
     rl_pts = [p for p in rl_pts if p is not None and abs(p) == 1.5]
     rl_home = statistics.mode(rl_pts) if rl_pts else None
@@ -206,8 +213,18 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
     def ml_get(s):
         return lambda b: b["ml"].get(s)
 
+    def f5_get(s):
+        return lambda b: (b.get("f5ml") or {}).get(s)
+
+    def f5t_get(k):
+        return lambda b: (b["f5total"][k]["price"] if (b.get("f5total") or {}).get(k)
+                          and b["f5total"][k]["point"] == f5_line else None)
+
     return {
-        "books": books, "nBooks": len(books), "nMx": sum(1 for b in books if b.get("mx")), "totalLine": main_line,
+        "books": books, "nBooks": len(main_books), "nMx": sum(1 for b in main_books if b.get("mx")), "totalLine": main_line,
+        "f5TotalLine": f5_line,
+        "refF5": {s: ref(f5_get(s)) for s in SIDES}, "bestF5": {s: best(f5_get(s)) for s in SIDES},
+        "refF5Total": {k: ref(f5t_get(k)) for k in ("over", "under")},
         "provider": ev.get("provider"), "checked": ev.get("checked"), "closed": ev.get("closed"),
         "bestMl": {s: best(ml_get(s)) for s in SIDES},
         "bestRl": {s: best(rl_get(s)) for s in SIDES},
@@ -729,16 +746,23 @@ def market_table(ctx, g, p_tri, methods, margin, tie9, total_pmf, pmf_full, f5h,
         add("Total completo", "total", f"Under {ln}", ou["under"],
             odds["refTotal"]["under"][0] if is_mkt and odds["refTotal"].get("under") else None, ln,
             {"market_line": is_mkt}, push=ou["push"])
-    add("F5 Moneyline", "f5ml", f"{ab} F5", f5a, extra={"tie": f5t, "noTie": f5a / (1 - f5t) if f5t < 1 else None},
-        push=f5t)
-    add("F5 Moneyline", "f5ml", f"{hb} F5", f5h, extra={"tie": f5t, "noTie": f5h / (1 - f5t) if f5t < 1 else None},
-        push=f5t)
+    f5_price = {s: (odds["refF5"][s][0] if odds and (odds.get("refF5") or {}).get(s) else None) for s in SIDES}
+    add("F5 Moneyline", "f5ml", f"{ab} F5", f5a, f5_price["away"],
+        extra={"tie": f5t, "noTie": f5a / (1 - f5t) if f5t < 1 else None}, push=f5t)
+    add("F5 Moneyline", "f5ml", f"{hb} F5", f5h, f5_price["home"],
+        extra={"tie": f5t, "noTie": f5h / (1 - f5t) if f5t < 1 else None}, push=f5t)
     add("F5 Run Line", "f5rl", f"{ab} F5 +0.5", f5a + f5t)
     add("F5 Run Line", "f5rl", f"{hb} F5 +0.5", f5h + f5t)
-    for ln in (3.5, 4.5, 5.5):
+    f5_line = odds.get("f5TotalLine") if odds else None
+    for ln in sorted(set((3.5, 4.5, 5.5) + ((f5_line,) if f5_line else ()))):
         ou = M.over_under(f5_total, ln)
-        add("F5 total", "f5total", f"F5 Over {ln}", ou["over"], line=ln)
-        add("F5 total", "f5total", f"F5 Under {ln}", ou["under"], line=ln)
+        is_mkt = ln == f5_line
+        add("F5 total", "f5total", f"F5 Over {ln}", ou["over"],
+            odds["refF5Total"]["over"][0] if is_mkt and odds["refF5Total"].get("over") else None, ln,
+            {"market_line": is_mkt}, push=ou["push"])
+        add("F5 total", "f5total", f"F5 Under {ln}", ou["under"],
+            odds["refF5Total"]["under"][0] if is_mkt and odds["refF5Total"].get("under") else None, ln,
+            {"market_line": is_mkt}, push=ou["push"])
     add("F3 Moneyline", "f3ml", f"{ab} F3", f3a, extra={"tie": f3t}, push=f3t)
     add("F3 Moneyline", "f3ml", f"{hb} F3", f3h, extra={"tie": f3t}, push=f3t)
     for ln in (1.5, 2.5, 3.5):
@@ -1450,11 +1474,17 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
                           "mlAway": b["ml"].get("away"), "mlHome": b["ml"].get("home"),
                           "rlAway": b["rl"].get("away"), "rlHome": b["rl"].get("home"),
                           "over": b["total"].get("over"), "under": b["total"].get("under"),
+                          "f5Away": (b.get("f5ml") or {}).get("away"), "f5Home": (b.get("f5ml") or {}).get("home"),
+                          "f5Over": (b.get("f5total") or {}).get("over"), "f5Under": (b.get("f5total") or {}).get("under"),
                           "open": {"at": b.get("openAt"), "mlAway": (o.get("ml") or {}).get("away"),
                                    "mlHome": (o.get("ml") or {}).get("home"),
                                    "rlAway": (o.get("rl") or {}).get("away"), "rlHome": (o.get("rl") or {}).get("home"),
                                    "over": (o.get("total") or {}).get("over"),
-                                   "under": (o.get("total") or {}).get("under")} if o else None})
+                                   "under": (o.get("total") or {}).get("under"),
+                                   "f5Away": ((o.get("f5") or {}).get("ml") or {}).get("away"),
+                                   "f5Home": ((o.get("f5") or {}).get("ml") or {}).get("home"),
+                                   "f5Over": ((o.get("f5") or {}).get("total") or {}).get("over"),
+                                   "f5Under": ((o.get("f5") or {}).get("total") or {}).get("under")} if o else None})
     priced = [m for m in markets if m["price"] is not None]
     value = sorted(priced, key=lambda m: m["edge"], reverse=True)
     fav_side = "home" if p_tri >= 0.5 else "away"
@@ -1474,6 +1504,7 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
                          "minPrice": m["minPrice"], "price": m["price"], "edge": m["edge"]})
     return {
         "marketTotal": odds.get("totalLine") if odds else None,
+        "marketF5Total": odds.get("f5TotalLine") if odds else None,
         "hasOdds": odds is not None, "nBooks": odds["nBooks"] if odds else 0, "books": books,
         "nMx": odds["nMx"] if odds else 0, "provider": odds.get("provider") if odds else None,
         "checked": odds.get("checked") if odds else None, "closed": odds.get("closed") if odds else None,

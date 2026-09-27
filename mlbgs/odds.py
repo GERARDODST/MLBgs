@@ -7,7 +7,9 @@ y guarda el momio de apertura para marcar el movimiento (flechas ▲▼). Aquí 
     (DraftKings) con apertura y actual de moneyline, run line y total. Una llamada por fecha.
   * odds-api.net (opcional, secreto ODDS_API_NET_KEY): 27 casas para MLB; las que operan en México
     se piden a la API (/bookmakers?country_code=MX) y se marcan «MX».
-  * The Odds API (opcional, secreto ODDS_API_KEY): casas de EE. UU. en una sola llamada.
+  * The Odds API (opcional, secreto ODDS_API_KEY, plan gratis de 500 créditos al mes): solo lo que el feed
+    gratis no trae, el F5 (ganador y total de las primeras 5 entradas) de los partidos cuyo pick es F5.
+    Cada mercado de un partido cuesta 1 crédito; hay topes por día y por mes.
 
 Playdoit, Caliente y Team México bloquean el acceso automático y no tienen API pública: su momio lo
 captura el usuario en la página (captura o texto) y manda sobre este.
@@ -34,15 +36,18 @@ from . import mathlib as M
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ODDS_DIR = os.path.join(ROOT, "data", "odds")
 NET = "https://api.odds-api.net/v1"
-THE = "https://api.the-odds-api.com/v4/sports/baseball_mlb/odds"
+THE = "https://api.the-odds-api.com/v4/sports/baseball_mlb"
+PRED_DIR = os.path.join(ROOT, "data", "predictions")
+F5_MARKETS = {"F5": "h2h_1st_5_innings", "F5 total": "totals_1st_5_innings"}     # familia del pick → mercado
+THE_DAY_CREDITS = int(os.environ.get("ODDS_API_DAY_CREDITS", "16"))
+THE_MONTH_CREDITS = int(os.environ.get("ODDS_API_MONTH_CREDITS", "470"))           # plan gratis: 500
 UA = "MLBgs/1.0 (+https://github.com/GERARDODST/MLBgs)"
 ESPN = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"
 PROVIDERS = {"espn": "ESPN", "odds-api.net": "odds-api.net", "the-odds-api": "The Odds API"}
 DAILY = {"odds-api.net": int(os.environ.get("ODDS_API_NET_DAILY", "300")),
-         "the-odds-api": int(os.environ.get("ODDS_API_DAILY", "6")),
+         "the-odds-api": THE_DAY_CREDITS,
          "espn": int(os.environ.get("ODDS_ESPN_DAILY", "300"))}
 PER_RUN = int(os.environ.get("ODDS_API_NET_PER_RUN", "40"))
-THE_GAP_MIN = 120          # The Odds API trae todos los partidos en una llamada: como mucho cada 2 h
 MATCH_HOURS = 6            # un evento de la API es el partido si empieza a menos de 6 h
 
 
@@ -172,22 +177,34 @@ def rows_from_the(ev: dict, tid) -> dict:
     a, h = tid(ev.get("away_team", "")), tid(ev.get("home_team", ""))
     out = {}
     for bk in ev.get("bookmakers", []):
-        ml, rl_c, tot_c = {}, defaultdict(dict), defaultdict(dict)
+        ml, rl_c, tot_c, f5ml, f5_c = {}, defaultdict(dict), defaultdict(dict), {}, defaultdict(dict)
         for m in bk.get("markets", []):
+            if any(_norm(o.get("name")) in ("draw", "tie", "empate") for o in m.get("outcomes", [])):
+                continue                                   # 3 vías (con empate): no es el F5 que modela el framework
             for o in m.get("outcomes", []):
                 t = tid(o.get("name", ""))
                 side = "home" if t == h else "away" if t == a else None
                 price = o.get("price")
                 if price is None:
                     continue
-                if m.get("key") == "h2h" and side:
+                key = m.get("key")
+                if key == "h2h" and side:
                     ml[side] = price
-                elif m.get("key") == "spreads" and side and o.get("point") is not None:
+                elif key == "spreads" and side and o.get("point") is not None:
                     rl_c[o["point"] if side == "home" else -o["point"]][side] = price
-                elif m.get("key") == "totals" and o.get("point") is not None:
+                elif key == "totals" and o.get("point") is not None:
                     tot_c[o["point"]][o.get("name", "").lower()] = price
+                elif key == "h2h_1st_5_innings" and side:
+                    f5ml[side] = price
+                elif key == "totals_1st_5_innings" and o.get("point") is not None:
+                    f5_c[o["point"]][o.get("name", "").lower()] = price
         row = _row(ml, rl_c, tot_c)
-        if row["ml"] or row["rl"] or row["total"]:
+        f5t = _pick_total(f5_c)
+        f5 = {"ml": f5ml if len(f5ml) == 2 else {},
+              "total": {k: {"point": f5t[0], "price": f5t[1][k]} for k in ("over", "under")} if f5t else {}}
+        if f5["ml"] or f5["total"]:
+            row["f5"] = f5
+        if row["ml"] or row["rl"] or row["total"] or row.get("f5"):
             out[bk.get("key") or bk.get("title")] = dict(row, title=bk.get("title") or bk.get("key"))
     return out
 
@@ -195,8 +212,11 @@ def rows_from_the(ev: dict, tid) -> dict:
 def flip(row: dict) -> dict:
     """Voltea visitante/local (la API puede listar al revés un partido en sede neutral)."""
     sw = {"away": "home", "home": "away"}
-    return dict(row, ml={sw[k]: v for k, v in (row.get("ml") or {}).items()},
-                rl={sw[k]: v for k, v in (row.get("rl") or {}).items()})
+    out = dict(row, ml={sw[k]: v for k, v in (row.get("ml") or {}).items()},
+               rl={sw[k]: v for k, v in (row.get("rl") or {}).items()})
+    if row.get("f5"):
+        out["f5"] = dict(row["f5"], ml={sw[k]: v for k, v in (row["f5"].get("ml") or {}).items()})
+    return out
 
 
 # ------------------------------------------------------------------ ESPN (marcador público, sin clave)
@@ -303,6 +323,9 @@ def _fill(dst: dict, src: dict) -> dict:
     return dst
 
 
+MARKET_KEYS = ("ml", "rl", "total", "f5")
+
+
 def merge(entry: dict, rows: dict, now: dt.datetime, mx: set, opens: dict | None = None,
           provider: str | None = None) -> dict:
     """Actualiza el último momio de cada casa. La apertura es la que publica la casa si viene (ESPN);
@@ -310,13 +333,13 @@ def merge(entry: dict, rows: dict, now: dt.datetime, mx: set, opens: dict | None
     books = entry.setdefault("books", {})
     at = _iso(now)
     for bk, row in rows.items():
-        cur = {k: row[k] for k in ("ml", "rl", "total")}
+        cur = {k: row[k] for k in MARKET_KEYS if row.get(k)}
         b = books.setdefault(bk, {"title": row.get("title") or bk})
-        b["mx"] = bk in mx
-        own = {k: v for k, v in ((opens or {}).get(bk) or {}).items() if k in ("ml", "rl", "total") and v}
+        b["mx"] = b.get("mx") or bk in mx
+        own = {k: v for k, v in ((opens or {}).get(bk) or {}).items() if k in MARKET_KEYS and v}
         b["open"] = _fill(_fill(dict(own, at=b.get("open", {}).get("at") or at), b.get("open") or {}), cur) if own \
             else _fill(b.get("open") or {"at": at}, cur)
-        b["last"] = dict(cur, at=at)
+        b["last"] = dict({k: v for k, v in (b.get("last") or {}).items() if k in MARKET_KEYS}, **cur, at=at)
         if provider:
             b["src"] = provider
     if provider and provider not in entry.setdefault("providers", []):
@@ -334,6 +357,33 @@ def due(entry: dict, now: dt.datetime) -> bool:
     gap = 180 if mins > 360 else 60 if mins > 60 else 0
     last = _ts(entry.get("checked"))
     return last is None or (now - last).total_seconds() / 60 >= gap - 2
+
+
+def f5_needs(date: str, pred_dir: str = PRED_DIR) -> dict:
+    """{pk: [mercados]}: partidos cuyos dos picks principales (último análisis guardado) incluyen F5."""
+    path = os.path.join(pred_dir, f"{date}.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        rows = json.load(f)
+    out = {}
+    for r in rows if isinstance(rows, list) else rows.values():
+        mk = sorted({F5_MARKETS[tp["family"]] for tp in r.get("topPicks") or [] if tp.get("family") in F5_MARKETS})
+        if mk:
+            out[r["pk"]] = mk
+    return out
+
+
+def f5_due(entry: dict, now: dt.datetime) -> bool:
+    """F5: una vez cuando faltan ≤ 6 h y un refresco en la última hora y media (cuida los créditos gratis)."""
+    start = _ts(entry.get("start"))
+    if not start or start <= now:
+        return False
+    mins = (start - now).total_seconds() / 60
+    last, n = _ts(entry.get("f5at")), entry.get("f5n", 0)
+    if last is None:
+        return mins <= 360
+    return n < 2 and mins <= 90 and (now - last).total_seconds() / 60 >= 60
 
 
 def load_day(date: str, base: str = ODDS_DIR) -> dict:
@@ -470,7 +520,7 @@ def games_of(bundle: dict) -> list[dict]:
 
 
 def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, env=None, fetch=http_json,
-           log=print) -> dict:
+           log=print, pred_dir: str = PRED_DIR) -> dict:
     """Pide los momios que tocan (ESPN siempre; odds-api.net o The Odds API si hay clave), actualiza
     data/odds/ y devuelve el estado de la corrida."""
     env = os.environ if env is None else env
@@ -558,27 +608,48 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
         except Exception as e:  # noqa: BLE001
             errors.append(f"odds-api.net: {e}")
 
-    # 3) The Odds API (con clave): una llamada trae todos los partidos; como mucho cada 2 h
-    elif todo and key_the:
+    # 3) The Odds API (con clave, plan gratis): solo el F5 de los partidos cuyo pick es F5, que el feed gratis no trae
+    if key_the:
         used.append("the-odds-api")
-        budget = Budget(usage, "the-odds-api", now, 1)
+        budget = Budget(usage, "the-odds-api", now, 10 ** 6)   # aquí el tope es de créditos, no de llamadas
         budgets.append(budget)
-        last = _ts(usage.get("theLast"))
+        month = now.strftime("%Y-%m")
+        credits = usage.setdefault("theCredits", {})
         try:
-            if budget.ok() and (last is None or (now - last).total_seconds() / 60 >= THE_GAP_MIN):
-                budget.spend()
-                q = urllib.parse.urlencode({"apiKey": key_the, "regions": "us", "markets": "h2h,spreads,totals",
-                                            "oddsFormat": "american"})
-                evs = fetch(f"{THE}?{q}") or []
-                usage["theLast"] = _iso(now)
-                for pk, (ev, sw) in match(todo, evs, tid).items():
-                    g = next(x for x in todo if x["pk"] == pk)
-                    rows = rows_from_the(ev, tid)
-                    if sw:
-                        rows = {k: flip(v) for k, v in rows.items()}
-                    if rows:
-                        merge(entry(g), rows, now, set(), provider="the-odds-api")
-                        fresh.add(pk)
+            needs = {}
+            for d in days:
+                needs.update(f5_needs(d, pred_dir))
+            want = [g for g in games if g["pk"] in needs and f5_due(entry(g), now)]
+            want.sort(key=lambda g: g["time"])
+            if want and any(not entry(g).get("theId") for g in want):
+                evs = fetch(f"{THE}/events?" + urllib.parse.urlencode({"apiKey": key_the, "dateFormat": "iso"})) or []
+                for pk, (ev, sw) in match(want, evs, tid).items():   # la lista de partidos no gasta créditos
+                    g = next(x for x in want if x["pk"] == pk)
+                    entry(g).update({"theId": ev["id"], "theSwapped": sw})
+            for g in want:
+                e, mk = entry(g), needs[g["pk"]]
+                if not e.get("theId"):
+                    continue
+                cost = len(mk)
+                if budget.calls.get("the-odds-api", 0) + cost > THE_DAY_CREDITS or credits.get(month, 0) + cost > THE_MONTH_CREDITS:
+                    log("odds: tope de créditos de The Odds API; los F5 que faltan quedan sin momio")
+                    break
+                q = urllib.parse.urlencode({"apiKey": key_the, "regions": "us", "markets": ",".join(mk),
+                                            "oddsFormat": "american", "dateFormat": "iso"})
+                ev = fetch(f"{THE}/events/{urllib.parse.quote(str(e['theId']))}/odds?{q}") or {}
+                got = {m.get("key") for b in ev.get("bookmakers", []) for m in b.get("markets", [])}
+                spent = max(1, len(got & set(mk)))
+                budget.run += 1
+                budget.calls["the-odds-api"] = budget.calls.get("the-odds-api", 0) + spent
+                credits[month] = credits.get(month, 0) + spent
+                rows = rows_from_the(ev, tid)
+                if e.get("theSwapped"):
+                    rows = {k: flip(v) for k, v in rows.items()}
+                rows = {k: v for k, v in rows.items() if v.get("f5")}
+                e.update(f5at=_iso(now), f5n=e.get("f5n", 0) + 1)
+                if rows:
+                    merge(e, rows, now, set(), provider="the-odds-api")
+                    fresh.add(g["pk"])
         except Exception as e:  # noqa: BLE001
             errors.append(f"The Odds API: {e}")
 
@@ -587,6 +658,7 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
     for msg in errors:
         log(f"odds: {msg}")
     status.update(provider=" + ".join(PROVIDERS[p] for p in used) or None, calls=sum(b.run for b in budgets),
+                  credits=(usage.get("theCredits") or {}).get(now.strftime("%Y-%m")),
                   refreshed=len(fresh), error="; ".join(errors) or None)
     for d in days.values():
         d["games"] = {pk: e for pk, e in d["games"].items() if e.get("books") or e.get("event") or e.get("checked")}
@@ -613,7 +685,7 @@ def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None
             for bk, b in sorted(e["books"].items(), key=lambda kv: (not kv[1].get("mx"), kv[1].get("title") or kv[0])):
                 books.append({"key": bk, "title": b.get("title") or bk, "mx": bool(b.get("mx")),
                               "last_update": b["last"].get("at"), "markets": _markets(b["last"], name(g["away"]), name(g["home"])),
-                              "open": {k: b["open"].get(k) or {} for k in ("ml", "rl", "total")}, "openAt": b["open"].get("at")})
+                              "open": {k: b["open"].get(k) or {} for k in MARKET_KEYS}, "openAt": b["open"].get("at")})
             start = _ts(e.get("start"))
             provs = e.get("providers") or ([e["provider"]] if e.get("provider") else [])
             out.append({"id": e.get("event") or e.get("espn") or str(g["pk"]), "pk": g["pk"],
@@ -633,4 +705,11 @@ def _markets(row: dict, away: str, home: str) -> list[dict]:
     if row.get("total"):
         ms.append({"key": "totals", "outcomes": [{"name": k.capitalize(), "price": v["price"], "point": v["point"]}
                                                  for k, v in row["total"].items()]})
+    f5 = row.get("f5") or {}
+    if f5.get("ml"):
+        ms.append({"key": "h2h_1st_5_innings", "outcomes": [{"name": away if s == "away" else home, "price": p}
+                                                            for s, p in f5["ml"].items()]})
+    if f5.get("total"):
+        ms.append({"key": "totals_1st_5_innings", "outcomes": [{"name": k.capitalize(), "price": v["price"], "point": v["point"]}
+                                                               for k, v in f5["total"].items()]})
     return ms

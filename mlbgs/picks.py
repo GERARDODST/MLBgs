@@ -166,7 +166,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
               (" + Monte Carlo" if extra.get("total") else ""), extra.get("total"),
               S["s7"].get("marketTotal"))
     line_pick("f5total", "F5 total", "Total primeras 5", "f5total", "f5", "Poisson con λ de las primeras 5 entradas" +
-              (" + Monte Carlo" if extra.get("f5total") else ""), extra.get("f5total"))
+              (" + Monte Carlo" if extra.get("f5total") else ""), extra.get("f5total"), S["s7"].get("marketF5Total"))
     for side, abbr in (("away", a), ("home", h)):
         line_pick(f"tt_{side}", "Team total", f"Team total {abbr}", "tt", "total",
                   f"Binomial Negativa de carreras de {abbr}" + (" + Monte Carlo" if extra.get(f"runs_{side}") else ""),
@@ -182,7 +182,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
             f = extra["f5"]
             methods[MK_] = f[side] / (f["away"] + f["home"]) if (f["away"] + f["home"]) else None
         pp = sum(v for v in methods.values() if v is not None) / len([v for v in methods.values() if v is not None])
-        add("F5", "F5 Moneyline", m["pick"], pp, methods, "f5ml", None, gate["f5"], stab_sp, contra_for("F5"),
+        add("F5", "F5 Moneyline", m["pick"], pp, methods, "f5ml", m.get("price"), gate["f5"], stab_sp, contra_for("F5"),
             "Poisson de las primeras 5 entradas, empates como push" + (" + Monte Carlo" if extra.get("f5") else ""))
 
     # --- NRFI / YRFI
