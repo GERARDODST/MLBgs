@@ -113,7 +113,7 @@
 "pk": 823408,
 "date": "2026-09-27",
 "time": "2026-09-27T18:30:00Z",
-"generatedAt": "2026-09-27T16:59:14+00:00",
+"generatedAt": "2026-09-27T17:30:52+00:00",
 "away": "TB",
 "home": "PHI",
 "pHome": 0.524,
@@ -139,8 +139,8 @@
 "market": "Total",
 "pick": "Over 6.5",
 "p": 0.6103,
-"price": -105,
-"edge": 0.0981,
+"price": -104,
+"edge": 0.1005,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -150,7 +150,7 @@
 "pick": "Over 6.5",
 "p": 0.6103,
 "line": 6.5,
-"ic": 66.4789,
+"ic": 67.1763,
 "level": "Media"
 },
 {
@@ -278,23 +278,23 @@
 "pk": 824948,
 "date": "2026-09-27",
 "time": "2026-09-27T19:05:00Z",
-"generatedAt": "2026-09-27T16:43:19+00:00",
+"generatedAt": "2026-09-27T17:30:52+00:00",
 "away": "HOU",
 "home": "ATH",
-"pHome": 0.4221,
+"pHome": 0.4188,
 "methods": {
 "log5": 0.441,
 "elo": 0.405,
-"lambda": 0.4202
+"lambda": 0.4103
 },
 "confidence": "alta",
 "projAway": 5.7577,
-"projHome": 4.8161,
-"total": 10.5738,
+"projHome": 4.705,
+"total": 10.4627,
 "f5Away": 3.0487,
-"f5Home": 2.8053,
-"nrfi": 0.4483,
-"pOver85": 0.6268,
+"f5Home": 2.7406,
+"nrfi": 0.4527,
+"pOver85": 0.6179,
 "probables": {
 "away": "Peter Lambert",
 "home": "Seth Johnson"
@@ -303,28 +303,28 @@
 "best": {
 "market": "Run Line",
 "pick": "ATH +1.5",
-"p": 0.5632,
+"p": 0.5545,
 "price": 101,
-"edge": 0.0657,
+"edge": 0.057,
 "light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "NRFI",
-"market": "NRFI/YRFI",
-"pick": "YRFI",
-"p": 0.5517,
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "HOU F5",
+"p": 0.5599,
 "line": null,
-"ic": 45.745,
+"ic": 44.5431,
 "level": "Baja"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Seth Johnson Under 2.5 K",
-"p": 0.5794,
-"line": 2.5,
-"ic": 42.1831,
+"family": "NRFI",
+"market": "NRFI/YRFI",
+"pick": "YRFI",
+"p": 0.5473,
+"line": null,
+"ic": 44.4699,
 "level": "Baja"
 }
 ]
@@ -718,23 +718,23 @@
 "pk": 824217,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T15:55:20+00:00",
+"generatedAt": "2026-09-27T17:30:52+00:00",
 "away": "PIT",
 "home": "DET",
-"pHome": 0.5142,
+"pHome": 0.5155,
 "methods": {
 "log5": 0.5635,
 "elo": 0.5197,
-"lambda": 0.4593
+"lambda": 0.4634
 },
 "confidence": "baja",
-"projAway": 4.5461,
+"projAway": 4.501,
 "projHome": 4.1253,
-"total": 8.6714,
-"f5Away": 2.5182,
+"total": 8.6263,
+"f5Away": 2.4932,
 "f5Home": 2.2468,
-"nrfi": 0.514,
-"pOver85": 0.4619,
+"nrfi": 0.5157,
+"pOver85": 0.4577,
 "probables": {
 "away": "Jared Jones",
 "home": "River Ryan"
@@ -742,8 +742,8 @@
 "light": "Gris",
 "best": {
 "market": "Prop pitcher",
-"pick": "River Ryan Under 4.5 K",
-"p": 0.5942,
+"pick": "Jared Jones Over 5.5 K",
+"p": 0.5798,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -755,16 +755,16 @@
 "pick": "Jared Jones Over 5.5 K",
 "p": 0.5798,
 "line": 5.5,
-"ic": 45.9089,
+"ic": 50.4422,
 "level": "Baja"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "River Ryan Under 4.5 K",
-"p": 0.5942,
-"line": 4.5,
-"ic": 41.8837,
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "PIT F5",
+"p": 0.554,
+"line": null,
+"ic": 41.2711,
 "level": "Baja"
 }
 ]
