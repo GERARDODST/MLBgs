@@ -58,7 +58,7 @@
 "pk": 823490,
 "date": "2026-09-27",
 "time": "2026-09-27T17:05:00Z",
-"generatedAt": "2026-09-27T15:55:20+00:00",
+"generatedAt": "2026-09-27T16:43:19+00:00",
 "away": "BAL",
 "home": "NYY",
 "pHome": 0.5572,
@@ -84,20 +84,11 @@
 "market": "Total",
 "pick": "Over 7.5",
 "p": 0.5586,
-"price": 102,
-"edge": 0.0635,
+"price": -101,
+"edge": 0.0561,
 "light": "Amarillo"
 },
 "topPicks": [
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.5",
-"p": 0.5586,
-"line": 7.5,
-"ic": 49.2119,
-"level": "Baja"
-},
 {
 "family": "F5 total",
 "market": "Total primeras 5",
@@ -105,6 +96,15 @@
 "p": 0.5833,
 "line": 5.5,
 "ic": 48.1476,
+"level": "Baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.5",
+"p": 0.5586,
+"line": 7.5,
+"ic": 47.0425,
 "level": "Baja"
 }
 ]
@@ -168,34 +168,34 @@
 "pk": 823164,
 "date": "2026-09-27",
 "time": "2026-09-27T19:05:00Z",
-"generatedAt": "2026-09-27T16:11:47+00:00",
+"generatedAt": "2026-09-27T16:43:19+00:00",
 "away": "LAD",
 "home": "SF",
-"pHome": 0.373,
+"pHome": 0.3865,
 "methods": {
 "log5": 0.387,
-"elo": 0.3404,
-"lambda": 0.3916
+"elo": 0.3755,
+"lambda": 0.3971
 },
-"confidence": "media",
-"projAway": 4.624,
-"projHome": 3.5255,
-"total": 8.1495,
-"f5Away": 2.5332,
-"f5Home": 2.0241,
-"nrfi": 0.5213,
-"pOver85": 0.4135,
+"confidence": "alta",
+"projAway": 4.5772,
+"projHome": 3.5392,
+"total": 8.1165,
+"f5Away": 2.5075,
+"f5Home": 2.0324,
+"nrfi": 0.5244,
+"pOver85": 0.4104,
 "probables": {
-"away": "Por anunciar",
+"away": "Jack Dreyer",
 "home": "Carson Seymour"
 },
 "light": "Amarillo",
 "best": {
 "market": "Run Line",
 "pick": "SF +1.5",
-"p": 0.5599,
+"p": 0.5659,
 "price": 118,
-"edge": 0.1012,
+"edge": 0.1072,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -203,18 +203,18 @@
 "family": "F5",
 "market": "F5 Moneyline",
 "pick": "LAD F5",
-"p": 0.613,
+"p": 0.6058,
 "line": null,
-"ic": 54.1314,
-"level": "Baja"
+"ic": 57.2506,
+"level": "Media"
 },
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Under 8.5",
-"p": 0.5865,
+"p": 0.5896,
 "line": 8.5,
-"ic": 43.1974,
+"ic": 45.9591,
 "level": "Baja"
 }
 ]
@@ -278,23 +278,23 @@
 "pk": 824948,
 "date": "2026-09-27",
 "time": "2026-09-27T19:05:00Z",
-"generatedAt": "2026-09-27T15:55:20+00:00",
+"generatedAt": "2026-09-27T16:43:19+00:00",
 "away": "HOU",
 "home": "ATH",
-"pHome": 0.4188,
+"pHome": 0.4221,
 "methods": {
 "log5": 0.441,
 "elo": 0.405,
-"lambda": 0.4103
+"lambda": 0.4202
 },
 "confidence": "alta",
 "projAway": 5.7577,
-"projHome": 4.705,
-"total": 10.4627,
+"projHome": 4.8161,
+"total": 10.5738,
 "f5Away": 3.0487,
-"f5Home": 2.7406,
-"nrfi": 0.4527,
-"pOver85": 0.6179,
+"f5Home": 2.8053,
+"nrfi": 0.4483,
+"pOver85": 0.6268,
 "probables": {
 "away": "Peter Lambert",
 "home": "Seth Johnson"
@@ -303,28 +303,28 @@
 "best": {
 "market": "Run Line",
 "pick": "ATH +1.5",
-"p": 0.5545,
+"p": 0.5632,
 "price": 101,
-"edge": 0.057,
+"edge": 0.0657,
 "light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "HOU F5",
-"p": 0.5599,
-"line": null,
-"ic": 44.5431,
-"level": "Baja"
-},
-{
 "family": "NRFI",
 "market": "NRFI/YRFI",
 "pick": "YRFI",
-"p": 0.5473,
+"p": 0.5517,
 "line": null,
-"ic": 44.4699,
+"ic": 45.745,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Seth Johnson Under 2.5 K",
+"p": 0.5794,
+"line": 2.5,
+"ic": 42.1831,
 "level": "Baja"
 }
 ]
@@ -443,23 +443,23 @@
 "pk": 823246,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T16:11:47+00:00",
+"generatedAt": "2026-09-27T16:43:19+00:00",
 "away": "AZ",
 "home": "SD",
-"pHome": 0.5241,
+"pHome": 0.5199,
 "methods": {
 "log5": 0.5458,
 "elo": 0.5323,
-"lambda": 0.4943
+"lambda": 0.4818
 },
 "confidence": "media",
-"projAway": 4.0674,
+"projAway": 4.1961,
 "projHome": 4.0211,
-"total": 8.0885,
-"f5Away": 2.3201,
+"total": 8.2172,
+"f5Away": 2.3935,
 "f5Home": 2.3002,
-"nrfi": 0.5204,
-"pOver85": 0.4078,
+"nrfi": 0.5153,
+"pOver85": 0.4198,
 "probables": {
 "away": "Michael Soroka",
 "home": "Randy Vásquez"
@@ -468,9 +468,9 @@
 "best": {
 "market": "Run Line",
 "pick": "SD +1.5",
-"p": 0.6559,
+"p": 0.6431,
 "price": -143,
-"edge": 0.0674,
+"edge": 0.0546,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -478,18 +478,18 @@
 "family": "RL",
 "market": "Run Line",
 "pick": "SD +1.5",
-"p": 0.6559,
+"p": 0.6431,
 "line": null,
-"ic": 55.3442,
-"level": "Media"
+"ic": 52.8105,
+"level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "SD",
-"p": 0.5241,
+"p": 0.5199,
 "line": null,
-"ic": 53.8132,
+"ic": 51.1786,
 "level": "Baja"
 }
 ]
@@ -663,23 +663,23 @@
 "pk": 824055,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T15:55:20+00:00",
+"generatedAt": "2026-09-27T16:43:19+00:00",
 "away": "CLE",
 "home": "KC",
-"pHome": 0.4249,
+"pHome": 0.4233,
 "methods": {
 "log5": 0.4706,
 "elo": 0.4272,
-"lambda": 0.3768
+"lambda": 0.372
 },
 "confidence": "media",
-"projAway": 5.0708,
+"projAway": 5.13,
 "projHome": 3.7537,
-"total": 8.8245,
-"f5Away": 2.6202,
+"total": 8.8837,
+"f5Away": 2.6508,
 "f5Home": 2.1231,
-"nrfi": 0.5207,
-"pOver85": 0.4759,
+"nrfi": 0.5187,
+"pOver85": 0.4813,
 "probables": {
 "away": "Parker Messick",
 "home": "Daniel Lynch IV"
@@ -688,9 +688,9 @@
 "best": {
 "market": "Run Line",
 "pick": "CLE -1.5",
-"p": 0.4626,
+"p": 0.4682,
 "price": 142,
-"edge": 0.0494,
+"edge": 0.055,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -698,18 +698,18 @@
 "family": "F5",
 "market": "F5 Moneyline",
 "pick": "CLE F5",
-"p": 0.6078,
+"p": 0.6139,
 "line": null,
-"ic": 60.0679,
+"ic": 63.0291,
 "level": "Media"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "CLE -1.5",
-"p": 0.4626,
+"p": 0.4682,
 "line": null,
-"ic": 49.9632,
+"ic": 52.7947,
 "level": "Baja"
 }
 ]
