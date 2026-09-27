@@ -27,7 +27,8 @@ Varias veces al día un workflow de GitHub Actions:
 | [MLB Stats API](https://statsapi.mlb.com) — rosters y transacciones | Roster activo con splits, lista de lesionados, movimientos oficiales (noticias) |
 | [Baseball Savant](https://baseballsavant.mlb.com) — arsenal | Run value por tipo de pitcheo de abridores y bateadores |
 | ESPN (marcador público, sin clave) | Momios previos al partido de su casa socia (DraftKings): moneyline, run line y total, con apertura y actual |
-| [odds-api.net](https://odds-api.net) o [The Odds API](https://the-odds-api.com) (opcionales, con clave) | Más casas (las que operan en México marcadas MX) |
+| [The Odds API](https://the-odds-api.com) (opcional, clave gratis sin tarjeta) | F5 (ganador y total de las primeras 5 entradas) de los picks F5, que ESPN no publica |
+| [odds-api.net](https://odds-api.net) (opcional, de pago) | Más casas (las que operan en México marcadas MX) |
 
 ## El modelo, sección por sección
 
@@ -262,11 +263,13 @@ ATL y SF) y un límite de 50 filas en las stats por equipo que dejaba a 15 equip
 
 1. **GitHub Pages:** *Settings → Pages → Build and deployment → Source: GitHub Actions*. A partir de
    ahí cada corrida del workflow en `main` publica la página en `https://gerardodst.github.io/MLBgs/`.
-2. **Más casas de momios (opcional):** los de DraftKings llegan solos desde ESPN. Para sumar más casas, crea una clave gratis en [odds-api.net](https://odds-api.net) y
-   agrégala como secreto `ODDS_API_NET_KEY` en *Settings → Secrets and variables → Actions*. De
-   respaldo sirve una clave de [the-odds-api.com](https://the-odds-api.com) como `ODDS_API_KEY` (una
-   llamada cada 2 h como mucho). Los topes se ajustan con las variables `ODDS_API_NET_DAILY` (300
-   llamadas/día), `ODDS_API_NET_PER_RUN` (40) y `ODDS_API_DAILY` (6). Sin momios el framework marca los
+2. **F5 con momio real (opcional, gratis):** crea una cuenta gratis (sin tarjeta) en [the-odds-api.com](https://the-odds-api.com)
+   y guarda la clave como secreto `ODDS_API_KEY` en *Settings → Secrets and variables → Actions*. Solo se pide el F5 de
+   los partidos cuyo pick es F5 (1 crédito por mercado y partido; topes `ODDS_API_DAY_CREDITS` = 16 y
+   `ODDS_API_MONTH_CREDITS` = 470, debajo de los 500 gratis). Los de DraftKings (ML, run line, total) llegan solos desde ESPN.
+3. **Más casas (opcional, de pago):** crea una clave en [odds-api.net](https://odds-api.net) y
+   agrégala como secreto `ODDS_API_NET_KEY` en *Settings → Secrets and variables → Actions*. Sus topes
+   se ajustan con `ODDS_API_NET_DAILY` (300 llamadas/día) y `ODDS_API_NET_PER_RUN` (40). Sin momios el framework marca los
    mercados en Gris o Rojo (sin edge calculable → no bet) y la página muestra el momio justo y el
    mínimo aceptable para comparar con tu casa.
 

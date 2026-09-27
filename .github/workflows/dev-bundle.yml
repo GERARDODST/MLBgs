@@ -18,6 +18,7 @@ jobs:
       - run: python -m mlbgs.fetch --out dev/raw_bundle.json.gz
         env:
           ODDS_API_NET_KEY: ${{ secrets.ODDS_API_NET_KEY }}
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
       - run: |
           git config user.name "mlbgs-bot"
           git config user.email "mlbgs-bot@users.noreply.github.com"

@@ -201,30 +201,6 @@ class MomiosOddsApiNet(unittest.TestCase):
         ml = next(m for m in s7["fair"] if m["market"] == "Moneyline" and m["pick"] == a["teams"]["home"]["abbr"])
         self.assertEqual(ml["price"], -133)
 
-    def test_respaldo_the_odds_api(self):
-        evs = [{"id": "t1", "commence_time": "2026-09-23T17:10:00Z", "home_team": "Detroit Tigers",
-                "away_team": "Washington Nationals",
-                "bookmakers": [{"key": "draftkings", "title": "DraftKings", "markets": [
-                    {"key": "h2h", "outcomes": [{"name": "Detroit Tigers", "price": -140}, {"name": "Washington Nationals", "price": 120}]},
-                    {"key": "spreads", "outcomes": [{"name": "Detroit Tigers", "price": 135, "point": -1.5},
-                                                    {"name": "Washington Nationals", "price": -160, "point": 1.5}]},
-                    {"key": "totals", "outcomes": [{"name": "Over", "price": -110, "point": 8.5}, {"name": "Under", "price": -110, "point": 8.5}]}]}]}]
-        calls = []
-
-        def fetch(url, headers=None):
-            calls.append(url)
-            return evs
-        env = {"ODDS_API_KEY": "k", "ODDS_ESPN": "0"}
-        now = dt.datetime(2026, 9, 23, 15, 0, tzinfo=UTC)
-        st = O.update(self.bundle, now=now, base=self.dir, env=env, fetch=fetch, log=self.logs.append)
-        self.assertEqual((st["provider"], st["calls"], st["refreshed"]), ("The Odds API", 1, 1))
-        st = O.update(self.bundle, now=now + dt.timedelta(minutes=30), base=self.dir, env=env, fetch=fetch, log=self.logs.append)
-        self.assertEqual(st["calls"], 0)                                      # una llamada cada 2 h como mucho
-        row = O.load_day("2026-09-23", self.dir)["games"]["824223"]["books"]["draftkings"]["last"]
-        self.assertEqual(row["ml"], {"home": -140, "away": 120})
-        self.assertEqual(row["rl"]["home"], {"point": -1.5, "price": 135})
-
-
 
 class MomiosEspn(unittest.TestCase):
     """ESPN publica sin clave los momios de su casa socia (DraftKings) con apertura y actual."""
@@ -285,6 +261,114 @@ class MomiosEspn(unittest.TestCase):
     def test_se_puede_apagar(self):
         self.assertEqual(self.run_at("2026-09-23T15:00:00", env={"ODDS_ESPN": "0"})["calls"], 0)
         self.assertEqual(self.urls, [])
+
+
+
+def f5_event(eid, home, away, ml=(-125, 105), tot=(4.5, -110, -110)):
+    """Respuesta de The Odds API (/events/{id}/odds) con F5: dos casas y una de 3 vías que se descarta."""
+    def mk(key, title, ml_, tot_):
+        return {"key": key, "title": title, "last_update": "2026-09-23T15:00:00Z", "markets": [
+            {"key": "h2h_1st_5_innings", "outcomes": [{"name": home, "price": ml_[0]}, {"name": away, "price": ml_[1]}]},
+            {"key": "totals_1st_5_innings", "outcomes": [{"name": "Over", "price": tot_[1], "point": tot_[0]},
+                                                         {"name": "Under", "price": tot_[2], "point": tot_[0]},
+                                                         {"name": "Over", "price": 150, "point": 5.5},
+                                                         {"name": "Under", "price": -190, "point": 5.5}]}]}
+    three = {"key": "betrivers", "title": "BetRivers", "markets": [
+        {"key": "h2h_1st_5_innings", "outcomes": [{"name": home, "price": 140}, {"name": away, "price": 190},
+                                                  {"name": "Draw", "price": 400}]}]}
+    return {"id": eid, "home_team": home, "away_team": away, "commence_time": "2026-09-23T17:10:00Z",
+            "bookmakers": [mk("draftkings", "DraftKings", ml, tot), mk("fanduel", "FanDuel", (ml[0] - 5, ml[1] + 5), tot), three]}
+
+
+class MomiosF5TheOddsApi(unittest.TestCase):
+    """The Odds API (plan gratis): solo el F5 de los partidos cuyo pick es F5, sin pasarse de los créditos."""
+
+    def setUp(self):
+        with gzip.open(FIXTURE, "rt", encoding="utf-8") as f:
+            self.bundle = json.load(f)
+        with open(ESPN_FX, encoding="utf-8") as f:
+            self.sb = json.load(f)
+        self.dir, self.pred = tempfile.mkdtemp(), tempfile.mkdtemp()
+        with open(os.path.join(self.pred, "2026-09-23.json"), "w") as f:     # último análisis guardado
+            json.dump([{"pk": 824223, "topPicks": [{"family": "Total", "pick": "Over 8.5"}, {"family": "F5", "pick": "DET F5"}]},
+                       {"pk": 824785, "topPicks": [{"family": "F5 total", "pick": "F5 Under 4.5"}]},
+                       {"pk": 824784, "topPicks": [{"family": "ML", "pick": "BAL"}]}], f)
+        up = {g["pk"]: g for g in self.bundle["upcoming"]}
+        self.events = [{"id": f"t{pk}", "home_team": h, "away_team": a, "commence_time": up[pk]["time"]}
+                       for pk, a, h in ((824223, "Washington Nationals", "Detroit Tigers"),
+                                        (824785, "Toronto Blue Jays", "Baltimore Orioles"),
+                                        (824784, "Toronto Blue Jays", "Baltimore Orioles"))]
+        self.calls, self.logs = [], []
+
+    def fetch(self, url, headers=None):
+        self.calls.append(url)
+        if url.startswith(O.ESPN):
+            return self.sb
+        u = urllib.parse.urlparse(url)
+        if u.path.endswith("/events"):
+            return self.events
+        eid = u.path.split("/")[-2]
+        ev = next(e for e in self.events if e["id"] == eid)
+        return f5_event(eid, ev["home_team"], ev["away_team"])
+
+    def run_at(self, when):
+        return O.update(self.bundle, now=dt.datetime.fromisoformat(when).replace(tzinfo=UTC), base=self.dir,
+                        env={"ODDS_API_KEY": "k"}, fetch=self.fetch, log=self.logs.append, pred_dir=self.pred)
+
+    def odds_calls(self):
+        return [urllib.parse.urlparse(c) for c in self.calls if "/odds?" in c and c.startswith(O.THE)]
+
+    def test_solo_lo_que_falta(self):
+        st = self.run_at("2026-09-23T15:00:00")
+        self.assertEqual(st["provider"], "ESPN + The Odds API")
+        oc = self.odds_calls()
+        self.assertEqual(len(oc), 2)                                           # 824784 no tiene pick F5
+        mk = sorted(dict(urllib.parse.parse_qsl(u.query))["markets"] for u in oc)
+        self.assertEqual(mk, ["h2h_1st_5_innings", "totals_1st_5_innings"])    # solo el mercado del pick
+        self.assertEqual(st["credits"], 2)
+        dk = O.load_day("2026-09-23", self.dir)["games"]["824223"]["books"]["draftkings"]
+        self.assertEqual(dk["last"]["ml"], {"away": -112, "home": -108})       # el ML de ESPN no se borra
+        self.assertEqual(dk["last"]["f5"]["ml"], {"home": -125, "away": 105})
+        self.assertEqual(dk["last"]["f5"]["total"]["over"]["point"], 4.5)      # la línea pareja, no la 5.5
+        books = O.load_day("2026-09-23", self.dir)["games"]["824223"]["books"]
+        self.assertNotIn("betrivers", books)                                   # F5 de 3 vías: fuera
+        # cadencia: a las 15:30 nada; a las 16:05 los dos ya están a ≤ 90 min: un refresco de cada uno, y ya no más
+        self.run_at("2026-09-23T15:30:00")
+        self.assertEqual(len(self.odds_calls()), 2)
+        self.run_at("2026-09-23T16:05:00")
+        self.assertEqual(len(self.odds_calls()), 4)
+        self.run_at("2026-09-23T17:08:00")
+        self.assertEqual(len(self.odds_calls()), 4)
+
+    def test_topes_de_creditos(self):
+        old = O.THE_DAY_CREDITS
+        try:
+            O.THE_DAY_CREDITS = 1
+            st = self.run_at("2026-09-23T15:00:00")
+            self.assertEqual(len(self.odds_calls()), 1)
+            self.assertTrue(any("tope de créditos" in x for x in self.logs))
+            self.assertEqual(st["credits"], 1)
+        finally:
+            O.THE_DAY_CREDITS = old
+
+    def test_al_modelo_f5_con_momio_real(self):
+        self.run_at("2026-09-23T15:00:00")
+        b = copy.deepcopy(self.bundle)
+        b["odds"] = O.to_bundle(b, base=self.dir, now=dt.datetime(2026, 9, 23, 15, 5, tzinfo=UTC))
+        self.assertEqual(b["odds"][0]["provider"], "ESPN + The Odds API")
+        ctx = model.Context(b)
+        g = next(x for x in b["upcoming"] if x["pk"] == 824223)
+        o = model.odds_for_game(ctx, g)
+        self.assertEqual(o["nBooks"], 1)                                       # ML/total: solo DraftKings (ESPN)
+        self.assertEqual(o["refF5"]["home"][0], -127)                          # mediana (en decimal) de −125 y −130
+        self.assertEqual(o["f5TotalLine"], 4.5)
+        a = model.analyze(ctx, g)
+        det = a["teams"]["home"]["abbr"]
+        f5 = next(m for m in a["sections"]["s7"]["fair"] if m["pick"] == f"{det} F5")
+        self.assertEqual(f5["price"], -127)
+        dk = next(x for x in a["sections"]["s7"]["books"] if x["book"] == "DraftKings")
+        self.assertEqual((dk["f5Home"], dk["f5Away"]), (-125, 105))
+        self.assertEqual(dk["mlHome"], -108)
 
 
 if __name__ == "__main__":

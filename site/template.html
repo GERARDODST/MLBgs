@@ -1119,6 +1119,12 @@
       const x = m ? (m[1] === "Over" ? b.over : b.under) : null;
       return x && Number(x.point) === Number(m[2]) ? x.price : null;
     }
+    if (row.market === "F5 Moneyline") return row.pick === `${a} F5` ? b.f5Away ?? null : row.pick === `${h} F5` ? b.f5Home ?? null : null;
+    if (row.market === "F5 total" || row.market === "Total primeras 5") {
+      const m = row.pick.match(/^F5 (Over|Under) ([\d.]+)$/);
+      const x = m ? (m[1] === "Over" ? b.f5Over : b.f5Under) : null;
+      return x && Number(x.point) === Number(m[2]) ? x.price : null;
+    }
     return null;
   }
 
@@ -1177,6 +1183,10 @@
     const chips = (S.books || []).map((x) => `<button type="button" class="chip" data-oc-book="${esc(x.key || x.book)}" aria-pressed="${x === b}">${esc(x.book)}${x.mx ? '<span class="mx">MX</span>' : ""}</button>`).join("");
     const rl = (x) => (x ? `${ptTxt(x)}` : "");
     const tl = b && (b.over || b.under) ? Number((b.over || b.under).point).toFixed(1) : null;
+    // F5: de la casa elegida si lo trae; si no, de la primera casa que lo tenga (The Odds API)
+    const f5b = [b, ...(S.books || [])].find((x) => x && isNum(x.f5Away) && isNum(x.f5Home)) || null;
+    const f5t = [b, ...(S.books || [])].find((x) => x && x.f5Over && x.f5Under) || null;
+    const f5tl = f5t ? Number(f5t.f5Over.point).toFixed(1) : null;
     const refTxt = (() => {
       const bits = [];
       const m = ref.ml || {};
@@ -1188,11 +1198,13 @@
     })();
     const cols = [["ML " + a, (x) => x.mlAway, (x) => (x.open || {}).mlAway], ["ML " + h, (x) => x.mlHome, (x) => (x.open || {}).mlHome],
       ["RL " + a, (x) => x.rlAway, (x) => (x.open || {}).rlAway], ["RL " + h, (x) => x.rlHome, (x) => (x.open || {}).rlHome],
-      ["Más", (x) => x.over, (x) => (x.open || {}).over], ["Menos", (x) => x.under, (x) => (x.open || {}).under]];
+      ["Más", (x) => x.over, (x) => (x.open || {}).over], ["Menos", (x) => x.under, (x) => (x.open || {}).under],
+      ...((S.books || []).some((x) => isNum(x.f5Away)) ? [["F5 " + a, (x) => x.f5Away, (x) => (x.open || {}).f5Away], ["F5 " + h, (x) => x.f5Home, (x) => (x.open || {}).f5Home]] : []),
+      ...((S.books || []).some((x) => x.f5Over) ? [["F5 más", (x) => x.f5Over, (x) => (x.open || {}).f5Over], ["F5 menos", (x) => x.f5Under, (x) => (x.open || {}).f5Under]] : [])];
     const bestOf = cols.map(([, get]) => Math.max(...(S.books || []).map((x) => decOfAm(priceOf(get(x))) || 0)));
     const cmp = `<div class="tbl"><table><thead><tr><th>Casa</th>${cols.map(([t]) => `<th class="c">${esc(t)}</th>`).join("")}</tr></thead><tbody>${(S.books || []).map((x) => `<tr><td>${esc(x.book)}${x.mx ? '<span class="mx">MX</span>' : ""}</td>${cols.map(([, get, was], i) => {
       const v = get(x), pr = priceOf(v);
-      const pt = v && typeof v === "object" ? `<span class="muted">${esc(i < 4 ? ptTxt(v) : Number(v.point).toFixed(1))}</span> ` : "";
+      const pt = v && typeof v === "object" ? `<span class="muted">${esc(i >= 2 && i < 4 ? ptTxt(v) : Number(v.point).toFixed(1))}</span> ` : "";
       return `<td class="c num${isNum(pr) && Math.abs(decOfAm(pr) - bestOf[i]) < 0.005 ? " bestp" : ""}">${isNum(pr) ? `${pt}${d2(pr)}${mvArrow(pr, was(x))}` : "—"}</td>`;
     }).join("")}</tr>`).join("")}</tbody></table></div>`;
     return `<section class="oc" data-oc="${g.pk}">
@@ -1201,8 +1213,10 @@
       ${b ? `<div class="oc-mk"><span class="lbl">Ganador</span>${ocBox(g, a, "visita", b.mlAway, o.mlAway, a)}${ocBox(g, h, "local", b.mlHome, o.mlHome, h)}</div>
       <div class="oc-mk"><span class="lbl">Run line</span>${ocBox(g, `${a} ${rl(b.rlAway)}`, "hándicap", b.rlAway, o.rlAway, b.rlAway ? `${a} ${ptTxt(b.rlAway)}` : null)}${ocBox(g, `${h} ${rl(b.rlHome)}`, "hándicap", b.rlHome, o.rlHome, b.rlHome ? `${h} ${ptTxt(b.rlHome)}` : null)}</div>
       <div class="oc-mk"><span class="lbl">Total${tl ? ` ${esc(tl)}` : ""}</span>${ocBox(g, "Más", tl ? `over ${tl}` : "", b.over, o.over, tl ? `Over ${tl}` : null)}${ocBox(g, "Menos", tl ? `under ${tl}` : "", b.under, o.under, tl ? `Under ${tl}` : null)}</div>` : ""}
+      ${f5b ? `<div class="oc-mk"><span class="lbl">F5 ganador<br><small class="muted">${esc(f5b.book)}</small></span>${ocBox(g, a, "5 entradas", f5b.f5Away, (f5b.open || {}).f5Away, `${a} F5`)}${ocBox(g, h, "5 entradas", f5b.f5Home, (f5b.open || {}).f5Home, `${h} F5`)}</div>` : ""}
+      ${f5t ? `<div class="oc-mk"><span class="lbl">F5 total ${esc(f5tl)}<br><small class="muted">${esc(f5t.book)}</small></span>${ocBox(g, "Más", `over ${f5tl}`, f5t.f5Over, (f5t.open || {}).f5Over, `F5 Over ${f5tl}`)}${ocBox(g, "Menos", `under ${f5tl}`, f5t.f5Under, (f5t.open || {}).f5Under, `F5 Under ${f5tl}`)}</div>` : ""}
       ${refTxt}
-      <details><summary class="muted" style="cursor:pointer;font-size:13px">${S.nBooks === 1 ? "Tabla de la casa" : `Comparar las ${S.nBooks} casas (dorado = mejor pago)`}</summary>${cmp}</details>
+      <details><summary class="muted" style="cursor:pointer;font-size:13px">${(S.books || []).length === 1 ? "Tabla de la casa" : `Comparar las ${(S.books || []).length} casas (dorado = mejor pago)`}</summary>${cmp}</details>
       <p class="note muted">Momio decimal grande y americano abajo · ▲ paga más que en la apertura, ▼ paga menos · borde verde = el modelo le ve ${Math.round(100 * SK.edgeMin)} pp o más de edge a ese precio (ámbar si llega a ${Math.round(100 * (SK.edgeMax || 0.10))} pp: verificar, filtro contra el mercado). Como en SofaScore, vienen del feed de un medio o proveedor que los publica (ESPN publica los de su casa socia, DraftKings); no se leen las páginas de las casas. Playdoit y Caliente no están en ningún feed: si capturas su momio, la decisión usa el tuyo.</p>
     </section>`;
   }
