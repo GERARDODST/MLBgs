@@ -113,7 +113,7 @@
 "pk": 823408,
 "date": "2026-09-27",
 "time": "2026-09-27T18:30:00Z",
-"generatedAt": "2026-09-27T17:30:52+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "TB",
 "home": "PHI",
 "pHome": 0.524,
@@ -154,13 +154,13 @@
 "level": "Media"
 },
 {
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "PHI F5",
-"p": 0.6171,
+"family": "RL",
+"market": "Run Line",
+"pick": "TB +1.5",
+"p": 0.6242,
 "line": null,
-"ic": 65.0502,
-"level": "Media"
+"ic": 51.8452,
+"level": "Baja"
 }
 ]
 },
@@ -168,7 +168,7 @@
 "pk": 823164,
 "date": "2026-09-27",
 "time": "2026-09-27T19:05:00Z",
-"generatedAt": "2026-09-27T16:59:14+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "LAD",
 "home": "SF",
 "pHome": 0.3865,
@@ -194,27 +194,27 @@
 "market": "Run Line",
 "pick": "SF +1.5",
 "p": 0.5659,
-"price": 119,
-"edge": 0.1093,
+"price": 118,
+"edge": 0.1072,
 "light": "Amarillo"
 },
 "topPicks": [
-{
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "LAD F5",
-"p": 0.6058,
-"line": null,
-"ic": 57.2506,
-"level": "Media"
-},
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Under 8.5",
 "p": 0.5896,
 "line": 8.5,
-"ic": 44.0923,
+"ic": 49.9264,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Carson Seymour Under 1.5 K",
+"p": 0.5641,
+"line": 1.5,
+"ic": 41.9495,
 "level": "Baja"
 }
 ]
@@ -278,23 +278,23 @@
 "pk": 824948,
 "date": "2026-09-27",
 "time": "2026-09-27T19:05:00Z",
-"generatedAt": "2026-09-27T17:46:53+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "HOU",
 "home": "ATH",
-"pHome": 0.4221,
+"pHome": 0.4177,
 "methods": {
 "log5": 0.441,
 "elo": 0.405,
-"lambda": 0.4202
+"lambda": 0.407
 },
 "confidence": "alta",
-"projAway": 5.7577,
+"projAway": 5.927,
 "projHome": 4.8161,
-"total": 10.5738,
-"f5Away": 3.0487,
+"total": 10.7431,
+"f5Away": 3.1384,
 "f5Home": 2.8053,
-"nrfi": 0.4483,
-"pOver85": 0.6268,
+"nrfi": 0.4433,
+"pOver85": 0.6401,
 "probables": {
 "away": "Peter Lambert",
 "home": "Seth Johnson"
@@ -303,8 +303,8 @@
 "best": {
 "market": "Run Line",
 "pick": "ATH +1.5",
-"p": 0.5632,
-"price": 101,
+"p": 0.5488,
+"price": 107,
 "edge": 0.0657,
 "light": "Amarillo"
 },
@@ -313,18 +313,18 @@
 "family": "NRFI",
 "market": "NRFI/YRFI",
 "pick": "YRFI",
-"p": 0.5517,
+"p": 0.5567,
 "line": null,
-"ic": 45.745,
+"ic": 51.7372,
 "level": "Baja"
 },
 {
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Seth Johnson Under 2.5 K",
-"p": 0.5794,
+"p": 0.5823,
 "line": 2.5,
-"ic": 42.1831,
+"ic": 47.5623,
 "level": "Baja"
 }
 ]
@@ -388,7 +388,7 @@
 "pk": 823084,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T17:15:02+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "LAA",
 "home": "SEA",
 "pHome": 0.5624,
@@ -422,19 +422,19 @@
 {
 "family": "F5 total",
 "market": "Total primeras 5",
-"pick": "F5 Under 4.5",
-"p": 0.582,
-"line": 4.5,
-"ic": 50.1957,
-"level": "Baja"
+"pick": "F5 Over 3.5",
+"p": 0.612,
+"line": 3.5,
+"ic": 60.2418,
+"level": "Media"
 },
 {
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "SEA F5",
-"p": 0.5547,
-"line": null,
-"ic": 45.4622,
+"family": "Team total",
+"market": "Team total LAA",
+"pick": "LAA Under 3.5",
+"p": 0.5572,
+"line": 3.5,
+"ic": 42.9689,
 "level": "Baja"
 }
 ]
@@ -498,23 +498,23 @@
 "pk": 823650,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T17:15:02+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "TEX",
 "home": "MIN",
-"pHome": 0.5091,
+"pHome": 0.509,
 "methods": {
 "log5": 0.5043,
 "elo": 0.5116,
-"lambda": 0.5113
+"lambda": 0.5112
 },
 "confidence": "alta",
-"projAway": 4.5829,
+"projAway": 4.5842,
 "projHome": 4.7123,
-"total": 9.2952,
-"f5Away": 2.4273,
+"total": 9.2965,
+"f5Away": 2.4281,
 "f5Home": 2.654,
 "nrfi": 0.4919,
-"pOver85": 0.5185,
+"pOver85": 0.5186,
 "probables": {
 "away": "MacKenzie Gore",
 "home": "Dean Kremer"
@@ -523,9 +523,9 @@
 "best": {
 "market": "Total",
 "pick": "Over 8.0",
-"p": 0.571,
-"price": -115,
-"edge": 0.0361,
+"p": 0.5711,
+"price": -116,
+"edge": 0.0341,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -533,18 +533,18 @@
 "family": "F5 total",
 "market": "Total primeras 5",
 "pick": "F5 Over 4.5",
-"p": 0.5737,
+"p": 0.5738,
 "line": 4.5,
-"ic": 48.1328,
+"ic": 54.7862,
 "level": "Baja"
 },
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 8.0",
-"p": 0.571,
+"p": 0.5711,
 "line": 8.0,
-"ic": 47.3447,
+"ic": 46.7545,
 "level": "Baja"
 }
 ]
@@ -553,7 +553,7 @@
 "pk": 823731,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T16:59:14+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "STL",
 "home": "MIL",
 "pHome": 0.6837,
@@ -576,11 +576,11 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "Total",
-"pick": "Over 7.0",
-"p": 0.5847,
-"price": -114,
-"edge": 0.052,
+"market": "F5",
+"pick": "MIL F5",
+"p": 0.7668,
+"price": -230,
+"edge": 0.0699,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -590,8 +590,8 @@
 "pick": "MIL F5",
 "p": 0.7668,
 "line": null,
-"ic": 72.7856,
-"level": "Alta"
+"ic": 58.1664,
+"level": "Media"
 },
 {
 "family": "Total",
@@ -599,7 +599,7 @@
 "pick": "Over 7.0",
 "p": 0.5847,
 "line": 7.0,
-"ic": 52.9463,
+"ic": 49.8345,
 "level": "Baja"
 }
 ]
@@ -608,7 +608,7 @@
 "pk": 823814,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T16:59:14+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "ATL",
 "home": "MIA",
 "pHome": 0.4979,
@@ -629,32 +629,32 @@
 "away": "JR Ritchie",
 "home": "Janson Junk"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
 "market": "F5",
 "pick": "MIA F5",
 "p": 0.5982,
-"price": null,
-"edge": null,
-"light": "Gris"
+"price": -130,
+"edge": 0.033,
+"light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Over 4.5",
+"p": 0.5966,
+"line": 4.5,
+"ic": 62.6396,
+"level": "Media"
+},
 {
 "family": "F5",
 "market": "F5 Moneyline",
 "pick": "MIA F5",
 "p": 0.5982,
 "line": null,
-"ic": 57.6094,
-"level": "Media"
-},
-{
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Under 5.5",
-"p": 0.578,
-"line": 5.5,
-"ic": 48.4863,
+"ic": 45.5321,
 "level": "Baja"
 }
 ]
@@ -663,7 +663,7 @@
 "pk": 824055,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T16:59:14+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "CLE",
 "home": "KC",
 "pHome": 0.4233,
@@ -686,11 +686,11 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "Run Line",
-"pick": "CLE -1.5",
-"p": 0.4682,
-"price": 145,
-"edge": 0.06,
+"market": "F5",
+"pick": "CLE F5",
+"p": 0.6139,
+"price": -115,
+"edge": 0.079,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -700,7 +700,7 @@
 "pick": "CLE F5",
 "p": 0.6139,
 "line": null,
-"ic": 63.0291,
+"ic": 59.7991,
 "level": "Media"
 },
 {
@@ -718,7 +718,7 @@
 "pk": 824217,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T17:30:52+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "PIT",
 "home": "DET",
 "pHome": 0.5155,
@@ -759,13 +759,13 @@
 "level": "Baja"
 },
 {
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "PIT F5",
-"p": 0.554,
-"line": null,
-"ic": 41.2711,
-"level": "Baja"
+"family": "Team total",
+"market": "Team total PIT",
+"pick": "PIT Over 3.5",
+"p": 0.5561,
+"line": 3.5,
+"ic": 38.6666,
+"level": "Muy baja"
 }
 ]
 },
@@ -773,7 +773,7 @@
 "pk": 824542,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T16:59:14+00:00",
+"generatedAt": "2026-09-27T18:02:41+00:00",
 "away": "COL",
 "home": "CWS",
 "pHome": 0.6374,
@@ -796,11 +796,11 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "Run Line",
-"pick": "CWS -1.5",
-"p": 0.4765,
-"price": 128,
-"edge": 0.0379,
+"market": "F5",
+"pick": "CWS F5",
+"p": 0.7059,
+"price": -159,
+"edge": 0.092,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -810,8 +810,8 @@
 "pick": "CWS F5",
 "p": 0.7059,
 "line": null,
-"ic": 72.724,
-"level": "Alta"
+"ic": 64.5588,
+"level": "Media"
 },
 {
 "family": "K",
