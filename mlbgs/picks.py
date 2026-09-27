@@ -170,7 +170,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
     for side, abbr in (("away", a), ("home", h)):
         line_pick(f"tt_{side}", "Team total", f"Team total {abbr}", "tt", "total",
                   f"Binomial Negativa de carreras de {abbr}" + (" + Monte Carlo" if extra.get(f"runs_{side}") else ""),
-                  extra.get(f"runs_{side}"))
+                  extra.get(f"runs_{side}"), (S["s7"].get("marketTT") or {}).get(side))
 
     # --- F5 moneyline (sin empate)
     f5 = by_key.get("f5ml") or []
@@ -195,9 +195,14 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
         pn = sum(methods.values()) / len(methods)
         edge_n = pn - M.american_to_prob(REF_PRICE["nrfi"])
         edge_y = (1 - pn) - M.american_to_prob(REF_PRICE["yrfi"])
+        px_n, px_y = _real(nr, "NRFI"), _real(nr, "YRFI")              # con momio real, se compara contra ese precio
+        if px_n is not None:
+            edge_n = pn - M.american_to_prob(px_n)
+        if px_y is not None:
+            edge_y = (1 - pn) - M.american_to_prob(px_y)
         pick, pp = ("NRFI", pn) if edge_n >= edge_y else ("YRFI", 1 - pn)
         add("NRFI", "NRFI/YRFI", pick, pp, {k: (v if pick == "NRFI" else 1 - v) for k, v in methods.items()},
-            "nrfi" if pick == "NRFI" else "yrfi", None, gate["nrfi"], stab_sp, contra_for("NRFI/YRFI"),
+            "nrfi" if pick == "NRFI" else "yrfi", px_n if pick == "NRFI" else px_y, gate["nrfi"], stab_sp, contra_for("NRFI/YRFI"),
             "Primera entrada calibrada con la frecuencia real de ceros de la liga" + (" + Monte Carlo" if MK_ in methods else ""))
 
     # --- props de ponches (línea mediana)
@@ -208,7 +213,9 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
         lines = {}
         for m in rows:
             lines.setdefault(m["line"], {})["over" if "Over" in m["pick"] else "under"] = m
-        ln = min((l for l, v in lines.items() if len(v) == 2), key=lambda l: abs(lines[l]["over"]["pNoPush"] - 0.5))
+        mk_ln = next((l for l, v in lines.items() if len(v) == 2 and v["over"].get("market_line")), None)
+        ln = mk_ln if mk_ln is not None else min((l for l, v in lines.items() if len(v) == 2),
+                                                 key=lambda l: abs(lines[l]["over"]["pNoPush"] - 0.5))
         best = None
         for o_u in ("over", "under"):
             m = lines[ln][o_u]
@@ -221,7 +228,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
         pp, m, methods = best
         c = comp.get(side) or {}
         bf = c.get("bf") or 0
-        add("K", "Prop de ponches", m["pick"], pp, methods, "k", None, gate["props"], bf / (bf + 70 * 4) if bf else 0.3,
+        add("K", "Prop de ponches", m["pick"], pp, methods, "k", m.get("price"), gate["props"], bf / (bf + 70 * 4) if bf else 0.3,
             contra_for("Prop pitcher"), "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson" +
             (" + Monte Carlo" if MK_ in methods else ""), line=ln)
 
