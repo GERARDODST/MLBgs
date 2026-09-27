@@ -278,23 +278,23 @@
 "pk": 824948,
 "date": "2026-09-27",
 "time": "2026-09-27T19:05:00Z",
-"generatedAt": "2026-09-27T17:30:52+00:00",
+"generatedAt": "2026-09-27T17:46:53+00:00",
 "away": "HOU",
 "home": "ATH",
-"pHome": 0.4188,
+"pHome": 0.4221,
 "methods": {
 "log5": 0.441,
 "elo": 0.405,
-"lambda": 0.4103
+"lambda": 0.4202
 },
 "confidence": "alta",
 "projAway": 5.7577,
-"projHome": 4.705,
-"total": 10.4627,
+"projHome": 4.8161,
+"total": 10.5738,
 "f5Away": 3.0487,
-"f5Home": 2.7406,
-"nrfi": 0.4527,
-"pOver85": 0.6179,
+"f5Home": 2.8053,
+"nrfi": 0.4483,
+"pOver85": 0.6268,
 "probables": {
 "away": "Peter Lambert",
 "home": "Seth Johnson"
@@ -303,28 +303,28 @@
 "best": {
 "market": "Run Line",
 "pick": "ATH +1.5",
-"p": 0.5545,
+"p": 0.5632,
 "price": 101,
-"edge": 0.057,
+"edge": 0.0657,
 "light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "HOU F5",
-"p": 0.5599,
-"line": null,
-"ic": 44.5431,
-"level": "Baja"
-},
-{
 "family": "NRFI",
 "market": "NRFI/YRFI",
 "pick": "YRFI",
-"p": 0.5473,
+"p": 0.5517,
 "line": null,
-"ic": 44.4699,
+"ic": 45.745,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Seth Johnson Under 2.5 K",
+"p": 0.5794,
+"line": 2.5,
+"ic": 42.1831,
 "level": "Baja"
 }
 ]
