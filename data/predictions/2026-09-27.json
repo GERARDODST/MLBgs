@@ -278,54 +278,54 @@
 "pk": 824948,
 "date": "2026-09-27",
 "time": "2026-09-27T19:05:00Z",
-"generatedAt": "2026-09-27T05:04:41+00:00",
+"generatedAt": "2026-09-27T05:20:32+00:00",
 "away": "HOU",
 "home": "ATH",
-"pHome": 0.4588,
+"pHome": 0.4188,
 "methods": {
 "log5": 0.441,
-"elo": 0.4872,
-"lambda": 0.4481
+"elo": 0.405,
+"lambda": 0.4103
 },
 "confidence": "alta",
 "projAway": 5.7577,
-"projHome": 5.1364,
-"total": 10.8941,
+"projHome": 4.705,
+"total": 10.4627,
 "f5Away": 3.0487,
-"f5Home": 3.1322,
-"nrfi": 0.4246,
-"pOver85": 0.6517,
+"f5Home": 2.7406,
+"nrfi": 0.4527,
+"pOver85": 0.6179,
 "probables": {
-"away": "Por anunciar",
+"away": "Peter Lambert",
 "home": "Seth Johnson"
 },
 "light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Over 9.5",
-"p": 0.5672,
+"market": "ML",
+"pick": "HOU",
+"p": 0.5812,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
-"family": "NRFI",
-"market": "NRFI/YRFI",
-"pick": "YRFI",
-"p": 0.5754,
-"line": null,
-"ic": 50.2586,
-"level": "Baja"
-},
-{
 "family": "RL",
 "market": "Run Line",
 "pick": "HOU +1.5",
-"p": 0.6751,
+"p": 0.7119,
 "line": null,
-"ic": 49.0259,
-"level": "Baja"
+"ic": 62.1544,
+"level": "Media"
+},
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "HOU",
+"p": 0.5812,
+"line": null,
+"ic": 55.7424,
+"level": "Media"
 }
 ]
 },
@@ -443,32 +443,32 @@
 "pk": 823246,
 "date": "2026-09-27",
 "time": "2026-09-27T19:10:00Z",
-"generatedAt": "2026-09-27T04:48:50+00:00",
+"generatedAt": "2026-09-27T05:20:32+00:00",
 "away": "AZ",
 "home": "SD",
-"pHome": 0.5134,
+"pHome": 0.5269,
 "methods": {
 "log5": 0.5458,
-"elo": 0.5029,
-"lambda": 0.4913
+"elo": 0.5324,
+"lambda": 0.5026
 },
-"confidence": "media",
-"projAway": 4.1815,
+"confidence": "alta",
+"projAway": 4.0663,
 "projHome": 4.103,
-"total": 8.2845,
-"f5Away": 2.414,
+"total": 8.1693,
+"f5Away": 2.319,
 "f5Home": 2.347,
-"nrfi": 0.511,
-"pOver85": 0.426,
+"nrfi": 0.5168,
+"pOver85": 0.4153,
 "probables": {
 "away": "Michael Soroka",
-"home": "Por anunciar"
+"home": "Randy Vásquez"
 },
 "light": "Rojo",
 "best": {
-"market": "F5",
-"pick": "AZ F5",
-"p": 0.5147,
+"market": "Team total",
+"pick": "AZ Under 3.5",
+"p": 0.5029,
 "price": null,
 "edge": null,
 "light": "Rojo"
@@ -478,18 +478,18 @@
 "family": "RL",
 "market": "Run Line",
 "pick": "AZ +1.5",
-"p": 0.6612,
+"p": 0.6522,
 "line": null,
-"ic": 43.5807,
+"ic": 43.0998,
 "level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "SD",
-"p": 0.5134,
+"p": 0.5269,
 "line": null,
-"ic": 34.6943,
+"ic": 36.7488,
 "level": "Muy baja"
 }
 ]
