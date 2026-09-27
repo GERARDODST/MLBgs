@@ -635,11 +635,11 @@
   .pk-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; border-top: 1px solid var(--grid); padding-top: 9px; align-items: stretch; }
   .pk-row .deci { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
   /* picks de la tarjeta: momio actual del mercado (con su casa) y el momio recomendado */
-  .p2.pr { grid-template-columns: auto minmax(0, 1fr) 70px 74px; align-items: center; gap: 4px 8px; }
-  .pr-h { display: grid; grid-template-columns: minmax(0, 1fr) 70px 74px; gap: 8px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .p2.pr { grid-template-columns: auto minmax(0, 1fr) 66px 84px; align-items: center; gap: 4px 8px; }
+  .pr-h { display: grid; grid-template-columns: minmax(0, 1fr) 66px 84px; gap: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; color: var(--muted); }
   .pr-h span:first-child { visibility: hidden; }
   .pr-h span, .po-live, .po-rec { text-align: center; }
-  .p2.pr .t { display: flex; flex-direction: column; line-height: 1.2; }
+  .p2.pr .t { display: flex; flex-direction: column; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; }
   .p2.pr .t small { font-size: 11.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .po-live, .po-rec { display: flex; flex-direction: column; align-items: center; gap: 2px; line-height: 1.1; min-width: 0; }
   .po-live b, .po-rec b { font-family: var(--mono); font-size: 14px; font-weight: 600; }
@@ -650,6 +650,12 @@
   .vd { font-size: 10.5px; font-weight: 700; white-space: nowrap; }
   .vd.ok { color: var(--verde); } .vd.no { color: var(--rojo); } .vd.chk { color: var(--amarillo); } .vd.na { color: var(--muted); font-weight: 600; }
   .pl-odds .po-inline { display: inline-flex; gap: 8px; align-items: center; }
+  @media (max-width: 560px) {
+    .p2.pr { grid-template-columns: auto minmax(0, 1fr) 70px 72px; gap: 4px 6px; }
+    .pr-h { grid-template-columns: minmax(0, 1fr) 70px 72px; gap: 6px; font-size: 9.5px; letter-spacing: 0; }
+    .p2.pr .ic small { display: none; }
+    .p2.pr .t b { font-size: 14px; }
+  }
   .pk-row .picks2 { border-top: 0; padding-top: 0; justify-content: center; }
   .deci { display: flex; flex-direction: column; gap: 1px; justify-content: center; border-radius: 10px; padding: 7px 9px; border: 1.5px solid var(--border); background: var(--surface-2); min-width: 0; }
   .deci.on { border-color: var(--verde); background: var(--verde-soft); }
@@ -909,7 +915,7 @@
     const lv = liveOdds(g, p), rec = recOdds(p);
     const st = p.stake || {};
     if (st.block && /dato obligatorio/.test(st.block)) return { lv, rec, cls: "chk", txt: "esperar", why: st.block };
-    if (!lv) return { lv, rec, cls: "na", txt: "sin momio", why: "Este mercado no viene en el feed de momios" };
+    if (!lv) return { lv, rec, cls: "na", txt: "mínimo", why: "Este mercado no viene en el feed de momios: conviene si pagan el recomendado o mejor" };
     const s = stakeFor(p, lv.raw);
     if (s && s.level > 0) return { lv, rec, cls: "ok", txt: `✓ tómalo · S${s.level}`, why: `Stake ${s.level} = ${money(s.amt)}`, s };
     const r = s ? s.r : null;
@@ -1430,7 +1436,7 @@
     const head = `<span class="deci-h">${x.src === "Claude" ? "✦ Claude" : "Decisión"}</span>`;
     if (x.status === "esperar") return `<div class="deci wait">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Esperar</span><span class="deci-sub">falta un dato obligatorio</span></div>`;
     if (x.status !== "apostar") return `<div class="deci off">${head}<b class="deci-pick">No apostar</b><span class="deci-sub">${esc(x.why || "")}</span></div>`;
-    if (x.pending) return `<div class="deci on pend" data-tip="Sin momio de ${esc(bookSel())}: conviene solo si pagan ${odds(x.minPrice)} o mejor (es el mínimo del modelo, no el momio del casino). Escribe el momio y se fija el stake.">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span><span class="deci-sub">según tu momio · mín. ${odds(x.minPrice)}</span></div>`;
+    if (x.pending) return `<div class="deci on pend" data-tip="Este mercado no trae momio en el feed: conviene solo si pagan ${odds(x.minPrice)} o mejor (es el mínimo del modelo, no el momio del casino). El stake se fija con el momio que paguen.">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span><span class="deci-sub">según el momio que paguen · recomendado ${odds(x.minPrice)} o mejor</span></div>`;
     return `<div class="deci on" data-tip="Stake ${x.level} de 10 = ${money(x.amt)} · ${esc(x.why || "")}">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Stake ${x.level}</span><span class="deci-amt">${money(x.amt)}</span><span class="deci-sub">${x.b.api ? `con ${odds(x.b.o.am)} · ${esc(x.b.book)}` : `con tu ${odds(x.b.o.am)} en ${esc(x.b.book)}`}</span></div>`;
   }
 
@@ -1623,7 +1629,7 @@ ${brief}`;
       </div>
       <div class="bestline"><span>Abridor: <b>${edgeTxt}</b> · triangulación ${esc(s.confidence)}</span><span class="muted">${s.gate.missing} dato${s.gate.missing === 1 ? "" : "s"} faltante${s.gate.missing === 1 ? "" : "s"}</span></div>
       ${chainHtml(planOf({ pk: g.pk, date: g.date, time: g.time, an: g, sb: liveGames.find((x) => x.pk === g.pk) }))}
-      <div class="pk-row"><div class="picks2">${lab ? `<span class="eyebrow" style="font-size:11.5px">Picks finales · framework + ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${tops.length ? `<div class="pr-h"><span></span><span>Momio actual</span><span>Recomendado</span></div>` : ""}${tops.map((t) => pickOddsRow(g, candPicks(g).find((q) => q.pick === t.pick) || t)).join("") || `<span class="muted">${bestTxt}</span>`}</div>${decisionBox(g)}</div>
+      <div class="pk-row"><div class="picks2">${lab ? `<span class="eyebrow" style="font-size:11.5px">Picks finales · framework + ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${tops.length ? `<div class="pr-h"><span></span><span>Actual</span><span>Recomendado</span></div>` : ""}${tops.map((t) => pickOddsRow(g, candPicks(g).find((q) => q.pick === t.pick) || t)).join("") || `<span class="muted">${bestTxt}</span>`}</div>${decisionBox(g)}</div>
     </a>`;
   }
 
