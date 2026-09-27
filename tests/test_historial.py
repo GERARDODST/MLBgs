@@ -67,6 +67,16 @@ class Historial(unittest.TestCase):
         t = self.run_update([analysis(0.90)], [sb("Live", 1, 0)], "2026-09-24T23:40:00+00:00")["2026-09-24-1-framework"]
         self.assertEqual(t["pred"]["pHome"], 0.45)
 
+    def test_calentamiento_no_congela(self):
+        # MLB marca «Live» desde el calentamiento: el ticket sigue abierto hasta el primer lanzamiento
+        self.run_update([analysis(0.40)], [sb("Preview")], "2026-09-24T18:00:00+00:00")
+        warm = dict(sb("Live"), detailed="Warmup")
+        t = self.run_update([analysis(0.42)], [warm], "2026-09-24T22:50:00+00:00")["2026-09-24-1-framework"]
+        self.assertEqual(t["status"], "abierto")
+        self.assertEqual(t["pred"]["pHome"], 0.42)                        # se sigue actualizando en el calentamiento
+        t = self.run_update([], [dict(sb("Live", 0, 0), detailed="In Progress")], "2026-09-24T23:06:00+00:00")["2026-09-24-1-framework"]
+        self.assertEqual(t["status"], "cerrado")
+
     def test_sin_cambios_no_reescribe(self):
         self.run_update([analysis()], [sb("Preview")], "2026-09-24T18:00:00+00:00")
         path = os.path.join(self.dir, "2026-09-24.json")
@@ -130,3 +140,12 @@ class Historial(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Calentamiento(unittest.TestCase):
+    def test_warmup_sigue_por_jugar(self):
+        from mlbgs.fetch import warming_up
+        self.assertTrue(warming_up({"abstractGameState": "Live", "detailedState": "Warmup"}))
+        self.assertTrue(warming_up({"abstractGameState": "Live", "detailedState": "Pre-Game"}))
+        self.assertFalse(warming_up({"abstractGameState": "Live", "detailedState": "In Progress"}))
+        self.assertFalse(warming_up({"abstractGameState": "Preview", "detailedState": "Scheduled"}))

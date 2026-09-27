@@ -252,7 +252,8 @@ def settle(t: dict, fins: dict, now: str) -> dict:
                "decisions": fin.get("decisions"), "rhe": fin.get("rhe"),
                "gradedAt": (t.get("result") or {}).get("gradedAt") or now}
         return {**t, "status": "calificado", "picks": picks, "result": res}
-    if t["status"] == "abierto" and ((fin and fin.get("state") == "Live") or (t.get("time") and t["time"] < now)):
+    started = fin and fin.get("state") == "Live" and (fin.get("detailed") or "") not in ("Warmup", "Pre-Game")
+    if t["status"] == "abierto" and (started or (t.get("time") and t["time"] < now)):
         return {**t, "status": "cerrado"}
     return t
 

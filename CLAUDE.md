@@ -74,6 +74,9 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 
 - `data/historial/` es la base de tickets (partido × modelo): picks, tipos de análisis, escalera de
   stake, decisión única y resultado oficial. Un ticket se congela al primer lanzamiento.
+- Estado del partido: la MLB marca `Live` desde el calentamiento (`Warmup`/`Pre-Game`, 20–30 min antes). Eso
+  sigue siendo «por jugar» en la descarga (análisis y momios), en los tickets y en la página («calentamiento ·
+  en N min»); «en juego» es solo desde el primer lanzamiento.
 - Las predicciones del Pro-Lab se registran ANTES del primer lanzamiento y no se cambian después.
 - El Historial de la página solo muestra partidos terminados; hoy y mañana viven en la Jornada.
 - **Boletos** (`mlbgs/boleto.py`, repetido en la página): un boleto por partido con la decisión única
