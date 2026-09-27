@@ -2554,7 +2554,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const k = labKey(lab), info = LAB_INFO[k], g = lab.game, a = g.teams.away, h = g.teams.home, res = lab.result, lv = liveOf(lab.pk);
     const cons = lab.consensus, P = lab.prisma;
     const state = res ? `<span class="stpill ok">Final ${esc(a.abbr)} ${res.away}–${res.home} ${esc(h.abbr)} · ${res.hits} ✓ ${res.misses} ✗</span>`
-      : lv && lv.state === "Live" ? `<span class="live-dot">En vivo · ${esc(a.abbr)} ${lv.ar ?? 0}–${lv.hr ?? 0} ${esc(h.abbr)}</span>`
+      : lv && inPlay(lv) ? `<span class="live-dot">En vivo · ${esc(a.abbr)} ${lv.ar ?? 0}–${lv.hr ?? 0} ${esc(h.abbr)}</span>`
       : `<span class="stpill ok">Congelado ${fmtStamp(lab.frozenAt)}</span>`;
     const kpis = [[pc(cons.pHome, 1), `P(${h.abbr}) consenso`], [f(labTotal(lab), 1), "Total esperado"],
       k === "prisma" ? [`${pc(P.posterior.q05, 0)}–${pc(P.posterior.q95, 0)}`, "Intervalo creíble 90%"]
@@ -3258,10 +3258,14 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   // «por jugar», manda el reloj: pasada la hora del primer lanzamiento se da por empezado (apuestas cerradas)
   // y ~3.5 h después, por terminado a la espera del resultado oficial. Funciona sin conexión.
   const GAME_SPAN = 3.5 * 3600e3;
+  // MLB marca «Live» desde el calentamiento (Warmup, 20–30 min antes); en juego es solo desde el primer lanzamiento
+  const isWarm = (g) => !!g && g.state === "Live" && /^(Warmup|Pre-Game)$/i.test(g.detailed || "");
+  const inPlay = (g) => !!g && g.state === "Live" && !isWarm(g);
   function effState(g, time) {
     const now = Date.now(), t0 = Date.parse(time || (g && g.time));
     if (g && isOff(g)) return { st: "off" };
     if (g && g.state === "Final") return { st: "final" };
+    if (isWarm(g)) return { st: "pre", warmup: true, mins: isFinite(t0) ? Math.max(0, Math.round((t0 - now) / 60000)) : null };
     if (g && g.state === "Live") return isFinite(t0) && now - t0 > GAME_SPAN + 3600e3 ? { st: "final", est: true, since: t0 } : { st: "live", est: false };
     if (isFinite(t0) && now >= t0) {
       if (/Delayed/i.test((g && g.detailed) || "")) return { st: "pre", delayed: true, mins: 0 };
@@ -3269,7 +3273,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     }
     return { st: "pre", mins: isFinite(t0) ? Math.round((t0 - now) / 60000) : null };
   }
-  const startsTxt = (e) => (e.delayed ? "inicio retrasado" : e.mins == null ? "" : e.mins <= 1 ? "empieza ya" : e.mins < 60 ? `en ${e.mins} min` : e.mins < 24 * 60 ? `en ${Math.floor(e.mins / 60)} h ${e.mins % 60 ? `${e.mins % 60} min` : ""}`.trim() : "");
+  const startsTxt = (e) => (e.warmup ? (e.mins > 1 ? `calentamiento · en ${e.mins} min` : "calentamiento · empieza ya") : e.delayed ? "inicio retrasado" : e.mins == null ? "" : e.mins <= 1 ? "empieza ya" : e.mins < 60 ? `en ${e.mins} min` : e.mins < 24 * 60 ? `en ${Math.floor(e.mins / 60)} h ${e.mins % 60 ? `${e.mins % 60} min` : ""}`.trim() : "");
 
   function convJS(a, b, kmax = 40) {
     const out = new Array(Math.min(kmax + 1, a.length + b.length - 1)).fill(0);
@@ -3388,7 +3392,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const inn = g.inningState === "Top" ? "▲" : g.inningState === "Bottom" ? "▼" : g.inningState === "Middle" ? "mitad" : g.inningState === "End" ? "fin" : "";
     const hd = off ? `<span class="tag warn">Pospuesto</span>` : live ? `<span class="live-dot">En vivo · ${g.inning}ª ${inn}</span>`
       : estLive ? `<span class="live-dot">En juego · empezó ${fmtTime(g.time)} <small class="muted" style="font-weight:400">(por horario)</small></span>`
-      : estFin ? `<b>Terminado · resultado por confirmar</b>` : fin ? `<b>Final${g.inning > 9 ? ` (${g.inning})` : ""}</b>` : `<span>${fmtTime(g.time)}${g.detailed && g.detailed !== "Scheduled" ? ` · ${esc(g.detailed === "Pre-Game" ? "Previa" : g.detailed === "Warmup" ? "Calentamiento" : g.detailed)}` : ""}</span>`;
+      : estFin ? `<b>Terminado · resultado por confirmar</b>` : fin ? `<b>Final${g.inning > 9 ? ` (${g.inning})` : ""}</b>` : `<span>${fmtTime(g.time)}${(() => { const e = effState(g, g.time), t = e.st === "pre" ? startsTxt(e) : ""; return t ? ` · <b class="cd">${esc(t)}</b>` : g.detailed && g.detailed !== "Scheduled" ? ` · ${esc(g.detailed === "Pre-Game" ? "Previa" : g.detailed === "Warmup" ? "Calentamiento" : g.detailed)}` : ""; })()}</span>`;
     const hasScore = (live || fin) && !off && g.ar != null;
     const lead = (x, y) => (x > y ? "lead" : x < y ? "trail" : "");
     const wp = hasScore ? pickProb({ family: "ML", pick: hA }, g) : null;
@@ -3438,8 +3442,8 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
       const k = "box" + g.pk;
       const team = (sd) => { const b = g.box[sd]; return `<div><h4 class="lt">${esc(sd === "away" ? aA : hA)}</h4>
         <div class="tbl"><table class="mini"><thead><tr><th>Bateador</th><th>Pos</th><th class="r">H-VB</th><th class="r">C</th><th class="r">CI</th><th class="r">BB</th><th class="r">K</th></tr></thead><tbody>${b.bat.map((p) => `<tr${g.now && g.now.batter === p.name ? ' class="hl"' : ""}><td>${p.sub ? '<span class="muted">↳ </span>' : ""}${esc(p.name)}${p.hr ? ` <span class="tag ok">${p.hr} HR</span>` : ""}</td><td class="muted">${esc(p.pos || "")}</td><td class="r num">${p.h}-${p.ab}</td><td class="r num">${p.r}</td><td class="r num">${p.rbi}</td><td class="r num">${p.bb}</td><td class="r num">${p.k}</td></tr>`).join("")}</tbody></table></div>
-        <div class="tbl"><table class="mini"><thead><tr><th>Pitcher</th><th class="r">EL</th><th class="r">Lanz.</th><th class="r">H</th><th class="r">CL</th><th class="r">BB</th><th class="r">K</th></tr></thead><tbody>${b.pit.map((p) => `<tr${g.now && g.now.pitcher === p.name && g.state === "Live" ? ' class="hl"' : ""}><td>${esc(p.name)}</td><td class="r num">${esc(p.ip)}</td><td class="r num">${p.pitches}</td><td class="r num">${p.h}</td><td class="r num">${p.er}</td><td class="r num">${p.bb}</td><td class="r num">${p.k}</td></tr>`).join("")}</tbody></table></div></div>`; };
-      return `<details class="lk" data-lk="${k}"${liveOpen.has(k) ? " open" : ""}><summary>Alineaciones y pitchers ${g.state === "Live" ? "en vivo" : "del juego"} <span class="muted">(↳ = cambio)</span></summary><div class="two lk-two">${team("away")}${team("home")}</div></details>`;
+        <div class="tbl"><table class="mini"><thead><tr><th>Pitcher</th><th class="r">EL</th><th class="r">Lanz.</th><th class="r">H</th><th class="r">CL</th><th class="r">BB</th><th class="r">K</th></tr></thead><tbody>${b.pit.map((p) => `<tr${g.now && g.now.pitcher === p.name && inPlay(g) ? ' class="hl"' : ""}><td>${esc(p.name)}</td><td class="r num">${esc(p.ip)}</td><td class="r num">${p.pitches}</td><td class="r num">${p.h}</td><td class="r num">${p.er}</td><td class="r num">${p.bb}</td><td class="r num">${p.k}</td></tr>`).join("")}</tbody></table></div></div>`; };
+      return `<details class="lk" data-lk="${k}"${liveOpen.has(k) ? " open" : ""}><summary>Alineaciones y pitchers ${inPlay(g) ? "en vivo" : "del juego"} <span class="muted">(↳ = cambio)</span></summary><div class="two lk-two">${team("away")}${team("home")}</div></details>`;
     }
     if (g.state === "Preview" && !isOff(g)) {
       const k = "lu" + g.pk;
@@ -3454,7 +3458,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   function curDay() {
     const dates = new Set(liveGames.map((g) => g.date));
     if (dates.has(TODAY)) return TODAY;
-    const live = liveGames.filter((g) => g.state === "Live" && !isOff(g)).map((g) => g.date).sort();
+    const live = liveGames.filter((g) => inPlay(g) && !isOff(g)).map((g) => g.date).sort();
     return live[0] || D.meta.today;
   }
 
@@ -3645,7 +3649,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   function pickRes(p, t) {
     if (p.res) { const [cls, text] = RES_TXT[p.res] || ["pend", p.res]; return { key: p.res, cls, text }; }
     const g = liveByPk(t.pk, t.date);
-    if (g && (g.state === "Live" || g.state === "Final") && g.ar != null && !isOff(g)) {
+    if (g && (inPlay(g) || g.state === "Final") && g.ar != null && !isOff(g)) {
       const s = pickNow(p, g);
       const fin = g.state === "Final";
       const key = fin && s.cls === "win" ? "ganado" : fin && s.cls === "lose" ? "perdido" : fin && s.text === "Push" ? "push" : "pendiente";
@@ -3824,7 +3828,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   function scoreOf(t) {
     if (t.result && t.result.state === "Final") return { a: t.result.ar, h: t.result.hr, txt: "Final" };
     const g = liveByPk(t.pk, t.date);
-    if (g && !isOff(g) && g.ar != null && (g.state === "Live" || g.state === "Final")) return { a: g.ar, h: g.hr, txt: g.state === "Final" ? "Final · por calificar" : `En vivo · ${g.inning}ª` };
+    if (g && !isOff(g) && g.ar != null && (inPlay(g) || g.state === "Final")) return { a: g.ar, h: g.hr, txt: g.state === "Final" ? "Final · por calificar" : `En vivo · ${g.inning}ª` };
     return null;
   }
 

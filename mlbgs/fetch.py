@@ -124,6 +124,11 @@ def season_results(season: int) -> list[dict]:
     return season_schedule(season)[0]
 
 
+def warming_up(status: dict) -> bool:
+    """MLB marca «Live» desde el calentamiento (Warmup, ~20–30 min antes). Hasta el primer lanzamiento es «por jugar»."""
+    return status.get("abstractGameState") == "Live" and (status.get("detailedState") or "") in ("Warmup", "Pre-Game")
+
+
 def upcoming_games(start: str, end: str) -> list[dict]:
     hyd = "probablePitcher,team,venue(location,fieldInfo),lineups,officials,weather,seriesStatus"
     data = get(f"{STATS}/schedule?sportId=1&startDate={start}&endDate={end}&gameType=R,F,D,L,W&hydrate={hyd}")
@@ -131,10 +136,11 @@ def upcoming_games(start: str, end: str) -> list[dict]:
     live = []
     for d in data.get("dates", []):
         for g in d["games"]:
-            if g["status"].get("abstractGameState") == "Live":
+            warm = warming_up(g["status"])
+            if g["status"].get("abstractGameState") == "Live" and not warm:
                 live.append({"pk": g["gamePk"], "away": g["teams"]["away"]["team"]["id"],
                              "home": g["teams"]["home"]["team"]["id"], "detailed": g["status"].get("detailedState")})
-            if g["status"].get("abstractGameState") != "Preview":
+            if g["status"].get("abstractGameState") != "Preview" and not warm:
                 continue
             s = slim_game(g)
             t = g["teams"]
