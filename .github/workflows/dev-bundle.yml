@@ -1,5 +1,5 @@
 name: Bundle de desarrollo (temporal)
-# corrida: diagnóstico de odds-api.net (uso del plan y mercados/periodos) (27-sep)
+# corrida: página con los momios guardados por producción, sin gastar créditos (27-sep 18:5x)
 on:
   push:
     branches: ["claude/eloquent-ride-7quneh"]
@@ -17,8 +17,8 @@ jobs:
           python-version: "3.12"
       - run: python -m mlbgs.fetch --out dev/raw_bundle.json.gz
         env:
-          ODDS_API_NET_KEY: ${{ secrets.ODDS_API_NET_KEY }}
-          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          # sin claves: el bundle de desarrollo usa los momios que ya guardó producción (data/odds) y no gasta créditos
+          ODDS_ESPN: "1"
       - run: |
           git config user.name "mlbgs-bot"
           git config user.email "mlbgs-bot@users.noreply.github.com"
