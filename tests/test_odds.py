@@ -371,5 +371,84 @@ class MomiosF5TheOddsApi(unittest.TestCase):
         self.assertEqual(dk["mlHome"], -108)
 
 
+class MomiosPropsTheOddsApi(unittest.TestCase):
+    """Ponches, team total y primera entrada (NRFI/YRFI) de The Odds API: solo el mercado de los picks."""
+
+    def setUp(self):
+        with gzip.open(FIXTURE, "rt", encoding="utf-8") as f:
+            self.bundle = json.load(f)
+        self.dir, self.pred = tempfile.mkdtemp(), tempfile.mkdtemp()
+        with open(os.path.join(self.pred, "2026-09-23.json"), "w") as f:
+            json.dump([{"pk": 824223, "topPicks": [{"family": "K", "pick": "Framber Valdez Over 5.5 K"},
+                                                   {"family": "Team total", "pick": "DET Over 4.5"}]},
+                       {"pk": 824785, "topPicks": [{"family": "NRFI", "pick": "NRFI"}]}], f)
+        up = {g["pk"]: g for g in self.bundle["upcoming"]}
+        self.events = [{"id": f"t{pk}", "home_team": h, "away_team": a, "commence_time": up[pk]["time"]}
+                       for pk, a, h in ((824223, "Washington Nationals", "Detroit Tigers"),
+                                        (824785, "Toronto Blue Jays", "Baltimore Orioles"))]
+        self.calls = []
+
+    def fetch(self, url, headers=None):
+        self.calls.append(url)
+        u = urllib.parse.urlparse(url)
+        if u.path.endswith("/events"):
+            return self.events
+        eid = u.path.split("/")[-2]
+        ev = next(e for e in self.events if e["id"] == eid)
+        mk = dict(urllib.parse.parse_qsl(u.query))["markets"].split(",")
+        markets = []
+        if "pitcher_strikeouts" in mk:
+            markets.append({"key": "pitcher_strikeouts", "outcomes": [
+                {"name": "Over", "description": "Framber Valdez", "price": -125, "point": 5.5},
+                {"name": "Under", "description": "Framber Valdez", "price": -105, "point": 5.5},
+                {"name": "Over", "description": "Richard Lovelady", "price": 110, "point": 3.5},
+                {"name": "Under", "description": "Richard Lovelady", "price": -140, "point": 3.5}]})
+        if "team_totals" in mk:
+            markets.append({"key": "team_totals", "outcomes": [
+                {"name": "Over", "description": "Detroit Tigers", "price": -110, "point": 4.5},
+                {"name": "Under", "description": "Detroit Tigers", "price": -120, "point": 4.5},
+                {"name": "Over", "description": "Washington Nationals", "price": 105, "point": 3.5},
+                {"name": "Under", "description": "Washington Nationals", "price": -135, "point": 3.5}]})
+        if "totals_1st_1_innings" in mk:
+            markets.append({"key": "totals_1st_1_innings", "outcomes": [
+                {"name": "Over", "price": 110, "point": 0.5}, {"name": "Under", "price": -140, "point": 0.5}]})
+        return dict(ev, bookmakers=[{"key": "draftkings", "title": "DraftKings", "markets": markets}])
+
+    def run_at(self, when):
+        return O.update(self.bundle, now=dt.datetime.fromisoformat(when).replace(tzinfo=UTC), base=self.dir,
+                        env={"ODDS_API_KEY": "k", "ODDS_ESPN": "0"}, fetch=self.fetch, log=lambda *a: None,
+                        pred_dir=self.pred)
+
+    def test_mercados_de_los_picks_y_al_modelo(self):
+        st = self.run_at("2026-09-23T15:00:00")
+        asked = sorted(dict(urllib.parse.parse_qsl(urllib.parse.urlparse(c).query))["markets"]
+                       for c in self.calls if "/odds?" in c)
+        self.assertEqual(asked, ["pitcher_strikeouts,team_totals", "totals_1st_1_innings"])
+        self.assertEqual(st["credits"], 3)
+        dk = O.load_day("2026-09-23", self.dir)["games"]["824223"]["books"]["draftkings"]["last"]
+        self.assertEqual(dk["k"]["framber valdez"]["over"], {"point": 5.5, "price": -125})
+        self.assertEqual(dk["tt"]["home"]["over"]["point"], 4.5)
+        nr = O.load_day("2026-09-23", self.dir)["games"]["824785"]["books"]["draftkings"]["last"]["nrfi"]
+        self.assertEqual(nr, {"nrfi": -140, "yrfi": 110})
+        b = copy.deepcopy(self.bundle)
+        b["odds"] = O.to_bundle(b, base=self.dir, now=dt.datetime(2026, 9, 23, 15, 5, tzinfo=UTC))
+        ctx = model.Context(b)
+        up = {g["pk"]: g for g in b["upcoming"]}
+        a = model.analyze(ctx, up[824223])
+        s7 = a["sections"]["s7"]
+        self.assertEqual(s7["marketTT"]["home"], 4.5)
+        self.assertEqual(s7["marketK"]["framber valdez"], 5.5)
+        k = next(p for p in a["picks"] if p["family"] == "K" and p["pick"].startswith("Framber Valdez"))
+        self.assertEqual(k["line"], 5.5)                                   # la línea del mercado
+        self.assertTrue(k["priceIsReal"])
+        self.assertIn(k["price"], (-125, -105))
+        tt = next(p for p in a["picks"] if p["market"] == "Team total " + a["teams"]["home"]["abbr"])
+        self.assertEqual((tt["line"], tt["priceIsReal"]), (4.5, True))
+        a2 = model.analyze(ctx, up[824785])
+        nrp = next(p for p in a2["picks"] if p["family"] == "NRFI")
+        self.assertTrue(nrp["priceIsReal"])
+        self.assertIn(nrp["price"], (-140, 110))
+
+
 if __name__ == "__main__":
     unittest.main()

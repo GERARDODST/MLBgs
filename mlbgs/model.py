@@ -11,6 +11,7 @@ import datetime as dt
 import math
 import re
 import statistics
+import unicodedata
 from collections import defaultdict
 
 from . import context as C
@@ -110,6 +111,12 @@ class Context:
 
 # ============================================================ momios (sección 7)
 
+def pname(s: str) -> str:
+    """Nombre de pitcher comparable entre fuentes: sin acentos, minúsculas, sin puntos (Elmer Rodríguez = elmer rodriguez)."""
+    t = unicodedata.normalize("NFKD", str(s or "")).encode("ascii", "ignore").decode()
+    return " ".join(t.lower().replace(".", "").split())
+
+
 def index_odds(raw, teams: dict) -> dict:
     """Agrupa los momios (forma de The Odds API; ver mlbgs/odds.py) por (visitante, local)."""
     if not raw:
@@ -136,7 +143,8 @@ def index_odds(raw, teams: dict) -> dict:
         books = []
         for bk in ev.get("bookmakers", []):
             row = {"book": bk.get("title"), "key": bk.get("key"), "mx": bool(bk.get("mx")), "at": bk.get("last_update"),
-                   "ml": {}, "rl": {}, "total": {}, "f5ml": {}, "f5total": {}, "open": bk.get("open"), "openAt": bk.get("openAt")}
+                   "ml": {}, "rl": {}, "total": {}, "f5ml": {}, "f5total": {}, "k": {}, "tt": {}, "nrfi": {},
+                   "open": bk.get("open"), "openAt": bk.get("openAt")}
             for m in bk.get("markets", []):
                 for o in m.get("outcomes", []):
                     side = "home" if tid(o.get("name", "")) == h else "away" if tid(o.get("name", "")) == a else None
@@ -150,6 +158,14 @@ def index_odds(raw, teams: dict) -> dict:
                         row["f5ml"][side] = o["price"]
                     elif m["key"] == "totals_1st_5_innings":
                         row["f5total"][o["name"].lower()] = {"price": o["price"], "point": o.get("point")}
+                    elif m["key"] == "pitcher_strikeouts" and o.get("description"):
+                        row["k"].setdefault(pname(o["description"]), {})[o["name"].lower()] = {"price": o["price"], "point": o.get("point")}
+                    elif m["key"] == "team_totals" and o.get("description"):
+                        sd = "home" if tid(o["description"]) == h else "away" if tid(o["description"]) == a else None
+                        if sd:
+                            row["tt"].setdefault(sd, {})[o["name"].lower()] = {"price": o["price"], "point": o.get("point")}
+                    elif m["key"] == "totals_1st_1_innings" and o.get("point") == 0.5:
+                        row["nrfi"]["yrfi" if o["name"].lower() == "over" else "nrfi"] = o["price"]
             books.append(row)
         out[(a, h)].append({"commence": ev.get("commence_time"), "books": books, "pk": ev.get("pk"),
                             "provider": ev.get("provider") or "The Odds API", "checked": ev.get("checked"),
@@ -177,7 +193,7 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
     ev = min(evs, key=gap)
     if gap(ev) > 6 * 3600:
         return None
-    books = [b for b in ev["books"] if b["ml"] or b["total"] or b.get("f5ml") or b.get("f5total")]
+    books = [b for b in ev["books"] if any(b.get(k) for k in ("ml", "total", "f5ml", "f5total", "k", "tt", "nrfi"))]
     if not books:
         return None
     main_books = [b for b in books if b["ml"] or b["total"]]
@@ -220,11 +236,28 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
         return lambda b: (b["f5total"][k]["price"] if (b.get("f5total") or {}).get(k)
                           and b["f5total"][k]["point"] == f5_line else None)
 
+    def ou_ref(get_ou):
+        """Línea más común entre casas y el momio de referencia de over/under en esa línea."""
+        pts = [x["over"]["point"] for x in (get_ou(b) for b in books) if x and x.get("over") and x.get("under")]
+        if not pts:
+            return None
+        ln = statistics.mode(pts)
+        out = {"line": ln}
+        for side in ("over", "under"):
+            out[side] = ref(lambda b, side=side: (get_ou(b) or {}).get(side, {}).get("price")
+                            if (get_ou(b) or {}).get(side, {}).get("point") == ln else None)
+        return out
+
+    pitchers = {n for b in books for n in (b.get("k") or {})}
+
     return {
         "books": books, "nBooks": len(main_books), "nMx": sum(1 for b in main_books if b.get("mx")), "totalLine": main_line,
         "f5TotalLine": f5_line,
         "refF5": {s: ref(f5_get(s)) for s in SIDES}, "bestF5": {s: best(f5_get(s)) for s in SIDES},
         "refF5Total": {k: ref(f5t_get(k)) for k in ("over", "under")},
+        "refK": {n: ou_ref(lambda b, n=n: (b.get("k") or {}).get(n)) for n in pitchers},
+        "refTT": {sd: ou_ref(lambda b, sd=sd: (b.get("tt") or {}).get(sd)) for sd in SIDES},
+        "refNRFI": {k: ref(lambda b, k=k: (b.get("nrfi") or {}).get(k)) for k in ("nrfi", "yrfi")},
         "provider": ev.get("provider"), "checked": ev.get("checked"), "closed": ev.get("closed"),
         "bestMl": {s: best(ml_get(s)) for s in SIDES},
         "bestRl": {s: best(rl_get(s)) for s in SIDES},
@@ -770,16 +803,30 @@ def market_table(ctx, g, p_tri, methods, margin, tie9, total_pmf, pmf_full, f5h,
         add("F3 total", "f3total", f"F3 Over {ln}", ou["over"], line=ln)
         add("F3 total", "f3total", f"F3 Under {ln}", ou["under"], line=ln)
     for s, abbr in (("away", ab), ("home", hb)):
-        for ln in (2.5, 3.5, 4.5, 5.5):
+        tt = ((odds or {}).get("refTT") or {}).get(s)
+        for ln in sorted(set((2.5, 3.5, 4.5, 5.5) + ((tt["line"],) if tt else ()))):
             ou = M.over_under(pmf_full[s], ln)
-            add(f"Team total {'visitante' if s == 'away' else 'local'}", f"tt_{s}", f"{abbr} Over {ln}", ou["over"], line=ln)
-            add(f"Team total {'visitante' if s == 'away' else 'local'}", f"tt_{s}", f"{abbr} Under {ln}", ou["under"], line=ln)
-    add("NRFI/YRFI", "nrfi", "NRFI", nrfi)
-    add("NRFI/YRFI", "nrfi", "YRFI", 1 - nrfi)
+            mk = tt is not None and ln == tt["line"]
+            px = {k: (tt[k][0] if mk and tt.get(k) else None) for k in ("over", "under")}
+            add(f"Team total {'visitante' if s == 'away' else 'local'}", f"tt_{s}", f"{abbr} Over {ln}", ou["over"],
+                px["over"], ln, {"market_line": mk}, push=ou["push"])
+            add(f"Team total {'visitante' if s == 'away' else 'local'}", f"tt_{s}", f"{abbr} Under {ln}", ou["under"],
+                px["under"], ln, {"market_line": mk}, push=ou["push"])
+    nr = (odds or {}).get("refNRFI") or {}
+    add("NRFI/YRFI", "nrfi", "NRFI", nrfi, nr["nrfi"][0] if nr.get("nrfi") else None)
+    add("NRFI/YRFI", "nrfi", "YRFI", 1 - nrfi, nr["yrfi"][0] if nr.get("yrfi") else None)
     for s, kp in kprops.items():
-        for l in kp["lines"]:
-            add("Props principales", f"k_{s}", f"{kp['pitcher']} Over {l['line']} K", l["over"], line=l["line"])
-            add("Props principales", f"k_{s}", f"{kp['pitcher']} Under {l['line']} K", l["under"], line=l["line"])
+        mk = ((odds or {}).get("refK") or {}).get(pname(kp["pitcher"]))
+        lines = [(l["line"], l["over"], l["under"]) for l in kp["lines"]]
+        if mk and mk["line"] not in [x[0] for x in lines]:            # la línea del mercado, aunque no esté en las 4
+            ou = M.over_under(M.poisson_pmf(kp["exp"]), mk["line"])
+            lines.append((mk["line"], ou["over"], ou["under"]))
+        for ln, po, pu in sorted(lines):
+            is_mk = mk is not None and ln == mk["line"]
+            add("Props principales", f"k_{s}", f"{kp['pitcher']} Over {ln} K", po,
+                mk["over"][0] if is_mk and mk.get("over") else None, ln, {"market_line": is_mk})
+            add("Props principales", f"k_{s}", f"{kp['pitcher']} Under {ln} K", pu,
+                mk["under"][0] if is_mk and mk.get("under") else None, ln, {"market_line": is_mk})
     return rows
 
 
@@ -1476,6 +1523,7 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
                           "over": b["total"].get("over"), "under": b["total"].get("under"),
                           "f5Away": (b.get("f5ml") or {}).get("away"), "f5Home": (b.get("f5ml") or {}).get("home"),
                           "f5Over": (b.get("f5total") or {}).get("over"), "f5Under": (b.get("f5total") or {}).get("under"),
+                          "k": b.get("k") or {}, "tt": b.get("tt") or {}, "nrfi": b.get("nrfi") or {},
                           "open": {"at": b.get("openAt"), "mlAway": (o.get("ml") or {}).get("away"),
                                    "mlHome": (o.get("ml") or {}).get("home"),
                                    "rlAway": (o.get("rl") or {}).get("away"), "rlHome": (o.get("rl") or {}).get("home"),
@@ -1505,6 +1553,8 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
     return {
         "marketTotal": odds.get("totalLine") if odds else None,
         "marketF5Total": odds.get("f5TotalLine") if odds else None,
+        "marketTT": {sd: (v or {}).get("line") for sd, v in ((odds or {}).get("refTT") or {}).items()},
+        "marketK": {n: (v or {}).get("line") for n, v in ((odds or {}).get("refK") or {}).items()},
         "hasOdds": odds is not None, "nBooks": odds["nBooks"] if odds else 0, "books": books,
         "nMx": odds["nMx"] if odds else 0, "provider": odds.get("provider") if odds else None,
         "checked": odds.get("checked") if odds else None, "closed": odds.get("closed") if odds else None,

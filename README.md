@@ -27,7 +27,7 @@ Varias veces al día un workflow de GitHub Actions:
 | [MLB Stats API](https://statsapi.mlb.com) — rosters y transacciones | Roster activo con splits, lista de lesionados, movimientos oficiales (noticias) |
 | [Baseball Savant](https://baseballsavant.mlb.com) — arsenal | Run value por tipo de pitcheo de abridores y bateadores |
 | ESPN (marcador público, sin clave) | Momios previos al partido de su casa socia (DraftKings): moneyline, run line y total, con apertura y actual |
-| [The Odds API](https://the-odds-api.com) (opcional, clave gratis sin tarjeta) | F5 (ganador y total de las primeras 5 entradas) de los picks F5, que ESPN no publica |
+| [The Odds API](https://the-odds-api.com) (opcional, clave gratis sin tarjeta) | Lo que ESPN no publica, solo para los picks que lo usan: F5, ponches del abridor, team total y NRFI/YRFI |
 | [odds-api.net](https://odds-api.net) (opcional, de pago) | Más casas (las que operan en México marcadas MX) |
 
 ## El modelo, sección por sección
@@ -265,7 +265,7 @@ ATL y SF) y un límite de 50 filas en las stats por equipo que dejaba a 15 equip
    ahí cada corrida del workflow en `main` publica la página en `https://gerardodst.github.io/MLBgs/`.
 2. **F5 con momio real (opcional, gratis):** crea una cuenta gratis (sin tarjeta) en [the-odds-api.com](https://the-odds-api.com)
    y guarda la clave como secreto `ODDS_API_KEY` en *Settings → Secrets and variables → Actions*. Solo se pide el F5 de
-   los partidos cuyo pick es F5 (1 crédito por mercado y partido; topes `ODDS_API_DAY_CREDITS` = 16 y
+   los partidos cuyo pick es F5, ponches, team total o NRFI/YRFI (1 crédito por mercado y partido; topes `ODDS_API_DAY_CREDITS` = 24 y
    `ODDS_API_MONTH_CREDITS` = 470, debajo de los 500 gratis). Los de DraftKings (ML, run line, total) llegan solos desde ESPN.
 3. **Más casas (opcional, de pago):** crea una clave en [odds-api.net](https://odds-api.net) y
    agrégala como secreto `ODDS_API_NET_KEY` en *Settings → Secrets and variables → Actions*. Sus topes

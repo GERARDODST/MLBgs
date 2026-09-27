@@ -39,10 +39,12 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   escalera guarda `maxPrice`, el momio más alto que todavía pasa el filtro.
 - Momios automáticos como SofaScore (`mlbgs/odds.py`): ESPN sin clave (su marcador público publica los de
   su casa socia, DraftKings, con apertura y actual; una llamada por fecha; `ODDS_ESPN=0` lo apaga);
-  The Odds API (`ODDS_API_KEY`, plan gratis de 500 créditos/mes, sin tarjeta) SOLO para el F5 que ESPN no
-  trae: el mercado del pick F5 (`h2h_1st_5_innings` o `totals_1st_5_innings`) de los partidos cuyos dos
-  picks del último análisis (`data/predictions/`) son F5, una vez a ≤ 6 h y un refresco a ≤ 90 min; 1 crédito
-  por mercado y partido; topes `ODDS_API_DAY_CREDITS` (16) y `ODDS_API_MONTH_CREDITS` (470). odds-api.net
+  The Odds API (`ODDS_API_KEY`, plan gratis de 500 créditos/mes, sin tarjeta) SOLO para lo que ESPN no trae:
+  el mercado de los dos picks del último análisis (`data/predictions/`) de cada partido — F5 (`h2h_1st_5_innings`,
+  `totals_1st_5_innings`), ponches (`pitcher_strikeouts`), team total (`team_totals`) y primera entrada NRFI/YRFI
+  (`totals_1st_1_innings`) —, cada mercado una vez a ≤ 6 h y un refresco a ≤ 90 min; 1 crédito por mercado y
+  partido; topes `ODDS_API_DAY_CREDITS` (24) y `ODDS_API_MONTH_CREDITS` (470). Con línea del mercado, el pick
+  usa esa línea (total, F5 total, team total, ponches). odds-api.net
   (`ODDS_API_NET_KEY`) queda como opción de pago. Nunca raspando casas. `data/odds/<fecha>.json`
   guarda por partido y casa la apertura (`open`) y el último momio (`last`); al primer lanzamiento se
   congela (cierre). Cadencia: > 6 h cada 3 h, 1–6 h cada hora, < 1 h cada corrida; topes por corrida y día.
@@ -56,7 +58,11 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 - Jornada, «Por jugar»: cada uno de los dos picks de la tarjeta muestra su **momio actual** (el capturado
   de su casa si existe; si no, el mejor del feed) con la casa abajo en chico y en su color, y a un lado el
   **momio recomendado** (inicio de la escalera de stake: desde ahí conviene) con el veredicto (tómalo ·
-  no · verificar · esperar). El plan del día no tiene casilla para escribir momios: muestra lo mismo.
+  no · verificar · esperar). El plan del día, las tarjetas de picks principales, la tabla de todos los picks y
+  el panel de decisión muestran lo mismo, sin casillas para escribir momios (la captura queda solo en el
+  tablero de la sección 7, modo «Capturar», y en los boletos). La tarjeta de la Jornada siempre muestra la línea
+  del mercado (ganador y total de la casa con ML) aunque el moneyline no sea pick. El tablero de la sección 7
+  pone primero las casas del feed con más mercados (DraftKings primero).
 - Momios de Playdoit: su sitio bloquea el acceso automático (Cloudflare, 403 «Acceso bloqueado» desde
   GitHub Actions); no evadirlo. La Jornada tiene «Momios de Playdoit»: el usuario sube una captura o pega
   el texto y Claude (capacidad `sample` con imágenes) los lee y los aplica solo a partidos que no han

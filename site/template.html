@@ -344,6 +344,15 @@
   .oc-ref { font-size: 13px; color: var(--ink-2); }
   .oc table td.bestp { color: var(--amarillo); font-weight: 700; }
   .mx { font-size: 10.5px; font-weight: 700; border-radius: 4px; padding: 0 4px; background: var(--verde-soft); color: var(--verde); margin-left: 4px; vertical-align: 1px; }
+  .pow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; background: var(--surface-2); border-radius: 10px; padding: 9px 12px; }
+  .pow > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .pow .lbl { font-size: 11.5px; font-weight: 700; color: var(--muted); }
+  .pow > div:last-child small { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .pow b { font-family: var(--mono); font-size: 17px; font-weight: 600; }
+  .pow b.vd { font-family: var(--sans); font-size: 14px; }
+  .pow small { font-size: 11.5px; line-height: 1.25; overflow-wrap: anywhere; }
+  .pow .bk { align-self: flex-start; }
+  .pow b.ok { color: var(--verde); } .pow b.no { color: var(--rojo); } .pow b.chk { color: var(--amarillo); } .pow b.na { color: var(--muted); }
   .oddsline { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; color: var(--ink-2); align-items: baseline; }
   .oddsline b { font-family: var(--mono); }
   .ob .px small { white-space: nowrap; }
@@ -929,6 +938,14 @@
       <span class="po-live ${v.lv ? v.cls : "na"}" data-tip="${esc(tip)}"><b>${v.lv ? odds(v.lv.am) : "—"}</b>${v.lv ? bookPill(v.lv.book) : '<small class="bk none">sin momio</small>'}</span>
       <span class="po-rec" data-tip="${esc(`Recomendado: conviene si pagan ${odds(v.rec)} o mejor. ${v.why || ""}`)}"><b>${v.rec != null ? odds(v.rec) : "—"}</b><small class="vd ${v.cls}">${esc(v.txt)}</small></span></div>`;
   }
+  function pickOddsWide(g, p) {
+    const v = pickVerdict(g, p);
+    return `<div class="pow">
+      <div><span class="lbl">Momio actual</span><b class="${v.lv ? v.cls : "na"}">${v.lv ? odds(v.lv.am) : "—"}</b>${v.lv ? bookPill(v.lv.book) : '<small class="bk none">sin momio en el feed</small>'}</div>
+      <div><span class="lbl">Recomendado</span><b>${v.rec != null ? odds(v.rec) : "—"}</b><small class="muted">o mejor</small></div>
+      <div><span class="lbl">Veredicto</span><b class="vd ${v.cls}">${esc(v.txt)}</b><small class="muted">${esc(v.lv ? v.why || "" : "compara con tu casa")}</small></div>
+    </div>`;
+  }
   function pickOddsInline(g, p) {
     const v = pickVerdict(g, p);
     return `<span class="po-inline"><span class="po-live ${v.lv ? v.cls : "na"}"><b>${v.lv ? odds(v.lv.am) : "—"}</b>${v.lv ? bookPill(v.lv.book) : '<small class="bk none">sin momio</small>'}</span><span class="po-rec"><b>${v.rec != null ? odds(v.rec) : "—"}</b><small class="vd ${v.cls}">${esc(v.txt)}</small></span></span>`;
@@ -940,7 +957,8 @@
     return `<article class="pickcard" data-pick="${esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked, blockedWithOdds: p.blockedWithOdds, datosWithOdds: p.datosWithOdds, stake: p.stake }))}">
       <div class="rank">Pick principal ${rank} · ${esc(p.market)} ${res}</div>
       <h3>${esc(p.pick)}</h3>
-      <div class="meta"><span>Probabilidad <b class="num">${pc(p.p, 1)}</b></span><span>Momio justo <b class="num">${odds(p.fair)}</b></span><span>Mínimo aceptable <b class="num">${odds(p.minPrice)}</b></span>${icBadge(p)}</div>
+      <div class="meta"><span>Probabilidad <b class="num">${pc(p.p, 1)}</b></span><span>Momio justo <b class="num">${odds(p.fair)}</b></span>${icBadge(p)}</div>
+      ${(() => { const g = graded ? null : GAMES.find((x) => x.pk === pk); return g ? pickOddsWide(g, p) : `<div class="meta"><span>Mínimo aceptable <b class="num">${odds(p.minPrice)}</b></span></div>`; })()}
       <div class="gauge" role="img" aria-label="Índice de confianza ${Math.round(p.ic)} de 100"><i style="left:${Math.max(0, Math.min(100, p.ic))}%"></i></div>
       <div class="gauge-l"><span>0</span><span>40 Baja</span><span>55 Media</span><span>70 Alta</span><span>100</span></div>
       <div class="note"><b>Cómo se llegó:</b> ${esc(p.how)}</div>
@@ -948,21 +966,21 @@
       <div class="parts">${partsHtml}</div>
       <div class="formula">IC = ${esc(p.formula)} → ${f(p.ic, 1)} · punto de equilibrio ${pc(p.breakeven, 1)} (${p.priceIsReal ? "momio real" : "precio de referencia " + odds(p.refPrice)})</div>
       ${p.stake ? `<div class="stake-line"><span class="eyebrow" style="font-size:12px">Stake por confianza</span>${p.stake.level ? `${stakeTag(p.stake.level)} <b class="stake-amt">${money(amountOf(p.stake.level))}</b>` : '<span class="stake-no">Stake 0</span>'}<span>${esc(ladderTxt(p.stake))}</span>${p.stake.a < 1 || p.stake.h !== 1 ? `<span class="muted">${p.stake.a < 1 ? `acuerdo con el modelo ${f(p.stake.a, 2)} · ` : ""}historial ${f(p.stake.h, 3)}</span>` : ""}</div>` : ""}
-      <div class="oddsbar"><span>Tu momio en ${esc(bookSel())}:</span>${oddsInput(pk, p)}<span class="odds-out">${oddsResult(p, oddsStore[oddsKey(pk, p.pick)])}</span></div>
+
     </article>`;
   }
 
   function picksTable(picks, pk, graded) {
     const g = Object.fromEntries((graded || []).map((x) => [x.pick, x]));
-    return `<div class="oddsbar"><label for="book-${pk}">Casa de apuestas</label><select id="book-${pk}" data-book>${BOOKS.map((b) => `<option${b === bookSel() ? " selected" : ""}>${b}</option>`).join("")}</select><span class="muted">Escribe tu momio (americano −150 / +130 o decimal 1.91): se recalculan edge, índice de confianza, semáforo y el stake recomendado ($500–$1,500). Se guarda solo en este navegador.</span></div>
-      ${table(["#", "Mercado", "Pick", "~Prob.", "Confianza", "Fuerza · Consenso · Datos · Estab. · Contr.", "Métodos del framework", "~Justo", "Tu momio", "Valor con tu momio", ...(graded ? ["Resultado"] : [])],
+    const game = graded ? null : GAMES.find((x) => x.pk === pk);
+    return `${table(["#", "Mercado", "Pick", "~Prob.", "Confianza", "Fuerza · Consenso · Datos · Estab. · Contr.", "Métodos del framework", "~Justo", "Momio actual · recomendado", ...(graded ? ["Resultado"] : [])],
       picks.map((p) => tr([tdn(p.rank), td(esc(p.market)), td(`<b>${esc(p.pick)}</b>`), tdn(pc(p.p, 1)), td(icBadge(p)),
         td(`<span class="num" style="font-size:12px">${Object.values(p.parts).map((v) => v.toFixed(2)).join(" · ")}</span>`),
         td(`<span class="muted" style="font-size:12px">${Object.entries(p.methods).map(([k, v]) => `${esc(k)} ${pc(v, 1)}`).join("<br>")}</span>`),
-        tdn(odds(p.fair)), td(oddsInput(pk, p)), td(`<span class="odds-out">${oddsResult(p, oddsStore[oddsKey(pk, p.pick)])}</span>`),
+        tdn(odds(p.fair)), td(game ? pickOddsInline(game, p) : `<span class="muted">mín. ${odds(p.minPrice)}</span>`),
         ...(graded ? [td(g[p.pick] ? (g[p.pick].won ? '<span class="won">✓</span>' : g[p.pick].won === false ? '<span class="lost">✗</span>' : "push") : "—", "c")] : [])],
         "").replace("<tr", `<tr data-pick="${esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked, blockedWithOdds: p.blockedWithOdds, datosWithOdds: p.datosWithOdds, stake: p.stake }))}"`)))}
-      <p class="note muted">IC = 100 · (0.35·Fuerza + 0.25·Consenso + 0.15·Datos + 0.15·Estabilidad + 0.10·Sin contradicciones). Niveles: ≥70 Alta · 55–69 Media · 40–54 Baja · &lt;40 Muy baja. Sin momio real la fuerza se mide contra un precio de referencia típico; en moneyline un favorito real cuesta más: escribe tu momio para medir el valor.</p>`;
+      <p class="note muted">IC = 100 · (0.35·Fuerza + 0.25·Consenso + 0.15·Datos + 0.15·Estabilidad + 0.10·Sin contradicciones). Niveles: ≥70 Alta · 55–69 Media · 40–54 Baja · &lt;40 Muy baja. Sin momio real la fuerza se mide contra un precio de referencia típico; en moneyline un favorito real cuesta más. Momio actual = el del feed (o el que capturaste de tu casa); recomendado = desde qué momio conviene.</p>`;
   }
 
   // al terminar de escribir un momio en la cartera del día o en un ticket, se recalculan totales y ganancias
@@ -1106,6 +1124,8 @@
     return groups;
   }
 
+  const pName = (s) => String(s || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\./g, "").replace(/\s+/g, " ").trim();
+  const boardRowsFlat = (g) => [...boardRows(g).values()].flat();
   function apiPrice(b, row, g) {
     const a = g.teams.away.abbr, h = g.teams.home.abbr;
     if (row.market === "Moneyline") return row.pick === a ? b.mlAway : row.pick === h ? b.mlHome : null;
@@ -1120,6 +1140,18 @@
       return x && Number(x.point) === Number(m[2]) ? x.price : null;
     }
     if (row.market === "F5 Moneyline") return row.pick === `${a} F5` ? b.f5Away ?? null : row.pick === `${h} F5` ? b.f5Home ?? null : null;
+    if (row.pick === "NRFI" || row.pick === "YRFI") return (b.nrfi || {})[row.pick.toLowerCase()] ?? null;
+    const km = row.pick.match(/^(.+) (Over|Under) ([\d.]+) K$/);
+    if (km) {
+      const x = ((b.k || {})[pName(km[1])] || {})[km[2].toLowerCase()];
+      return x && Number(x.point) === Number(km[3]) ? x.price : null;
+    }
+    if (/^Team total/.test(row.market)) {
+      const m = row.pick.match(/^(\S+) (Over|Under) ([\d.]+)$/);
+      const sd = m ? (m[1] === a ? "away" : m[1] === h ? "home" : null) : null;
+      const x = sd ? ((b.tt || {})[sd] || {})[m[2].toLowerCase()] : null;
+      return x && Number(x.point) === Number(m[3]) ? x.price : null;
+    }
     if (row.market === "F5 total" || row.market === "Total primeras 5") {
       const m = row.pick.match(/^F5 (Over|Under) ([\d.]+)$/);
       const x = m ? (m[1] === "Over" ? b.f5Over : b.f5Under) : null;
@@ -1228,7 +1260,7 @@
     if (!b) return "";
     const o = b.open || {}, a = g.teams.away.abbr, h = g.teams.home.abbr;
     const tl = b.over ? Number(b.over.point).toFixed(1) : null;
-    return `<div class="oddsline"><span class="muted">${esc(b.book)}${b.mx ? '<span class="mx">MX</span>' : ""}</span><span>${esc(a)} <b>${d2(b.mlAway)}</b>${mvArrow(b.mlAway, o.mlAway)}</span><span>${esc(h)} <b>${d2(b.mlHome)}</b>${mvArrow(b.mlHome, o.mlHome)}</span>${tl ? `<span>O/U ${esc(tl)} <b>${d2(priceOf(b.over))}</b>/<b>${d2(priceOf(b.under))}</b></span>` : ""}${S.closed ? '<span class="muted">cierre</span>' : ""}</div>`;
+    return `<div class="oddsline">${bookPill(b.book)}<span>Ganador ${esc(a)} <b>${odds(b.mlAway)}</b>${mvArrow(b.mlAway, o.mlAway)} · ${esc(h)} <b>${odds(b.mlHome)}</b>${mvArrow(b.mlHome, o.mlHome)}</span>${tl ? `<span>Total ${esc(tl)} <b>${odds(priceOf(b.over))}</b>/<b>${odds(priceOf(b.under))}</b></span>` : ""}${S.closed ? '<span class="muted">cierre</span>' : ""}</div>`;
   }
   document.addEventListener("click", (e) => {
     const c = e.target.closest("[data-oc-book]");
@@ -1242,9 +1274,13 @@
   function oddsBoard(g) {
     const S = g.sections.s7;
     const api = (S.books || []).filter((b) => b.book);
-    const cols = [...BOOKS.map((b) => ({ book: b })), ...api.filter((b) => !BOOKS.includes(b.book)).map((b) => ({ book: b.book, api: b }))];
-    api.forEach((b) => { const c = cols.find((x) => x.book === b.book); if (c) c.api = b; });
-    const mode = store.get("mlbgs-board-mode") || "capturar";
+    const mode = store.get("mlbgs-board-mode") || "elegir";
+    const nPrices = (b) => boardRowsFlat(g).filter((r) => isNum(apiPrice(b, r, g))).length;
+    const apiCols = api.map((b) => ({ book: b.book, api: b, n: nPrices(b) })).filter((c) => c.n)
+      .sort((x, y) => (y.book === "DraftKings") - (x.book === "DraftKings") || y.n - x.n);
+    const captured = (bk) => Object.keys(oddsStore).some((k) => k.startsWith(g.pk + "|") && k.endsWith("|" + bk) && parseOdds(oddsStore[k]));
+    const mxCols = BOOKS.filter((bk) => !apiCols.some((c) => c.book === bk) && (mode === "capturar" || captured(bk))).map((bk) => ({ book: bk }));
+    const cols = [...apiCols, ...mxCols];
     const groups = boardRows(g);
     let body = "";
     groups.forEach((rows, market) => {
@@ -1265,7 +1301,7 @@
     return `<div class="felt" data-board="${g.pk}" data-mode="${mode}">
       <div class="felt-head"><h3>Tablero de momios</h3>
         <div class="seg" role="group" aria-label="Modo del tablero"><button type="button" data-mode-set="capturar" aria-pressed="${mode === "capturar"}">✎ Capturar momios</button><button type="button" data-mode-set="elegir" aria-pressed="${mode === "elegir"}">☑ Elegir apuesta</button></div></div>
-      <p style="font-size:13px">${S.hasOdds ? `Momios de ${S.nBooks} casa(s) de ${esc(S.provider || "la API")} y casillas libres para Playdoit, Caliente y las casas que no están en el feed.` : "Las casas mexicanas no publican API: cada casilla queda libre para que escribas el momio que ves en la app (americano −150 / +130 o decimal 1.91)."} Verde = edge ≥ 3 pp sobre la probabilidad del modelo · dorado = mejor precio del renglón · rojo = paga menos de lo que vale. En <b>Elegir apuesta</b> toca un momio para mandarlo al boleto.</p>
+      <p style="font-size:13px">${S.hasOdds ? `Momios del feed (${esc(S.provider || "API")}), primero las casas con más mercados. Para anotar el momio de Playdoit, Caliente u otra casa, usa «✎ Capturar momios».` : "Las casas mexicanas no publican API: cada casilla queda libre para que escribas el momio que ves en la app (americano −150 / +130 o decimal 1.91)."} Verde = edge ≥ 3 pp sobre la probabilidad del modelo · dorado = mejor precio del renglón · rojo = paga menos de lo que vale. En <b>Elegir apuesta</b> toca un momio para mandarlo al boleto.</p>
       <div class="tbl"><table><thead><tr><th>Selección</th><th>Modelo</th>${cols.map((c) => `<th class="c">${esc(c.book)}${c.api ? " ·API" : ""}</th>`).join("")}<th>Mejor precio</th></tr></thead><tbody>${body}</tbody></table></div>
       <div class="slip" data-slip="${g.pk}"></div>
     </div>`;
@@ -1470,9 +1506,9 @@
       <div class="deci-big ${cls}">
         <span class="eyebrow">${x.src === "Claude" ? "✦ Conclusión de Claude" : esc(x.src)}</span>
         <div class="db-pick">${head}</div>
-        ${p ? `<div class="muted">${esc(p.market)} · probabilidad ${pc(p.p, 1)} · ${icBadge(p)} · momio justo ${odds(p.fair)}${x.minPrice != null ? ` · <b>conviene solo si ${esc(bookSel())} paga ${odds(x.minPrice)} o mejor</b> <span data-tip="Es el momio mínimo que acepta el modelo, no el momio del casino">(mínimo del modelo)</span>` : ""}</div>
+        ${p ? `<div class="muted">${esc(p.market)} · probabilidad ${pc(p.p, 1)} · ${icBadge(p)} · momio justo ${odds(p.fair)}${x.minPrice != null ? ` · <b>conviene si pagan ${odds(x.minPrice)} o mejor</b> <span data-tip="Es el momio mínimo que acepta el modelo, no el momio del casino">(recomendado)</span>` : ""}</div>
         <div class="muted" style="font-size:13px">${esc(ladderTxt(p.stake))} · stake 1 = ${money(amountOf(1))}, 5 = ${money(amountOf(5))}, 10 = ${money(amountOf(10))}</div>
-        <div class="oddsbar" data-pick="${data}"><span>Tu momio en ${esc(bookSel())}:</span>${oddsInput(g.pk, p)}<span class="odds-out">${oddsResult(p, oddsStore[oddsKey(g.pk, p.pick)])}</span></div>` : ""}
+        <div data-pick="${data}">${pickOddsWide(g, p)}</div>` : ""}
         <p class="note">${esc(x.why || "")}</p>
         ${d.alternatives && d.alternatives.length ? `<p class="muted" style="font-size:13px">Otras opciones revisadas: ${d.alternatives.map((a) => `${esc(a.pick)} (${esc(a.market)}, IC ${Math.round(a.ic)})`).join(" · ")}</p>` : ""}
       </div>
