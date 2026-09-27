@@ -278,54 +278,54 @@
 "pk": 824948,
 "date": "2026-09-27",
 "time": "2026-09-27T19:05:00Z",
-"generatedAt": "2026-09-27T04:48:50+00:00",
+"generatedAt": "2026-09-27T05:04:41+00:00",
 "away": "HOU",
 "home": "ATH",
-"pHome": 0.4129,
+"pHome": 0.4588,
 "methods": {
 "log5": 0.441,
-"elo": 0.3907,
-"lambda": 0.407
+"elo": 0.4872,
+"lambda": 0.4481
 },
-"confidence": "media",
-"projAway": 6.2833,
+"confidence": "alta",
+"projAway": 5.7577,
 "projHome": 5.1364,
-"total": 11.4197,
-"f5Away": 3.5335,
+"total": 10.8941,
+"f5Away": 3.0487,
 "f5Home": 3.1322,
-"nrfi": 0.3898,
-"pOver85": 0.6904,
+"nrfi": 0.4246,
+"pOver85": 0.6517,
 "probables": {
 "away": "Por anunciar",
-"home": "Por anunciar"
+"home": "Seth Johnson"
 },
 "light": "Gris",
 "best": {
 "market": "Total",
 "pick": "Over 9.5",
-"p": 0.6088,
+"p": 0.5672,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Over 5.5",
-"p": 0.6546,
-"line": 5.5,
-"ic": 66.7083,
-"level": "Media"
-},
-{
 "family": "NRFI",
 "market": "NRFI/YRFI",
 "pick": "YRFI",
-"p": 0.6102,
+"p": 0.5754,
 "line": null,
-"ic": 60.6164,
-"level": "Media"
+"ic": 50.2586,
+"level": "Baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "HOU +1.5",
+"p": 0.6751,
+"line": null,
+"ic": 49.0259,
+"level": "Baja"
 }
 ]
 },
