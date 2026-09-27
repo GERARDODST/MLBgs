@@ -1,0 +1,3802 @@
+{
+ "date": "2026-09-27",
+ "games": {
+  "822679": {
+   "away": 121,
+   "books": {
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T16:11:51Z",
+      "ml": {
+       "away": -112,
+       "home": -107
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 149
+       },
+       "home": {
+        "point": 1.5,
+        "price": -181
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.0,
+        "price": -118
+       },
+       "under": {
+        "point": 8.0,
+        "price": -102
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-26T22:10:39Z",
+      "ml": {
+       "away": -110,
+       "home": -110
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 151
+       },
+       "home": {
+        "point": 1.5,
+        "price": -183
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.5,
+        "price": 100
+       },
+       "under": {
+        "point": 8.5,
+        "price": -120
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    }
+   },
+   "checked": "2026-09-27T16:59:19Z",
+   "espn": "401817106",
+   "home": 120,
+   "pk": 822679,
+   "providers": [
+    "espn"
+   ],
+   "start": "2026-09-27T17:05:00Z"
+  },
+  "822761": {
+   "away": 113,
+   "books": {
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "ml": {
+       "away": 141,
+       "home": -171
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -142
+       },
+       "home": {
+        "point": -1.5,
+        "price": 118
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.5,
+        "price": -119
+       },
+       "under": {
+        "point": 8.5,
+        "price": -102
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T01:21:49Z",
+      "ml": {
+       "away": 142,
+       "home": -172
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -144
+       },
+       "home": {
+        "point": -1.5,
+        "price": 119
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.5,
+        "price": -120
+       },
+       "under": {
+        "point": 8.5,
+        "price": 100
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    }
+   },
+   "checked": "2026-09-27T19:06:14Z",
+   "espn": "401817105",
+   "home": 141,
+   "pk": 822761,
+   "providers": [
+    "espn"
+   ],
+   "start": "2026-09-27T19:07:00Z"
+  },
+  "823084": {
+   "away": 108,
+   "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -115
+        },
+        "under": {
+         "point": 3.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 145,
+        "home": -185
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -115
+        },
+        "under": {
+         "point": 3.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -112
+        },
+        "under": {
+         "point": 3.5,
+         "price": -108
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 145,
+        "home": -165
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -112
+        },
+        "under": {
+         "point": 3.5,
+         "price": -108
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline.ag"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 133,
+        "home": -180
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 133,
+        "home": -180
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -115
+        },
+        "under": {
+         "point": 3.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 145,
+        "home": -165
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -115
+        },
+        "under": {
+         "point": 3.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -110
+        },
+        "under": {
+         "point": 3.5,
+         "price": -120
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -180
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -110
+        },
+        "under": {
+         "point": 3.5,
+         "price": -120
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -175
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": 137,
+       "home": -166
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -165
+       },
+       "home": {
+        "point": -1.5,
+        "price": 136
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.0,
+        "price": 100
+       },
+       "under": {
+        "point": 7.0,
+        "price": -121
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-26T22:10:39Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -175
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": 147,
+       "home": -179
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -156
+       },
+       "home": {
+        "point": -1.5,
+        "price": 129
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 104
+       },
+       "under": {
+        "point": 7.5,
+        "price": -126
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -113
+        },
+        "under": {
+         "point": 3.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 156,
+        "home": -198
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -113
+        },
+        "under": {
+         "point": 3.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -113
+        },
+        "under": {
+         "point": 3.5,
+         "price": -108
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 142,
+        "home": -175
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -113
+        },
+        "under": {
+         "point": 3.5,
+         "price": -108
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie.ag"
+    }
+   },
+   "checked": "2026-09-27T19:06:14Z",
+   "espn": "401817113",
+   "f5at": "2026-09-27T18:02:48Z",
+   "f5n": 1,
+   "home": 136,
+   "pk": 823084,
+   "providers": [
+    "espn",
+    "the-odds-api"
+   ],
+   "start": "2026-09-27T19:10:00Z",
+   "theAt": {
+    "totals_1st_5_innings": "2026-09-27T19:06:14Z"
+   },
+   "theId": "3d109aae107e7d5306d828f3004dbb9d",
+   "theN": {
+    "totals_1st_5_innings": 1
+   },
+   "theSwapped": false
+  },
+  "823164": {
+   "away": 119,
+   "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -210,
+        "home": 165
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -210,
+        "home": 165
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -200,
+        "home": 174
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -200,
+        "home": 174
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline.ag"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -225,
+        "home": 163
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -225,
+        "home": 163
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -200,
+        "home": 170
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -200,
+        "home": 170
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -220,
+        "home": 165
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -220,
+        "home": 165
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T18:34:38Z",
+      "f5": {
+       "ml": {
+        "away": -215,
+        "home": 165
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": -249,
+       "home": 201
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": -143
+       },
+       "home": {
+        "point": 1.5,
+        "price": 118
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.5,
+        "price": -105
+       },
+       "under": {
+        "point": 8.5,
+        "price": -114
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T08:48:16Z",
+      "f5": {
+       "ml": {
+        "away": -215,
+        "home": 165
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": -259,
+       "home": 208
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": -143
+       },
+       "home": {
+        "point": 1.5,
+        "price": 119
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.0,
+        "price": -108
+       },
+       "under": {
+        "point": 8.0,
+        "price": -111
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -220,
+        "home": 172
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -220,
+        "home": 172
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -212,
+        "home": 170
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -212,
+        "home": 170
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie.ag"
+    }
+   },
+   "checked": "2026-09-27T18:34:38Z",
+   "espn": "401817116",
+   "f5at": "2026-09-27T18:02:48Z",
+   "f5n": 1,
+   "home": 137,
+   "pk": 823164,
+   "providers": [
+    "espn",
+    "the-odds-api"
+   ],
+   "start": "2026-09-27T19:05:00Z",
+   "theId": "25a8aaae97deb4871e535ab5842a6aae",
+   "theSwapped": false
+  },
+  "823246": {
+   "away": 109,
+   "books": {
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "ml": {
+       "away": -156,
+       "home": 129
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 109
+       },
+       "home": {
+        "point": 1.5,
+        "price": -131
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.0,
+        "price": -105
+       },
+       "under": {
+        "point": 8.0,
+        "price": -115
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T08:48:16Z",
+      "ml": {
+       "away": -131,
+       "home": 108
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 134
+       },
+       "home": {
+        "point": 1.5,
+        "price": -162
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.0,
+        "price": -113
+       },
+       "under": {
+        "point": 8.0,
+        "price": -106
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    }
+   },
+   "checked": "2026-09-27T19:06:14Z",
+   "espn": "401817114",
+   "home": 135,
+   "pk": 823246,
+   "providers": [
+    "espn"
+   ],
+   "start": "2026-09-27T19:10:00Z"
+  },
+  "823408": {
+   "away": 139,
+   "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 160,
+        "home": -210
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 160,
+        "home": -210
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 165,
+        "home": -190
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 165,
+        "home": -190
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline.ag"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -182
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -182
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 160,
+        "home": -190
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 160,
+        "home": -190
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 155,
+        "home": -210
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 155,
+        "home": -210
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 165,
+        "home": -215
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": 169,
+       "home": -207
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -136
+       },
+       "home": {
+        "point": -1.5,
+        "price": 113
+       }
+      },
+      "total": {
+       "over": {
+        "point": 6.5,
+        "price": -104
+       },
+       "under": {
+        "point": 6.5,
+        "price": -115
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-26T22:10:39Z",
+      "f5": {
+       "ml": {
+        "away": 165,
+        "home": -215
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": 111,
+       "home": -134
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -206
+       },
+       "home": {
+        "point": -1.5,
+        "price": 169
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 104
+       },
+       "under": {
+        "point": 7.5,
+        "price": -126
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 154,
+        "home": -196
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 154,
+        "home": -196
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 171,
+        "home": -214
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 171,
+        "home": -214
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie.ag"
+    }
+   },
+   "checked": "2026-09-27T18:02:48Z",
+   "espn": "401817108",
+   "f5at": "2026-09-27T18:02:48Z",
+   "f5n": 1,
+   "home": 143,
+   "pk": 823408,
+   "providers": [
+    "espn",
+    "the-odds-api"
+   ],
+   "start": "2026-09-27T18:30:00Z",
+   "theId": "7b589a322a1e421d031d8b1abb24d911",
+   "theSwapped": false
+  },
+  "823490": {
+   "away": 110,
+   "books": {
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T16:59:19Z",
+      "ml": {
+       "away": 100,
+       "home": -120
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -208
+       },
+       "home": {
+        "point": -1.5,
+        "price": 170
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -101
+       },
+       "under": {
+        "point": 7.5,
+        "price": -120
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-26T22:10:39Z",
+      "ml": {
+       "away": 117,
+       "home": -141
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -204
+       },
+       "home": {
+        "point": -1.5,
+        "price": 167
+       }
+      },
+      "total": {
+       "over": {
+        "point": 9.0,
+        "price": 109
+       },
+       "under": {
+        "point": 9.0,
+        "price": -131
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    }
+   },
+   "checked": "2026-09-27T16:59:19Z",
+   "espn": "401817103",
+   "home": 147,
+   "pk": 823490,
+   "providers": [
+    "espn"
+   ],
+   "start": "2026-09-27T17:05:00Z"
+  },
+  "823650": {
+   "away": 140,
+   "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": 103
+        },
+        "under": {
+         "point": 4.5,
+         "price": -123
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": 103
+        },
+        "under": {
+         "point": 4.5,
+         "price": -123
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline.ag"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -110
+        },
+        "under": {
+         "point": 4.5,
+         "price": -120
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -115
+        },
+        "under": {
+         "point": 4.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "ml": {
+       "away": -117,
+       "home": -103
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 141
+       },
+       "home": {
+        "point": 1.5,
+        "price": -171
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.0,
+        "price": -116
+       },
+       "under": {
+        "point": 8.0,
+        "price": -104
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T04:32:26Z",
+      "ml": {
+       "away": -126,
+       "home": 104
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 135
+       },
+       "home": {
+        "point": 1.5,
+        "price": -163
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.0,
+        "price": -118
+       },
+       "under": {
+        "point": 8.0,
+        "price": -102
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -106
+        },
+        "under": {
+         "point": 4.5,
+         "price": -122
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -106
+        },
+        "under": {
+         "point": 4.5,
+         "price": -122
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -104
+        },
+        "under": {
+         "point": 4.5,
+         "price": -117
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -101
+        },
+        "under": {
+         "point": 4.5,
+         "price": -121
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie.ag"
+    }
+   },
+   "checked": "2026-09-27T19:06:14Z",
+   "espn": "401817112",
+   "f5at": "2026-09-27T18:02:48Z",
+   "f5n": 1,
+   "home": 142,
+   "pk": 823650,
+   "providers": [
+    "espn",
+    "the-odds-api"
+   ],
+   "start": "2026-09-27T19:10:00Z",
+   "theAt": {
+    "totals_1st_5_innings": "2026-09-27T19:06:14Z"
+   },
+   "theId": "b399c26bfec19fedbe59553718bf1c7a",
+   "theN": {
+    "totals_1st_5_innings": 1
+   },
+   "theSwapped": false
+  },
+  "823731": {
+   "away": 138,
+   "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 170,
+        "home": -220
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 170,
+        "home": -220
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 192,
+        "home": -230
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 189,
+        "home": -225
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline.ag"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 185,
+        "home": -250
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 180,
+        "home": -240
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 190,
+        "home": -230
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 185,
+        "home": -225
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 190,
+        "home": -260
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 190,
+        "home": -260
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 180,
+        "home": -238
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": 178,
+       "home": -218
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -125
+       },
+       "home": {
+        "point": -1.5,
+        "price": 104
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.0,
+        "price": -119
+       },
+       "under": {
+        "point": 7.0,
+        "price": -101
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-26T22:10:39Z",
+      "f5": {
+       "ml": {
+        "away": 175,
+        "home": -230
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": 188,
+       "home": -231
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -119
+       },
+       "home": {
+        "point": -1.5,
+        "price": -102
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.0,
+        "price": 100
+       },
+       "under": {
+        "point": 7.0,
+        "price": -120
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 180,
+        "home": -230
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 180,
+        "home": -230
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 195,
+        "home": -246
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 195,
+        "home": -246
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie.ag"
+    }
+   },
+   "checked": "2026-09-27T19:06:14Z",
+   "espn": "401817111",
+   "f5at": "2026-09-27T18:02:48Z",
+   "f5n": 1,
+   "home": 158,
+   "pk": 823731,
+   "providers": [
+    "espn",
+    "the-odds-api"
+   ],
+   "start": "2026-09-27T19:10:00Z",
+   "theAt": {
+    "h2h_1st_5_innings": "2026-09-27T19:06:14Z"
+   },
+   "theId": "f8c336fa447564a17616c2127dc61bf7",
+   "theN": {
+    "h2h_1st_5_innings": 1
+   },
+   "theSwapped": false
+  },
+  "823814": {
+   "away": 144,
+   "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 105,
+        "home": -135
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": 100
+        },
+        "under": {
+         "point": 4.5,
+         "price": -130
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 105,
+        "home": -135
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -102
+        },
+        "under": {
+         "point": 4.5,
+         "price": -130
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -120
+        },
+        "under": {
+         "point": 4.0,
+         "price": 100
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -128
+        },
+        "under": {
+         "point": 4.0,
+         "price": 108
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline.ag"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 102,
+        "home": -136
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 102,
+        "home": -136
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -120
+        },
+        "under": {
+         "point": 4.0,
+         "price": -110
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -130
+        },
+        "under": {
+         "point": 4.0,
+         "price": 100
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 100,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": 100
+        },
+        "under": {
+         "point": 4.5,
+         "price": -130
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 100,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 100,
+        "home": -130
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": 105,
+       "home": -126
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -199
+       },
+       "home": {
+        "point": -1.5,
+        "price": 163
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.0,
+        "price": -107
+       },
+       "under": {
+        "point": 8.0,
+        "price": -113
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-26T22:10:39Z",
+      "f5": {
+       "ml": {
+        "away": 100,
+        "home": -130
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": -110,
+       "home": -110
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 158
+       },
+       "home": {
+        "point": 1.5,
+        "price": -192
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.5,
+        "price": -120
+       },
+       "under": {
+        "point": 8.5,
+        "price": 100
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 114,
+        "home": -142
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": 100
+        },
+        "under": {
+         "point": 4.5,
+         "price": -130
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 114,
+        "home": -142
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": 100
+        },
+        "under": {
+         "point": 4.5,
+         "price": -130
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 108,
+        "home": -132
+       },
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -122
+        },
+        "under": {
+         "point": 4.0,
+         "price": 100
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -106,
+        "home": -115
+       },
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -125
+        },
+        "under": {
+         "point": 4.0,
+         "price": 102
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie.ag"
+    }
+   },
+   "checked": "2026-09-27T19:06:14Z",
+   "espn": "401817102",
+   "f5at": "2026-09-27T18:02:48Z",
+   "f5n": 1,
+   "home": 146,
+   "pk": 823814,
+   "providers": [
+    "espn",
+    "the-odds-api"
+   ],
+   "start": "2026-09-27T19:10:00Z",
+   "theAt": {
+    "h2h_1st_5_innings": "2026-09-27T19:06:14Z",
+    "totals_1st_5_innings": "2026-09-27T19:06:14Z"
+   },
+   "theId": "f4a70a1cc28098ce3bd4a521555ad809",
+   "theN": {
+    "h2h_1st_5_innings": 1,
+    "totals_1st_5_innings": 1
+   },
+   "theSwapped": false
+  },
+  "824055": {
+   "away": 114,
+   "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -110,
+        "home": -110
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -110,
+        "home": -110
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline.ag"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -132,
+        "home": 100
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -129,
+        "home": -103
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -120,
+        "home": -110
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -120,
+        "home": -110
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -115
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": -109,
+       "home": -111
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 145
+       },
+       "home": {
+        "point": 1.5,
+        "price": -176
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.0,
+        "price": -115
+       },
+       "under": {
+        "point": 8.0,
+        "price": -105
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T04:32:26Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -115
+       },
+       "total": {}
+      },
+      "ml": {
+       "away": -149,
+       "home": 123
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 113
+       },
+       "home": {
+        "point": 1.5,
+        "price": -136
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.5,
+        "price": -110
+       },
+       "under": {
+        "point": 8.5,
+        "price": -110
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -112,
+        "home": -112
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -114,
+        "home": -112
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -118,
+        "home": -104
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -117,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie.ag"
+    }
+   },
+   "checked": "2026-09-27T19:06:14Z",
+   "espn": "401817109",
+   "f5at": "2026-09-27T18:02:48Z",
+   "f5n": 1,
+   "home": 118,
+   "pk": 824055,
+   "providers": [
+    "espn",
+    "the-odds-api"
+   ],
+   "start": "2026-09-27T19:10:00Z",
+   "theAt": {
+    "h2h_1st_5_innings": "2026-09-27T19:06:14Z"
+   },
+   "theId": "145cdebdd889acf475c53aec610bd845",
+   "theN": {
+    "h2h_1st_5_innings": 1
+   },
+   "theSwapped": false
+  },
+  "824217": {
+   "away": 134,
+   "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -118,
+        "home": -105
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -140
+        },
+        "under": {
+         "point": 5.5,
+         "price": 105
+        }
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -130
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -130
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -118,
+        "home": -105
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -140
+        },
+        "under": {
+         "point": 5.5,
+         "price": 105
+        }
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -130
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -130
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -113,
+        "home": -107
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -145
+        },
+        "under": {
+         "point": 5.5,
+         "price": 111
+        }
+       },
+       "river ryan": {
+        "over": {
+         "point": 2.5,
+         "price": -106
+        },
+        "under": {
+         "point": 2.5,
+         "price": -122
+        }
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -132
+        },
+        "under": {
+         "point": 3.5,
+         "price": 102
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -125
+        },
+        "under": {
+         "point": 3.5,
+         "price": -105
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -113,
+        "home": -107
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -145
+        },
+        "under": {
+         "point": 5.5,
+         "price": 111
+        }
+       },
+       "river ryan": {
+        "over": {
+         "point": 2.5,
+         "price": -106
+        },
+        "under": {
+         "point": 2.5,
+         "price": -122
+        }
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -132
+        },
+        "under": {
+         "point": 3.5,
+         "price": 102
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -125
+        },
+        "under": {
+         "point": 3.5,
+         "price": -105
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline.ag"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -110,
+        "home": -120
+       },
+       "total": {}
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -121
+        },
+        "under": {
+         "point": 3.5,
+         "price": -106
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -114
+        },
+        "under": {
+         "point": 3.5,
+         "price": -112
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -110,
+        "home": -120
+       },
+       "total": {}
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -121
+        },
+        "under": {
+         "point": 3.5,
+         "price": -106
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -114
+        },
+        "under": {
+         "point": 3.5,
+         "price": -112
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -120,
+        "home": -110
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -145
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -135
+        },
+        "under": {
+         "point": 3.5,
+         "price": 105
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -130
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -120,
+        "home": -110
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -145
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -135
+        },
+        "under": {
+         "point": 3.5,
+         "price": 105
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -130
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -120,
+        "home": -110
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -126
+        },
+        "under": {
+         "point": 5.5,
+         "price": -101
+        }
+       },
+       "river ryan": {
+        "over": {
+         "point": 2.5,
+         "price": -107
+        },
+        "under": {
+         "point": 2.5,
+         "price": -119
+        }
+       }
+      },
+      "ml": {
+       "away": 101,
+       "home": -122
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 160
+       },
+       "home": {
+        "point": 1.5,
+        "price": -196
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.0,
+        "price": -104
+       },
+       "under": {
+        "point": 8.0,
+        "price": -116
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -135
+        },
+        "under": {
+         "point": 3.5,
+         "price": 105
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -130
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-26T22:10:39Z",
+      "f5": {
+       "ml": {
+        "away": -120,
+        "home": -110
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -126
+        },
+        "under": {
+         "point": 5.5,
+         "price": -101
+        }
+       },
+       "river ryan": {
+        "over": {
+         "point": 2.5,
+         "price": -107
+        },
+        "under": {
+         "point": 2.5,
+         "price": -119
+        }
+       }
+      },
+      "ml": {
+       "away": -136,
+       "home": 113
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 123
+       },
+       "home": {
+        "point": 1.5,
+        "price": -149
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.5,
+        "price": 100
+       },
+       "under": {
+        "point": 8.5,
+        "price": -120
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -135
+        },
+        "under": {
+         "point": 3.5,
+         "price": 105
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -130
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -116,
+        "home": -108
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -140
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -132
+        },
+        "under": {
+         "point": 3.5,
+         "price": 104
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -128
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -116,
+        "home": -108
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -140
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      },
+      "tt": {
+       "away": {
+        "over": {
+         "point": 3.5,
+         "price": -132
+        },
+        "under": {
+         "point": 3.5,
+         "price": 104
+        }
+       },
+       "home": {
+        "over": {
+         "point": 3.5,
+         "price": -128
+        },
+        "under": {
+         "point": 3.5,
+         "price": 100
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": -116,
+        "home": -105
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -147
+        },
+        "under": {
+         "point": 5.5,
+         "price": 106
+        }
+       },
+       "river ryan": {
+        "over": {
+         "point": 2.5,
+         "price": -110
+        },
+        "under": {
+         "point": 2.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": -116,
+        "home": -105
+       },
+       "total": {}
+      },
+      "k": {
+       "jared jones": {
+        "over": {
+         "point": 5.5,
+         "price": -147
+        },
+        "under": {
+         "point": 5.5,
+         "price": 106
+        }
+       },
+       "river ryan": {
+        "over": {
+         "point": 2.5,
+         "price": -110
+        },
+        "under": {
+         "point": 2.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie.ag"
+    }
+   },
+   "checked": "2026-09-27T19:06:14Z",
+   "espn": "401817107",
+   "f5at": "2026-09-27T18:02:48Z",
+   "f5n": 1,
+   "home": 116,
+   "pk": 824217,
+   "providers": [
+    "espn",
+    "the-odds-api"
+   ],
+   "start": "2026-09-27T19:10:00Z",
+   "theAt": {
+    "pitcher_strikeouts": "2026-09-27T19:06:14Z",
+    "team_totals": "2026-09-27T19:06:14Z"
+   },
+   "theId": "f55ce2717fb90929c3519929cc3263f0",
+   "theN": {
+    "pitcher_strikeouts": 1,
+    "team_totals": 1
+   },
+   "theSwapped": false
+  },
+  "824542": {
+   "away": 115,
+   "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "anthony kay": {
+        "over": {
+         "point": 3.5,
+         "price": -105
+        },
+        "under": {
+         "point": 3.5,
+         "price": -125
+        }
+       },
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -145
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "anthony kay": {
+        "over": {
+         "point": 3.5,
+         "price": -105
+        },
+        "under": {
+         "point": 3.5,
+         "price": -125
+        }
+       },
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -145
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -155
+       },
+       "total": {}
+      },
+      "k": {
+       "anthony kay": {
+        "over": {
+         "point": 3.5,
+         "price": 110
+        },
+        "under": {
+         "point": 3.5,
+         "price": -143
+        }
+       },
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 124
+        },
+        "under": {
+         "point": 4.5,
+         "price": -161
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -155
+       },
+       "total": {}
+      },
+      "k": {
+       "anthony kay": {
+        "over": {
+         "point": 3.5,
+         "price": 110
+        },
+        "under": {
+         "point": 3.5,
+         "price": -143
+        }
+       },
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 124
+        },
+        "under": {
+         "point": 4.5,
+         "price": -161
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline.ag"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 116,
+        "home": -155
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 116,
+        "home": -157
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -155
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -155
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 125,
+        "home": -165
+       },
+       "total": {}
+      },
+      "k": {
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 120
+        },
+        "under": {
+         "point": 4.5,
+         "price": -160
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 125,
+        "home": -165
+       },
+       "total": {}
+      },
+      "k": {
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 120
+        },
+        "under": {
+         "point": 4.5,
+         "price": -160
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -166
+       },
+       "total": {}
+      },
+      "k": {
+       "anthony kay": {
+        "over": {
+         "point": 3.5,
+         "price": 101
+        },
+        "under": {
+         "point": 3.5,
+         "price": -128
+        }
+       },
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 128
+        },
+        "under": {
+         "point": 4.5,
+         "price": -164
+        }
+       }
+      },
+      "ml": {
+       "away": 135,
+       "home": -163
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -155
+       },
+       "home": {
+        "point": -1.5,
+        "price": 128
+       }
+      },
+      "total": {
+       "over": {
+        "point": 8.5,
+        "price": -105
+       },
+       "under": {
+        "point": 8.5,
+        "price": -115
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-26T22:10:39Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -166
+       },
+       "total": {}
+      },
+      "k": {
+       "anthony kay": {
+        "over": {
+         "point": 3.5,
+         "price": 101
+        },
+        "under": {
+         "point": 3.5,
+         "price": -128
+        }
+       },
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 128
+        },
+        "under": {
+         "point": 4.5,
+         "price": -164
+        }
+       }
+      },
+      "ml": {
+       "away": 180,
+       "home": -221
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -112
+       },
+       "home": {
+        "point": -1.5,
+        "price": -107
+       }
+      },
+      "total": {
+       "over": {
+        "point": 9.0,
+        "price": 109
+       },
+       "under": {
+        "point": 9.0,
+        "price": -131
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 126,
+        "home": -158
+       },
+       "total": {}
+      },
+      "k": {
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 124
+        },
+        "under": {
+         "point": 4.5,
+         "price": -160
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 126,
+        "home": -158
+       },
+       "total": {}
+      },
+      "k": {
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 124
+        },
+        "under": {
+         "point": 4.5,
+         "price": -160
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-27T19:06:14Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -166
+       },
+       "total": {}
+      },
+      "k": {
+       "anthony kay": {
+        "over": {
+         "point": 3.5,
+         "price": 105
+        },
+        "under": {
+         "point": 3.5,
+         "price": -145
+        }
+       },
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 117
+        },
+        "under": {
+         "point": 4.5,
+         "price": -163
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T18:02:48Z",
+      "f5": {
+       "ml": {
+        "away": 135,
+        "home": -166
+       },
+       "total": {}
+      },
+      "k": {
+       "anthony kay": {
+        "over": {
+         "point": 3.5,
+         "price": 105
+        },
+        "under": {
+         "point": 3.5,
+         "price": -145
+        }
+       },
+       "kyle freeland": {
+        "over": {
+         "point": 4.5,
+         "price": 117
+        },
+        "under": {
+         "point": 4.5,
+         "price": -163
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie.ag"
+    }
+   },
+   "checked": "2026-09-27T19:06:14Z",
+   "espn": "401817110",
+   "f5at": "2026-09-27T18:02:48Z",
+   "f5n": 1,
+   "home": 145,
+   "pk": 824542,
+   "providers": [
+    "espn",
+    "the-odds-api"
+   ],
+   "start": "2026-09-27T19:10:00Z",
+   "theAt": {
+    "h2h_1st_5_innings": "2026-09-27T19:06:14Z",
+    "pitcher_strikeouts": "2026-09-27T19:06:14Z"
+   },
+   "theId": "febfe492bcd191327b90c25777e21db4",
+   "theN": {
+    "h2h_1st_5_innings": 1,
+    "pitcher_strikeouts": 1
+   },
+   "theSwapped": false
+  },
+  "824705": {
+   "away": 112,
+   "books": {
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T18:18:48Z",
+      "ml": {
+       "away": -117,
+       "home": -103
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 144
+       },
+       "home": {
+        "point": 1.5,
+        "price": -174
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -105
+       },
+       "under": {
+        "point": 7.5,
+        "price": -114
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T08:48:16Z",
+      "ml": {
+       "away": -124,
+       "home": 103
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": 135
+       },
+       "home": {
+        "point": 1.5,
+        "price": -164
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -114
+       },
+       "under": {
+        "point": 7.5,
+        "price": -106
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    }
+   },
+   "checked": "2026-09-27T18:18:48Z",
+   "espn": "401817089",
+   "home": 111,
+   "pk": 824705,
+   "providers": [
+    "espn"
+   ],
+   "start": "2026-09-27T19:05:00Z"
+  },
+  "824948": {
+   "away": 117,
+   "books": {
+    "draftkings": {
+     "last": {
+      "at": "2026-09-27T18:34:38Z",
+      "ml": {
+       "away": -200,
+       "home": 164
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": -127
+       },
+       "home": {
+        "point": 1.5,
+        "price": 105
+       }
+      },
+      "total": {
+       "over": {
+        "point": 10.5,
+        "price": -105
+       },
+       "under": {
+        "point": 10.5,
+        "price": -115
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-27T08:48:16Z",
+      "ml": {
+       "away": -168,
+       "home": 139
+      },
+      "rl": {
+       "away": {
+        "point": -1.5,
+        "price": -107
+       },
+       "home": {
+        "point": 1.5,
+        "price": -112
+       }
+      },
+      "total": {
+       "over": {
+        "point": 9.5,
+        "price": -102
+       },
+       "under": {
+        "point": 9.5,
+        "price": -118
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    }
+   },
+   "checked": "2026-09-27T18:34:38Z",
+   "espn": "401817115",
+   "home": 133,
+   "pk": 824948,
+   "providers": [
+    "espn"
+   ],
+   "start": "2026-09-27T19:05:00Z"
+  }
+ }
+}
