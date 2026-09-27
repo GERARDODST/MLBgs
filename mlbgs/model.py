@@ -1508,7 +1508,8 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
         "hasOdds": odds is not None, "nBooks": odds["nBooks"] if odds else 0, "books": books,
         "nMx": odds["nMx"] if odds else 0, "provider": odds.get("provider") if odds else None,
         "checked": odds.get("checked") if odds else None, "closed": odds.get("closed") if odds else None,
-        "ref": ({"ml": odds["refMl"], "rl": odds["refRl"], "total": odds["refTotal"], "rlPoint": odds["rlPoint"]}
+        "ref": ({"ml": odds["refMl"], "rl": odds["refRl"], "total": odds["refTotal"], "rlPoint": odds["rlPoint"],
+                 "f5": odds.get("refF5") or {}, "f5total": odds.get("refF5Total") or {}}
                 if odds else None),
         "best": ({"ml": odds["bestMl"], "rl": odds["bestRl"], "total": odds["bestTotal"]} if odds else None),
         "value": value[:12], "fair": fair, "edgeMin": EDGE_MIN,

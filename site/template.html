@@ -1151,7 +1151,8 @@
   function ocBook(g) {
     const books = g.sections.s7.books || [];
     const want = store.get("mlbgs-odds-book");
-    return books.find((b) => b.key === want || b.book === want) || books[0] || null;
+    const main = (b) => isNum(b.mlAway) || isNum(b.mlHome) || b.over;      // casa con ML o total (no solo F5)
+    return books.find((b) => (b.key === want || b.book === want) && main(b)) || books.find(main) || books[0] || null;
   }
   function ocProb(g, pick) {
     const r = (g.sections.s7.fair || []).find((x) => x.pick === pick);
@@ -1208,7 +1209,7 @@
       return `<td class="c num${isNum(pr) && Math.abs(decOfAm(pr) - bestOf[i]) < 0.005 ? " bestp" : ""}">${isNum(pr) ? `${pt}${d2(pr)}${mvArrow(pr, was(x))}` : "—"}</td>`;
     }).join("")}</tr>`).join("")}</tbody></table></div>`;
     return `<section class="oc" data-oc="${g.pk}">
-      <div class="oc-head"><h2>Momios</h2><span class="tag info">${esc(S.provider || "API")} · ${S.nBooks} casa${S.nBooks === 1 ? "" : "s"}${S.nMx ? ` · ${S.nMx} en México` : ""}</span><span class="st">${esc(st)}</span></div>
+      <div class="oc-head"><h2>Momios</h2><span class="tag info">${esc(S.provider || "API")} · ${(S.books || []).length} casa${(S.books || []).length === 1 ? "" : "s"}${S.nMx ? ` · ${S.nMx} en México` : ""}</span><span class="st">${esc(st)}</span></div>
       <div class="chips" role="group" aria-label="Casa de apuestas">${chips}</div>
       ${b ? `<div class="oc-mk"><span class="lbl">Ganador</span>${ocBox(g, a, "visita", b.mlAway, o.mlAway, a)}${ocBox(g, h, "local", b.mlHome, o.mlHome, h)}</div>
       <div class="oc-mk"><span class="lbl">Run line</span>${ocBox(g, `${a} ${rl(b.rlAway)}`, "hándicap", b.rlAway, o.rlAway, b.rlAway ? `${a} ${ptTxt(b.rlAway)}` : null)}${ocBox(g, `${h} ${rl(b.rlHome)}`, "hándicap", b.rlHome, o.rlHome, b.rlHome ? `${h} ${ptTxt(b.rlHome)}` : null)}</div>
@@ -1399,9 +1400,12 @@
   const candPicks = (g) => { const lab = LAB_BY_PK[String(g.pk)]; return ((lab ? lab.picks : g.picks) || []).slice().sort((x, y) => y.ic - x.ic); };
 
   // de dónde sale el momio de referencia de un pick (mediana de las casas MX del feed)
-  function refLabel(g, pick) {
-    const r = (g.sections.s7 || {}).ref;
-    const all = r ? [...Object.values(r.ml || {}), ...Object.values(r.rl || {}), ...Object.values(r.total || {})].filter(Boolean) : [];
+  function refLabel(g, p) {
+    const r = (g.sections.s7 || {}).ref || {};
+    const mk = p && p.market;
+    const src = mk === "F5 Moneyline" ? r.f5 : mk === "F5 total" || mk === "Total primeras 5" ? r.f5total
+      : mk === "Run Line" ? r.rl : mk === "Total completo" ? r.total : r.ml;
+    const all = Object.values(src || {}).filter(Boolean);
     const who = all.length ? all[0][1] : null;
     return who ? `mercado: ${who}` : "mercado";
   }
@@ -1431,7 +1435,7 @@
     let b = p ? bestOdds(g.pk, p.pick) : null;
     if (!b && p && p.priceIsReal && isNum(p.price)) {      // feed de momios: la mediana de las casas MX (ver sección 7)
       const raw = String(Math.round(p.price)), o = parseOdds(raw);
-      if (o) b = { o, raw, book: refLabel(g, p.pick), api: true };
+      if (o) b = { o, raw, book: refLabel(g, p), api: true };
     }
     const s = b && p ? stakeFor(p, b.raw) : null;
     const rules = s ? s.level : p && p.stake ? p.stake.level || 0 : 0;      // lo que permiten las reglas con tu momio o con el IC

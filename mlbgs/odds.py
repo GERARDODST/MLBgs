@@ -24,6 +24,7 @@ americanos) más `pk`, `provider` y, por casa, `mx` y `open`, para que model.ind
 from __future__ import annotations
 
 import datetime as dt
+import re
 import json
 import os
 import urllib.error
@@ -205,8 +206,13 @@ def rows_from_the(ev: dict, tid) -> dict:
         if f5["ml"] or f5["total"]:
             row["f5"] = f5
         if row["ml"] or row["rl"] or row["total"] or row.get("f5"):
-            out[bk.get("key") or bk.get("title")] = dict(row, title=bk.get("title") or bk.get("key"))
+            out[bk.get("key") or bk.get("title")] = dict(row, title=short_title(bk.get("title") or bk.get("key")))
     return out
+
+
+def short_title(t) -> str:
+    """Nombre corto de la casa: BetOnline.ag → BetOnline, MyBookie.ag → MyBookie."""
+    return re.sub(r"\.(ag|com|eu|lv)$", "", str(t or ""), flags=re.I)
 
 
 def flip(row: dict) -> dict:
@@ -683,7 +689,7 @@ def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None
             name = lambda i: (teams.get(int(i)) or {}).get("name") or str(i)  # noqa: E731
             books = []
             for bk, b in sorted(e["books"].items(), key=lambda kv: (not kv[1].get("mx"), kv[1].get("title") or kv[0])):
-                books.append({"key": bk, "title": b.get("title") or bk, "mx": bool(b.get("mx")),
+                books.append({"key": bk, "title": short_title(b.get("title") or bk), "mx": bool(b.get("mx")),
                               "last_update": b["last"].get("at"), "markets": _markets(b["last"], name(g["away"]), name(g["home"])),
                               "open": {k: b["open"].get(k) or {} for k in MARKET_KEYS}, "openAt": b["open"].get("at")})
             start = _ts(e.get("start"))
