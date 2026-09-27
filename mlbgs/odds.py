@@ -443,6 +443,20 @@ def net_mx_books(get) -> list[str]:
     return sorted(set(out))
 
 
+def probe_summary(items: list[dict], day: str, event_id: str) -> dict:
+    """Qué trae un partido completo de odds-api.net (sin filtros): mercados, periodos y casas. Sirve para saber
+    si hay F5 (primeras 5 entradas) y cómo lo nombra la API antes de usarlo."""
+    combos, books, samples = {}, set(), {}
+    for it in items:
+        key = "|".join(str(it.get(k) if it.get(k) is not None else "") for k in ("type", "market_key", "period", "period_str"))
+        combos[key] = combos.get(key, 0) + 1
+        books.add(it.get("bookmaker"))
+        if str(it.get("period")) not in ("0", "None", "") and key not in samples:
+            samples[key] = {k: it.get(k) for k in ("bookmaker", "selection_key", "selection_name", "line", "side", "odds")}
+    return {"day": day, "event": event_id, "items": len(items), "books": sorted(b for b in books if b),
+            "combos": dict(sorted(combos.items(), key=lambda kv: -kv[1])[:60]), "samples": samples}
+
+
 def net_snapshot(get, event_id: str) -> list[dict]:
     return _pages(get, f"/events/{urllib.parse.quote(str(event_id))}/odds/snapshot",
                   types="moneyline,handicap,total", periods="0", price_fields="odds", limit=2000)
@@ -510,6 +524,10 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
                     usage["mx"] = {"day": budget.day, "books": net_mx_books(get)}
                 except Exception as e:  # noqa: BLE001 - sin la lista, las casas solo no llevan la marca MX
                     log(f"odds: lista MX no disponible ({e})")
+                try:                   # créditos usados y límite del plan (una vez al día)
+                    usage["netUsage"] = dict(get("/usage") or {}, day=budget.day)
+                except Exception as e:  # noqa: BLE001
+                    log(f"odds: uso del plan no disponible ({e})")
             mx = set((usage.get("mx") or {}).get("books") or [])
             if any(not entry(g).get("event") for g in todo):
                 t0 = min(_ts(g["time"]) for g in todo) - dt.timedelta(hours=MATCH_HOURS)
@@ -517,6 +535,13 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
                 for pk, (ev, sw) in match(todo, net_events(get, t0, t1), tid).items():
                     g = next(x for x in todo if x["pk"] == pk)
                     entry(g).update({"event": str(ev["event_id"]), "swapped": sw})
+            probe = next((entry(g)["event"] for g in todo if entry(g).get("event")), None)
+            if probe and (usage.get("netProbe") or {}).get("day") != budget.day and budget.ok():
+                try:                   # un partido completo, sin filtros, una vez al día: qué mercados y periodos trae
+                    usage["netProbe"] = probe_summary(_pages(get, f"/events/{urllib.parse.quote(probe)}/odds/snapshot",
+                                                             price_fields="odds", limit=2000), budget.day, probe)
+                except Exception as e:  # noqa: BLE001
+                    log(f"odds: muestra completa no disponible ({e})")
             for g in todo:
                 e = entry(g)
                 if not e.get("event"):

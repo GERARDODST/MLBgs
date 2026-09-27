@@ -71,6 +71,8 @@ class FakeNet:
         if path == "/bookmakers":
             return {"items": [{"bookmaker": "codere", "country_codes": ["MX", "ES"]},
                               {"bookmaker": "bet365", "country_codes": ["MX", "UK"]}]}
+        if path == "/usage":
+            return {"plan": "free", "api_credits_used": 12, "api_credits_limit": 1000, "exceeded": False}
         if path == "/events":
             return {"items": [e for e in self.events if int(q["start_from"]) <= e["start_time"] <= int(q["start_to"])],
                     "next_cursor": None, "count": 3}
@@ -117,9 +119,15 @@ class MomiosOddsApiNet(unittest.TestCase):
         self.assertEqual(st["refreshed"], 3)
         paths = [c[0] for c in self.api.calls]
         self.assertEqual(paths.count("/v1/events"), 1)
-        self.assertEqual(sum(p.endswith("/odds/snapshot") for p in paths), 3)
+        snaps = [c for c in self.api.calls if c[0].endswith("/odds/snapshot")]
+        self.assertEqual(sum(1 for c in snaps if c[1].get("periods") == "0"), 3)     # uno por partido
+        self.assertEqual(sum(1 for c in snaps if "periods" not in c[1]), 1)           # la muestra completa del día
+        u = O.load_usage(self.dir)
+        self.assertEqual(u["netUsage"]["api_credits_limit"], 1000)
+        self.assertIn("pinnacle", u["netProbe"]["books"])
+        self.assertTrue(any(k.startswith("moneyline|moneyline|0") for k in u["netProbe"]["combos"]))
         self.assertTrue(all(c[2].get("X-API-Key") == "clave-de-prueba" for c in self.api.calls))
-        snap = next(c for c in self.api.calls if c[0].endswith("/odds/snapshot"))[1]
+        snap = next(c for c in self.api.calls if c[0].endswith("/odds/snapshot") and "periods" in c[1])[1]
         self.assertEqual(snap["types"], "moneyline,handicap,total")
         day = O.load_day("2026-09-23", self.dir)
         # doble cartelera: cada juego con su evento según la hora
