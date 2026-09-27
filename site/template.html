@@ -63,7 +63,8 @@
   .wrap { max-width: 1120px; margin: 0 auto; padding-inline: max(16px, 3vw); }
 
   /* barra superior */
-  .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in oklab, var(--ground) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+  .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--ground); border-bottom: 1px solid var(--border); }
+  .topbar.scrolled { box-shadow: 0 6px 14px -12px rgba(21, 32, 43, 0.45); }
   .topbar .wrap { display: flex; align-items: center; gap: 18px; padding-block: 10px; flex-wrap: wrap; }
   .brand { display: flex; align-items: center; gap: 8px; color: var(--ink); text-decoration: none; }
   .brand:hover { text-decoration: none; }
@@ -75,7 +76,18 @@
   nav.tabs a:hover { color: var(--ink); text-decoration: none; background: var(--surface-2); }
   nav.tabs a[aria-current="page"] { color: var(--ink); background: var(--surface); box-shadow: inset 0 -2px 0 var(--accent); }
   .stamp { margin-left: auto; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
-  @media (max-width: 640px) { .stamp { display: none; } nav.tabs { flex-wrap: nowrap; overflow-x: auto; width: 100%; scrollbar-width: none; } nav.tabs a { white-space: nowrap; flex: none; } .topbar .wrap { gap: 6px; } }
+  @media (min-width: 641px) { .topbar .wrap { gap: 6px 18px; } .stamp { order: 2; } nav.tabs { order: 3; flex-basis: 100%; margin-inline: -10px; } }
+  @media (max-width: 640px) {
+    .stamp { display: none; }
+    .topbar .wrap { flex-wrap: nowrap; gap: 8px; padding-block: 8px; }
+    .brand b { font-size: 22px; } .brand svg { width: 22px; height: 22px; }
+    nav.tabs { flex: 1 1 auto; min-width: 0; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+    nav.tabs.at-end { -webkit-mask-image: none; mask-image: none; }
+    nav.tabs::-webkit-scrollbar { display: none; }
+    nav.tabs a { white-space: nowrap; flex: none; font-size: 15.5px; padding: 4px 8px; }
+  }
+  /* los destinos de los saltos quedan debajo de la barra fija (y de la barra de secciones del partido) */
+  main [id], main details.sec { scroll-margin-top: calc(var(--topbar-h, 58px) + 58px); }
 
   main { padding-block: 22px 56px; display: flex; flex-direction: column; gap: 26px; }
   .eyebrow { font-family: var(--display); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
@@ -646,7 +658,7 @@
   /* picks de la tarjeta: momio actual del mercado (con su casa) y el momio recomendado */
   .p2.pr { grid-template-columns: auto minmax(0, 1fr) 66px 84px; align-items: center; gap: 4px 8px; }
   .pr-h { display: grid; grid-template-columns: minmax(0, 1fr) 66px 84px; gap: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; color: var(--muted); }
-  .pr-h span:first-child { visibility: hidden; }
+  .pr-h > span:first-child { visibility: hidden; }
   .pr-h span, .po-live, .po-rec { text-align: center; }
   .p2.pr .t { display: flex; flex-direction: column; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; }
   .p2.pr .t small { font-size: 11.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -709,6 +721,83 @@
   .notice.started { border-color: var(--rojo-soft); }
   .notice.started .ic { background: var(--rojo-soft); color: var(--rojo); font-size: 10px; }
   @media (prefers-reduced-motion: no-preference) { .game, .ticket, .chip, nav.tabs a { transition: border-color .15s, background .15s, color .15s; } }
+
+  /* textos de ayuda plegables: la página abre en los datos, la explicación queda a un toque */
+  details.note-d { border: 1px solid var(--border); background: var(--surface); border-radius: 10px; font-size: 14px; }
+  details.note-d > summary { cursor: pointer; list-style: none; display: flex; gap: 10px; align-items: center; padding: 9px 14px; }
+  details.note-d > summary::-webkit-details-marker, details.fold > summary::-webkit-details-marker, details.howto > summary::-webkit-details-marker { display: none; }
+  details.note-d > summary .ic { flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 13px; background: var(--verde-soft); color: var(--verde); }
+  details.note-d > summary .more, details.fold > summary .more { margin-left: auto; font-size: 12.5px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+  details.note-d > summary .more::after, details.fold > summary .more::after { content: " ▾"; }
+  details[open].note-d > summary .more::after, details[open].fold > summary .more::after { content: " ▴"; }
+  details.note-d > div { padding: 0 14px 11px 44px; color: var(--ink-2); }
+  details.howto > summary { cursor: pointer; list-style: none; display: inline-flex; gap: 6px; align-items: center; font-size: 13.5px; font-weight: 600; color: var(--accent); }
+  details.howto > summary::before { content: "?"; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 11.5px; font-weight: 700; background: var(--accent-soft); }
+  details.howto > .note { margin-top: 6px; }
+  details.fold { border: 1px solid var(--border); background: var(--surface); border-radius: 12px; padding: 0 16px; }
+  details.fold > summary { cursor: pointer; list-style: none; display: flex; gap: 4px 12px; align-items: baseline; flex-wrap: wrap; padding-block: 12px; }
+  details.fold > summary h2 { font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: 0.01em; }
+  details.fold > summary .st { font-size: 13px; color: var(--muted); }
+  details[open].fold { padding-bottom: 14px; }
+  details[open].fold > summary { border-bottom: 1px solid var(--grid); margin-bottom: 12px; }
+  details.fold > :not(summary) + :not(summary) { margin-top: 10px; }
+
+  /* filtros en una fila deslizable en el celular */
+  @media (max-width: 640px) {
+    .chips.scroll, .subnav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; max-width: 100%; padding-bottom: 2px; -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 24px), transparent); }
+    .chips.scroll::-webkit-scrollbar, .subnav::-webkit-scrollbar { display: none; }
+    .chips.scroll .chip, .subnav a { flex: none; white-space: nowrap; }
+  }
+
+  /* cadena de la decisión en poco espacio: cuatro pasos como barra de avance (el detalle queda en el tooltip y en el partido) */
+  .chain-box { container-type: inline-size; min-width: 0; }
+  @container (max-width: 520px) {
+    .chain { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; }
+    .chain .ch-arr { display: none; }
+    .ch-step { display: flex; flex-direction: column; align-items: stretch; gap: 3px; border: 0; padding: 0; background: none; border-radius: 0; }
+    .ch-step::before { content: ""; height: 5px; border-radius: 3px; background: var(--grid); }
+    .ch-step.on::before { background: var(--verde); }
+    .ch-step.wait::before { background: repeating-linear-gradient(90deg, var(--amarillo) 0 6px, transparent 6px 9px); }
+    .ch-step.warn::before { background: var(--rojo); }
+    .ch-step.off::before { background: var(--gris); opacity: 0.55; }
+    .ch-step i { font-size: 9.5px; letter-spacing: 0.04em; overflow: hidden; text-overflow: ellipsis; }
+    .ch-step b { display: none; }
+  }
+  .game .chain-box { border-top: 1px solid var(--grid); padding-top: 8px; }
+  .game .chain { border-top: 0; padding-top: 0; }
+
+  /* barra de secciones del partido: fija debajo de la barra superior */
+  .jump { position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--topbar-h, 58px)); z-index: 15; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; background: var(--ground); padding-block: 8px; margin-block: -12px; box-shadow: 0 1px 0 var(--border); }
+  .jump::-webkit-scrollbar { display: none; }
+  .jump button { font: inherit; font-size: 13px; font-weight: 600; white-space: nowrap; flex: none; color: var(--muted); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 3px 11px; cursor: pointer; }
+  .jump button:hover { color: var(--ink); }
+  .jump button[aria-current="true"] { color: var(--surface); background: var(--ink); border-color: var(--ink); }
+
+  /* tarjeta de partido: la hora y la cuenta regresiva nunca se cortan; el estadio cede espacio */
+  .game .top .when { flex: none; white-space: nowrap; }
+  .game .top .venue { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .game .top .tags { flex: none; display: inline-flex; gap: 6px; align-items: center; }
+  .pr-h .sm { display: none; }
+  @media (max-width: 560px) {
+    .game .top .venue { display: none; }
+    .game .top { flex-wrap: wrap; row-gap: 4px; }
+    .nw { white-space: nowrap; }
+    .who .tn { display: none; }
+    .who .sp { white-space: normal; overflow: visible; }
+    .pr-h .lg { display: none; } .pr-h .sm { display: inline; }
+    .hide-sm { display: none; }
+    .pk-live .p2 { grid-template-columns: auto minmax(0, 1fr); }
+    .pk-live .p2 .res-chip { grid-column: 2; justify-self: start; }
+    .tile .big { font-size: clamp(24px, 7vw, 34px); overflow-wrap: anywhere; }
+    .tile { padding: 12px 13px; }
+    .page-head h1 { font-size: 28px; }
+  }
+  @media (max-width: 700px) {
+    .board { align-items: start; padding: 14px; gap: 12px 10px; }
+    .board .team .big { font-size: 46px; }
+    .board .mid { border-top: 1px solid var(--grid); padding-top: 10px; }
+    .board .mid .at { display: none; }
+  }
 </style>
 
 <header class="topbar">
@@ -1091,7 +1180,7 @@
   function secMap(ST) {
     const items = [["lu", "L", "Alineaciones", ST.lu], ...SEC_SHORT.map((t, i) => [`s${i + 1}`, String(i + 1), t, ST[i + 1]])];
     const nOk = items.filter((x) => x[3].st === "ok").length;
-    return `<section class="panel secpanel" aria-label="Estado de los datos">
+    return `<section class="panel secpanel" id="datos" aria-label="Estado de los datos">
       <div class="sp-head"><h2 class="sec-title">Estado de los datos</h2><span class="stpill ${nOk === items.length ? "ok" : "part"}">${nOk} de ${items.length} en verde</span><span class="fresh">Corte de datos: ${fmtStamp(D.meta.generatedAt)}</span></div>
       <div class="sec-map">${items.map(([id, n, t, s]) => `<a href="#${id}" data-jump="${id}" data-tip="${esc(s.label)}: ${esc(s.why)}"><span class="dot ${s.st}"></span><b>${n}</b>${esc(t)}</a>`).join("")}</div>
       <div class="legend-st"><span><span class="dot ok"></span>Verde: dato oficial, confirmado y al día</span><span><span class="dot part"></span>Ámbar: parcial, proyectado o sustituido</span><span><span class="dot miss"></span>Rojo: falta un dato obligatorio</span></div>
@@ -1206,7 +1295,7 @@
   function oddsCard(g) {
     const S = g.sections.s7, a = g.teams.away.abbr, h = g.teams.home.abbr;
     if (!S.hasOdds) {
-      return `<section class="oc" data-oc="${g.pk}"><div class="oc-head"><h2>Momios</h2><span class="st">sin feed automático todavía</span></div>
+      return `<section class="oc" id="odds" data-oc="${g.pk}"><div class="oc-head"><h2>Momios</h2><span class="st">sin feed automático todavía</span></div>
         <p class="note">Todavía no hay momios publicados para este partido (ESPN los publica cuando DraftKings abre la línea, normalmente el día anterior) o el partido ya empezó sin que se guardaran. Mientras, captura los de ${esc(bookSel())} en la Jornada o escríbelos en el tablero de la sección 7.</p></section>`;
     }
     const b = ocBook(g);
@@ -1240,7 +1329,7 @@
       const pt = v && typeof v === "object" ? `<span class="muted">${esc(i >= 2 && i < 4 ? ptTxt(v) : Number(v.point).toFixed(1))}</span> ` : "";
       return `<td class="c num${isNum(pr) && Math.abs(decOfAm(pr) - bestOf[i]) < 0.005 ? " bestp" : ""}">${isNum(pr) ? `${pt}${d2(pr)}${mvArrow(pr, was(x))}` : "—"}</td>`;
     }).join("")}</tr>`).join("")}</tbody></table></div>`;
-    return `<section class="oc" data-oc="${g.pk}">
+    return `<section class="oc" id="odds" data-oc="${g.pk}">
       <div class="oc-head"><h2>Momios</h2><span class="tag info">${esc(S.provider || "API")} · ${(S.books || []).length} casa${(S.books || []).length === 1 ? "" : "s"}${S.nMx ? ` · ${S.nMx} en México` : ""}</span><span class="st">${esc(st)}</span></div>
       <div class="chips" role="group" aria-label="Casa de apuestas">${chips}</div>
       ${b ? `<div class="oc-mk"><span class="lbl">Ganador</span>${ocBox(g, a, "visita", b.mlAway, o.mlAway, a)}${ocBox(g, h, "local", b.mlHome, o.mlHome, h)}</div>
@@ -1250,7 +1339,7 @@
       ${f5t ? `<div class="oc-mk"><span class="lbl">F5 total ${esc(f5tl)}<br><small class="muted">${esc(f5t.book)}</small></span>${ocBox(g, "Más", `over ${f5tl}`, f5t.f5Over, (f5t.open || {}).f5Over, `F5 Over ${f5tl}`)}${ocBox(g, "Menos", `under ${f5tl}`, f5t.f5Under, (f5t.open || {}).f5Under, `F5 Under ${f5tl}`)}</div>` : ""}
       ${refTxt}
       <details><summary class="muted" style="cursor:pointer;font-size:13px">${(S.books || []).length === 1 ? "Tabla de la casa" : `Comparar las ${(S.books || []).length} casas (dorado = mejor pago)`}</summary>${cmp}</details>
-      <p class="note muted">Momio decimal grande y americano abajo · ▲ paga más que en la apertura, ▼ paga menos · borde verde = el modelo le ve ${Math.round(100 * SK.edgeMin)} pp o más de edge a ese precio (ámbar si llega a ${Math.round(100 * (SK.edgeMax || 0.10))} pp: verificar, filtro contra el mercado). Como en SofaScore, vienen del feed de un medio o proveedor que los publica (ESPN publica los de su casa socia, DraftKings); no se leen las páginas de las casas. Playdoit y Caliente no están en ningún feed: si capturas su momio, la decisión usa el tuyo.</p>
+      <details class="howto"><summary>Cómo leer los momios</summary><p class="note muted">Momio decimal grande y americano abajo · ▲ paga más que en la apertura, ▼ paga menos · borde verde = el modelo le ve ${Math.round(100 * SK.edgeMin)} pp o más de edge a ese precio (ámbar si llega a ${Math.round(100 * (SK.edgeMax || 0.10))} pp: verificar, filtro contra el mercado). Como en SofaScore, vienen del feed de un medio o proveedor que los publica (ESPN publica los de su casa socia, DraftKings); no se leen las páginas de las casas. Playdoit y Caliente no están en ningún feed: si capturas su momio, la decisión usa el tuyo.</p></details>
     </section>`;
   }
   function oddsLine(g) {
@@ -1662,7 +1751,7 @@ ${brief}`;
     const s = g.summary, a = g.teams.away, h = g.teams.home;
     const pa = s.pAway, ph = s.pHome;
     const sp = (x) => x.missing ? `<span class="sp tbd">Abridor por anunciar</span>`
-      : `<span class="sp">${esc(x.name)} <span class="muted">(${hand(x.hand)}) ERA ${f(x.era)} · FIP ${f(x.fip)}</span></span>`;
+      : `<span class="sp">${esc(x.name)} <span class="muted">(${hand(x.hand)}) <span class="nw">ERA ${f(x.era)} · FIP ${f(x.fip)}</span></span></span>`;
     const b = s.best;
     const bestTxt = b ? `${esc(b.market)}: <b>${esc(b.pick)}</b> ${pc(b.p)}${isNum(b.price) ? ` · ${odds(b.price)}` : isNum(b.fair) ? ` · justo ${odds(b.fair)}` : ""}` : "Sin mercado";
     const edge = s.starterEdge;
@@ -1670,9 +1759,9 @@ ${brief}`;
     const lab = LAB_BY_PK[String(g.pk)];
     const tops = lab ? lab.topPicks || [] : s.topPicks || [];
     return `<a class="game${lab ? " has-lab" : ""}" href="#g${g.pk}">
-      <div class="top"><span>${fmtTime(g.time)}${(() => { const t = startsTxt(effState(liveGames.find((x) => x.pk === g.pk) || null, g.time)); return t ? ` · <b class="cd">${esc(t)}</b>` : ""; })()} · ${esc(g.venue.name)}${g.dh && g.dh !== "N" ? ` · juego ${g.gameNumber}` : ""}</span><span style="display:inline-flex;gap:6px;align-items:center">${lab ? `<span class="tag info" data-tip="Tiene modelo del Pro-Lab: los picks combinan framework + modelo">Pro-Lab · ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${light(s.light)}</span></div>
-      <div class="line"><span class="abbr"><i class="away-mark"></i>${esc(a.abbr)}</span><span class="who"><span class="rec">${esc(a.name)} · ${a.w}-${a.l}</span>${sp(s.probables.away)}</span><span class="prob ${pa >= 0.5 ? "fav" : "dog"}">${pc(pa)}</span></div>
-      <div class="line"><span class="abbr"><i class="home-mark"></i>${esc(h.abbr)}</span><span class="who"><span class="rec">${esc(h.name)} · ${h.w}-${h.l}</span>${sp(s.probables.home)}</span><span class="prob ${ph > 0.5 ? "fav" : "dog"}">${pc(ph)}</span></div>
+      <div class="top"><span class="when">${fmtTime(g.time)}${(() => { const t = startsTxt(effState(liveGames.find((x) => x.pk === g.pk) || null, g.time)); return t ? ` · <b class="cd">${esc(t)}</b>` : ""; })()}${g.dh && g.dh !== "N" ? ` · juego ${g.gameNumber}` : ""}</span><span class="venue">${esc(g.venue.name)}</span><span class="tags">${lab ? `<span class="tag info" data-tip="Tiene modelo del Pro-Lab: los picks combinan framework + modelo">Pro-Lab · ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${light(s.light)}</span></div>
+      <div class="line"><span class="abbr"><i class="away-mark"></i>${esc(a.abbr)}</span><span class="who"><span class="rec"><span class="tn">${esc(a.name)} · </span>${a.w}-${a.l}</span>${sp(s.probables.away)}</span><span class="prob ${pa >= 0.5 ? "fav" : "dog"}">${pc(pa)}</span></div>
+      <div class="line"><span class="abbr"><i class="home-mark"></i>${esc(h.abbr)}</span><span class="who"><span class="rec"><span class="tn">${esc(h.name)} · </span>${h.w}-${h.l}</span>${sp(s.probables.home)}</span><span class="prob ${ph > 0.5 ? "fav" : "dog"}">${pc(ph)}</span></div>
       <div class="splitbar" role="img" aria-label="Probabilidad de victoria: ${esc(a.abbr)} ${pc(pa)}, ${esc(h.abbr)} ${pc(ph)}"><span style="width:${(pa * 100).toFixed(1)}%"></span><span style="width:${(ph * 100).toFixed(1)}%"></span></div>
       ${oddsLine(g)}
       <div class="facts">
@@ -1683,7 +1772,7 @@ ${brief}`;
       </div>
       <div class="bestline"><span>Abridor: <b>${edgeTxt}</b> · triangulación ${esc(s.confidence)}</span><span class="muted">${s.gate.missing} dato${s.gate.missing === 1 ? "" : "s"} faltante${s.gate.missing === 1 ? "" : "s"}</span></div>
       ${chainHtml(planOf({ pk: g.pk, date: g.date, time: g.time, an: g, sb: liveGames.find((x) => x.pk === g.pk) }))}
-      <div class="pk-row"><div class="picks2">${lab ? `<span class="eyebrow" style="font-size:11.5px">Picks finales · framework + ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${tops.length ? `<div class="pr-h"><span></span><span>Actual</span><span>Recomendado</span></div>` : ""}${tops.map((t) => pickOddsRow(g, candPicks(g).find((q) => q.pick === t.pick) || t)).join("") || `<span class="muted">${bestTxt}</span>`}</div>${decisionBox(g)}</div>
+      <div class="pk-row"><div class="picks2">${lab ? `<span class="eyebrow" style="font-size:11.5px">Picks finales · framework + ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${tops.length ? `<div class="pr-h"><span></span><span>Actual</span><span><span class="lg">Recomendado</span><span class="sm">Recom.</span></span></div>` : ""}${tops.map((t) => pickOddsRow(g, candPicks(g).find((q) => q.pick === t.pick) || t)).join("") || `<span class="muted">${bestTxt}</span>`}</div>${decisionBox(g)}</div>
     </a>`;
   }
 
@@ -1752,7 +1841,7 @@ ${brief}`;
       const title = rel === "ayer" ? "Así quedó la jornada de ayer" : rel === "mañana" ? "Los partidos de mañana, analizados" : rel === "hoy" ? "La jornada de hoy en la MLB" : `La jornada del ${fmtShort(sel)}`;
       const lede = by.pre.length && !by.final.length && !by.live.length
         ? "Análisis previo de cada partido con el Framework MLB Picks v2. Los picks se siguen afinando hasta el primer lanzamiento (lineups, abridores y momios); en ese momento el ticket se congela y queda en el Historial."
-        : "Todos los partidos del día en tu horario: los que terminaron con su marcador final y sus dos picks calificados, los que están en juego con la probabilidad en vivo, y los que faltan con su análisis previo.";
+        : "Los partidos del día en tu horario: terminados con su marcador y sus picks calificados, en juego con la probabilidad en vivo, y por jugar con su análisis y su decisión.";
       const src = liveInfo.source === "api" ? `En vivo desde statsapi.mlb.com · ${new Date(liveInfo.at).toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit", second: "2-digit" })} · se refresca cada 30 s`
         : `Marcador del corte ${fmtStamp(liveInfo.at)} (${agoTxt(liveInfo.at)})${liveInfo.error ? " · se actualiza con cada corrida (~15 min en horario de juegos)" : ""}`;
       const group = (title, list, body, empty) => list.length || empty ? `<section class="day"><h2>${title} <small>${list.length}</small></h2>${list.length ? `<div class="${body}">${list.map(dayCard).join("")}</div>` : `<div class="empty">${empty}</div>`}</section>` : "";
@@ -1766,7 +1855,7 @@ ${brief}`;
         </div>
         <div class="toolbar">
           <div class="chips" role="group" aria-label="Día">${dates.map((d) => `<button class="chip" data-day="${d}" aria-pressed="${sel === d}">${esc(dayLabel(d))} · ${chipCount(d)}</button>`).join("")}</div>
-          ${xs.length ? `<div class="chips" role="group" aria-label="Decisión">${DEC_FILTERS.map(([k, l]) => `<button class="chip" data-dflt="${k}" aria-pressed="${flt === k}">${esc(l)}</button>`).join("")}</div>` : ""}
+          ${xs.length ? `<div class="chips scroll" role="group" aria-label="Decisión">${DEC_FILTERS.map(([k, l]) => `<button class="chip" data-dflt="${k}" aria-pressed="${flt === k}">${esc(l)}</button>`).join("")}</div>` : ""}
         </div>
         <div class="dayboard">
           <div class="db-cell"><span class="eyebrow">Partidos</span><b class="num">${rows.length}</b><span>${by.final.length} terminados · ${by.live.length} en juego · ${by.pre.length} por jugar${by.off.length ? ` · ${by.off.length} pospuestos` : ""}</span></div>
@@ -1776,7 +1865,7 @@ ${brief}`;
           <div class="db-cell db-src"><span class="eyebrow"><span class="dot ${liveInfo.source === "api" ? "ok" : "part"}" style="display:inline-block;vertical-align:middle;margin-right:6px"></span>Actualización</span><span>${src}</span><span style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button type="button" class="btn" id="day-refresh" style="padding:2px 9px;font-size:12.5px">Actualizar ahora</button><a href="#historial" style="font-size:13px;font-weight:600">Historial de tickets →</a></span></div>
         </div>
         ${D.meta.odds && D.meta.odds.error ? `<div class="notice"><span class="ic">!</span><div><b>El feed de momios (${esc(D.meta.odds.provider || "API")}) no respondió en la última corrida:</b> ${esc(D.meta.odds.error)}. Se muestran los últimos momios guardados${D.meta.hasOdds ? "" : " (ninguno todavía)"}; si dice HTTP 401 o 403, revisa la clave guardada en GitHub.</div></div>` : ""}
-        ${D.meta.hasOdds && by.pre.some((r) => r.an) ? `<div class="notice"><span class="ic">✓</span><div><b>Momios automáticos de ${esc(D.meta.oddsProvider || "la API")}</b>, como en SofaScore: los de la casa socia del feed (DraftKings en ESPN; con odds-api.net, varias casas y las de México marcadas MX), con apertura, flechas de movimiento y cierre al primer lanzamiento. El modelo calcula el edge con el momio de referencia (la mediana de las casas MX; si no hay, la de las casas del feed). Playdoit y Caliente no están en ningún feed: si capturas su momio, la decisión usa el tuyo.</div></div>` : ""}
+        ${D.meta.hasOdds && by.pre.some((r) => r.an) ? `<details class="note-d" data-lk="nota-momios"${liveOpen.has("nota-momios") ? " open" : ""}><summary><span class="ic">✓</span><span><b>Momios automáticos de ${esc(D.meta.oddsProvider || "la API")}</b><span class="muted hide-sm"> · con apertura, movimiento y cierre</span></span><span class="more">Cómo se usan</span></summary><div>Como en SofaScore: los de la casa socia del feed (DraftKings en ESPN; con odds-api.net o The Odds API, varias casas y las de México marcadas MX), con apertura, flechas de movimiento y cierre al primer lanzamiento. El modelo calcula el edge con el momio de referencia (la mediana de las casas MX; si no hay, la de las casas del feed). Playdoit y Caliente no están en ningún feed: si capturas su momio, la decisión usa el tuyo.</div></details>` : ""}
         ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>La página no trae momios de ningún casino.</b> Los momios que ves salen del modelo: el <b>justo</b> (su probabilidad convertida a momio) y el <b>mín.</b> (lo menos que debe pagar el casino para que convenga). No son lo que paga ${esc(bookSel())}. Si capturas el momio de ${esc(bookSel())} (captura o texto), la decisión y el stake se recalculan con él, y si el casino ve el partido 10 pp o más distinto que el modelo, no hay stake (filtro contra el mercado).</div></div>` : ""}
         ${momPanel(by.pre.filter((r) => r.an), sel)}
         ${planBlock(plans.filter((q) => q.x && decMatch(q.x, flt)).map((q) => q.x))}
@@ -1839,18 +1928,18 @@ ${brief}`;
   }
   function chainHtml(x) {
     if (!x || !x.fw) return "";
-    const step = (cls, k, v, tip) => `<span class="ch-step ${cls}" data-tip="${esc(tip)}"><i>${esc(k)}</i><b>${esc(v)}</b></span>`;
+    const step = (cls, k, v, tip) => `<span class="ch-step ${cls}" data-tip="${esc(`${k}: ${v} · ${tip}`)}"><i>${esc(k)}</i><b>${esc(v)}</b></span>`;
     const fwCls = x.fw.status === "apostar" ? "on" : x.fw.status === "esperar" ? "wait" : "off";
     const eff = x.lab ? labEffect(x.fw, x.comb) : "";
     const labCls = !x.lab ? "none" : eff === "confirma" || eff.startsWith("sube") || eff.startsWith("activa") ? "on" : eff.startsWith("baja") || eff === "la descarta" ? "warn" : "wait";
     const oddsTxt = !x.odds ? "—" : x.odds.src === "tuyo" ? `tu ${odds(x.odds.am)}` : x.odds.src === "mercado" ? `mercado ${odds(x.odds.am)}` : `sin momio · mín. ${odds(x.odds.am)}`;
     const cl = x.claude;
-    return `<div class="chain" aria-label="Cómo se llegó a la decisión">
+    return `<div class="chain-box"><div class="chain" aria-label="Cómo se llegó a la decisión">
       ${step(fwCls, "Framework", decTxt(x.fw), "Las 10 secciones del framework: su decisión por sí solo")}<span class="ch-arr" aria-hidden="true">›</span>
       ${step(labCls, x.lab ? x.labName : "Pro-Lab", x.lab ? `${isNum(x.labP) ? pc(x.labP) + " · " : ""}${eff}` : "—", x.lab ? `Modelo del Pro-Lab: su probabilidad entra a los picks y su acuerdo mueve el stake` : "Este partido no tiene modelo del Pro-Lab")}<span class="ch-arr" aria-hidden="true">›</span>
       ${step(x.odds && (x.odds.src === "tuyo" || x.odds.src === "mercado") ? "on" : "none", "Cuota", oddsTxt, x.odds && x.odds.src === "tuyo" ? "Tu momio: el IC y el stake se recalculan con él" : x.odds && x.odds.src === "mercado" ? "Momio del feed (mediana de las casas MX): el IC y el stake salen de él; si escribes el de tu casa, manda el tuyo" : "No es el momio del casino: es el mínimo que acepta el modelo. Escribe el de tu casa y se recalcula")}<span class="ch-arr" aria-hidden="true">›</span>
       ${step(cl ? "on" : "none", "Claude", cl ? decTxt(cl) : "—", cl ? "Conclusión de Claude con el expediente completo" : "Pulsa «Analizar con Claude» en el partido para su conclusión")}
-    </div>`;
+    </div></div>`;
   }
   function planRowHtml(x) {
     const r = x.r, e = x.e, sb = r.sb || {}, an = r.an;
@@ -1885,7 +1974,7 @@ ${brief}`;
   // de lo que tú ves: una captura de la lista de béisbol o el texto copiado. Solo cuentan para partidos que no han empezado.
   const PD = "Playdoit";
   const MOM = {};                                  // fecha → {date, book, at, games: {pk: {...}}}
-  let MOM_DB = null, MOM_RUN = null, MOM_LAST = null, MOM_ERR = "", IMG_CAPS = null;
+  let MOM_DB = null, MOM_RUN = null, MOM_LAST = null, MOM_ERR = "", IMG_CAPS = null, MOM_OPEN = store.get("mlbgs-mom-open") === "1";
   if (window.claude && typeof window.claude.use === "function") {
     window.claude.use("db").then((db) => {
       if (!db) return;
@@ -1972,23 +2061,27 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const cell = (a, b) => `${a != null ? esc(String(a)) : "—"} / ${b != null ? esc(String(b)) : "—"}`;
     const rows = L ? L.read.map(({ g, m }) => tr([td(`<b>${esc(g.away.abbr)} @ ${esc(g.home.abbr)}</b> <span class="muted">${esc(g.time)}</span>`), tdn(m.ml ? cell(m.ml.away, m.ml.home) : "—"),
       tdn(m.rl ? cell(m.rl.away && `${m.rl.away.line} ${m.rl.away.odds}`, m.rl.home && `${m.rl.home.line} ${m.rl.home.odds}`) : "—"), tdn(m.total ? `${esc(String(m.total.line ?? "—"))}: ${cell(m.total.over, m.total.under)}` : "—"), tdn(m.f5 ? cell(m.f5.away, m.f5.home) : "—")])) : [];
-    return `<section class="block mom-panel" id="momios"><h2>Momios de Playdoit <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">previos al partido, leídos de tu pantalla</small></h2>
-      <p class="note">Playdoit bloquea la lectura automática: su sistema de seguridad corta cualquier acceso que no sea una persona. Por eso los momios se toman de lo que tú ves: <b>toma una captura</b> de la lista de béisbol de Playdoit (antes de los partidos; puedes subir varias) o <b>copia el texto</b> de la página, y Claude lee los momios de línea de dinero, run line, total y F5 y los pone en cada partido. Solo se usan en partidos que no han empezado. Revisa la tabla: si un número salió mal, corrígelo en el plan del día.</p>
+    const open = MOM_OPEN || MOM_RUN || MOM_ERR || L;
+    const st = MOM_RUN ? "Claude está leyendo…" : n ? `${n} partido${n === 1 ? "" : "s"} con momio de Playdoit` : can ? "sube una captura o pega el texto" : "sin momios capturados";
+    return `<details class="fold mom-panel" id="momios"${open ? " open" : ""}><summary><h2>Momios de Playdoit</h2><span class="st">${esc(st)}</span><span class="more">${open ? "Ocultar" : "Abrir"}</span></summary>
+      <p class="note">Playdoit bloquea la lectura automática: su sistema de seguridad corta cualquier acceso que no sea una persona. Por eso los momios se toman de lo que tú ves: <b>toma una captura</b> de la lista de béisbol de Playdoit (antes de los partidos; puedes subir varias) o <b>copia el texto</b> de la página, y Claude lee los momios de línea de dinero, run line, total y F5 y los pone en cada partido. Solo se usan en partidos que no han empezado. Revisa la tabla: si un número salió mal, corrígelo en el tablero de momios del partido (sección 7, modo «Capturar»).</p>
       ${can ? `<div class="mom-row">
         ${IMG_CAPS ? `<button type="button" class="btn" id="mom-pick"${MOM_RUN ? " disabled" : ""}>Subir captura de Playdoit</button><input type="file" id="mom-file" accept="${esc((IMG_CAPS.mediaTypes || ["image/png", "image/jpeg"]).join(","))}" multiple hidden>` : ""}
         <details class="mom-paste"><summary>O pega el texto de la página</summary><textarea id="mom-text" rows="5" placeholder="En Playdoit: selecciona la lista de béisbol, cópiala y pégala aquí"></textarea><button type="button" class="btn" id="mom-read-text"${MOM_RUN ? " disabled" : ""}>Leer texto</button></details>
         ${MOM_RUN ? `<button type="button" class="btn" id="mom-stop">Detener</button>` : ""}
         <span id="mom-status" class="muted" role="status">${MOM_RUN ? "Claude está leyendo…" : MOM_ERR ? esc(MOM_ERR) : n ? `${n} partido${n === 1 ? "" : "s"} de hoy con momios de Playdoit${(MOM[date] || {}).at ? ` · última lectura ${esc(fmtStamp(MOM[date].at))}` : ""}` : "Todavía no hay momios de Playdoit para este día."}</span>
-      </div>` : `<p class="note muted">Esta lectura usa a Claude y solo funciona en la página de claude.ai. Aquí escribe los momios de Playdoit a mano en el plan del día.</p>`}
+      </div>` : `<p class="note muted">Esta lectura usa a Claude y solo funciona en la página de claude.ai. Aquí captura los momios de Playdoit a mano en el tablero de momios de cada partido (sección 7, modo «Capturar»).</p>`}
       ${L ? `<h3 class="sub">Última lectura (${esc(fmtStamp(L.at))}): ${L.read.length} partido${L.read.length === 1 ? "" : "s"} aplicado${L.read.length === 1 ? "" : "s"}</h3>
         ${rows.length ? table(["Partido", "~Dinero (visita / local)", "~Run line", "~Total: over / under", "~F5"], rows) : ""}
         ${L.started.length ? `<p class="note muted">No se aplicaron porque ya empezaron (serían momios en vivo): ${L.started.map(esc).join(", ")}.</p>` : ""}
         ${L.missing.length ? `<p class="note muted">Sin momios en la lectura: ${L.missing.map(esc).join(", ")}.</p>` : ""}
         ${L.unmatched.length ? `<p class="note muted">Claude vio y no pudo emparejar: ${L.unmatched.map(esc).join(", ")}.</p>` : ""}` : ""}
       ${n ? `<button type="button" class="btn" id="mom-clear">Quitar los momios de Playdoit de este día</button>` : ""}
-    </section>`;
+    </details>`;
   }
   function bindMomios(preRows, date) {
+    const panel = document.getElementById("momios");
+    if (panel) panel.addEventListener("toggle", () => { MOM_OPEN = panel.open; store.set("mlbgs-mom-open", panel.open ? "1" : "0"); const m = panel.querySelector("summary .more"); if (m) m.textContent = panel.open ? "Ocultar" : "Abrir"; });
     const pick = document.getElementById("mom-pick"), file = document.getElementById("mom-file");
     if (pick && file) { pick.addEventListener("click", () => file.click()); file.addEventListener("change", () => { if (file.files && file.files.length) readMomios(preRows, date, [...file.files].slice(0, (IMG_CAPS && IMG_CAPS.maxCount) || 4), null); }); }
     const rt = document.getElementById("mom-read-text");
@@ -2007,7 +2100,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   function planBlock(plans) {
     if (!plans.length) return "";
     return `<section class="block cartera" id="plan"><h2>Plan del día <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">una decisión por partido y cómo se llegó a ella</small></h2>
-      <p class="note">Cada fila sigue el mismo orden del protocolo: primero la decisión del <b>framework</b> (10 secciones), después lo que hace el <b>modelo del Pro-Lab</b> si el partido lo tiene (confirma, sube o baja el stake, o cambia el pick), luego la <b>cuota</b> (el momio actual del mercado y el recomendado: desde qué momio vale) y, si la pediste, la <b>conclusión de Claude</b>. Stake 1 = ${money(amountOf(1))} · 5 = ${money(amountOf(5))} · 10 = ${money(amountOf(10))}. Los partidos que ya empezaron muestran su boleto congelado y cómo va.</p>
+      <details class="howto" data-lk="plan-ayuda"${liveOpen.has("plan-ayuda") ? " open" : ""}><summary>Cómo se lee el plan</summary><p class="note">Cada fila sigue el mismo orden del protocolo: primero la decisión del <b>framework</b> (10 secciones), después lo que hace el <b>modelo del Pro-Lab</b> si el partido lo tiene (confirma, sube o baja el stake, o cambia el pick), luego la <b>cuota</b> (el momio actual del mercado y el recomendado: desde qué momio vale) y, si la pediste, la <b>conclusión de Claude</b>. Stake 1 = ${money(amountOf(1))} · 5 = ${money(amountOf(5))} · 10 = ${money(amountOf(10))}. Los partidos que ya empezaron muestran su boleto congelado y cómo va. En pantallas angostas la cadena se ve como cuatro barras (verde = a favor, punteada = espera, roja = en contra, gris = no apuesta, vacía = sin dato).</p></details>
       <div class="plan-list"><div class="plan-row plan-head" aria-hidden="true"><div>Hora</div><div>Partido</div><div>Decisión</div><div>Momio · recom.</div><div>Stake y boleto</div></div>${plans.map(planRowHtml).join("")}</div>
     </section>`;
   }
@@ -2097,11 +2190,13 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
         <div class="team home"><span class="eyebrow">Local</span><span class="big">${esc(h.abbr)}</span><span class="nm">${esc(h.name)}</span><span class="sub">${h.w}-${h.l} · ${esc(h.division || "")}${h.streak ? " · racha " + esc(h.streak) : ""} · Elo ${h.elo ?? "—"}</span></div>
       </div>
 
+      <nav class="jump" aria-label="Secciones del partido">${[["decision", "Decisión"], ["odds", "Momios"], ["picks", "Picks"], ["datos", "Datos"], ["lu", "Alineaciones"], ["modelo", "Modelo"], ["framework", "Framework"], ...(lab ? [["complemento", labName]] : []), ["todos", "Todos los picks"]].map(([id, t], i) => `<button type="button" data-jump="${id}" aria-current="${i === 0}">${esc(t)}</button>`).join("")}</nav>
+
       ${decisionPanel(g)}
 
       ${oddsCard(g)}
 
-      <section class="block"><h2>${lab ? `Picks finales: framework + ${esc(labName)}` : "Picks principales"}</h2>
+      <section class="block" id="picks"><h2>${lab ? `Picks finales: framework + ${esc(labName)}` : "Picks principales"}</h2>
         ${lab ? `<div class="notice labnote"><span class="ic" style="background:var(--accent-soft);color:var(--accent)">★</span><div>Este partido tiene modelo del Pro-Lab: <b>${esc(labName)}</b> (${esc(LAB_INFO[labKey(lab)].kind.toLowerCase())}), con datos congelados el ${fmtStamp(lab.frozenAt)}; estos dos picks ya combinan los métodos del framework (Log5, Elo, λ, Poisson) con el modelo; al final de la página se explica cómo se complementan. <a href="#lab${lab.pk}"><b>Ver el modelo del Pro-Lab →</b></a></div></div>` : ""}
         <div class="toppicks">${(lab ? lab.topPicks || [] : (g.picks || []).slice(0, 2)).map((p, i) => pickCard(p, g.pk, i + 1)).join("")}</div>
       </section>
@@ -2115,7 +2210,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
         <div class="lineups">${lineupCard(a.abbr, S.s5.lineups.away, s.probables.home.name)}${lineupCard(h.abbr, S.s5.lineups.home, s.probables.away.name)}</div>
       </section>
 
-      <div class="tiles">
+      <div class="tiles" id="modelo">
         <div class="tile"><span class="eyebrow">Probabilidad triangulada</span>
           <span class="big">${esc(g.teams[fav].abbr)} ${pc(fav === "home" ? s.pHome : s.pAway)}</span>
           <div class="splitbar"><span style="width:${(s.pAway * 100).toFixed(1)}%"></span><span style="width:${(s.pHome * 100).toFixed(1)}%"></span></div>
@@ -2140,11 +2235,11 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
         <p class="rule">${esc(S.s8.rule)}</p>
       </section>
 
-      <div class="toolbar"><h2 class="sec-title" style="margin-right:auto">Las 10 secciones del framework</h2><button class="btn" id="toggle-all">${openAll ? "Contraer" : "Expandir"} todas</button></div>
+      <div class="toolbar" id="framework"><h2 class="sec-title" style="margin-right:auto">Las 10 secciones del framework</h2><button class="btn" id="toggle-all">${openAll ? "Contraer" : "Expandir"} todas</button></div>
       <div class="sec-groups">${secsHtml}</div>
 
       ${lab ? complementBlock(g, lab) : ""}
-      <section class="block"><h2>Todos los picks por nivel de confianza${lab ? ` <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">framework + ${esc(labName)}</small>` : ""}</h2>${picksTable(lab ? lab.picks : g.picks || [], g.pk)}</section>
+      <section class="block" id="todos"><h2>Todos los picks por nivel de confianza${lab ? ` <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">framework + ${esc(labName)}</small>` : ""}</h2>${picksTable(lab ? lab.picks : g.picks || [], g.pk)}</section>
       ${lab ? `<a class="callout-link btn" href="#lab${lab.pk}">Ver el modelo del Pro-Lab (${esc(labName)}) →</a>` : ""}
       ${footer()}`;
     document.getElementById("toggle-all").addEventListener("click", () => {
@@ -2154,8 +2249,43 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
       document.getElementById("toggle-all").textContent = `${open ? "Contraer" : "Expandir"} todas`;
     });
     app.querySelectorAll(".felt").forEach(refreshBoard);
+    app.querySelectorAll(".jump [data-jump]").forEach((b) => !document.getElementById(b.dataset.jump) ? b.remove() : b.addEventListener("click", () => {
+      const el = document.getElementById(b.dataset.jump);
+      if (el) el.scrollIntoView({ block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    }));
     window.scrollTo(0, 0);
+    jumpSync();
   }
+
+  // barra superior: su alto (para lo fijo debajo de ella), sombra al bajar y la pestaña activa siempre a la vista
+  const TOPBAR = document.querySelector(".topbar"), TABS = document.querySelector("nav.tabs");
+  const setTopH = () => document.documentElement.style.setProperty("--topbar-h", TOPBAR.offsetHeight + "px");
+  const tabsEnd = () => TABS.classList.toggle("at-end", TABS.scrollLeft + TABS.clientWidth >= TABS.scrollWidth - 2);
+  const intoRow = (row, el, pad) => {
+    if (!row || !el || row.scrollWidth <= row.clientWidth) return;
+    const r = row.getBoundingClientRect(), e = el.getBoundingClientRect();
+    if (e.left < r.left + pad) row.scrollLeft += e.left - r.left - pad;
+    else if (e.right > r.right - pad) row.scrollLeft += e.right - r.right + pad;
+  };
+  // la sección del partido que se está leyendo queda marcada en la barra de secciones
+  function jumpSync() {
+    const nav = document.querySelector(".jump");
+    if (!nav) return;
+    const lim = TOPBAR.offsetHeight + nav.offsetHeight + 24;
+    const bs = [...nav.querySelectorAll("button")];
+    let cur = bs[0];
+    bs.forEach((b) => { const el = document.getElementById(b.dataset.jump); if (el && el.getBoundingClientRect().top <= lim) cur = b; });
+    if (cur.getAttribute("aria-current") !== "true") { bs.forEach((b) => b.setAttribute("aria-current", String(b === cur))); intoRow(nav, cur, 16); }
+  }
+  let SCROLL_RAF = 0;
+  window.addEventListener("scroll", () => {
+    if (SCROLL_RAF) return;
+    SCROLL_RAF = requestAnimationFrame(() => { SCROLL_RAF = 0; TOPBAR.classList.toggle("scrolled", window.scrollY > 4); jumpSync(); });
+  }, { passive: true });
+  window.addEventListener("resize", () => { setTopH(); tabsEnd(); });
+  TABS.addEventListener("scroll", tabsEnd, { passive: true });
+  setTopH();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { setTopH(); tabsEnd(); }).catch(() => {});
 
   const sec = (n, title, sum, body, open, st) => `<details class="sec ${st ? st.st : ""}" id="s${n}"${open ? " open" : ""}><summary><span class="n">${n}</span><span class="t">${esc(title)}</span>${st ? stPill(st) : ""}<span class="s"><b>${esc(sum || "")}</b>${st ? ` · <span class="why">${esc(st.why)}</span>` : ""}</span></summary><div class="body">${body}</div></details>`;
 
@@ -3369,6 +3499,8 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     if (r.l > 0.9995) return { cls: "lose", text: "✗ Perdido" };
     if (r.push > 0.9995) return { cls: "pend", text: "Push" };
     const now = r.now === "p" ? null : r.now;
+    // un Over (o YRFI) «va perdiendo» hasta que llegan las carreras: ahí manda la probabilidad, no el marcador
+    if (now === 0 && /Over|YRFI/.test(p.pick)) return { cls: r.w >= 0.5 ? "lead" : "trail", text: `${r.w >= 0.5 ? "Va bien" : "Le faltan carreras"} · ${pc(r.w)} ahora` };
     return { cls: now === 1 ? "lead" : now === 0 ? "trail" : "pend", text: `${now === 1 ? "Va ganando" : now === 0 ? "Va perdiendo" : "Parejo"} · ${pc(r.w)} ahora` };
   }
 
@@ -4264,6 +4396,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     if (!/^[gt]\d+$/.test(h) || BY_PK[h.slice(1)]) TK_RENDER = null;
     if (!h.startsWith("g") && !/^lab\d+base$/.test(h)) CURRENT_GAME = null;
     document.querySelectorAll("nav.tabs a").forEach((a) => a.setAttribute("aria-current", a.dataset.tab === tab ? "page" : "false"));
+    intoRow(TABS, TABS.querySelector('[aria-current="page"]'), 28); tabsEnd();
     tip.hidden = true;
     if (anchor) setTimeout(() => { const el = document.getElementById(anchor); if (el) { if (el.tagName === "DETAILS") el.open = true; el.scrollIntoView({ block: "start" }); } }, 0);
   }
