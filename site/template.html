@@ -601,7 +601,7 @@
   #mom-status { align-self: center; font-size: 13px; }
   /* plan del día y cadena de la decisión (framework → Pro-Lab → cuota → Claude) */
   .plan-list { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-  .plan-row { display: grid; grid-template-columns: 92px 150px minmax(0, 1.5fr) 100px minmax(0, 1.1fr); grid-template-areas: "when game deci odds stake" ". chain chain chain chain"; gap: 5px 12px; align-items: center; padding: 9px 12px 10px 10px; border-top: 1px solid var(--grid); border-left: 4px solid transparent; font-size: 13.5px; }
+  .plan-row { display: grid; grid-template-columns: 92px 150px minmax(0, 1.5fr) 156px minmax(0, 1.1fr); grid-template-areas: "when game deci odds stake" ". chain chain chain chain"; gap: 5px 12px; align-items: center; padding: 9px 12px 10px 10px; border-top: 1px solid var(--grid); border-left: 4px solid transparent; font-size: 13.5px; }
   .plan-row:first-child { border-top: 0; }
   .plan-row.on { border-left-color: var(--verde); }
   .plan-row.wait { border-left-color: var(--amarillo); }
@@ -632,7 +632,30 @@
     .pl-when { align-items: flex-end; text-align: right; } .pl-odds { justify-self: end; }
   }
   /* decisión única */
-  .pk-row { display: grid; grid-template-columns: minmax(0, 1fr) 124px; gap: 10px; border-top: 1px solid var(--grid); padding-top: 9px; align-items: stretch; }
+  .pk-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; border-top: 1px solid var(--grid); padding-top: 9px; align-items: stretch; }
+  .pk-row .deci { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+  /* picks de la tarjeta: momio actual del mercado (con su casa) y el momio recomendado */
+  .p2.pr { grid-template-columns: auto minmax(0, 1fr) 66px 84px; align-items: center; gap: 4px 8px; }
+  .pr-h { display: grid; grid-template-columns: minmax(0, 1fr) 66px 84px; gap: 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; color: var(--muted); }
+  .pr-h span:first-child { visibility: hidden; }
+  .pr-h span, .po-live, .po-rec { text-align: center; }
+  .p2.pr .t { display: flex; flex-direction: column; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; }
+  .p2.pr .t small { font-size: 11.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .po-live, .po-rec { display: flex; flex-direction: column; align-items: center; gap: 2px; line-height: 1.1; min-width: 0; }
+  .po-live b, .po-rec b { font-family: var(--mono); font-size: 14px; font-weight: 600; }
+  .po-live.ok b { color: var(--verde); } .po-live.no b { color: var(--rojo); } .po-live.chk b { color: var(--amarillo); } .po-live.na b { color: var(--muted); }
+  .po-rec b { color: var(--ink-2); }
+  .bk { display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 9.5px; font-weight: 700; letter-spacing: 0.02em; border-radius: 4px; padding: 1px 5px; background: var(--surface-2); color: var(--ink-2); }
+  .bk.none { background: transparent; color: var(--muted); font-weight: 600; padding: 0; }
+  .vd { font-size: 10.5px; font-weight: 700; white-space: nowrap; }
+  .vd.ok { color: var(--verde); } .vd.no { color: var(--rojo); } .vd.chk { color: var(--amarillo); } .vd.na { color: var(--muted); font-weight: 600; }
+  .pl-odds .po-inline { display: inline-flex; gap: 8px; align-items: center; }
+  @media (max-width: 560px) {
+    .p2.pr { grid-template-columns: auto minmax(0, 1fr) 70px 72px; gap: 4px 6px; }
+    .pr-h { grid-template-columns: minmax(0, 1fr) 70px 72px; gap: 6px; font-size: 9.5px; letter-spacing: 0; }
+    .p2.pr .ic small { display: none; }
+    .p2.pr .t b { font-size: 14px; }
+  }
   .pk-row .picks2 { border-top: 0; padding-top: 0; justify-content: center; }
   .deci { display: flex; flex-direction: column; gap: 1px; justify-content: center; border-radius: 10px; padding: 7px 9px; border: 1.5px solid var(--border); background: var(--surface-2); min-width: 0; }
   .deci.on { border-color: var(--verde); background: var(--verde-soft); }
@@ -865,6 +888,51 @@
     const key = oddsKey(pk, p.pick);
     return `<input class="odds-in" id="odds-${esc(String(pk))}-${esc(p.pick).replace(/[^a-zA-Z0-9]/g, "")}" data-odds="${esc(key)}" inputmode="decimal" placeholder="momio" value="${esc(oddsStore[key] || "")}" aria-label="Momio de ${esc(p.pick)}">`;
   };
+
+  // ---------------------------------------------------------------- momio actual de cada pick y momio recomendado
+  // Momio actual: el que capturaste de tu casa (si hay) o el mejor del feed automático (ESPN/DraftKings u otras casas).
+  // Recomendado: el más bajo con el que todavía conviene tomarlo (inicio de su escalera de stake).
+  const BOOK_STYLE = {
+    draftkings: ["#53D337", "#0b0b0b"], fanduel: ["#1493FF", "#ffffff"], bet365: ["#027B5B", "#FFDF1B"], betmgm: ["#1a1a1a", "#D3B27A"],
+    caesars: ["#0E2B3D", "#C9A45C"], pinnacle: ["#0B2A45", "#FF6A13"], betsson: ["#FF6600", "#ffffff"], caliente: ["#E30613", "#ffffff"],
+  };
+  const bookPill = (name) => {
+    const st = BOOK_STYLE[String(name || "").toLowerCase().replace(/[^a-z0-9]/g, "")];
+    return `<small class="bk"${st ? ` style="background:${st[0]};color:${st[1]}"` : ""}>${esc(name)}</small>`;
+  };
+  function liveOdds(g, p) {
+    const mine = bestOdds(g.pk, p.pick);
+    if (mine) return { am: mine.o.am, raw: mine.raw, book: mine.book, mine: true };
+    let best = null;
+    ((g.sections.s7 || {}).books || []).forEach((b) => {
+      const am = apiPrice(b, p, g);
+      if (isNum(am) && (!best || amDec(am) > amDec(best.am))) best = { am, book: b.book };
+    });
+    return best ? { ...best, raw: String(Math.round(best.am)) } : null;
+  }
+  const recOdds = (p) => { const st = p.stake || {}; return !st.block && st.ladder && st.ladder.length ? st.ladder[0].from : isNum(p.minPrice) ? Math.ceil(p.minPrice) : null; };
+  function pickVerdict(g, p) {
+    const lv = liveOdds(g, p), rec = recOdds(p);
+    const st = p.stake || {};
+    if (st.block && /dato obligatorio/.test(st.block)) return { lv, rec, cls: "chk", txt: "esperar", why: st.block };
+    if (!lv) return { lv, rec, cls: "na", txt: "mínimo", why: "Este mercado no viene en el feed de momios: conviene si pagan el recomendado o mejor" };
+    const s = stakeFor(p, lv.raw);
+    if (s && s.level > 0) return { lv, rec, cls: "ok", txt: `✓ tómalo · S${s.level}`, why: `Stake ${s.level} = ${money(s.amt)}`, s };
+    const r = s ? s.r : null;
+    if (r && r.light === "Amarillo" && r.edge >= (SK.edgeMax ?? 0.1)) return { lv, rec, cls: "chk", txt: "⚠ verificar", why: r.why, s };
+    return { lv, rec, cls: "no", txt: "✗ no", why: (s && s.why) || "paga menos que el recomendado", s };
+  }
+  function pickOddsRow(g, p) {
+    const v = pickVerdict(g, p);
+    const tip = v.lv ? `${v.lv.mine ? "Tu momio" : "Momio actual"} en ${v.lv.book}: ${odds(v.lv.am)} (decimal ${amDec(v.lv.am).toFixed(2)})` : "Sin momio del mercado para este pick";
+    return `<div class="p2 pr">${icBadge(p)}<span class="t"><b>${esc(p.pick)}</b><small>${esc(p.market)} · ${pc(p.p)}</small></span>
+      <span class="po-live ${v.lv ? v.cls : "na"}" data-tip="${esc(tip)}"><b>${v.lv ? odds(v.lv.am) : "—"}</b>${v.lv ? bookPill(v.lv.book) : '<small class="bk none">sin momio</small>'}</span>
+      <span class="po-rec" data-tip="${esc(`Recomendado: conviene si pagan ${odds(v.rec)} o mejor. ${v.why || ""}`)}"><b>${v.rec != null ? odds(v.rec) : "—"}</b><small class="vd ${v.cls}">${esc(v.txt)}</small></span></div>`;
+  }
+  function pickOddsInline(g, p) {
+    const v = pickVerdict(g, p);
+    return `<span class="po-inline"><span class="po-live ${v.lv ? v.cls : "na"}"><b>${v.lv ? odds(v.lv.am) : "—"}</b>${v.lv ? bookPill(v.lv.book) : '<small class="bk none">sin momio</small>'}</span><span class="po-rec"><b>${v.rec != null ? odds(v.rec) : "—"}</b><small class="vd ${v.cls}">${esc(v.txt)}</small></span></span>`;
+  }
 
   function pickCard(p, pk, rank, graded) {
     const partsHtml = Object.entries(p.parts).map(([k, v]) => `<span data-tip="${esc(PART_TIP[k])}">${PART_NAMES[k]} <span class="muted">×${PART_W[k]}</span></span><span class="bar"><i style="width:${(v * 100).toFixed(0)}%"></i></span><span class="num">${v.toFixed(2)}</span>`).join("");
@@ -1368,7 +1436,7 @@
     const head = `<span class="deci-h">${x.src === "Claude" ? "✦ Claude" : "Decisión"}</span>`;
     if (x.status === "esperar") return `<div class="deci wait">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Esperar</span><span class="deci-sub">falta un dato obligatorio</span></div>`;
     if (x.status !== "apostar") return `<div class="deci off">${head}<b class="deci-pick">No apostar</b><span class="deci-sub">${esc(x.why || "")}</span></div>`;
-    if (x.pending) return `<div class="deci on pend" data-tip="Sin momio de ${esc(bookSel())}: conviene solo si pagan ${odds(x.minPrice)} o mejor (es el mínimo del modelo, no el momio del casino). Escribe el momio y se fija el stake.">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span><span class="deci-sub">según tu momio · mín. ${odds(x.minPrice)}</span></div>`;
+    if (x.pending) return `<div class="deci on pend" data-tip="Este mercado no trae momio en el feed: conviene solo si pagan ${odds(x.minPrice)} o mejor (es el mínimo del modelo, no el momio del casino). El stake se fija con el momio que paguen.">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span><span class="deci-sub">según el momio que paguen · recomendado ${odds(x.minPrice)} o mejor</span></div>`;
     return `<div class="deci on" data-tip="Stake ${x.level} de 10 = ${money(x.amt)} · ${esc(x.why || "")}">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Stake ${x.level}</span><span class="deci-amt">${money(x.amt)}</span><span class="deci-sub">${x.b.api ? `con ${odds(x.b.o.am)} · ${esc(x.b.book)}` : `con tu ${odds(x.b.o.am)} en ${esc(x.b.book)}`}</span></div>`;
   }
 
@@ -1561,7 +1629,7 @@ ${brief}`;
       </div>
       <div class="bestline"><span>Abridor: <b>${edgeTxt}</b> · triangulación ${esc(s.confidence)}</span><span class="muted">${s.gate.missing} dato${s.gate.missing === 1 ? "" : "s"} faltante${s.gate.missing === 1 ? "" : "s"}</span></div>
       ${chainHtml(planOf({ pk: g.pk, date: g.date, time: g.time, an: g, sb: liveGames.find((x) => x.pk === g.pk) }))}
-      <div class="pk-row"><div class="picks2">${lab ? `<span class="eyebrow" style="font-size:11.5px">Picks finales · framework + ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${tops.map((p) => `<div class="p2">${icBadge(p)}<span class="t"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)} · justo ${odds(p.fair)}</span></span></div>`).join("") || `<span class="muted">${bestTxt}</span>`}</div>${decisionBox(g)}</div>
+      <div class="pk-row"><div class="picks2">${lab ? `<span class="eyebrow" style="font-size:11.5px">Picks finales · framework + ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${tops.length ? `<div class="pr-h"><span></span><span>Actual</span><span>Recomendado</span></div>` : ""}${tops.map((t) => pickOddsRow(g, candPicks(g).find((q) => q.pick === t.pick) || t)).join("") || `<span class="muted">${bestTxt}</span>`}</div>${decisionBox(g)}</div>
     </a>`;
   }
 
@@ -1655,7 +1723,7 @@ ${brief}`;
         </div>
         ${D.meta.odds && D.meta.odds.error ? `<div class="notice"><span class="ic">!</span><div><b>El feed de momios (${esc(D.meta.odds.provider || "API")}) no respondió en la última corrida:</b> ${esc(D.meta.odds.error)}. Se muestran los últimos momios guardados${D.meta.hasOdds ? "" : " (ninguno todavía)"}; si dice HTTP 401 o 403, revisa la clave guardada en GitHub.</div></div>` : ""}
         ${D.meta.hasOdds && by.pre.some((r) => r.an) ? `<div class="notice"><span class="ic">✓</span><div><b>Momios automáticos de ${esc(D.meta.oddsProvider || "la API")}</b>, como en SofaScore: los de la casa socia del feed (DraftKings en ESPN; con odds-api.net, varias casas y las de México marcadas MX), con apertura, flechas de movimiento y cierre al primer lanzamiento. El modelo calcula el edge con el momio de referencia (la mediana de las casas MX; si no hay, la de las casas del feed). Playdoit y Caliente no están en ningún feed: si capturas su momio, la decisión usa el tuyo.</div></div>` : ""}
-        ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>La página no trae momios de ningún casino.</b> Los momios que ves salen del modelo: el <b>justo</b> (su probabilidad convertida a momio) y el <b>mín.</b> (lo menos que debe pagar el casino para que convenga). No son lo que paga ${esc(bookSel())}. Escribe el momio de ${esc(bookSel())} en el plan del día o en el partido: la decisión y el stake se recalculan con él, y si el casino ve el partido 10 pp o más distinto que el modelo, no hay stake (filtro contra el mercado).</div></div>` : ""}
+        ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>La página no trae momios de ningún casino.</b> Los momios que ves salen del modelo: el <b>justo</b> (su probabilidad convertida a momio) y el <b>mín.</b> (lo menos que debe pagar el casino para que convenga). No son lo que paga ${esc(bookSel())}. Si capturas el momio de ${esc(bookSel())} (captura o texto), la decisión y el stake se recalculan con él, y si el casino ve el partido 10 pp o más distinto que el modelo, no hay stake (filtro contra el mercado).</div></div>` : ""}
         ${momPanel(by.pre.filter((r) => r.an), sel)}
         ${planBlock(plans.filter((q) => q.x && decMatch(q.x, flt)).map((q) => q.x))}
         ${flt !== "todos" && !plans.some((q) => q.x && decMatch(q.x, flt)) ? `<div class="empty">Ningún partido con ese filtro.</div>` : ""}
@@ -1742,7 +1810,7 @@ ${brief}`;
       ? `<b>${esc(f.pick)}</b>${x.p ? ` <span class="muted">${esc(x.p.market)}${isNum(x.p.p) ? ` · ${pc(x.p.p, 1)}` : ""}</span> ${isNum(x.p.ic) ? icBadge(x.p) : ""}` : ""}`
       : f.status === "esperar" ? `<span class="wait-t">Esperar</span> <span class="muted">${esc(f.pick || "")}</span>` : `<span class="stake-no">No apostar</span>${f.pick ? ` <span class="muted">(mejor: ${esc(f.pick)})</span>` : ""}`;
     let money_ = "";
-    if (x.pre) money_ = cls === "on" ? (x.pending ? `<span class="stk-badge pend">${x.x.range ? `Stake ${x.x.range[0]}–${x.x.range[1]}` : `Stake ${f.level}`}</span> <span class="muted">según tu momio</span>` : `${stakeTag(f.level)} <b class="stake-amt">${money(x.amt)}</b>`) : cls === "wait" ? `<span class="muted">se confirma cerca del inicio</span>` : `<span class="muted">${esc((x.x && x.x.why) || "")}</span>`;
+    if (x.pre) money_ = cls === "on" ? (x.pending ? `<span class="stk-badge pend">${x.x.range ? `Stake ${x.x.range[0]}–${x.x.range[1]}` : `Stake ${f.level}`}</span> <span class="muted">según el momio que paguen</span>` : `${stakeTag(f.level)} <b class="stake-amt">${money(x.amt)}</b>`) : cls === "wait" ? `<span class="muted">se confirma cerca del inicio</span>` : `<span class="muted">${esc((x.x && x.x.why) || "")}</span>`;
     else if (x.slip && cls === "on") {
       const sl = x.slip, st = SLIP_STAMP[sl.key];
       money_ = `${stakeTag(sl.level)} <b class="stake-amt">${money(sl.amount)}</b> ${st ? `<span class="res-chip ${sl.key === "ganado" ? "win" : sl.key === "perdido" ? "lose" : "pend"}">${esc(st[1])} ${sl.neto != null ? esc(signed2(sl.neto)) : ""}</span>` : `<span class="res-chip ${sl.r.cls}">${esc(sl.r.text)}</span>`}`;
@@ -1751,7 +1819,7 @@ ${brief}`;
       <div class="pl-when"><span class="num">${esc(fmtTime(r.time))}</span><span class="pl-st st-${e.st}">${esc(stTxt)}</span></div>
       <div class="pl-game"><a href="${link}"><b>${esc(aA || "")}</b>${score ? ` <span class="num">${score[0]}</span>` : ""} <span class="muted">@</span> <b>${esc(hA || "")}</b>${score ? ` <span class="num">${score[1]}</span>` : ""}</a>${x.lab ? ` <span class="tag info">${esc(x.labName)}</span>` : ""}</div>
       <div class="pl-deci">${deci}</div>
-      <div class="pl-odds">${x.pre && x.p && cls !== "off" ? oddsInput(r.pk, x.p) : x.odds && !x.pre ? `<span class="num">${odds(x.odds.am)}</span> <span class="muted">${x.odds.src === "referencia" ? "mín." : x.odds.src === "mercado" ? "mercado" : "tuyo"}</span>` : ""}</div>
+      <div class="pl-odds">${x.pre && x.p && an ? pickOddsInline(an, x.p) : x.odds && !x.pre ? `<span class="num">${odds(x.odds.am)}</span> <span class="muted">${x.odds.src === "referencia" ? "mín." : x.odds.src === "mercado" ? "mercado" : "tuyo"}</span>` : ""}</div>
       <div class="pl-stake">${money_}</div>
       <div class="pl-chain">${chainHtml(x)}</div>
     </div>`;
@@ -1885,8 +1953,8 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   function planBlock(plans) {
     if (!plans.length) return "";
     return `<section class="block cartera" id="plan"><h2>Plan del día <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">una decisión por partido y cómo se llegó a ella</small></h2>
-      <p class="note">Cada fila sigue el mismo orden del protocolo: primero la decisión del <b>framework</b> (10 secciones), después lo que hace el <b>modelo del Pro-Lab</b> si el partido lo tiene (confirma, sube o baja el stake, o cambia el pick), luego la <b>cuota</b> (tu momio o desde qué momio vale) y, si la pediste, la <b>conclusión de Claude</b>. Stake 1 = ${money(amountOf(1))} · 5 = ${money(amountOf(5))} · 10 = ${money(amountOf(10))}. Los partidos que ya empezaron muestran su boleto congelado y cómo va.</p>
-      <div class="plan-list"><div class="plan-row plan-head" aria-hidden="true"><div>Hora</div><div>Partido</div><div>Decisión</div><div>Momio</div><div>Stake y boleto</div></div>${plans.map(planRowHtml).join("")}</div>
+      <p class="note">Cada fila sigue el mismo orden del protocolo: primero la decisión del <b>framework</b> (10 secciones), después lo que hace el <b>modelo del Pro-Lab</b> si el partido lo tiene (confirma, sube o baja el stake, o cambia el pick), luego la <b>cuota</b> (el momio actual del mercado y el recomendado: desde qué momio vale) y, si la pediste, la <b>conclusión de Claude</b>. Stake 1 = ${money(amountOf(1))} · 5 = ${money(amountOf(5))} · 10 = ${money(amountOf(10))}. Los partidos que ya empezaron muestran su boleto congelado y cómo va.</p>
+      <div class="plan-list"><div class="plan-row plan-head" aria-hidden="true"><div>Hora</div><div>Partido</div><div>Decisión</div><div>Momio · recom.</div><div>Stake y boleto</div></div>${plans.map(planRowHtml).join("")}</div>
     </section>`;
   }
 

@@ -49,6 +49,10 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   presentarlos como el momio del casino; el stake es un rango según la escalera y, con el momio que
   escribe el usuario, la decisión se recalcula entre todos los candidatos.
   Playdoit, Caliente y Team México no están en ningún feed: su momio lo captura el usuario y manda.
+- Jornada, «Por jugar»: cada uno de los dos picks de la tarjeta muestra su **momio actual** (el capturado
+  de su casa si existe; si no, el mejor del feed) con la casa abajo en chico y en su color, y a un lado el
+  **momio recomendado** (inicio de la escalera de stake: desde ahí conviene) con el veredicto (tómalo ·
+  no · verificar · esperar). El plan del día no tiene casilla para escribir momios: muestra lo mismo.
 - Momios de Playdoit: su sitio bloquea el acceso automático (Cloudflare, 403 «Acceso bloqueado» desde
   GitHub Actions); no evadirlo. La Jornada tiene «Momios de Playdoit»: el usuario sube una captura o pega
   el texto y Claude (capacidad `sample` con imágenes) los lee y los aplica solo a partidos que no han
