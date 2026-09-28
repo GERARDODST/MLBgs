@@ -58,54 +58,54 @@
 "pk": 849849,
 "date": "2026-09-29",
 "time": "2026-09-29T21:00:00Z",
-"generatedAt": "2026-09-28T22:03:38+00:00",
+"generatedAt": "2026-09-28T23:38:10+00:00",
 "away": "CWS",
 "home": "HOU",
-"pHome": 0.5178,
+"pHome": 0.4813,
 "methods": {
 "log5": 0.5015,
-"elo": 0.5528,
-"lambda": 0.4991
+"elo": 0.496,
+"lambda": 0.4465
 },
 "confidence": "media",
 "projAway": 4.6552,
-"projHome": 4.6562,
-"total": 9.3114,
+"projHome": 4.0992,
+"total": 8.7544,
 "f5Away": 2.4728,
-"f5Home": 2.8086,
-"nrfi": 0.4776,
-"pOver85": 0.5201,
+"f5Home": 2.2881,
+"nrfi": 0.5234,
+"pOver85": 0.4696,
 "probables": {
-"away": "Por anunciar",
+"away": "Hagen Smith",
 "home": "AJ Blubaugh"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "Prop pitcher",
-"pick": "AJ Blubaugh Under 2.5 K",
-"p": 0.6337,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Run Line",
+"pick": "CWS +1.5",
+"p": 0.6947,
+"price": -194,
+"edge": 0.0348,
+"light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 8.0",
-"p": 0.5728,
-"line": 8.0,
-"ic": 41.8834,
+"family": "RL",
+"market": "Run Line",
+"pick": "CWS +1.5",
+"p": 0.6947,
+"line": null,
+"ic": 42.8203,
 "level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
-"pick": "HOU",
-"p": 0.5178,
+"pick": "CWS",
+"p": 0.5187,
 "line": null,
-"ic": 34.6262,
-"level": "Muy baja"
+"ic": 40.6043,
+"level": "Baja"
 }
 ]
 },
@@ -168,34 +168,34 @@
 "pk": 849843,
 "date": "2026-09-29",
 "time": "2026-09-30T02:00:00Z",
-"generatedAt": "2026-09-28T18:53:13+00:00",
+"generatedAt": "2026-09-28T23:38:10+00:00",
 "away": "CHC",
 "home": "SD",
-"pHome": 0.5223,
+"pHome": 0.4909,
 "methods": {
 "log5": 0.4787,
-"elo": 0.584,
-"lambda": 0.5041
+"elo": 0.539,
+"lambda": 0.455
 },
-"confidence": "baja",
+"confidence": "media",
 "projAway": 4.473,
-"projHome": 4.5287,
-"total": 9.0017,
+"projHome": 4.0159,
+"total": 8.4889,
 "f5Away": 2.4571,
-"f5Home": 2.6743,
-"nrfi": 0.4843,
-"pOver85": 0.4923,
+"f5Home": 2.231,
+"nrfi": 0.5195,
+"pOver85": 0.4451,
 "probables": {
-"away": "Por anunciar",
+"away": "Matthew Boyd",
 "home": "Michael King"
 },
 "light": "Amarillo",
 "best": {
 "market": "Total",
 "pick": "Over 7.0",
-"p": 0.6457,
+"p": 0.5961,
 "price": -117,
-"edge": 0.1065,
+"edge": 0.0569,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -203,19 +203,19 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.0",
-"p": 0.6457,
+"p": 0.5961,
 "line": 7.0,
-"ic": 65.5324,
-"level": "Media"
+"ic": 53.0456,
+"level": "Baja"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Michael King Over 4.5 K",
-"p": 0.5564,
-"line": 4.5,
-"ic": 34.9165,
-"level": "Muy baja"
+"family": "RL",
+"market": "Run Line",
+"pick": "CHC +1.5",
+"p": 0.6909,
+"line": null,
+"ic": 41.9065,
+"level": "Baja"
 }
 ]
 }
