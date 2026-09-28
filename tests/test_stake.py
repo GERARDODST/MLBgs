@@ -109,3 +109,27 @@ class Stake(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AlertasDeAuditoria(unittest.TestCase):
+    """Algoritmo 2026.09.28.2: 8.3 y 7.5 bajan o anulan el stake (solo partidos futuros)."""
+
+    def base(self, **kw):
+        return {**pick(p=0.70, ic=72.0), **kw}
+
+    def test_8_3_baja_el_stake(self):
+        sin = ST.stake_at(self.base(), dec(-150))["level"]
+        con = ST.stake_at(self.base(alerts=[{"code": "8.3", "factor": 0.8, "texto": "x"}]), dec(-150))["level"]
+        self.assertGreater(sin, 0)
+        self.assertLess(con, sin)
+
+    def test_7_5_favorito_caro(self):
+        fc = {"desde": -170, "totalBajo": False, "factor": 0.8}
+        barato = ST.stake_at(self.base(p=0.66, favCaro=fc), dec(-150))["level"]
+        self.assertEqual(barato, ST.stake_at(self.base(p=0.66), dec(-150))["level"])      # a −150 no es caro
+        caro_sin = ST.stake_at(self.base(p=0.72), dec(-200))["level"]
+        caro = ST.stake_at(self.base(p=0.72, favCaro=fc), dec(-200))["level"]
+        self.assertLess(caro, caro_sin)
+        bajo = ST.stake_at(self.base(p=0.72, favCaro={**fc, "totalBajo": True}), dec(-200))
+        self.assertEqual(bajo["level"], 0)
+        self.assertIn("favorito caro", bajo["why"])

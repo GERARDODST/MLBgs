@@ -30,9 +30,15 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 ## Stake 1–10 por confianza (`mlbgs/stake.py`)
 
 - stake 1 = $500 · stake 5 = $1,000 · stake 10 = $1,500 (de 1 a 5 sube $125 por nivel; de 5 a 10, $100).
-- Nivel = redondeo((1 + 9·(IC − 55)/30) · A · H), entre 1 y 10; IC < 55 → no apostar.
+- Nivel = redondeo((1 + 9·(IC − 55)/30) · A · H · R), entre 1 y 10; IC < 55 → no apostar.
   A = acuerdo con el modelo del Pro-Lab (0.70 si lo ve ≥ 10 pp peor); H = historial del modelo
-  (acierto real vs esperado, encogido n/(n+60), entre 0.85 y 1.05).
+  (acierto real vs esperado, encogido n/(n+60), entre 0.85 y 1.05); R = alertas de la auditoría
+  (algoritmo 2026.09.28.2): × 0.8 si el pick depende de que un abridor en mala racha siga mal (8.3),
+  × 0.8 si es favorito caro a −170 o peor (7.5), y favorito caro con total proyectado < 8 = sin stake.
+- Modelo (algoritmo 2026.09.28.2): F5 y F3 con Binomial Negativa y la sobredispersión medida en esas
+  entradas (no Poisson). Equipo sin nada en juego (eliminado, o clasificado sin siembra en juego, solo
+  temporada regular): su bullpen se regresa 50% a la media de la liga y el uso esperado de su cerrador y
+  setups baja 40%. El lineup ya regresa el OBP/SLG de cada bateador a la liga por turnos (k = 300/320).
 - Solo con semáforo Verde a ese momio: edge ≥ 3 pp, IC ≥ 55, sin dato obligatorio faltante, guion que
   acompaña y contradicción no alta. Tope sugerido de $7,500 por día (la cartera avisa; no recorta).
 - Filtro contra el mercado: con edge ≥ 10 pp no hay stake (se verifica: lesión, descanso, lineup). La

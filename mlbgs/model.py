@@ -345,6 +345,7 @@ def lineup_profile(ctx: Context, ids: list[int], names: dict, team_off: dict) ->
         ros = ctx.roster_player(pid)
         rows.append({"id": pid, "name": names.get(str(pid)) or (ctx.hitters.get(pid) or {}).get("name"),
                      "bats": ctx.bats.get(pid) or ros.get("bats"), "pos": ros.get("pos"), "pa": pa, "obp": r2(o, 3), "slg": r2(s, 3), "ops": r2(o + s, 3),
+                     "obpEst": r2(o_s, 3), "slgEst": r2(s_s, 3),
                      "hr": h.get("homeRuns", 0), "k": pct(h.get("strikeOuts", 0) / pa) if pa else None,
                      "barrel": sc.get("barrel")})
     obp, slg, k, bb = obp / tot_w, slg / tot_w, k / tot_w, bb / tot_w
@@ -580,10 +581,31 @@ def analyze(ctx: Context, g: dict) -> dict:
         sps[s]["arsenal"] = arsenal[s]
 
     adj, adj_rows = adjustments(ctx, sps["away"], sps["home"], offs, lineups, bps, park_idx, weather, ump)
+    # importancia en la tabla ANTES del modelo de carreras: un equipo sin nada en juego dosifica su bullpen
+    imp_sim = C.playoff_sim(ctx.b, T, lg, g, n=4000) if ctx.b.get("remaining") else None
+    importance = C.importance(ctx, g, imp_sim)
+    idle = {s: idle_team(row, g) for s, row in zip(SIDES, importance.get("rows") or [])}
+    bps_eff = {}
+    for s in SIDES:
+        bps_eff[s] = bps[s]
+        if idle.get(s):
+            f0 = bps[s]["factor"]
+            bps_eff[s] = {**bps[s], "factor": 1 + IDLE_BP_KEEP * (f0 - 1)}
+            adj_rows.append({"cond": f"Equipo sin nada en juego ({T.abbr(g[s])}): bullpen a media fuerza", "applies": True,
+                             "factor": round(bps_eff[s]["factor"] / f0, 3), "scope": f"bp:{s}", "impact": "Bullpen regresado a la media",
+                             "why": "Eliminado o ya clasificado sin siembra en juego: suele usar relevistas de profundidad y proteger a los principales.",
+                             "inBase": f"Aplicado en λ: el factor del bullpen de {T.abbr(g[s])} pasa de {r2(f0, 3)} a {r2(bps_eff[s]['factor'], 3)} "
+                                       f"(se conserva el {int(100 * IDLE_BP_KEEP)}% de su diferencia con la liga)",
+                             "applied": False, "note": idle[s]})
     neutral_adj = {"sp": 1.0, "bp": 1.0, "all": 1.0, "team": {"away": 1.0, "home": 1.0}}
-    lam = {s: lambdas(ctx, s, offs[s], lineups[s], sps[opp[s]], bps[opp[s]], park, adj, opp[s] == "home") for s in SIDES}
-    lam_base = {s: lambdas(ctx, s, offs[s], lineups[s], sps[opp[s]], bps[opp[s]], park, neutral_adj, opp[s] == "home")
+    lam = {s: lambdas(ctx, s, offs[s], lineups[s], sps[opp[s]], bps_eff[opp[s]], park, adj, opp[s] == "home") for s in SIDES}
+    lam_base = {s: lambdas(ctx, s, offs[s], lineups[s], sps[opp[s]], bps_eff[opp[s]], park, neutral_adj, opp[s] == "home")
                 for s in SIDES}
+    for s in SIDES:
+        if idle.get(s):
+            for r in pens[s]:
+                if r.get("role") in ("Cerrador", "Setup") and r.get("pUse") is not None:
+                    r["pUseSinAjuste"], r["pUse"] = r["pUse"], round(r["pUse"] * IDLE_TOP_USE, 2)
 
     # --- distribuciones (5.4, 5.7.5, 6.8)
     vr = lg.var_ratio
@@ -595,8 +617,9 @@ def analyze(ctx: Context, g: dict) -> dict:
     p_home_lambda = w9 + tie9 * x_home
     margin = M.margin_probs(pmf9["home"], pmf9["away"])
     total_pmf = M.sum_pmf(pmf_full["away"], pmf_full["home"])
-    f5 = {s: M.poisson_pmf(lam[s]["f5"]) for s in SIDES}
-    f3 = {s: M.poisson_pmf(lam[s]["f3"]) for s in SIDES}
+    # F5 y F3 con Binomial Negativa y la sobredispersión medida en esas entradas (Poisson subestimaba las entradas grandes)
+    f5 = {s: M.negbin_pmf(lam[s]["f5"], lg.var_ratio_f5) for s in SIDES}
+    f3 = {s: M.negbin_pmf(lam[s]["f3"], lg.var_ratio_f3) for s in SIDES}
     f5h, f5t, f5a = M.outcome_probs(f5["home"], f5["away"])
     f3h, f3t, f3a = M.outcome_probs(f3["home"], f3["away"])
     f5_total = M.sum_pmf(f5["away"], f5["home"])
@@ -686,9 +709,9 @@ def analyze(ctx: Context, g: dict) -> dict:
         "officials": g.get("officials"),
     }
     sections = {}
-    imp_sim = C.playoff_sim(ctx.b, T, lg, g, n=4000) if ctx.b.get("remaining") else None
     sections["s1"] = section1(ctx, ai, hi, neutral, g)
-    sections["s1"]["importance"] = C.importance(ctx, g, imp_sim)
+    sections["s1"]["importance"] = importance
+    sections["s1"]["idle"] = {s: idle.get(s) for s in SIDES}
     sections["s1"]["news"] = {s: {"team": T.abbr(g[s]), **C.news(ctx.b, g[s], set(g["lineups"][s]))} for s in SIDES}
     sections["s2"] = section2(ctx, g, a_id, h_id, neutral)
     sections["s3"] = section3(ctx, g, sps, score, offs, lineups, a_id, h_id, d, adv_side, adv_level, kprops)
@@ -699,6 +722,7 @@ def analyze(ctx: Context, g: dict) -> dict:
     sections["s4"]["full"] = {s: [{k: (r2(v, 3) if isinstance(v, float) else v) for k, v in r.items() if k not in ("stats", "vs")}
                                   for r in pens[s]] for s in SIDES}
     sections["s4"]["officialList"] = {s: bool((g.get("officialBullpen") or {}).get(s)) for s in SIDES}
+    sections["s4"]["idle"] = {s: idle.get(s) for s in SIDES}
     sections["s5"] = section5(ctx, g, sps, offs, lineups, bps, lam, lam_base, adj_rows, py, methods, p_tri, spread,
                               confidence, elo_adj, elo_a, elo_h, markets, score, adv_side, neutral, park_idx, projected)
     sections["s6"] = section6(ctx, g, sps, offs, lineups, bps, lam, total_pmf, f3_total, f5_total, pmf_full, nrfi,
@@ -728,6 +752,23 @@ def analyze(ctx: Context, g: dict) -> dict:
     game["picks"] = P.build(game)
     game["summary"]["topPicks"] = game["picks"][:2]
     return game
+
+
+IDLE_BP_KEEP = 0.5      # equipo sin nada en juego: se conserva la mitad de la diferencia de su bullpen con la liga
+IDLE_TOP_USE = 0.6      # y el uso esperado de su cerrador y setups baja 40%
+
+
+def idle_team(row: dict, g: dict) -> str | None:
+    """Motivo si el equipo no se juega nada (temporada regular): eliminado, o clasificado sin siembra en juego."""
+    if not row or (g.get("type") or "R") != "R":
+        return None
+    lev = row.get("leverage") or {}
+    moves = max(abs((lev.get(k) or {}).get("delta") or 0) for k in ("po", "div", "bye")) if lev else None
+    if row.get("status") == "Eliminado":
+        return f"{row['team']} está eliminado"
+    if row.get("status") == "Clasificado" and moves is not None and moves < 0.01:
+        return f"{row['team']} ya clasificó y el partido no le mueve la siembra (apalancamiento {100 * moves:.1f} pp)"
+    return None
 
 
 def team_card(ctx: Context, tid: int, g: dict, side: str) -> dict:
@@ -1816,8 +1857,9 @@ def section8(ctx, g, S, markets, sps, bps, lam, total_proj, odds, kprops, score,
     crank = {"Baja": 0, "Media": 1, "Alta": 2}
     best = min(cands, key=lambda d: (rank[d["light"]], crank.get(d["contradiction"], 3), -(d.get("conviction") or 0))) if cands else None
     rec = recommendation(ctx, g, decisions, S, sps, fav, total_proj)
+    collapse = [s for s in SIDES if not sps[s]["missing"] and (sps[s].get("l5fip") or 0) > (sps[s]["shrunk"]["fip"] + 1.0)]
     return {"decisions": decisions, "dependencies": deps, "correlation": corr, "audit": audit, "best": best,
-            "recommendation": rec,
+            "recommendation": rec, "collapse": {s: sps[s]["name"] for s in collapse},
             "rule": "Solo puede ser pick fuerte si cumple: Modelo + Guion + Cuota + Baja contradicción",
             "central": ("No elijas el mercado que predice al ganador; elige el mercado que mejor representa el guion del "
                         "partido con menor contradicción. Antes de ML, Run Line, Over o team total Over, revisar: "
@@ -1965,7 +2007,7 @@ def section10(ctx, S, methods, p_tri, confidence, lam, odds):
                    f"{pct(p_tri)}% local (confianza {confidence})"},
         {"phase": "FASE 3 — Modelo de carreras y total", "status": "OK",
          "detail": f"λ F3 {r2(lam['away']['f3'] + lam['home']['f3'])} · F5 {r2(lam['away']['f5'] + lam['home']['f5'])} · "
-                   f"juego {r2(lam['away']['full'] + lam['home']['full'])}; Binomial Negativa en 9 entradas, Poisson en F3/F5"},
+                   f"juego {r2(lam['away']['full'] + lam['home']['full'])}; Binomial Negativa en 9 entradas y en F3/F5"},
         {"phase": "FASE 4 — Valor de mercado", "status": "OK" if odds else "Alerta",
          "detail": "Edge, momio justo, mínimo aceptable y Kelly fraccional" if odds
          else "Sin momios: se publican momio justo y mínimo aceptable; edge no calculable"},

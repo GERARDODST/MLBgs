@@ -11,10 +11,13 @@ que te dan (a mejor momio, más Fuerza y más IC), ajustado por los demás model
      Filtro contra el mercado: si el edge llega a 10 pp o más, no hay stake. Una diferencia así con el
      casino casi siempre es algo que el modelo no ve (lesión, descanso, lineup), no una ganga.
   2. Nivel base = 1 + 9 · (IC − 55) / 30        (IC 55 → 1 · IC 70 → 5.5 · IC 85 o más → 10)
-  3. Nivel = redondeo(base · A · H), entre 1 y 10
+  3. Nivel = redondeo(base · A · H · R), entre 1 y 10
        A = acuerdo con el modelo del Pro-Lab: 1.00 si coincide; baja a 0.70 si lo ve ≥ 10 pp peor
        H = historial del modelo: acierto real − esperado de sus picks principales calificados,
            encogido n/(n+60) y acotado a [0.85, 1.05]
+       R = alertas de la auditoría (algoritmo 2026.09.28.2): × 0.8 si el pick depende de que un abridor
+           en mala racha siga mal (8.3) y × 0.8 si es un favorito caro, −170 o peor (7.5); favorito caro
+           con total proyectado bajo (< 8) = sin stake
 
 Sin momio capturado, el stake es el del IC que muestra el pick y vale solo desde su momio mínimo
 (escalera: desde qué momio llega a stake 1, 5 y 10). Con tu momio, el IC y el stake se recalculan.
@@ -90,11 +93,29 @@ def blocked_why(pick: dict) -> str | None:
     return None
 
 
-def level_from_ic(ic: float, a: float = 1.0, h: float = 1.0) -> int:
+def level_from_ic(ic: float, a: float = 1.0, h: float = 1.0, r: float = 1.0) -> int:
     if ic < IC_MIN:
         return 0
     base = 1 + 9 * (ic - IC_MIN) / (IC_TOP - IC_MIN)
-    return int(clip(round(base * a * h), 1, 10))
+    return int(clip(round(base * a * h * r), 1, 10))
+
+
+def risk(pick: dict) -> float:
+    """R sin momio: producto de las alertas de la auditoría que aplican al pick (8.3)."""
+    r = 1.0
+    for x in pick.get("alerts") or []:
+        r *= x.get("factor", 1.0)
+    return r
+
+
+def fav_rule(pick: dict, dec: float) -> tuple[float, str | None]:
+    """7.5 favorito caro: con momio −170 o peor el stake baja; con total proyectado bajo no hay stake."""
+    fc = pick.get("favCaro")
+    if not fc or dec > M.american_to_decimal(fc["desde"]) + 1e-9:
+        return 1.0, None
+    if fc.get("totalBajo"):
+        return 0.0, "favorito caro con total bajo (7.5): buscar Under, F5 Under, props de pitcher o no apostar"
+    return fc.get("factor", 1.0), None
 
 
 def stake_at(pick: dict, dec: float, a: float = 1.0, h: float = 1.0) -> dict:
@@ -107,7 +128,10 @@ def stake_at(pick: dict, dec: float, a: float = 1.0, h: float = 1.0) -> dict:
     if pick["p"] - 1 / dec >= EDGE_MAX:
         return {"level": 0, "stake": 0, "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"}
     ic = ic_at(pick, dec)
-    lvl = level_from_ic(ic, a, h)
+    fr, fwhy = fav_rule(pick, dec)
+    if fwhy:
+        return {"level": 0, "stake": 0, "why": fwhy, "ic": ic}
+    lvl = level_from_ic(ic, a, h, risk(pick) * fr)
     if not lvl:
         return {"level": 0, "stake": 0, "why": "confianza menor a 55 con ese momio", "ic": ic}
     return {"level": lvl, "stake": AMOUNTS[lvl], "ic": ic}
@@ -145,10 +169,11 @@ def american_floor(dec: float) -> int:
 
 def plan(pick: dict, a: float = 1.0, h: float = 1.0) -> dict:
     """Stake por la confianza que muestra el pick (su IC) y la escalera: desde qué momio llega a stake 1, 5 y 10."""
-    out = {"a": a, "h": h, "block": blocked_why(pick), "ladder": [], "level": 0}
+    out = {"a": a, "h": h, "block": blocked_why(pick), "ladder": [], "level": 0, "r": risk(pick),
+           "alerts": [x["texto"] for x in pick.get("alerts") or []]}
     if out["block"]:
         return out
-    out["level"] = level_from_ic(pick["ic"], a, h)
+    out["level"] = level_from_ic(pick["ic"], a, h, out["r"])
     out["maxPrice"] = american_cap(max_dec(pick)) if max_dec(pick) < 50 else None     # arriba de esto: verificar
     # momio mínimo de cada nivel 1..10 (None si no se alcanza): sirve para calificar después con tu momio
     out["steps"] = [(american_floor(d) if (d := _min_dec(pick, lv, a, h)) else None) for lv in range(1, 11)]
