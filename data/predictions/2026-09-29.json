@@ -3,7 +3,7 @@
 "pk": 849845,
 "date": "2026-09-29",
 "time": "2026-09-29T18:00:00Z",
-"generatedAt": "2026-09-28T18:53:13+00:00",
+"generatedAt": "2026-09-28T22:03:38+00:00",
 "away": "PHI",
 "home": "ATL",
 "pHome": 0.5483,
@@ -29,8 +29,8 @@
 "market": "Run Line",
 "pick": "PHI +1.5",
 "p": 0.6759,
-"price": -142,
-"edge": 0.0891,
+"price": -135,
+"edge": 0.1015,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -40,7 +40,7 @@
 "pick": "PHI +1.5",
 "p": 0.6759,
 "line": null,
-"ic": 62.7846,
+"ic": 66.3746,
 "level": "Media"
 },
 {
@@ -49,7 +49,7 @@
 "pick": "Under 6.5",
 "p": 0.5231,
 "line": 6.5,
-"ic": 44.9677,
+"ic": 44.2493,
 "level": "Baja"
 }
 ]
@@ -58,54 +58,54 @@
 "pk": 849849,
 "date": "2026-09-29",
 "time": "2026-09-29T21:00:00Z",
-"generatedAt": "2026-09-28T18:53:13+00:00",
+"generatedAt": "2026-09-28T22:03:38+00:00",
 "away": "CWS",
 "home": "HOU",
-"pHome": 0.4883,
+"pHome": 0.5178,
 "methods": {
 "log5": 0.5015,
-"elo": 0.502,
-"lambda": 0.4615
+"elo": 0.5528,
+"lambda": 0.4991
 },
-"confidence": "alta",
-"projAway": 5.0776,
+"confidence": "media",
+"projAway": 4.6552,
 "projHome": 4.6562,
-"total": 9.7338,
-"f5Away": 2.8603,
+"total": 9.3114,
+"f5Away": 2.4728,
 "f5Home": 2.8086,
-"nrfi": 0.4476,
-"pOver85": 0.5573,
+"nrfi": 0.4776,
+"pOver85": 0.5201,
 "probables": {
 "away": "Por anunciar",
-"home": "Por anunciar"
+"home": "AJ Blubaugh"
 },
-"light": "Amarillo",
+"light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Over 8.5",
-"p": 0.5573,
-"price": -102,
-"edge": 0.0523,
-"light": "Amarillo"
+"market": "Prop pitcher",
+"pick": "AJ Blubaugh Under 2.5 K",
+"p": 0.6337,
+"price": null,
+"edge": null,
+"light": "Gris"
 },
 "topPicks": [
 {
 "family": "Total",
 "market": "Total completo",
-"pick": "Over 8.5",
-"p": 0.5573,
-"line": 8.5,
-"ic": 47.0608,
+"pick": "Over 8.0",
+"p": 0.5728,
+"line": 8.0,
+"ic": 41.8834,
 "level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
-"pick": "CWS",
-"p": 0.5117,
+"pick": "HOU",
+"p": 0.5178,
 "line": null,
-"ic": 40.7132,
-"level": "Baja"
+"ic": 34.6262,
+"level": "Muy baja"
 }
 ]
 },

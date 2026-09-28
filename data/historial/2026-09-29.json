@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-28T18:53:13+00:00",
+  "registeredAt": "2026-09-28T22:03:38+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5483,
@@ -55,16 +55,16 @@
     "line": null,
     "p": 0.6759,
     "fair": -209.0,
-    "ic": 62.8,
+    "ic": 66.4,
     "level": "Media",
-    "price": -142,
+    "price": -135,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "level": 6,
+     "level": 0,
      "ladder": [
       {
        "level": 1,
@@ -93,7 +93,8 @@
      "a": 1.0,
      "h": 1.0056,
      "r": 1.0,
-     "maxPrice": -136
+     "maxPrice": -136,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
     }
    },
    {
@@ -105,9 +106,9 @@
     "line": 6.5,
     "p": 0.5231,
     "fair": -110.0,
-    "ic": 45.0,
+    "ic": 44.2,
     "level": "Baja",
-    "price": 102,
+    "price": 101,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -415,7 +416,7 @@
     "fair": -121.0,
     "ic": 27.3,
     "level": "Muy baja",
-    "price": -198,
+    "price": -206,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -435,26 +436,27 @@
   ],
   "result": null,
   "decision": {
-   "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-142)",
+   "status": "esperar",
+   "why": "falta el momio de Total primeras 5: conviene si pagan -117 o mejor (stake 1); stake 5 desde -100",
    "source": "Framework v2",
-   "pick": "PHI +1.5",
-   "market": "Run Line",
-   "p": 0.6759,
-   "ic": 62.8,
-   "level": 6,
-   "amount": 1100,
-   "minPrice": -176,
+   "pick": "F5 Under 3.5",
+   "waitFor": "momio",
+   "market": "Total primeras 5",
+   "p": 0.5785,
+   "ic": 36.8,
+   "level": 0,
+   "amount": 0,
+   "minPrice": -117,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -176
+     "from": -117
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -149
+     "from": -100
     }
    ]
   }
@@ -489,19 +491,19 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-28T18:53:13+00:00",
+  "registeredAt": "2026-09-28T22:03:38+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.4883,
-   "projAway": 5.08,
+   "pHome": 0.5178,
+   "projAway": 4.66,
    "projHome": 4.66,
-   "total": 9.73,
-   "nrfi": 0.4476,
-   "light": "Amarillo",
-   "confidence": "alta",
+   "total": 9.31,
+   "nrfi": 0.4776,
+   "light": "Gris",
+   "confidence": "media",
    "probables": {
     "away": "Por anunciar",
-    "home": "Por anunciar"
+    "home": "AJ Blubaugh"
    },
    "lineups": "Proyectados"
   },
@@ -511,13 +513,13 @@
     "principal": true,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Over 8.5",
-    "line": 8.5,
-    "p": 0.5573,
-    "fair": -126.0,
-    "ic": 47.1,
+    "pick": "Over 8.0",
+    "line": 8.0,
+    "p": 0.5728,
+    "fair": -134.0,
+    "ic": 41.9,
     "level": "Baja",
-    "price": -102,
+    "price": -119,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -537,19 +539,19 @@
     "principal": true,
     "family": "ML",
     "market": "Moneyline",
-    "pick": "CWS",
+    "pick": "HOU",
     "line": null,
-    "p": 0.5117,
-    "fair": -105.0,
-    "ic": 40.7,
-    "level": "Baja",
-    "price": 102,
+    "p": 0.5178,
+    "fair": -107.0,
+    "ic": 34.6,
+    "level": "Muy baja",
+    "price": -123,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 49.8% · Elo + abridor (5.7.7) 49.8% · λ + Binomial Negativa (5.3 · 5.7.5) 53.8%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 50.2% · Elo + abridor (5.7.7) 55.3% · λ + Binomial Negativa (5.3 · 5.7.5) 49.9%",
     "res": null,
     "stake": {
      "level": 0,
@@ -567,11 +569,11 @@
     "market": "Run Line",
     "pick": "CWS +1.5",
     "line": null,
-    "p": 0.6724,
-    "fair": -205.0,
-    "ic": 35.8,
+    "p": 0.6413,
+    "fair": -179.0,
+    "ic": 33.3,
     "level": "Muy baja",
-    "price": -193,
+    "price": -194,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -591,11 +593,11 @@
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
-    "pick": "F5 Under 5.5",
-    "line": 5.5,
-    "p": 0.5454,
-    "fair": -120.0,
-    "ic": 31.8,
+    "pick": "F5 Over 4.5",
+    "line": 4.5,
+    "p": 0.5275,
+    "fair": -112.0,
+    "ic": 33.3,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -619,9 +621,9 @@
     "market": "Team total CWS",
     "pick": "CWS Under 4.5",
     "line": 4.5,
-    "p": 0.501,
-    "fair": -100.0,
-    "ic": 31.8,
+    "p": 0.5543,
+    "fair": -124.0,
+    "ic": 33.3,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -647,7 +649,7 @@
     "line": 4.5,
     "p": 0.5542,
     "fair": -124.0,
-    "ic": 31.8,
+    "ic": 33.3,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -669,11 +671,11 @@
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
-    "pick": "CWS F5",
+    "pick": "HOU F5",
     "line": null,
-    "p": 0.5072,
-    "fair": -103.0,
-    "ic": 28.5,
+    "p": 0.5486,
+    "fair": -122.0,
+    "ic": 33.3,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -693,13 +695,39 @@
    {
     "rank": 8,
     "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "AJ Blubaugh Under 2.5 K",
+    "line": 2.5,
+    "p": 0.6337,
+    "fair": -173.0,
+    "ic": 32.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 1.0056,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5524,
-    "fair": -123.0,
-    "ic": 28.5,
+    "p": 0.5224,
+    "fair": -109.0,
+    "ic": 30.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -722,11 +750,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "Over 8.5",
+   "pick": "Over 8.0",
    "waitFor": "dato",
    "market": "Total completo",
-   "p": 0.5573,
-   "ic": 47.1,
+   "p": 0.5728,
+   "ic": 41.9,
    "level": 0,
    "amount": 0,
    "minPrice": null,
@@ -763,7 +791,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-28T18:53:13+00:00",
+  "registeredAt": "2026-09-28T22:03:38+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5553,
@@ -791,7 +819,7 @@
     "fair": -125.0,
     "ic": 43.0,
     "level": "Baja",
-    "price": -155,
+    "price": -142,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1102,7 +1130,7 @@
     "fair": -165.0,
     "ic": 26.7,
     "level": "Muy baja",
-    "price": -183,
+    "price": -198,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
