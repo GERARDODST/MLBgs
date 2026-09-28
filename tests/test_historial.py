@@ -41,9 +41,11 @@ class Historial(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
-    def run_update(self, analyses, scoreboard, now):
+    def run_update(self, analyses, scoreboard, now, labs=()):
         bundle = {"results": [], "boxscores": [], "scoreboard": scoreboard}
-        return HI.update(bundle, analyses, [], now, dir_=self.dir, pred_dir=self.pred)
+        return HI.update(bundle, analyses, list(labs), now, dir_=self.dir, pred_dir=self.pred,
+                         exp_dir=os.path.join(self.tmp.name, "expedientes"), pending_dir=os.path.join(self.tmp.name, "pendientes"),
+                         odds_dir=os.path.join(self.tmp.name, "odds"))
 
     def test_ticket_guarda_modelo_analisis_y_picks(self):
         t = self.run_update([analysis()], [sb("Preview")], "2026-09-24T18:00:00+00:00")["2026-09-24-1-framework"]
@@ -118,15 +120,25 @@ class Historial(unittest.TestCase):
         t = self.run_update([], [sb("Preview", date="2026-09-25")], "2026-09-24T22:00:00+00:00")["2026-09-24-1-framework"]
         self.assertEqual(t["status"], "anulado")
 
-    def test_respaldo_desde_el_seguimiento(self):
+    def _seguimiento(self):
         with open(os.path.join(self.pred, "2026-09-23.json"), "w", encoding="utf-8") as f:
             json.dump([{"pk": 7, "date": "2026-09-23", "time": "2026-09-23T23:05:00Z", "generatedAt": "2026-09-23T22:00:00+00:00",
                         "away": "MIL", "home": "PHI", "pHome": 0.4, "projAway": 5, "projHome": 4, "total": 9, "nrfi": 0.5,
                         "light": "Gris", "confidence": "media", "probables": {"away": "A", "home": "B"},
                         "topPicks": [{"family": "F5", "market": "F5 Moneyline", "pick": "MIL F5", "p": 0.6, "line": None, "ic": 70, "level": "Alta"}]}], f)
+
+    def test_respaldo_desde_el_seguimiento_antes_del_juego(self):
+        self._seguimiento()
+        self.run_update([], [sb("Preview", pk=7, date="2026-09-23")], "2026-09-23T22:30:00+00:00")
         t = self.run_update([], [sb("Final", 4, 1, pk=7, date="2026-09-23")], "2026-09-24T02:00:00+00:00")["2026-09-23-7-framework"]
         self.assertEqual(t["source"], "seguimiento")
         self.assertEqual(t["picks"][0]["res"], "ganado")
+        self.assertTrue(HI.verify(t))
+
+    def test_no_se_reconstruye_un_ticket_despues_del_juego(self):
+        self._seguimiento()
+        tickets = self.run_update([], [sb("Final", 4, 1, pk=7, date="2026-09-23")], "2026-09-24T02:00:00+00:00")
+        self.assertNotIn("2026-09-23-7-framework", tickets)
 
     def test_vista_de_pagina_recorta_explicaciones_viejas(self):
         tickets = self.run_update([analysis(), analysis(pk=2, date="2026-08-01", time="2026-08-01T23:05:00Z")], [], "2026-07-31T18:00:00+00:00")
@@ -149,3 +161,83 @@ class Calentamiento(unittest.TestCase):
         self.assertTrue(warming_up({"abstractGameState": "Live", "detailedState": "Pre-Game"}))
         self.assertFalse(warming_up({"abstractGameState": "Live", "detailedState": "In Progress"}))
         self.assertFalse(warming_up({"abstractGameState": "Preview", "detailedState": "Scheduled"}))
+
+
+class Bloqueo(unittest.TestCase):
+    """Regla del proyecto: al primer lanzamiento el ticket se bloquea y nunca se recalcula."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        j = lambda *p: os.path.join(self.tmp.name, *p)  # noqa: E731
+        self.kw = {"dir_": j("historial"), "pred_dir": j("predictions"), "exp_dir": j("expedientes"),
+                   "pending_dir": j("pendientes"), "odds_dir": j("odds")}
+        os.makedirs(self.kw["pred_dir"])
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def run_update(self, analyses, scoreboard, now, labs=()):
+        bundle = {"results": [], "boxscores": [], "scoreboard": scoreboard,
+                  "upcoming": [{"pk": 1, "away": 158, "home": 143, "date": "2026-09-24"}],
+                  "teams": {"158": {"abbr": "MIL"}, "143": {"abbr": "PHI"}}}
+        return HI.update(bundle, analyses, list(labs), now, **self.kw)
+
+    def lab(self, decision=None):
+        base = analysis()
+        return {"modelKey": "kronos", "model": "KRONOS", "pk": 1, "base": base, "builtAt": "2026-09-24T17:00:00+00:00",
+                "frozenAt": "2026-09-24T16:55:00+00:00", "picks": base["picks"], "topPicks": base["picks"][:2],
+                **({"decision": decision} if decision else {})}
+
+    def test_se_bloquea_al_primer_lanzamiento_con_su_expediente(self):
+        self.run_update([analysis(0.40)], [sb("Preview")], "2026-09-24T22:50:00+00:00")
+        t = self.run_update([], [sb("Live", 1, 0, detailed="In Progress")], "2026-09-24T23:10:00+00:00")["2026-09-24-1-framework"]
+        self.assertTrue(HI.verify(t))
+        self.assertEqual(t["lock"]["algo"]["version"], t["algo"]["version"])
+        self.assertTrue(t["lock"]["coincide"])
+        from mlbgs import expediente as EX
+        exp = EX.load(os.path.join(self.kw["exp_dir"], "2026-09-24", "1.json.gz"))
+        self.assertEqual(exp["tickets"]["2026-09-24-1-framework"], t["lock"]["hash"])
+        self.assertEqual(exp["raw"]["game"]["pk"], 1)
+        self.assertEqual(exp["analysis"]["pk"], 1)
+
+    def test_calentamiento_no_bloquea(self):
+        self.run_update([analysis(0.40)], [sb("Preview")], "2026-09-24T22:30:00+00:00")
+        t = self.run_update([analysis(0.41)], [sb("Live", detailed="Warmup")], "2026-09-24T22:50:00+00:00")["2026-09-24-1-framework"]
+        self.assertNotIn("lock", t)
+        self.assertEqual(t["pred"]["pHome"], 0.41)
+
+    def test_bloqueado_no_cambia_con_otro_analisis(self):
+        self.run_update([analysis(0.40)], [sb("Preview")], "2026-09-24T22:50:00+00:00")
+        t0 = self.run_update([], [sb("Live", 1, 0, detailed="In Progress")], "2026-09-24T23:10:00+00:00")["2026-09-24-1-framework"]
+        t1 = self.run_update([analysis(0.70)], [sb("Final", 4, 1)], "2026-09-25T02:00:00+00:00")["2026-09-24-1-framework"]
+        self.assertEqual(t1["pred"], t0["pred"])
+        self.assertEqual(t1["lock"], t0["lock"])
+        self.assertEqual(t1["status"], "calificado")        # lo único que llega después: resultado y calificación
+        self.assertEqual(t1["picks"][0]["res"], "ganado")
+
+    def test_pro_lab_bloqueado_no_recibe_decision_despues(self):
+        self.run_update([], [sb("Preview")], "2026-09-24T22:50:00+00:00", labs=[self.lab()])
+        self.run_update([], [sb("Live", 1, 0, detailed="In Progress")], "2026-09-24T23:10:00+00:00", labs=[self.lab()])
+        dec = {"status": "apostar", "why": "x", "source": "y", "pick": {"pick": "MIL +1.5", "market": "Run Line", "p": 0.75, "ic": 80},
+               "stake": {"level": 9, "amount": 1400, "minPrice": -266, "ladder": []}}
+        t = self.run_update([], [sb("Final", 4, 1)], "2026-09-25T02:00:00+00:00", labs=[self.lab(dec)])["2026-09-24-1-kronos"]
+        self.assertNotIn("decision", t)
+        self.assertTrue(HI.verify(t))
+
+    def test_alterar_un_ticket_bloqueado_detiene_la_actualizacion(self):
+        self.run_update([analysis(0.40)], [sb("Preview")], "2026-09-24T22:50:00+00:00")
+        self.run_update([], [sb("Live", 1, 0, detailed="In Progress")], "2026-09-24T23:10:00+00:00")
+        path = os.path.join(self.kw["dir_"], "2026-09-24.json")
+        with open(path, encoding="utf-8") as f:
+            rows = json.load(f)
+        rows[0]["picks"][0]["p"] = 0.99
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(rows, f)
+        with self.assertRaises(RuntimeError):
+            self.run_update([], [sb("Final", 4, 1)], "2026-09-25T02:00:00+00:00")
+
+
+class TicketsDelRepositorio(unittest.TestCase):
+    def test_todos_los_bloqueados_conservan_su_huella(self):
+        bad = [t["id"] for t in HI.load().values() if t.get("lock") and not HI.verify(t)]
+        self.assertEqual(bad, [])

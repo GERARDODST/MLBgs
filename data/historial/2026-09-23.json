@@ -120,6 +120,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "4726ae3387b5d369e2264ed2e554b51337cd10e952ed62dfdd73240ddbc1d1ce",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": "data/expedientes/2026-09-23/824223.json.gz",
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -179,25 +190,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": "perdido",
-    "stake": {
-     "w": 0.56,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -123
-      },
-      {
-       "stake": 1000,
-       "from": -121
-      },
-      {
-       "stake": 1500,
-       "from": -102
-      }
-     ],
-     "block": null
-    }
+    "res": "perdido"
    },
    {
     "rank": 2,
@@ -216,25 +209,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
-    "res": "push",
-    "stake": {
-     "w": 0.681,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -106
-      },
-      {
-       "stake": 1000,
-       "from": 106
-      },
-      {
-       "stake": 1500,
-       "from": 123
-      }
-     ],
-     "block": null
-    }
+    "res": "push"
    },
    {
     "rank": 3,
@@ -253,12 +228,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.734,
-     "ladder": [],
-     "block": "el guion del partido no acompaña"
-    }
+    "res": "ganado"
    },
    {
     "rank": 4,
@@ -279,25 +249,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 4 métodos: Log5 (5.7.2) 58.6% · Elo + abridor (5.7.7) 56.4% · λ + Binomial Negativa (5.3 · 5.7.5) 52.1% · DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9) 55.1%",
-    "res": "perdido",
-    "stake": {
-     "w": 0.645,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -110
-      },
-      {
-       "stake": 1000,
-       "from": 103
-      },
-      {
-       "stake": 1500,
-       "from": 120
-      }
-     ],
-     "block": null
-    }
+    "res": "perdido"
    },
    {
     "rank": 5,
@@ -316,25 +268,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
-    "res": "ganado",
-    "stake": {
-     "w": 0.727,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -141
-      },
-      {
-       "stake": 1000,
-       "from": -132
-      },
-      {
-       "stake": 1500,
-       "from": -118
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 6,
@@ -353,25 +287,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.575,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -116
-      },
-      {
-       "stake": 1000,
-       "from": -111
-      },
-      {
-       "stake": 1500,
-       "from": 107
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 7,
@@ -390,25 +306,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de WSH + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.716,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 103
-      },
-      {
-       "stake": 1000,
-       "from": 115
-      },
-      {
-       "stake": 1500,
-       "from": 132
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 8,
@@ -427,25 +325,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga + Monte Carlo",
-    "res": "perdido",
-    "stake": {
-     "w": 0.636,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 108
-      },
-      {
-       "stake": 1000,
-       "from": 126
-      },
-      {
-       "stake": 1500,
-       "from": 150
-      }
-     ],
-     "block": null
-    }
+    "res": "perdido"
    },
    {
     "rank": 9,
@@ -464,25 +344,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de DET + Monte Carlo",
-    "res": "perdido",
-    "stake": {
-     "w": 0.692,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 108
-      },
-      {
-       "stake": 1000,
-       "from": 123
-      },
-      {
-       "stake": 1500,
-       "from": 144
-      }
-     ],
-     "block": null
-    }
+    "res": "perdido"
    },
    {
     "rank": 10,
@@ -501,12 +363,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.686,
-     "ladder": [],
-     "block": "el guion del partido no acompaña"
-    }
+    "res": "ganado"
    }
   ],
   "result": {
@@ -555,29 +412,16 @@
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
   },
-  "decision": {
-   "status": "no apostar",
-   "why": "confianza 51 (< 55): solo entra con un momio mejor (stake 1 desde -123)",
-   "source": "Framework v2 + DIAMANTE-24",
-   "pick": "Framber Valdez Under 5.5 K",
-   "market": "Prop de ponches",
-   "p": 0.6109,
-   "ic": 51.0,
-   "level": 0,
-   "amount": 0,
-   "minPrice": -123,
-   "ladder": [
-    {
-     "level": 1,
-     "stake": 500,
-     "from": -123
-    },
-    {
-     "level": 5,
-     "stake": 1000,
-     "from": -104
-    }
-   ]
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "cca7a677522c7b003e0c4da722f1d90738e1bf53990c63b08cb67cd0c68c285f",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": "data/expedientes/2026-09-23/824223.json.gz",
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -701,6 +545,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "a30ae190b458be55b51108ca0a9246f77e306a73268ae1f6b0dd6c4da61b03ce",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -824,6 +679,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "631d06c68feaeecf5cb717b66911ebf67cb994e11317f30bebd70ca5e2c85530",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": "data/expedientes/2026-09-23/823168.json.gz",
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -883,25 +749,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.704,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -119
-      },
-      {
-       "stake": 1000,
-       "from": -108
-      },
-      {
-       "stake": 1500,
-       "from": 105
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 2,
@@ -920,12 +768,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
-    "res": "ganado",
-    "stake": {
-     "w": 0.636,
-     "ladder": [],
-     "block": "el guion del partido no acompaña"
-    }
+    "res": "ganado"
    },
    {
     "rank": 3,
@@ -943,25 +786,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": "ganado",
-    "stake": {
-     "w": 0.661,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -122
-      },
-      {
-       "stake": 1000,
-       "from": -109
-      },
-      {
-       "stake": 1500,
-       "from": 105
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 4,
@@ -980,25 +805,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de MIN + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.737,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 113
-      },
-      {
-       "stake": 1000,
-       "from": 127
-      },
-      {
-       "stake": 1500,
-       "from": 147
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 5,
@@ -1017,25 +824,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.724,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 107
-      },
-      {
-       "stake": 1000,
-       "from": 120
-      },
-      {
-       "stake": 1500,
-       "from": 139
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 6,
@@ -1054,25 +843,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de SF + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.673,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 103
-      },
-      {
-       "stake": 1000,
-       "from": 118
-      },
-      {
-       "stake": 1500,
-       "from": 138
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 7,
@@ -1090,25 +861,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": "ganado",
-    "stake": {
-     "w": 0.621,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -105
-      },
-      {
-       "stake": 1000,
-       "from": 104
-      },
-      {
-       "stake": 1500,
-       "from": 123
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 8,
@@ -1129,12 +882,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 4 métodos: Log5 (5.7.2) 53.2% · Elo + abridor (5.7.7) 51.2% · λ + Binomial Negativa (5.3 · 5.7.5) 47.1% · PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9) 49.2%",
-    "res": "perdido",
-    "stake": {
-     "w": 0.63,
-     "ladder": [],
-     "block": "el guion del partido no acompaña"
-    }
+    "res": "perdido"
    },
    {
     "rank": 9,
@@ -1153,25 +901,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
-    "res": "push",
-    "stake": {
-     "w": 0.6,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 118
-      },
-      {
-       "stake": 1000,
-       "from": 137
-      },
-      {
-       "stake": 1500,
-       "from": 167
-      }
-     ],
-     "block": null
-    }
+    "res": "push"
    },
    {
     "rank": 10,
@@ -1189,25 +919,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": "perdido",
-    "stake": {
-     "w": 0.602,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 110
-      },
-      {
-       "stake": 1000,
-       "from": 120
-      },
-      {
-       "stake": 1500,
-       "from": 145
-      }
-     ],
-     "block": null
-    }
+    "res": "perdido"
    }
   ],
   "result": {
@@ -1256,34 +968,16 @@
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
   },
-  "decision": {
-   "status": "no apostar",
-   "why": "confianza 54 (< 55): solo entra con un momio mejor (stake 1 desde -119)",
-   "source": "Framework v2 + PRISMA",
-   "pick": "F5 Under 4.5",
-   "market": "Total primeras 5",
-   "p": 0.5742,
-   "ic": 54.3,
-   "level": 0,
-   "amount": 0,
-   "minPrice": -119,
-   "ladder": [
-    {
-     "level": 1,
-     "stake": 500,
-     "from": -119
-    },
-    {
-     "level": 5,
-     "stake": 1000,
-     "from": -110
-    },
-    {
-     "level": 10,
-     "stake": 1500,
-     "from": 114
-    }
-   ]
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "f45c5c0420fa14a96a64be9e51cd167f525b87c5ff537b54301aab165253609d",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": "data/expedientes/2026-09-23/823168.json.gz",
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -1407,6 +1101,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "73f19b6c5704bc2011a8bcf6984cb69f2abb3c077ca3155f9638ecd181d7875e",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -1530,6 +1235,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "3cef1a6f656ce70499ed7806439051eb162520cec6419f79d8c20a66a99dcd09",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -1653,6 +1369,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "993c27f26bb8651ec642a7f0050912d894edfb9034d948ef5ad2aaf5d451e88b",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": "data/expedientes/2026-09-23/823410.json.gz",
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -1714,21 +1441,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
-    "res": "ganado",
-    "stake": {
-     "w": 0.747,
-     "ladder": [
-      {
-       "stake": 1000,
-       "from": -266
-      },
-      {
-       "stake": 1500,
-       "from": -247
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 2,
@@ -1747,25 +1460,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.746,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -155
-      },
-      {
-       "stake": 1000,
-       "from": -148
-      },
-      {
-       "stake": 1500,
-       "from": -133
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 3,
@@ -1786,25 +1481,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 4 métodos: Log5 (5.7.2) 55.2% · Elo + abridor (5.7.7) 58.9% · λ + Binomial Negativa (5.3 · 5.7.5) 62.3% · KRONOS estocástico (5.7.3 · 5.7.9) 60.3%",
-    "res": "ganado",
-    "stake": {
-     "w": 0.652,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -128
-      },
-      {
-       "stake": 1000,
-       "from": -115
-      },
-      {
-       "stake": 1500,
-       "from": -100
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 4,
@@ -1823,25 +1500,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.758,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 117
-      },
-      {
-       "stake": 1000,
-       "from": 132
-      },
-      {
-       "stake": 1500,
-       "from": 152
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 5,
@@ -1860,25 +1519,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": "perdido",
-    "stake": {
-     "w": 0.657,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -117
-      },
-      {
-       "stake": 1000,
-       "from": -104
-      },
-      {
-       "stake": 1500,
-       "from": 111
-      }
-     ],
-     "block": null
-    }
+    "res": "perdido"
    },
    {
     "rank": 6,
@@ -1897,25 +1538,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
-    "res": "perdido",
-    "stake": {
-     "w": 0.713,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 101
-      },
-      {
-       "stake": 1000,
-       "from": 113
-      },
-      {
-       "stake": 1500,
-       "from": 130
-      }
-     ],
-     "block": null
-    }
+    "res": "perdido"
    },
    {
     "rank": 7,
@@ -1934,25 +1557,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de PHI + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.708,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": -103
-      },
-      {
-       "stake": 1000,
-       "from": 108
-      },
-      {
-       "stake": 1500,
-       "from": 125
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 8,
@@ -1971,25 +1576,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de MIL + Monte Carlo",
-    "res": "perdido",
-    "stake": {
-     "w": 0.713,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 111
-      },
-      {
-       "stake": 1000,
-       "from": 126
-      },
-      {
-       "stake": 1500,
-       "from": 147
-      }
-     ],
-     "block": null
-    }
+    "res": "perdido"
    },
    {
     "rank": 9,
@@ -2008,25 +1595,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.556,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 108
-      },
-      {
-       "stake": 1000,
-       "from": 132
-      },
-      {
-       "stake": 1500,
-       "from": 163
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    },
    {
     "rank": 10,
@@ -2045,25 +1614,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
-    "res": "ganado",
-    "stake": {
-     "w": 0.585,
-     "ladder": [
-      {
-       "stake": 500,
-       "from": 111
-      },
-      {
-       "stake": 1000,
-       "from": 134
-      },
-      {
-       "stake": 1500,
-       "from": 164
-      }
-     ],
-     "block": null
-    }
+    "res": "ganado"
    }
   ],
   "result": {
@@ -2112,34 +1663,16 @@
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
   },
-  "decision": {
-   "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios",
-   "source": "Framework v2 + KRONOS",
-   "pick": "MIL +1.5",
-   "market": "Run Line",
-   "p": 0.7575,
-   "ic": 82.6,
-   "level": 9,
-   "amount": 1400,
-   "minPrice": -266,
-   "ladder": [
-    {
-     "level": 1,
-     "stake": 500,
-     "from": -266
-    },
-    {
-     "level": 5,
-     "stake": 1000,
-     "from": -261
-    },
-    {
-     "level": 10,
-     "stake": 1500,
-     "from": -200
-    }
-   ]
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "ba868db6e0648a2793d8b0fff590b0ef2959df1d603344fb0a270e3c6a8019dd",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": "data/expedientes/2026-09-23/823410.json.gz",
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -2263,6 +1796,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "518853e02cf467e53f5dcda7acfdcb7aca1e208e7c707705493e93a5cf1e1576",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -2386,6 +1930,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "012ffa93970430ddb098434b2e16e5a5e920310a83179c90f9b92d9523fcb0e5",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -2513,6 +2068,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "cd716782c2a2cff87ffde19a825eb385d28ef64fdee2d10a6c77248291faba81",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -2636,6 +2202,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "f94f7e0fa89243e0ef327656caf2d2c1d4108dbd196e50f171ec0c8cec9dd9cb",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -2759,6 +2336,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "967bc34fcbe989c222ca0e74896756fd72682188c90081291cda213c1514814a",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -2882,6 +2470,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "4526704fd08a89b8efeff25cd9b56a8edd882fe687e9a20566ab79027ee06609",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -3005,6 +2604,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "1a83efcf5338b7412bf33906960ad4925a142d5fbc61188724d1505a4c0d6d8f",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -3128,6 +2738,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "b878bb777f1b5132123b3f3708efdb5b1cb6f5ab317fda84d21bb2001c667825",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -3255,6 +2876,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "04bf9f66e7c8c956173dbcca192e914e42d41785212f0ce18b7e4e8130b45e5b",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  },
  {
@@ -3378,6 +3010,17 @@
    "decisions": null,
    "rhe": null,
    "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "lock": {
+   "at": "2026-09-28T04:23:07+00:00",
+   "hash": "33f3b5d60e34818e76c113dbe9c3f8c902163e7aae93151edacd727c1c36c551",
+   "algo": {
+    "version": "anterior al versionado",
+    "code": null
+   },
+   "expediente": null,
+   "coincide": null,
+   "legado": true
   }
  }
 ]

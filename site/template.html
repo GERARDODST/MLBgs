@@ -722,6 +722,29 @@
   .notice.started .ic { background: var(--rojo-soft); color: var(--rojo); font-size: 10px; }
   @media (prefers-reduced-motion: no-preference) { .game, .ticket, .chip, nav.tabs a { transition: border-color .15s, background .15s, color .15s; } }
 
+  /* registro bloqueado, correcciones (ventana emergente) y momio real */
+  .reg-list { display: flex; flex-direction: column; gap: 8px; }
+  .reg-row { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); padding: 10px 12px; display: flex; flex-direction: column; gap: 5px; font-size: 13.5px; }
+  .reg-h { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .reg-meta { font-size: 12.5px; color: var(--muted); overflow-wrap: anywhere; }
+  .reg-meta code { font-family: var(--mono); font-size: 11.5px; }
+  .reg-note { border-top: 1px dashed var(--grid); padding-top: 6px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .reg-note ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
+  .lock-b { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: var(--verde); background: var(--verde-soft); border-radius: 999px; padding: 1px 8px; }
+  .lock-b svg { flex: none; }
+  .modal { position: fixed; inset: 0; z-index: 50; background: rgba(10, 16, 22, 0.55); display: flex; align-items: flex-start; justify-content: center; padding: calc(env(safe-area-inset-top, 0px) + 24px) 16px 24px; overflow-y: auto; }
+  .modal[hidden] { display: none; }
+  .modal-box { background: var(--ground); color: var(--ink); border: 1px solid var(--border); border-radius: 14px; width: min(100%, 960px); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35); display: flex; flex-direction: column; }
+  .modal-head { position: sticky; top: 0; display: flex; gap: 10px; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border); background: var(--surface); border-radius: 14px 14px 0 0; }
+  .modal-head h2 { font-family: var(--display); font-weight: 700; font-size: 22px; }
+  .modal-body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 12px; font-size: 14px; }
+  .corr-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 10px; }
+  .corr-col { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+  .corr-col.orig { border-color: var(--verde); }
+  .corr-col ul { margin: 0; padding-left: 18px; font-size: 13px; }
+  .real-row { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); padding: 10px 12px; font-size: 13.5px; display: flex; flex-direction: column; gap: 4px; }
+  .real-row .v { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
   /* textos de ayuda plegables: la página abre en los datos, la explicación queda a un toque */
   details.note-d { border: 1px solid var(--border); background: var(--surface); border-radius: 10px; font-size: 14px; }
   details.note-d > summary { cursor: pointer; list-style: none; display: flex; gap: 10px; align-items: center; padding: 9px 14px; }
@@ -950,7 +973,7 @@
     return { level, amt: amountOf(level), r, why: level ? "" : "confianza menor a 55 con ese momio" };
   }
   const stakeTag = (lvl) => `<span class="stk-badge" data-tip="Stake ${lvl} de 10 = ${money(amountOf(lvl))}">Stake ${lvl}</span>`;
-  const ladderTxt = (st) => (!st ? "" : st.block ? `sin stake: ${st.block}` : st.ladder && st.ladder.length ? st.ladder.map((x) => `stake ${x.level} si pagan ${odds(x.from)} o mejor`).join(" · ") + (st.maxPrice != null ? ` · mejor que ${odds(st.maxPrice)}: verificar (filtro contra el mercado)` : "") : "sin stake: no hay momio razonable con ventaja suficiente");
+  const ladderTxt = (st) => (!st ? "" : st.block ? `sin stake: ${st.block}` : st.ladder && st.ladder.length ? st.ladder.map((x) => `stake ${x.level ?? levelOfAmount(x.stake)} si pagan ${odds(x.from)} o mejor`).join(" · ") + (st.maxPrice != null ? ` · mejor que ${odds(st.maxPrice)}: verificar (filtro contra el mercado)` : "") : "sin stake: no hay momio razonable con ventaja suficiente");
   const stakeHtml = (s) => (!s ? "" : s.amt ? `${stakeTag(s.level)} <b class="stake-amt">${money(s.amt)}</b>` : `<span class="stake-no">Stake 0</span> <span class="muted">${esc(s.why)}</span>`);
   // mejor momio capturado en cualquier casa para un pick
   function bestOdds(pk, pick) {
@@ -1542,7 +1565,8 @@
     let src = d.source, status = d.status, name = d.pick.pick, why = d.why;
     if (cl) { src = "Claude"; status = cl.result.decision; name = cl.result.pick || name; why = cl.result.resumen || why; }
     // con momios del casino capturados, la decisión se recalcula: primero los candidatos con momio que pasan las reglas, por confianza
-    if (!cl && status !== "esperar" && cands.some((q) => bestOdds(g.pk, q.pick))) {
+    // «esperar momio» (sin precio real no hay stake) también se recalcula en cuanto hay un momio capturado
+    if (!cl && (status !== "esperar" || d.waitFor === "momio") && cands.some((q) => bestOdds(g.pk, q.pick))) {
       const scored = cands.map((q) => { const bq = bestOdds(g.pk, q.pick), sq = bq ? stakeFor(q, bq.raw) : null;
         return { q, bq, ic: sq ? sq.r.ic : q.ic, lvl: sq ? sq.level : q.stake && !q.stake.block && (q.stake.ladder || []).length ? q.stake.level || 0 : 0 }; })
         .filter((z) => z.lvl > 0).sort((u, v) => (v.bq ? 1 : 0) - (u.bq ? 1 : 0) || v.ic - u.ic);
@@ -1550,6 +1574,8 @@
       if (scored.length) {
         name = scored[0].q.pick; status = "apostar";
         if (name !== prev) why = scored[0].bq ? `recalculado con tus momios: ${name} es el de más confianza que pasa las reglas a su momio (${prev} ya no)` : `con tus momios ${prev} ya no conviene; el siguiente candidato es ${name}, que falta confirmar con su momio`;
+      } else if (d.waitFor === "momio" && !bestOdds(g.pk, prev)) {
+        // sigue esperando el momio de su pick: los otros mercados con momio no llegan a stake
       } else {
         status = "no apostar";
         why = bestOdds(g.pk, prev) ? `con tu momio ${prev} ya no conviene y ningún otro candidato llega a stake; si quieres revisar otro mercado, escribe su momio`
@@ -1577,7 +1603,7 @@
     const x = decisionNow(g);
     if (!x) return "";
     const head = `<span class="deci-h">${x.src === "Claude" ? "✦ Claude" : "Decisión"}</span>`;
-    if (x.status === "esperar") return `<div class="deci wait">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Esperar</span><span class="deci-sub">falta un dato obligatorio</span></div>`;
+    if (x.status === "esperar") return `<div class="deci wait">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Esperar${x.d.waitFor === "momio" ? " momio" : ""}</span><span class="deci-sub">${x.d.waitFor === "momio" && x.minPrice != null ? `conviene si pagan ${odds(x.minPrice)} o mejor · sin momio real no hay stake` : "falta un dato obligatorio"}</span></div>`;
     if (x.status !== "apostar") return `<div class="deci off">${head}<b class="deci-pick">No apostar</b><span class="deci-sub">${esc(x.why || "")}</span></div>`;
     if (x.pending) return `<div class="deci on pend" data-tip="Este mercado no trae momio en el feed: conviene solo si pagan ${odds(x.minPrice)} o mejor (es el mínimo del modelo, no el momio del casino). El stake se fija con el momio que paguen.">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span><span class="deci-sub">según el momio que paguen · recomendado ${odds(x.minPrice)} o mejor</span></div>`;
     return `<div class="deci on" data-tip="Stake ${x.level} de 10 = ${money(x.amt)} · ${esc(x.why || "")}">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Stake ${x.level}</span><span class="deci-amt">${money(x.amt)}</span><span class="deci-sub">${x.b.api ? `con ${odds(x.b.o.am)} · ${esc(x.b.book)}` : `con tu ${odds(x.b.o.am)} en ${esc(x.b.book)}`}</span></div>`;
@@ -1588,7 +1614,7 @@
     if (!x) return "";
     const d = x.d, p = x.p;
     const cls = x.status === "apostar" ? "on" : x.status === "esperar" ? "wait" : "off";
-    const head = x.status === "apostar" ? (x.pending ? `${esc(x.pick)} <span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span> <span class="deci-amt">según tu momio</span>` : `${esc(x.pick)} <span class="deci-stk">Stake ${x.level}</span> <span class="deci-amt">${money(x.amt)} con ${odds(x.b.o.am)}${x.b.api ? " (mercado)" : ""}</span>`) : x.status === "esperar" ? `${esc(x.pick)} <span class="deci-stk">Esperar</span>` : `No apostar${x.pick ? ` <span class="muted" style="font-size:.55em">(mejor opción: ${esc(x.pick)})</span>` : ""}`;
+    const head = x.status === "apostar" ? (x.pending ? `${esc(x.pick)} <span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span> <span class="deci-amt">según tu momio</span>` : `${esc(x.pick)} <span class="deci-stk">Stake ${x.level}</span> <span class="deci-amt">${money(x.amt)} con ${odds(x.b.o.am)}${x.b.api ? " (mercado)" : ""}</span>`) : x.status === "esperar" ? `${esc(x.pick)} <span class="deci-stk">Esperar${x.d.waitFor === "momio" ? " momio" : ""}</span>` : `No apostar${x.pick ? ` <span class="muted" style="font-size:.55em">(mejor opción: ${esc(x.pick)})</span>` : ""}`;
     const data = p ? esc(JSON.stringify({ pick: p.pick, p: p.p, ic: p.ic, parts: p.parts, guion: p.guion, contradiction: p.contradiction, blocked: p.blocked, blockedWithOdds: p.blockedWithOdds, datosWithOdds: p.datosWithOdds, stake: p.stake })) : "";
     const tone = { pro: ["✓", "a favor"], contra: ["✗", "en contra"], neutral: ["•", "contexto"] };
     return `<section class="block deci-panel" id="decision"><h2>Decisión del partido <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">una sola opción: framework completo${LAB_BY_PK[String(g.pk)] ? " + modelo del Pro-Lab" : ""} + cuotas${x.cl ? " + conclusión de Claude" : ""}</small></h2>
@@ -1951,9 +1977,9 @@ ${brief}`;
     const cls = !f ? "off" : f.status === "apostar" && f.level ? "on" : f.status === "esperar" ? "wait" : "off";
     const deci = !f ? `<span class="muted">sin decisión registrada</span>` : f.status === "apostar" && f.level
       ? `<b>${esc(f.pick)}</b>${x.p ? ` <span class="muted">${esc(x.p.market)}${isNum(x.p.p) ? ` · ${pc(x.p.p, 1)}` : ""}</span> ${isNum(x.p.ic) ? icBadge(x.p) : ""}` : ""}`
-      : f.status === "esperar" ? `<span class="wait-t">Esperar</span> <span class="muted">${esc(f.pick || "")}</span>` : `<span class="stake-no">No apostar</span>${f.pick ? ` <span class="muted">(mejor: ${esc(f.pick)})</span>` : ""}`;
+      : f.status === "esperar" ? `<span class="wait-t">Esperar${x.pre && x.x && x.x.d && x.x.d.waitFor === "momio" ? " momio" : ""}</span> <span class="muted">${esc(f.pick || "")}</span>` : `<span class="stake-no">No apostar</span>${f.pick ? ` <span class="muted">(mejor: ${esc(f.pick)})</span>` : ""}`;
     let money_ = "";
-    if (x.pre) money_ = cls === "on" ? (x.pending ? `<span class="stk-badge pend">${x.x.range ? `Stake ${x.x.range[0]}–${x.x.range[1]}` : `Stake ${f.level}`}</span> <span class="muted">según el momio que paguen</span>` : `${stakeTag(f.level)} <b class="stake-amt">${money(x.amt)}</b>`) : cls === "wait" ? `<span class="muted">se confirma cerca del inicio</span>` : `<span class="muted">${esc((x.x && x.x.why) || "")}</span>`;
+    if (x.pre) money_ = cls === "on" ? (x.pending ? `<span class="stk-badge pend">${x.x.range ? `Stake ${x.x.range[0]}–${x.x.range[1]}` : `Stake ${f.level}`}</span> <span class="muted">según el momio que paguen</span>` : `${stakeTag(f.level)} <b class="stake-amt">${money(x.amt)}</b>`) : cls === "wait" ? `<span class="muted">${x.x && x.x.d && x.x.d.waitFor === "momio" && x.x.minPrice != null ? `falta el momio: conviene desde ${odds(x.x.minPrice)}` : "se confirma cerca del inicio"}</span>` : `<span class="muted">${esc((x.x && x.x.why) || "")}</span>`;
     else if (x.slip && cls === "on") {
       const sl = x.slip, st = SLIP_STAMP[sl.key];
       money_ = `${stakeTag(sl.level)} <b class="stake-amt">${money(sl.amount)}</b> ${st ? `<span class="res-chip ${sl.key === "ganado" ? "win" : sl.key === "perdido" ? "lose" : "pend"}">${esc(st[1])} ${sl.neto != null ? esc(signed2(sl.neto)) : ""}</span>` : `<span class="res-chip ${sl.r.cls}">${esc(sl.r.text)}</span>`}`;
@@ -3984,7 +4010,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const sc = scoreOf(t);
     const st = t.status === "anulado" ? `<span class="tag warn">${esc((t.result && t.result.detailed) || "Anulado")}</span>` : sc ? `<span class="tk-state">${esc(sc.txt)}</span>` : `<span class="tk-state">${t.status === "cerrado" ? "En juego" : `Sale ${esc(fmtTime(t.time))}`}</span>`;
     return `<a class="ticket m-${esc(t.model)}" href="#t${t.pk}">
-      <div class="tk-top"><span class="tk-model">${esc(t.model === "framework" ? "Framework v2" : t.modelName)}</span><span class="tk-kind">${esc(t.kind || "")}</span></div>
+      <div class="tk-top"><span class="tk-model">${esc(t.model === "framework" ? "Framework v2" : t.modelName)}</span>${corrTag(t)}<span class="tk-kind">${esc(t.kind || "")}</span></div>
       <div class="tk-game"><span class="tk-teams"><b>${esc(t.away)}</b>${sc ? ` <span class="num">${sc.a}</span>` : ""} <span class="muted">@</span> <b>${esc(t.home)}</b>${sc ? ` <span class="num">${sc.h}</span>` : ""}</span>${st}</div>
       <div class="tk-meta">${esc(fmtShort(t.date))} · ${esc(fmtTime(t.time))} · registrado ${esc(regTxt(t))}</div>
       <div class="tk-cut" aria-hidden="true"></div>
@@ -3992,6 +4018,103 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
       <ul class="tk-picks">${picks.map((p) => { const r = pickRes(p, t), x = betOf(p, t); return `<li><span class="res-chip ${r.cls}">${esc(r.text)}</span><span class="tk-p"><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p)}${isNum(p.ic) ? ` · IC ${Math.round(p.ic)}` : ""}</span>${x ? `<br><span class="tk-bet-l">${x.amt ? `stake ${x.level} · ${money(x.amt)} a ${odds(x.b.o.am)} → <b class="${x.pnl > 0 ? "won" : x.pnl < 0 ? "lost" : ""}">${signedMoney(x.pnl)}</b>` : `sin stake a ${odds(x.b.o.am)}`}</span>` : ""}</span></li>`; }).join("") || `<li class="muted">Sin picks en este filtro</li>`}</ul>
       <div class="tk-an">${t.analyses.slice(0, 3).map((x) => `<span>${esc(x)}</span>`).join("")}${t.analyses.length > 3 ? `<span>+${t.analyses.length - 3} análisis</span>` : ""}</div>
     </a>`;
+  }
+
+  // ---------------------------------------------------------------- bloqueo, correcciones y momio real (aparte del ticket)
+  // Regla: al primer lanzamiento el ticket se bloquea con una huella y la versión del algoritmo; nunca se recalcula.
+  // Las notas de tickets anteriores a la regla y el momio real del mercado viven aparte y no cambian el ticket.
+  const CORR = HI.correcciones || {}, REAL = HI.mercado || {}, ALGOS = HI.algos || [];
+  const CORR_LBL = { corregido: ["Versión corregida aparte", "warn"], reconstruido: ["Reconstruido", "info"], nota: ["Nota", "info"] };
+  const LOCK_SVG = '<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="2.5" y="7" width="11" height="8" rx="1.6" fill="currentColor"/></svg>';
+  const corrTag = (t) => { const c = CORR[t.id]; if (!c) return ""; const [l, cls] = CORR_LBL[c.tipo] || ["Nota", "info"]; return `<span class="tag ${cls}" data-tip="${esc(c.resumen || "")}">${esc(l)}</span>`; };
+  function lockTxt(t) {
+    const L = t.lock;
+    if (!L) return t.status === "abierto" ? "abierto: se actualiza hasta el primer lanzamiento" : "sin candado todavía";
+    const a = L.algo || {};
+    return `bloqueado ${fmtStamp(L.at)}${L.legado ? " (revisión del 28-sep)" : ""} · huella ${L.hash.slice(0, 12)} · algoritmo ${a.version || "—"}${a.code ? ` · código ${a.code}` : ""}`;
+  }
+  function registroBlock(list) {
+    const rows = list.map((t) => {
+      const L = t.lock, c = CORR[t.id];
+      return `<div class="reg-row">
+        <div class="reg-h"><span class="mdot m-${esc(t.model)}"></span><b>${esc(t.modelName)}</b>${L ? `<span class="lock-b">${LOCK_SVG} Bloqueado</span>` : `<span class="tag">Abierto</span>`}${corrTag(t)}</div>
+        <div class="reg-meta">${esc(lockTxt(t))}${L ? ` · expediente ${L.expediente ? `<code>${esc(L.expediente)}</code>` : "no guardado (ticket anterior al bloqueo)"}` : ""}${L && L.coincide === false ? " · <b>el expediente no coincide con la huella</b>" : ""}</div>
+        ${c ? `<div class="reg-note"><span>${esc(c.resumen)}</span>${c.tipo === "corregido" ? `<button type="button" class="btn" data-corr="${esc(t.id)}">Ver versión corregida y sus notas</button>` : `<ul>${c.notas.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>`}</div>` : ""}
+      </div>`;
+    }).join("");
+    return `<section class="block" id="registro"><h2>Registro bloqueado <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">lo que se registró antes del juego ya no cambia</small></h2>
+      <p class="note">Al primer lanzamiento cada ticket se bloquea con una <b>huella</b> de todo lo que registró (picks, probabilidades, índice de confianza, escalera de stake y decisión) y la <b>versión del algoritmo</b> que lo hizo. Después solo se agrega el resultado oficial. Los datos con los que se hizo quedan en su <b>expediente</b> (análisis completo, datos crudos de la API y momios vistos). Las correcciones a los modelos aplican a los partidos siguientes, nunca a estos.</p>
+      <div class="reg-list">${rows}</div></section>`;
+  }
+  // un ticket en pocas líneas: decisión y picks principales (para comparar original y corregida)
+  function ticketMini(t) {
+    const d = t.decision;
+    const dTxt = !d ? "Sin decisión registrada" : d.status === "apostar" && d.level ? `Decisión: ${d.pick} · stake ${d.level} (${money(amountOf(d.level))})` : `Decisión: ${d.status}${d.pick ? ` (mejor: ${d.pick})` : ""}`;
+    return `<b>${esc(dTxt)}</b><ul>${(t.picks || []).filter((p) => p.principal).map((p) => `<li><b>${esc(p.pick)}</b> <span class="muted">${esc(p.market)} · ${pc(p.p, 1)}${isNum(p.ic) ? ` · IC ${Math.round(p.ic)}` : ""}</span><br><span class="muted" style="font-size:12px">${p.stake ? esc(ladderTxt(p.stake)) : "sin escalera de stake"}</span></li>`).join("")}</ul>`;
+  }
+  function corrHtml(t) {
+    const c = CORR[t.id];
+    if (!c) return "";
+    const v = (x) => (x == null ? "—" : typeof x === "number" ? (Math.abs(x) <= 1 ? pc(x, 1) : f(x, 1)) : esc(String(x)));
+    return `<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="tag ${c.clase === "de fondo" ? "bad" : "ok"}">${c.clase === "de fondo" ? "Corrección de fondo" : "Corrección circunstancial"}</span><span class="muted">revisión del ${esc(fmtShort(c.fecha))} · ${esc(t.away)} @ ${esc(t.home)} · ${esc(t.modelName)}</span></div>
+      <p>${esc(c.resumen)}</p>
+      <div class="corr-cols"><div class="corr-col orig"><span class="eyebrow">Original · cuenta en el récord</span>${ticketMini(t)}</div><div class="corr-col"><span class="eyebrow">Versión corregida · solo referencia</span>${c.corregido ? ticketMini(c.corregido) : '<span class="muted">—</span>'}</div></div>
+      ${c.cambios.length ? `<h3 class="sub">Qué cambió</h3>${table(["Qué", "Original", "Corregida"], c.cambios.map((x) => tr([td(`<b>${esc(x.que)}</b>`), td(esc(x.original)), td(esc(x.corregido))])))}` : ""}
+      <h3 class="sub">Estadísticas</h3>${c.estadisticas.length ? table(["Estadística", "~Original", "~Corregida"], c.estadisticas.map((x) => tr([td(esc(x.que)), tdn(v(x.original)), tdn(v(x.corregido))])))
+        : `<p class="note">Ninguna estadística cambió: probabilidades, índices de confianza y momios justos son los mismos. ${c.clase === "circunstancial" ? "La diferencia es de registro, no de análisis." : "Lo que cambió es la decisión de apostar, no la lectura del partido."}</p>`}
+      <h3 class="sub">Notas</h3><ul class="clean">${c.notas.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>`;
+  }
+  let MODAL_PREV = null;
+  function openModal(title, html) {
+    let m = document.getElementById("modal");
+    if (!m) {
+      m = document.createElement("div");
+      m.id = "modal"; m.className = "modal"; m.hidden = true;
+      document.body.appendChild(m);
+      m.addEventListener("click", (e) => { if (e.target === m || e.target.closest("[data-close]")) closeModal(); });
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !m.hidden) closeModal(); });
+    }
+    m.innerHTML = `<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-t"><div class="modal-head"><h2 id="modal-t">${esc(title)}</h2><button type="button" class="btn" data-close>Cerrar</button></div><div class="modal-body">${html}</div></div>`;
+    MODAL_PREV = document.activeElement;
+    m.hidden = false;
+    document.body.style.overflow = "hidden";
+    m.querySelector("[data-close]").focus();
+  }
+  function closeModal() {
+    const m = document.getElementById("modal");
+    if (!m || m.hidden) return;
+    m.hidden = true;
+    document.body.style.overflow = "";
+    if (MODAL_PREV && MODAL_PREV.focus) MODAL_PREV.focus();
+  }
+  // qué habría dicho el protocolo del ticket con el momio real de cierre (sin tocar el ticket ni su boleto)
+  function realBlock(list) {
+    const rows = list.map((t) => ({ t, ev: REAL[t.id] })).filter((x) => x.ev);
+    if (!rows.length) return "";
+    const body = rows.map(({ t, ev }) => {
+      const d = ev.decision, e = ev.entraria;
+      const dec = d ? `Decisión registrada: <b>${esc(d.pick)}</b> ${d.original ? `stake ${d.original} (${money(amountOf(d.original))})` : "sin stake"}. Momio real: apertura <span class="v">${odds(d.open)}</span> → cierre <b class="v">${odds(d.close)}</b>. Con ese cierre, la escalera congelada del ticket daba ${d.level ? `<b>stake ${d.level}</b> (${money(d.amount)})${d.neto != null ? ` → <b class="${d.neto > 0 ? "won" : d.neto < 0 ? "lost" : ""}">${signed2(d.neto)}</b>` : ""}` : `<b>no apostar</b>${d.escalera ? "" : " (el ticket no tiene escalera registrada)"}`}.`
+        : "El mercado de su decisión (F5, ponches, team total o NRFI) no tiene momio real guardado.";
+      return `<div class="real-row"><div class="reg-h"><span class="mdot m-${esc(t.model)}"></span><b>${esc(t.modelName)}</b> <span class="muted">${esc(ev.fuente || "")}</span></div><span>${dec}</span>${e ? `<span class="muted">Con momio real, <b>${esc(e.pick)}</b> (${odds(e.close)}) sí llegaba a stake ${e.level} según su escalera${e.res ? ` · ${esc(e.res)}` : ""}.</span>` : ""}</div>`;
+    }).join("");
+    return `<section class="block" id="mercado-real"><h2>Con el momio real <small class="muted" style="font-family:var(--sans);font-size:14px;font-weight:400">aparte: el ticket y su boleto no cambian</small></h2>
+      <p class="note">Lo que pagó el mercado (cierre de DraftKings, de ESPN) y lo que la <b>escalera de stake guardada antes del juego</b> decía a ese precio. Sirve para saber si la apuesta existía de verdad; el balance oficial sigue siendo el del ticket.</p>${body}</section>`;
+  }
+  function realLedger(ts) {
+    const seen = new Set(), r = { bets: 0, n: 0, win: 0, lose: 0, push: 0, staked: 0, net: 0, out: 0, noMkt: 0 };
+    ts.slice().sort((a, b) => modelOrder(a.model) - modelOrder(b.model)).forEach((t) => {
+      if (seen.has(t.pk) || !t.decision) return;
+      seen.add(t.pk);
+      if (t.decision.status !== "apostar" || !t.decision.level) return;
+      r.bets++;
+      const d = (REAL[t.id] || {}).decision;
+      if (!d) { r.noMkt++; return; }
+      if (!d.level) { r.out++; return; }
+      if (d.neto == null) return;
+      r.n++; r.staked += d.amount; r.net += d.neto;
+      if (d.res === "ganado") r.win++; else if (d.res === "perdido") r.lose++; else r.push++;
+    });
+    return r;
   }
 
   function csvOf(list, scope) {
@@ -4059,7 +4182,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
       pairs(list).forEach(([p, t]) => (fams[p.family] = fams[p.family] || []).push([p, t]));
       const dates = [...new Set(list.map((t) => t.date))].sort().reverse();
       const shown = dates.slice(0, days);
-      const ss = slipsOf(list), L = ledgerOf(ss), Lm = ledgerOf(ss.filter(mineSlip));
+      const ss = slipsOf(list), L = ledgerOf(ss), Lm = ledgerOf(ss.filter(mineSlip)), RL = realLedger(list);
       const slipDays = [...new Set(ss.map((x) => x.t.date))].sort();
       let acc = 0;
       const dayRows = slipDays.map((d) => { const r = ledgerOf(ss.filter((x) => x.t.date === d)); acc += r.net; return { d, r, acc }; }).reverse();
@@ -4090,7 +4213,8 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
             <div class="tile"><span class="eyebrow">Boletos</span><span class="big">${L.n}</span><span class="sub">${L.win} ganados · ${L.lose} perdidos · ${L.push} push${L.pend ? ` · ${L.pend} en juego` : ""}${L.skip ? ` · ${L.skip} no jugados` : ""}</span></div>
             <div class="tile"><span class="eyebrow">Con tus momios</span><span class="big ${Lm.net > 0 ? "won" : Lm.net < 0 ? "lost" : ""}">${Lm.n ? signed2(Lm.net) : "—"}</span><span class="sub">${Lm.n ? `${Lm.n} boleto${Lm.n === 1 ? "" : "s"} · ${money2(Lm.staked)} apostado · ${money2(Lm.cobro)} cobrado · ROI ${pc(Lm.roi, 1)}` : `registra el momio de ${esc(bookSel())} en cada boleto para ver lo real`}</span></div>
             <div class="tile"><span class="eyebrow">Estimado (mercado o mínimo)</span><span class="big ${L.net > 0 ? "won" : L.net < 0 ? "lost" : ""}">${signed2(L.net)}</span><span class="sub">${money2(L.staked)} apostado · ${money2(L.cobro)} cobrado · ROI ${pc(L.roi, 1)}</span></div>
-            <div class="tile"><span class="eyebrow">Qué es el estimado</span><span class="sub" style="font-size:13px">Supone que te pagaron justo el <b>mínimo</b> que aceptaba el modelo. No es el momio del casino: si pagaba peor (LAD a −300 cuando el mínimo era −138), la regla era <b>no apostar</b> y ese boleto no existe.</span></div>
+            <div class="tile"><span class="eyebrow">Con cuota real (cierre)</span><span class="big ${RL.net > 0 ? "won" : RL.net < 0 ? "lost" : ""}">${RL.n ? signed2(RL.net) : "—"}</span><span class="sub">balance paralelo, aparte del oficial: de ${RL.bets} apuesta${RL.bets === 1 ? "" : "s"} registrada${RL.bets === 1 ? "" : "s"}, ${RL.n} entraba${RL.n === 1 ? "" : "n"} al momio de cierre (${recTxt(RL)}${RL.staked ? ` · ${money2(RL.staked)} apostado · ROI ${pc(RL.net / RL.staked, 1)}` : ""})${RL.out ? ` · <b>${RL.out} no entraba${RL.out === 1 ? "" : "n"}</b> (el mercado pagaba menos que su escalera)` : ""}${RL.noMkt ? ` · ${RL.noMkt} sin momio real (F5, ponches, team total o NRFI)` : ""}</span></div>
+            <div class="tile"><span class="eyebrow">Qué es el estimado</span><span class="sub" style="font-size:13px">Supone que te pagaron justo el <b>mínimo</b> que aceptaba el modelo. No es el momio del casino: si pagaba peor (LAD a −300 cuando el mínimo era −138), la regla era <b>no apostar</b> y ese boleto no existe. El balance <b>con cuota real</b> usa el cierre de DraftKings y la escalera guardada en cada ticket.</span></div>
           </div>
           ${dayRows.length ? table(["Día", "~Boletos", "~G–P–Push", "~Apostado", "~Cobrado", "~Neto (estimado)", "~Acumulado"], dayRows.map((x) => tr([td(`<b>${esc(dayLabel(x.d))}</b> <span class="muted">${esc(fmtShort(x.d))}</span>`), tdn(x.r.n + (x.r.pend ? ` + ${x.r.pend}` : "")), tdn(recTxt(x.r)), tdn(money2(x.r.staked)), tdn(money2(x.r.cobro)), td(signed2(x.r.net), `r num ${x.r.net > 0 ? "won" : x.r.net < 0 ? "lost" : ""}`), td(signed2(x.acc), `r num ${x.acc > 0 ? "won" : x.acc < 0 ? "lost" : ""}`)])), { cls: "ledger-t" }) : ""}
           <p class="note">Momio decimal = 1 + 100/|m| si el momio americano es negativo · 1 + m/100 si es positivo (a 2 cifras: −137 → 1.73). <b>Pago</b> = stake × decimal; <b>ganado</b>: cobras el pago (neto = pago − stake); <b>perdido</b>: neto = −stake; <b>push</b> o partido anulado: te devuelven el stake (neto $0). Sin momio registrado se usa el <b>mínimo</b> con el que valía ese stake según la escalera guardada antes del juego: es un estimado, no el momio del casino. Si tu casa pagaba mejor, cobras más; si pagaba peor que el mínimo, la regla era no apostar. Abre un boleto para registrar el momio y el monto que realmente jugaste${REG_STATE === "db" ? " (se guarda en la base de datos de esta página y se ve en cualquier dispositivo)" : REG_STATE === "local" ? " (se guarda en este navegador)" : ""}.</p>
@@ -4223,10 +4347,10 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const added = mainL.filter((q) => !mainF.includes(q)), dropped = mainF.filter((q) => !mainL.includes(q));
     const rF = tally(fwT.picks.map((q) => [q, fwT])), rL = tally(labT.picks.map((q) => [q, labT]));
     const card = (eyebrow, big, sub, cls = "") => `<div class="cmp-step ${cls}"><span class="eyebrow">${eyebrow}</span><b>${big}</b><span>${sub}</span></div>`;
-    const fwPick = fwT.picks.find((q) => q.pick === fw.pick);
+    const fwPick = fw ? fwT.picks.find((q) => q.pick === fw.pick) : null;     // tickets de antes de la decisión única no la tienen
     return `<section class="block" id="complemento"><h2>Cómo se complementaron el framework y ${esc(mName)}</h2>
       <div class="cmp-flow">
-        ${card("1 · Framework solo", esc(decTxt(fw)), fwPick ? `${esc(fwPick.market)} · ${pc(fwPick.p, 1)} · IC ${Math.round(fwPick.ic)}` : "sin pick con stake", fw.status === "apostar" ? "on" : "")}
+        ${card("1 · Framework solo", esc(decTxt(fw)), fwPick ? `${esc(fwPick.market)} · ${pc(fwPick.p, 1)} · IC ${Math.round(fwPick.ic)}` : fw ? "sin pick con stake" : "sin decisión registrada", fw && fw.status === "apostar" ? "on" : "")}
         <span class="ch-arr" aria-hidden="true">›</span>
         ${card(`2 · ${esc(mName)}`, esc(eff || "—"), `P(${esc(labT.home)}) ${pc(pM, 1)} del modelo contra ${pc(pF, 1)} del framework`, eff === "confirma" || eff.startsWith("sube") ? "on" : eff.startsWith("baja") || eff === "la descarta" ? "warn" : "")}
         <span class="ch-arr" aria-hidden="true">›</span>
@@ -4308,9 +4432,11 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
       <div class="page-head"><p class="eyebrow">Ticket · ${esc(fmtDateLong(t0.date))} · ${esc(fmtTime(t0.time))}${t0.venue ? ` · ${esc(t0.venue)}` : ""}</p>
         <h1>${esc(t0.awayName || t0.away)} ${sc ? `<span class="num">${sc.a}–${sc.h}</span>` : "@"} ${esc(t0.homeName || t0.home)}</h1>
         <p class="lede">${res ? `Final. Los picks se calificaron con el marcador oficial.` : sc ? `${esc(sc.txt)}: los picks se evalúan con el marcador en vivo y se califican al terminar.` : t0.status === "anulado" ? "Partido pospuesto o cancelado: los picks no cuentan." : "Por jugar: el ticket del framework se sigue actualizando hasta el primer lanzamiento; en ese momento se congela."} ${list.length > 1 ? `Este partido tiene ${list.length} tickets: uno por modelo.` : ""}</p></div>
-      <nav class="subnav" aria-label="Secciones del partido">${[["resultado", "Resultado", ls || dec], ["boleto", "Boleto", list.some((t) => t.decision)], ["prediccion", "Esperado contra real", true], ["complemento", "Cómo se complementaron", list.length > 1], ["picks", "Picks", true], ["detalle", "Detalle por modelo", true]].filter((x) => x[2]).map(([id, l]) => `<a href="#t${pk}#${id}">${esc(l)}</a>`).join("")}</nav>
+      <nav class="subnav" aria-label="Secciones del partido">${[["resultado", "Resultado", ls || dec], ["boleto", "Boleto", list.some((t) => t.decision)], ["mercado-real", "Momio real", list.some((t) => REAL[t.id])], ["registro", "Registro", true], ["prediccion", "Esperado contra real", true], ["complemento", "Cómo se complementaron", list.length > 1], ["picks", "Picks", true], ["detalle", "Detalle por modelo", true]].filter((x) => x[2]).map(([id, l]) => `<a href="#t${pk}#${id}">${esc(l)}</a>`).join("")}</nav>
       ${ls || dec ? `<section class="block" id="resultado"><h2>Resultado</h2>${ls}${dec}</section>` : ""}
       ${boletoBlock(list.find((t) => t.decision))}
+      ${realBlock(list)}
+      ${registroBlock(list)}
       ${predBlock(list, R, !!res || !!(g && g.state === "Final"))}
       ${complementReview(list)}
       ${picksCompare(list)}
@@ -4321,6 +4447,10 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
       <p style="display:flex;gap:16px;flex-wrap:wrap;font-weight:600">${lab ? `<a href="#lab${pk}">Ver el modelo del Pro-Lab (${esc(LAB_INFO[labKey(lab)].name.join(""))}) →</a>` : ""}${BY_PK[String(pk)] ? `<a href="#g${pk}">Ver el análisis completo del partido →</a>` : ""}</p>
       ${footer()}`;
     bindBoleto(list.find((t) => t.decision && t.decision.status === "apostar"));
+    app.querySelectorAll("[data-corr]").forEach((b) => b.addEventListener("click", () => {
+      const t = list.find((x) => x.id === b.dataset.corr);
+      if (t) openModal(`Versión corregida · ${t.away} @ ${t.home}`, corrHtml(t));
+    }));
   }
 
   // ---------------------------------------------------------------- vista: metodología
@@ -4339,7 +4469,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
         <ol class="clean">
           <li><b>Framework completo</b> (secciones 1-10): contexto y motivación, forma, abridores, bullpen y fatiga, modelo de carreras y triangulación, totales, parque/clima/umpire, mercado, contradicciones y gate de datos. De ahí salen los picks con su índice de confianza (IC).</li>
           <li><b>Modelo de apoyo del Pro-Lab</b> (DIAMANTE-24, PRISMA, KRONOS o EIGEN) cuando el partido lo tiene: sus probabilidades entran a los picks y, si ve el pick peor que el framework, el stake baja.</li>
-          <li><b>Cuotas</b>: el IC se recalcula con el momio que te dan; sin momio, cada pick dice desde qué momio conviene.</li>
+          <li><b>Cuotas</b>: el IC se recalcula con el momio real (el del feed o el tuyo). <b>Sin momio real no hay stake</b>: la decisión es «esperar momio» y la escalera dice desde qué momio conviene.</li>
           <li><b>Decisión</b>: el pick con más confianza que pasa guion, contradicciones y datos obligatorios. Si el mejor solo espera un dato (lineup, umpire…), «esperar»; si ninguno alcanza, «no apostar».</li>
           <li><b>Conclusión de Claude</b> (opcional, en la página de claude.ai): Claude recibe el expediente completo del partido y devuelve la decisión final con su porqué; nunca puede subir el stake por encima de lo que permiten las reglas.</li>
         </ol>
@@ -4351,6 +4481,15 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
           <li>La decisión, su stake y la escalera quedan guardados en el ticket antes del juego; el Historial mide cómo salieron.</li>
           <li><b>Boleto</b> de cada decisión: momio decimal = 1 + 100/|m| (americano negativo) o 1 + m/100 (positivo), a 2 cifras · pago = stake × decimal · ganado: neto = pago − stake · perdido: neto = −stake · push o anulado: se devuelve el stake (neto $0). Sin momio registrado se usa el de referencia: el más bajo con el que valía ese stake.</li>
         </ul></div></section>
+      <section class="block" id="algoritmos"><h2>Tickets bloqueados y versiones del algoritmo</h2><div class="panel">
+        <ul class="clean">
+          <li><b>Datos y algoritmo, separados.</b> Cada ticket guarda la versión del algoritmo que lo hizo (y la huella de su código). Los datos con los que se hizo quedan en su <b>expediente</b> (<code>data/expedientes/</code>): el análisis completo, los datos crudos de la API recortados al partido y los momios vistos.</li>
+          <li><b>Bloqueo al primer lanzamiento.</b> El ticket recibe una huella de todo lo que registró; después solo se agrega el resultado oficial. Si algo intentara cambiar un ticket bloqueado, la actualización se detiene y no guarda nada.</li>
+          <li><b>Las correcciones son para los partidos siguientes.</b> Un cambio a los modelos nunca recalcula un ticket ya jugado. Los tickets de antes de esta regla conservan su versión original; si se les agregó algo después del juego, esa versión corregida se ve aparte con sus notas (<code>data/correcciones/</code>).</li>
+          <li><b>Momio real aparte.</b> El cierre del mercado de cada partido jugado (<code>data/mercado/</code>) se compara con la escalera guardada en el ticket para saber si la apuesta existía de verdad; no cambia el ticket ni su boleto.</li>
+        </ul>
+        ${table(["Versión", "Fecha", "Cambios"], ALGOS.map((a) => tr([td(`<b>${esc(a.version)}</b>`), td(esc(a.fecha)), td(`<ul class="clean">${a.cambios.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>`)])))}
+      </div></section>
       <section class="block"><h2>Fuentes</h2>${table(["Dato", "Fuente", "Uso"], [
         ["Calendario, abridores probables, lineups, umpires, clima", "MLB Stats API · /schedule", "Secciones 1, 3, 6"],
         ["Resultados y linescore por entrada (2 temporadas)", "MLB Stats API · /schedule?hydrate=linescore", "Secciones 2, 5, 6 · Elo, Pitágoras, NRFI"],

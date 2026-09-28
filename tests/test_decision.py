@@ -45,6 +45,7 @@ class Decision(unittest.TestCase):
     def test_con_momio_real_elige_el_que_llega_a_stake(self):
         g = self.games[0]
         a, b = (copy.deepcopy(p) for p in g["picks"][:2])
+        a["priceIsReal"] = b["priceIsReal"] = True
         lad = [{"level": 1, "stake": 500, "from": -150}]
         a.update(ic=80.0, stake={"block": None, "ladder": lad, "level": 0, "price": -105,
                                  "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"})
@@ -66,6 +67,17 @@ class Decision(unittest.TestCase):
             self.assertTrue(keys <= got, keys - got)
             self.assertTrue(all(c["tone"] in ("pro", "contra", "neutral") for c in g["decision"]["checklist"]))
 
+    def test_sin_momio_real_se_espera_el_momio(self):
+        # corrección del 28-sep: nunca hay stake sin precio real; la decisión dice desde qué momio conviene
+        g = self.games[0]
+        a = copy.deepcopy(g["picks"][0])
+        a.update(ic=80.0, priceIsReal=False, stake={"block": None, "ladder": [{"level": 1, "stake": 500, "from": -169},
+                                                                            {"level": 10, "stake": 1500, "from": -126}], "level": 0})
+        d = DE.decide(g, [a])
+        self.assertEqual((d["status"], d["waitFor"], d["stake"]["level"]), ("esperar", "momio", 0))
+        self.assertIn("-169", d["why"])
+        self.assertIn("falta el momio", d["why"])
+
     def test_esperar_si_solo_falta_un_dato(self):
         g = copy.deepcopy(self.games[0])
         for p in g["picks"]:
@@ -73,6 +85,7 @@ class Decision(unittest.TestCase):
             p["stake"] = ST.plan(p)
         d = DE.decide(g, g["picks"])
         self.assertEqual(d["status"], "esperar")
+        self.assertEqual(d["waitFor"], "dato")
         self.assertEqual(d["stake"]["level"], 0)
 
     def test_no_apostar_si_nada_pasa(self):

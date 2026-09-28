@@ -52,8 +52,10 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   `country_code=MX`) o de todas si ninguna; el mejor precio solo se muestra. La decisión elige, por IC, el
   primer candidato que llega a stake a su momio real. El boleto usa ese momio («mercado») si el usuario
   no registró el suyo. Sin feed ni momio del usuario, el «justo» y el «mín.» salen del modelo: nunca
-  presentarlos como el momio del casino; el stake es un rango según la escalera y, con el momio que
-  escribe el usuario, la decisión se recalcula entre todos los candidatos.
+  presentarlos como el momio del casino. **Sin momio real no hay stake** (algoritmo 2026.09.28): el IC no
+  suma «fuerza» contra el momio de referencia de −110 y la decisión es «esperar momio» (`waitFor: momio`)
+  con la escalera (desde qué momio conviene); con el momio que escribe el usuario, la decisión se recalcula
+  entre todos los candidatos.
   Playdoit, Caliente y Team México no están en ningún feed: su momio lo captura el usuario y manda.
 - Jornada, «Por jugar»: cada uno de los dos picks de la tarjeta muestra su **momio actual** (el capturado
   de su casa si existe; si no, el mejor del feed) con la casa abajo en chico y en su color, y a un lado el
@@ -74,6 +76,25 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 
 - `data/historial/` es la base de tickets (partido × modelo): picks, tipos de análisis, escalera de
   stake, decisión única y resultado oficial. Un ticket se congela al primer lanzamiento.
+- **Tickets inmutables (regla del usuario):** al primer lanzamiento cada ticket se BLOQUEA (`lock`: huella
+  sha256 de todo lo registrado, versión del algoritmo y expediente). Después solo se agregan el resultado
+  oficial y la calificación de cada pick; el resultado, una vez calificado, tampoco se reescribe. Las
+  correcciones a los modelos aplican SOLO a partidos que no han empezado: nunca recalcular, completar ni
+  «arreglar» un ticket bloqueado. `historial.update` se detiene con error si algo lo intenta y la prueba
+  `TicketsDelRepositorio` revisa todas las huellas.
+- **Datos separados del algoritmo:** `data/expedientes/<fecha>/<pk>.json.gz` (análisis completo, datos crudos
+  de la API recortados al partido, momios vistos, huellas de los tickets y versión del algoritmo) se escribe
+  una sola vez al bloquearse; mientras el partido no empieza, la versión pendiente viaja entre corridas en la
+  caché de Actions (`.cache/expedientes`). `mlbgs/version.py` guarda la versión (`VERSION`, `CAMBIOS`) y la
+  huella del código: al cambiar reglas de un modelo, agregar una entrada a `CAMBIOS`.
+- **Tickets de antes de la regla (legado, 28-sep):** manda el ticket original; lo que se les agregó después
+  del juego va aparte en `data/correcciones/<id>.json` (versión corregida, cambios, estadísticas, notas y si
+  es circunstancial o de fondo) y la página lo muestra en una ventana emergente. Para anotar algo nuevo sobre
+  un ticket bloqueado, crear una nota ahí; nunca editar el ticket.
+- **Momio real aparte:** `data/mercado/<fecha>.json` (ESPN/DraftKings apertura y cierre, hasta el 26-sep;
+  desde el 27-sep sale de `data/odds`). `mercado.evaluar` lo compara con la escalera congelada del ticket
+  («con el cierre real, ¿entraba?») y la Cartera muestra un balance paralelo «con cuota real». No cambia
+  tickets ni boletos.
 - Estado del partido: la MLB marca `Live` desde el calentamiento (`Warmup`/`Pre-Game`, 20–30 min antes). Eso
   sigue siendo «por jugar» en la descarga (análisis y momios), en los tickets y en la página («calentamiento ·
   en N min»); «en juego» es solo desde el primer lanzamiento.
