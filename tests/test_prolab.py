@@ -44,10 +44,18 @@ class CadenaDeMarkov(unittest.TestCase):
 
 class IndiceDeConfianza(unittest.TestCase):
     def test_formula(self):
-        r = P.score_pick(0.60, {"a": 0.60, "b": 0.58}, -110, None, False, True, 1.0, 0, [])
+        r = P.score_pick(0.60, {"a": 0.60, "b": 0.58}, -110, -110, False, True, 1.0, 0, [])
         self.assertAlmostEqual(r["parts"]["fuerza"], (0.60 - 110 / 210) / 0.12)
         self.assertAlmostEqual(r["parts"]["consenso"], 1 - 0.02 / 0.12)
         self.assertEqual(r["level"], "Alta" if r["ic"] >= 70 else "Media" if r["ic"] >= 55 else r["level"])
+
+    def test_sin_momio_real_no_hay_fuerza(self):
+        # corrección del 28-sep: el edge contra un momio de referencia (−110) no es valor
+        r = P.score_pick(0.66, {"a": 0.66}, -110, None, False, True, 1.0, 0, [])
+        self.assertEqual(r["parts"]["fuerza"], 0.0)
+        self.assertFalse(r["priceIsReal"])
+        con = P.score_pick(0.66, {"a": 0.66}, -110, -110, False, True, 1.0, 0, [])
+        self.assertAlmostEqual(con["ic"] - r["ic"], 35.0)
 
     def test_gate_y_contradicciones_bajan_el_indice(self):
         base = P.score_pick(0.60, {"a": 0.6}, -110, None, False, True, 1.0, 0, [])["ic"]

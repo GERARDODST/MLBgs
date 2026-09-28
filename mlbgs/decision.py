@@ -140,22 +140,30 @@ def decide(a: dict, picks: list[dict], lab: dict | None = None, track: dict | No
         st0 = p.get("stake") or {}
         lvl = st0.get("level", 0)
         status = "apostar" if lvl else "no apostar"
+        wait_price = None if lvl else next((q for q in ok if not q.get("priceIsReal")), None)
         if lvl:
             why = "el pick con más confianza que pasa guion, contradicciones y datos obligatorios" + (
                 f" y llega a stake con el momio de referencia ({st0['price']:+d})" if st0.get("price") is not None else "")
+        elif wait_price:
+            # sin momio real no hay stake: se espera el momio (del feed o el tuyo) y ahí se decide
+            p, status, st0 = wait_price, "esperar", wait_price.get("stake") or {}
+            first = st0["ladder"][0]
+            why = (f"falta el momio de {p['market']}: conviene si pagan {first['from']:+d} o mejor (stake {first['level']})"
+                   f"{'; stake ' + str(st0['ladder'][-1]['level']) + ' desde ' + format(st0['ladder'][-1]['from'], '+d') if len(st0['ladder']) > 1 else ''}")
         elif st0.get("why") and st0.get("price") is not None:
             why = f"con el momio de referencia ({st0['price']:+d}): {st0['why']} (stake 1 desde {st0['ladder'][0]['from']:+d})"
         else:
             why = f"confianza {p['ic']:.0f} (< 55): solo entra con un momio mejor (stake 1 desde {st0['ladder'][0]['from']:+d})"
     elif wait:
-        p, status = wait[0], "esperar"
+        p, status, wait_price = wait[0], "esperar", None
         why = "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento"
     else:
-        p, status = cands[0], "no apostar"
+        p, status, wait_price = cands[0], "no apostar", None
         why = (p.get("stake") or {}).get("block") or "ningún pick alcanza stake con un momio razonable"
     st = p.get("stake") or {}
     return {
         "status": status, "why": why,
+        **({"waitFor": "momio" if wait_price else "dato"} if status == "esperar" else {}),
         "source": f"Framework v2 + {lab.get('model')}" if lab else "Framework v2",
         "pick": {k: p.get(k) for k in ("pick", "market", "family", "p", "ic", "level", "fair", "minPrice", "line")},
         "stake": {"level": st.get("level", 0) if status == "apostar" else 0, "amount": ST.AMOUNTS.get(st.get("level", 0), 0) if status == "apostar" else 0,

@@ -166,6 +166,10 @@ def plan(pick: dict, a: float = 1.0, h: float = 1.0) -> dict:
         out["level"], out["price"] = at["level"], round(pick["price"])
         if not at["level"]:
             out["why"] = at.get("why")
+    elif out["ladder"]:
+        # sin momio real no hay stake: la escalera dice desde qué momio conviene (corrección del 28-sep)
+        out["level"] = 0
+        out["why"] = f"sin momio real: conviene si pagan {out['ladder'][0]['from']:+d} o mejor"
     if not out["ladder"]:
         out["level"] = 0
     return out

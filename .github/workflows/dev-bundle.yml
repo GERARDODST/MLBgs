@@ -1,5 +1,5 @@
 name: Bundle de desarrollo (temporal)
-# corrida: momios reales 23–27 sep (ESPN) y primer lanzamiento oficial de 5 partidos · 28-sep
+# corrida: página con los momios guardados por producción, sin gastar créditos (27-sep 18:5x)
 on:
   push:
     branches: ["claude/eloquent-ride-7quneh"]
@@ -15,11 +15,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Momios reales de partidos pasados (ESPN) y hora oficial del primer lanzamiento (MLB)
-        continue-on-error: true
-        run: |
-          python -m mlbgs.mercado descargar --desde 2026-09-23 --hasta 2026-09-27 --out dev/pm/mercado
-          python -m mlbgs.mercado primer --pks 823489 824220 824058 823653 824223 --out dev/pm
       - run: python -m mlbgs.fetch --out dev/raw_bundle.json.gz
         env:
           # sin claves: el bundle de desarrollo usa los momios que ya guardó producción (data/odds) y no gasta créditos
@@ -28,7 +23,6 @@ jobs:
           git config user.name "mlbgs-bot"
           git config user.email "mlbgs-bot@users.noreply.github.com"
           git add -f dev/raw_bundle.json.gz
-          if [ -d dev/pm ]; then git add -f dev/pm; fi
           if [ -e data/odds ]; then cp -r data/odds dev/odds && git add -f dev/odds; fi
           git checkout -- data 2>/dev/null || true   # en esta rama no se guardan los datos de producción
           git commit -m "Bundle de desarrollo $(date -u +%H:%MZ)" || echo "sin cambios"

@@ -29,8 +29,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Pruebas
+      - name: Pruebas (incluye la huella de cada ticket bloqueado)
         run: python -m unittest discover -s tests
+      - name: Restaurar los expedientes pendientes de la corrida anterior
+        # la versión más reciente de cada partido que no ha empezado; al primer lanzamiento pasa a data/expedientes
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/expedientes
+          key: expedientes-${{ github.run_id }}
+          restore-keys: expedientes-
       - name: Descargar datos oficiales (MLB Stats API + Baseball Savant) y momios previos al partido
         env:
           # Momios con licencia (como el feed de socios de SofaScore): odds-api.net y, de respaldo, The Odds API.
@@ -39,6 +46,12 @@ jobs:
         run: python -m mlbgs.fetch --out .cache/raw_bundle.json.gz
       - name: Correr el modelo y construir la página
         run: python -m mlbgs.build --bundle .cache/raw_bundle.json.gz
+      - name: Guardar los expedientes pendientes para la siguiente corrida
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/expedientes
+          key: expedientes-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Guardar predicciones (seguimiento)
         run: |
           git config user.name "mlbgs-bot"
@@ -47,6 +60,7 @@ jobs:
           git add prolab/result_*.json 2>/dev/null || true
           if [ -e data/historial ]; then git add -A data/historial; fi
           if [ -e data/odds ]; then git add -A data/odds; fi
+          for d in data/expedientes data/correcciones data/mercado; do if [ -e "$d" ]; then git add -A "$d"; fi; done
           git commit -m "Predicciones MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
           git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
       - name: Empaquetar la página

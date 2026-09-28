@@ -87,8 +87,17 @@ class Stake(unittest.TestCase):
                 self.assertGreater(dec(step["from"]), dec(prev["from"]))
             prev = step
 
-    def test_stake_mostrado_sale_del_ic_del_pick(self):
-        self.assertEqual(ST.plan(pick(ic=66))["level"], ST.level_from_ic(66))
+    def test_sin_momio_real_no_hay_stake(self):
+        # corrección del 28-sep: sin precio real la escalera dice desde qué momio conviene, pero el nivel es 0
+        plan = ST.plan(pick(ic=66))
+        self.assertEqual(plan["level"], 0)
+        self.assertTrue(plan["ladder"])
+        self.assertIn("sin momio real", plan["why"])
+        self.assertIn(f"{plan['ladder'][0]['from']:+d}", plan["why"])
+
+    def test_con_momio_real_el_stake_sale_de_ese_precio(self):
+        pk = {**pick(ic=66), "priceIsReal": True, "price": -110}
+        self.assertEqual(ST.plan(pk)["level"], ST.stake_at(pk, dec(-110))["level"])
         self.assertEqual(ST.plan(pick(ic=50))["level"], 0)
 
     def test_sin_escalera_si_falta_un_dato(self):

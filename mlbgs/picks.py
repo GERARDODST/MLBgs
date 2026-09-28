@@ -41,7 +41,8 @@ def score_pick(p: float, methods: dict, ref_price: float, real_price: float | No
                lineups_ok: bool, stability: float, n_contra: int, contra: list[str]) -> dict:
     price = real_price if real_price is not None else ref_price
     be = M.american_to_prob(price)
-    fuerza = clip((p - be) / 0.12)
+    # sin momio real no hay «fuerza»: el edge contra un momio de referencia no es valor (corrección del 28-sep)
+    fuerza = clip((p - be) / 0.12) if real_price is not None else 0.0
     vals = [v for v in methods.values() if v is not None]
     spread = (max(vals) - min(vals)) if len(vals) >= 2 else None
     consenso = 0.5 if spread is None else clip(1 - spread / 0.12)

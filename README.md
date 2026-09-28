@@ -154,7 +154,19 @@ archivo por día, versionado en git). Un ticket guarda:
 La pestaña *Historial* solo muestra **partidos terminados**; los de hoy y mañana viven en la Jornada.
 Ciclo: *abierto* (se actualiza en cada corrida hasta el primer lanzamiento) → *cerrado* (el juego
 empezó; queda congelado) → *calificado* (terminó) o *anulado* (pospuesto). Los partidos jugados antes
-de que existiera la base se recuperan de `data/predictions/` (solo los 2 picks principales). La
+de que existiera la base se recuperaron de `data/predictions/` (solo los 2 picks principales); hoy un
+ticket nunca se crea después del primer lanzamiento.
+
+**Bloqueo.** Al primer lanzamiento cada ticket se bloquea con una huella (sha256) de todo lo que
+registró y la versión del algoritmo que lo hizo (`mlbgs/version.py`); desde ahí solo se agregan el
+resultado oficial y la calificación. Las correcciones a los modelos aplican solo a los partidos
+siguientes: si algo intentara cambiar un ticket bloqueado, la actualización se detiene sin guardar. Los
+datos van aparte del algoritmo, en el **expediente** del partido (`data/expedientes/<fecha>/<pk>.json.gz`:
+análisis completo, datos crudos de la API recortados al partido y momios vistos). Los tickets de antes
+de esta regla conservan su versión original; lo que se les agregó después del juego se ve aparte, con
+sus notas, en `data/correcciones/` (ventana «Ver versión corregida» en el ticket). El momio real de
+cierre (`data/mercado/` y `data/odds/`) se compara con la escalera guardada en cada ticket para un
+balance paralelo «con cuota real», sin tocar el ticket. La
 pestaña *Historial* muestra el récord por modelo y por mercado, el factor de stake H de cada modelo,
 filtros por modelo, resultado y equipo, los tickets por fecha, el detalle de cada ticket (donde puedes
 capturar el momio que te dieron para calcular stake y ganancia) y una descarga CSV.
@@ -307,7 +319,11 @@ python -m unittest discover -s tests                        # pruebas
 | `mlbgs/stake.py` | Stake 1–10 por confianza ($500–$1,500), escalera de momios y factores de ajuste |
 | `mlbgs/decision.py` | Decisión única por partido: framework + Pro-Lab + cuotas, con la lista de cómo pesa cada parte |
 | `mlbgs/historial.py` | Base de datos de tickets: registro, congelamiento, calificación y anulación |
-| `data/historial/` | Tickets por día: picks, modelo, tipos de análisis y resultado oficial |
+| `data/historial/` | Tickets por día: picks, modelo, tipos de análisis, candado y resultado oficial |
+| `mlbgs/version.py` | Versión del algoritmo y huella del código (cada ticket la guarda) |
+| `mlbgs/expediente.py` · `data/expedientes/` | Datos con los que se hizo cada ticket, escritos una vez al bloquearse |
+| `mlbgs/mercado.py` · `data/mercado/` | Momio real de cierre (aparte) y qué decía la escalera del ticket a ese precio |
+| `mlbgs/legado.py` · `data/correcciones/` | Revisión del 28-sep: tickets originales y sus versiones corregidas con notas |
 | `data/predictions/` | Predicción previa de cada partido, para medir el modelo |
 | `.github/workflows/update.yml` | Actualización programada y despliegue a GitHub Pages |
 

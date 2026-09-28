@@ -1,0 +1,484 @@
+{
+ "id": "2026-09-23-824223-diamante",
+ "tipo": "corregido",
+ "clase": "circunstancial",
+ "fecha": "2026-09-28",
+ "corregido": {
+  "id": "2026-09-23-824223-diamante",
+  "pk": 824223,
+  "date": "2026-09-23",
+  "time": "2026-09-23T17:10:00Z",
+  "away": "WSH",
+  "home": "DET",
+  "awayName": "Washington Nationals",
+  "homeName": "Detroit Tigers",
+  "venue": "Comerica Park",
+  "model": "diamante",
+  "modelName": "Framework v2 + DIAMANTE-24",
+  "kind": "Cadenas de Markov + Monte Carlo",
+  "analyses": [
+   "Log5 multinomial por turno",
+   "Cadena de 24 estados base-out",
+   "Cadena por lineup (216 estados)",
+   "Monte Carlo del partido",
+   "Picks combinados con el framework"
+  ],
+  "source": "pro-lab",
+  "registeredAt": "2026-09-23T17:18:01+00:00",
+  "frozenAt": "2026-09-23T16:51:56+00:00",
+  "status": "calificado",
+  "pred": {
+   "pHome": 0.5556,
+   "projAway": 4.79,
+   "projHome": 5.13,
+   "total": 9.92,
+   "nrfi": 0.5073,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Richard Lovelady",
+    "home": "Framber Valdez"
+   },
+   "lineups": "Confirmados",
+   "pModel": 0.551
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Framber Valdez Under 5.5 K",
+    "line": 5.5,
+    "p": 0.6109,
+    "fair": -157.0,
+    "ic": 51.0,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
+    "res": "perdido",
+    "stake": {
+     "w": 0.56,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -123
+      },
+      {
+       "stake": 1000,
+       "from": -121
+      },
+      {
+       "stake": 1500,
+       "from": -102
+      }
+     ],
+     "block": null
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "DET F5",
+    "line": null,
+    "p": 0.5452,
+    "fair": -120.0,
+    "ic": 48.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson de las primeras 5 entradas, empates como push + Monte Carlo",
+    "res": "push",
+    "stake": {
+     "w": 0.681,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -106
+      },
+      {
+       "stake": 1000,
+       "from": 106
+      },
+      {
+       "stake": 1500,
+       "from": 123
+      }
+     ],
+     "block": null
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Under 9.5",
+    "line": 9.5,
+    "p": 0.5134,
+    "fair": -106.0,
+    "ic": 47.9,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
+    "res": "ganado",
+    "stake": {
+     "w": 0.734,
+     "ladder": [],
+     "block": "el guion del partido no acompaña"
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "DET",
+    "line": null,
+    "p": 0.5556,
+    "fair": -125.0,
+    "ic": 47.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 4 métodos: Log5 (5.7.2) 58.6% · Elo + abridor (5.7.7) 56.4% · λ + Binomial Negativa (5.3 · 5.7.5) 52.1% · DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9) 55.1%",
+    "res": "perdido",
+    "stake": {
+     "w": 0.645,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -110
+      },
+      {
+       "stake": 1000,
+       "from": 103
+      },
+      {
+       "stake": 1500,
+       "from": 120
+      }
+     ],
+     "block": null
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "WSH +1.5",
+    "line": null,
+    "p": 0.6158,
+    "fair": -160.0,
+    "ic": 47.2,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
+    "res": "ganado",
+    "stake": {
+     "w": 0.727,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -141
+      },
+      {
+       "stake": 1000,
+       "from": -132
+      },
+      {
+       "stake": 1500,
+       "from": -118
+      }
+     ],
+     "block": null
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Richard Lovelady Under 2.5 K",
+    "line": 2.5,
+    "p": 0.5907,
+    "fair": -144.0,
+    "ic": 46.7,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
+    "res": "ganado",
+    "stake": {
+     "w": 0.575,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": -116
+      },
+      {
+       "stake": 1000,
+       "from": -111
+      },
+      {
+       "stake": 1500,
+       "from": 107
+      }
+     ],
+     "block": null
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total WSH",
+    "pick": "WSH Under 4.5",
+    "line": 4.5,
+    "p": 0.525,
+    "fair": -111.0,
+    "ic": 45.8,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de WSH + Monte Carlo",
+    "res": "ganado",
+    "stake": {
+     "w": 0.716,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 103
+      },
+      {
+       "stake": 1000,
+       "from": 115
+      },
+      {
+       "stake": 1500,
+       "from": 132
+      }
+     ],
+     "block": null
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.5121,
+    "fair": -105.0,
+    "ic": 43.4,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga + Monte Carlo",
+    "res": "perdido",
+    "stake": {
+     "w": 0.636,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 108
+      },
+      {
+       "stake": 1000,
+       "from": 126
+      },
+      {
+       "stake": 1500,
+       "from": 150
+      }
+     ],
+     "block": null
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total DET",
+    "pick": "DET Over 4.5",
+    "line": 4.5,
+    "p": 0.5116,
+    "fair": -105.0,
+    "ic": 43.3,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de DET + Monte Carlo",
+    "res": "perdido",
+    "stake": {
+     "w": 0.692,
+     "ladder": [
+      {
+       "stake": 500,
+       "from": 108
+      },
+      {
+       "stake": 1000,
+       "from": 123
+      },
+      {
+       "stake": 1500,
+       "from": 144
+      }
+     ],
+     "block": null
+    }
+   },
+   {
+    "rank": 10,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 5.5",
+    "line": 5.5,
+    "p": 0.5286,
+    "fair": -112.0,
+    "ic": 42.5,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "Poisson con λ de las primeras 5 entradas + Monte Carlo",
+    "res": "ganado",
+    "stake": {
+     "w": 0.686,
+     "ladder": [],
+     "block": "el guion del partido no acompaña"
+    }
+   }
+  ],
+  "result": {
+   "state": "Final",
+   "ar": 4,
+   "hr": 2,
+   "inn": [
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "decisions": null,
+   "rhe": null,
+   "gradedAt": "2026-09-24T17:06:08+00:00"
+  },
+  "decision": {
+   "status": "no apostar",
+   "why": "confianza 51 (< 55): solo entra con un momio mejor (stake 1 desde -123)",
+   "source": "Framework v2 + DIAMANTE-24",
+   "pick": "Framber Valdez Under 5.5 K",
+   "market": "Prop de ponches",
+   "p": 0.6109,
+   "ic": 51.0,
+   "level": 0,
+   "amount": 0,
+   "minPrice": -123,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -123
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -104
+    }
+   ]
+  }
+ },
+ "cambios": [
+  {
+   "que": "Decisión única",
+   "original": "sin decisión registrada",
+   "corregido": "no apostar (mejor: Framber Valdez Under 5.5 K)"
+  },
+  {
+   "que": "Escalera de stake",
+   "original": "sin escalera (no existía el sistema de stake)",
+   "corregido": "10 picks con escalera; p. ej. Framber Valdez Under 5.5 K: $500 desde -123, $1,000 desde -121, $1,500 desde -102"
+  }
+ ],
+ "estadisticas": [],
+ "notas": [
+  "Este ticket no existía antes del partido: se creó el 24-sep 17:06 utc al nacer la base de tickets, con el registro que sí se guardó antes del juego (prolab/prolab_824223.json, generado 23-sep 17:18 utc; primer lanzamiento 23-sep 17:12 utc).",
+  "El modelo del Pro-Lab terminó de construirse 23-sep 17:18 utc, después del primer lanzamiento (23-sep 17:12 utc); sus datos se congelaron antes (23-sep 16:51 utc).",
+  "La versión corregida es la que tenía la base antes de esta revisión: se le agregaron después del juego campos que no existían cuando se registró (el sistema de decisión única y stake llegó el 25-sep). En el récord oficial cuenta la versión original.",
+  "Probabilidades, índices de confianza y momios justos de los picks: sin cambios."
+ ],
+ "resumen": "Se le agregó después del juego información que no existía antes: el original manda."
+}

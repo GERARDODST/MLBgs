@@ -1,0 +1,43 @@
+"""Versión del algoritmo que produce cada ticket (los datos van aparte, en el expediente del partido).
+
+Regla: una corrección a los modelos solo aplica a los partidos que todavía no empiezan. Cada ticket guarda
+la versión con la que se hizo y queda bloqueado al primer lanzamiento; nunca se recalcula con una versión
+posterior. Al cambiar las reglas de los modelos, agregar una entrada a CAMBIOS (arriba la más reciente).
+"""
+from __future__ import annotations
+
+import glob
+import hashlib
+import os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+CAMBIOS = [
+    {"version": "2026.09.28", "fecha": "2026-09-28", "cambios": [
+        "Sin momio real (feed o el tuyo) el índice de confianza ya no suma «fuerza» contra un momio de "
+        "referencia de −110 y la decisión es «esperar momio»: nunca hay stake sin un precio real.",
+        "Tickets bloqueados al primer lanzamiento, con expediente del partido (análisis completo, datos "
+        "crudos y momios vistos) y la versión del algoritmo que los hizo.",
+    ]},
+    {"version": "2026.09.27", "fecha": "2026-09-27", "cambios": [
+        "Momios automáticos (ESPN/DraftKings y The Odds API); calentamiento no cuenta como juego empezado.",
+    ]},
+]
+VERSION = CAMBIOS[0]["version"]
+# lo que cuenta como «algoritmo»: el código del modelo y la página (que repite las cuentas de stake)
+CODE_GLOBS = ("mlbgs/*.py", "site/template.html")
+
+
+def code_hash(root: str = ROOT) -> str:
+    """Huella del código del algoritmo (no cambia con los datos ni con las corridas, solo con el código)."""
+    h = hashlib.sha256()
+    for pat in CODE_GLOBS:
+        for path in sorted(glob.glob(os.path.join(root, pat))):
+            h.update(os.path.relpath(path, root).encode())
+            with open(path, "rb") as f:
+                h.update(f.read())
+    return h.hexdigest()[:12]
+
+
+def info(root: str = ROOT) -> dict:
+    return {"version": VERSION, "code": code_hash(root)}
