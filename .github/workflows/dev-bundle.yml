@@ -1,5 +1,5 @@
 name: Bundle de desarrollo (temporal)
-# corrida: post-mortem CIN @ ATL 824866 (feed oficial, probabilidad de victoria y momios ESPN) · 28-sep
+# corrida: página con los momios guardados por producción, sin gastar créditos (27-sep 18:5x)
 on:
   push:
     branches: ["claude/eloquent-ride-7quneh"]
@@ -15,25 +15,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Datos del post-mortem (feed oficial MLB, probabilidad de victoria y momios de ESPN)
-        continue-on-error: true
-        run: |
-          mkdir -p dev/pm
-          curl -sfL "https://statsapi.mlb.com/api/v1.1/game/824866/feed/live" -o dev/pm/feed_824866.json || echo "sin feed"
-          curl -sfL "https://statsapi.mlb.com/api/v1/game/824866/winProbability" -o dev/pm/wp_824866.json || echo "sin winProbability"
-          curl -sfL "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard?dates=20260924" -o dev/pm/espn_20260924.json || echo "sin scoreboard"
-          python - <<'PY'
-          import json, urllib.request
-          sb = json.load(open("dev/pm/espn_20260924.json"))
-          for e in sb.get("events", []):
-              n = e.get("shortName", "")
-              if "CIN" in n and "ATL" in n:
-                  u = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/summary?event=" + str(e["id"])
-                  open("dev/pm/espn_summary_824866.json", "wb").write(urllib.request.urlopen(u, timeout=30).read())
-                  print("resumen ESPN", e["id"])
-          PY
-          ls -la dev/pm
-          gzip -f dev/pm/*.json
       - run: python -m mlbgs.fetch --out dev/raw_bundle.json.gz
         env:
           # sin claves: el bundle de desarrollo usa los momios que ya guardó producción (data/odds) y no gasta créditos
@@ -42,7 +23,6 @@ jobs:
           git config user.name "mlbgs-bot"
           git config user.email "mlbgs-bot@users.noreply.github.com"
           git add -f dev/raw_bundle.json.gz
-          if [ -d dev/pm ]; then git add -f dev/pm; fi
           if [ -e data/odds ]; then cp -r data/odds dev/odds && git add -f dev/odds; fi
           git checkout -- data 2>/dev/null || true   # en esta rama no se guardan los datos de producción
           git commit -m "Bundle de desarrollo $(date -u +%H:%MZ)" || echo "sin cambios"
