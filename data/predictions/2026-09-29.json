@@ -3,53 +3,53 @@
 "pk": 849845,
 "date": "2026-09-29",
 "time": "2026-09-29T18:00:00Z",
-"generatedAt": "2026-09-28T04:00:08+00:00",
+"generatedAt": "2026-09-28T18:53:13+00:00",
 "away": "PHI",
 "home": "ATL",
-"pHome": 0.5337,
+"pHome": 0.5483,
 "methods": {
 "log5": 0.5622,
-"elo": 0.5171,
-"lambda": 0.5219
+"elo": 0.5862,
+"lambda": 0.4965
 },
-"confidence": "alta",
-"projAway": 4.0593,
-"projHome": 4.2953,
-"total": 8.3547,
-"f5Away": 2.2394,
-"f5Home": 2.4191,
-"nrfi": 0.5195,
-"pOver85": 0.4326,
+"confidence": "media",
+"projAway": 3.4431,
+"projHome": 3.4215,
+"total": 6.8645,
+"f5Away": 1.732,
+"f5Home": 1.7924,
+"nrfi": 0.6103,
+"pOver85": 0.2947,
 "probables": {
-"away": "Por anunciar",
-"home": "Por anunciar"
+"away": "Jesús Luzardo",
+"home": "Chris Sale"
 },
 "light": "Amarillo",
 "best": {
-"market": "ML",
-"pick": "PHI",
-"p": 0.4663,
-"price": 163,
-"edge": 0.0861,
+"market": "Run Line",
+"pick": "PHI +1.5",
+"p": 0.6759,
+"price": -142,
+"edge": 0.0891,
 "light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 6.5",
-"p": 0.6233,
-"line": 6.5,
-"ic": 53.3224,
-"level": "Baja"
-},
-{
 "family": "RL",
 "market": "Run Line",
 "pick": "PHI +1.5",
-"p": 0.6324,
+"p": 0.6759,
 "line": null,
-"ic": 44.6058,
+"ic": 62.7846,
+"level": "Media"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 6.5",
+"p": 0.5231,
+"line": 6.5,
+"ic": 44.9677,
 "level": "Baja"
 }
 ]
@@ -58,7 +58,7 @@
 "pk": 849849,
 "date": "2026-09-29",
 "time": "2026-09-29T21:00:00Z",
-"generatedAt": "2026-09-28T04:00:08+00:00",
+"generatedAt": "2026-09-28T18:53:13+00:00",
 "away": "CWS",
 "home": "HOU",
 "pHome": 0.4883,
@@ -68,11 +68,11 @@
 "lambda": 0.4615
 },
 "confidence": "alta",
-"projAway": 5.0775,
-"projHome": 4.6561,
-"total": 9.7336,
-"f5Away": 2.8602,
-"f5Home": 2.8085,
+"projAway": 5.0776,
+"projHome": 4.6562,
+"total": 9.7338,
+"f5Away": 2.8603,
+"f5Home": 2.8086,
 "nrfi": 0.4476,
 "pOver85": 0.5573,
 "probables": {
@@ -82,21 +82,21 @@
 "light": "Amarillo",
 "best": {
 "market": "Total",
-"pick": "Over 8.0",
-"p": 0.6125,
-"price": -110,
-"edge": 0.0887,
+"pick": "Over 8.5",
+"p": 0.5573,
+"price": -102,
+"edge": 0.0523,
 "light": "Amarillo"
 },
 "topPicks": [
 {
 "family": "Total",
 "market": "Total completo",
-"pick": "Over 8.0",
-"p": 0.6125,
-"line": 8.0,
-"ic": 57.659,
-"level": "Media"
+"pick": "Over 8.5",
+"p": 0.5573,
+"line": 8.5,
+"ic": 47.0608,
+"level": "Baja"
 },
 {
 "family": "ML",
@@ -104,7 +104,7 @@
 "pick": "CWS",
 "p": 0.5117,
 "line": null,
-"ic": 48.1697,
+"ic": 40.7132,
 "level": "Baja"
 }
 ]
@@ -113,32 +113,32 @@
 "pk": 849851,
 "date": "2026-09-29",
 "time": "2026-09-30T00:00:00Z",
-"generatedAt": "2026-09-28T04:47:37+00:00",
+"generatedAt": "2026-09-28T18:53:13+00:00",
 "away": "BOS",
 "home": "NYY",
-"pHome": 0.5664,
+"pHome": 0.5553,
 "methods": {
 "log5": 0.561,
-"elo": 0.5611,
-"lambda": 0.5771
+"elo": 0.5576,
+"lambda": 0.5473
 },
 "confidence": "alta",
 "projAway": 3.3514,
-"projHome": 4.1196,
-"total": 7.471,
+"projHome": 3.817,
+"total": 7.1684,
 "f5Away": 1.7061,
-"f5Home": 2.4463,
-"nrfi": 0.5538,
-"pOver85": 0.3503,
+"f5Home": 2.1804,
+"nrfi": 0.5779,
+"pOver85": 0.3223,
 "probables": {
-"away": "Por anunciar",
+"away": "Payton Tolle",
 "home": "Cam Schlittler"
 },
 "light": "Gris",
 "best": {
 "market": "F5",
 "pick": "NYY F5",
-"p": 0.6248,
+"p": 0.5844,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -148,18 +148,18 @@
 "family": "ML",
 "market": "Moneyline",
 "pick": "NYY",
-"p": 0.5664,
+"p": 0.5553,
 "line": null,
-"ic": 43.6005,
+"ic": 43.0466,
 "level": "Baja"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Cam Schlittler Under 6.5 K",
-"p": 0.504,
-"line": 6.5,
-"ic": 34.9321,
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Under 3.5",
+"p": 0.5249,
+"line": 3.5,
+"ic": 36.725,
 "level": "Muy baja"
 }
 ]
@@ -168,7 +168,7 @@
 "pk": 849843,
 "date": "2026-09-29",
 "time": "2026-09-30T02:00:00Z",
-"generatedAt": "2026-09-28T04:47:37+00:00",
+"generatedAt": "2026-09-28T18:53:13+00:00",
 "away": "CHC",
 "home": "SD",
 "pHome": 0.5223,
@@ -179,12 +179,12 @@
 },
 "confidence": "baja",
 "projAway": 4.473,
-"projHome": 4.5286,
-"total": 9.0016,
+"projHome": 4.5287,
+"total": 9.0017,
 "f5Away": 2.4571,
 "f5Home": 2.6743,
 "nrfi": 0.4843,
-"pOver85": 0.4922,
+"pOver85": 0.4923,
 "probables": {
 "away": "Por anunciar",
 "home": "Michael King"
@@ -194,8 +194,8 @@
 "market": "Total",
 "pick": "Over 7.0",
 "p": 0.6457,
-"price": -119,
-"edge": 0.1023,
+"price": -117,
+"edge": 0.1065,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -205,7 +205,7 @@
 "pick": "Over 7.0",
 "p": 0.6457,
 "line": 7.0,
-"ic": 64.3019,
+"ic": 65.5324,
 "level": "Media"
 },
 {
