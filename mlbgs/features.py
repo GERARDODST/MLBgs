@@ -171,6 +171,17 @@ class League:
                 if m > 0:
                     ratios.append(statistics.pvariance(runs) / m)
         self.var_ratio = statistics.fmean(ratios) if ratios else 2.0
+        # lo mismo para las primeras 5 y 3 entradas (algoritmo 2026.09.28.2: F5/F3 con Binomial Negativa, no Poisson)
+        for k, attr in ((5, "var_ratio_f5"), (3, "var_ratio_f3")):
+            part = defaultdict(list)
+            for g in results:
+                inn = g.get("inn") or []
+                if len(inn) < k:
+                    continue
+                part[g["away"]].append(sum((x[0] or 0) for x in inn[:k]))
+                part[g["home"]].append(sum((x[1] or 0) for x in inn[:k]))
+            rs = [statistics.pvariance(v) / statistics.fmean(v) for v in part.values() if len(v) >= 20 and statistics.fmean(v) > 0]
+            setattr(self, attr, statistics.fmean(rs) if rs else self.var_ratio)
 
 
 def obp_slg(h: dict) -> tuple[float, float]:

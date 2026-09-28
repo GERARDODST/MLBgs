@@ -109,6 +109,18 @@ def checklist(a: dict, pick: dict, lab: dict | None, track: dict) -> list[dict]:
                 + (f"; {lad}" if lad else "") + ("" if S["s7"].get("hasOdds") else "; sin momios conectados: el stake final depende del momio que te den"),
                 "tone": "neutral"})
 
+    # 10b. alertas de la auditoría que el stake respeta (8.3 y 7.5) y motivación del bullpen
+    al = list(pick.get("alerts") or [])
+    fc = pick.get("favCaro")
+    txt = [x["texto"] + " → stake × 0.8" for x in al]
+    if fc:
+        txt.append(f"si pagan {fc['desde']:+d} o peor es favorito caro (7.5) → " + ("sin stake: total proyectado bajo" if fc.get("totalBajo") else "stake × 0.8"))
+    idle = [v for v in ((S["s1"].get("idle") or {}).values()) if v]
+    if idle:
+        txt.append("; ".join(idle) + ": su bullpen se regresa a la media y sus relevistas principales se usan menos")
+    out.append({"k": "Auditoría (8.3 · 7.5) y motivación", "v": "; ".join(txt) if txt else "sin alertas que bajen el stake",
+                "tone": "contra" if al or (fc and fc.get("totalBajo")) else "neutral"})
+
     # 11. modelo del Pro-Lab
     if lab:
         mk = lab.get("modelKey")

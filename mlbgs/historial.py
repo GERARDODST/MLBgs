@@ -52,7 +52,7 @@ MODELS = {
             ["Abridores regresados", "FIP, xERA y ERA con regresión a la media por puntos de estabilización (K% 70 BF, BB% 170 BF) (sección 3)."],
             ["Bullpen y fatiga", "Calidad del bullpen y uso de relevistas en los últimos días (sección 4)."],
             ["λ + Binomial Negativa", "Carreras por entrada de cada equipo y distribución Binomial Negativa del marcador con la sobredispersión medida (5.3 · 5.7.5)."],
-            ["Poisson F5 y NRFI", "Primeras 5 y 3 entradas con Poisson; NRFI calibrado con la frecuencia real de ceros (5.4 · 6.8)."],
+            ["Binomial Negativa F5 y NRFI", "Primeras 5 y 3 entradas con Binomial Negativa (sobredispersión medida en esas entradas); NRFI calibrado con la frecuencia real de ceros (5.4 · 6.8)."],
             ["Parque, clima y umpire", "Park factor de 3 años, viento y temperatura, umpire del plato (ajustes de la tabla 5.3)."],
             ["Valor contra el mercado", "Momio justo, mínimo aceptable, edge contra el momio real o de referencia (sección 7)."],
             ["Contradicciones y semáforo", "Auditoría de contradicciones, gate de datos obligatorios y semáforo (secciones 8 y 9)."],
@@ -121,7 +121,8 @@ def _pick_row(p: dict, rank: int) -> dict:
             "line": p.get("line"), "p": p["p"], "fair": p.get("fair"), "ic": p.get("ic"), "level": p.get("level"),
             "price": p.get("price") if p.get("priceIsReal") else None,
             "methods": sorted((p.get("methods") or {}).keys()), "how": p.get("how"), "res": None,
-            **({"stake": {k: p["stake"].get(k) for k in ("level", "ladder", "steps", "block", "a", "h", "maxPrice", "why")
+            **({"alerts": [x["texto"] for x in p["alerts"]]} if p.get("alerts") else {}),
+            **({"stake": {k: p["stake"].get(k) for k in ("level", "ladder", "steps", "block", "a", "h", "r", "maxPrice", "why")
                           if k in p["stake"]}} if p.get("stake") else {})}
 
 

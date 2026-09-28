@@ -13,6 +13,15 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CAMBIOS = [
+    {"version": "2026.09.28.2", "fecha": "2026-09-28", "cambios": [
+        "Alertas de la auditoría vinculantes: si el pick depende de que un abridor en mala racha siga mal (8.3) el "
+        "stake × 0.8; favorito caro, −170 o peor (7.5), × 0.8, y con total proyectado menor a 8 no hay stake.",
+        "Equipo sin nada en juego (eliminado, o clasificado sin siembra en juego, en temporada regular): su bullpen "
+        "se regresa 50% a la media de la liga en el modelo de carreras y el uso esperado de su cerrador y setups baja 40%.",
+        "F5 y F3 con Binomial Negativa y la sobredispersión medida en esas entradas (antes Poisson, que subestimaba "
+        "las entradas grandes y daba probabilidades F5 demasiado altas).",
+        "El lineup muestra el OBP/SLG regresado que usa el modelo junto al de temporada (con pocos turnos, el crudo engaña).",
+    ]},
     {"version": "2026.09.28", "fecha": "2026-09-28", "cambios": [
         "Sin momio real (feed o el tuyo) el índice de confianza ya no suma «fuerza» contra un momio de "
         "referencia de −110 y la decisión es «esperar momio»: nunca hay stake sin un precio real.",

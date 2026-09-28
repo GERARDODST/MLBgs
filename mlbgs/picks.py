@@ -18,11 +18,14 @@ from . import mathlib as M
 
 WEIGHTS = {"fuerza": 0.35, "consenso": 0.25, "datos": 0.15, "estabilidad": 0.15, "contradicciones": 0.10}
 # precio de referencia típico cuando no hay momio real (se muestra como referencia, no como cuota)
+# alertas de la auditoría que el stake respeta (algoritmo 2026.09.28.2)
+ALERT_FACTOR = 0.8        # 8.3 (depende de que un abridor siga en mala racha) y 7.5 (favorito caro): stake × 0.8
+FAV_CARO = -170           # 7.5: favorito a este momio o peor es «caro»; con total proyectado < 8 no hay stake
 REF_PRICE = {"ml": -110, "rl_fav": 135, "rl_dog": -160, "total": -110, "f5ml": -110, "f5total": -115,
              "tt": -115, "nrfi": -120, "yrfi": 100, "k": -115}
 MODEL_NAMES = {
     "log5": "Log5 (5.7.2)", "elo": "Elo + abridor (5.7.7)", "lambda": "λ + Binomial Negativa (5.3 · 5.7.5)",
-    "poisson": "λ + Poisson (5.4)", "calib": "λ calibrado a ceros reales (6.8)", "mc": "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
+    "poisson": "λ + Poisson (5.4)", "nb5": "λ + Binomial Negativa F5 (5.4)", "calib": "λ calibrado a ceros reales (6.8)", "mc": "DIAMANTE-24 Monte Carlo (5.7.3 · 5.7.9)",
     "prisma": "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
     "kronos": "KRONOS estocástico (5.7.3 · 5.7.9)",
     "eigen": "EIGEN · componentes principales (5.7.4 · 5.7.9)",
@@ -152,7 +155,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
         best = None
         for side in ("over", "under"):
             m = lines[ln][side]
-            methods = {"lambda" if key in ("total",) or key.startswith("tt_") else "poisson": m["pNoPush"]}
+            methods = {"lambda" if key in ("total",) or key.startswith("tt_") else "nb5": m["pNoPush"]}
             if mc_dist is not None:
                 methods[MK_] = _ou(mc_dist, ln, side)
             pp = sum(methods.values()) / len(methods)
@@ -166,7 +169,7 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
               "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)" +
               (" + Monte Carlo" if extra.get("total") else ""), extra.get("total"),
               S["s7"].get("marketTotal"))
-    line_pick("f5total", "F5 total", "Total primeras 5", "f5total", "f5", "Poisson con λ de las primeras 5 entradas" +
+    line_pick("f5total", "F5 total", "Total primeras 5", "f5total", "f5", "Binomial Negativa con λ de las primeras 5 entradas" +
               (" + Monte Carlo" if extra.get("f5total") else ""), extra.get("f5total"), S["s7"].get("marketF5Total"))
     for side, abbr in (("away", a), ("home", h)):
         line_pick(f"tt_{side}", "Team total", f"Team total {abbr}", "tt", "total",
@@ -178,13 +181,13 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
     if f5:
         m = max(f5, key=lambda x: x["pNoPush"])
         side = "away" if m["pick"].startswith(a + " ") else "home"
-        methods = {"poisson": m["pNoPush"]}
+        methods = {"nb5": m["pNoPush"]}
         if extra.get("f5"):
             f = extra["f5"]
             methods[MK_] = f[side] / (f["away"] + f["home"]) if (f["away"] + f["home"]) else None
         pp = sum(v for v in methods.values() if v is not None) / len([v for v in methods.values() if v is not None])
         add("F5", "F5 Moneyline", m["pick"], pp, methods, "f5ml", m.get("price"), gate["f5"], stab_sp, contra_for("F5"),
-            "Poisson de las primeras 5 entradas, empates como push" + (" + Monte Carlo" if extra.get("f5") else ""))
+            "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push" + (" + Monte Carlo" if extra.get("f5") else ""))
 
     # --- NRFI / YRFI
     nr = by_key.get("nrfi") or []
@@ -233,6 +236,24 @@ def build(game: dict, extra: dict | None = None) -> list[dict]:
             contra_for("Prop pitcher"), "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson" +
             (" + Monte Carlo" if MK_ in methods else ""), line=ln)
 
+    # 8.3: picks que dependen de que un abridor en mala racha siga mal; 7.5: favorito caro (se evalúa con el momio)
+    collapse = S["s8"].get("collapse") or {}
+    total_proj = game["summary"]["proj"]["total"]
+    other = {"away": "home", "home": "away"}
+    for p in picks:
+        head = p["pick"].split(" ")[0]
+        side = "away" if head == a else "home" if head == h else None
+        needs = set()
+        if p["family"] in ("ML", "RL", "F5") and side:
+            needs = {other[side]}
+        elif p["family"] == "Team total" and side and "Over" in p["pick"]:
+            needs = {other[side]}
+        elif (p["family"] in ("Total", "F5 total") and p["pick"].startswith("Over")) or p["pick"] == "YRFI":
+            needs = {"away", "home"}
+        p["alerts"] = [{"code": "8.3", "factor": ALERT_FACTOR, "texto": f"depende de que {collapse[s]} siga en mala racha (8.3)"}
+                       for s in sorted(needs & set(collapse))]
+        if p["family"] == "ML" and p["p"] >= 0.5:
+            p["favCaro"] = {"desde": FAV_CARO, "totalBajo": total_proj < 8.0, "factor": ALERT_FACTOR}
     picks.sort(key=lambda x: -x["ic"])
     for i, p in enumerate(picks):
         p["rank"] = i + 1

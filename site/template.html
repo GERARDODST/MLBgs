@@ -276,7 +276,13 @@
   .lu-row .slot { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--muted); text-align: right; }
   .lu-row .pos { font-family: var(--mono); font-size: 12px; color: var(--muted); }
   .lu-row .nm { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .lu-row .st { font-family: var(--mono); font-size: 12px; color: var(--ink-2); white-space: nowrap; }
+  .lu-row .st { font-family: var(--mono); font-size: 12px; color: var(--ink-2); white-space: nowrap; text-align: right; }
+  .lu-row .st .lu-est { display: block; font-size: 10.5px; color: var(--muted); }
+  @media (max-width: 560px) {
+    .lu-row { grid-template-columns: 22px 30px minmax(0, 1fr) 20px; row-gap: 0; }
+    .lu-row .st { grid-column: 3 / -1; text-align: left; white-space: normal; }
+    .lu-row .st .lu-est { display: inline; margin-left: 6px; }
+  }
   .lu-row.conf .nm { font-weight: 600; }
   .lu-row.proj .nm { font-style: italic; color: var(--ink-2); }
   .lu-row.proj { border-bottom-style: dashed; }
@@ -730,6 +736,7 @@
   .reg-meta code { font-family: var(--mono); font-size: 11.5px; }
   .reg-note { border-top: 1px dashed var(--grid); padding-top: 6px; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
   .reg-note ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; }
+  .tk-top { flex-wrap: wrap; row-gap: 4px; }
   .lock-b { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 700; color: var(--verde); background: var(--verde-soft); border-radius: 999px; padding: 1px 8px; }
   .lock-b svg { flex: none; }
   .modal { position: fixed; inset: 0; z-index: 50; background: rgba(10, 16, 22, 0.55); display: flex; align-items: flex-start; justify-content: center; padding: calc(env(safe-area-inset-top, 0px) + 24px) 16px 24px; overflow-y: auto; }
@@ -959,9 +966,17 @@
   const amountOf = (lvl) => Number((SK.amounts || {})[lvl] || 0);
   const amDec = (am) => (am > 0 ? 1 + am / 100 : 1 + 100 / -am);
   const levelOfAmount = (amt) => { let l = 0; for (let i = 1; i <= 10; i++) if (amountOf(i) <= amt) l = i; return l; };
-  function levelFromIc(ic, a = 1, h = 1) {
+  function levelFromIc(ic, a = 1, h = 1, r = 1) {
     if (!isNum(ic) || ic < SK.icMin) return 0;
-    return Math.max(1, Math.min(10, Math.round((1 + (9 * (ic - SK.icMin)) / (SK.icTop - SK.icMin)) * a * h)));
+    return Math.max(1, Math.min(10, Math.round((1 + (9 * (ic - SK.icMin)) / (SK.icTop - SK.icMin)) * a * h * r)));
+  }
+  // R: alertas de la auditoría (8.3) y favorito caro (7.5) con el momio que pagan. Mismas cuentas que stake.py
+  const riskOf = (p) => (p.alerts || []).reduce((m, x) => m * (x.factor ?? 1), 1);
+  function favRule(p, dec) {
+    const fc = p.favCaro;
+    if (!fc || dec > amDec(fc.desde) + 1e-9) return { f: 1, why: "" };
+    if (fc.totalBajo) return { f: 0, why: "favorito caro con total bajo (7.5): buscar Under, F5 Under, props de pitcher o no apostar" };
+    return { f: fc.factor ?? 1, why: "" };
   }
   // stake con un momio: nivel 0 = no apostar (con el motivo)
   function stakeFor(p, raw) {
@@ -969,7 +984,9 @@
     if (!r) return null;
     if (!p.stake) return { level: 0, amt: 0, why: "este pick no tiene plan de stake", r };
     if (r.light !== "Verde") return { level: 0, amt: 0, why: r.why, r };
-    const level = levelFromIc(r.ic, p.stake.a ?? 1, p.stake.h ?? 1);
+    const fv = favRule(p, r.dec);
+    if (fv.why) return { level: 0, amt: 0, why: fv.why, r };
+    const level = levelFromIc(r.ic, p.stake.a ?? 1, p.stake.h ?? 1, riskOf(p) * fv.f);
     return { level, amt: amountOf(level), r, why: level ? "" : "confianza menor a 55 con ese momio" };
   }
   const stakeTag = (lvl) => `<span class="stk-badge" data-tip="Stake ${lvl} de 10 = ${money(amountOf(lvl))}">Stake ${lvl}</span>`;
@@ -1129,8 +1146,8 @@
     const conf = lu.status === "Confirmado";
     return `<div class="card-lu"><header><b>${esc(team)}</b>${conf ? '<span class="stamp-c">✓ Confirmado</span>' : `<span class="stamp-p">Proyectado · ${pc(lu.confidence)}</span>`}</header>
       <p class="note muted">${conf ? "Lineup oficial publicado por el club." : `Predicción con sus últimos ${lu.games} juegos (${lu.sameGames} contra abridor de la misma mano, doble peso; recientes pesan más). El % es la frecuencia ponderada con que ese jugador abrió.`}${vsName && vsName !== "Por anunciar" ? ` Contra ${esc(vsName)}.` : " Abridor rival por anunciar: sin filtro de mano."}</p>
-      ${lu.rows.map((r, i) => `<div class="lu-row ${conf ? "conf" : "proj"}"><span class="slot">${i + 1}</span><span class="pos">${esc(r.pos || "—")}</span><span class="nm">${esc(r.name)}</span><span class="pos">${esc(r.bats || "")}</span><span class="st">${r.ops != null ? "OPS " + f(r.ops, 3) : ""}${r.k != null ? " · K% " + pv(r.k) : ""}${!conf && r.prob != null ? ` <span class="pr">${pc(r.prob)}</span>` : ""}</span></div>`).join("")}
-      <p class="formula">OBP ${f(lu.obp, 3)} · SLG ${f(lu.slg, 3)} · K% ${pv(lu.k)} · Barrel% ${f(lu.barrel, 1)} · factor vs ofensiva habitual ${f(lu.ratio, 3)}</p></div>`;
+      ${lu.rows.map((r, i) => `<div class="lu-row ${conf ? "conf" : "proj"}"><span class="slot">${i + 1}</span><span class="pos">${esc(r.pos || "—")}</span><span class="nm">${esc(r.name)}</span><span class="pos">${esc(r.bats || "")}</span><span class="st" data-tip="${r.obpEst != null ? `Temporada: OBP ${f(r.obp, 3)} · SLG ${f(r.slg, 3)} en ${r.pa ?? 0} turnos. El modelo usa el valor regresado a la liga según los turnos: OBP ${f(r.obpEst, 3)} · SLG ${f(r.slgEst, 3)}` : ""}">${r.ops != null ? "OPS " + f(r.ops, 3) : ""}${r.obpEst != null && r.pa != null && r.pa < 300 ? `<span class="lu-est">${r.pa} PA · usa ${f(r.obpEst + r.slgEst, 3)}</span>` : ""}${r.k != null ? " · K% " + pv(r.k) : ""}${!conf && r.prob != null ? ` <span class="pr">${pc(r.prob)}</span>` : ""}</span></div>`).join("")}
+      <p class="formula">OBP ${f(lu.obp, 3)} · SLG ${f(lu.slg, 3)} · K% ${pv(lu.k)} · Barrel% ${f(lu.barrel, 1)} · factor vs ofensiva habitual ${f(lu.ratio, 3)} · con pocos turnos el modelo usa el OBP+SLG regresado a la liga («usa»)</p></div>`;
   }
 
   function bullpenTable(team, rows, hasOfficial) {
@@ -1138,7 +1155,7 @@
     return `<h3 class="sub">${esc(team)} <span class="code">${rows.length} brazos · ${hasOfficial ? "lista oficial del partido + predicción de uso" : "roster activo + predicción de uso"}</span></h3>
       ${table(["Pitcher", "Mano", "Rol", "Estado", "~P(uso)", "~ERA", "~FIP", "~K%", "~BB%", "~SV/HLD", "Último uso", "~Pitcheos 3d"], rows.map((r) => tr([
         td(`<span class="${r.official === false ? "pen-pred" : "pen-off"}">${esc(r.name)}</span>${r.official ? ' <span class="tag ok" data-tip="Aparece en la lista oficial de bullpen del partido">oficial</span>' : ""}`),
-        td(hand(r.throws)), td(esc(r.role)), td(chip(r.available)), tdn(pc(r.pUse)), tdn(f(r.era)), tdn(f(r.fip)), tdn(pc(r.k, 1)), tdn(pc(r.bb, 1)),
+        td(hand(r.throws)), td(esc(r.role)), td(chip(r.available)), tdn(r.pUseSinAjuste != null ? `${pc(r.pUse)} <span class="muted" data-tip="Equipo sin nada en juego: uso esperado de sus relevistas principales −40% (antes ${pc(r.pUseSinAjuste)})">↓</span>` : pc(r.pUse)), tdn(f(r.era)), tdn(f(r.fip)), tdn(pc(r.k, 1)), tdn(pc(r.bb, 1)),
         tdn(`${r.sv}/${r.hld}`), td(r.lastDate ? fmtShort(r.lastDate) + (r.lastPitches != null ? ` (${r.lastPitches})` : "") : "—", "num"), tdn(r.p3)], "pen-row")))}`;
   }
 
@@ -2471,7 +2488,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
         td(r.applies ? '<span class="tag warn">Sí</span>' : '<span class="tag">No</span>'), td(r.applied ? '<span class="tag info">Aplicado</span>' : r.applies && r.inBase ? `<span class="tag" data-tip="${esc(r.inBase)}">En λ base</span>` : '<span class="muted">—</span>'),
         td(esc(r.note || "") + (r.applies && r.inBase ? `<br><span class="muted" style="font-size:12px">${esc(r.inBase)}</span>` : ""), "muted")])))}
       <h3 class="sub"><span class="code">5.4 · 5.7.5</span> Modelo de probabilidad</h3>
-      <p class="note">Juego completo: Binomial Negativa por equipo con Var/Media = ${f(s.league.varRatio, 2)} medido en ${s.league.games} juegos de esta temporada (Poisson subestima blanqueadas y juegos largos). F3/F5: Poisson. Empates a 9 entradas se resuelven con el ${pv(s.league.extraHomeWin)} de victorias locales en extra innings.</p>
+      <p class="note">Juego completo: Binomial Negativa por equipo con Var/Media = ${f(s.league.varRatio, 2)} medido en ${s.league.games} juegos de esta temporada (Poisson subestima blanqueadas y juegos largos). F3/F5: Binomial Negativa con la sobredispersión medida en esas entradas (desde el algoritmo 2026.09.28.2; antes, Poisson). Empates a 9 entradas se resuelven con el ${pv(s.league.extraHomeWin)} de victorias locales en extra innings.</p>
       <h3 class="sub"><span class="code">5.5</span> Probabilidad por mercado</h3>
       ${table(["Mercado", "Pick", "~Prob.", "~Empate/push"], s.probabilities.map((r) => tr([td(esc(r.market)), td(esc(r.pick)), tdn(pc(r.p, 1)), tdn(r.tie ? pc(r.tie, 1) : r.push ? pc(r.push, 1) : "—")])))}
       <h3 class="sub"><span class="code">5.6</span> Razones preliminares para cancelar un pick</h3>
@@ -3795,7 +3812,8 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   const RES_TXT = { ganado: ["win", "✓ Ganado"], perdido: ["lose", "✗ Perdido"], push: ["pend", "Push"], "sin dato": ["pend", "Sin dato"], anulado: ["pend", "Anulado"] };
   const SOURCE_TXT = { modelo: "Corrida del framework (todos los picks)", seguimiento: "Seguimiento previo a esta base (solo los 2 picks principales)", "pro-lab": "Pro-Lab congelado antes del juego" };
   const STATUS_TXT = { abierto: "Abierto: se actualiza hasta el primer lanzamiento", cerrado: "Cerrado: el partido empezó y el ticket quedó congelado", calificado: "Calificado con el resultado oficial", anulado: "Anulado: partido pospuesto o cancelado" };
-  const AN_EXTRA = { "Picks combinados con el framework": "Cada pick final promedia la probabilidad de los métodos del framework y del modelo; el índice de confianza premia el acuerdo entre ellos." };
+  const AN_EXTRA = { "Picks combinados con el framework": "Cada pick final promedia la probabilidad de los métodos del framework y del modelo; el índice de confianza premia el acuerdo entre ellos.",
+    "Poisson F5 y NRFI": "Primeras 5 y 3 entradas con Poisson; NRFI calibrado con la frecuencia real de ceros (5.4 · 6.8). Método de los tickets anteriores al algoritmo 2026.09.28.2." };
   const liveByPk = (pk, date) => liveGames.find((g) => g.pk === pk && g.date === date) || liveGames.find((g) => g.pk === pk && !isOff(g));
   const modelOrder = (m) => ["eigen", "kronos", "prisma", "diamante", "framework"].indexOf(m);
   let HIST_RENDER = null, TK_RENDER = null;
@@ -4024,7 +4042,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   // Regla: al primer lanzamiento el ticket se bloquea con una huella y la versión del algoritmo; nunca se recalcula.
   // Las notas de tickets anteriores a la regla y el momio real del mercado viven aparte y no cambian el ticket.
   const CORR = HI.correcciones || {}, REAL = HI.mercado || {}, ALGOS = HI.algos || [];
-  const CORR_LBL = { corregido: ["Versión corregida aparte", "warn"], reconstruido: ["Reconstruido", "info"], nota: ["Nota", "info"] };
+  const CORR_LBL = { corregido: ["Corregido aparte", "warn"], reconstruido: ["Reconstruido", "info"], nota: ["Nota", "info"] };
   const LOCK_SVG = '<svg viewBox="0 0 16 16" width="11" height="11" aria-hidden="true"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="2.5" y="7" width="11" height="8" rx="1.6" fill="currentColor"/></svg>';
   const corrTag = (t) => { const c = CORR[t.id]; if (!c) return ""; const [l, cls] = CORR_LBL[c.tipo] || ["Nota", "info"]; return `<span class="tag ${cls}" data-tip="${esc(c.resumen || "")}">${esc(l)}</span>`; };
   function lockTxt(t) {
@@ -4473,10 +4491,11 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
           <li><b>Decisión</b>: el pick con más confianza que pasa guion, contradicciones y datos obligatorios. Si el mejor solo espera un dato (lineup, umpire…), «esperar»; si ninguno alcanza, «no apostar».</li>
           <li><b>Conclusión de Claude</b> (opcional, en la página de claude.ai): Claude recibe el expediente completo del partido y devuelve la decisión final con su porqué; nunca puede subir el stake por encima de lo que permiten las reglas.</li>
         </ol>
-        <div class="mathbox">nivel base = 1 + 9 · (IC − 55) / 30&nbsp;&nbsp;&nbsp;(IC 55 → 1 · IC 70 → 5.5 · IC 85+ → 10)<br>stake = redondeo(nivel base · A · H), entre 1 y 10 · solo con semáforo Verde (edge ≥ 3 pp, IC ≥ 55, datos completos, guion, sin contradicción alta)<br>${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((l) => `stake ${l} = ${money(amountOf(l))}`).join(" · ")}</div>
+        <div class="mathbox">nivel base = 1 + 9 · (IC − 55) / 30&nbsp;&nbsp;&nbsp;(IC 55 → 1 · IC 70 → 5.5 · IC 85+ → 10)<br>stake = redondeo(nivel base · A · H · R), entre 1 y 10 · solo con semáforo Verde (edge ≥ 3 pp, IC ≥ 55, datos completos, guion, sin contradicción alta)<br>${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((l) => `stake ${l} = ${money(amountOf(l))}`).join(" · ")}</div>
         <ul class="clean">
           <li><b>A</b> = acuerdo con el modelo del Pro-Lab: 1.00 si coincide, baja a 0.70 si ve el pick 10 pp o más peor.</li>
           <li><b>H</b> = historial del modelo: acierto real contra esperado de sus picks principales calificados, encogido n/(n+60), entre 0.85 y 1.05.</li>
+          <li><b>R</b> = alertas de la auditoría (desde el algoritmo 2026.09.28.2): × 0.8 si el pick depende de que un abridor en mala racha siga mal (8.3); × 0.8 si es un favorito caro, −170 o peor (7.5); favorito caro con total proyectado menor a 8 = sin stake.</li>
           <li>Tope sugerido de ${money(SK.dayCap)} por día (la cartera avisa si se pasa); en el boleto, ${money(SK.gameCap)} por partido.</li>
           <li>La decisión, su stake y la escalera quedan guardados en el ticket antes del juego; el Historial mide cómo salieron.</li>
           <li><b>Boleto</b> de cada decisión: momio decimal = 1 + 100/|m| (americano negativo) o 1 + m/100 (positivo), a 2 cifras · pago = stake × decimal · ganado: neto = pago − stake · perdido: neto = −stake · push o anulado: se devuelve el stake (neto $0). Sin momio registrado se usa el de referencia: el más bajo con el que valía ese stake.</li>
@@ -4506,7 +4525,9 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
         <li>ERA estimada del abridor = 0.45·FIP regresado + 0.35·xERA regresada + 0.20·ERA regresada.</li>
         <li>Carreras por media entrada con la distribución real de la liga por entrada; el abridor cubre cada entrada según sus IP esperadas y el resto lo cubre el bullpen (con su fatiga).</li>
         <li>Ajustes de la tabla 5.3: se evalúan todos; se aplican solo los que traen información nueva (viento, HR/9 + parque + contacto). Los que ya están en λ base (K-BB%, K% rival, bullpens, parque) se muestran pero no se duplican. Nunca se sube el total por un solo factor.</li>
-        <li>Juego completo con Binomial Negativa (Var/Media medida); F3/F5 con Poisson; NRFI calibrado con la frecuencia real de ceros.</li>
+        <li>Juego completo, F5 y F3 con Binomial Negativa (Var/Media medida en cada tramo); NRFI calibrado con la frecuencia real de ceros.</li>
+        <li>Equipo sin nada en juego (eliminado, o clasificado sin siembra en juego, en temporada regular): su bullpen se regresa 50% a la media de la liga y el uso esperado de su cerrador y setups baja 40%.</li>
+        <li>Alertas de la auditoría que el stake respeta: pick que depende de que un abridor en mala racha siga mal (8.3) y favorito caro a −170 o peor (7.5) → stake × 0.8; favorito caro con total proyectado bajo → sin stake.</li>
         <li>Probabilidad de victoria triangulada: Log5 (Pitágoras regresado + ventaja de local medida), Elo (K=4, local +24, ajuste por abridor) y modelo λ.</li>
         <li>Semáforo: Verde solo con Modelo + Guion + Cuota con edge ≥ 3 pp y baja contradicción, y nunca con un campo obligatorio faltante.</li>
       </ul></section>
