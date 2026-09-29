@@ -65,61 +65,61 @@
 "pk": 849846,
 "date": "2026-09-30",
 "time": "2026-09-30T21:00:00Z",
-"generatedAt": "2026-09-29T15:14:39+00:00",
+"generatedAt": "2026-09-29T17:42:59+00:00",
 "away": "CWS",
 "home": "HOU",
-"pHome": 0.488,
+"pHome": 0.5522,
 "methods": {
 "log5": 0.5015,
-"elo": 0.502,
-"lambda": 0.4606
+"elo": 0.6086,
+"lambda": 0.5466
 },
-"confidence": "alta",
-"projAway": 5.0901,
+"confidence": "baja",
+"projAway": 4.1521,
 "projHome": 4.6576,
-"total": 9.7478,
-"f5Away": 2.8616,
+"total": 8.8097,
+"f5Away": 2.0316,
 "f5Home": 2.8087,
-"nrfi": 0.4476,
-"pOver85": 0.5585,
+"nrfi": 0.5033,
+"pOver85": 0.4747,
 "probables": {
 "away": "Por anunciar",
-"home": "Por anunciar"
+"home": "Hunter Brown"
 },
-"light": "Rojo",
+"light": "Gris",
 "best": {
-"market": "Team total",
-"pick": "HOU Under 4.5",
-"p": 0.554,
+"market": "F5",
+"pick": "HOU F5",
+"p": 0.6179,
 "price": null,
 "edge": null,
-"light": "Rojo"
+"light": "Gris"
 },
 "topPicks": [
-{
-"family": "ML",
-"market": "Moneyline",
-"pick": "CWS",
-"p": 0.512,
-"line": null,
-"ic": 35.6737,
-"level": "Muy baja"
-},
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "CWS +1.5",
-"p": 0.6731,
+"p": 0.601,
 "line": null,
-"ic": 31.8,
+"ic": 33.5247,
+"level": "Muy baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 8.0",
+"p": 0.5234,
+"line": 8.0,
+"ic": 33.5247,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "dato",
-"family": "ML",
-"pick": "CWS",
+"family": "RL",
+"pick": "CWS +1.5",
 "level": 0
 }
 },
