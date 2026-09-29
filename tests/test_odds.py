@@ -552,6 +552,17 @@ class EsperarMomioConTheOddsApi(unittest.TestCase):
         a = model.analyze(model.Context(b), next(x for x in b["upcoming"] if x["pk"] == 824785))
         self.assertEqual(a["sections"]["s7"]["ask"]["totals_1st_5_innings"]["next"], "2026-09-23T12:00:00Z")
 
+    def test_alternativas_de_la_decision_en_la_misma_llamada(self):
+        with open(os.path.join(self.pred, f"{self.g['date']}.json"), "w") as f:
+            json.dump([{"pk": 824785, "decision": {"status": "esperar", "waitFor": "momio", "family": "F5 total",
+                                                   "alts": ["F5", "Total", "RL"]}, "topPicks": []}], f)
+        self.assertEqual(O.market_needs(self.g["date"], self.pred)[824785],
+                         {"totals_1st_5_innings": 1, "h2h_1st_5_innings": O.ALT})
+        self.posted = True
+        self.run_before(11.8)
+        asked = [dict(urllib.parse.parse_qsl(urllib.parse.urlparse(c).query))["markets"] for c in self.calls if "/odds?" in c]
+        self.assertEqual(asked, ["totals_1st_5_innings,h2h_1st_5_innings"])
+
     def test_lo_temprano_no_toca_la_reserva(self):
         usage = {"calls": {(self.start - dt.timedelta(hours=11)).strftime("%Y-%m-%d"): {"the-odds-api": O.THE_DAY_CREDITS - O.RESERVE}}}
         O.save_usage(usage, self.dir)

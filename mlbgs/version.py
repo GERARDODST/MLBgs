@@ -17,6 +17,8 @@ CAMBIOS = [
         "«Esperar momio»: el mercado de la decisión que ESPN no trae (F5, ponches, team total, NRFI) se pide a The Odds "
         "API desde 12 h antes del partido (antes 6 h), se refresca a las 6 h y a la hora y media, y si ninguna casa lo "
         "había publicado se vuelve a pedir cada 2 h. La decisión dice de dónde y a qué hora llega el momio.",
+        "Si la decisión espera momio, en la misma llamada se piden los mercados de sus alternativas que ESPN no trae: "
+        "si el precio no alcanza, la siguiente opción ya tiene el suyo (antes tomaba una corrida por mercado).",
     ]},
     {"version": "2026.09.29.3", "fecha": "2026-09-29", "cambios": [
         "Si el pick de más confianza cae en el filtro contra el mercado (edge ≥ 10 pp a su momio real), la decisión es "

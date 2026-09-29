@@ -204,7 +204,8 @@ def decide(a: dict, picks: list[dict], lab: dict | None = None, track: dict | No
         "pick": {k: p.get(k) for k in ("pick", "market", "family", "p", "ic", "level", "fair", "minPrice", "line")},
         "stake": {"level": st.get("level", 0) if status == "apostar" else 0, "amount": ST.AMOUNTS.get(st.get("level", 0), 0) if status == "apostar" else 0,
                   "minPrice": (st.get("ladder") or [{}])[0].get("from"), "ladder": st.get("ladder") or [], "a": st.get("a", 1.0), "h": st.get("h", 1.0)},
-        "alternatives": [{"pick": q["pick"], "market": q["market"], "ic": q["ic"]} for q in cands if q is not p][:3],
+        "alternatives": [{"pick": q["pick"], "market": q["market"], "family": q.get("family"), "ic": q["ic"]}
+                         for q in cands if q is not p][:3],
         "checklist": checklist(a, p, lab, track),
     }
 

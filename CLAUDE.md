@@ -84,7 +84,8 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   anterior (`data/cambios/<fecha>.json`: `snap` por partido y `events`); la primera foto es la base y un dato que
   la API deja de mandar no cuenta como cambio. Un partido con cambio de abridor, lineup, horario o baja revisa sus
   momios de ESPN en la misma corrida (cada llamada a ESPN actualiza toda la fecha). The Odds API por prioridad:
-  0 mercado cuyo abridor cambió después de pedirlo, 1 mercado de la decisión que ESPN no trae, 2 verificación del
+  0 mercado cuyo abridor cambió después de pedirlo, 1 mercado de la decisión que ESPN no trae, 1.5 si la decisión
+  espera momio, los de sus alternativas que ESPN no trae (misma llamada; `alts` en `data/predictions`), 2 verificación del
   mercado de la decisión (ML/RL/total, `h2h`/`spreads`/`totals`) si hay stake o se espera momio (≤ 3 h), 3 el otro
   pick; 2 y 3 no tocan los últimos `ODDS_API_RESERVE` (4) créditos del día. `verify`: DraftKings vs mediana de las
   otras casas (difiere ≥ 3 pp o línea distinta). Algoritmo 2026.09.29: el momio visto antes de un cambio de

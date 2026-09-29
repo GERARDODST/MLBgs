@@ -25,6 +25,7 @@ partidos de esa fecha (la llamada ya se pagó).
 The Odds API gasta créditos, así que se reparte por prioridad (dentro de los topes por día y por mes):
   0  un mercado ya pedido cuyo abridor cambió después (su momio ya no sirve)
   1  el mercado de la decisión del partido cuando ESPN no lo trae (F5, ponches, team total, NRFI)
+  1.5 si la decisión espera momio, el de sus alternativas que ESPN no trae (en la misma llamada)
   2  verificación: el mercado de la decisión (ML, run line o total) en otras casas, si hay stake o se espera momio
   3  el mercado del otro pick principal
 Las prioridades 2 y 3 dejan libres los últimos RESERVE créditos del día para los cambios de última hora.
@@ -62,7 +63,8 @@ PRED_DIR = os.path.join(ROOT, "data", "predictions")
 F5_MARKETS = {"F5": "h2h_1st_5_innings", "F5 total": "totals_1st_5_innings", "K": "pitcher_strikeouts",
               "Team total": "team_totals", "NRFI": "totals_1st_1_innings"}
 MAIN_MARKETS = {"ML": "h2h", "RL": "spreads", "Total": "totals"}       # verificación contra otras casas
-WINDOW = {0: 720, 1: 720, 2: 180, 3: 360}   # minutos antes del partido en que se pide por primera vez, por prioridad
+ALT = 1.5                                   # prioridad de las alternativas de una decisión que espera momio
+WINDOW = {0: 720, 1: 720, ALT: 720, 2: 180, 3: 360}   # minutos antes del partido en que se pide por primera vez
 REFRESH = (360, 90)                         # refrescos: al entrar a las 6 h y en la última hora y media
 EMPTY_GAP, EMPTY_TRIES = 120, 2             # ninguna casa lo había publicado: otro intento cada 2 h, hasta 2 seguidos
 MAIN_KEY = {"h2h": "ml", "spreads": "rl", "totals": "total"}
@@ -426,8 +428,9 @@ def due(entry: dict, now: dt.datetime) -> bool:
 def market_needs(date: str, pred_dir: str = PRED_DIR) -> dict:
     """{pk: {mercado: prioridad}} de The Odds API según el último análisis guardado (data/predictions).
 
-    1 = mercado de la decisión que ESPN no trae · 2 = verificar el mercado de la decisión (ML, RL, total) cuando
-    hay stake o se espera momio · 3 = mercado del otro pick principal."""
+    1 = mercado de la decisión que ESPN no trae · 1.5 = el de sus alternativas si la decisión espera momio (en la
+    misma llamada: si el precio no alcanza, la siguiente ya tiene el suyo) · 2 = verificar el mercado de la decisión
+    (ML, RL, total) cuando hay stake o se espera momio · 3 = mercado del otro pick principal."""
     path = os.path.join(pred_dir, f"{date}.json")
     if not os.path.exists(path):
         return {}
@@ -443,6 +446,10 @@ def market_needs(date: str, pred_dir: str = PRED_DIR) -> dict:
             need[F5_MARKETS[fam]] = 1
         elif fam in MAIN_MARKETS and live:
             need[MAIN_MARKETS[fam]] = 2
+        if dec.get("status") == "esperar" and dec.get("waitFor") == "momio":
+            for alt in dec.get("alts") or []:
+                if alt in F5_MARKETS:
+                    need[F5_MARKETS[alt]] = min(need.get(F5_MARKETS[alt], 9), ALT)
         for tp in r.get("topPicks") or []:
             if tp.get("family") in F5_MARKETS:
                 m = F5_MARKETS[tp["family"]]
