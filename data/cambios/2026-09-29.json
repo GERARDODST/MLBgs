@@ -427,6 +427,60 @@
    "kind": "decision",
    "pk": 849851,
    "text": "Decisión: esperar momio (Cam Schlittler Under 6.5 K) → apostar Cam Schlittler Under 7.5 K · stake 3"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-29T19:35:12Z",
+   "date": "2026-09-29",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849851,
+   "side": "home",
+   "text": "Lineup confirmado (NYY)"
+  },
+  {
+   "after": "Nate Tomlinson",
+   "at": "2026-09-29T19:35:12Z",
+   "date": "2026-09-29",
+   "game": "BOS @ NYY",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849851,
+   "text": "Umpire de home asignado: Nate Tomlinson"
+  },
+  {
+   "action": "El modelo ya usa el roster nuevo.",
+   "at": "2026-09-29T19:35:12Z",
+   "date": "2026-09-29",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "movimiento",
+   "pk": 849851,
+   "side": "away",
+   "text": "BOS: Boston Red Sox transferred RHP Justin Slaten from the 15-day injured list to the 60-day injured list. Right elbow inflammation."
+  },
+  {
+   "after": "esperar momio (F5 Under 4.5)",
+   "at": "2026-09-29T19:35:00Z",
+   "before": "esperar momio (AJ Blubaugh Under 2.5 K)",
+   "date": "2026-09-29",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849849,
+   "text": "Decisión: esperar momio (AJ Blubaugh Under 2.5 K) → esperar momio (F5 Under 4.5)"
+  },
+  {
+   "after": "apostar Cam Schlittler Under 7.5 K · stake 4",
+   "at": "2026-09-29T19:35:00Z",
+   "before": "apostar Cam Schlittler Under 7.5 K · stake 3",
+   "date": "2026-09-29",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849851,
+   "text": "Decisión: apostar Cam Schlittler Under 7.5 K · stake 3 → apostar Cam Schlittler Under 7.5 K · stake 4 · tras: lineup, umpire, movimiento"
   }
  ],
  "snap": {
@@ -690,7 +744,7 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "AJ Blubaugh Under 2.5 K",
+    "pick": "F5 Under 4.5",
     "status": "esperar",
     "waitFor": "momio"
    },
@@ -847,18 +901,38 @@
   "849851": {
    "away": 111,
    "dec": {
-    "level": 3,
+    "level": 4,
     "pick": "Cam Schlittler Under 7.5 K",
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 147,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     502671,
+     700250,
+     671218,
+     641355,
+     806146,
+     642708,
+     683011,
+     682987,
+     669224
+    ]
    },
-   "names": {},
+   "names": {
+    "502671": "Paul Goldschmidt",
+    "641355": "Cody Bellinger",
+    "642708": "Amed Rosario",
+    "669224": "Austin Wells",
+    "671218": "Heliot Ramos",
+    "682987": "Spencer Jones",
+    "683011": "Anthony Volpe",
+    "700250": "Ben Rice",
+    "806146": "George Lombard Jr."
+   },
    "odds": {
     "line": 6.0,
     "ml": {
@@ -938,9 +1012,10 @@
     "944389",
     "944390",
     "944391",
-    "944392"
+    "944392",
+    "944745"
    ],
-   "ump": null,
+   "ump": "Nate Tomlinson",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",

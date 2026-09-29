@@ -6,7 +6,7 @@
    "books": {
     "draftkings": {
      "last": {
-      "at": "2026-09-29T19:03:07Z",
+      "at": "2026-09-29T19:35:12Z",
       "ml": {
        "away": 103,
        "home": -124
@@ -64,7 +64,7 @@
      "title": "DraftKings"
     }
    },
-   "checked": "2026-09-29T19:03:07Z",
+   "checked": "2026-09-29T19:35:12Z",
    "espn": "401907974",
    "home": 135,
    "pk": 849843,
@@ -671,31 +671,86 @@
   "849849": {
    "away": 145,
    "books": {
+    "betonlineag": {
+     "last": {
+      "at": "2026-09-29T19:35:12Z",
+      "k": {
+       "aj blubaugh": {
+        "over": {
+         "point": 1.5,
+         "price": -169
+        },
+        "under": {
+         "point": 1.5,
+         "price": 130
+        }
+       },
+       "hagen smith": {
+        "over": {
+         "point": 1.5,
+         "price": -143
+        },
+        "under": {
+         "point": 1.5,
+         "price": 110
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-29T19:35:12Z",
+      "k": {
+       "aj blubaugh": {
+        "over": {
+         "point": 1.5,
+         "price": -169
+        },
+        "under": {
+         "point": 1.5,
+         "price": 130
+        }
+       },
+       "hagen smith": {
+        "over": {
+         "point": 1.5,
+         "price": -143
+        },
+        "under": {
+         "point": 1.5,
+         "price": 110
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline"
+    },
     "draftkings": {
      "last": {
-      "at": "2026-09-29T19:03:07Z",
+      "at": "2026-09-29T19:35:12Z",
       "ml": {
-       "away": 104,
-       "home": -126
+       "away": 102,
+       "home": -123
       },
       "rl": {
        "away": {
         "point": 1.5,
-        "price": -195
+        "price": -194
        },
        "home": {
         "point": -1.5,
-        "price": 160
+        "price": 159
        }
       },
       "total": {
        "over": {
         "point": 8.0,
-        "price": -118
+        "price": -117
        },
        "under": {
         "point": 8.0,
-        "price": -102
+        "price": -103
        }
       }
      },
@@ -729,22 +784,78 @@
      },
      "src": "espn",
      "title": "DraftKings"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-09-29T19:35:12Z",
+      "k": {
+       "aj blubaugh": {
+        "over": {
+         "point": 1.5,
+         "price": -171
+        },
+        "under": {
+         "point": 1.5,
+         "price": 123
+        }
+       },
+       "hagen smith": {
+        "over": {
+         "point": 1.5,
+         "price": -145
+        },
+        "under": {
+         "point": 1.5,
+         "price": 105
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-29T19:35:12Z",
+      "k": {
+       "aj blubaugh": {
+        "over": {
+         "point": 1.5,
+         "price": -171
+        },
+        "under": {
+         "point": 1.5,
+         "price": 123
+        }
+       },
+       "hagen smith": {
+        "over": {
+         "point": 1.5,
+         "price": -145
+        },
+        "under": {
+         "point": 1.5,
+         "price": 105
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie"
     }
    },
-   "checked": "2026-09-29T19:03:07Z",
+   "checked": "2026-09-29T19:35:12Z",
    "espn": "401907896",
    "home": 117,
    "pk": 849849,
    "providers": [
-    "espn"
+    "espn",
+    "the-odds-api"
    ],
    "start": "2026-09-29T21:00:00Z",
    "theAt": {
-    "pitcher_strikeouts": "2026-09-29T15:28:49Z"
+    "pitcher_strikeouts": "2026-09-29T19:35:12Z"
    },
    "theId": "3a08d35ecf12b54dc25f5912ccecf222",
    "theN": {
-    "pitcher_strikeouts": 1
+    "pitcher_strikeouts": 2
    },
    "theSwapped": false
   },
@@ -1010,7 +1121,7 @@
     },
     "draftkings": {
      "last": {
-      "at": "2026-09-29T19:03:07Z",
+      "at": "2026-09-29T19:35:12Z",
       "f5": {
        "ml": {
         "away": 120,
@@ -1250,7 +1361,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-09-29T19:03:07Z",
+   "checked": "2026-09-29T19:35:12Z",
    "espn": "401907924",
    "home": 147,
    "pk": 849851,
