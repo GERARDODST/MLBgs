@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T21:10:10+00:00",
+  "registeredAt": "2026-09-29T23:48:43+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5325,
@@ -37,7 +37,7 @@
    "projHome": 4.11,
    "total": 8.1,
    "nrfi": 0.5338,
-   "light": "Gris",
+   "light": "Amarillo",
    "confidence": "media",
    "probables": {
     "away": "Cristopher Sánchez",
@@ -49,15 +49,41 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5566,
+    "fair": -126.0,
+    "ic": 46.5,
+    "level": "Baja",
+    "price": -110,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.999,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
     "family": "ML",
     "market": "Moneyline",
     "pick": "ATL",
     "line": null,
     "p": 0.5325,
     "fair": -114.0,
-    "ic": 38.5,
-    "level": "Muy baja",
-    "price": null,
+    "ic": 44.4,
+    "level": "Baja",
+    "price": -105,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -96,21 +122,21 @@
      "h": 0.999,
      "r": 1.0,
      "maxPrice": 131,
-     "why": "sin momio real: conviene si pagan -100 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 3,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
-    "pick": "PHI +1.5",
+    "pick": "ATL +1.5",
     "line": null,
-    "p": 0.6468,
-    "fair": -183.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": null,
+    "p": 0.6697,
+    "fair": -203.0,
+    "ic": 40.5,
+    "level": "Baja",
+    "price": -192,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -118,37 +144,36 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -172
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -145
+      }
+     ],
+     "steps": [
+      -172,
+      -167,
+      -159,
+      -152,
+      -145,
+      -138,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.999,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.5",
-    "line": 7.5,
-    "p": 0.5017,
-    "fair": -101.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.999,
-     "r": 1.0
+     "r": 1.0,
+     "maxPrice": -133,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -412,26 +437,26 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Moneyline: conviene si pagan -100 o mejor (stake 1); stake 5 desde +118",
+   "why": "falta el momio de Total primeras 5: conviene si pagan -107 o mejor (stake 1); stake 5 desde +109",
    "source": "Framework v2",
-   "pick": "ATL",
+   "pick": "F5 Over 3.5",
    "waitFor": "momio",
-   "market": "Moneyline",
-   "p": 0.5325,
-   "ic": 38.5,
+   "market": "Total primeras 5",
+   "p": 0.5562,
+   "ic": 37.0,
    "level": 0,
    "amount": 0,
-   "minPrice": -100,
+   "minPrice": -107,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -100
+     "from": -107
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 118
+     "from": 109
     }
    ]
   }
