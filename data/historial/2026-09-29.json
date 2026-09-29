@@ -30,7 +30,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-29T17:03:00+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5455,
    "projAway": 3.57,
@@ -556,6 +556,16 @@
      "from": -158
     }
    ]
+  },
+  "lock": {
+   "at": "2026-09-29T18:06:44+00:00",
+   "hash": "e758a734fbf4213e24ef7810ce265a4180616efc35d3e5588537cb4807fb4878",
+   "algo": {
+    "version": "2026.09.29.2",
+    "code": "283844873e28"
+   },
+   "expediente": "data/expedientes/2026-09-29/849845.json.gz",
+   "coincide": true
   }
  },
  {
@@ -1117,6 +1127,16 @@
      "from": 109
     }
    ]
+  },
+  "lock": {
+   "at": "2026-09-29T18:06:44+00:00",
+   "hash": "4d5148932b441cc69915af8adfca097c866492bfebfbe2edf026ec525697d43c",
+   "algo": {
+    "version": "2026.09.29.2",
+    "code": "283844873e28"
+   },
+   "expediente": "data/expedientes/2026-09-29/849845.json.gz",
+   "coincide": true
   }
  },
  {
@@ -1736,7 +1756,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T17:50:59+00:00",
+  "registeredAt": "2026-09-29T18:06:44+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5549,
@@ -1844,7 +1864,7 @@
     "fair": -141.0,
     "ic": 36.7,
     "level": "Muy baja",
-    "price": null,
+    "price": -145,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -1881,7 +1901,7 @@
      "h": 1.0056,
      "r": 1.0,
      "maxPrice": 106,
-     "why": "sin momio real: conviene si pagan -120 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -2094,26 +2114,26 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de F5 Moneyline: conviene si pagan -120 o mejor (stake 1); stake 5 desde -102",
+   "why": "falta el momio de Prop de ponches: conviene si pagan +118 o mejor (stake 1); stake 5 desde +139",
    "source": "Framework v2",
-   "pick": "NYY F5",
+   "pick": "Cam Schlittler Under 6.5 K",
    "waitFor": "momio",
-   "market": "F5 Moneyline",
-   "p": 0.5843,
-   "ic": 36.7,
+   "market": "Prop de ponches",
+   "p": 0.504,
+   "ic": 34.9,
    "level": 0,
    "amount": 0,
-   "minPrice": -120,
+   "minPrice": 118,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -120
+     "from": 118
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -102
+     "from": 139
     }
    ]
   }
