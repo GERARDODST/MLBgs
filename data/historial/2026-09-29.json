@@ -1149,7 +1149,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T17:03:00+00:00",
+  "registeredAt": "2026-09-29T17:50:59+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4818,
@@ -1157,7 +1157,7 @@
    "projHome": 4.22,
    "total": 8.99,
    "nrfi": 0.5149,
-   "light": "Gris",
+   "light": "Amarillo",
    "confidence": "media",
    "probables": {
     "away": "Hagen Smith",
@@ -1175,9 +1175,9 @@
     "line": null,
     "p": 0.6912,
     "fair": -224.0,
-    "ic": 42.3,
+    "ic": 42.7,
     "level": "Baja",
-    "price": -196,
+    "price": -195,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1214,7 +1214,7 @@
      "h": 1.0056,
      "r": 1.0,
      "maxPrice": -145,
-     "why": "edge menor a 3 pp con ese momio"
+     "why": "confianza menor a 55 con ese momio"
     }
    },
    {
@@ -1736,7 +1736,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T17:27:18+00:00",
+  "registeredAt": "2026-09-29T17:50:59+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5549,
@@ -1764,7 +1764,7 @@
     "fair": -125.0,
     "ic": 42.8,
     "level": "Baja",
-    "price": -139,
+    "price": -140,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -2148,7 +2148,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T17:42:59+00:00",
+  "registeredAt": "2026-09-29T17:50:59+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4912,
@@ -2202,7 +2202,7 @@
     "fair": -161.0,
     "ic": 36.4,
     "level": "Muy baja",
-    "price": -212,
+    "price": -215,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
