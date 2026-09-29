@@ -569,6 +569,18 @@
    "kind": "decision",
    "pk": 849843,
    "text": "Decisión: esperar momio (Michael King Over 4.5 K) → apostar Michael King Over 4.5 K · stake 2"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 8.5,
+   "at": "2026-09-29T20:54:30Z",
+   "before": 8.0,
+   "date": "2026-09-29",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849849,
+   "text": "La línea del total pasa de 8.0 a 8.5"
   }
  ],
  "snap": {
@@ -836,7 +848,7 @@
     "status": "esperar",
     "waitFor": "verificar"
    },
-   "detailed": "Pre-Game",
+   "detailed": "Warmup",
    "home": 117,
    "lu": {
     "away": [
@@ -883,12 +895,12 @@
     "828599": "Lucas Spence"
    },
    "odds": {
-    "line": 8.0,
+    "line": 8.5,
     "ml": {
-     "away": 105,
-     "home": -126
+     "away": 102,
+     "home": -123
     },
-    "pHome": 0.5333,
+    "pHome": 0.527,
     "src": "draftkings"
    },
    "prob": {
