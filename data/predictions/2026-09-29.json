@@ -3,23 +3,23 @@
 "pk": 849845,
 "date": "2026-09-29",
 "time": "2026-09-29T18:00:00Z",
-"generatedAt": "2026-09-29T10:06:25+00:00",
+"generatedAt": "2026-09-29T15:14:39+00:00",
 "away": "PHI",
 "home": "ATL",
-"pHome": 0.5483,
+"pHome": 0.5455,
 "methods": {
 "log5": 0.5622,
 "elo": 0.5862,
-"lambda": 0.4966
+"lambda": 0.4881
 },
 "confidence": "media",
-"projAway": 3.4421,
-"projHome": 3.4219,
-"total": 6.864,
-"f5Away": 1.732,
-"f5Home": 1.7924,
-"nrfi": 0.6103,
-"pOver85": 0.2947,
+"projAway": 3.5686,
+"projHome": 3.4679,
+"total": 7.0364,
+"f5Away": 1.7956,
+"f5Home": 1.8165,
+"nrfi": 0.6031,
+"pOver85": 0.3103,
 "probables": {
 "away": "Jesús Luzardo",
 "home": "Chris Sale"
@@ -28,9 +28,9 @@
 "best": {
 "market": "Run Line",
 "pick": "PHI +1.5",
-"p": 0.6758,
-"price": -135,
-"edge": 0.1013,
+"p": 0.6806,
+"price": -143,
+"edge": 0.0921,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -38,27 +38,34 @@
 "family": "RL",
 "market": "Run Line",
 "pick": "PHI +1.5",
-"p": 0.6758,
+"p": 0.6806,
 "line": null,
-"ic": 66.3422,
+"ic": 64.8524,
 "level": "Media"
 },
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Under 6.5",
-"p": 0.5232,
+"p": 0.5052,
 "line": 6.5,
-"ic": 43.539,
-"level": "Baja"
+"ic": 39.498,
+"level": "Muy baja"
 }
-]
+],
+"decision": {
+"status": "apostar",
+"waitFor": null,
+"family": "RL",
+"pick": "PHI +1.5",
+"level": 7
+}
 },
 {
 "pk": 849849,
 "date": "2026-09-29",
 "time": "2026-09-29T21:00:00Z",
-"generatedAt": "2026-09-29T10:06:25+00:00",
+"generatedAt": "2026-09-29T15:14:39+00:00",
 "away": "CWS",
 "home": "HOU",
 "pHome": 0.4808,
@@ -107,13 +114,20 @@
 "ic": 42.5222,
 "level": "Baja"
 }
-]
+],
+"decision": {
+"status": "esperar",
+"waitFor": "momio",
+"family": "K",
+"pick": "AJ Blubaugh Under 2.5 K",
+"level": 0
+}
 },
 {
 "pk": 849851,
 "date": "2026-09-29",
 "time": "2026-09-30T00:00:00Z",
-"generatedAt": "2026-09-29T04:06:56+00:00",
+"generatedAt": "2026-09-29T15:14:39+00:00",
 "away": "BOS",
 "home": "NYY",
 "pHome": 0.5549,
@@ -150,25 +164,32 @@
 "pick": "NYY",
 "p": 0.5549,
 "line": null,
-"ic": 42.8228,
+"ic": 46.1561,
 "level": "Baja"
 },
 {
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Under 3.5",
-"p": 0.5251,
-"line": 3.5,
-"ic": 36.725,
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.0",
+"p": 0.566,
+"line": 6.0,
+"ic": 38.502,
 "level": "Muy baja"
 }
-]
+],
+"decision": {
+"status": "esperar",
+"waitFor": "momio",
+"family": "F5",
+"pick": "NYY F5",
+"level": 0
+}
 },
 {
 "pk": 849843,
 "date": "2026-09-29",
 "time": "2026-09-30T02:00:00Z",
-"generatedAt": "2026-09-29T10:06:25+00:00",
+"generatedAt": "2026-09-29T15:14:39+00:00",
 "away": "CHC",
 "home": "SD",
 "pHome": 0.4912,
@@ -192,20 +213,20 @@
 "light": "Amarillo",
 "best": {
 "market": "Total",
-"pick": "Over 7.0",
-"p": 0.5956,
-"price": -119,
-"edge": 0.0522,
+"pick": "Over 7.5",
+"p": 0.5377,
+"price": 100,
+"edge": 0.0377,
 "light": "Amarillo"
 },
 "topPicks": [
 {
 "family": "Total",
 "market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.5956,
-"line": 7.0,
-"ic": 51.67,
+"pick": "Over 7.5",
+"p": 0.5377,
+"line": 7.5,
+"ic": 47.4345,
 "level": "Baja"
 },
 {
@@ -214,9 +235,16 @@
 "pick": "CHC +1.5",
 "p": 0.6902,
 "line": null,
-"ic": 41.4057,
+"ic": 41.7182,
 "level": "Baja"
 }
-]
+],
+"decision": {
+"status": "esperar",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Under 4.5",
+"level": 0
+}
 }
 ]
