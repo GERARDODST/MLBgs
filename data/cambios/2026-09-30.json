@@ -11,6 +11,29 @@
    "kind": "decision",
    "pk": 849841,
    "text": "Decisión: esperar momio (ATL) → esperar momio (F5 Over 3.5)"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Hunter Brown",
+   "at": "2026-09-29T17:43:10Z",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849846,
+   "side": "home",
+   "text": "Abridor anunciado (HOU): Hunter Brown"
+  },
+  {
+   "after": "esperar dato (CWS +1.5)",
+   "at": "2026-09-29T17:42:59Z",
+   "before": "esperar dato (CWS)",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849846,
+   "text": "Decisión: esperar dato (CWS) → esperar dato (CWS +1.5) · tras: abridor"
   }
  ],
  "snap": {
@@ -194,7 +217,7 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "CWS",
+    "pick": "CWS +1.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -207,7 +230,10 @@
    "names": {},
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 686613,
+     "name": "Hunter Brown"
+    }
    },
    "probChangedAt": null,
    "since": "2026-09-29T15:14:46Z",
