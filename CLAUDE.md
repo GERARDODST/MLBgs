@@ -64,7 +64,7 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   entre todos los candidatos.
   Playdoit, Caliente y Team México no están en ningún feed: su momio lo captura el usuario y manda.
 - Jornada, «Por jugar»: cada uno de los dos picks de la tarjeta muestra su **momio actual** (el capturado
-  de su casa si existe; si no, el mejor del feed) con la casa abajo en chico y en su color, y a un lado el
+  de su casa si existe; si no, el de referencia del feed como el stake: mediana de las casas MX o de todas, o la única casa; el mejor precio solo en el tablero) con la casa abajo en chico y en su color, y a un lado el
   **momio recomendado** (inicio de la escalera de stake: desde ahí conviene) con el veredicto (tómalo ·
   no · verificar · esperar). El plan del día, las tarjetas de picks principales, la tabla de todos los picks y
   el panel de decisión muestran lo mismo, sin casillas para escribir momios (la captura queda solo en el

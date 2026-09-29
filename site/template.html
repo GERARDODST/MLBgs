@@ -1059,7 +1059,7 @@
   };
 
   // ---------------------------------------------------------------- momio actual de cada pick y momio recomendado
-  // Momio actual: el que capturaste de tu casa (si hay) o el mejor del feed automático (ESPN/DraftKings u otras casas).
+  // Momio actual: el que capturaste de tu casa (si hay) o el de referencia del feed (mediana de las casas, como el stake).
   // Recomendado: el más bajo con el que todavía conviene tomarlo (inicio de su escalera de stake).
   const BOOK_STYLE = {
     draftkings: ["#53D337", "#0b0b0b"], fanduel: ["#1493FF", "#ffffff"], bet365: ["#027B5B", "#FFDF1B"], betmgm: ["#1a1a1a", "#D3B27A"],
@@ -1069,15 +1069,19 @@
     const st = BOOK_STYLE[String(name || "").toLowerCase().replace(/[^a-z0-9]/g, "")];
     return `<small class="bk"${st ? ` style="background:${st[0]};color:${st[1]}"` : ""}>${esc(name)}</small>`;
   };
+  // momio actual de un pick: el tuyo si lo capturaste; si no, el de referencia del feed, igual que el stake
+  // (mediana de las casas MX o, si no hay, de todas; con una sola casa, esa). El mejor precio solo se ve en el tablero.
   function liveOdds(g, p) {
     const mine = bestOdds(g.pk, p.pick);
     if (mine) return { am: mine.o.am, raw: mine.raw, book: mine.book, mine: true };
-    let best = null;
-    ((g.sections.s7 || {}).books || []).forEach((b) => {
-      const am = apiPrice(b, p, g);
-      if (isNum(am) && (!best || amDec(am) > amDec(best.am))) best = { am, book: b.book };
-    });
-    return best ? { ...best, raw: String(Math.round(best.am)) } : null;
+    const rows = ((g.sections.s7 || {}).books || []).map((b) => ({ am: apiPrice(b, p, g), book: b.book, mx: b.mx })).filter((x) => isNum(x.am));
+    if (!rows.length) return null;
+    const pool = rows.some((x) => x.mx) ? rows.filter((x) => x.mx) : rows;
+    if (pool.length === 1) return { am: pool[0].am, book: pool[0].book, raw: String(Math.round(pool[0].am)) };
+    const ds = pool.map((x) => amDec(x.am)).sort((a, b) => a - b), n = ds.length;
+    const d = n % 2 ? ds[(n - 1) / 2] : (ds[n / 2 - 1] + ds[n / 2]) / 2;
+    const am = d >= 2 ? Math.round((d - 1) * 100) : Math.round(-100 / (d - 1));
+    return { am, book: `${n} casas`, raw: String(am), n };
   }
   const recOdds = (p) => { const st = p.stake || {}; return !st.block && st.ladder && st.ladder.length ? st.ladder[0].from : isNum(p.minPrice) ? Math.ceil(p.minPrice) : null; };
   function pickVerdict(g, p) {
