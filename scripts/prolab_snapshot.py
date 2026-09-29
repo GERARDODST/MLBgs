@@ -48,6 +48,10 @@ vs = {}
 for side, opp in (("away", "home"), ("home", "away")):
     order = (box.get(side) or {}).get("battingOrder") or []
     bench = (box.get(side) or {}).get("bench") or []
+    if not order:          # sin lineup publicado todavía: los bateadores del roster activo
+        tid = TEAMS[0 if side == "away" else 1]
+        order = [r["person"]["id"] for r in ((snap.get(f"roster_{tid}") or {}).get("roster") or [])
+                 if (r.get("position") or {}).get("type") != "Pitcher"]
     pid = pitchers.get(opp)
     if not pid:
         continue
@@ -210,6 +214,96 @@ F.log("statcast liga:", {d: v.get("n") for d, v in snap["pitchLeague"].items()})
 grab("situationCodes", lambda: F.get(f"{B}/situationCodes"))
 ids = sorted({str(i) for i, _ in kron_ids})
 grab("peopleAdvanced", lambda: F.get(f"{B}/people?personIds={','.join(ids)}&hydrate=stats(group=[hitting,pitching],type=[season,seasonAdvanced],season=2026)"))
+
+# ---------------------------------------------------------------- OCTUBRE (postemporada: pitcher contra el rival)
+if os.environ.get("PROLAB_MODEL") == "octubre":
+    SEASON = int(GAME_DATE[:4])
+    LOG_KEYS = ("gamesStarted", "battersFaced", "strikeOuts", "baseOnBalls", "hitByPitch", "homeRuns", "hits",
+                "doubles", "triples", "runs", "earnedRuns", "inningsPitched", "numberOfPitches", "atBats", "sacFlies")
+
+    def slim_log(js):
+        out = []
+        for blk in (js or {}).get("stats") or []:
+            for sp in blk.get("splits") or []:
+                st = sp.get("stat") or {}
+                out.append({"date": sp.get("date"), "pk": (sp.get("game") or {}).get("gamePk"),
+                            "opp": (sp.get("opponent") or {}).get("id"), "team": (sp.get("team") or {}).get("id"),
+                            "home": sp.get("isHome"), **{k: st.get(k) for k in LOG_KEYS}})
+        return out
+
+    # A) game logs de todos los abridores de la liga (≥ 5 aperturas): con ellos se mide cuánto del historial
+    #    pitcher × rival es señal y cuánto es ruido (encogimiento de Bayes empírico) y el efecto «familiaridad»
+    grab("octPitchers", lambda: F.players(SEASON, "pitching"))
+    starters = [p["id"] for p in snap.get("octPitchers") or [] if ((p.get("stat") or {}).get("gamesStarted") or 0) >= 5]
+
+    def glog(pid):
+        try:
+            return str(pid), slim_log(F.get(f"{B}/people/{pid}/stats?stats=gameLog&group=pitching&season={SEASON}&gameType=R"))
+        except Exception as e:  # noqa: BLE001
+            return str(pid), {"error": repr(e)}
+    snap["octGameLogs"] = dict(F.pmap(glog, starters, workers=8))
+    F.log("OCTUBRE game logs:", len(snap["octGameLogs"]))
+
+    # historial de carrera de cada abridor del partido contra el rival (por temporada)
+    def vs_team(side):
+        pid, opp = pitchers.get(side), TEAMS[1 if side == "away" else 0]
+        if not pid:
+            return side, None
+        try:
+            return side, F.get(f"{B}/people/{pid}/stats?stats=vsTeam&group=pitching&opposingTeamId={opp}&sportId=1")
+        except Exception as e:  # noqa: BLE001
+            return side, {"error": repr(e)}
+    snap["octVsTeam"] = dict(F.pmap(vs_team, ["away", "home"], workers=2))
+
+    # C) el gancho de postemporada: abridores de las postemporadas 2024-2025 (y lo jugado de esta) contra su
+    #    propio promedio de temporada regular
+    def post_games(year):
+        sch = F.get(f"{B}/schedule?sportId=1&season={year}&gameType=F,D,L,W")
+        return [g["gamePk"] for d in sch.get("dates", []) for g in d["games"]
+                if g["status"].get("abstractGameState") == "Final" and g.get("officialDate", "") < GAME_DATE]
+
+    def post_starters(pk):
+        try:
+            bx = F.get(f"{B}/game/{pk}/boxscore")
+        except Exception as e:  # noqa: BLE001
+            return pk, {"error": repr(e)}
+        out = {}
+        for side in ("away", "home"):
+            t = bx["teams"][side]
+            pits = t.get("pitchers") or []
+            if not pits:
+                continue
+            rows = []
+            for i, pid in enumerate(pits):
+                st = ((t["players"].get(f"ID{pid}") or {}).get("stats") or {}).get("pitching") or {}
+                rows.append({"id": pid, "ip": st.get("inningsPitched"), "bf": st.get("battersFaced"),
+                             "pitches": st.get("numberOfPitches") or st.get("pitchesThrown"), "er": st.get("earnedRuns"),
+                             "runs": st.get("runs"), "k": st.get("strikeOuts"), "bb": st.get("baseOnBalls")})
+            out[side] = {"team": t["team"]["id"], "pitchers": rows}
+        return pk, out
+
+    post = {}
+    for year in (SEASON - 2, SEASON - 1, SEASON):
+        try:
+            pks = post_games(year)
+        except Exception as e:  # noqa: BLE001
+            snap["errors"][f"post_{year}"] = repr(e)
+            continue
+        post[str(year)] = dict(F.pmap(post_starters, pks, workers=8))
+    snap["octPost"] = post
+    sp_ids = sorted({(y, r["pitchers"][0]["id"]) for y, gs in post.items() for g in gs.values() if isinstance(g, dict)
+                     for r in g.values() if isinstance(r, dict) and r.get("pitchers")})
+
+    def reg_season(arg):
+        y, pid = arg
+        try:
+            js = F.get(f"{B}/people/{pid}/stats?stats=season&group=pitching&season={y}&gameType=R")
+            sp = ((js.get("stats") or [{}])[0].get("splits") or [{}])[-1]
+            return f"{y}:{pid}", {k: (sp.get("stat") or {}).get(k) for k in LOG_KEYS}
+        except Exception as e:  # noqa: BLE001
+            return f"{y}:{pid}", {"error": repr(e)}
+    snap["octPostReg"] = dict(F.pmap(reg_season, sp_ids, workers=8))
+    F.log("OCTUBRE postemporadas:", {y: len(v) for y, v in post.items()}, "abridores:", len(sp_ids))
 
 with gzip.open(f"{OUT}/snapshot_{PK}_{LABEL}.json.gz", "wt", encoding="utf-8") as f:
     json.dump(snap, f, separators=(",", ":"))
