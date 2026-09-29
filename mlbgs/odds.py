@@ -405,7 +405,10 @@ def merge(entry: dict, rows: dict, now: dt.datetime, mx: set, opens: dict | None
         own = {k: v for k, v in ((opens or {}).get(bk) or {}).items() if k in MARKET_KEYS and v}
         b["open"] = _fill(_fill(dict(own, at=b.get("open", {}).get("at") or at), b.get("open") or {}), cur) if own \
             else _fill(b.get("open") or {"at": at}, cur)
-        b["last"] = dict({k: v for k, v in (b.get("last") or {}).items() if k in MARKET_KEYS}, **cur, at=at)
+        last = {k: v for k, v in (b.get("last") or {}).items() if k in MARKET_KEYS}
+        if cur.get("f5") and last.get("f5"):   # F5 ganador y F5 total se piden por separado: uno no borra al otro
+            cur["f5"] = dict(last["f5"], **{kk: vv for kk, vv in cur["f5"].items() if vv})
+        b["last"] = dict(last, **cur, at=at)
         if provider:
             b["src"] = provider
     if provider and provider not in entry.setdefault("providers", []):
@@ -465,6 +468,14 @@ def f5_needs(date: str, pred_dir: str = PRED_DIR) -> dict:
     return {pk: sorted(m) for pk, m in market_needs(date, pred_dir).items()}
 
 
+def has_market(row: dict, market: str) -> bool:
+    """¿El renglón de una casa (guardado o recién leído) trae este mercado de The Odds API?"""
+    f5 = row.get("f5") or {}
+    return bool({"h2h_1st_5_innings": f5.get("ml"), "totals_1st_5_innings": f5.get("total"),
+                 "pitcher_strikeouts": row.get("k"), "team_totals": row.get("tt"), "totals_1st_1_innings": row.get("nrfi"),
+                 "h2h": row.get("ml"), "spreads": row.get("rl"), "totals": row.get("total")}.get(market))
+
+
 def next_ask(entry: dict, market: str, now: dt.datetime, window: int = 360,
              changed_at: str | None = None) -> dt.datetime | None:
     """Cuándo toca pedir este mercado a The Odds API (None: ya no se pide). La primera vez cuando faltan ≤ `window`
@@ -483,6 +494,9 @@ def next_ask(entry: dict, market: str, now: dt.datetime, window: int = 360,
     chg = _ts(changed_at)
     if chg and last < chg:
         return chg                                          # prioridad 0: el momio pedido es de antes del cambio
+    if (entry.get("theGot") or {}).get(market) and not any(has_market(b.get("last") or {}, market)
+                                                          for b in (entry.get("books") or {}).values()):
+        return now                                          # llegó pero ya no está guardado: se vuelve a pedir
     cands = []
     empty = (entry.get("theEmpty") or {}).get(market, 0)
     if 0 < empty <= EMPTY_TRIES:
@@ -802,7 +816,7 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
                         for k, v in rows.items()}
                 rows = {k: v for k, v in rows.items() if any(v.get(x) for x in ("f5", "k", "tt", "nrfi", *main))}
                 for m in mk:
-                    n_books = sum(1 for b in ev.get("bookmakers", []) if any(x.get("key") == m for x in b.get("markets", [])))
+                    n_books = sum(1 for r in rows.values() if has_market(r, m))    # casas que sí se guardan
                     e.setdefault("theAt", {})[m] = _iso(now)
                     e.setdefault("theN", {})[m] = e.get("theN", {}).get(m, 0) + 1
                     e.setdefault("theGot", {})[m] = n_books

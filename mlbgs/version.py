@@ -19,6 +19,8 @@ CAMBIOS = [
         "había publicado se vuelve a pedir cada 2 h. La decisión dice de dónde y a qué hora llega el momio.",
         "Si la decisión espera momio, en la misma llamada se piden los mercados de sus alternativas que ESPN no trae: "
         "si el precio no alcanza, la siguiente opción ya tiene el suyo (antes tomaba una corrida por mercado).",
+        "Corrección: pedir el F5 ganador en otra llamada borraba el F5 total guardado (pasó con CHC @ SD el 29-sep); "
+        "ya no, y un mercado que llegó pero ya no está guardado se vuelve a pedir.",
     ]},
     {"version": "2026.09.29.3", "fecha": "2026-09-29", "cambios": [
         "Si el pick de más confianza cae en el filtro contra el mercado (edge ≥ 10 pp a su momio real), la decisión es "

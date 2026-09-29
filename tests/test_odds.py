@@ -467,7 +467,8 @@ class CuandoSePideElMomio(unittest.TestCase):
 
     def test_refrescos_a_las_6_h_y_hora_y_media(self):
         e = {"start": O._iso(self.START), "theAt": {"totals_1st_5_innings": O._iso(self.at(11.9))},
-             "theN": {"totals_1st_5_innings": 1}, "theGot": {"totals_1st_5_innings": 5}}
+             "theN": {"totals_1st_5_innings": 1}, "theGot": {"totals_1st_5_innings": 5},
+             "books": {"fanduel": {"last": {"f5": {"total": {"over": {"point": 4.0, "price": -110}}}}}}}
         self.assertEqual(O.next_ask(e, "totals_1st_5_innings", self.at(11), 720), self.at(6))
         e["theAt"]["totals_1st_5_innings"] = O._iso(self.at(5.9))
         self.assertEqual(O.next_ask(e, "totals_1st_5_innings", self.at(5), 720), self.at(1.5))
@@ -562,6 +563,35 @@ class EsperarMomioConTheOddsApi(unittest.TestCase):
         self.run_before(11.8)
         asked = [dict(urllib.parse.parse_qsl(urllib.parse.urlparse(c).query))["markets"] for c in self.calls if "/odds?" in c]
         self.assertEqual(asked, ["totals_1st_5_innings,h2h_1st_5_innings"])
+
+    def only_asked(self, url, headers=None):
+        """Como la API real: solo los mercados que se pidieron."""
+        ev = self.fetch(url, headers)
+        if "/odds?" not in url:
+            return ev
+        mk = dict(urllib.parse.parse_qsl(urllib.parse.urlparse(url).query))["markets"].split(",")
+        return dict(ev, bookmakers=[dict(b, markets=[m for m in b["markets"] if m["key"] in mk]) for b in ev.get("bookmakers", [])])
+
+    def test_el_f5_ganador_no_borra_el_f5_total(self):
+        """Caso real (CHC @ SD, 29-sep): el F5 total a las 20:06 y el F5 ganador a las 20:14 en otra llamada."""
+        self.posted = True
+        upd = lambda h: O.update(self.bundle, now=self.start - dt.timedelta(hours=h), base=self.dir,  # noqa: E731
+                                 env={"ODDS_API_KEY": "k", "ODDS_ESPN": "0"}, fetch=self.only_asked,
+                                 log=lambda *a: None, pred_dir=self.pred)
+        upd(5.9)
+        with open(os.path.join(self.pred, f"{self.g['date']}.json"), "w") as f:     # la decisión pasa al F5 ganador
+            json.dump([{"pk": 824785, "decision": {"status": "esperar", "waitFor": "momio", "family": "F5"}}], f)
+        upd(5.7)
+        e = O.load_day(self.g["date"], self.dir)["games"]["824785"]
+        dk = e["books"]["draftkings"]["last"]["f5"]
+        self.assertTrue(dk["ml"] and dk["total"])
+        self.assertEqual(e["theGot"], {"totals_1st_5_innings": 2, "h2h_1st_5_innings": 2})   # la de 3 vías no cuenta
+        # si un mercado que llegó ya no está guardado (como pasó con el error), se vuelve a pedir
+        for b in e["books"].values():
+            b["last"]["f5"]["total"] = {}
+        now = self.start - dt.timedelta(hours=5.5)
+        self.assertTrue(O.market_due(e, "totals_1st_5_innings", now, O.WINDOW[1]))
+        self.assertFalse(O.market_due(e, "h2h_1st_5_innings", now, O.WINDOW[1]))
 
     def test_lo_temprano_no_toca_la_reserva(self):
         usage = {"calls": {(self.start - dt.timedelta(hours=11)).strftime("%Y-%m-%d"): {"the-odds-api": O.THE_DAY_CREDITS - O.RESERVE}}}
