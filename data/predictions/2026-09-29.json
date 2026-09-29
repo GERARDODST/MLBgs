@@ -127,7 +127,7 @@
 "pk": 849851,
 "date": "2026-09-29",
 "time": "2026-09-30T00:00:00Z",
-"generatedAt": "2026-09-29T19:58:47+00:00",
+"generatedAt": "2026-09-29T20:14:31+00:00",
 "away": "BOS",
 "home": "NYY",
 "pHome": 0.5547,
@@ -173,7 +173,7 @@
 "pick": "Over 6.0",
 "p": 0.5791,
 "line": 6.0,
-"ic": 45.4394,
+"ic": 46.0853,
 "level": "Baja"
 }
 ],
@@ -189,7 +189,7 @@
 "pk": 849843,
 "date": "2026-09-29",
 "time": "2026-09-30T02:00:00Z",
-"generatedAt": "2026-09-29T20:06:41+00:00",
+"generatedAt": "2026-09-29T20:14:31+00:00",
 "away": "CHC",
 "home": "SD",
 "pHome": 0.4912,
@@ -212,14 +212,23 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "Total",
-"pick": "Over 7.5",
-"p": 0.5377,
-"price": -102,
-"edge": 0.0327,
+"market": "F5",
+"pick": "CHC F5",
+"p": 0.5354,
+"price": 100,
+"edge": 0.0354,
 "light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "CHC F5",
+"p": 0.5354,
+"line": null,
+"ic": 46.7694,
+"level": "Baja"
+},
 {
 "family": "Total",
 "market": "Total completo",
@@ -228,22 +237,13 @@
 "line": 7.5,
 "ic": 45.9906,
 "level": "Baja"
-},
-{
-"family": "RL",
-"market": "Run Line",
-"pick": "SD +1.5",
-"p": 0.6164,
-"line": null,
-"ic": 36.4462,
-"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "momio",
-"family": "F5",
-"pick": "CHC F5",
+"family": "F5 total",
+"pick": "F5 Under 4.5",
 "level": 0
 }
 }
