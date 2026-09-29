@@ -18,7 +18,21 @@ Cada corrida guarda en data/odds/<fecha>.json, por partido (gamePk) y casa:
   open = el primer momio visto (apertura) · last = el más reciente antes del primer lanzamiento.
 Al empezar el partido ya no se pide: `last` queda como cierre. Para gastar pocas llamadas, cada partido
 se refresca según lo que falta para el juego (> 6 h: cada 3 h · 1–6 h: cada hora · < 1 h: cada corrida)
-y hay topes por corrida y por día. El bundle recibe `odds` con la forma de The Odds API (precios
+y hay topes por corrida y por día. Un partido con un cambio (abridor, lineup, horario, baja; ver
+mlbgs/cambios.py) se revisa en la misma corrida aunque no le toque, y cada llamada a ESPN actualiza todos los
+partidos de esa fecha (la llamada ya se pagó).
+
+The Odds API gasta créditos, así que se reparte por prioridad (dentro de los topes por día y por mes):
+  0  un mercado ya pedido cuyo abridor cambió después (su momio ya no sirve)
+  1  el mercado de la decisión del partido cuando ESPN no lo trae (F5, ponches, team total, NRFI)
+  2  verificación: el mercado de la decisión (ML, run line o total) en otras casas, si hay stake o se espera momio
+  3  el mercado del otro pick principal
+Las prioridades 2 y 3 dejan libres los últimos RESERVE créditos del día para los cambios de última hora.
+
+Verificación entre fuentes (`verify`): DraftKings (ESPN) contra la mediana de las otras casas, por mercado
+(moneyline sin vig y total). Si difieren ≥ 3 pp (o la línea del total es otra) se marca «difiere»; el stake ya
+usa la mediana de las casas, no una sola. Un momio visto antes de un cambio de abridor se marca `stale` y no
+cuenta para el stake (la página lo muestra aparte). El bundle recibe `odds` con la forma de The Odds API (precios
 americanos) más `pk`, `provider` y, por casa, `mx` y `open`, para que model.index_odds los use igual.
 """
 from __future__ import annotations
@@ -43,7 +57,12 @@ PRED_DIR = os.path.join(ROOT, "data", "predictions")
 # familia del pick → mercado de The Odds API (lo que ESPN no trae)
 F5_MARKETS = {"F5": "h2h_1st_5_innings", "F5 total": "totals_1st_5_innings", "K": "pitcher_strikeouts",
               "Team total": "team_totals", "NRFI": "totals_1st_1_innings"}
+MAIN_MARKETS = {"ML": "h2h", "RL": "spreads", "Total": "totals"}       # verificación contra otras casas
+MAIN_KEY = {"h2h": "ml", "spreads": "rl", "totals": "total"}
 THE_DAY_CREDITS = int(os.environ.get("ODDS_API_DAY_CREDITS", "24"))
+RESERVE = int(os.environ.get("ODDS_API_RESERVE", "4"))      # créditos del día guardados para cambios de última hora
+VERIFY_PP = 0.03            # DraftKings vs consenso: diferencia de probabilidad sin vig que se marca
+ANCHOR = "draftkings"
 THE_MONTH_CREDITS = int(os.environ.get("ODDS_API_MONTH_CREDITS", "470"))           # plan gratis: 500
 UA = "MLBgs/1.0 (+https://github.com/GERARDODST/MLBgs)"
 ESPN = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard"
@@ -397,8 +416,11 @@ def due(entry: dict, now: dt.datetime) -> bool:
     return last is None or (now - last).total_seconds() / 60 >= gap - 2
 
 
-def f5_needs(date: str, pred_dir: str = PRED_DIR) -> dict:
-    """{pk: [mercados]}: mercados de The Odds API que piden los dos picks principales (último análisis guardado)."""
+def market_needs(date: str, pred_dir: str = PRED_DIR) -> dict:
+    """{pk: {mercado: prioridad}} de The Odds API según el último análisis guardado (data/predictions).
+
+    1 = mercado de la decisión que ESPN no trae · 2 = verificar el mercado de la decisión (ML, RL, total) cuando
+    hay stake o se espera momio · 3 = mercado del otro pick principal."""
     path = os.path.join(pred_dir, f"{date}.json")
     if not os.path.exists(path):
         return {}
@@ -406,14 +428,32 @@ def f5_needs(date: str, pred_dir: str = PRED_DIR) -> dict:
         rows = json.load(f)
     out = {}
     for r in rows if isinstance(rows, list) else rows.values():
-        mk = sorted({F5_MARKETS[tp["family"]] for tp in r.get("topPicks") or [] if tp.get("family") in F5_MARKETS})
-        if mk:
-            out[r["pk"]] = mk
+        need = {}
+        dec = r.get("decision") or {}
+        fam = dec.get("family")
+        live = dec.get("status") == "apostar" or (dec.get("status") == "esperar" and dec.get("waitFor") == "momio")
+        if fam in F5_MARKETS and dec.get("status") in ("apostar", "esperar"):
+            need[F5_MARKETS[fam]] = 1
+        elif fam in MAIN_MARKETS and live:
+            need[MAIN_MARKETS[fam]] = 2
+        for tp in r.get("topPicks") or []:
+            if tp.get("family") in F5_MARKETS:
+                m = F5_MARKETS[tp["family"]]
+                # sin decisión guardada (formato anterior), los dos picks principales cuentan como prioridad 1
+                need[m] = min(need.get(m, 9), 3 if dec else 1)
+        if need:
+            out[r["pk"]] = need
     return out
 
 
-def market_due(entry: dict, market: str, now: dt.datetime) -> bool:
-    """Cada mercado de The Odds API: una vez cuando faltan ≤ 6 h y un refresco en la última hora y media."""
+def f5_needs(date: str, pred_dir: str = PRED_DIR) -> dict:
+    """{pk: [mercados]} (compatibilidad): los mercados de market_needs sin la prioridad."""
+    return {pk: sorted(m) for pk, m in market_needs(date, pred_dir).items()}
+
+
+def market_due(entry: dict, market: str, now: dt.datetime, window: int = 360, changed_at: str | None = None) -> bool:
+    """Cada mercado de The Odds API: una vez cuando faltan ≤ `window` min (6 h; 3 h para verificar) y un refresco
+    en la última hora y media. Si el abridor cambió después de pedirlo, se pide otra vez (una vez por cambio)."""
     start = _ts(entry.get("start"))
     if not start or start <= now:
         return False
@@ -423,7 +463,10 @@ def market_due(entry: dict, market: str, now: dt.datetime) -> bool:
         at, n = entry["f5at"], entry.get("f5n", 1)          # datos guardados antes de llevar la cuenta por mercado
     last = _ts(at)
     if last is None:
-        return mins <= 360
+        return mins <= window
+    chg = _ts(changed_at)
+    if chg and last < chg:
+        return True                                         # prioridad 0: el momio pedido es de antes del cambio
     return n < 2 and mins <= 90 and (now - last).total_seconds() / 60 >= 60
 
 
@@ -565,22 +608,30 @@ def games_of(bundle: dict) -> list[dict]:
 
 
 def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, env=None, fetch=http_json,
-           log=print, pred_dir: str = PRED_DIR) -> dict:
+           log=print, pred_dir: str = PRED_DIR, hot=None, stale_after: dict | None = None) -> dict:
     """Pide los momios que tocan (ESPN siempre; odds-api.net o The Odds API si hay clave), actualiza
-    data/odds/ y devuelve el estado de la corrida."""
+    data/odds/ y devuelve el estado de la corrida.
+
+    hot: partidos con un cambio en esta corrida (se revisan aunque no les toque). stale_after: {pk: hora del
+    último cambio de abridor} (un mercado de The Odds API pedido antes se vuelve a pedir, prioridad 0)."""
     env = os.environ if env is None else env
     now = now or dt.datetime.now(dt.timezone.utc)
     games = games_of(bundle)
     tid = team_index(bundle.get("teams"))
+    hot = {int(k) for k in (hot or {})}
+    stale_after = {int(k): v for k, v in (stale_after or {}).items()}
     days = {d: load_day(d, base) for d in sorted({g["date"] for g in games})}
     for g in games:
         e = days[g["date"]]["games"].setdefault(str(g["pk"]), {})
         e.update({"pk": g["pk"], "away": g["away"], "home": g["home"], "start": g["time"]})
     entry = lambda g: days[g["date"]]["games"][str(g["pk"])]  # noqa: E731
-    todo = sorted((g for g in games if due(entry(g), now)), key=lambda g: g["time"])   # primero los que empiezan antes
+    pending = lambda g: bool(_ts(g["time"]) and _ts(g["time"]) > now)  # noqa: E731
+    # primero los que empiezan antes; un partido con cambio se revisa aunque no le toque por horario
+    todo = sorted((g for g in games if due(entry(g), now) or (g["pk"] in hot and pending(g))), key=lambda g: g["time"])
     usage = load_usage(base)
-    status = {"provider": None, "calls": 0, "refreshed": 0, "error": None}
+    status = {"provider": None, "calls": 0, "refreshed": 0, "error": None, "hot": sorted(hot)}
     used, errors, budgets, fresh = [], [], [], set()
+    covered = list(todo)
 
     # 1) ESPN: momios públicos de su casa socia, con apertura (una llamada por fecha, sin clave)
     if todo and env.get("ODDS_ESPN", "1") != "0":
@@ -592,7 +643,9 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
                 if not budget.ok():
                     break
                 budget.spend()
-                day_todo = [g for g in todo if g["date"] == date]
+                # la llamada trae toda la fecha: se actualizan todos los partidos que no han empezado
+                day_todo = [g for g in games if g["date"] == date and pending(g)]
+                covered += [g for g in day_todo if g not in covered]
                 evs = espn_events(fetch(f"{ESPN}?dates={date.replace('-', '')}"))
                 for pk, (ev, sw) in match(day_todo, evs, tid).items():
                     rows, opens = ev["rows"], ev["opens"]
@@ -654,7 +707,7 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
             errors.append(f"odds-api.net: {e}")
 
     # 3) The Odds API (con clave, plan gratis): solo lo que ESPN no trae (F5, ponches, team total, primera entrada)
-    #    y solo el mercado de los dos picks de cada partido
+    #    y la verificación del mercado de la decisión contra otras casas, por prioridad (ver arriba)
     if key_the:
         used.append("the-odds-api")
         budget = Budget(usage, "the-odds-api", now, 10 ** 6)   # aquí el tope es de créditos, no de llamadas
@@ -664,23 +717,39 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
         try:
             needs = {}
             for d in days:
-                needs.update(f5_needs(d, pred_dir))
-            todo_mk = {g["pk"]: [m for m in needs.get(g["pk"], []) if market_due(entry(g), m, now)] for g in games}
-            want = [g for g in games if todo_mk.get(g["pk"])]
-            want.sort(key=lambda g: g["time"])
+                needs.update(market_needs(d, pred_dir))
+            plan = {}
+            for g in games:
+                e, chg = entry(g), stale_after.get(g["pk"])
+                for m, pr in (needs.get(g["pk"]) or {}).items():
+                    if market_due(e, m, now, 180 if pr == 2 else 360, chg):
+                        last = _ts((e.get("theAt") or {}).get(m))
+                        plan.setdefault(g["pk"], []).append((0 if last and chg and last < _ts(chg) else pr, m))
+            want = sorted((g for g in games if plan.get(g["pk"])), key=lambda g: (min(plan[g["pk"]])[0], g["time"]))
             if want and any(not entry(g).get("theId") for g in want):
                 evs = fetch(f"{THE}/events?" + urllib.parse.urlencode({"apiKey": key_the, "dateFormat": "iso"})) or []
                 for pk, (ev, sw) in match(want, evs, tid).items():   # la lista de partidos no gasta créditos
                     g = next(x for x in want if x["pk"] == pk)
                     entry(g).update({"theId": ev["id"], "theSwapped": sw})
+            status["theQueue"] = []
             for g in want:
-                e, mk = entry(g), todo_mk[g["pk"]]
+                e = entry(g)
                 if not e.get("theId"):
                     continue
-                cost = len(mk)
-                if budget.calls.get("the-odds-api", 0) + cost > THE_DAY_CREDITS or credits.get(month, 0) + cost > THE_MONTH_CREDITS:
-                    log("odds: tope de créditos de The Odds API; los F5 que faltan quedan sin momio")
-                    break
+                day_used, month_used = budget.calls.get("the-odds-api", 0), credits.get(month, 0)
+                mk, skipped = [], []
+                for pr, m in sorted(plan[g["pk"]]):
+                    keep = 0 if pr <= 1 else RESERVE          # prioridades 2 y 3 no tocan la reserva del día
+                    if day_used + len(mk) + 1 <= THE_DAY_CREDITS - keep and month_used + len(mk) + 1 <= THE_MONTH_CREDITS - keep:
+                        mk.append(m)
+                    else:
+                        skipped.append(m)
+                status["theQueue"].append({"pk": g["pk"], "markets": mk, "skipped": skipped,
+                                           "priority": min(pr for pr, _ in plan[g["pk"]])})
+                if skipped:
+                    log(f"odds: tope de créditos de The Odds API; {g['pk']} queda sin {', '.join(skipped)}")
+                if not mk:
+                    continue
                 q = urllib.parse.urlencode({"apiKey": key_the, "regions": "us", "markets": ",".join(mk),
                                             "oddsFormat": "american", "dateFormat": "iso"})
                 ev = fetch(f"{THE}/events/{urllib.parse.quote(str(e['theId']))}/odds?{q}") or {}
@@ -692,8 +761,10 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
                 rows = rows_from_the(ev, tid)
                 if e.get("theSwapped"):
                     rows = {k: flip(v) for k, v in rows.items()}
-                rows = {k: {kk: vv for kk, vv in v.items() if kk not in ("ml", "rl", "total")} for k, v in rows.items()
-                        if any(v.get(x) for x in ("f5", "k", "tt", "nrfi"))}
+                main = {MAIN_KEY[m] for m in mk if m in MAIN_KEY}     # ML/RL/total solo si se pidieron (verificación)
+                rows = {k: {kk: vv for kk, vv in v.items() if kk not in ("ml", "rl", "total") or kk in main}
+                        for k, v in rows.items()}
+                rows = {k: v for k, v in rows.items() if any(v.get(x) for x in ("f5", "k", "tt", "nrfi", *main))}
                 for m in mk:
                     e.setdefault("theAt", {})[m] = _iso(now)
                     e.setdefault("theN", {})[m] = e.get("theN", {}).get(m, 0) + 1
@@ -703,7 +774,7 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
         except Exception as e:  # noqa: BLE001
             errors.append(f"The Odds API: {e}")
 
-    for g in todo:                     # intentado en esta corrida: se vuelve a pedir según la cadencia
+    for g in covered:                  # intentado en esta corrida: se vuelve a pedir según la cadencia
         entry(g)["checked"] = _iso(now)
     for msg in errors:
         log(f"odds: {msg}")
@@ -719,9 +790,89 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
     return status
 
 
-def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None) -> list[dict] | None:
-    """Momios guardados de los partidos del bundle, con la forma de The Odds API (lo que lee el modelo)."""
+def _no_vig(a, b) -> float | None:
+    """Probabilidad sin vig del primer lado de un par de momios americanos."""
+    if a is None or b is None:
+        return None
+    ia, ib = 1 / am_to_dec(a), 1 / am_to_dec(b)
+    return ia / (ia + ib)
+
+
+def _median(xs):
+    xs = sorted(xs)
+    n = len(xs)
+    return None if not n else xs[n // 2] if n % 2 else (xs[n // 2 - 1] + xs[n // 2]) / 2
+
+
+def verify(books: dict, away: str = "visita", home: str = "local") -> dict:
+    """DraftKings (ESPN) contra el consenso de las demás casas, por mercado, con los últimos momios.
+
+    ml: probabilidad sin vig del local · total: la línea y la probabilidad sin vig del Over en esa línea.
+    status: ok · difiere (≥ 3 pp o línea distinta) · una fuente (sin otra casa con qué comparar)."""
+    out = {}
+    ml = {bk: _no_vig((b.get("ml") or {}).get("home"), (b.get("ml") or {}).get("away")) for bk, b in books.items()}
+    ml = {k: v for k, v in ml.items() if v is not None}
+    if ml:
+        others = {k: v for k, v in ml.items() if k != ANCHOR}
+        r = {"n": len(ml)}
+        if ANCHOR in ml and others:
+            cons = _median(others.values())
+            diff = ml[ANCHOR] - cons
+            r.update(diff=round(diff * 100, 1), status="difiere" if abs(diff) >= VERIFY_PP else "ok",
+                     text=f"Moneyline: DraftKings da {home} {ml[ANCHOR] * 100:.1f}% y la mediana de otras {len(others)} "
+                          f"casa{'s' if len(others) > 1 else ''} {cons * 100:.1f}% ({abs(diff) * 100:.1f} pp de diferencia)")
+        elif len(ml) > 1:
+            spread = max(ml.values()) - min(ml.values())
+            r.update(diff=round(spread * 100, 1), status="difiere" if spread >= VERIFY_PP else "ok",
+                     text=f"Moneyline: {len(ml)} casas entre {min(ml.values()) * 100:.1f}% y {max(ml.values()) * 100:.1f}% para {home}")
+        else:
+            r.update(status="una fuente", text="Moneyline: una sola casa, sin otra con qué comparar")
+        out["ml"] = r
+    lines = {bk: (b.get("total") or {}).get("over", {}).get("point") for bk, b in books.items()}
+    lines = {k: v for k, v in lines.items() if v is not None}
+    if lines:
+        others = {k: v for k, v in lines.items() if k != ANCHOR}
+        r = {"n": len(lines)}
+        if ANCHOR in lines and others:
+            mode = max(set(others.values()), key=lambda x: (list(others.values()).count(x), -abs(x - lines[ANCHOR])))
+            if lines[ANCHOR] != mode:
+                r.update(status="difiere", text=f"Total: DraftKings pone {lines[ANCHOR]} y {list(others.values()).count(mode)} "
+                                                f"de {len(others)} casas {mode}")
+            else:
+                ov = {bk: _no_vig(books[bk]["total"]["over"]["price"], (books[bk]["total"].get("under") or {}).get("price"))
+                      for bk, ln in lines.items() if ln == mode}
+                ov = {k: v for k, v in ov.items() if v is not None}
+                oth = [v for k, v in ov.items() if k != ANCHOR]
+                if ANCHOR in ov and oth:
+                    diff = ov[ANCHOR] - _median(oth)
+                    r.update(diff=round(diff * 100, 1), status="difiere" if abs(diff) >= VERIFY_PP else "ok",
+                             text=f"Total {mode}: misma línea en {len(oth) + 1} casas; el Over de DraftKings "
+                                  f"{abs(diff) * 100:.1f} pp {'arriba' if diff > 0 else 'abajo'} de la mediana")
+                else:
+                    r.update(status="ok", text=f"Total {mode}: misma línea en {len(ov)} casas")
+        elif len(lines) > 1:
+            r.update(status="ok" if len(set(lines.values())) == 1 else "difiere",
+                     text=f"Total: líneas {', '.join(str(x) for x in sorted(set(lines.values())))} en {len(lines)} casas")
+        else:
+            r.update(status="una fuente", text="Total: una sola casa, sin otra con qué comparar")
+        out["total"] = r
+    return out
+
+
+def is_stale(book: dict, since: str | None) -> bool:
+    """Momio visto antes del último cambio de abridor: ya no cuenta para el stake."""
+    at, chg = _ts((book.get("last") or {}).get("at")), _ts(since)
+    return bool(at and chg and at < chg)
+
+
+def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None,
+              stale_after: dict | None = None) -> list[dict] | None:
+    """Momios guardados de los partidos del bundle, con la forma de The Odds API (lo que lee el modelo).
+
+    stale_after: {pk: hora del último cambio de abridor}; las casas cuyo último momio es anterior salen con
+    `stale` (el modelo no las usa para el stake y la página las muestra aparte)."""
     now = now or dt.datetime.now(dt.timezone.utc)
+    stale_after = {int(k): v for k, v in (stale_after or {}).items()}
     teams = {int(t["id"]): t for t in (bundle.get("teams") or {}).values()}
     out = []
     for date in sorted({g["date"] for g in games_of(bundle)}):
@@ -731,17 +882,27 @@ def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None
             if not e or not e.get("books"):
                 continue
             name = lambda i: (teams.get(int(i)) or {}).get("name") or str(i)  # noqa: E731
-            books = []
+            ab = lambda i: (teams.get(int(i)) or {}).get("abbr") or str(i)  # noqa: E731
+            since = stale_after.get(g["pk"])
+            books, fresh_rows = [], {}
             for bk, b in sorted(e["books"].items(), key=lambda kv: (not kv[1].get("mx"), kv[1].get("title") or kv[0])):
-                books.append({"key": bk, "title": short_title(b.get("title") or bk), "mx": bool(b.get("mx")),
-                              "last_update": b["last"].get("at"), "markets": _markets(b["last"], name(g["away"]), name(g["home"])),
-                              "open": {k: b["open"].get(k) or {} for k in MARKET_KEYS}, "openAt": b["open"].get("at")})
+                stale = is_stale(b, since)
+                row = {"key": bk, "title": short_title(b.get("title") or bk), "mx": bool(b.get("mx")),
+                       "last_update": b["last"].get("at"), "markets": _markets(b["last"], name(g["away"]), name(g["home"])),
+                       "open": {k: b["open"].get(k) or {} for k in MARKET_KEYS}, "openAt": b["open"].get("at")}
+                if stale:
+                    row.update(stale=True, staleSince=since)
+                else:
+                    fresh_rows[bk] = b["last"]
+                books.append(row)
             start = _ts(e.get("start"))
             provs = e.get("providers") or ([e["provider"]] if e.get("provider") else [])
             out.append({"id": e.get("event") or e.get("espn") or str(g["pk"]), "pk": g["pk"],
                         "provider": " + ".join(PROVIDERS.get(p, p) for p in provs) or None,
                         "commence_time": e.get("start"), "home_team": name(g["home"]), "away_team": name(g["away"]),
-                        "checked": e.get("checked"), "closed": bool(start and start <= now), "bookmakers": books})
+                        "checked": e.get("checked"), "closed": bool(start and start <= now), "bookmakers": books,
+                        "verify": verify(fresh_rows, ab(g["away"]), ab(g["home"])),
+                        **({"staleSince": since} if since else {})})
     return out or None
 
 

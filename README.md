@@ -96,6 +96,29 @@ de las casas MX (el mejor precio de 27 casas casi nunca es el que te dan y exage
 Caliente y Team México no están en ningún feed y bloquean el acceso automático: su momio lo capturas tú
 («Momios de Playdoit» en la Jornada) y, si lo haces, manda sobre el del feed.
 
+## Revisión periódica: qué cambió y en qué enfocarse
+
+Cada corrida del workflow vuelve a leer todo de la MLB y compara cada partido que no ha empezado contra la
+corrida anterior (`mlbgs/cambios.py` → `data/cambios/<fecha>.json`): **abridor** (anunciado o cambiado),
+**lineup** (confirmado, quién entra y quién sale, orden), **umpire**, **clima** (viento a favor/en contra,
+temperatura, lluvia), **horario** (hora, retraso, pospuesto), **movimientos** del roster (lista de
+lesionados, llamados), **momio** (el moneyline se mueve 3 pp o más, cambia la línea del total) y la
+**decisión** (pick, stake o apostar/esperar/no apostar, con lo que la movió). Lo que cambia se atiende en la
+misma corrida: el modelo se recalcula y los momios de ese partido se revisan aunque no les toque por horario.
+
+| Qué | Cada cuánto | Costo |
+| --- | --- | --- |
+| MLB (abridores, lineups, umpire, clima, bajas) | cada revisión: ~12 min con un partido a ≤ 2.5 h, ~18 min a ≤ 6 h, ~30 min más lejos (`mlbgs/cadencia.py`) | sin costo |
+| Momios DraftKings (ESPN) | > 6 h: cada 3 h · 1–6 h: cada hora · < 1 h: cada revisión · con cambio: al momento; cada llamada actualiza toda la fecha | sin costo |
+| The Odds API | por prioridad: 0) mercado cuyo abridor cambió después de pedirlo, 1) mercado de la decisión que ESPN no trae (F5, K, team total, NRFI), 2) verificación del mercado de la decisión (ML, RL, total) en otras casas si hay stake o se espera momio, 3) el otro pick | 1 crédito por mercado y partido; tope 24/día (4 reservados para cambios) y 470/mes |
+
+**Verificación entre casas:** DraftKings (ESPN) contra la mediana de las otras casas (moneyline sin vig y
+total). Si difieren 3 pp o más, o la línea del total es otra, se marca «difiere»; el stake ya usa la
+mediana de las casas, no una sola. **El momio visto antes de un cambio de abridor no cuenta para el stake**
+hasta que la casa publique uno nuevo (algoritmo 2026.09.29). La Jornada muestra **Última hora** (los
+cambios con su hora e impacto, filtrables) y un aviso en la tarjeta del partido; cada partido abre con
+**Qué cambió** y su tablero de momios con la verificación.
+
 ## Estado de los datos (verde = confirmado)
 
 Cada partido abre con un mapa de 11 bloques (alineaciones + las 10 secciones del framework) y cada
@@ -302,7 +325,10 @@ python -m unittest discover -s tests                        # pruebas
 | Ruta | Qué contiene |
 | --- | --- |
 | `mlbgs/fetch.py` | Ingesta (MLB Stats API, Baseball Savant, momios) → bundle de datos |
-| `mlbgs/odds.py` | Momios previos al partido (ESPN sin clave; odds-api.net / The Odds API con clave): apertura, último y cierre por casa en `data/odds/` |
+| `mlbgs/odds.py` | Momios previos al partido (ESPN sin clave; odds-api.net / The Odds API con clave): apertura, último y cierre por casa en `data/odds/`, prioridad de créditos y verificación entre casas |
+| `mlbgs/cambios.py` | Qué cambió entre revisiones (abridor, lineup, umpire, clima, horario, bajas, momio, decisión) en `data/cambios/` |
+| `mlbgs/cadencia.py` | Cada cuánto se revisa según el siguiente primer lanzamiento (espera del relevo de `update.yml`) |
+| rama `pagina` | La última página construida por producción (un solo commit); de ahí la republica en claude.ai una rutina cada ~2 h |
 | `mlbgs/features.py` | Liga, Pitágoras, Elo, perfiles de abridores con shrinkage, bullpen y fatiga |
 | `mlbgs/model.py` | Análisis de cada partido: secciones 1-10 del framework |
 | `mlbgs/context.py` | Lineup proyectado, bullpen completo, importancia (simulación de playoffs), noticias, arsenal |

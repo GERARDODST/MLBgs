@@ -71,6 +71,18 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   tablero de la sección 7, modo «Capturar», y en los boletos). La tarjeta de la Jornada siempre muestra la línea
   del mercado (ganador y total de la casa con ML) aunque el moneyline no sea pick. El tablero de la sección 7
   pone primero las casas del feed con más mercados (DraftKings primero).
+- **Revisión periódica** (`mlbgs/cambios.py`, `mlbgs/cadencia.py`): cada corrida compara abridores, lineups,
+  umpire, clima, horario, movimientos, momios y la decisión de cada partido que no ha empezado contra la corrida
+  anterior (`data/cambios/<fecha>.json`: `snap` por partido y `events`); la primera foto es la base y un dato que
+  la API deja de mandar no cuenta como cambio. Un partido con cambio de abridor, lineup, horario o baja revisa sus
+  momios de ESPN en la misma corrida (cada llamada a ESPN actualiza toda la fecha). The Odds API por prioridad:
+  0 mercado cuyo abridor cambió después de pedirlo, 1 mercado de la decisión que ESPN no trae, 2 verificación del
+  mercado de la decisión (ML/RL/total, `h2h`/`spreads`/`totals`) si hay stake o se espera momio (≤ 3 h), 3 el otro
+  pick; 2 y 3 no tocan los últimos `ODDS_API_RESERVE` (4) créditos del día. `verify`: DraftKings vs mediana de las
+  otras casas (difiere ≥ 3 pp o línea distinta). Algoritmo 2026.09.29: el momio visto antes de un cambio de
+  abridor (`stale`) no cuenta para el stake hasta que la casa publique otro. El relevo de `update.yml` espera
+  7 min con un partido a ≤ 2.5 h, 13 min a ≤ 6 h y 25 min más lejos. `data/predictions` guarda la `decision`.
+  La página: «Última hora» en la Jornada, aviso en la tarjeta, «Qué cambió» y verificación en el partido.
 - Momios de Playdoit: su sitio bloquea el acceso automático (Cloudflare, 403 «Acceso bloqueado» desde
   GitHub Actions); no evadirlo. La Jornada tiene «Momios de Playdoit»: el usuario sube una captura o pega
   el texto y Claude (capacidad `sample` con imágenes) los lee y los aplica solo a partidos que no han
@@ -122,3 +134,6 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   dispara al cambiar su línea de comentario en la rama) y no se sube a `main`
   (`git rm --cached dev/raw_bundle.json.gz` antes del PR).
 - Al publicar el artefacto, conservar sus capacidades (`downloads`, `sample`, `db`).
+- Cada corrida de producción deja la página construida en la rama `pagina` (un solo commit que se reemplaza).
+  Una rutina de Claude (Routine, sesión nueva en cada disparo) la republica en el artefacto cada ~2 h en horario
+  de juegos: `git fetch origin pagina` → publicar `index.html` en el URL del artefacto sin tocar capacidades.

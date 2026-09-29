@@ -13,6 +13,13 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CAMBIOS = [
+    {"version": "2026.09.29", "fecha": "2026-09-29", "cambios": [
+        "Revisión periódica: cada corrida anota qué cambió (abridor, lineup, umpire, clima, horario, bajas, momio y "
+        "decisión) y revisa en ese momento los momios del partido que cambió.",
+        "El momio visto antes de un cambio de abridor ya no cuenta para el stake (hasta que la casa publique otro).",
+        "The Odds API por prioridad (cambio de abridor, mercado de la decisión, verificación contra otras casas, el otro "
+        "pick) con créditos reservados para cambios; DraftKings se verifica contra la mediana de las demás casas.",
+    ]},
     {"version": "2026.09.28.2", "fecha": "2026-09-28", "cambios": [
         "Alertas de la auditoría vinculantes: si el pick depende de que un abridor en mala racha siga mal (8.3) el "
         "stake × 0.8; favorito caro, −170 o peor (7.5), × 0.8, y con total proyectado menor a 8 no hay stake.",

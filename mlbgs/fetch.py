@@ -529,11 +529,26 @@ def savant(season: int) -> dict:
 
 # ------------------------------------------------------------------ momios (opcional)
 
-def odds(bundle: dict) -> list[dict] | None:
-    """Pide los momios que tocan (odds-api.net o The Odds API) y devuelve los guardados de estos partidos."""
+def odds(bundle: dict, tracker=None) -> list[dict] | None:
+    """Pide los momios que tocan (ESPN, odds-api.net o The Odds API) y devuelve los guardados de estos partidos.
+
+    Con `tracker` (mlbgs/cambios.py): los partidos con un cambio en esta corrida se revisan aunque no les toque y
+    el momio visto antes de un cambio de abridor sale marcado (no cuenta para el stake)."""
     from . import odds as O
-    bundle["meta"]["odds"] = O.update(bundle, log=log)
-    return O.to_bundle(bundle)
+    hot = tracker.hot if tracker else None
+    stale = tracker.stale_after() if tracker else None
+    bundle["meta"]["odds"] = O.update(bundle, log=log, hot=hot, stale_after=stale)
+    return O.to_bundle(bundle, stale_after=stale)
+
+
+def changes(bundle: dict):
+    """Compara lo que manda la MLB contra la corrida anterior (data/cambios) y marca los partidos con cambio."""
+    from . import cambios as C
+    tracker = C.Tracker()
+    tracker.mlb(bundle)
+    for e in tracker.new:
+        log(f"cambio [{e['impact']}] {e.get('game', e['pk'])}: {e['text']}")
+    return tracker
 
 
 # ------------------------------------------------------------------ orquestación
@@ -579,7 +594,6 @@ def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int 
     }
     bundle["results"], bundle["remaining"] = attempt("schedule", lambda: season_schedule(season), ([], []))
     bundle["live"] = getattr(upcoming_games, "live", [])
-    bundle["odds"] = attempt("odds", lambda: odds(bundle), None)
     # ayer, hoy y mañana (fecha oficial): la jornada de la página y la calificación de los tickets
     bundle["scoreboard"] = attempt("scoreboard", lambda: scoreboard((today - dt.timedelta(days=1)).isoformat(),
                                                                   end.isoformat(), today.isoformat()), [])
@@ -605,7 +619,15 @@ def fetch_bundle(today: dt.date | None = None, days: int = 2, bullpen_days: int 
     boxes = attempt("boxscores", lambda: pmap(boxscore, pks), [])
     by_pk = {g["pk"]: g for g in bundle["results"]}
     bundle["boxscores"] = [dict(b, pk=pk, date=by_pk[pk]["date"]) for pk, b in zip(pks, boxes or [])]
+
+    # al final, con abridores, lineups y movimientos ya leídos: qué cambió y, enseguida, los momios (los partidos
+    # con cambio primero)
     bundle["meta"]["errors"] = errors
+    tracker = attempt("cambios", lambda: changes(bundle), None)
+    bundle["odds"] = attempt("odds", lambda: odds(bundle, tracker), None)
+    if tracker is not None:
+        attempt("cambios (momios)", lambda: (tracker.odds(bundle), tracker.save()), None)
+        bundle["meta"]["cambios"] = {"new": len(tracker.new), "hot": sorted(tracker.hot)}
     return bundle
 
 

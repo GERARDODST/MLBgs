@@ -753,6 +753,37 @@
   .real-row .v { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 
   /* textos de ayuda plegables: la página abre en los datos, la explicación queda a un toque */
+  .chg { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+  .chg-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font-size: 13.5px; }
+  .chg-head h2 { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: 0.01em; margin: 0; }
+  .chg-n { color: var(--rojo); }
+  .chg-list { list-style: none; margin: 0; padding: 0; }
+  .chg-row { display: grid; grid-template-columns: 84px 98px minmax(0, 1fr); gap: 3px 10px; align-items: start; padding: 8px 0; border-top: 1px solid var(--grid); font-size: 14px; }
+  .chg-row > .tag { justify-self: start; }
+  .chg-list > .chg-row:first-child { border-top: 0; }
+  .chg-t { display: flex; flex-direction: column; line-height: 1.25; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .chg-t small { color: var(--muted); font-size: 11.5px; }
+  .chg-x { min-width: 0; overflow-wrap: anywhere; }
+  .chg-x small { display: block; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .chg-row.imp-alto .chg-x { font-weight: 600; }
+  .chg-row.imp-alto .chg-x small { font-weight: 400; }
+  .chg-more > summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--accent); padding: 4px 0; }
+  .chg-rev > div p { margin: 0 0 6px; }
+  .chg-stale { margin: 0; font-size: 13.5px; border-left: 3px solid var(--amarillo); background: var(--amarillo-soft); border-radius: 6px; padding: 7px 10px; }
+  .chg-badge { border-left: 3px solid var(--amarillo); background: var(--amarillo-soft); border-radius: 6px; padding: 5px 9px; font-size: 13px; line-height: 1.35; overflow-wrap: anywhere; }
+  .chg-badge small { color: var(--muted); white-space: nowrap; }
+  .chg-badge.imp-alto { border-left-color: var(--rojo); background: var(--rojo-soft); }
+  .game.has-chg { border-color: color-mix(in srgb, var(--rojo) 50%, var(--border)); }
+  .oc-verify { display: grid; gap: 4px; font-size: 13px; color: var(--ink-2); }
+  .oc-verify .lbl { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .oc-verify ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  .oc-verify p { margin: 0; font-size: 12.5px; }
+  @media (max-width: 560px) {
+    .chg-row { grid-template-columns: max-content minmax(0, 1fr); align-items: center; }
+    .chg-t { flex-direction: row; gap: 6px; align-items: baseline; }
+    .chg-x { grid-column: 1 / -1; }
+    .chg-row.imp-alto .chg-x { font-weight: 600; }
+  }
   details.note-d { border: 1px solid var(--border); background: var(--surface); border-radius: 10px; font-size: 14px; }
   details.note-d > summary { cursor: pointer; list-style: none; display: flex; gap: 10px; align-items: center; padding: 9px 14px; }
   details.note-d > summary::-webkit-details-marker, details.fold > summary::-webkit-details-marker, details.howto > summary::-webkit-details-marker { display: none; }
@@ -1378,6 +1409,7 @@
       ${f5b ? `<div class="oc-mk"><span class="lbl">F5 ganador<br><small class="muted">${esc(f5b.book)}</small></span>${ocBox(g, a, "5 entradas", f5b.f5Away, (f5b.open || {}).f5Away, `${a} F5`)}${ocBox(g, h, "5 entradas", f5b.f5Home, (f5b.open || {}).f5Home, `${h} F5`)}</div>` : ""}
       ${f5t ? `<div class="oc-mk"><span class="lbl">F5 total ${esc(f5tl)}<br><small class="muted">${esc(f5t.book)}</small></span>${ocBox(g, "Más", `over ${f5tl}`, f5t.f5Over, (f5t.open || {}).f5Over, `F5 Over ${f5tl}`)}${ocBox(g, "Menos", `under ${f5tl}`, f5t.f5Under, (f5t.open || {}).f5Under, `F5 Under ${f5tl}`)}</div>` : ""}
       ${refTxt}
+      ${verifyHtml(S)}
       <details><summary class="muted" style="cursor:pointer;font-size:13px">${(S.books || []).length === 1 ? "Tabla de la casa" : `Comparar las ${(S.books || []).length} casas (dorado = mejor pago)`}</summary>${cmp}</details>
       <details class="howto"><summary>Cómo leer los momios</summary><p class="note muted">Momio decimal grande y americano abajo · ▲ paga más que en la apertura, ▼ paga menos · borde verde = el modelo le ve ${Math.round(100 * SK.edgeMin)} pp o más de edge a ese precio (ámbar si llega a ${Math.round(100 * (SK.edgeMax || 0.10))} pp: verificar, filtro contra el mercado). Como en SofaScore, vienen del feed de un medio o proveedor que los publica (ESPN publica los de su casa socia, DraftKings); no se leen las páginas de las casas. Playdoit y Caliente no están en ningún feed: si capturas su momio, la decisión usa el tuyo.</p></details>
     </section>`;
@@ -1790,6 +1822,77 @@ ${brief}`;
   });
 
   // ---------------------------------------------------------------- vista: partidos
+  // ---------------------------------------------------------------- última hora: lo que cambió entre revisiones
+  // Cada corrida del workflow compara abridores, lineups, umpire, clima, horario, bajas, momios y la decisión contra
+  // la corrida anterior (mlbgs/cambios.py). Aquí se muestra lo que cambió, para enfocarse en eso.
+  const CHG = D.cambios || { events: [], games: {} };
+  const REV = D.revision || null;
+  const CHG_KIND = { abridor: "Abridor", lineup: "Lineup", umpire: "Umpire", clima: "Clima", horario: "Horario", movimiento: "Movimiento", momio: "Momio", verificacion: "Verificación", decision: "Decisión" };
+  const CHG_FILTERS = [["todo", "Todo"], ["alto", "Alto impacto"], ["mlb", "Abridores y lineups"], ["momio", "Momios"], ["decision", "Decisiones"]];
+  const chgMatch = (e, k) => k === "todo" || (k === "alto" ? e.impact === "alto" : k === "mlb" ? ["abridor", "lineup", "movimiento", "horario"].includes(e.kind)
+    : k === "momio" ? e.kind === "momio" || e.kind === "verificacion" : e.kind === k);
+  const chgOf = (pk) => (CHG.events || []).filter((e) => String(e.pk) === String(pk));
+  const chgTag = (e) => `<span class="tag ${e.impact === "alto" ? "bad" : e.impact === "medio" ? "warn" : "info"}">${esc(CHG_KIND[e.kind] || e.kind)}</span>`;
+  function chgRow(e, withGame = true) {
+    const href = BY_PK[String(e.pk)] ? `#g${e.pk}` : LAB_BY_PK[String(e.pk)] ? `#lab${e.pk}` : null;
+    const game = withGame && e.game ? (href ? `<a href="${href}">${esc(e.game)}</a> · ` : `<b>${esc(e.game)}</b> · `) : "";
+    return `<li class="chg-row imp-${esc(e.impact)}"><span class="chg-t"><b>${esc(fmtTime(e.at))}</b><small>${esc(agoTxt(e.at))}</small></span>${chgTag(e)}<span class="chg-x">${game}${esc(e.text)}${e.action ? `<small>${esc(e.action)}</small>` : ""}</span></li>`;
+  }
+  // cada cuánto se revisa todo y cuánto queda de créditos de momios
+  function revisionTxt() {
+    if (!REV) return "";
+    const c = REV.cadence || {}, k = REV.credits || {};
+    const steps = (c.steps || []).map((x) => (x.within ? `≤ ${x.within >= 60 ? `${+(x.within / 60).toFixed(1)} h` : `${x.within} min`} del juego: cada ~${x.every} min` : `más lejos: cada ~${x.every} min`)).join(" · ");
+    return `<details class="note-d chg-rev" data-lk="revision"${liveOpen.has("revision") ? " open" : ""}><summary><span class="ic">↻</span><span><b>Revisión automática cada ~${esc(c.every || 15)} min</b><span class="muted hide-sm"> · ${esc(c.why || "")}</span></span><span class="more">Qué se revisa</span></summary><div>
+      <p><b>MLB</b> (sin costo): abridores, lineups, umpire, clima, horario y movimientos del roster en cada revisión (${esc(steps)}). Lo que cambia queda en esta lista y el modelo se recalcula en la misma corrida.</p>
+      <p><b>Momios de DraftKings</b> (ESPN, sin costo): &gt; 6 h del juego cada 3 h, de 1 a 6 h cada hora, en la última hora cada revisión; un partido con cambio de abridor, lineup, horario o baja se revisa al momento.</p>
+      <p><b>The Odds API</b> (créditos): hoy <b>${k.day ?? 0} de ${k.dayCap ?? 24}</b> (${k.reserve ?? 4} guardados para cambios de último minuto) · este mes <b>${k.month ?? 0} de ${k.monthCap ?? 470}</b>. Se gastan por prioridad: 0) un mercado cuyo abridor cambió después de pedirlo, 1) el mercado de la decisión que ESPN no trae (F5, ponches, team total, NRFI), 2) verificar el mercado de la decisión (ML, run line o total) en otras casas cuando hay stake o se espera momio, 3) el mercado del otro pick.</p>
+      <p><b>Verificación</b>: DraftKings contra la mediana de las otras casas; si difieren 3 pp o más (o la línea del total es otra) se marca, y el stake usa la mediana, no una sola casa. El momio visto antes de un cambio de abridor no cuenta para el stake.</p>
+      <p class="muted">Datos de este corte: ${esc(fmtStamp(D.meta.generatedAt))} (${esc(agoTxt(D.meta.generatedAt))}). La página publicada muestra el último corte con el que se publicó.</p></div></details>`;
+  }
+  let CHG_FLT = store.get("mlbgs-chgflt") || "todo";
+  function changesPanel(sel) {
+    const evs = (CHG.events || []).filter((e) => e.date === sel);
+    if (!CHG_FILTERS.some(([k]) => k === CHG_FLT)) CHG_FLT = "todo";
+    const shown = evs.filter((e) => chgMatch(e, CHG_FLT));
+    const nAlto = evs.filter((e) => e.impact === "alto").length;
+    const nFirst = window.innerWidth < 560 ? 4 : 6;
+    const first = shown.slice(0, nFirst), rest = shown.slice(nFirst);
+    return `<section class="chg" id="ultima-hora" aria-label="Última hora">
+      <div class="chg-head"><h2>Última hora</h2><span class="muted">${evs.length ? `${evs.length} cambio${evs.length === 1 ? "" : "s"} en esta jornada${nAlto ? ` · <b class="chg-n">${nAlto} de alto impacto</b>` : ""}` : "sin cambios registrados en esta jornada"}</span></div>
+      ${evs.length ? `<div class="chips scroll" role="group" aria-label="Tipo de cambio">${CHG_FILTERS.map(([k, l]) => `<button class="chip" data-chgflt="${k}" aria-pressed="${CHG_FLT === k}">${esc(l)}</button>`).join("")}</div>` : ""}
+      ${shown.length ? `<ul class="chg-list">${first.map((e) => chgRow(e)).join("")}</ul>${rest.length ? `<details class="chg-more" data-lk="chg-more"${liveOpen.has("chg-more") ? " open" : ""}><summary>Ver ${rest.length} cambio${rest.length === 1 ? "" : "s"} más</summary><ul class="chg-list">${rest.map((e) => chgRow(e)).join("")}</ul></details>` : ""}`
+        : evs.length ? `<p class="muted" style="font-size:13.5px">Ningún cambio de ese tipo.</p>` : `<p class="muted" style="font-size:13.5px">Cada revisión compara abridores, lineups, umpire, clima, horario, bajas, momios y la decisión de cada partido contra la anterior; lo que cambie aparece aquí con su hora.</p>`}
+      ${revisionTxt()}
+    </section>`;
+  }
+  // aviso en la tarjeta del partido: el cambio más fuerte de las últimas 6 h
+  function chgBadge(pk) {
+    const c = (CHG.games || {})[String(pk)];
+    if (!c || !c.top || c.top === "bajo" || Date.now() - Date.parse(c.topAt) > 6 * 3600e3) return "";
+    return `<div class="chg-badge imp-${esc(c.top)}">${esc(c.topText)} <small>${esc(agoTxt(c.topAt))}${c.n > 1 ? ` · ${c.n} cambios` : ""}</small></div>`;
+  }
+  const chgHot = (pk) => { const c = (CHG.games || {})[String(pk)]; return !!(c && c.top === "alto" && Date.now() - Date.parse(c.topAt) <= 6 * 3600e3); };
+  // en el partido: qué cambió y el momio que ya no cuenta
+  function gameChanges(g) {
+    const evs = chgOf(g.pk), S = g.sections.s7 || {};
+    const stale = (S.stale || []).filter((x) => x.ml && (isNum(x.ml.away) || isNum(x.ml.home)));
+    if (!evs.length && !stale.length) return "";
+    return `<section class="chg chg-game" id="cambios"><div class="chg-head"><h2>Qué cambió</h2><span class="muted">${evs.length} cambio${evs.length === 1 ? "" : "s"} desde que se sigue el partido</span></div>
+      ${evs.length ? `<ul class="chg-list">${evs.map((e) => chgRow(e, false)).join("")}</ul>` : ""}
+      ${stale.length ? `<p class="chg-stale"><b>Momio previo al cambio de abridor${S.staleSince ? ` (${esc(fmtTime(S.staleSince))})` : ""}: no cuenta para el stake</b> hasta que la casa publique uno nuevo. ${stale.map((x) => `${esc(x.book)} ${esc(g.teams.away.abbr)} ${odds(x.ml.away)} / ${esc(g.teams.home.abbr)} ${odds(x.ml.home)}${x.at ? ` <span class="muted">(${esc(fmtTime(x.at))})</span>` : ""}`).join(" · ")}</p>` : ""}
+    </section>`;
+  }
+  // verificación entre casas del tablero de momios
+  function verifyHtml(S) {
+    const v = S.verify || {};
+    const ks = ["ml", "total"].filter((k) => v[k]);
+    if (!ks.length) return "";
+    const lab = { ok: ["ok", "✓ Coincide"], difiere: ["warn", "! Difiere"], "una fuente": ["info", "Una fuente"] };
+    const single = ks.every((k) => v[k].status === "una fuente");
+    return `<div class="oc-verify"><span class="lbl">Verificación entre casas</span><ul>${ks.map((k) => { const [c, t] = lab[v[k].status] || ["info", v[k].status]; return `<li><span class="tag ${c}">${esc(t)}</span> ${esc(v[k].text || "")}</li>`; }).join("")}</ul>${single ? '<p class="muted">Para no gastar créditos, se verifica contra otras casas (The Odds API) solo cuando el partido tiene stake o espera momio.</p>' : ks.some((k) => v[k].status === "difiere") ? '<p class="muted">El stake usa la mediana de las casas (no una sola), así que una casa desfasada no infla el edge; conviene revisar el momio de tu casa antes de apostar.</p>' : ""}</div>`;
+  }
+
   function gameCard(g) {
     const s = g.summary, a = g.teams.away, h = g.teams.home;
     const pa = s.pAway, ph = s.pHome;
@@ -1801,7 +1904,8 @@ ${brief}`;
     const edgeTxt = !edge.side ? "sin dato" : edge.level === "equilibrado" ? "parejos" : `${esc(g.teams[edge.side].abbr)} ${esc(edge.level)}`;
     const lab = LAB_BY_PK[String(g.pk)];
     const tops = lab ? lab.topPicks || [] : s.topPicks || [];
-    return `<a class="game${lab ? " has-lab" : ""}" href="#g${g.pk}">
+    return `<a class="game${lab ? " has-lab" : ""}${chgHot(g.pk) ? " has-chg" : ""}" href="#g${g.pk}">
+      ${chgBadge(g.pk)}
       <div class="top"><span class="when">${fmtTime(g.time)}${(() => { const t = startsTxt(effState(liveGames.find((x) => x.pk === g.pk) || null, g.time)); return t ? ` · <b class="cd">${esc(t)}</b>` : ""; })()}${g.dh && g.dh !== "N" ? ` · juego ${g.gameNumber}` : ""}</span><span class="venue">${esc(g.venue.name)}</span><span class="tags">${lab ? `<span class="tag info" data-tip="Tiene modelo del Pro-Lab: los picks combinan framework + modelo">Pro-Lab · ${esc(LAB_INFO[labKey(lab)].name.join(""))}</span>` : ""}${light(s.light)}</span></div>
       <div class="line"><span class="abbr"><i class="away-mark"></i>${esc(a.abbr)}</span><span class="who"><span class="rec"><span class="tn">${esc(a.name)} · </span>${a.w}-${a.l}</span>${sp(s.probables.away)}</span><span class="prob ${pa >= 0.5 ? "fav" : "dog"}">${pc(pa)}</span></div>
       <div class="line"><span class="abbr"><i class="home-mark"></i>${esc(h.abbr)}</span><span class="who"><span class="rec"><span class="tn">${esc(h.name)} · </span>${h.w}-${h.l}</span>${sp(s.probables.home)}</span><span class="prob ${ph > 0.5 ? "fav" : "dog"}">${pc(ph)}</span></div>
@@ -1886,7 +1990,7 @@ ${brief}`;
         ? "Análisis previo de cada partido con el Framework MLB Picks v2. Los picks se siguen afinando hasta el primer lanzamiento (lineups, abridores y momios); en ese momento el ticket se congela y queda en el Historial."
         : "Los partidos del día en tu horario: terminados con su marcador y sus picks calificados, en juego con la probabilidad en vivo, y por jugar con su análisis y su decisión.";
       const src = liveInfo.source === "api" ? `En vivo desde statsapi.mlb.com · ${new Date(liveInfo.at).toLocaleTimeString("es-MX", { hour: "numeric", minute: "2-digit", second: "2-digit" })} · se refresca cada 30 s`
-        : `Marcador del corte ${fmtStamp(liveInfo.at)} (${agoTxt(liveInfo.at)})${liveInfo.error ? " · se actualiza con cada corrida (~15 min en horario de juegos)" : ""}`;
+        : `Marcador del corte ${fmtStamp(liveInfo.at)} (${agoTxt(liveInfo.at)})${liveInfo.error ? ` · los datos se revisan cada ~${REV && REV.cadence ? REV.cadence.every : 15} min en horario de juegos` : ""}`;
       const group = (title, list, body, empty) => list.length || empty ? `<section class="day"><h2>${title} <small>${list.length}</small></h2>${list.length ? `<div class="${body}">${list.map(dayCard).join("")}</div>` : `<div class="empty">${empty}</div>`}</section>` : "";
       const noOdds = !D.meta.hasOdds && by.pre.some((r) => r.an);
       const chipCount = (d) => all.filter((r) => r.date === d).length;
@@ -1910,6 +2014,7 @@ ${brief}`;
         ${D.meta.odds && D.meta.odds.error ? `<div class="notice"><span class="ic">!</span><div><b>El feed de momios (${esc(D.meta.odds.provider || "API")}) no respondió en la última corrida:</b> ${esc(D.meta.odds.error)}. Se muestran los últimos momios guardados${D.meta.hasOdds ? "" : " (ninguno todavía)"}; si dice HTTP 401 o 403, revisa la clave guardada en GitHub.</div></div>` : ""}
         ${D.meta.hasOdds && by.pre.some((r) => r.an) ? `<details class="note-d" data-lk="nota-momios"${liveOpen.has("nota-momios") ? " open" : ""}><summary><span class="ic">✓</span><span><b>Momios automáticos de ${esc(D.meta.oddsProvider || "la API")}</b><span class="muted hide-sm"> · con apertura, movimiento y cierre</span></span><span class="more">Cómo se usan</span></summary><div>Como en SofaScore: los de la casa socia del feed (DraftKings en ESPN; con odds-api.net o The Odds API, varias casas y las de México marcadas MX), con apertura, flechas de movimiento y cierre al primer lanzamiento. El modelo calcula el edge con el momio de referencia (la mediana de las casas MX; si no hay, la de las casas del feed). Playdoit y Caliente no están en ningún feed: si capturas su momio, la decisión usa el tuyo.</div></details>` : ""}
         ${noOdds ? `<div class="notice"><span class="ic">!</span><div><b>La página no trae momios de ningún casino.</b> Los momios que ves salen del modelo: el <b>justo</b> (su probabilidad convertida a momio) y el <b>mín.</b> (lo menos que debe pagar el casino para que convenga). No son lo que paga ${esc(bookSel())}. Si capturas el momio de ${esc(bookSel())} (captura o texto), la decisión y el stake se recalculan con él, y si el casino ve el partido 10 pp o más distinto que el modelo, no hay stake (filtro contra el mercado).</div></div>` : ""}
+        ${changesPanel(sel)}
         ${momPanel(by.pre.filter((r) => r.an), sel)}
         ${planBlock(plans.filter((q) => q.x && decMatch(q.x, flt)).map((q) => q.x))}
         ${flt !== "todos" && !plans.some((q) => q.x && decMatch(q.x, flt)) ? `<div class="empty">Ningún partido con ese filtro.</div>` : ""}
@@ -1921,6 +2026,7 @@ ${brief}`;
         ${footer()}`;
       app.querySelectorAll("[data-day]").forEach((b) => b.addEventListener("click", () => { sel = b.dataset.day; store.set("mlbgs-day", `${TODAY}|${sel}`); render(); }));
       app.querySelectorAll("[data-dflt]").forEach((b) => b.addEventListener("click", () => { flt = b.dataset.dflt; store.set("mlbgs-dfilter", flt); render(); }));
+      app.querySelectorAll("[data-chgflt]").forEach((b) => b.addEventListener("click", () => { CHG_FLT = b.dataset.chgflt; store.set("mlbgs-chgflt", CHG_FLT); const y = window.scrollY; render(); window.scrollTo(0, y); }));
       bindMomios(by.pre.filter((r) => r.an), sel);
       const rb = document.getElementById("day-refresh");
       if (rb) rb.addEventListener("click", () => { rb.textContent = "Actualizando…"; rb.disabled = true; pullLive(true); });
@@ -2233,7 +2339,9 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
         <div class="team home"><span class="eyebrow">Local</span><span class="big">${esc(h.abbr)}</span><span class="nm">${esc(h.name)}</span><span class="sub">${h.w}-${h.l} · ${esc(h.division || "")}${h.streak ? " · racha " + esc(h.streak) : ""} · Elo ${h.elo ?? "—"}</span></div>
       </div>
 
-      <nav class="jump" aria-label="Secciones del partido">${[["decision", "Decisión"], ["odds", "Momios"], ["picks", "Picks"], ["datos", "Datos"], ["lu", "Alineaciones"], ["modelo", "Modelo"], ["framework", "Framework"], ...(lab ? [["complemento", labName]] : []), ["todos", "Todos los picks"]].map(([id, t], i) => `<button type="button" data-jump="${id}" aria-current="${i === 0}">${esc(t)}</button>`).join("")}</nav>
+      <nav class="jump" aria-label="Secciones del partido">${[...(gameChanges(g) ? [["cambios", "Cambios"]] : []), ["decision", "Decisión"], ["odds", "Momios"], ["picks", "Picks"], ["datos", "Datos"], ["lu", "Alineaciones"], ["modelo", "Modelo"], ["framework", "Framework"], ...(lab ? [["complemento", labName]] : []), ["todos", "Todos los picks"]].map(([id, t], i) => `<button type="button" data-jump="${id}" aria-current="${i === 0}">${esc(t)}</button>`).join("")}</nav>
+
+      ${gameChanges(g)}
 
       ${decisionPanel(g)}
 
