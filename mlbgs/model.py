@@ -170,8 +170,16 @@ def index_odds(raw, teams: dict) -> dict:
         out[(a, h)].append({"commence": ev.get("commence_time"), "books": books, "pk": ev.get("pk"),
                             "provider": ev.get("provider") or "The Odds API", "checked": ev.get("checked"),
                             "closed": bool(ev.get("closed")), "verify": ev.get("verify") or {},
-                            "staleSince": ev.get("staleSince"), "ask": ev.get("ask")})
+                            "staleSince": ev.get("staleSince")})
     return out
+
+
+def ask_of(bundle: dict, pk) -> dict | bool | None:
+    """Cuándo pide The Odds API cada mercado de este partido (odds.ask_all). False: sin clave de The Odds API (ningún
+    feed trae F5, ponches, team total ni NRFI); None: no se sabe (bundle anterior o análisis congelado)."""
+    if "oddsAsk" not in bundle:
+        return None
+    return False if bundle["oddsAsk"] is None else bundle["oddsAsk"].get(str(pk))
 
 
 def odds_for_game(ctx: Context, g: dict) -> dict | None:
@@ -270,7 +278,7 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
         "refRl": {s: ref(rl_get(s)) for s in SIDES},
         "refTotal": {k: ref(tot_get(k)) for k in ("over", "under")},
         "rlPoint": rl_point,
-        "verify": ev.get("verify") or {}, "stale": stale, "staleSince": ev.get("staleSince"), "ask": ev.get("ask"),
+        "verify": ev.get("verify") or {}, "stale": stale, "staleSince": ev.get("staleSince"),
     }
 
 
@@ -1605,7 +1613,7 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
         "nMx": odds["nMx"] if odds else 0, "provider": odds.get("provider") if odds else None,
         "checked": odds.get("checked") if odds else None, "closed": odds.get("closed") if odds else None,
         "verify": (odds or {}).get("verify") or {}, "stale": (odds or {}).get("stale") or [],
-        "staleSince": (odds or {}).get("staleSince"), "ask": (odds or {}).get("ask"),
+        "staleSince": (odds or {}).get("staleSince"), "ask": ask_of(ctx.b, g["pk"]),
         "ref": ({"ml": odds["refMl"], "rl": odds["refRl"], "total": odds["refTotal"], "rlPoint": odds["rlPoint"],
                  "f5": odds.get("refF5") or {}, "f5total": odds.get("refF5Total") or {}}
                 if odds else None),

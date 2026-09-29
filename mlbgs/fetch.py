@@ -538,7 +538,9 @@ def odds(bundle: dict, tracker=None) -> list[dict] | None:
     hot = tracker.hot if tracker else None
     stale = tracker.stale_after() if tracker else None
     bundle["meta"]["odds"] = O.update(bundle, log=log, hot=hot, stale_after=stale)
-    return O.to_bundle(bundle, stale_after=stale, the_key=bool(os.environ.get("ODDS_API_KEY")))
+    # cuándo se pide cada mercado que ESPN no trae (The Odds API), para decir cuándo llega el momio que se espera
+    bundle["oddsAsk"] = O.ask_all(bundle, stale_after=stale) if os.environ.get("ODDS_API_KEY") else None
+    return O.to_bundle(bundle, stale_after=stale)
 
 
 def changes(bundle: dict):

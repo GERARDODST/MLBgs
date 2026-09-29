@@ -1700,7 +1700,7 @@
         <div class="muted" style="font-size:13px">${esc(ladderTxt(p.stake))} · stake 1 = ${money(amountOf(1))}, 5 = ${money(amountOf(5))}, 10 = ${money(amountOf(10))}</div>
         <div data-pick="${data}">${pickOddsWide(g, p)}</div>` : ""}
         <p class="note">${esc(x.why || "")}</p>
-        ${x.status === "esperar" && x.pick === d.pick.pick && askTxt(d) ? `<p class="note deci-ask">⏱ Momio: ${esc(askTxt(d))}. Si tu casa ya lo tiene, captúralo en el tablero de la sección 7 y la decisión se recalcula.</p>` : ""}
+        ${x.status === "esperar" && x.pick === d.pick.pick && askTxt(d) ? `<p class="note deci-ask">⏱ Momio: ${esc(askTxt(d))} · si tu casa ya lo tiene, captúralo en el tablero de la sección 7 y la decisión se recalcula</p>` : ""}
         ${d.alternatives && d.alternatives.length ? `<p class="muted" style="font-size:13px">Otras opciones revisadas: ${d.alternatives.map((a) => `${esc(a.pick)} (${esc(a.market)}, IC ${Math.round(a.ic)})`).join(" · ")}</p>` : ""}
       </div>
       <h3 class="sub">Cómo se conecta todo el análisis</h3>

@@ -491,7 +491,7 @@ class CuandoSePideElMomio(unittest.TestCase):
         v = O.ask_view(e, self.at(10.5))
         self.assertEqual(v["totals_1st_5_innings"], {"at": O._iso(self.at(11)), "got": 0, "empty": 1, "next": O._iso(self.at(9))})
         self.assertEqual(v["pitcher_strikeouts"]["next"], O._iso(self.at(10.5)))              # nunca pedido: ya toca
-        # juego de las 18:00Z: a las 06:00Z no hay corridas; la primera es la de las 12:00Z
+        # juego de las 18:00Z sin momios todavía: a las 06:00Z no hay corridas; la primera es la de las 12:00Z
         e2 = {"start": "2026-09-30T18:00:00Z"}
         v2 = O.ask_view(e2, dt.datetime(2026, 9, 29, 22, 0, tzinfo=UTC))
         self.assertEqual(v2["totals_1st_5_innings"]["next"], "2026-09-30T12:00:00Z")
@@ -543,11 +543,14 @@ class EsperarMomioConTheOddsApi(unittest.TestCase):
         self.assertGreater(e["theGot"]["totals_1st_5_innings"], 0)
         b = copy.deepcopy(self.bundle)
         now = self.start - dt.timedelta(hours=9.6)
-        b["odds"] = O.to_bundle(b, base=self.dir, now=now, the_key=True)
-        ask = b["odds"][0]["ask"]["totals_1st_5_innings"]
+        ask = O.ask_all(b, base=self.dir, now=now)["824785"]["totals_1st_5_innings"]
         # refresco a las 6 h (11:35Z), que en producción es la corrida de las 12:00Z
         self.assertEqual(O._ts(ask["next"]), first_run_after(self.start - dt.timedelta(hours=6)))
         self.assertEqual(ask["next"], "2026-09-23T12:00:00Z")
+        # llega al análisis (sección 7) aunque el partido no tenga casas en el feed
+        b["oddsAsk"] = O.ask_all(b, base=self.dir, now=now)
+        a = model.analyze(model.Context(b), next(x for x in b["upcoming"] if x["pk"] == 824785))
+        self.assertEqual(a["sections"]["s7"]["ask"]["totals_1st_5_innings"]["next"], "2026-09-23T12:00:00Z")
 
     def test_lo_temprano_no_toca_la_reserva(self):
         usage = {"calls": {(self.start - dt.timedelta(hours=11)).strftime("%Y-%m-%d"): {"the-odds-api": O.THE_DAY_CREDITS - O.RESERVE}}}

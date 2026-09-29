@@ -937,13 +937,28 @@ def ask_view(e: dict, now: dt.datetime, since: str | None = None) -> dict:
     return out
 
 
+def ask_all(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None,
+            stale_after: dict | None = None) -> dict:
+    """{pk: ask_view} de todos los partidos por jugar, tengan o no momios todavía (va al bundle como `oddsAsk`)."""
+    now = now or dt.datetime.now(dt.timezone.utc)
+    stale_after = {int(k): v for k, v in (stale_after or {}).items()}
+    days, out = {}, {}
+    for g in games_of(bundle):
+        start = _ts(g["time"])
+        if not start or start <= now:
+            continue
+        day = days.setdefault(g["date"], load_day(g["date"], base))
+        e = dict(day["games"].get(str(g["pk"])) or {}, start=g["time"])
+        out[str(g["pk"])] = ask_view(e, now, stale_after.get(g["pk"]))
+    return out
+
+
 def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None,
-              stale_after: dict | None = None, the_key: bool = False) -> list[dict] | None:
+              stale_after: dict | None = None) -> list[dict] | None:
     """Momios guardados de los partidos del bundle, con la forma de The Odds API (lo que lee el modelo).
 
     stale_after: {pk: hora del último cambio de abridor}; las casas cuyo último momio es anterior salen con
-    `stale` (el modelo no las usa para el stake y la página las muestra aparte). the_key: hay clave de The Odds
-    API (cada partido lleva `ask`: cuándo se pide cada mercado que ESPN no trae)."""
+    `stale` (el modelo no las usa para el stake y la página las muestra aparte)."""
     now = now or dt.datetime.now(dt.timezone.utc)
     stale_after = {int(k): v for k, v in (stale_after or {}).items()}
     teams = {int(t["id"]): t for t in (bundle.get("teams") or {}).values()}
@@ -975,7 +990,6 @@ def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None
                         "commence_time": e.get("start"), "home_team": name(g["home"]), "away_team": name(g["away"]),
                         "checked": e.get("checked"), "closed": bool(start and start <= now), "bookmakers": books,
                         "verify": verify(fresh_rows, ab(g["away"]), ab(g["home"])),
-                        **({"ask": ask_view(e, now, since)} if the_key else {}),
                         **({"staleSince": since} if since else {})})
     return out or None
 

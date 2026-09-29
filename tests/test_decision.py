@@ -96,9 +96,11 @@ class Decision(unittest.TestCase):
         self.assertEqual((d["waitFor"], d["ask"]), ("momio", {"src": "the-odds-api", "market": "totals_1st_5_innings", **info}))
         a["family"] = "Total"                                    # ML, run line y total: ESPN en cada corrida
         self.assertEqual(DE.decide(g, [a])["ask"], {"src": "espn"})
-        g["sections"]["s7"]["ask"] = None                        # sin clave de The Odds API: ningún feed lo trae
+        g["sections"]["s7"]["ask"] = False                       # sin clave de The Odds API: ningún feed lo trae
         a["family"] = "K"
         self.assertEqual(DE.decide(g, [a])["ask"], {"src": "ninguna", "market": "pitcher_strikeouts"})
+        g["sections"]["s7"]["ask"] = None                        # análisis sin el dato (congelado): no se inventa
+        self.assertNotIn("ask", DE.decide(g, [a]))
         a.update(priceIsReal=True, stake=dict(a["stake"], level=3, price=-110))   # con momio real ya no se espera
         self.assertNotIn("ask", DE.decide(g, [a]))
 
