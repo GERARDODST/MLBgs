@@ -1,0 +1,17 @@
+{
+ "id": "2026-09-29-849845-octubre",
+ "tipo": "nota",
+ "clase": "de fondo",
+ "fecha": "2026-09-29",
+ "corregido": null,
+ "cambios": [],
+ "estadisticas": [],
+ "notas": [
+  "Post-mortem (mlbgs/auditoria.py → prolab/auditoria_849845.json): ATL 5 – PHI 3. OCTUBRE v1 daba 45.1% a ATL; con los mismos datos previos, OCTUBRE v2 da 45.9% (log-loss 0.797 → 0.779).",
+  "Historial contra el rival: el κ de v1 confundía la forma del día con un efecto del rival; pesaba 19% en Luzardo y 32% en Sale. Fuera de muestra empeoraba los ponches (-0.45 milésimas por bateador, IC90 -0.80 a -0.12). En v2 κ de ponches = ∞.",
+  "Gancho: la pendiente -0.31 salía de un relevista usado de abridor (31.4 outs por apertura); con abridores de verdad es +0.56 (Theil-Sen). Sale sacó 19 outs (v1 esperaba 14.0; v2 14.7).",
+  "Ponches: Sale 9 (P(≥9) v1 11%, v2 13%); v2 mezcla la forma del día y mejora la distribución de ponches +0.034 nats por apertura fuera de muestra.",
+  "El ticket y su decisión quedan como se registraron antes del juego; OCTUBRE v2 (algoritmo 2026.09.29.5) aplica desde el juego 2."
+ ],
+ "resumen": "Post-mortem de OCTUBRE en el juego 1: qué falló y la versión v2 (solo para partidos que no han empezado)."
+}

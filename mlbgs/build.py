@@ -355,6 +355,10 @@ def load_prolab(bundle: dict, save: bool, path: str | None = None) -> dict | Non
                 json.dump(res, f, ensure_ascii=False, indent=1)
     if res:
         lab["result"] = PL.compare(res, lab)
+    apath = os.path.join(PL.DIR, f"auditoria_{pk}.json")      # auditoría después del juego (mlbgs/auditoria.py)
+    if os.path.exists(apath):
+        with open(apath, encoding="utf-8") as f:
+            lab["auditoria"] = json.load(f)
     return lab
 
 

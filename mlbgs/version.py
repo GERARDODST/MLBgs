@@ -13,6 +13,13 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CAMBIOS = [
+    {"version": "2026.09.29.5", "fecha": "2026-09-29", "cambios": [
+        "OCTUBRE v2 (post-mortem de PHI @ ATL juego 1, validado fuera de muestra con los juegos de abridores de 2026): la "
+        "forma del día ya no se confunde con un efecto del rival (el historial contra el rival empeoraba los ponches y ya "
+        "no pesa); las tasas del abridor y del equipo se encogen con κ medidos (antes 30 fijo); el gancho de octubre usa "
+        "solo abridores de verdad con pendiente robusta; los ponches del abridor mezclan la forma del día y cuentan bien "
+        "los bateadores que enfrenta.",
+    ]},
     {"version": "2026.09.29.4", "fecha": "2026-09-29", "cambios": [
         "«Esperar momio»: el mercado de la decisión que ESPN no trae (F5, ponches, team total, NRFI) se pide a The Odds "
         "API desde 12 h antes del partido (antes 6 h), se refresca a las 6 h y a la hora y media, y si ninguna casa lo "

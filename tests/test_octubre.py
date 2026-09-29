@@ -183,5 +183,94 @@ class MatchupYFamiliaridad(unittest.TestCase):
         self.assertEqual(OC.familiarity(same, mu)["runs"]["shrunk"], 0.0)
 
 
+class OctubreV2(unittest.TestCase):
+    """v2 (post-mortem PHI @ ATL juego 1): forma del día, κ sin ella, encogimiento medido, gancho limpio, ponches con forma."""
+
+    def starts(self, rho_day, pair_sd=0.0, n_pit=150, seed=21):
+        """Aperturas sintéticas: cada pitcher tiene su tasa, cada día una forma (varianza rho_day·p(1−p)) y, si
+        pair_sd > 0, un efecto propio contra cada rival."""
+        rng = random.Random(seed)
+        rows = []
+        for pid in range(n_pit):
+            base = rng.uniform(0.18, 0.30)
+            eff = {opp: rng.gauss(0, pair_sd) for opp in range(6)}
+            for j in range(24):
+                opp = j % 6
+                p = min(0.6, max(0.05, base + eff[opp] + rng.gauss(0, math.sqrt(rho_day * base * (1 - base)))))
+                bf = rng.randint(18, 27)
+                k = binom(rng, bf, p)
+                rows.append({"pid": pid, "opp": opp, "date": f"2026-{4 + j // 6:02d}-{1 + j % 28:02d}",
+                             **OC.counts({"bf": bf, "k": k, "bb": 2, "hr": 1, "h": 5}), "runs": 2, "outs": 18})
+        return rows
+
+    def test_forma_del_dia_se_recupera(self):
+        est = OC.game_rho(self.starts(0.01), "k")
+        self.assertAlmostEqual(est["rho"], 0.01, delta=0.004)
+        self.assertLess(OC.game_rho(self.starts(0.0), "k")["rho"], 0.002)
+
+    def test_la_forma_del_dia_no_es_efecto_del_rival(self):
+        """Sin efecto de pareja, la forma del día hacía creer que sí lo había (κ finito); quitándola, κ = ∞."""
+        rows = self.starts(0.012)
+        lg = {"k": 0.24, "bb": 0.08, "hr": 0.04, "babip": 0.3, "rpa": 0.1}
+        teams = {o: dict(lg) for o in range(6)}
+        pairs = OC.pair_table(rows, teams, lg, None)
+        naive = OC.kappa(pairs, "k")
+        fixed = OC.kappa(pairs, "k", rho_game=OC.game_rho(rows, "k")["rho"])
+        self.assertIsNotNone(naive["kappa"])
+        self.assertTrue(fixed["kappa"] is None or fixed["kappa"] > 5 * naive["kappa"])
+        # con un efecto real de pareja, se sigue detectando
+        real = self.starts(0.012, pair_sd=0.05, seed=5)
+        pr = OC.pair_table(real, teams, lg, None)
+        k_real = OC.kappa(pr, "k", rho_game=OC.game_rho(real, "k")["rho"])["kappa"]
+        self.assertIsNotNone(k_real)
+        self.assertLess(k_real, 300)
+
+    def test_encogimiento_del_pitcher_medido(self):
+        rows = self.starts(0.005)
+        lg = {"k": 0.24, "bb": 0.08, "hr": 0.04, "babip": 0.3, "rpa": 0.1}
+        kp = OC.pitcher_kappa(rows, lg, {"k": OC.game_rho(rows, "k")})
+        # tasas uniformes en [0.18, 0.30]: varianza 0.001 → κ ≈ p(1−p)/σ² − 1 ≈ 180
+        self.assertGreater(kp["k"]["kappa"], 100)
+        self.assertLess(kp["k"]["kappa"], 320)
+        self.assertEqual(OC.pitcher_k0(None, "k"), 30.0)
+        self.assertEqual(OC.pitcher_k0({"k": {"kappa": None}}, "k"), 1e9)     # sin señal: la liga
+
+    def test_gancho_sin_relevistas_de_abridor(self):
+        post, reg = {}, {}
+        rng = random.Random(3)
+        for i in range(60):
+            pid = 3000 + i
+            avg = rng.uniform(15, 19)
+            reg[f"2025:{pid}"] = {"gamesStarted": 30, "gamesPlayed": 30, "battersFaced": int(30 * avg * 1.4),
+                                  "inningsPitched": f"{int(avg * 30 // 3)}.{int(avg * 30) % 3}"}
+            outs = max(3, round(4 + 0.6 * avg + rng.gauss(0, 2)))
+            post[str(i)] = {"home": {"team": 1, "pitchers": [{"id": pid, "ip": f"{outs // 3}.{outs % 3}"}]}}
+        # un relevista usado de abridor: 94 IP en 9 aperturas (31 outs por apertura), 0 outs en octubre
+        reg["2025:9"] = {"gamesStarted": 9, "gamesPlayed": 40, "battersFaced": 400, "inningsPitched": "94.1"}
+        post["x"] = {"away": {"team": 2, "pitchers": [{"id": 9, "ip": "0.0"}]}}
+        h = OC.hook_factor({"2025": post}, reg)
+        self.assertEqual(h["n"], 60)                                  # el relevista no entra
+        self.assertAlmostEqual(h["betaTS"], 0.6, delta=0.25)
+        self.assertAlmostEqual(h["betaUsed"], min(1.0, max(0.0, h["betaTS"])))
+
+    def test_ponches_con_forma_del_dia(self):
+        rates = [0.28] * 36
+        shape, mean = 3.0, 16.0
+        base = OC.k_dist_form(rates, shape, mean, 1.4, 0.0, 0.0)
+        form = OC.k_dist_form(rates, shape, mean, 1.4, 0.008, 5.4)
+        m0 = sum(k * p for k, p in enumerate(base))
+        m1 = sum(k * p for k, p in enumerate(form))
+        v0 = sum((k - m0) ** 2 * p for k, p in enumerate(base))
+        v1 = sum((k - m1) ** 2 * p for k, p in enumerate(form))
+        self.assertAlmostEqual(sum(form), 1.0)
+        self.assertAlmostEqual(m1, m0, delta=0.15)                    # la media casi no cambia
+        self.assertGreater(v1, v0)                                    # la cola sí: más varianza (Beta-Binomial)
+        self.assertGreater(sum(form[9:]), sum(base[9:]))
+        # bateadores esperados ≈ outs × bateadores por out (sin el medio bateador de más del redondeo)
+        d = OC.outs_dist(shape, mean / math.gamma(1 + 1 / shape))
+        ebf = sum(sum(p for k, p in enumerate(d) if k > (j + 0.5) / 1.4) for j in range(40))
+        self.assertAlmostEqual(ebf, 1.4 * sum(k * p for k, p in enumerate(d)), delta=0.35)
+
+
 if __name__ == "__main__":
     unittest.main()

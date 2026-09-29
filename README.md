@@ -307,6 +307,26 @@ Modelo para postemporada centrado en cómo le va a cada abridor contra ESE rival
 Todo termina en carreras por entrada → Binomial Negativa → mercados, ponches de cada abridor y picks, y la página
 muestra una ablación (qué parte mueve la probabilidad) para saber en qué enfocarse.
 
+#### Post-mortem del juego 1 y OCTUBRE v2 (algoritmo 2026.09.29.5)
+
+ATL 5 – PHI 3: OCTUBRE v1 daba 45% a ATL. Un juego no califica un modelo, así que cada parte se probó **fuera de
+muestra** con datos que el modelo tenía antes del partido (`python -m mlbgs.auditoria --pk 849845` →
+`prolab/auditoria_849845.json`; la página lo muestra en la vista de OCTUBRE):
+
+| Prueba | Resultado (IC 90%) | Cambio en v2 |
+| --- | --- | --- |
+| A1 historial pitcher × rival (v1) | ponches −0.45 [−0.80, −0.12] milésimas por bateador: **empeora** | κ sin la forma del día → ∞: no pesa |
+| A2 forma del día (ANOVA dentro de la pareja) | ρ ponches 0.0070 (±3.8 pp de un día a otro): era todo el «efecto del rival» | se resta de la varianza entre parejas |
+| A3 tasas del abridor, κ medido contra 30 fijo | K +0.64, BB +0.65, HR +1.21, BABIP +0.91: **mejora** | κ del pitcher K ≈ 90, BB ≈ 210, HR ≈ 680–910, BABIP ≈ 1,700 |
+| K1 distribución de ponches (props) | +0.034 nats por apertura [+0.026, +0.043]: **mejora** | forma del día (Beta-Binomial) acoplada a la salida; conteo de bateadores sin ½ de más |
+| C1 gancho (año contra año) | β −0.31 salía de un relevista usado de abridor; limpio +0.56 (Theil-Sen); sin diferencia en promedio | solo abridores de verdad, pendiente robusta |
+| D1 familiaridad en ponches | sin diferencia | sigue sin usarse |
+
+Abierto: la calidad del abridor en las carreras sale solo de su arsenal (en el juego 1 ponía a Luzardo por encima de Sale
+aunque por K/BB/HR era al revés); la salida del abridor depende de las carreras que permite; OCTUBRE se apartó >10 pp del
+mercado y de Log5/Elo (el filtro mandó verificar). `scripts/prolab_postgame.py` (`PROLAB_POST=<pk>`) baja los datos de
+después del partido; el snapshot previo ya no se toma si el partido empezó.
+
 ## Cotejo de datos
 
 Cada corrida verifica las fuentes entre sí (pestaña *Cotejo*): standings contra resultados, suma por

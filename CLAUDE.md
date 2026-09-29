@@ -112,6 +112,16 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   a [0, 1]), Weibull con la dispersión medida; castigo por vuelta al lineup; bullpen de octubre por rol y uso.
   D: familiaridad controlada por fecha; solo carreras y solo con |t| ≥ 2, encogida por (1 − 1/t²).
 - Los κ, el gancho y la familiaridad se recalculan con cada snapshot: no fijarlos a mano.
+- v2 (algoritmo 2026.09.29.5, post-mortem del juego 1): la forma del día (varianza de juego a juego, ANOVA dentro de la
+  pareja, `game_rho`) se resta de la varianza entre parejas en κ; la tasa del abridor y la del equipo se encogen con κ
+  medidos (`pitcher_kappa`, `team_rates`), no con 30; el gancho usa solo abridores de verdad (BF/GS ≤ 28, ≤ 21 outs por
+  apertura, GS/G ≥ 0.8) y pendiente Theil-Sen; los ponches mezclan la forma del día acoplada a la salida (`k_dist_form`)
+  y el bateador j llega si outs > (j + ½)/(bateadores por out).
+- Auditoría después del juego (`python -m mlbgs.auditoria --pk <pk>` → `prolab/auditoria_<pk>.json`, la página la
+  muestra en la vista del modelo): cada parte se prueba fuera de muestra (corte en el tiempo, log-verosimilitud con IC por
+  bootstrap) y solo entra lo que mejora. Datos de después del partido con `PROLAB_POST=<pk>` en `prolab/request.env`
+  (`scripts/prolab_postgame.py`); quitarlo después. El snapshot previo se niega a correr si el partido ya empezó. Lo que
+  se aprende de un ticket bloqueado va como nota en `data/correcciones/`, nunca en el ticket.
 
 ## Datos y registro
 

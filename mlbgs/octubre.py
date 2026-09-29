@@ -17,6 +17,15 @@ C. Desarrollo del juego: salida del abridor (Weibull ajustada a sus aperturas y 
    temporada), castigo por vuelta al lineup (la 3.ª vuelta es la peor y el gancho corto la recorta) y bullpen de
    octubre (los relevistas de confianza cargan más entradas; los de relleno casi no lanzan).
 
+v2 (algoritmo 2026.09.29.5, post-mortem de PHI @ ATL juego 1, validado fuera de muestra con los game logs de 2026):
+   · la «forma del día» (varianza de juego a juego, ANOVA dentro de cada pareja) se resta de la varianza entre
+     parejas: sin eso, 1–2 aperturas buenas o malas contra un equipo parecían «efecto del rival» (κ de ponches 284 →
+     ∞; el historial empeoraba la predicción de ponches fuera de muestra);
+   · la tasa de temporada del pitcher y la del equipo se encogen con κ medidos en la liga (antes 30 fijo: le creía
+     el 96% a su tasa de jonrones y el 94% a su BABIP);
+   · el gancho se mide solo con abridores de verdad (sin relevistas usados de abridor) y con pendiente Theil-Sen;
+   · los ponches del abridor se mezclan sobre la forma del día (Beta-Binomial acoplada a la profundidad).
+
 D. Familiaridad (variable de prueba): ¿le va peor a un abridor la 2.ª, 3.ª o 4.ª vez que ve al mismo rival en la
    temporada? Regresión ponderada del residuo por apertura contra el número de enfrentamientos previos. Solo entra al
    modelo si el efecto es claro (|t| ≥ 2); si no, se reporta y se deja en cero.
@@ -114,12 +123,29 @@ def team_rates(bundle: dict) -> tuple[dict, dict, float]:
             continue
         c = counts({"battersFaced": pa, "strikeOuts": h.get("strikeOuts"), "baseOnBalls": h.get("baseOnBalls"),
                     "hitByPitch": h.get("hitByPitch"), "homeRuns": h.get("homeRuns"), "hits": h.get("hits")})
-        out[int(tid)] = {**rates(c), "rpa": (h.get("runs") or 0) / pa}
+        out[int(tid)] = {**rates(c), "rpa": (h.get("runs") or 0) / pa, "_c": c}
         tot = add(tot, {**c, "runs": h.get("runs") or 0})
         d2 += h.get("doubles") or 0
         d3 += h.get("triples") or 0
         h1 += (h.get("hits") or 0) - (h.get("doubles") or 0) - (h.get("triples") or 0) - (h.get("homeRuns") or 0)
     lg = {**rates(tot), "rpa": tot["runs"] / tot["bf"]} if tot.get("bf") else {"k": 0.22, "bb": 0.09, "hr": 0.03, "babip": 0.29, "rpa": 0.12}
+    # v2: la tasa de cada equipo se encoge a la liga con κ medido entre equipos (método de momentos)
+    for e in EVENTS:
+        num = den = 0.0
+        for t in out.values():
+            y, n = trials(t["_c"], e)
+            if n > 0:
+                v = lg[e] * (1 - lg[e])
+                num += n * ((y / n - lg[e]) ** 2 - v / n)
+                den += n * v
+        r0 = num / den if den else 0.0
+        k_t = (1 / r0 - 1) if r0 > 0 else 1e9
+        for t in out.values():
+            y, n = trials(t["_c"], e)
+            t[e] = (y + k_t * lg[e]) / (n + k_t)
+        lg.setdefault("teamKappa", {})[e] = k_t
+    for t in out.values():
+        t.pop("_c", None)
     hit_w = (0.88 * h1 + 1.25 * d2 + 1.58 * d3) / max(1, h1 + d2 + d3) if h1 else 0.95
     return out, lg, hit_w
 
@@ -142,14 +168,24 @@ def start_rows(logs: dict) -> list[dict]:
 
 # ============================================================ A. encogimiento pitcher × rival
 
-def pair_table(rows: list[dict], teams: dict, lg: dict) -> dict:
-    """{(pitcher, rival): {n, y, mu} por evento}: lo observado contra ese rival y lo esperado por la razón de
-    momios con la tasa del pitcher SIN esas aperturas (deja uno fuera) y la del equipo rival."""
-    tot, pair = {}, {}
+def pitcher_k0(k_pit: dict | None, e: str) -> float:
+    """κ para encoger la tasa del pitcher en el evento e: el medido (v2) o 30 si no se midió; sin señal entre
+    pitchers (κ = ∞) se usa la liga."""
+    if k_pit is None:
+        return 30.0
+    return ((k_pit.get(e) or {}).get("kappa")) or 1e9
+
+
+def pair_table(rows: list[dict], teams: dict, lg: dict, k_pit: dict | None = None) -> dict:
+    """{(pitcher, rival): {n, y, mu, g, s2} por evento}: lo observado contra ese rival, lo esperado por la razón de
+    momios con la tasa del pitcher SIN esas aperturas (deja uno fuera, encogida con κ del pitcher) y la del equipo
+    rival, y cuántas aperturas son (g) con Σn² (s2) para quitar la forma del día."""
+    tot, pair, starts = {}, {}, {}
     for r in rows:
         tot[r["pid"]] = add(tot.get(r["pid"], {}), r)
         key = (r["pid"], r["opp"])
         pair[key] = add(pair.get(key, {}), r)
+        starts.setdefault(key, []).append(r)
     out = {}
     for (pid, opp), c in pair.items():
         rest = add(tot[pid], c, -1)
@@ -159,11 +195,13 @@ def pair_table(rows: list[dict], teams: dict, lg: dict) -> dict:
             ry, rn = trials(rest, e)
             if n <= 0 or rn < 30 or opp not in teams:
                 continue
-            p_pit = (ry + 30 * lg[e]) / (rn + 30)             # el pitcher sin este rival, apenas encogido
+            k0 = pitcher_k0(k_pit, e)
+            p_pit = (ry + k0 * lg[e]) / (rn + k0)             # el pitcher sin este rival, encogido a la liga
             mu = odds_ratio(p_pit, teams[opp][e], lg[e])
             # varianza de μ por estimar la tasa del pitcher (método delta): no es efecto de la pareja
-            vmu = (mu * (1 - mu)) ** 2 / (p_pit * (1 - p_pit) * (rn + 30))
-            ev[e] = {"n": n, "y": y, "mu": mu, "vmu": vmu}
+            vmu = (mu * (1 - mu)) ** 2 / (p_pit * (1 - p_pit) * (rn + k0))
+            ns = [trials(r, e)[1] for r in starts[(pid, opp)]]
+            ev[e] = {"n": n, "y": y, "mu": mu, "vmu": vmu, "g": sum(1 for x in ns if x > 0), "s2": sum(x * x for x in ns)}
         if ev and rest.get("bf", 0) >= 30 and opp in teams:     # carreras por bateador (para la familiaridad)
             ev["runs"] = {"mu": (rest.get("runs", 0) + 30 * lg["rpa"]) / (rest["bf"] + 30) * teams[opp]["rpa"] / lg["rpa"]}
         if ev:
@@ -171,8 +209,10 @@ def pair_table(rows: list[dict], teams: dict, lg: dict) -> dict:
     return out
 
 
-def kappa(pairs: dict, ev: str, boot: int = 200, seed: int = 29) -> dict:
-    """κ del Beta-Binomial por método de momentos: ρ = Σn[(r−μ)² − μ(1−μ)/n − Var(μ̂)] / Σn·μ(1−μ) = 1/(κ+1).
+def kappa(pairs: dict, ev: str, boot: int = 200, seed: int = 29, rho_game: float = 0.0) -> dict:
+    """κ del Beta-Binomial por método de momentos: ρ = Σn[(r−μ)² − μ(1−μ)/n − Var(μ̂) − ρ_día·μ(1−μ)·Σn²/n²] /
+    Σn·μ(1−μ) = 1/(κ+1). El término ρ_día (forma del día, ver game_rho) quita la varianza de juego a juego: con 1–2
+    aperturas contra un equipo, un buen o mal día no es un efecto del rival.
 
     Devuelve κ, ρ, su intervalo por bootstrap de parejas y el número de parejas y de intentos."""
     xs = [v[ev] for v in pairs.values() if ev in v and v[ev]["n"] >= 5]
@@ -182,7 +222,8 @@ def kappa(pairs: dict, ev: str, boot: int = 200, seed: int = 29) -> dict:
         for x in sample:
             n, y, mu = x["n"], x["y"], x["mu"]
             r = y / n
-            num += n * ((r - mu) ** 2 - mu * (1 - mu) / n - x.get("vmu", 0.0))
+            day = rho_game * mu * (1 - mu) * x.get("s2", n * n) / (n * n)
+            num += n * ((r - mu) ** 2 - mu * (1 - mu) / n - x.get("vmu", 0.0) - day)
             den += n * mu * (1 - mu)
         return num / den if den else 0.0
 
@@ -196,6 +237,84 @@ def kappa(pairs: dict, ev: str, boot: int = 200, seed: int = 29) -> dict:
     return {"kappa": k, "rho": r0, "ci": ci, "pairs": len(xs), "n": sum(x["n"] for x in xs)}
 
 
+def game_rho(rows: list[dict], ev: str) -> dict:
+    """Forma del día: varianza de juego a juego de la tasa de un abridor, por ANOVA dentro de cada pareja
+    pitcher-rival con ≥ 2 aperturas (su nivel y un posible efecto del rival se cancelan):
+    E[Σ n_i (r_i − r̄)²] = v(g − 1) + ρ·v·(n − Σn_i²/n), v = r̄(1 − r̄)."""
+    groups = {}
+    for r in rows:
+        y, n = trials(r, ev)
+        if n >= 3:
+            groups.setdefault((r["pid"], r["opp"]), []).append((y, n))
+    num = den = 0.0
+    used = 0
+    for g in groups.values():
+        if len(g) < 2:
+            continue
+        n = sum(x[1] for x in g)
+        rb = sum(x[0] for x in g) / n
+        v = rb * (1 - rb)
+        if v <= 0:
+            continue
+        num += sum(nn * (yy / nn - rb) ** 2 for yy, nn in g) - v * (len(g) - 1)
+        den += v * (n - sum(nn * nn for _, nn in g) / n)
+        used += 1
+    return {"rho": max(0.0, num / den) if den else 0.0, "groups": used}
+
+
+def pitcher_kappa(rows: list[dict], lg: dict, rho_game: dict | None = None) -> dict:
+    """κ para encoger la tasa de temporada de cada abridor a la liga (Bayes empírico, método de momentos entre
+    pitchers, sin la forma del día): cuántos bateadores «vale» la liga. HR y BABIP necesitan muchos más que K."""
+    tot, sq = {}, {}
+    for r in rows:
+        tot[r["pid"]] = add(tot.get(r["pid"], {}), r)
+        for e in EVENTS:
+            sq.setdefault((r["pid"], e), 0.0)
+            sq[(r["pid"], e)] += trials(r, e)[1] ** 2
+    out = {}
+    for e in EVENTS:
+        rg = ((rho_game or {}).get(e) or {}).get("rho", 0.0)
+        num = den = 0.0
+        npit = 0
+        for pid, c in tot.items():
+            y, n = trials(c, e)
+            if n < 50:
+                continue
+            mu = lg[e]
+            v = mu * (1 - mu)
+            num += n * ((y / n - mu) ** 2 - v / n - rg * v * sq[(pid, e)] / (n * n))
+            den += n * v
+            npit += 1
+        r0 = num / den if den else 0.0
+        out[e] = {"kappa": (1 / r0 - 1) if r0 > 0 else None, "rho": r0, "pitchers": npit}
+    return out
+
+
+def form_depth(rows: list[dict]) -> dict:
+    """Cómo se mueve la profundidad con la forma del día: pendiente de los outs de una apertura contra su tasa de
+    ponche (ambos contra el promedio del mismo pitcher). Positiva: el día que poncha más, dura más."""
+    by = {}
+    for r in rows:
+        if r.get("bf", 0) >= 9 and r.get("outs"):
+            by.setdefault(r["pid"], []).append(r)
+    xs, ys = [], []
+    for rs in by.values():
+        if len(rs) < 6:
+            continue
+        mk = sum(r["k"] for r in rs) / sum(r["bf"] for r in rs)
+        mo = sum(r["outs"] for r in rs) / len(rs)
+        for r in rs:
+            xs.append(r["k"] / r["bf"] - mk)
+            ys.append(r["outs"] - mo)
+    if len(xs) < 50:
+        return {"b": 0.0, "corr": None, "n": len(xs)}
+    mx, my = sum(xs) / len(xs), sum(ys) / len(ys)
+    sxx = sum((x - mx) ** 2 for x in xs)
+    syy = sum((y - my) ** 2 for y in ys)
+    sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    return {"b": sxy / sxx if sxx else 0.0, "corr": sxy / math.sqrt(sxx * syy) if sxx and syy else None, "n": len(xs)}
+
+
 def shrink_pair(y: float, n: float, mu: float, k: float | None) -> dict:
     """Posterior del Beta-Binomial centrado en lo esperado: (y + κμ)/(n + κ); peso del historial n/(n+κ)."""
     if k is None or n <= 0:
@@ -206,7 +325,7 @@ def shrink_pair(y: float, n: float, mu: float, k: float | None) -> dict:
     return {"post": post, "w": w, "raw": y / n, "mu": mu, "n": n, "y": y, "sd": sd, "mult": post / mu if mu else 1.0}
 
 
-def starter_vs_rival(p: dict, opp: int, teams: dict, lg: dict, kap: dict) -> dict:
+def starter_vs_rival(p: dict, opp: int, teams: dict, lg: dict, kap: dict, k_pit: dict | None = None) -> dict:
     """Historial del abridor del partido contra este rival (temporada + la anterior a la mitad), encogido con κ."""
     season = add({}, {})
     for r in p.get("log") or []:
@@ -224,11 +343,15 @@ def starter_vs_rival(p: dict, opp: int, teams: dict, lg: dict, kap: dict) -> dic
     rest = add(season, vs, -1)
     out = {}
     for e in EVENTS:
-        ry, rn = trials(rest, e)
+        k_pair = (kap.get(e) or {}).get("kappa")
+        k0 = pitcher_k0(k_pit, e)
+        # con efecto de pareja medible, μ sin las aperturas contra este rival (no contar dos veces); sin él, toda la temporada
+        ry, rn = trials(rest if k_pair else season, e)
         y, n = trials(comb, e) if comb else (0, 0)
-        p_pit = (ry + 30 * lg[e]) / (rn + 30) if rn else lg[e]
+        p_pit = (ry + k0 * lg[e]) / (rn + k0) if rn else lg[e]
         mu = odds_ratio(p_pit, (teams.get(opp) or lg)[e], lg[e])
-        out[e] = {**shrink_pair(y, n, mu, (kap.get(e) or {}).get("kappa")), "season": trials(season, e)[0] / max(1, trials(season, e)[1])}
+        out[e] = {**shrink_pair(y, n, mu, k_pair), "season": trials(season, e)[0] / max(1, trials(season, e)[1]),
+                  "pitcherShrink": rn / (rn + k0) if rn else 0.0}
     raw = rates(vs) if vs.get("bf") else None
     return {"events": out, "starts": starts, "bf": vs.get("bf", 0), "prevBf": prev_vs.get("bf", 0), "raw": raw,
             "er": sum(s["er"] or 0 for s in starts), "outs": sum(s["outs"] for s in starts)}
@@ -443,7 +566,10 @@ def post_starts(post: dict, reg: dict) -> list[dict]:
                 if gs < 8 or not rs.get("inningsPitched"):
                     continue
                 avg = outs_of(rs["inningsPitched"]) / gs
-                if avg <= 0:
+                # v2: solo abridores de verdad (un relevista usado de abridor infla IP/GS: 94 IP en 9 aperturas = 31 outs)
+                bfgs = (rs.get("battersFaced") or 0) / gs
+                gp = rs.get("gamesPlayed")
+                if avg <= 0 or avg > 21 or bfgs > 28 or (gp and gs / gp < 0.8):
                     continue
                 rows.append({"year": year, "id": st["id"], "outs": outs_of(st.get("ip")), "avg": avg,
                              "pitches": st.get("pitches"), "avgPitches": (rs.get("numberOfPitches") or 0) / gs or None})
@@ -476,6 +602,10 @@ def hook_factor(post: dict, reg: dict, boot: int = 400, seed: int = 31) -> dict:
     res = [y - alpha - beta * x for x, y in zip(xs, ys)]
     s2 = sum(r * r for r in res) / (len(xs) - 2)
     se_b = math.sqrt(s2 / sxx) if sxx else float("inf")
+    # v2: pendiente robusta (Theil-Sen: mediana de las pendientes por pares), la que se usa; OLS queda como referencia
+    sl = sorted((y2 - y1) / (x2 - x1) for i, (x1, y1) in enumerate(zip(xs, ys))
+                for x2, y2 in list(zip(xs, ys))[i + 1:] if abs(x2 - x1) > 1e-9)
+    beta_ts = sl[len(sl) // 2] if sl else 0.0
     pitches = [r["pitches"] / r["avgPitches"] for r in rows if r.get("pitches") and r.get("avgPitches")]
     by = {}
     for r in rows:
@@ -486,7 +616,8 @@ def hook_factor(post: dict, reg: dict, boot: int = 400, seed: int = 31) -> dict:
     cv = math.sqrt(s2) / my if my else 0.35
     return {"hook": h, "ci": [bs[int(0.05 * boot)], bs[int(0.95 * boot) - 1]], "n": len(rows), "measured": True,
             "pitchRatio": (sum(pitches) / len(pitches)) if pitches else None,
-            "alpha": alpha, "beta": beta, "seBeta": se_b, "betaUsed": min(1.0, max(0.0, beta)), "meanPost": my, "meanReg": mx,
+            "alpha": alpha, "beta": beta, "seBeta": se_b, "betaTS": beta_ts, "betaUsed": min(1.0, max(0.0, beta_ts)),
+            "meanPost": my, "meanReg": mx,
             "seMean": math.sqrt(s2 / len(xs)), "sdResid": math.sqrt(s2), "shape": max(1.5, min(12.0, cv ** -1.086)),
             "byYear": {y: {"starts": a[0], "outsPost": a[1] / a[0], "outsReg": a[2] / a[0]} for y, a in sorted(by.items())}}
 
@@ -583,6 +714,39 @@ def k_dist(k_rates: list[float], bf_probs: list[float]) -> list[float]:
     return dist
 
 
+# nodos y pesos de Gauss-Hermite (7 puntos) para una Normal estándar
+_GH = [(-3.750439717725742, 0.000548268855972), (-2.366759410734541, 0.030757123967586), (-1.154405394739968, 0.240123178605013),
+       (0.0, 0.457142857142857), (1.154405394739968, 0.240123178605013), (2.366759410734541, 0.030757123967586),
+       (3.750439717725742, 0.000548268855972)]
+
+
+def k_dist_form(k_rates: list[float], shape: float, mean_outs: float, bf_per_out: float, rho: float, b_outs: float) -> list[float]:
+    """Ponches del abridor mezclando sobre la forma del día (v2): con z ~ Normal, la tasa de ponche de cada bateador
+    se mueve en la escala logit con varianza ρ/(p(1−p)) (Beta-Binomial) y la salida del abridor b·Δp outs (el día que
+    poncha más, dura más). Sin forma (ρ = 0) es la Poisson-binomial de antes."""
+    if not k_rates:
+        return [1.0]
+    pbar = sum(k_rates) / len(k_rates)
+    sd = math.sqrt(rho / (pbar * (1 - pbar))) if rho > 0 else 0.0
+    nodes = _GH if sd > 0 else [(0.0, 1.0)]
+    mix = []
+    for z, w in nodes:
+        rates_z = [from_odds(odds(p) * math.exp(z * sd)) for p in k_rates]
+        dp = sum(rates_z) / len(rates_z) - pbar
+        m = max(3.0, mean_outs + b_outs * dp)
+        dist = outs_dist(shape, m / math.gamma(1 + 1 / shape))
+        # el bateador j (desde 0) llega si el abridor sigue: outs > (j + ½)/(bateadores por out); con int(j/bpo) se
+        # contaban ~0.5 bateadores de más por salida (validado: 22.9 esperados contra 22.2 reales → 22.4)
+        surv = [sum(pr for k, pr in enumerate(dist) if k > (j + 0.5) / bf_per_out) for j in range(len(rates_z))]
+        kd = k_dist(rates_z, surv)
+        if len(mix) < len(kd):
+            mix += [0.0] * (len(kd) - len(mix))
+        for k, v in enumerate(kd):
+            mix[k] += w * v
+    tot = sum(mix)
+    return [v / tot for v in mix]
+
+
 def reading(o: dict, a_ab: str, h_ab: str) -> list[str]:
     """Lectura en palabras: qué pesó en el modelo y qué no."""
     out = []
@@ -592,6 +756,12 @@ def reading(o: dict, a_ab: str, h_ab: str) -> list[str]:
     out.append("Historial contra el rival: en la liga, la parte propia de cada pareja pitcher-rival se mide así: "
                + (", ".join(ks) if ks else "sin señal medible") + (f"; sin señal en {', '.join(none)}" if none else "")
                + ". Un κ grande quiere decir que 30 o 40 bateadores contra un equipo casi no dicen nada nuevo.")
+    rd = o["A"].get("rhoDay")
+    if rd and rd.get("k"):
+        out.append(f"Forma del día (v2): de una apertura a otra la tasa de ponche de un abridor se mueve ±"
+                   f"{100 * math.sqrt(rd['k']['rho'] * 0.3 * 0.7):.1f} pp sin importar el rival (ρ = {rd['k']['rho']:.4f}, "
+                   f"{rd['k']['groups']} parejas con ≥ 2 aperturas). Esa varianza ya no se confunde con «efecto del rival» y "
+                   "entra a la distribución de ponches.")
     for s, ab in (("away", a_ab), ("home", h_ab)):
         st = o["A"]["starters"][s]
         if st:
@@ -601,10 +771,13 @@ def reading(o: dict, a_ab: str, h_ab: str) -> list[str]:
                        f"{100 * k['mu']:.1f}% esperado a {100 * k['post']:.1f}% (el historial pesa {100 * k['w']:.0f}%).")
     h = o["C"]["hook"]
     if h.get("measured"):
-        out.append(f"Gancho de postemporada medido en {h['n']} aperturas (2024-2025): los abridores sacan {h['meanPost']:.1f} outs "
-                   f"contra {h['meanReg']:.1f} en temporada ({100 * h['hook']:.0f}%), y casi sin importar cuánto duran normalmente "
-                   f"(β = {h['beta']:+.2f} ± {h['seBeta']:.2f}): el gancho lo decide el partido, no el abridor. Eso recorta la 3.ª vuelta "
-                   "al lineup, la parte donde más castigan los bateadores, y pasa más entradas al bullpen de confianza.")
+        bt = h.get("betaTS")
+        dep = (f"y por cada out más de promedio en temporada duran {bt:+.2f} outs más en octubre (pendiente Theil-Sen, robusta; "
+               f"OLS {h['beta']:+.2f} ± {h['seBeta']:.2f})" if bt is not None else
+               f"y casi sin importar cuánto duran normalmente (β = {h['beta']:+.2f} ± {h['seBeta']:.2f})")
+        out.append(f"Gancho de postemporada medido en {h['n']} aperturas de abridores de verdad (2024-2025): sacan {h['meanPost']:.1f} outs "
+                   f"contra {h['meanReg']:.1f} en temporada ({100 * h['hook']:.0f}%), {dep}. Eso recorta la 3.ª vuelta al lineup, la "
+                   "parte donde más castigan los bateadores, y pasa más entradas al bullpen de confianza.")
     else:
         out.append("Gancho de postemporada supuesto (no hubo suficientes aperturas para medirlo).")
     ab = o["ablation"]

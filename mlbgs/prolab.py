@@ -915,8 +915,12 @@ def run_octubre(pk: int, label: str = "pre", n_draws: int = 300) -> dict:
 
     # ---------------- A. encogimiento pitcher × rival (κ medidos con toda la liga) y D. familiaridad
     rows = OC.start_rows(snap.get("octGameLogs"))
-    pairs = OC.pair_table(rows, teams, L)
-    kap = {e: OC.kappa(pairs, e) for e in OC.EVENTS}
+    # v2: forma del día (varianza de juego a juego), encogimiento medido del pitcher y κ de pareja sin la forma del día
+    rho_day = {e: OC.game_rho(rows, e) for e in OC.EVENTS}
+    k_pit = OC.pitcher_kappa(rows, L, rho_day)
+    pairs = OC.pair_table(rows, teams, L, k_pit)
+    kap = {e: OC.kappa(pairs, e, rho_game=rho_day[e]["rho"]) for e in OC.EVENTS}
+    form = OC.form_depth(rows)
     fam = OC.familiarity(rows, pairs)
     fam_used = bool(fam.get("runs") and abs(fam["runs"]["t"]) >= OC.FAMILIARITY_T)
     fam_eff = fam["runs"]["shrunk"] if fam_used else 0.0
@@ -927,7 +931,7 @@ def run_octubre(pk: int, label: str = "pre", n_draws: int = 300) -> dict:
         if not p:
             sp[s] = None
             continue
-        st = OC.starter_vs_rival(p, game[other[s]], teams, L, kap)
+        st = OC.starter_vs_rival(p, game[other[s]], teams, L, kap, k_pit)
         season = {}
         for r in p.get("log") or []:
             season = OC.add(season, OC.counts(r["stat"]))
@@ -1090,15 +1094,14 @@ def run_octubre(pk: int, label: str = "pre", n_draws: int = 300) -> dict:
             continue
         k_team = SP["events"]["k"]["post"]
         opp_k = (teams.get(game[other[s]]) or L)["k"]
-        d = detail[other[s]]["dist"]
+        det = detail[other[s]]
         bpo = SP.get("bfPerOut") or 1.4
-        k_rates, surv = [], []
+        k_rates = []
         for j in range(36):
             b = Bs["batters"][j % len(Bs["batters"])]
             k_rates.append(OC.odds_ratio(k_team, b["kRate"], opp_k))
-            need = int(j / bpo)                          # outs que ya lleva cuando llega el bateador j+1
-            surv.append(sum(p for k, p in enumerate(d) if k > need))
-        kd[s] = OC.k_dist(k_rates, surv)
+        # v2: mezcla sobre la forma del día (Beta-Binomial) con la profundidad acoplada (el día que poncha más, dura más)
+        kd[s] = OC.k_dist_form(k_rates, det["shape"], det["expOuts"], bpo, rho_day["k"]["rho"], form["b"])
     extra = {"methodKey": "octubre", "n": n_draws, "label": "OCTUBRE", "pHome": p_home, "total": total,
              "runs_away": pa_, "runs_home": ph_, "f5total": M.sum_pmf(f5a, f5h), "f5": {"away": f5aw, "home": f5hw, "tie": f5tie},
              "nrfi": nrfi, "rl": {f"{h_ab} -1.5": h_m15, f"{a_ab} +1.5": 1 - h_m15, f"{a_ab} -1.5": a_m15, f"{h_ab} +1.5": 1 - a_m15},
@@ -1108,11 +1111,12 @@ def run_octubre(pk: int, label: str = "pre", n_draws: int = 300) -> dict:
     consensus = {"log5": tri["log5"]["pHome"], "elo": tri["elo"]["pHome"], "lambda": tri["lambda"]["pHome"], "octubre": p_home}
 
     oc = {
+        "version": 2,
         "A": {"kappa": kap, "pairs": len(pairs), "starts": len(rows), "starters": sp, "events": {e: OC.EV_NAMES[e] for e in OC.EVENTS},
-              "prevWeight": OC.PREV_WEIGHT},
+              "prevWeight": OC.PREV_WEIGHT, "rhoDay": rho_day, "kappaPitcher": k_pit, "teamKappa": L.get("teamKappa")},
         "B": {"lineups": {s: ({**B[s], "status": lu_status[s]} if B[s] else None) for s in sides},
               "kappa": {"pitcher": kp, "batter": kb}, "league": {"xwoba": Lw, "byType": Lt}},
-        "C": {"hook": hook, "pens": pens, "detail": detail, "tto": list(OC.TTO_WOBA), "leagueOuts": lg_outs},
+        "C": {"hook": hook, "pens": pens, "detail": detail, "tto": list(OC.TTO_WOBA), "leagueOuts": lg_outs, "form": form},
         "D": {**fam, "used": fam_used, "effect": fam_eff,
               "applied": {s: (fam_eff * min(3, sp[s]["faced"]) if sp[s] else 0.0) for s in sides}},
         "ablation": ablation,
