@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T04:22:48+00:00",
+  "registeredAt": "2026-09-29T10:06:25+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5483,
@@ -106,9 +106,9 @@
     "line": 6.5,
     "p": 0.5232,
     "fair": -110.0,
-    "ic": 42.8,
+    "ic": 43.5,
     "level": "Baja",
-    "price": -101,
+    "price": 100,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -416,7 +416,7 @@
     "fair": -121.0,
     "ic": 27.3,
     "level": "Muy baja",
-    "price": -206,
+    "price": -205,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -491,7 +491,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T04:22:48+00:00",
+  "registeredAt": "2026-09-29T10:06:25+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4808,
@@ -517,9 +517,9 @@
     "line": null,
     "p": 0.6959,
     "fair": -229.0,
-    "ic": 43.2,
+    "ic": 42.9,
     "level": "Baja",
-    "price": -194,
+    "price": -195,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -568,9 +568,9 @@
     "line": null,
     "p": 0.5192,
     "fair": -108.0,
-    "ic": 40.4,
+    "ic": 42.5,
     "level": "Baja",
-    "price": 102,
+    "price": 105,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -609,7 +609,7 @@
      "h": 1.0056,
      "r": 1.0,
      "maxPrice": 138,
-     "why": "edge menor a 3 pp con ese momio"
+     "why": "confianza menor a 55 con ese momio"
     }
    },
    {
@@ -674,7 +674,7 @@
     "fair": -108.0,
     "ic": 32.7,
     "level": "Muy baja",
-    "price": -118,
+    "price": -117,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -973,7 +973,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T04:22:48+00:00",
+  "registeredAt": "2026-09-29T10:06:25+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5549,
@@ -1098,32 +1098,6 @@
    {
     "rank": 4,
     "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.0",
-    "line": 6.0,
-    "p": 0.566,
-    "fair": -130.0,
-    "ic": 36.0,
-    "level": "Muy baja",
-    "price": -120,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 1.0056,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Cam Schlittler Under 6.5 K",
@@ -1173,7 +1147,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 5,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -1224,7 +1198,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total BOS",
@@ -1250,7 +1224,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total NYY",
@@ -1276,7 +1250,7 @@
     }
    },
    {
-    "rank": 9,
+    "rank": 8,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
@@ -1291,6 +1265,32 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 1.0056,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.5059,
+    "fair": -102.0,
+    "ic": 31.8,
+    "level": "Muy baja",
+    "price": 100,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
      "level": 0,
@@ -1385,7 +1385,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T04:06:56+00:00",
+  "registeredAt": "2026-09-29T10:06:25+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4912,
@@ -1411,9 +1411,9 @@
     "line": 7.0,
     "p": 0.5956,
     "fair": -147.0,
-    "ic": 52.9,
+    "ic": 51.7,
     "level": "Baja",
-    "price": -117,
+    "price": -119,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1488,9 +1488,9 @@
     "line": null,
     "p": 0.5088,
     "fair": -104.0,
-    "ic": 37.7,
+    "ic": 39.8,
     "level": "Muy baja",
-    "price": 105,
+    "price": 108,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
