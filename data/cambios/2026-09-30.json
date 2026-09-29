@@ -1,12 +1,24 @@
 {
  "date": "2026-09-30",
- "events": [],
+ "events": [
+  {
+   "after": "esperar momio (F5 Over 3.5)",
+   "at": "2026-09-29T16:38:52Z",
+   "before": "esperar momio (ATL)",
+   "date": "2026-09-30",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849841,
+   "text": "Decisión: esperar momio (ATL) → esperar momio (F5 Over 3.5)"
+  }
+ ],
  "snap": {
   "849841": {
    "away": 143,
    "dec": {
     "level": 0,
-    "pick": "ATL",
+    "pick": "F5 Over 3.5",
     "status": "esperar",
     "waitFor": "momio"
    },

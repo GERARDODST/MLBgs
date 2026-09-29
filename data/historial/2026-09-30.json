@@ -13,8 +13,8 @@
   "modelName": "Framework MLB Picks v2",
   "kind": "Modelo estadístico por secciones",
   "algo": {
-   "version": "2026.09.29",
-   "code": "eaa7dff92ec6"
+   "version": "2026.09.29.2",
+   "code": "2bf04d34f4b6"
   },
   "analyses": [
    "Contexto del partido",
@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:50:59+00:00",
+  "registeredAt": "2026-09-29T16:38:52+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5325,
@@ -437,6 +437,437 @@
   }
  },
  {
+  "id": "2026-09-30-849841-octubre",
+  "pk": 849841,
+  "date": "2026-09-30",
+  "time": "2026-09-30T18:00:00Z",
+  "away": "PHI",
+  "home": "ATL",
+  "awayName": "Philadelphia Phillies",
+  "homeName": "Atlanta Braves",
+  "venue": "Truist Park",
+  "model": "octubre",
+  "modelName": "Framework v2 + OCTUBRE",
+  "kind": "Postemporada: pitcher contra el rival",
+  "algo": {
+   "version": "2026.09.29.2",
+   "code": "2bf04d34f4b6"
+  },
+  "analyses": [
+   "Encogimiento pitcher × rival",
+   "Matchup por tipo de lanzamiento",
+   "Gancho de postemporada",
+   "Vueltas al lineup",
+   "Bullpen de octubre",
+   "Familiaridad (prueba)",
+   "Picks combinados con el framework"
+  ],
+  "source": "pro-lab",
+  "registeredAt": "2026-09-29T16:30:58+00:00",
+  "frozenAt": "2026-09-29T16:19:38+00:00",
+  "status": "cerrado",
+  "pred": {
+   "pHome": 0.5139,
+   "projAway": 3.99,
+   "projHome": 4.08,
+   "total": 7.83,
+   "nrfi": 0.5338,
+   "light": "Gris",
+   "confidence": "media",
+   "probables": {
+    "away": "Cristopher Sánchez",
+    "home": "Tyler Mahle"
+   },
+   "lineups": "Proyectados",
+   "pModel": 0.4596
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 3.5",
+    "line": 3.5,
+    "p": 0.5491,
+    "fair": -122.0,
+    "ic": 46.6,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas + Monte Carlo",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -107
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -101
+      }
+     ],
+     "steps": [
+      -107,
+      -107,
+      -107,
+      -106,
+      -101,
+      103,
+      108,
+      113,
+      118,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 1.0,
+     "r": 1.0,
+     "maxPrice": 122,
+     "why": "sin momio real: conviene si pagan -107 o mejor"
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "Team total",
+    "market": "Team total PHI",
+    "pick": "PHI Under 3.5",
+    "line": 3.5,
+    "p": 0.5047,
+    "fair": -102.0,
+    "ic": 45.8,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de PHI + Monte Carlo",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 1.0,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Under 7.5",
+    "line": 7.5,
+    "p": 0.513,
+    "fair": -105.0,
+    "ic": 44.6,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 1.0,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "NRFI",
+    "line": null,
+    "p": 0.5474,
+    "fair": -121.0,
+    "ic": 40.5,
+    "level": "Baja",
+    "price": null,
+    "methods": [
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga + Monte Carlo",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 1.0,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "PHI +1.5",
+    "line": null,
+    "p": 0.6712,
+    "fair": -204.0,
+    "ic": 39.9,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 1.0,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total ATL",
+    "pick": "ATL Under 3.5",
+    "line": 3.5,
+    "p": 0.5263,
+    "fair": -111.0,
+    "ic": 38.6,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de ATL + Monte Carlo",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 1.0,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "ATL F5",
+    "line": null,
+    "p": 0.4962,
+    "fair": 102.0,
+    "ic": 36.9,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push + Monte Carlo",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 0.9386,
+     "h": 1.0,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "ATL",
+    "line": null,
+    "p": 0.5139,
+    "fair": -106.0,
+    "ic": 26.4,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 4 métodos: Log5 (5.7.2) 56.2% · Elo + abridor (5.7.7) 52.6% · λ + Binomial Negativa (5.3 · 5.7.5) 50.8% · OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9) 46.0%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 127
+      }
+     ],
+     "steps": [
+      127,
+      132,
+      140,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 0.8184,
+     "h": 1.0,
+     "r": 1.0,
+     "maxPrice": 141,
+     "why": "sin momio real: conviene si pagan +127 o mejor"
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Cristopher Sánchez Under 6.5 K",
+    "line": 6.5,
+    "p": 0.6315,
+    "fair": -171.0,
+    "ic": 22.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -120
+      }
+     ],
+     "steps": [
+      -120,
+      -117,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 1.0,
+     "r": 1.0,
+     "maxPrice": -114,
+     "why": "sin momio real: conviene si pagan -120 o mejor"
+    }
+   },
+   {
+    "rank": 10,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Tyler Mahle Under 4.5 K",
+    "line": 4.5,
+    "p": 0.5149,
+    "fair": -106.0,
+    "ic": 21.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 135
+      }
+     ],
+     "steps": [
+      135,
+      139,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 1.0,
+     "r": 1.0,
+     "maxPrice": 141,
+     "why": "sin momio real: conviene si pagan +135 o mejor"
+    }
+   }
+  ],
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta el momio de Total primeras 5: conviene si pagan -107 o mejor (stake 1); stake 5 desde -101",
+   "source": "Framework v2 + OCTUBRE",
+   "pick": "F5 Over 3.5",
+   "waitFor": "momio",
+   "market": "Total primeras 5",
+   "p": 0.5491,
+   "ic": 46.6,
+   "level": 0,
+   "amount": 0,
+   "minPrice": -107,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -107
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": -101
+    }
+   ]
+  }
+ },
+ {
   "id": "2026-09-30-849846-framework",
   "pk": 849846,
   "date": "2026-09-30",
@@ -450,8 +881,8 @@
   "modelName": "Framework MLB Picks v2",
   "kind": "Modelo estadístico por secciones",
   "algo": {
-   "version": "2026.09.29",
-   "code": "eaa7dff92ec6"
+   "version": "2026.09.29.2",
+   "code": "2bf04d34f4b6"
   },
   "analyses": [
    "Contexto del partido",
@@ -466,7 +897,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:50:59+00:00",
+  "registeredAt": "2026-09-29T16:38:52+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.488,
@@ -724,8 +1155,8 @@
   "modelName": "Framework MLB Picks v2",
   "kind": "Modelo estadístico por secciones",
   "algo": {
-   "version": "2026.09.29",
-   "code": "eaa7dff92ec6"
+   "version": "2026.09.29.2",
+   "code": "2bf04d34f4b6"
   },
   "analyses": [
    "Contexto del partido",
@@ -740,7 +1171,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:50:59+00:00",
+  "registeredAt": "2026-09-29T16:38:52+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5506,
@@ -1186,8 +1617,8 @@
   "modelName": "Framework MLB Picks v2",
   "kind": "Modelo estadístico por secciones",
   "algo": {
-   "version": "2026.09.29",
-   "code": "eaa7dff92ec6"
+   "version": "2026.09.29.2",
+   "code": "2bf04d34f4b6"
   },
   "analyses": [
    "Contexto del partido",
@@ -1202,7 +1633,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:50:59+00:00",
+  "registeredAt": "2026-09-29T16:38:52+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4914,
