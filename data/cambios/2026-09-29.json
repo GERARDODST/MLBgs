@@ -581,6 +581,27 @@
    "kind": "momio",
    "pk": 849849,
    "text": "La línea del total pasa de 8.0 a 8.5"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-29T21:33:59Z",
+   "date": "2026-09-29",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849843,
+   "side": "home",
+   "text": "Lineup confirmado (SD)"
+  },
+  {
+   "after": "Ramon De Jesus",
+   "at": "2026-09-29T21:33:59Z",
+   "date": "2026-09-29",
+   "game": "CHC @ SD",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849843,
+   "text": "Umpire de home asignado: Ramon De Jesus"
   }
  ],
  "snap": {
@@ -592,13 +613,33 @@
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 135,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     665487,
+     669392,
+     592518,
+     664034,
+     701538,
+     669720,
+     593428,
+     630105,
+     669134
+    ]
    },
-   "names": {},
+   "names": {
+    "592518": "Manny Machado",
+    "593428": "Xander Bogaerts",
+    "630105": "Jake Cronenworth",
+    "664034": "Ty France",
+    "665487": "Fernando Tatis Jr.",
+    "669134": "Luis Campusano",
+    "669392": "Samad Taylor",
+    "669720": "Austin Hays",
+    "701538": "Jackson Merrill"
+   },
    "odds": {
     "line": 7.5,
     "ml": {
@@ -691,13 +732,19 @@
     "944743",
     "944744"
    ],
-   "ump": null,
+   "ump": "Ramon De Jesus",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "in",
+    "speed": 4,
+    "temp": 73.0
+   }
   },
   "849845": {
    "away": 143,
