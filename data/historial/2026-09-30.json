@@ -14,7 +14,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "548cf1aef543"
+   "code": "26144db4bbf9"
   },
   "analyses": [
    "Contexto del partido",
@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:30:25+00:00",
+  "registeredAt": "2026-09-29T20:54:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5325,
@@ -76,7 +76,7 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": 117
+       "from": 118
       }
      ],
      "steps": [
@@ -84,7 +84,7 @@
       103,
       107,
       112,
-      117,
+      118,
       123,
       129,
       null,
@@ -93,7 +93,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 131,
      "why": "sin momio real: conviene si pagan -100 o mejor"
@@ -121,7 +121,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -147,7 +147,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -189,14 +189,14 @@
       104,
       109,
       114,
-      120,
+      null,
       null,
       null,
       null
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 119,
      "why": "sin momio real: conviene si pagan -107 o mejor"
@@ -224,7 +224,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -250,7 +250,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -299,7 +299,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 137,
      "why": "sin momio real: conviene si pagan +110 o mejor"
@@ -339,7 +339,7 @@
      "steps": [
       -112,
       -109,
-      -105,
+      -104,
       -100,
       105,
       110,
@@ -350,7 +350,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 110,
      "why": "sin momio real: conviene si pagan -112 o mejor"
@@ -378,7 +378,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -404,7 +404,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    }
@@ -412,7 +412,7 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Moneyline: conviene si pagan -100 o mejor (stake 1); stake 5 desde +117",
+   "why": "falta el momio de Moneyline: conviene si pagan -100 o mejor (stake 1); stake 5 desde +118",
    "source": "Framework v2",
    "pick": "ATL",
    "waitFor": "momio",
@@ -431,7 +431,7 @@
     {
      "level": 5,
      "stake": 1000,
-     "from": 117
+     "from": 118
     }
    ]
   }
@@ -451,7 +451,7 @@
   "kind": "Postemporada: pitcher contra el rival",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "548cf1aef543"
+   "code": "26144db4bbf9"
   },
   "analyses": [
    "Encogimiento pitcher × rival",
@@ -882,7 +882,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "548cf1aef543"
+   "code": "26144db4bbf9"
   },
   "analyses": [
    "Contexto del partido",
@@ -897,7 +897,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:30:25+00:00",
+  "registeredAt": "2026-09-29T20:54:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5522,
@@ -936,7 +936,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -962,7 +962,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -988,7 +988,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1014,7 +1014,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1040,7 +1040,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1066,7 +1066,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1092,7 +1092,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1118,7 +1118,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1146,7 +1146,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    }
@@ -1182,7 +1182,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "548cf1aef543"
+   "code": "26144db4bbf9"
   },
   "analyses": [
    "Contexto del partido",
@@ -1197,7 +1197,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:30:25+00:00",
+  "registeredAt": "2026-09-29T20:54:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5506,
@@ -1261,7 +1261,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 121,
      "why": "sin momio real: conviene si pagan -108 o mejor"
@@ -1312,7 +1312,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 125,
      "why": "sin momio real: conviene si pagan -101 o mejor"
@@ -1340,7 +1340,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1366,7 +1366,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1415,7 +1415,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 122,
      "why": "sin momio real: conviene si pagan -103 o mejor"
@@ -1449,15 +1449,15 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": 112
+       "from": 113
       }
      ],
      "steps": [
       -104,
       -102,
       103,
-      107,
-      112,
+      108,
+      113,
       118,
       null,
       null,
@@ -1466,7 +1466,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 118,
      "why": "sin momio real: conviene si pagan -104 o mejor"
@@ -1500,15 +1500,15 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": 136
+       "from": 137
       }
      ],
      "steps": [
       116,
       119,
-      124,
+      125,
       130,
-      136,
+      137,
       null,
       null,
       null,
@@ -1517,7 +1517,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 141,
      "why": "sin momio real: conviene si pagan +116 o mejor"
@@ -1545,7 +1545,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1571,7 +1571,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1597,7 +1597,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    }
@@ -1644,7 +1644,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "548cf1aef543"
+   "code": "26144db4bbf9"
   },
   "analyses": [
    "Contexto del partido",
@@ -1659,7 +1659,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:30:25+00:00",
+  "registeredAt": "2026-09-29T20:54:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4914,
@@ -1700,7 +1700,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1726,7 +1726,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1752,7 +1752,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1778,7 +1778,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1804,7 +1804,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1830,7 +1830,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1856,7 +1856,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1882,7 +1882,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    }

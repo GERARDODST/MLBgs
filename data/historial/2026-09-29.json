@@ -30,7 +30,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-29T17:03:00+00:00",
-  "status": "cerrado",
+  "status": "calificado",
   "pred": {
    "pHome": 0.5455,
    "projAway": 3.57,
@@ -62,7 +62,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 7,
      "ladder": [
@@ -112,7 +112,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de ATL",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 6,
      "ladder": [
@@ -162,7 +162,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de PHI",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -213,7 +213,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -264,7 +264,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -315,7 +315,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -366,7 +366,7 @@
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -417,7 +417,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -468,7 +468,7 @@
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
-    "res": null,
+    "res": "push",
     "stake": {
      "level": 0,
      "ladder": [
@@ -521,7 +521,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.2% · Elo + abridor (5.7.7) 58.6% · λ + Binomial Negativa (5.3 · 5.7.5) 48.8%",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -532,7 +532,67 @@
     }
    }
   ],
-  "result": null,
+  "result": {
+   "state": "Final",
+   "ar": 3,
+   "hr": 5,
+   "inn": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     null
+    ]
+   ],
+   "decisions": {
+    "winner": "Dylan Lee",
+    "loser": "Jhoan Duran",
+    "save": "Raisel Iglesias"
+   },
+   "rhe": {
+    "away": [
+     3,
+     6,
+     0
+    ],
+    "home": [
+     5,
+     7,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-29T20:46:21+00:00"
+  },
   "decision": {
    "status": "apostar",
    "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-140)",
@@ -597,7 +657,7 @@
   "source": "pro-lab",
   "registeredAt": "2026-09-29T16:48:05+00:00",
   "frozenAt": "2026-09-29T16:46:01+00:00",
-  "status": "cerrado",
+  "status": "calificado",
   "pred": {
    "pHome": 0.5218,
    "projAway": 3.57,
@@ -631,7 +691,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo y Monte Carlo)",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -683,7 +743,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de ATL + Monte Carlo",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -735,7 +795,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga + Monte Carlo",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -787,7 +847,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada) + Monte Carlo",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -839,7 +899,7 @@
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa con λ de las primeras 5 entradas + Monte Carlo",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -891,7 +951,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de PHI + Monte Carlo",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -943,7 +1003,7 @@
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push + Monte Carlo",
-    "res": null,
+    "res": "push",
     "stake": {
      "level": 0,
      "ladder": [
@@ -995,7 +1055,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -1042,7 +1102,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson + Monte Carlo",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -1091,7 +1151,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 4 métodos: Log5 (5.7.2) 56.2% · Elo + abridor (5.7.7) 58.6% · λ + Binomial Negativa (5.3 · 5.7.5) 48.8% · OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9) 45.1%",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -1102,7 +1162,67 @@
     }
    }
   ],
-  "result": null,
+  "result": {
+   "state": "Final",
+   "ar": 3,
+   "hr": 5,
+   "inn": [
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     null
+    ]
+   ],
+   "decisions": {
+    "winner": "Dylan Lee",
+    "loser": "Jhoan Duran",
+    "save": "Raisel Iglesias"
+   },
+   "rhe": {
+    "away": [
+     3,
+     6,
+     0
+    ],
+    "home": [
+     5,
+     7,
+     0
+    ]
+   },
+   "gradedAt": "2026-09-29T20:46:21+00:00"
+  },
   "decision": {
    "status": "esperar",
    "why": "falta el momio de Team total ATL: conviene si pagan -113 o mejor (stake 5); stake 10 desde +109",
@@ -1154,7 +1274,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "548cf1aef543"
+   "code": "26144db4bbf9"
   },
   "analyses": [
    "Contexto del partido",
@@ -1169,8 +1289,8 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:30:25+00:00",
-  "status": "abierto",
+  "registeredAt": "2026-09-29T20:54:24+00:00",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.4818,
    "projAway": 4.77,
@@ -1214,16 +1334,16 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": -685
+       "from": -683
       }
      ],
      "steps": [
       -1041,
-      -972,
-      -856,
-      -762,
-      -685,
-      -621,
+      -971,
+      -854,
+      -760,
+      -683,
+      -619,
       null,
       null,
       null,
@@ -1231,7 +1351,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": -604,
      "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
@@ -1272,9 +1392,9 @@
       -185,
       -180,
       -172,
-      -164,
+      -163,
       -156,
-      -149,
+      -148,
       null,
       null,
       null,
@@ -1282,7 +1402,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": -145,
      "why": "confianza menor a 55 con ese momio"
@@ -1328,14 +1448,14 @@
       121,
       127,
       133,
-      139,
+      140,
       null,
       null,
       null
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 139,
      "why": "edge menor a 3 pp con ese momio"
@@ -1386,7 +1506,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": -117,
      "why": "edge menor a 3 pp con ese momio"
@@ -1420,7 +1540,7 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": -104
+       "from": -103
       }
      ],
      "steps": [
@@ -1428,7 +1548,7 @@
       -119,
       -113,
       -108,
-      -104,
+      -103,
       101,
       null,
       null,
@@ -1437,7 +1557,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 103,
      "why": "edge menor a 3 pp con ese momio"
@@ -1448,13 +1568,13 @@
     "principal": false,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Over 8.0",
-    "line": 8.0,
-    "p": 0.5418,
-    "fair": -118.0,
-    "ic": 34.0,
+    "pick": "Under 8.5",
+    "line": 8.5,
+    "p": 0.5084,
+    "fair": -103.0,
+    "ic": 33.9,
     "level": "Muy baja",
-    "price": -118,
+    "price": -116,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1466,21 +1586,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -100
+       "from": 115
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 118
+       "from": 135
       }
      ],
      "steps": [
-      -100,
-      103,
-      107,
-      112,
-      118,
+      115,
+      117,
       123,
+      129,
+      135,
+      141,
       null,
       null,
       null,
@@ -1488,9 +1608,9 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
-     "maxPrice": 126,
+     "maxPrice": 144,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -1539,7 +1659,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 137,
      "why": "edge menor a 3 pp con ese momio"
@@ -1578,7 +1698,7 @@
      ],
      "steps": [
       110,
-      112,
+      113,
       118,
       123,
       129,
@@ -1590,7 +1710,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 138,
      "why": "edge menor a 3 pp con ese momio"
@@ -1641,7 +1761,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 134,
      "why": "sin momio real: conviene si pagan +107 o mejor"
@@ -1682,9 +1802,9 @@
       126,
       129,
       135,
-      141,
+      142,
       148,
-      155,
+      156,
       null,
       null,
       null,
@@ -1692,7 +1812,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 159,
      "why": "sin momio real: conviene si pagan +126 o mejor"
@@ -1721,9 +1841,19 @@
     {
      "level": 5,
      "stake": 1000,
-     "from": -685
+     "from": -683
     }
    ]
+  },
+  "lock": {
+   "at": "2026-09-29T21:02:17+00:00",
+   "hash": "f2f3d9b3c945f765b1078063870c2341335e1d5e46719ed99dcb411869d708bf",
+   "algo": {
+    "version": "2026.09.29.4",
+    "code": "26144db4bbf9"
+   },
+   "expediente": "data/expedientes/2026-09-29/849849.json.gz",
+   "coincide": true
   }
  },
  {
@@ -1741,7 +1871,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "548cf1aef543"
+   "code": "26144db4bbf9"
   },
   "analyses": [
    "Contexto del partido",
@@ -1756,7 +1886,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:30:25+00:00",
+  "registeredAt": "2026-09-29T20:54:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5547,
@@ -1818,7 +1948,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": -109
     }
@@ -1845,7 +1975,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1873,7 +2003,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1922,7 +2052,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 116,
      "why": "edge menor a 3 pp con ese momio"
@@ -1950,7 +2080,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -1989,17 +2119,17 @@
       -108,
       -107,
       -102,
-      102,
+      103,
       107,
       112,
-      117,
+      118,
       null,
       null,
       null
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 121,
      "why": "sin momio real: conviene si pagan -108 o mejor"
@@ -2040,7 +2170,7 @@
       -100,
       101,
       106,
-      110,
+      111,
       116,
       121,
       127,
@@ -2050,7 +2180,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 131,
      "why": "sin momio real: conviene si pagan -100 o mejor"
@@ -2101,7 +2231,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 106,
      "why": "edge menor a 3 pp con ese momio"
@@ -2152,7 +2282,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 111,
      "why": "sin momio real: conviene si pagan -118 o mejor"
@@ -2180,7 +2310,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    }
@@ -2226,7 +2356,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "548cf1aef543"
+   "code": "26144db4bbf9"
   },
   "analyses": [
    "Contexto del partido",
@@ -2241,7 +2371,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:30:25+00:00",
+  "registeredAt": "2026-09-29T20:54:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4912,
@@ -2303,7 +2433,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": -132,
      "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
@@ -2346,7 +2476,7 @@
       102,
       107,
       112,
-      117,
+      118,
       null,
       null,
       null,
@@ -2354,7 +2484,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 119
     }
@@ -2387,7 +2517,7 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": 119
+       "from": 120
       }
      ],
      "steps": [
@@ -2395,7 +2525,7 @@
       104,
       109,
       114,
-      119,
+      120,
       125,
       null,
       null,
@@ -2404,7 +2534,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 129,
      "why": "confianza menor a 55 con ese momio"
@@ -2432,7 +2562,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -2447,7 +2577,7 @@
     "fair": -161.0,
     "ic": 36.4,
     "level": "Muy baja",
-    "price": -211,
+    "price": -212,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -2458,7 +2588,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -2507,7 +2637,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 137,
      "why": "edge menor a 3 pp con ese momio"
@@ -2560,7 +2690,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0,
      "maxPrice": 144,
      "why": "edge menor a 3 pp con ese momio"
@@ -2588,7 +2718,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -2614,7 +2744,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    },
@@ -2640,7 +2770,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 1.0056,
+     "h": 0.999,
      "r": 1.0
     }
    }
