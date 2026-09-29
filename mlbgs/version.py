@@ -13,6 +13,11 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CAMBIOS = [
+    {"version": "2026.09.29.2", "fecha": "2026-09-29", "cambios": [
+        "Pro-Lab OCTUBRE (postemporada): historial del abridor contra el rival con Bayes empírico (κ medido en la liga), "
+        "matchup por tipo de lanzamiento, salida del abridor con el gancho medido en postemporadas 2024-2025, bullpen de "
+        "octubre y familiaridad como variable de prueba. Primer partido: PHI @ ATL, juego 2 del comodín.",
+    ]},
     {"version": "2026.09.29", "fecha": "2026-09-29", "cambios": [
         "Revisión periódica: cada corrida anota qué cambió (abridor, lineup, umpire, clima, horario, bajas, momio y "
         "decisión) y revisa en ese momento los momios del partido que cambió.",

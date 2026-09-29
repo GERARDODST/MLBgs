@@ -22,7 +22,7 @@ from __future__ import annotations
 from . import mathlib as M
 from . import stake as ST
 
-MODEL_ORDER = ("eigen", "kronos", "prisma", "diamante", "framework")   # si hay dos tickets, manda el del Pro-Lab
+MODEL_ORDER = ("octubre", "eigen", "kronos", "prisma", "diamante", "framework")   # si hay dos tickets, manda el del Pro-Lab
 SETTLED = ("ganado", "perdido", "push", "anulado")
 
 

@@ -29,6 +29,7 @@ MODEL_NAMES = {
     "prisma": "PRISMA bayesiano (5.7.4 · 5.7.6 · 5.7.9)",
     "kronos": "KRONOS estocástico (5.7.3 · 5.7.9)",
     "eigen": "EIGEN · componentes principales (5.7.4 · 5.7.9)",
+    "octubre": "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
 }
 
 

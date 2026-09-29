@@ -18,6 +18,7 @@ import gzip
 import json
 import math
 import os
+import random
 import statistics
 import sys
 import time
@@ -32,6 +33,7 @@ from . import picks as P
 from . import prisma as PR
 from . import kronos as KR
 from . import eigen as EG
+from . import octubre as OC
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, "prolab")
@@ -496,11 +498,21 @@ def main():
     import argparse
     ap = argparse.ArgumentParser(description="Pro-Lab: DIAMANTE-24 sobre un partido congelado")
     ap.add_argument("--pk", type=int, default=824223)
-    ap.add_argument("--model", choices=["diamante", "prisma", "kronos", "eigen"], default="diamante")
+    ap.add_argument("--model", choices=["diamante", "prisma", "kronos", "eigen", "octubre"], default="diamante")
     ap.add_argument("--dev-bundle", help="solo desarrollo: correr EIGEN con un bundle sin snapshot")
     ap.add_argument("--label", default="pre")
     ap.add_argument("--sims", type=int, default=50000)
     args = ap.parse_args()
+    if args.model == "octubre":
+        out = run_octubre(args.pk, args.label)
+        path = os.path.join(DIR, f"prolab_{args.pk}.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, separators=(",", ":"), default=float)
+        g = out["octubre"]["game"]
+        print(f"OCTUBRE: P({out['game']['teams']['home']['abbr']}) = {g['pHome']:.3f} (IC90 {g['ci90'][0]:.3f}–{g['ci90'][1]:.3f}) · carreras "
+              f"{g['lambda']['away']:.2f}-{g['lambda']['home']:.2f} · gancho {out['octubre']['C']['hook']['hook']:.2f} "
+              f"({out['secondsTotal']:.1f} s) → {path}", file=sys.stderr)
+        return
     if args.model == "eigen":
         out = run_eigen(args.pk, args.label, dev_bundle=args.dev_bundle)
         path = os.path.join(DIR, f"prolab_{args.pk}.json")
@@ -882,6 +894,248 @@ def run_eigen(pk: int, label: str = "pre", B: int = 120, n_boot: int = 80, dev_b
         "result": None, "secondsTotal": time.time() - t0,
     }
     lab["reading"] = EG.reading(base, eig)
+    return lab
+
+
+
+# ============================================================ OCTUBRE (postemporada: pitcher contra el rival)
+
+def run_octubre(pk: int, label: str = "pre", n_draws: int = 300) -> dict:
+    t0 = time.time()
+    bundle, snap, game = assemble_generic(pk, label)
+    ctx = model.Context(bundle)
+    lg = ctx.lg
+    base = model.analyze(ctx, game)
+    sides = ("away", "home")
+    other = {"away": "home", "home": "away"}
+    a_ab, h_ab = base["teams"]["away"]["abbr"], base["teams"]["home"]["abbr"]
+    abbr = {"away": a_ab, "home": h_ab}
+    EL = EG.league(bundle)
+    teams, L, hit_w = OC.team_rates(bundle)
+
+    # ---------------- A. encogimiento pitcher × rival (κ medidos con toda la liga) y D. familiaridad
+    rows = OC.start_rows(snap.get("octGameLogs"))
+    pairs = OC.pair_table(rows, teams, L)
+    kap = {e: OC.kappa(pairs, e) for e in OC.EVENTS}
+    fam = OC.familiarity(rows, pairs)
+    fam_used = bool(fam.get("runs") and abs(fam["runs"]["t"]) >= OC.FAMILIARITY_T)
+    fam_eff = fam["runs"]["shrunk"] if fam_used else 0.0
+    sp = {}
+    for s in sides:
+        pid = game["probable"].get(s)
+        p = (bundle.get("pitchers") or {}).get(str(pid)) if pid else None
+        if not p:
+            sp[s] = None
+            continue
+        st = OC.starter_vs_rival(p, game[other[s]], teams, L, kap)
+        season = {}
+        for r in p.get("log") or []:
+            season = OC.add(season, OC.counts(r["stat"]))
+        outs = [OC.outs_of(r["stat"].get("inningsPitched")) for r in p.get("log") or [] if r["stat"].get("gamesStarted")]
+        prior = sum(1 for r in rows if r["pid"] == pid)
+        st.update({"id": pid, "name": p.get("name"), "hand": p.get("hand"), "seasonBf": season.get("bf", 0),
+                   "seasonRates": OC.rates(season) if season.get("bf") else None, "startsOuts": outs,
+                   "faced": sum(1 for r in p.get("log") or [] if r.get("opp") == game[other[s]]), "leagueStarts": prior,
+                   "bfPerOut": (season.get("bf", 0) / max(1, sum(outs))) if outs else 1.4})
+        post = {e: st["events"][e]["post"] for e in OC.EVENTS}
+        mu = {e: st["events"][e]["mu"] for e in OC.EVENTS}
+        st["dWobaA"] = OC.woba_of(post, hit_w) - OC.woba_of(mu, hit_w)
+        st["wobaMu"], st["wobaPost"] = OC.woba_of(mu, hit_w), OC.woba_of(post, hit_w)
+        sp[s] = st
+    league_outs = [r["outs"] for r in rows if r["outs"]]
+    lg_outs = sum(league_outs) / len(league_outs) if league_outs else 16.0
+
+    # ---------------- B. matchup por tipo de lanzamiento
+    ars = bundle.get("arsenal") or {}
+    Lt, Lw = OC.arsenal_league(ars)
+    kp = OC.arsenal_kappa(ars.get("pitcher") or {}, Lt)
+    kb = OC.arsenal_kappa(ars.get("batter") or {}, Lt, lambda pid: OC.batter_level(pid, bundle, Lw)[0])
+    hands, bats = bundle.get("hands") or {}, bundle.get("bats") or {}
+    s5 = base["sections"]["s5"]["lineups"]
+    lineups = {s: (game["lineups"].get(s) or [r["id"] for r in (s5.get(s) or {}).get("rows", [])])[:9] for s in sides}
+    lu_status = {s: "Confirmado" if game["lineups"].get(s) else "Proyectado" for s in sides}
+    names = {}
+    for s in sides:
+        names.update({str(k): v for k, v in ((game.get("lineupNames") or {}).get(s) or {}).items()})
+        names.update({str(r["id"]): r["name"] for r in (s5.get(s) or {}).get("rows", [])})
+    hitters = {p["id"]: p for p in bundle.get("playersHitting") or []}
+    B = {}
+    for s in sides:                                     # s = equipo que batea contra el abridor de other[s]
+        SP = sp[other[s]]
+        if not SP:
+            B[s] = None
+            continue
+        mix = OC.pitcher_mix((ars.get("pitcher") or {}).get(str(SP["id"])), Lt, kp["kappa"])
+        thr = hands.get(str(SP["id"])) or SP.get("hand")
+        bat_rows = []
+        for bid in lineups[s]:
+            m = OC.matchup(bid, mix, bundle, Lt, Lw, kb["kappa"], EG.platoon(bats.get(str(bid)), thr))
+            st = (hitters.get(bid) or {}).get("stat") or {}
+            pa = st.get("plateAppearances") or 0
+            k_b = ((st.get("strikeOuts") or 0) + 60 * L["k"]) / (pa + 60) if pa else L["k"]
+            bat_rows.append({**m, "name": names.get(str(bid)) or (hitters.get(bid) or {}).get("name") or str(bid),
+                             "bats": bats.get(str(bid)), "kRate": k_b})
+        w = OC.SLOT_PA[:len(bat_rows)] or [1]
+        wo_sp = sum(wi * b["xwoba"] for wi, b in zip(w, bat_rows)) / sum(w)
+        wo_gen = sum(wi * b["generic"] for wi, b in zip(w, bat_rows)) / sum(w)
+        wo_pen = sum(wi * (Lw + b["level"]) for wi, b in zip(w, bat_rows)) / sum(w)
+        B[s] = {"mix": mix, "batters": bat_rows, "wobaVsSp": wo_sp, "wobaGeneric": wo_gen, "wobaVsPen": wo_pen,
+                "pitchEdge": wo_sp - wo_gen, "hand": thr}
+
+    # ---------------- C. desarrollo: salida del abridor con el gancho medido, vueltas al lineup y bullpen de octubre
+    hook = OC.hook_factor(snap.get("octPost"), snap.get("octPostReg") or {})
+    full = base["sections"]["s4"].get("full") or {}
+    pens = {s: OC.october_pen(full.get(s) or [], EL["rpRa9"]) for s in sides}     # s = equipo dueño del bullpen
+    park = ctx.park_raw.get(game["venue"], {})
+    park_m = 1 + 0.5 * ((park.get("runs") or 100) / 100 - 1)
+    vr5, _ = EG.var_ratio_f5(bundle["results"])
+    lam1_lg = (lg.inning_runs["away"][1] + lg.inning_runs["home"][1]) / 2
+    c1 = -math.log(lg.p_scoreless_half1) / lam1_lg
+
+    def starter_shape(SP, october=True, shift=0.0):
+        """(forma, escala, outs medios de temporada encogidos, outs esperados en este juego)."""
+        outs = [o for o in (SP or {}).get("startsOuts") or [] if o > 0]
+        if len(outs) < 4:
+            shape, scale = OC.weibull_fit([lg_outs * 0.8, lg_outs, lg_outs * 1.2, lg_outs])
+            m_sh = lg_outs
+        else:
+            shape, scale = OC.weibull_fit(outs)
+            m_obs = sum(outs) / len(outs)
+            m_sh = (len(outs) * m_obs + 8 * lg_outs) / (len(outs) + 8)
+            scale *= m_sh / m_obs
+        if not october:
+            return shape, scale, m_sh, m_sh
+        e = max(6.0, OC.post_outs(hook, m_sh) + shift)       # outs esperados en postemporada (regresión medida)
+        shp = hook.get("shape") or shape                      # dispersión medida en postemporada
+        return shp, e / math.gamma(1 + 1 / shp), m_sh, e
+
+    def evaluate(october=True, use_a=True, use_b=True, oct_pen=True, jit=None, shift=0.0):
+        lam, detail = {}, {}
+        for s in sides:                                  # s batea; o = equipo del abridor que enfrenta
+            o = other[s]
+            SP, Bs = sp[o], B[s]
+            shape, scale, m_sh, e_outs = starter_shape(SP, october, shift)
+            dist = OC.outs_dist(shape, scale)
+            frac = OC.inning_fracs(dist)
+            bpo = (SP or {}).get("bfPerOut") or 1.4
+            tto = OC.tto_offsets(3 * bpo, frac)
+            season_bf = m_sh * bpo
+            tto0 = OC.season_tto_mean(season_bf)
+            wo = Lw
+            if Bs:
+                wo = Bs["wobaVsSp"] if use_b else Bs["wobaGeneric"]
+            if SP and use_a:
+                wo += SP["dWobaA"]
+            if jit:
+                wo += jit["sp"][s]
+            sp_off = [0.0] + [OC.off_mult(wo + tto[i] - tto0, Lw, EL["rpa"]) for i in range(1, 10)]
+            if fam_used and SP:                           # D: solo si el efecto es claro en la liga (|t| ≥ 2), encogido
+                sp_off = [x * (1 + fam_eff * min(3, SP["faced"])) for x in sp_off]
+            pen = pens[o]
+            ra9 = (pen["ra9"] if oct_pen else pen["ra9Reg"]) + (jit["pen"][o] if jit else 0.0)
+            pen_off = OC.off_mult(Bs["wobaVsPen"] if Bs else Lw, Lw, EL["rpa"]) * ra9 / EL["rpRa9"]
+            by_inn = OC.runs_by_inning(lg.inning_runs[s], park_m, frac, sp_off, pen_off)
+            lam[s] = (sum(by_inn[1:10]), sum(by_inn[1:6]), by_inn[1])
+            detail[s] = {"frac": frac[1:], "dist": dist, "expOuts": sum(k * p for k, p in enumerate(dist)), "regOuts": m_sh,
+                         "shape": shape, "tto": tto[1:],
+                         "tto0": tto0, "wobaVsSp": wo, "spOff": sp_off[1:], "penOff": pen_off, "penRa9": ra9, "byInning": by_inn[1:]}
+        pa_, ph_, p_home, tie = EG.outcome(lam["away"][0], lam["home"][0], lg.var_ratio, lg.extra_home_win)
+        return lam, detail, pa_, ph_, p_home, tie
+
+    lam, detail, pa_, ph_, p_home, tie = evaluate()
+
+    # incertidumbre: posterior de A, arsenal/nivel de B, gancho y bullpen
+    rng = random.Random(2026)
+    draws = []
+    outs_sd = hook.get("seMean") or 0.5
+    for _ in range(n_draws):
+        jit = {"sp": {}, "pen": {s: rng.gauss(0, 0.35) for s in sides}}
+        for s in sides:
+            SP = sp[other[s]]
+            d = 0.0
+            if SP:
+                post = {}
+                for e in OC.EVENTS:
+                    ev = SP["events"][e]
+                    sd = ev.get("sd") or 0.0
+                    post[e] = min(0.95, max(0.001, ev["post"] + rng.gauss(0, sd)))
+                d += OC.woba_of(post, hit_w) - SP["wobaPost"]
+            d += rng.gauss(0, 0.010)                    # nivel del lineup y arsenal encogidos (≈ 10 puntos de xwOBA)
+            jit["sp"][s] = d
+        draws.append(evaluate(jit=jit, shift=rng.gauss(0, outs_sd))[4])
+    draws.sort()
+    ci = [draws[int(0.05 * len(draws))], draws[int(0.95 * len(draws)) - 1]]
+
+    # ablaciones: qué mueve la predicción
+    ablation = {"noA": evaluate(use_a=False)[4], "noB": evaluate(use_b=False)[4],
+                "noC": evaluate(october=False, oct_pen=False)[4], "noD": evaluate()[4] if not fam_used else None}
+    if fam_used:
+        saved = fam_eff
+        fam_eff = 0.0
+        ablation["noD"] = evaluate()[4]
+        fam_eff = saved
+
+    # mercados
+    total = M.sum_pmf(pa_, ph_)
+    margin = M.margin_probs(ph_, pa_)
+    f5a, f5h = M.negbin_pmf(lam["away"][1], vr5), M.negbin_pmf(lam["home"][1], vr5)
+    f5aw, f5tie, f5hw = M.outcome_probs(f5a, f5h)
+    nrfi = math.exp(-c1 * lam["away"][2]) * math.exp(-c1 * lam["home"][2])
+    h_m15 = sum(v for k, v in margin.items() if k >= 2)
+    a_m15 = sum(v for k, v in margin.items() if k <= -2)
+    kd = {}
+    for s in sides:                                      # ponches del abridor de s contra el lineup de other[s]
+        SP, Bs = sp[s], B[other[s]]
+        if not SP or not Bs:
+            continue
+        k_team = SP["events"]["k"]["post"]
+        opp_k = (teams.get(game[other[s]]) or L)["k"]
+        d = detail[other[s]]["dist"]
+        bpo = SP.get("bfPerOut") or 1.4
+        k_rates, surv = [], []
+        for j in range(36):
+            b = Bs["batters"][j % len(Bs["batters"])]
+            k_rates.append(OC.odds_ratio(k_team, b["kRate"], opp_k))
+            need = int(j / bpo)                          # outs que ya lleva cuando llega el bateador j+1
+            surv.append(sum(p for k, p in enumerate(d) if k > need))
+        kd[s] = OC.k_dist(k_rates, surv)
+    extra = {"methodKey": "octubre", "n": n_draws, "label": "OCTUBRE", "pHome": p_home, "total": total,
+             "runs_away": pa_, "runs_home": ph_, "f5total": M.sum_pmf(f5a, f5h), "f5": {"away": f5aw, "home": f5hw, "tie": f5tie},
+             "nrfi": nrfi, "rl": {f"{h_ab} -1.5": h_m15, f"{a_ab} +1.5": 1 - h_m15, f"{a_ab} -1.5": a_m15, f"{h_ab} +1.5": 1 - a_m15},
+             **{f"k_{s}": v for s, v in kd.items()}}
+    picks = P.build(base, extra)
+    tri = base["sections"]["s5"]["triangulation"]
+    consensus = {"log5": tri["log5"]["pHome"], "elo": tri["elo"]["pHome"], "lambda": tri["lambda"]["pHome"], "octubre": p_home}
+
+    oc = {
+        "A": {"kappa": kap, "pairs": len(pairs), "starts": len(rows), "starters": sp, "events": {e: OC.EV_NAMES[e] for e in OC.EVENTS},
+              "prevWeight": OC.PREV_WEIGHT},
+        "B": {"lineups": {s: ({**B[s], "status": lu_status[s]} if B[s] else None) for s in sides},
+              "kappa": {"pitcher": kp, "batter": kb}, "league": {"xwoba": Lw, "byType": Lt}},
+        "C": {"hook": hook, "pens": pens, "detail": detail, "tto": list(OC.TTO_WOBA), "leagueOuts": lg_outs},
+        "D": {**fam, "used": fam_used, "effect": fam_eff,
+              "applied": {s: (fam_eff * min(3, sp[s]["faced"]) if sp[s] else 0.0) for s in sides}},
+        "ablation": ablation,
+        "league": {**EL, **{f"lg_{k}": v for k, v in L.items()}, "hitW": hit_w},
+        "game": {"lambda": {s: lam[s][0] for s in sides}, "f5": {s: lam[s][1] for s in sides}, "first": {s: lam[s][2] for s in sides},
+                 "pHome": p_home, "tie": tie, "ci90": ci, "draws": len(draws), "nrfi": nrfi, "f5win": {"away": f5aw, "home": f5hw, "tie": f5tie},
+                 "total": total, "runs": {"away": pa_, "home": ph_}, "margin": {str(k): v for k, v in margin.items() if abs(k) <= 12},
+                 "park": {"name": park.get("name"), "runs": park.get("runs"), "mult": park_m}, "varRatio": lg.var_ratio, "varRatioF5": vr5,
+                 "kDist": kd},
+    }
+    oc["reading"] = OC.reading(oc, a_ab, h_ab)
+    lab = {
+        "model": "OCTUBRE", "modelKey": "octubre", "pk": pk, "frozenAt": snap["takenAt"], "firstPitch": game["time"],
+        "label": label, "provisional": label != "pre",     # la versión definitiva se congela antes del juego
+        "tagline": "Postemporada: cómo le va a cada abridor contra ESE rival (Bayes empírico), pitch contra bateador (arsenal) "
+                   "y cómo se desarrolla el juego con el gancho de octubre y el bullpen de confianza",
+        "builtAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "game": {k: base[k] for k in ("pk", "date", "time", "venue", "teams", "weather", "umpire", "series")},
+        "base": base, "picks": picks, "topPicks": picks[:2],
+        "consensus": {"methods": consensus, "pHome": sum(consensus.values()) / 4, "spread": max(consensus.values()) - min(consensus.values())},
+        "octubre": oc, "summaryProb": {"pModel": p_home, "totalDist": total},
+        "result": None, "secondsTotal": time.time() - t0,
+    }
     return lab
 
 

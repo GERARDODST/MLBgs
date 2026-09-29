@@ -14,7 +14,7 @@ Nunca se da un pick sin haber conectado antes todas las partes:
    noticias y lesionados), forma e historial, abridores (regresión a la media), bullpen y fatiga, modelo
    de carreras y triangulación (Log5 · Elo · λ-Binomial Negativa), totales y desarrollo por entradas,
    parque/clima/umpire, lineups, mercado, contradicciones y gate de datos obligatorios.
-2. **Modelo de apoyo del Pro-Lab** cuando el partido lo tiene (DIAMANTE-24, PRISMA, KRONOS, EIGEN u otro):
+2. **Modelo de apoyo del Pro-Lab** cuando el partido lo tiene (DIAMANTE-24, PRISMA, KRONOS, EIGEN, OCTUBRE u otro):
    sus probabilidades entran a los picks y su acuerdo con el framework mueve el stake.
 3. **Cuotas**: el índice de confianza (IC) se recalcula con el momio real; sin momio, cada pick dice
    desde qué momio conviene (escalera de stake).
@@ -89,6 +89,20 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   empezado. Se guardan en la base `db`, colección `momios` (doc = fecha: games por gamePk con ml, rl,
   total y f5); leerla con `ArtifactData` para usar los momios reales en un análisis.
 - La página (`site/template.html`) repite estas cuentas en JavaScript: si se cambia una, cambiar la otra.
+
+## Pro-Lab OCTUBRE (postemporada, `mlbgs/octubre.py` + `prolab.run_octubre`)
+
+- Snapshot con `PROLAB_MODEL=octubre` en `prolab/request.env`: game logs de todos los abridores (≥ 5 aperturas),
+  historial de carrera contra el rival (`vsTeam`), postemporadas de los dos años anteriores y de la actual (abridores
+  y su temporada regular). `python -m mlbgs.prolab --pk <pk> --model octubre --label <label>`.
+- A: Beta-Binomial por evento (K, BB+HBP, HR por bateador; BABIP por bola en juego) centrado en la razón de momios
+  pitcher × equipo × liga; κ por método de momentos quitando el azar binomial y la varianza de estimar μ (método delta).
+  El historial contra el rival suma la temporada anterior a la mitad.
+- B: xwOBA por tipo de lanzamiento (Savant) encogido con κ medidos en la liga (σ² por turno = 0.15); el nivel del
+  bateador sale de su arsenal enfrentado (k = 300). C: outs en postemporada = α + β·promedio de temporada (β acotado
+  a [0, 1]), Weibull con la dispersión medida; castigo por vuelta al lineup; bullpen de octubre por rol y uso.
+  D: familiaridad controlada por fecha; solo carreras y solo con |t| ≥ 2, encogida por (1 − 1/t²).
+- Los κ, el gancho y la familiaridad se recalculan con cada snapshot: no fijarlos a mano.
 
 ## Datos y registro
 
