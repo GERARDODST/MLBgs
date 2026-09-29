@@ -224,6 +224,20 @@ class Bloqueo(unittest.TestCase):
         self.assertNotIn("decision", t)
         self.assertTrue(HI.verify(t))
 
+    def test_pro_lab_congelado_de_nuevo_antes_del_juego_reemplaza_la_version_provisional(self):
+        dec1 = {"status": "esperar", "why": "x", "source": "y", "pick": {"pick": "MIL +1.5", "market": "Run Line", "p": 0.6, "ic": 50},
+                "stake": {"level": 0, "amount": 0, "minPrice": None, "ladder": []}}
+        dec2 = {**dec1, "status": "apostar", "stake": {"level": 4, "amount": 875, "minPrice": -150, "ladder": []}}
+        self.run_update([], [sb("Preview")], "2026-09-24T20:00:00+00:00", labs=[self.lab(dec1)])
+        again = self.run_update([], [sb("Preview")], "2026-09-24T21:00:00+00:00", labs=[self.lab(dec2)])["2026-09-24-1-kronos"]
+        self.assertEqual(again["decision"]["status"], "esperar")          # misma versión congelada: no cambia
+        final = {**self.lab(dec2), "frozenAt": "2026-09-24T22:30:00+00:00", "builtAt": "2026-09-24T22:35:00+00:00"}
+        t = self.run_update([], [sb("Preview")], "2026-09-24T22:40:00+00:00", labs=[final])["2026-09-24-1-kronos"]
+        self.assertEqual(t["decision"]["status"], "apostar")              # congelada de nuevo: manda la nueva
+        self.assertEqual(t["frozenAt"], "2026-09-24T22:30:00+00:00")
+        t = self.run_update([], [sb("Live", 1, 0, detailed="In Progress")], "2026-09-24T23:10:00+00:00", labs=[final])["2026-09-24-1-kronos"]
+        self.assertTrue(HI.verify(t))                                     # y al primer lanzamiento se bloquea esa
+
     def test_alterar_un_ticket_bloqueado_detiene_la_actualizacion(self):
         self.run_update([analysis(0.40)], [sb("Preview")], "2026-09-24T22:50:00+00:00")
         self.run_update([], [sb("Live", 1, 0, detailed="In Progress")], "2026-09-24T23:10:00+00:00")
