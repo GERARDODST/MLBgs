@@ -388,13 +388,23 @@ def main() -> None:
     ap.add_argument("--out", default=OUT_HTML)
     ap.add_argument("--json", help="además escribe el payload como JSON")
     ap.add_argument("--no-save", action="store_true", help="no actualizar data/predictions")
+    ap.add_argument("--from-payload", help="arma la página con un payload ya calculado (rama pagina) sin correr el modelo")
     args = ap.parse_args()
+    if args.from_payload:
+        payload = load_bundle(args.from_payload)
+        write_html(payload, args.out)
+        m = payload.get("meta") or {}
+        print(f"página del corte {m.get('generatedAt')} ({len(payload.get('games') or [])} partidos, "
+              f"{len((payload.get('cambios') or {}).get('events') or [])} cambios) → {args.out} "
+              f"({os.path.getsize(args.out) / 1e6:.2f} MB)", file=sys.stderr)
+        return
     bundle = load_bundle(args.bundle)
     payload = build(bundle, save=not args.no_save)
     write_html(payload, args.out)
     if args.json:
-        with open(args.json, "w", encoding="utf-8") as f:
-            json.dump(payload, f, ensure_ascii=False)
+        opener = gzip.open if args.json.endswith(".gz") else open
+        with opener(args.json, "wt", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, separators=(",", ":"))
     print(f"{len(payload['games'])} partidos → {args.out} ({os.path.getsize(args.out) / 1e6:.2f} MB); "
           f"seguimiento: {payload['track']['n']} partidos evaluados", file=sys.stderr)
 

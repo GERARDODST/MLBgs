@@ -46,7 +46,7 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python -m mlbgs.fetch --out .cache/raw_bundle.json.gz
       - name: Correr el modelo y construir la página
-        run: python -m mlbgs.build --bundle .cache/raw_bundle.json.gz
+        run: python -m mlbgs.build --bundle .cache/raw_bundle.json.gz --json .cache/payload.json.gz
       - name: Guardar los expedientes pendientes para la siguiente corrida
         if: always()
         uses: actions/cache/save@v4
@@ -68,8 +68,11 @@ jobs:
         # la rutina de Claude que republica el artefacto en claude.ai toma de aquí la última página
         if: github.ref == 'refs/heads/main'
         run: |
+          # payload.json.gz: los datos ya calculados; la rutina arma la página con la plantilla del repo
+          # (python -m mlbgs.build --from-payload payload.json.gz). index.html: la misma página, ya armada.
           blob=$(git hash-object -w site/index.html)
-          tree=$(printf "100644 blob %s\tindex.html\n" "$blob" | git mktree)
+          pay=$(git hash-object -w .cache/payload.json.gz)
+          tree=$(printf "100644 blob %s\tindex.html\n100644 blob %s\tpayload.json.gz\n" "$blob" "$pay" | git mktree)
           commit=$(git commit-tree "$tree" -m "Página MLBgs $(date -u +%Y-%m-%dT%H:%MZ)")
           git push -f origin "$commit:refs/heads/pagina" || echo "no se pudo guardar la página en la rama pagina"
       - name: Empaquetar la página
