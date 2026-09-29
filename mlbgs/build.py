@@ -212,9 +212,12 @@ def build(bundle: dict, save: bool = True) -> dict:
     tickets = HI.update(bundle, analyses, labs, generated, save_files=save)
     # qué cambió en la decisión de cada partido desde la corrida anterior (data/cambios)
     tracker = CB.Tracker(now=parse_ts(generated))
-    tracker.decisions(analyses)
-    if save:
-        tracker.save()
+    try:
+        tracker.decisions(analyses)
+        if save:
+            tracker.save()
+    except Exception as e:  # noqa: BLE001 - el registro de cambios no debe tumbar la página
+        print(f"ERROR registrando cambios de decisión: {e!r}", file=sys.stderr)
     dates = sorted({a["date"] for a in analyses} | {g["date"] for g in bundle.get("scoreboard") or [] if g.get("date")})
     lg = ctx.lg
     payload = {
@@ -237,13 +240,21 @@ def build(bundle: dict, save: bool = True) -> dict:
         "live": live,
         "historial": HI.page_view(tickets, generated),
         "stakeCfg": stake_cfg,
-        "cambios": CB.recent([tracker.day(d) for d in dates], parse_ts(generated)),
-        "revision": revision_view(bundle, generated),
+        "cambios": safe(lambda: CB.recent([tracker.day(d) for d in dates], parse_ts(generated)), {"events": [], "games": {}}),
+        "revision": safe(lambda: revision_view(bundle, generated), None),
     }
     for a in payload["games"] + [x["base"] for x in labs]:
         a.pop("markets", None)   # tabla interna de mercados: los picks y las secciones ya la resumen
     payload["prolab"] = None     # compatibilidad: la vista usa `prolabs`
     return rounded(payload)
+
+
+def safe(fn, default):
+    try:
+        return fn()
+    except Exception as e:  # noqa: BLE001
+        print(f"ERROR en un bloque opcional de la página: {e!r}", file=sys.stderr)
+        return default
 
 
 def parse_ts(x: str | None) -> dt.datetime:
