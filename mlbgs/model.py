@@ -144,7 +144,7 @@ def index_odds(raw, teams: dict) -> dict:
         for bk in ev.get("bookmakers", []):
             row = {"book": bk.get("title"), "key": bk.get("key"), "mx": bool(bk.get("mx")), "at": bk.get("last_update"),
                    "ml": {}, "rl": {}, "total": {}, "f5ml": {}, "f5total": {}, "k": {}, "tt": {}, "nrfi": {},
-                   "open": bk.get("open"), "openAt": bk.get("openAt")}
+                   "open": bk.get("open"), "openAt": bk.get("openAt"), "stale": bool(bk.get("stale"))}
             for m in bk.get("markets", []):
                 for o in m.get("outcomes", []):
                     side = "home" if tid(o.get("name", "")) == h else "away" if tid(o.get("name", "")) == a else None
@@ -169,7 +169,8 @@ def index_odds(raw, teams: dict) -> dict:
             books.append(row)
         out[(a, h)].append({"commence": ev.get("commence_time"), "books": books, "pk": ev.get("pk"),
                             "provider": ev.get("provider") or "The Odds API", "checked": ev.get("checked"),
-                            "closed": bool(ev.get("closed"))})
+                            "closed": bool(ev.get("closed")), "verify": ev.get("verify") or {},
+                            "staleSince": ev.get("staleSince")})
     return out
 
 
@@ -193,8 +194,11 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
     ev = min(evs, key=gap)
     if gap(ev) > 6 * 3600:
         return None
-    books = [b for b in ev["books"] if any(b.get(k) for k in ("ml", "total", "f5ml", "f5total", "k", "tt", "nrfi"))]
-    if not books:
+    priced = [b for b in ev["books"] if any(b.get(k) for k in ("ml", "total", "f5ml", "f5total", "k", "tt", "nrfi"))]
+    # el momio visto antes de un cambio de abridor no cuenta (algoritmo 2026.09.29): se muestra aparte
+    stale = [{"book": b["book"], "at": b.get("at"), "ml": b["ml"], "total": b["total"]} for b in priced if b.get("stale")]
+    books = [b for b in priced if not b.get("stale")]
+    if not books and not stale:
         return None
     main_books = [b for b in books if b["ml"] or b["total"]]
     lines = [b["total"]["over"]["point"] for b in books if b["total"].get("over")]
@@ -266,6 +270,7 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
         "refRl": {s: ref(rl_get(s)) for s in SIDES},
         "refTotal": {k: ref(tot_get(k)) for k in ("over", "under")},
         "rlPoint": rl_point,
+        "verify": ev.get("verify") or {}, "stale": stale, "staleSince": ev.get("staleSince"),
     }
 
 
@@ -1599,6 +1604,8 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
         "hasOdds": odds is not None, "nBooks": odds["nBooks"] if odds else 0, "books": books,
         "nMx": odds["nMx"] if odds else 0, "provider": odds.get("provider") if odds else None,
         "checked": odds.get("checked") if odds else None, "closed": odds.get("closed") if odds else None,
+        "verify": (odds or {}).get("verify") or {}, "stale": (odds or {}).get("stale") or [],
+        "staleSince": (odds or {}).get("staleSince"),
         "ref": ({"ml": odds["refMl"], "rl": odds["refRl"], "total": odds["refTotal"], "rlPoint": odds["rlPoint"],
                  "f5": odds.get("refF5") or {}, "f5total": odds.get("refF5Total") or {}}
                 if odds else None),

@@ -15,10 +15,13 @@ import math
 import os
 import sys
 
+from . import cadencia as CA
+from . import cambios as CB
 from . import decision as DE
 from . import historial as HI
 from . import markov as MK
 from . import model
+from . import odds as OD
 from . import picks as PK
 from . import prisma as PRI
 from . import prolab as PL
@@ -66,7 +69,16 @@ def prediction_row(a: dict, generated: str) -> dict:
         "probables": {k: v["name"] for k, v in s["probables"].items()},
         "light": s["light"], "best": {k: (s["best"] or {}).get(k) for k in ("market", "pick", "p", "price", "edge", "light")},
         "topPicks": [{k: p.get(k) for k in ("family", "market", "pick", "p", "line", "ic", "level")} for p in a.get("picks", [])[:2]],
+        # la decisión única del partido: The Odds API prioriza su mercado (mlbgs/odds.py, market_needs)
+        "decision": decision_row(a.get("decision")),
     }
+
+
+def decision_row(d: dict | None) -> dict | None:
+    if not d:
+        return None
+    return {"status": d.get("status"), "waitFor": d.get("waitFor"), "family": (d.get("pick") or {}).get("family"),
+            "pick": (d.get("pick") or {}).get("pick"), "level": (d.get("stake") or {}).get("level", 0)}
 
 
 def save_predictions(analyses: list[dict], generated: str) -> None:
@@ -186,18 +198,24 @@ def build(bundle: dict, save: bool = True) -> dict:
             errors.append({"pk": g["pk"], "error": repr(e)})
             print(f"ERROR analizando {g['pk']}: {e!r}", file=sys.stderr)
     generated = bundle["meta"]["generatedAt"]
-    if save:
-        save_predictions(analyses, generated)
     checks = V.validate(bundle)
     labs = load_prolabs(bundle, save)
     lab = next((x for x in labs if x.get("modelKey") == "diamante"), labs[0] if labs else None)
-    live = live_view(bundle, ctx, labs)
-    track = evaluate(bundle)
     # stake de cada pick (usa el historial ya calificado) antes de registrar los tickets, para que quede guardado
     prev = HI.load() or HI.update(bundle, analyses, labs, generated, save_files=False)
     stake_cfg = ST.attach(analyses, labs, prev)
     DE.attach(analyses, labs, stake_cfg["track"])     # una decisión por partido: framework + modelo + cuotas
+    if save:
+        save_predictions(analyses, generated)         # con la decisión: The Odds API prioriza su mercado
+    live = live_view(bundle, ctx, labs)
+    track = evaluate(bundle)
     tickets = HI.update(bundle, analyses, labs, generated, save_files=save)
+    # qué cambió en la decisión de cada partido desde la corrida anterior (data/cambios)
+    tracker = CB.Tracker(now=parse_ts(generated))
+    tracker.decisions(analyses)
+    if save:
+        tracker.save()
+    dates = sorted({a["date"] for a in analyses} | {g["date"] for g in bundle.get("scoreboard") or [] if g.get("date")})
     lg = ctx.lg
     payload = {
         "meta": {**bundle["meta"], "builtAt": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
@@ -219,11 +237,33 @@ def build(bundle: dict, save: bool = True) -> dict:
         "live": live,
         "historial": HI.page_view(tickets, generated),
         "stakeCfg": stake_cfg,
+        "cambios": CB.recent([tracker.day(d) for d in dates], parse_ts(generated)),
+        "revision": revision_view(bundle, generated),
     }
     for a in payload["games"] + [x["base"] for x in labs]:
         a.pop("markets", None)   # tabla interna de mercados: los picks y las secciones ya la resumen
     payload["prolab"] = None     # compatibilidad: la vista usa `prolabs`
     return rounded(payload)
+
+
+def parse_ts(x: str | None) -> dt.datetime:
+    try:
+        return dt.datetime.fromisoformat(str(x).replace("Z", "+00:00"))
+    except (TypeError, ValueError):
+        return dt.datetime.now(dt.timezone.utc)
+
+
+def revision_view(bundle: dict, generated: str) -> dict:
+    """Cada cuánto se revisa todo y cuántos créditos de momios quedan (para la página)."""
+    now = parse_ts(generated)
+    times = [parse_ts(g["time"]) for g in bundle.get("upcoming") or [] if g.get("time")]
+    usage = OD.load_usage()
+    day = (usage.get("calls") or {}).get(now.strftime("%Y-%m-%d")) or {}
+    return {"cadence": CA.plan(times, now), "odds": (bundle.get("meta") or {}).get("odds"),
+            "credits": {"day": day.get("the-odds-api", 0), "dayCap": OD.THE_DAY_CREDITS, "reserve": OD.RESERVE,
+                        "month": (usage.get("theCredits") or {}).get(now.strftime("%Y-%m"), 0),
+                        "monthCap": OD.THE_MONTH_CREDITS, "espn": day.get("espn", 0)},
+            "changes": (bundle.get("meta") or {}).get("cambios")}
 
 
 def live_view(bundle: dict, ctx: model.Context, labs: list[dict] | None = None) -> dict:
