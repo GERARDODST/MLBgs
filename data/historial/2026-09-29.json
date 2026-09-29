@@ -2371,7 +2371,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T23:16:42+00:00",
+  "registeredAt": "2026-09-29T23:32:43+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4974,
@@ -2498,16 +2498,16 @@
     "line": 7.5,
     "p": 0.5407,
     "fair": -118.0,
-    "ic": 48.1,
+    "ic": 45.9,
     "level": "Baja",
-    "price": -102,
+    "price": -105,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "level": 2,
+     "level": 0,
      "ladder": [
       {
        "level": 1,
@@ -2536,7 +2536,8 @@
      "a": 1.0,
      "h": 0.999,
      "r": 1.0,
-     "maxPrice": 126
+     "maxPrice": 126,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -2599,9 +2600,9 @@
     "line": null,
     "p": 0.5026,
     "fair": -101.0,
-    "ic": 39.6,
-    "level": "Muy baja",
-    "price": 103,
+    "ic": 43.0,
+    "level": "Baja",
+    "price": 108,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -2648,13 +2649,13 @@
     "principal": false,
     "family": "RL",
     "market": "Run Line",
-    "pick": "SD +1.5",
+    "pick": "CHC +1.5",
     "line": null,
-    "p": 0.6331,
-    "fair": -173.0,
+    "p": 0.6738,
+    "fair": -207.0,
     "ic": 37.6,
     "level": "Muy baja",
-    "price": -208,
+    "price": -207,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -2666,22 +2667,22 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -151
+       "from": -180
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -129
+       "from": -153
       }
      ],
      "steps": [
-      -151,
-      -149,
-      -142,
-      -135,
-      -129,
-      -123,
-      -118,
+      -180,
+      -177,
+      -168,
+      -160,
+      -153,
+      -146,
+      -139,
       null,
       null,
       null
@@ -2690,7 +2691,7 @@
      "a": 1.0,
      "h": 0.999,
      "r": 1.0,
-     "maxPrice": -115,
+     "maxPrice": -135,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
