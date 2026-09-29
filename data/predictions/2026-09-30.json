@@ -1,0 +1,222 @@
+[
+{
+"pk": 849841,
+"date": "2026-09-30",
+"time": "2026-09-30T18:00:00Z",
+"generatedAt": "2026-09-29T04:06:56+00:00",
+"away": "PHI",
+"home": "ATL",
+"pHome": 0.5338,
+"methods": {
+"log5": 0.5622,
+"elo": 0.5171,
+"lambda": 0.5221
+},
+"confidence": "alta",
+"projAway": 4.0581,
+"projHome": 4.2961,
+"total": 8.3542,
+"f5Away": 2.2393,
+"f5Home": 2.4192,
+"nrfi": 0.5195,
+"pOver85": 0.4326,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Rojo",
+"best": {
+"market": "ML",
+"pick": "ATL",
+"p": 0.5338,
+"price": null,
+"edge": null,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "ATL",
+"p": 0.5338,
+"line": null,
+"ic": 34.8978,
+"level": "Muy baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "PHI +1.5",
+"p": 0.6322,
+"line": null,
+"ic": 31.8,
+"level": "Muy baja"
+}
+]
+},
+{
+"pk": 849846,
+"date": "2026-09-30",
+"time": "2026-09-30T21:00:00Z",
+"generatedAt": "2026-09-29T04:06:56+00:00",
+"away": "CWS",
+"home": "HOU",
+"pHome": 0.488,
+"methods": {
+"log5": 0.5015,
+"elo": 0.502,
+"lambda": 0.4606
+},
+"confidence": "alta",
+"projAway": 5.0901,
+"projHome": 4.6576,
+"total": 9.7478,
+"f5Away": 2.8616,
+"f5Home": 2.8087,
+"nrfi": 0.4476,
+"pOver85": 0.5585,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Rojo",
+"best": {
+"market": "Team total",
+"pick": "HOU Under 4.5",
+"p": 0.554,
+"price": null,
+"edge": null,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "CWS",
+"p": 0.512,
+"line": null,
+"ic": 35.6737,
+"level": "Muy baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "CWS +1.5",
+"p": 0.6731,
+"line": null,
+"ic": 31.8,
+"level": "Muy baja"
+}
+]
+},
+{
+"pk": 849848,
+"date": "2026-09-30",
+"time": "2026-10-01T00:00:00Z",
+"generatedAt": "2026-09-29T04:06:56+00:00",
+"away": "BOS",
+"home": "NYY",
+"pHome": 0.5506,
+"methods": {
+"log5": 0.561,
+"elo": 0.5665,
+"lambda": 0.5244
+},
+"confidence": "alta",
+"projAway": 3.7346,
+"projHome": 3.9919,
+"total": 7.7266,
+"f5Away": 2.0377,
+"f5Home": 2.3397,
+"nrfi": 0.5387,
+"pOver85": 0.374,
+"probables": {
+"away": "Sonny Gray",
+"home": "Max Fried"
+},
+"light": "Gris",
+"best": {
+"market": "ML",
+"pick": "NYY",
+"p": 0.5506,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "NYY",
+"p": 0.5506,
+"line": null,
+"ic": 39.6755,
+"level": "Muy baja"
+},
+{
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Over 3.5",
+"p": 0.5442,
+"line": 3.5,
+"ic": 35.9328,
+"level": "Muy baja"
+}
+]
+},
+{
+"pk": 849842,
+"date": "2026-09-30",
+"time": "2026-10-01T02:00:00Z",
+"generatedAt": "2026-09-29T04:06:56+00:00",
+"away": "CHC",
+"home": "SD",
+"pHome": 0.4914,
+"methods": {
+"log5": 0.4787,
+"elo": 0.5226,
+"lambda": 0.4728
+},
+"confidence": "alta",
+"projAway": 4.8183,
+"projHome": 4.5311,
+"total": 9.3494,
+"f5Away": 2.7922,
+"f5Home": 2.6746,
+"nrfi": 0.4608,
+"pOver85": 0.5235,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Gris",
+"best": {
+"market": "Team total",
+"pick": "SD Over 3.5",
+"p": 0.5604,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "CHC",
+"p": 0.5086,
+"line": null,
+"ic": 33.9264,
+"level": "Muy baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "CHC +1.5",
+"p": 0.6665,
+"line": null,
+"ic": 31.8,
+"level": "Muy baja"
+}
+]
+}
+]
