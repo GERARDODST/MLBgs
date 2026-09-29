@@ -589,7 +589,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:50:59+00:00",
+  "registeredAt": "2026-09-29T16:15:14+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4808,
@@ -615,9 +615,9 @@
     "line": null,
     "p": 0.6959,
     "fair": -229.0,
-    "ic": 42.9,
+    "ic": 42.5,
     "level": "Baja",
-    "price": -195,
+    "price": -196,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -666,9 +666,9 @@
     "line": null,
     "p": 0.5192,
     "fair": -108.0,
-    "ic": 42.5,
+    "ic": 40.4,
     "level": "Baja",
-    "price": 105,
+    "price": 102,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -707,7 +707,7 @@
      "h": 1.0056,
      "r": 1.0,
      "maxPrice": 138,
-     "why": "confianza menor a 55 con ese momio"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -772,7 +772,7 @@
     "fair": -108.0,
     "ic": 32.7,
     "level": "Muy baja",
-    "price": -115,
+    "price": -118,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1071,7 +1071,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:50:59+00:00",
+  "registeredAt": "2026-09-29T16:15:14+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5549,
@@ -1097,9 +1097,9 @@
     "line": null,
     "p": 0.5549,
     "fair": -125.0,
-    "ic": 46.2,
+    "ic": 42.8,
     "level": "Baja",
-    "price": -135,
+    "price": -140,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1109,36 +1109,11 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -110
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": -103
-      }
-     ],
-     "steps": [
-      -110,
-      -110,
-      -110,
-      -108,
-      -103,
-      101,
-      106,
-      111,
-      116,
-      null
-     ],
-     "block": null,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
      "a": 1.0,
      "h": 1.0056,
-     "r": 1.0,
-     "maxPrice": 119,
-     "why": "edge menor a 3 pp con ese momio"
+     "r": 1.0
     }
    },
    {
@@ -1435,7 +1410,7 @@
     "fair": -166.0,
     "ic": 26.7,
     "level": "Muy baja",
-    "price": -206,
+    "price": -193,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
