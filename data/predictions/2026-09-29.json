@@ -3,7 +3,7 @@
 "pk": 849845,
 "date": "2026-09-29",
 "time": "2026-09-29T18:00:00Z",
-"generatedAt": "2026-09-29T16:54:56+00:00",
+"generatedAt": "2026-09-29T17:03:00+00:00",
 "away": "PHI",
 "home": "ATL",
 "pHome": 0.5455,
@@ -44,13 +44,13 @@
 "level": "Alta"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Under 6.5",
-"p": 0.5052,
-"line": 6.5,
-"ic": 48.498,
-"level": "Baja"
+"family": "Team total",
+"market": "Team total ATL",
+"pick": "ATL Under 3.5",
+"p": 0.5893,
+"line": 3.5,
+"ic": 70.1774,
+"level": "Alta"
 }
 ],
 "decision": {
@@ -65,53 +65,53 @@
 "pk": 849849,
 "date": "2026-09-29",
 "time": "2026-09-29T21:00:00Z",
-"generatedAt": "2026-09-29T16:15:14+00:00",
+"generatedAt": "2026-09-29T17:03:00+00:00",
 "away": "CWS",
 "home": "HOU",
-"pHome": 0.4808,
+"pHome": 0.4818,
 "methods": {
 "log5": 0.5015,
 "elo": 0.496,
-"lambda": 0.4448
+"lambda": 0.4479
 },
 "confidence": "media",
-"projAway": 4.6768,
-"projHome": 4.1011,
-"total": 8.7779,
-"f5Away": 2.4817,
-"f5Home": 2.2886,
-"nrfi": 0.5233,
-"pOver85": 0.4718,
+"projAway": 4.7723,
+"projHome": 4.222,
+"total": 8.9943,
+"f5Away": 2.5324,
+"f5Home": 2.356,
+"nrfi": 0.5149,
+"pOver85": 0.4916,
 "probables": {
 "away": "Hagen Smith",
 "home": "AJ Blubaugh"
 },
-"light": "Amarillo",
+"light": "Gris",
 "best": {
-"market": "Run Line",
-"pick": "CWS +1.5",
-"p": 0.6959,
-"price": -196,
-"edge": 0.0338,
-"light": "Amarillo"
+"market": "Prop pitcher",
+"pick": "AJ Blubaugh Under 2.5 K",
+"p": 0.6314,
+"price": null,
+"edge": null,
+"light": "Gris"
 },
 "topPicks": [
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "CWS +1.5",
-"p": 0.6959,
+"p": 0.6912,
 "line": null,
-"ic": 42.5261,
+"ic": 42.3493,
 "level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "CWS",
-"p": 0.5192,
+"p": 0.5182,
 "line": null,
-"ic": 40.4092,
+"ic": 41.9628,
 "level": "Baja"
 }
 ],

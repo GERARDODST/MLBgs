@@ -352,6 +352,38 @@
    "kind": "decision",
    "pk": 849845,
    "text": "Decisión: apostar PHI +1.5 · stake 7 → esperar momio (ATL Over 2.5) · tras: movimiento"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-29T17:03:10Z",
+   "date": "2026-09-29",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849849,
+   "side": "away",
+   "text": "Lineup confirmado (CWS)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-29T17:03:10Z",
+   "date": "2026-09-29",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849849,
+   "side": "home",
+   "text": "Lineup confirmado (HOU)"
+  },
+  {
+   "after": "Alex MacKay",
+   "at": "2026-09-29T17:03:10Z",
+   "date": "2026-09-29",
+   "game": "CWS @ HOU",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849849,
+   "text": "Umpire de home asignado: Alex MacKay"
   }
  ],
  "snap": {
@@ -605,13 +637,52 @@
     "status": "esperar",
     "waitFor": "momio"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 117,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     803011,
+     691019,
+     678246,
+     808959,
+     643217,
+     671976,
+     695731,
+     805367,
+     695657
+    ],
+    "home": [
+     665161,
+     670541,
+     670623,
+     514888,
+     673237,
+     572233,
+     828599,
+     701358,
+     666211
+    ]
    },
-   "names": {},
+   "names": {
+    "514888": "Jose Altuve",
+    "572233": "Christian Walker",
+    "643217": "Andrew Benintendi",
+    "665161": "Jeremy Peña",
+    "666211": "Taylor Trammell",
+    "670541": "Yordan Alvarez",
+    "670623": "Isaac Paredes",
+    "671976": "Tristan Peters",
+    "673237": "Yainer Diaz",
+    "678246": "Miguel Vargas",
+    "691019": "Kyle Teel",
+    "695657": "Colson Montgomery",
+    "695731": "Braden Montgomery",
+    "701358": "Cam Smith",
+    "803011": "Sam Antonacci",
+    "805367": "Chase Meidroth",
+    "808959": "Munetaka Murakami",
+    "828599": "Lucas Spence"
+   },
    "odds": {
     "line": 8.0,
     "ml": {
@@ -702,13 +773,19 @@
     "944536",
     "944539"
    ],
-   "ump": null,
+   "ump": "Alex MacKay",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Roof Closed",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 72.0
+   }
   },
   "849851": {
    "away": 111,
