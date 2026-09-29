@@ -1154,7 +1154,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "c14d5849d178"
+   "code": "523b8bafbf1f"
   },
   "analyses": [
    "Contexto del partido",
@@ -1169,7 +1169,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:14:31+00:00",
+  "registeredAt": "2026-09-29T20:22:27+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4818,
@@ -1741,7 +1741,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "c14d5849d178"
+   "code": "523b8bafbf1f"
   },
   "analyses": [
    "Contexto del partido",
@@ -1756,7 +1756,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:14:31+00:00",
+  "registeredAt": "2026-09-29T20:22:27+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5547,
@@ -2226,7 +2226,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "c14d5849d178"
+   "code": "523b8bafbf1f"
   },
   "analyses": [
    "Contexto del partido",
@@ -2241,7 +2241,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:14:31+00:00",
+  "registeredAt": "2026-09-29T20:22:27+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4912,
@@ -2366,13 +2366,13 @@
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
-    "pick": "F5 Under 4.5",
-    "line": 4.5,
-    "p": 0.5477,
-    "fair": -121.0,
+    "pick": "F5 Over 4.0",
+    "line": 4.0,
+    "p": 0.5217,
+    "fair": -109.0,
     "ic": 36.4,
     "level": "Muy baja",
-    "price": null,
+    "price": -112,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -2384,21 +2384,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -103
+       "from": 108
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 114
+       "from": 126
       }
      ],
      "steps": [
-      -103,
-      -101,
-      104,
-      109,
-      114,
-      119,
+      108,
+      110,
+      115,
+      121,
+      126,
+      132,
       null,
       null,
       null,
@@ -2408,8 +2408,8 @@
      "a": 1.0,
      "h": 1.0056,
      "r": 1.0,
-     "maxPrice": 123,
-     "why": "sin momio real: conviene si pagan -103 o mejor"
+     "maxPrice": 137,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -2649,26 +2649,26 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan -103 o mejor (stake 1); stake 5 desde +114",
+   "why": "falta el momio de Prop de ponches: conviene si pagan -105 o mejor (stake 1); stake 5 desde +112",
    "source": "Framework v2",
-   "pick": "F5 Under 4.5",
+   "pick": "Michael King Over 4.5 K",
    "waitFor": "momio",
-   "market": "Total primeras 5",
-   "p": 0.5477,
-   "ic": 36.4,
+   "market": "Prop de ponches",
+   "p": 0.5564,
+   "ic": 34.9,
    "level": 0,
    "amount": 0,
-   "minPrice": -103,
+   "minPrice": -105,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -103
+     "from": -105
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 114
+     "from": 112
     }
    ]
   }
