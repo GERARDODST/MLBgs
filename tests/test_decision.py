@@ -55,9 +55,16 @@ class Decision(unittest.TestCase):
         self.assertIn("-120", d["why"])
         b["stake"].update(level=0, why="edge menor a 3 pp con ese momio")
         d = DE.decide(g, [a, b])
-        self.assertEqual((d["status"], d["pick"]["pick"]), ("no apostar", a["pick"]))
+        # el de más confianza cae en el filtro contra el mercado: se verifica ESE pick (algoritmo 2026.09.29.3)
+        self.assertEqual((d["status"], d["waitFor"], d["pick"]["pick"]), ("esperar", "verificar", a["pick"]))
         self.assertIn("momio de referencia (-105)", d["why"])
-        self.assertIn("verificar", d["why"])
+        self.assertIn("se verifica", d["why"])
+        self.assertEqual(d["stake"]["level"], 0)
+        # aunque haya otro candidato sin momio, no se salta a esperar el momio de ese otro mercado
+        c = copy.deepcopy(b)
+        c.update(pick="Otro mercado", ic=60.0, priceIsReal=False, stake={"block": None, "ladder": lad, "level": 0})
+        d = DE.decide(g, [a, b, c])
+        self.assertEqual((d["status"], d["waitFor"], d["pick"]["pick"]), ("esperar", "verificar", a["pick"]))
 
     def test_checklist_conecta_todo_el_analisis(self):
         keys = {"Contexto y motivación", "Forma e historial", "Abridores", "Bullpen y fatiga", "Modelo de carreras",

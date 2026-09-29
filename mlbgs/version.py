@@ -13,6 +13,12 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CAMBIOS = [
+    {"version": "2026.09.29.3", "fecha": "2026-09-29", "cambios": [
+        "Si el pick de más confianza cae en el filtro contra el mercado (edge ≥ 10 pp a su momio real), la decisión es "
+        "«esperar · verificar» ese pick (lesiones, descansos, lineup) en lugar de saltar a otro mercado sin momio.",
+        "El modelo del Pro-Lab entra completo al expediente de Claude; una conclusión de Claude hecha sin el modelo "
+        "del Pro-Lab actual deja de mandar hasta volver a analizar.",
+    ]},
     {"version": "2026.09.29.2", "fecha": "2026-09-29", "cambios": [
         "Pro-Lab OCTUBRE (postemporada): historial del abridor contra el rival con Bayes empírico (κ medido en la liga), "
         "matchup por tipo de lanzamiento, salida del abridor con el gancho medido en postemporadas 2024-2025, bullpen de "

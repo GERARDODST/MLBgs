@@ -24,7 +24,10 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 5. **Conclusión de Claude**: la página manda el expediente completo del partido a Claude (capacidad
    `sample` del artefacto, al pulsar «Analizar con Claude») y muestra su decisión final con el porqué.
    Claude elige solo entre los picks candidatos y nunca sube el stake por encima de lo que permiten
-   las reglas. Cuando el análisis lo haga Claude en una sesión (Pro-Lab, check-ins), seguir el mismo
+   las reglas. El expediente incluye el modelo del Pro-Lab completo (`labBrief` en la página: en OCTUBRE,
+   historial contra el rival, pitch contra bateador, gancho y bullpen de octubre, familiaridad y ablación); una
+   conclusión de Claude hecha sin el modelo del Pro-Lab actual (otro `frozenAt`) deja de mandar y la página pide
+   «volver a analizar». Cuando el análisis lo haga Claude en una sesión (Pro-Lab, check-ins), seguir el mismo
    orden y cerrar con una sola opción y su stake.
 
 ## Stake 1–10 por confianza (`mlbgs/stake.py`)
@@ -42,7 +45,9 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 - Solo con semáforo Verde a ese momio: edge ≥ 3 pp, IC ≥ 55, sin dato obligatorio faltante, guion que
   acompaña y contradicción no alta. Tope sugerido de $7,500 por día (la cartera avisa; no recorta).
 - Filtro contra el mercado: con edge ≥ 10 pp no hay stake (se verifica: lesión, descanso, lineup). La
-  escalera guarda `maxPrice`, el momio más alto que todavía pasa el filtro.
+  escalera guarda `maxPrice`, el momio más alto que todavía pasa el filtro. Si el pick de más confianza cae en el
+  filtro a su momio real, la decisión es «esperar · verificar» ESE pick (`waitFor: verificar`, algoritmo
+  2026.09.29.3); no se salta a otro mercado sin momio.
 - Momios automáticos como SofaScore (`mlbgs/odds.py`): ESPN sin clave (su marcador público publica los de
   su casa socia, DraftKings, con apertura y actual; una llamada por fecha; `ODDS_ESPN=0` lo apaga);
   The Odds API (`ODDS_API_KEY`, plan gratis de 500 créditos/mes, sin tarjeta) SOLO para lo que ESPN no trae:
