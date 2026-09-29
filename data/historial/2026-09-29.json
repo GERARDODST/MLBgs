@@ -1886,7 +1886,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T22:29:16+00:00",
+  "registeredAt": "2026-09-29T22:37:10+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5547,
@@ -1912,9 +1912,9 @@
     "line": 7.5,
     "p": 0.6215,
     "fair": -164.0,
-    "ic": 50.1,
+    "ic": 50.6,
     "level": "Baja",
-    "price": -141,
+    "price": -140,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -2018,7 +2018,7 @@
     "fair": -129.0,
     "ic": 38.7,
     "level": "Muy baja",
-    "price": -139,
+    "price": -135,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -2318,12 +2318,12 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-141)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-140)",
    "source": "Framework v2",
    "pick": "Cam Schlittler Under 7.5 K",
    "market": "Prop de ponches",
    "p": 0.6215,
-   "ic": 50.1,
+   "ic": 50.6,
    "level": 2,
    "amount": 625,
    "minPrice": -144,
