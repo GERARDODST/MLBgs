@@ -1628,7 +1628,7 @@
     if (a.src === "ninguna") return "ningún feed automático trae este mercado: captura el momio de tu casa";
     const nx = a.next ? new Date(a.next).getTime() : null, soon = nx != null && nx <= Date.now();
     const when = nx == null ? "" : soon ? "en la próxima revisión" : `a las ${fmtTime(a.next)}`;
-    if (!a.at) return nx == null ? "The Odds API ya no lo pide antes del juego: captura el momio de tu casa" : `The Odds API lo pide ${when}${soon ? "" : " (12 h antes del juego)"}`;
+    if (!a.at) return nx == null ? "The Odds API ya no lo pide antes del juego: captura el momio de tu casa" : `The Odds API lo pide ${when}`;
     if (a.got === 0) return `pedido a The Odds API a las ${fmtTime(a.at)}: ninguna casa lo publica todavía${nx != null ? `; otro intento ${when}` : "; captura el momio de tu casa"}`;
     return `pedido a The Odds API a las ${fmtTime(a.at)}${isNum(a.got) ? ` (${a.got} casa${a.got === 1 ? "" : "s"}, sin precio para esta línea)` : ""}${nx != null ? `; se vuelve a pedir ${when}` : ""}`;
   }

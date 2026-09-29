@@ -25,6 +25,16 @@ STEPS = ((150, 420, "partido en ≤ 2.5 h: lineups y cambios de último minuto")
          (360, 780, "partido en ≤ 6 h"),
          (None, 1500, "sin partidos cerca"))
 RUN_MIN = 5          # lo que tarda una corrida, para decir cada cuánto se revisa
+# horario de update.yml (UTC): cada 20 min de 15:00 a 05:59 (más el relevo) y una corrida suelta a las 12:00
+RUN_HOURS = frozenset(range(0, 6)) | frozenset(range(15, 24))
+
+
+def first_run_after(t: dt.datetime) -> dt.datetime:
+    """La primera corrida de producción desde `t`: de 06:00 a 11:59 UTC no hay (la de las 12:00), ni de 12:01 a 14:59."""
+    if t.hour in RUN_HOURS:
+        return t
+    noon = t.replace(hour=12, minute=0, second=0, microsecond=0)
+    return noon if t <= noon else t.replace(hour=15, minute=0, second=0, microsecond=0)
 
 
 def _ts(x):

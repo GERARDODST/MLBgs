@@ -925,9 +925,13 @@ def is_stale(book: dict, since: str | None) -> bool:
 def ask_view(e: dict, now: dt.datetime, since: str | None = None) -> dict:
     """Por mercado de The Odds API: cuándo se pidió, cuántas casas lo traían y cuándo se vuelve a pedir si es el
     de la decisión (prioridad 1). Con esto la página dice cuándo llega el momio que se espera."""
+    from .cadencia import first_run_after          # la hora real: de 06:00 a 11:59 UTC no hay corridas
     out = {}
     for m in F5_MARKETS.values():
         nxt = next_ask(e, m, now, WINDOW[1], since)
+        nxt = first_run_after(max(nxt, now)) if nxt else None
+        start = _ts(e.get("start"))
+        nxt = nxt if nxt and start and nxt < start else None
         out[m] = {"at": (e.get("theAt") or {}).get(m), "got": (e.get("theGot") or {}).get(m),
                   "empty": (e.get("theEmpty") or {}).get(m, 0), "next": _iso(nxt) if nxt else None}
     return out
