@@ -807,7 +807,8 @@ def _median(xs):
 def verify(books: dict, away: str = "visita", home: str = "local") -> dict:
     """DraftKings (ESPN) contra el consenso de las demás casas, por mercado, con los últimos momios.
 
-    ml: probabilidad sin vig del local · total: la línea y la probabilidad sin vig del Over en esa línea.
+    ml: probabilidad sin vig del local · rl: la del local en el mismo hándicap · total: la línea y la probabilidad
+    sin vig del Over en esa línea.
     status: ok · difiere (≥ 3 pp o línea distinta) · una fuente (sin otra casa con qué comparar)."""
     out = {}
     ml = {bk: _no_vig((b.get("ml") or {}).get("home"), (b.get("ml") or {}).get("away")) for bk, b in books.items()}
@@ -828,6 +829,29 @@ def verify(books: dict, away: str = "visita", home: str = "local") -> dict:
         else:
             r.update(status="una fuente", text="Moneyline: una sola casa, sin otra con qué comparar")
         out["ml"] = r
+    # run line: la probabilidad sin vig de cubrir del local en el mismo hándicap que DraftKings (o el más común)
+    pts = {bk: ((b.get("rl") or {}).get("home") or {}).get("point") for bk, b in books.items()}
+    pts = {k: v for k, v in pts.items() if v is not None and ((books[k].get("rl") or {}).get("away") or {}).get("price") is not None}
+    if pts:
+        vals = list(pts.values())
+        pt = pts.get(ANCHOR, max(set(vals), key=vals.count))
+        rl = {bk: _no_vig(books[bk]["rl"]["home"]["price"], books[bk]["rl"]["away"]["price"]) for bk, x in pts.items() if x == pt}
+        others = {k: v for k, v in rl.items() if k != ANCHOR}
+        r = {"n": len(rl)}
+        side = f"{home} {pt:+g}"
+        if ANCHOR in rl and others:
+            cons = _median(others.values())
+            diff = rl[ANCHOR] - cons
+            r.update(diff=round(diff * 100, 1), status="difiere" if abs(diff) >= VERIFY_PP else "ok",
+                     text=f"Run line {side}: DraftKings {rl[ANCHOR] * 100:.1f}% y la mediana de otras {len(others)} "
+                          f"casa{'s' if len(others) > 1 else ''} {cons * 100:.1f}% ({abs(diff) * 100:.1f} pp de diferencia)")
+        elif len(rl) > 1:
+            spread = max(rl.values()) - min(rl.values())
+            r.update(diff=round(spread * 100, 1), status="difiere" if spread >= VERIFY_PP else "ok",
+                     text=f"Run line {side}: {len(rl)} casas entre {min(rl.values()) * 100:.1f}% y {max(rl.values()) * 100:.1f}%")
+        else:
+            r.update(status="una fuente", text="Run line: una sola casa, sin otra con qué comparar")
+        out["rl"] = r
     lines = {bk: (b.get("total") or {}).get("over", {}).get("point") for bk, b in books.items()}
     lines = {k: v for k, v in lines.items() if v is not None}
     if lines:

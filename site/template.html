@@ -1851,8 +1851,27 @@ ${brief}`;
       <p class="muted">Datos de este corte: ${esc(fmtStamp(D.meta.generatedAt))} (${esc(agoTxt(D.meta.generatedAt))}). La página publicada muestra el último corte con el que se publicó.</p></div></details>`;
   }
   let CHG_FLT = store.get("mlbgs-chgflt") || "todo";
+  // varios movimientos menores del mismo equipo a la misma hora (p. ej. el roster de postemporada) = una sola fila
+  function groupMoves(list) {
+    const out = [], seen = new Map();
+    list.forEach((e) => {
+      if (e.kind !== "movimiento" || e.impact !== "bajo") { out.push(e); return; }
+      const k = `${e.pk}|${e.at}|${e.side || ""}`;
+      const g = seen.get(k);
+      if (g) { g.items.push(e); return; }
+      const x = { ...e, items: [e] };
+      seen.set(k, x);
+      out.push(x);
+    });
+    return out.map((x) => {
+      if (!x.items || x.items.length < 3) return x.items ? x.items : [x];
+      const who = (x.text.split(":")[0] || "").trim();
+      const det = x.items.map((i) => i.text.replace(/^[^:]+:\s*/, "")).join(" · ");
+      return [{ ...x, text: `${who}: ${x.items.length} movimientos menores del roster`, action: det.length > 320 ? det.slice(0, 317) + "…" : det }];
+    }).flat();
+  }
   function changesPanel(sel) {
-    const evs = (CHG.events || []).filter((e) => e.date === sel);
+    const evs = groupMoves((CHG.events || []).filter((e) => e.date === sel));
     if (!CHG_FILTERS.some(([k]) => k === CHG_FLT)) CHG_FLT = "todo";
     const shown = evs.filter((e) => chgMatch(e, CHG_FLT));
     const nAlto = evs.filter((e) => e.impact === "alto").length;
@@ -1875,7 +1894,7 @@ ${brief}`;
   const chgHot = (pk) => { const c = (CHG.games || {})[String(pk)]; return !!(c && c.top === "alto" && Date.now() - Date.parse(c.topAt) <= 6 * 3600e3); };
   // en el partido: qué cambió y el momio que ya no cuenta
   function gameChanges(g) {
-    const evs = chgOf(g.pk), S = g.sections.s7 || {};
+    const evs = groupMoves(chgOf(g.pk)), S = g.sections.s7 || {};
     const stale = (S.stale || []).filter((x) => x.ml && (isNum(x.ml.away) || isNum(x.ml.home)));
     if (!evs.length && !stale.length) return "";
     return `<section class="chg chg-game" id="cambios"><div class="chg-head"><h2>Qué cambió</h2><span class="muted">${evs.length} cambio${evs.length === 1 ? "" : "s"} desde que se sigue el partido</span></div>
@@ -1886,7 +1905,7 @@ ${brief}`;
   // verificación entre casas del tablero de momios
   function verifyHtml(S) {
     const v = S.verify || {};
-    const ks = ["ml", "total"].filter((k) => v[k]);
+    const ks = ["ml", "rl", "total"].filter((k) => v[k]);
     if (!ks.length) return "";
     const lab = { ok: ["ok", "✓ Coincide"], difiere: ["warn", "! Difiere"], "una fuente": ["info", "Una fuente"] };
     const single = ks.every((k) => v[k].status === "una fuente");
