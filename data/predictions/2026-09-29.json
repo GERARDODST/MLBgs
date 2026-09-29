@@ -199,7 +199,7 @@
 "pk": 849843,
 "date": "2026-09-29",
 "time": "2026-09-30T02:00:00Z",
-"generatedAt": "2026-09-29T20:22:27+00:00",
+"generatedAt": "2026-09-29T20:30:25+00:00",
 "away": "CHC",
 "home": "SD",
 "pHome": 0.4912,
@@ -231,34 +231,34 @@
 },
 "topPicks": [
 {
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "CHC F5",
-"p": 0.5354,
-"line": null,
-"ic": 46.7694,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Matthew Boyd Over 3.5 K",
+"p": 0.6675,
+"line": 3.5,
+"ic": 68.7167,
+"level": "Media"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.5",
-"p": 0.5377,
-"line": 7.5,
-"ic": 45.9906,
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Michael King Over 4.5 K",
+"p": 0.5564,
+"line": 4.5,
+"ic": 51.3665,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "K",
 "pick": "Michael King Over 4.5 K",
-"level": 0,
+"level": 2,
 "alts": [
+"K",
 "F5",
-"Total",
-"RL"
+"Total"
 ]
 }
 }

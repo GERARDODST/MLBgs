@@ -558,16 +558,27 @@
    "kind": "decision",
    "pk": 849843,
    "text": "Decisión: esperar momio (F5 Under 4.5) → esperar momio (Michael King Over 4.5 K)"
+  },
+  {
+   "after": "apostar Michael King Over 4.5 K · stake 2",
+   "at": "2026-09-29T20:30:25Z",
+   "before": "esperar momio (Michael King Over 4.5 K)",
+   "date": "2026-09-29",
+   "game": "CHC @ SD",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849843,
+   "text": "Decisión: esperar momio (Michael King Over 4.5 K) → apostar Michael King Over 4.5 K · stake 2"
   }
  ],
  "snap": {
   "849843": {
    "away": 112,
    "dec": {
-    "level": 0,
+    "level": 2,
     "pick": "Michael King Over 4.5 K",
-    "status": "esperar",
-    "waitFor": "momio"
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 135,

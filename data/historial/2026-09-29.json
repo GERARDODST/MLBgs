@@ -1154,7 +1154,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "523b8bafbf1f"
+   "code": "548cf1aef543"
   },
   "analyses": [
    "Contexto del partido",
@@ -1169,7 +1169,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:22:27+00:00",
+  "registeredAt": "2026-09-29T20:30:25+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4818,
@@ -1741,7 +1741,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "523b8bafbf1f"
+   "code": "548cf1aef543"
   },
   "analyses": [
    "Contexto del partido",
@@ -1756,7 +1756,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:22:27+00:00",
+  "registeredAt": "2026-09-29T20:30:25+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5547,
@@ -2169,7 +2169,7 @@
     "fair": -165.0,
     "ic": 27.9,
     "level": "Muy baja",
-    "price": -194,
+    "price": -193,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -2226,7 +2226,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29.4",
-   "code": "523b8bafbf1f"
+   "code": "548cf1aef543"
   },
   "analyses": [
    "Contexto del partido",
@@ -2241,7 +2241,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T20:22:27+00:00",
+  "registeredAt": "2026-09-29T20:30:25+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4912,
@@ -2261,6 +2261,107 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Matthew Boyd Over 3.5 K",
+    "line": 3.5,
+    "p": 0.6675,
+    "fair": -201.0,
+    "ic": 68.7,
+    "level": "Media",
+    "price": -108,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -162
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -137
+      }
+     ],
+     "steps": [
+      -162,
+      -158,
+      -151,
+      -144,
+      -137,
+      -131,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 1.0056,
+     "r": 1.0,
+     "maxPrice": -132,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Michael King Over 4.5 K",
+    "line": 4.5,
+    "p": 0.5564,
+    "fair": -125.0,
+    "ic": 51.4,
+    "level": "Baja",
+    "price": 100,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 2,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -105
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 112
+      }
+     ],
+     "steps": [
+      -105,
+      -102,
+      102,
+      107,
+      112,
+      117,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 1.0056,
+     "r": 1.0,
+     "maxPrice": 119
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "CHC F5",
@@ -2310,8 +2411,8 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 4,
+    "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 7.5",
@@ -2336,7 +2437,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 5,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
@@ -2346,7 +2447,7 @@
     "fair": -161.0,
     "ic": 36.4,
     "level": "Muy baja",
-    "price": -210,
+    "price": -211,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -2362,7 +2463,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 6,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -2413,7 +2514,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 7,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -2463,108 +2564,6 @@
      "r": 1.0,
      "maxPrice": 144,
      "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Michael King Over 4.5 K",
-    "line": 4.5,
-    "p": 0.5564,
-    "fair": -125.0,
-    "ic": 34.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -105
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 112
-      }
-     ],
-     "steps": [
-      -105,
-      -102,
-      102,
-      107,
-      112,
-      117,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 1.0056,
-     "r": 1.0,
-     "maxPrice": 119,
-     "why": "sin momio real: conviene si pagan -105 o mejor"
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Matthew Boyd Under 4.5 K",
-    "line": 4.5,
-    "p": 0.521,
-    "fair": -109.0,
-    "ic": 33.7,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 112
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 131
-      }
-     ],
-     "steps": [
-      112,
-      115,
-      120,
-      126,
-      131,
-      138,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 1.0056,
-     "r": 1.0,
-     "maxPrice": 137,
-     "why": "sin momio real: conviene si pagan +112 o mejor"
     }
    },
    {
@@ -2648,16 +2647,15 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de Prop de ponches: conviene si pagan -105 o mejor (stake 1); stake 5 desde +112",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+100)",
    "source": "Framework v2",
    "pick": "Michael King Over 4.5 K",
-   "waitFor": "momio",
    "market": "Prop de ponches",
    "p": 0.5564,
-   "ic": 34.9,
-   "level": 0,
-   "amount": 0,
+   "ic": 51.4,
+   "level": 2,
+   "amount": 625,
    "minPrice": -105,
    "ladder": [
     {
