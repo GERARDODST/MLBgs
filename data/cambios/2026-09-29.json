@@ -310,6 +310,48 @@
    "pk": 849849,
    "side": "away",
    "text": "CWS: 11 movimientos del roster (Jonathan Cannon, Shane Smith, Drew Romo, Tyler Davis, Joey Bart, Tyler Schweitzer…)"
+  },
+  {
+   "at": "2026-09-29T16:55:08Z",
+   "date": "2026-09-29",
+   "game": "PHI @ ATL",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849845,
+   "side": "home",
+   "text": "ATL: 3 movimientos del roster (Lane Thomas, Bryce Elder, Bryce Elder)"
+  },
+  {
+   "action": "El modelo ya usa el roster nuevo.",
+   "at": "2026-09-29T16:55:08Z",
+   "date": "2026-09-29",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "movimiento",
+   "pk": 849843,
+   "side": "home",
+   "text": "SD: San Diego Padres placed C Rodolfo Durán on the 60-day injured list."
+  },
+  {
+   "at": "2026-09-29T16:55:08Z",
+   "date": "2026-09-29",
+   "game": "CHC @ SD",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849843,
+   "side": "home",
+   "text": "SD: 14 movimientos del roster (Jeremiah Estrada, Gage Workman, JP Sears, Sung-Mun Song, Garrett Hawkins, Jhony Brito…)"
+  },
+  {
+   "after": "esperar momio (ATL Over 2.5)",
+   "at": "2026-09-29T16:54:56Z",
+   "before": "apostar PHI +1.5 · stake 7",
+   "date": "2026-09-29",
+   "game": "PHI @ ATL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849845,
+   "text": "Decisión: apostar PHI +1.5 · stake 7 → esperar momio (ATL Over 2.5) · tras: movimiento"
   }
  ],
  "snap": {
@@ -389,7 +431,22 @@
     "944428",
     "944429",
     "944430",
-    "944431"
+    "944431",
+    "944701",
+    "944702",
+    "944704",
+    "944705",
+    "944709",
+    "944710",
+    "944711",
+    "944712",
+    "944713",
+    "944714",
+    "944715",
+    "944716",
+    "944717",
+    "944718",
+    "944719"
    ],
    "ump": null,
    "verify": {
@@ -402,10 +459,10 @@
   "849845": {
    "away": 143,
    "dec": {
-    "level": 7,
-    "pick": "PHI +1.5",
-    "status": "apostar",
-    "waitFor": null
+    "level": 0,
+    "pick": "ATL Over 2.5",
+    "status": "esperar",
+    "waitFor": "momio"
    },
    "detailed": "Pre-Game",
    "home": 144,
@@ -521,7 +578,10 @@
     "944397",
     "944398",
     "944399",
-    "944400"
+    "944400",
+    "944721",
+    "944725",
+    "944727"
    ],
    "ump": "Dan Merzel",
    "verify": {
