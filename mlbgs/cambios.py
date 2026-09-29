@@ -222,7 +222,19 @@ def tx_events(bundle: dict, g: dict, seen: set, now: dt.datetime, teams: str, la
         side = "away" if t.get("team") == g.get("away") else "home"
         out.append(_ev(now, g, "movimiento", imp, f"{label_of(side)}: {text}", side=side, teams=teams,
                        action="El modelo ya usa el roster nuevo." if imp != "bajo" else None))
-    return out
+        out[-1]["who"] = t.get("name") or str(t.get("person"))
+    # muchos movimientos menores del mismo equipo (p. ej. el roster de postemporada) van en una sola línea
+    grouped = []
+    for side in ("away", "home"):
+        low = [e for e in out if e.get("side") == side and e["impact"] == "bajo"]
+        if len(low) > 2:
+            names = [e["who"] for e in low]
+            grouped.append(_ev(now, g, "movimiento", "bajo", f"{label_of(side)}: {len(low)} movimientos del roster "
+                               f"({', '.join(names[:6])}{'…' if len(names) > 6 else ''})", side=side, teams=teams))
+            out = [e for e in out if e not in low]
+    for e in out:
+        e.pop("who", None)
+    return out + grouped
 
 
 def no_vig_home(ml: dict) -> float | None:

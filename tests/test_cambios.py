@@ -126,6 +126,18 @@ class CambiosDeLaMlb(unittest.TestCase):
         t2 = self.run_at(b, "2026-09-23T15:20:00")
         self.assertEqual(t2.new, [])                          # ya visto
 
+    def test_muchos_movimientos_menores_van_juntos(self):
+        self.run_at(self.b, "2026-09-23T14:00:00")
+        b = copy.deepcopy(self.b)
+        b["transactions"] = [{"id": 900 + i, "date": "2026-09-23", "type": "Status Change", "code": "SC", "team": 110,
+                              "person": 5000 + i, "name": f"Jugador {i}", "text": f"RHP Jugador {i} roster status changed."}
+                             for i in range(9)]
+        t = self.run_at(b, "2026-09-23T15:00:00")
+        mv = [e for e in t.new if e["kind"] == "movimiento"]
+        self.assertEqual(len(mv), 1)
+        self.assertIn("9 movimientos del roster", mv[0]["text"])
+        self.assertNotIn("who", mv[0])
+
     def test_decision_que_cambia(self):
         a = {"pk": 824223, "date": "2026-09-23", "teams": {"away": {"abbr": "WSH"}, "home": {"abbr": "DET"}},
              "decision": {"status": "apostar", "pick": {"pick": "DET ML"}, "stake": {"level": 5}}}
@@ -265,6 +277,33 @@ class MomiosPorPrioridadYVerificacion(unittest.TestCase):
         self.assertIn("DraftKings pone 9.0", solo["total"]["text"])
         one = O.verify({"draftkings": row(-150, 130)})
         self.assertEqual(one["ml"]["status"], "una fuente")
+        # run line (lo que se pide para verificar un pick de RL): mismo hándicap que DraftKings
+        rl = lambda h, a: {"rl": {"home": {"point": -1.5, "price": h}, "away": {"point": 1.5, "price": a}}}  # noqa: E731
+        v = O.verify({"draftkings": rl(118, -143), "fanduel": rl(122, -146), "betmgm": rl(118, -145),
+                      "betrivers": rl(110, -134)}, "PHI", "ATL")
+        self.assertEqual(v["rl"]["status"], "ok")
+        self.assertEqual(v["rl"]["n"], 4)
+        self.assertIn("Run line ATL -1.5", v["rl"]["text"])
+
+
+class VerificacionEntraAlStake(unittest.TestCase):
+    def test_casas_que_solo_traen_run_line_cuentan_para_la_referencia(self):
+        b = load()
+        g = next(x for x in b["upcoming"] if x["pk"] == 824223)
+        home, away = "Detroit Tigers", "Washington Nationals"
+
+        def book(key, rl_home, rl_away, ml=None):
+            ms = [{"key": "spreads", "outcomes": [{"name": home, "price": rl_home, "point": -1.5},
+                                                   {"name": away, "price": rl_away, "point": 1.5}]}]
+            if ml:
+                ms.append({"key": "h2h", "outcomes": [{"name": home, "price": ml[0]}, {"name": away, "price": ml[1]}]})
+            return {"key": key, "title": key.title(), "markets": ms}
+        b["odds"] = [{"pk": 824223, "home_team": home, "away_team": away, "commence_time": g["time"], "bookmakers": [
+            book("draftkings", 150, -180, ml=(-120, 100)), book("fanduel", 140, -165), book("betmgm", 140, -165)]}]
+        o = model.odds_for_game(model.Context(b), g)
+        self.assertEqual(o["nBooks"], 3)
+        self.assertEqual(o["refRl"]["away"][0], -165)                  # mediana de las 3 casas, no solo DraftKings
+        self.assertIn("mediana de 3", o["refRl"]["away"][1])
 
 
 class MovimientoDeMomios(unittest.TestCase):

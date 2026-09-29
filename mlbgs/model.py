@@ -194,13 +194,13 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
     ev = min(evs, key=gap)
     if gap(ev) > 6 * 3600:
         return None
-    priced = [b for b in ev["books"] if any(b.get(k) for k in ("ml", "total", "f5ml", "f5total", "k", "tt", "nrfi"))]
+    priced = [b for b in ev["books"] if any(b.get(k) for k in ("ml", "rl", "total", "f5ml", "f5total", "k", "tt", "nrfi"))]
     # el momio visto antes de un cambio de abridor no cuenta (algoritmo 2026.09.29): se muestra aparte
     stale = [{"book": b["book"], "at": b.get("at"), "ml": b["ml"], "total": b["total"]} for b in priced if b.get("stale")]
     books = [b for b in priced if not b.get("stale")]
     if not books and not stale:
         return None
-    main_books = [b for b in books if b["ml"] or b["total"]]
+    main_books = [b for b in books if b["ml"] or b["total"] or b["rl"]]
     lines = [b["total"]["over"]["point"] for b in books if b["total"].get("over")]
     main_line = statistics.mode(lines) if lines else None
     f5_lines = [b["f5total"]["over"]["point"] for b in books if (b.get("f5total") or {}).get("over")]
