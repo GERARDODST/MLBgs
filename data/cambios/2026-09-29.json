@@ -602,6 +602,17 @@
    "kind": "umpire",
    "pk": 849843,
    "text": "Umpire de home asignado: Ramon De Jesus"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-29T22:29:23Z",
+   "date": "2026-09-29",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849843,
+   "side": "away",
+   "text": "Lineup confirmado (CHC)"
   }
  ],
  "snap": {
@@ -616,7 +627,17 @@
    "detailed": "Pre-Game",
    "home": 135,
    "lu": {
-    "away": [],
+    "away": [
+     691718,
+     608324,
+     683737,
+     673548,
+     664023,
+     663538,
+     699393,
+     608348,
+     621020
+    ],
     "home": [
      665487,
      669392,
@@ -632,12 +653,21 @@
    "names": {
     "592518": "Manny Machado",
     "593428": "Xander Bogaerts",
+    "608324": "Alex Bregman",
+    "608348": "Carson Kelly",
+    "621020": "Dansby Swanson",
     "630105": "Jake Cronenworth",
+    "663538": "Nico Hoerner",
+    "664023": "Ian Happ",
     "664034": "Ty France",
     "665487": "Fernando Tatis Jr.",
     "669134": "Luis Campusano",
     "669392": "Samad Taylor",
     "669720": "Austin Hays",
+    "673548": "Seiya Suzuki",
+    "683737": "Michael Busch",
+    "691718": "Pete Crow-Armstrong",
+    "699393": "Pedro Ramírez",
     "701538": "Jackson Merrill"
    },
    "odds": {
@@ -1192,7 +1222,7 @@
     "cond": "Cloudy",
     "dir": "cruzado",
     "speed": 4,
-    "temp": 68.0
+    "temp": 69.0
    }
   }
  }
