@@ -87,6 +87,17 @@ MODELS = {
             ["Monte Carlo por lanzamiento", "20,000 partidos simulados lanzamiento a lanzamiento con las reglas de 2026."],
         ],
     },
+    "octubre": {
+        "name": "OCTUBRE", "full": "Framework v2 + OCTUBRE", "kind": "Postemporada: pitcher contra el rival",
+        "analyses": [
+            ["Encogimiento pitcher × rival", "Bayes empírico Beta-Binomial: cuánto vale el historial del abridor contra ese equipo (K, BB, HR, BABIP) con κ medido en toda la liga."],
+            ["Matchup por tipo de lanzamiento", "Arsenal del abridor contra cómo batea cada hombre del lineup a cada pitch (xwOBA de Savant encogido) y mano."],
+            ["Gancho de postemporada", "Outs de los abridores en las postemporadas 2024-2026 contra su promedio de temporada; salida con Weibull."],
+            ["Vueltas al lineup", "La 3.ª vuelta castiga más; el gancho corto la recorta."],
+            ["Bullpen de octubre", "Los relevistas de confianza cargan más entradas; los de relleno casi no lanzan."],
+            ["Familiaridad (prueba)", "Efecto de haber enfrentado al rival antes en la temporada; solo entra si es claro en la liga."],
+        ],
+    },
     "eigen": {
         "name": "EIGEN", "full": "Framework v2 + EIGEN", "kind": "Componentes principales (PCA)",
         "analyses": [

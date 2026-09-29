@@ -514,6 +514,11 @@
   .m-prisma { --mc: var(--home); }
   .m-kronos { --mc: var(--verde); }
   .m-eigen { --mc: var(--amarillo); }
+  .m-octubre { --mc: var(--rojo); }
+  .stack { display: grid; gap: 14px; }
+  .stack > * { min-width: 0; }
+  .read-list { display: grid; gap: 6px; font-size: 14px; line-height: 1.5; padding: 0; margin: 10px 0 0; list-style: none; }
+  .read-list li { border-left: 3px solid var(--grid); padding-left: 10px; }
   .mdot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--mc); margin-right: 7px; vertical-align: baseline; }
   .tk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 12px; }
   .ticket { position: relative; display: flex; flex-direction: column; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--mc); border-radius: 12px; padding: 12px 14px; color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
@@ -2849,9 +2854,10 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     diamante: { name: ["DIAMANTE", "-24"], kind: "Cadenas de Markov + Monte Carlo", tagline: "Probabilidad de cada turno al bate + cadena de Markov de 24 situaciones base-out + Monte Carlo del partido completo", tech: ["24 estados base-out", "Matriz fundamental (I − Q)⁻¹", "Cadena de 216 estados", "Log5 multinomial", "Monte Carlo 50,000"] },
     prisma: { name: ["PRISMA", ""], kind: "Probabilidad bayesiana avanzada", tech: ["GLM jerárquico", "Bayes empírico (EM)", "Laplace + Cholesky", "Predictiva con fragilidad", "WP en vivo", "Validación fuera de muestra"] },
     eigen: { name: ["EIGEN", ""], kind: "Componentes principales (PCA)", tech: ["PCA de pitchers", "PCA de bateadores", "Regresión sobre componentes", "Validación cruzada 10 folds", "Bootstrap de estabilidad", "Binomial Negativa", "PCA de equipos y métodos"] },
+    octubre: { name: ["OCTUBRE", ""], kind: "Postemporada: pitcher contra el rival", tech: ["Bayes empírico Beta-Binomial", "κ medido en la liga", "Matchup por tipo de lanzamiento", "Gancho de postemporada medido", "Weibull de salida", "Vueltas al lineup", "Bullpen de octubre", "Familiaridad (prueba)"] },
     kronos: { name: ["KRONOS", ""], kind: "Procesos estocásticos", tech: ["Cadena de Markov de la cuenta", "N = (I − Q)⁻¹", "Cadena base-out", "Proceso de conteo del abridor", "HMM y fragilidad", "Browniano de Stern", "Monte Carlo por lanzamiento"] },
   };
-  const labTotal = (lab) => (labKey(lab) === "diamante" ? lab.mc.total.reduce((acc, v, k) => acc + k * v, 0) : labKey(lab) === "kronos" ? lab.kronos.mc.total.reduce((acc, v, k) => acc + k * v, 0) : labKey(lab) === "eigen" ? lab.eigen.game.total.reduce((acc, v, k) => acc + k * v, 0) : lab.prisma.predictive.meanTotal);
+  const labTotal = (lab) => (labKey(lab) === "diamante" ? lab.mc.total.reduce((acc, v, k) => acc + k * v, 0) : labKey(lab) === "kronos" ? lab.kronos.mc.total.reduce((acc, v, k) => acc + k * v, 0) : labKey(lab) === "eigen" ? lab.eigen.game.total.reduce((acc, v, k) => acc + k * v, 0) : labKey(lab) === "octubre" ? lab.octubre.game.total.reduce((acc, v, k) => acc + k * v, 0) : lab.prisma.predictive.meanTotal);
   const liveOf = (pk) => ((D.live && D.live.games) || []).find((x) => x.pk === pk);
 
   function labCard(lab) {
@@ -2859,11 +2865,13 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
     const cons = lab.consensus, P = lab.prisma;
     const state = res ? `<span class="stpill ok">Final ${esc(a.abbr)} ${res.away}–${res.home} ${esc(h.abbr)} · ${res.hits} ✓ ${res.misses} ✗</span>`
       : lv && inPlay(lv) ? `<span class="live-dot">En vivo · ${esc(a.abbr)} ${lv.ar ?? 0}–${lv.hr ?? 0} ${esc(h.abbr)}</span>`
+      : lab.provisional ? `<span class="stpill part">Provisional · ${fmtStamp(lab.frozenAt)}</span>`
       : `<span class="stpill ok">Congelado ${fmtStamp(lab.frozenAt)}</span>`;
     const kpis = [[pc(cons.pHome, 1), `P(${h.abbr}) consenso`], [f(labTotal(lab), 1), "Total esperado"],
       k === "prisma" ? [`${pc(P.posterior.q05, 0)}–${pc(P.posterior.q95, 0)}`, "Intervalo creíble 90%"]
         : k === "kronos" ? [f(lab.kronos.league.pitchesPA, 2), "Lanzamientos por turno (liga)"]
-        : k === "eigen" ? [`${pc(lab.eigen.game.ci90[0], 0)}–${pc(lab.eigen.game.ci90[1], 0)}`, "Intervalo 90% (bootstrap)"] : [pc(lab.mc.nrfi, 0), "NRFI simulado"]];
+        : k === "eigen" ? [`${pc(lab.eigen.game.ci90[0], 0)}–${pc(lab.eigen.game.ci90[1], 0)}`, "Intervalo 90% (bootstrap)"]
+        : k === "octubre" ? [`${pc(lab.octubre.C.hook.hook, 0)}`, "Gancho de postemporada (outs)"] : [pc(lab.mc.nrfi, 0), "NRFI simulado"]];
     return `<a class="lab-card" href="#lab${lab.pk}">
       <div class="lc-top"><span class="eyebrow">${esc(info.kind)}</span>${state}</div>
       <span class="mname">${esc(info.name[0])}<span>${esc(info.name[1])}</span></span>
@@ -2879,14 +2887,14 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   function viewProLabList() {
     app.innerHTML = `<div class="page-head"><p class="eyebrow">Pro-Lab · pruebas de modelo</p><h1>Modelos de prueba con datos congelados antes del primer lanzamiento</h1>
       <p class="lede">Cada modelo se corre sobre un partido real con los datos congelados antes del juego (sin fuga de información) y se califica contra el resultado oficial. Toca una tarjeta para ver todo el modelo: matrices, distribuciones, validación y picks.</p></div>
-      ${LABS.length ? `<div class="lab-cards">${LABS.slice().sort((x, y) => ["diamante", "prisma", "kronos", "eigen"].indexOf(labKey(x)) - ["diamante", "prisma", "kronos", "eigen"].indexOf(labKey(y))).map(labCard).join("")}</div>` : `<div class="empty">El Pro-Lab todavía no tiene partidos congelados.</div>`}
+      ${LABS.length ? `<div class="lab-cards">${LABS.slice().sort((x, y) => ["octubre", "diamante", "prisma", "kronos", "eigen"].indexOf(labKey(x)) - ["octubre", "diamante", "prisma", "kronos", "eigen"].indexOf(labKey(y))).map(labCard).join("")}</div>` : `<div class="empty">El Pro-Lab todavía no tiene partidos congelados.</div>`}
       ${footer()}`;
   }
 
   function viewLab(lab, showBase) {
     if (showBase) { viewGame(lab.base, `#lab${lab.pk}`, "← Volver al modelo"); return; }
     const k = labKey(lab);
-    if (k === "prisma") viewPrisma(lab); else if (k === "kronos") viewKronos(lab); else if (k === "eigen") viewEigen(lab); else viewDiamante(lab);
+    if (k === "prisma") viewPrisma(lab); else if (k === "kronos") viewKronos(lab); else if (k === "eigen") viewEigen(lab); else if (k === "octubre") viewOctubre(lab); else viewDiamante(lab);
   }
 
   function viewDiamante(lab) {
@@ -3497,15 +3505,152 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   }
 
   // ---------------------------------------------------------------- Pro-Lab dentro del partido: cómo se complementan
+  // ---------------------------------------------------------------- OCTUBRE: postemporada, pitcher contra el rival
+  function viewOctubre(lab) {
+    const g = lab.game, a = g.teams.away, h = g.teams.home, O = lab.octubre, G = O.game, cons = lab.consensus, res = lab.result, base = lab.base;
+    const A = O.A, Bm = O.B, C = O.C, Dm = O.D, ab = { away: a.abbr, home: h.abbr }, col = { away: "var(--away)", home: "var(--home)" };
+    const oth = (s) => (s === "away" ? "home" : "away");
+    const frozen = new Date(lab.frozenAt), first = new Date(lab.firstPitch), built = new Date(lab.builtAt);
+    const mins = Math.round((first - frozen) / 60000), minsBuilt = Math.round((first - built) / 60000);
+    const gmap = Object.fromEntries(((res && res.graded) || []).map((x) => [x.pick, x]));
+    const top = (lab.topPicks || []).map((p, i) => pickCard(p, lab.pk, i + 1, gmap[p.pick])).join("");
+    const total = meanDist(G.total), H = C.hook;
+    const sg = (v, d = 2) => (isNum(v) ? signed(v, d) : "—");
+    const pts = (v) => (isNum(v) ? signed(1000 * v, 0) : "—");                       // wOBA en puntos (×1000)
+    const ipOf = (o) => `${Math.floor(o / 3)}.${o % 3}`;
+    const ev = A.events, EVK = ["k", "bb", "hr", "babip"];
+    const pp = (v, d = 1) => (isNum(v) ? `${(100 * v).toFixed(d)}%` : "—");
+    const abl = O.ablation, dpp = (v) => (isNum(v) ? `${sg(100 * (v - G.pHome), 1)} pp` : "—");
+    // A: κ por evento
+    const kapRows = EVK.map((e) => { const k = A.kappa[e] || {}; const w = (n) => (k.kappa ? n / (n + k.kappa) : 0);
+      return tr([td(`<b>${esc(ev[e])}</b>`), tdn(k.pairs ?? "—"), tdn(isNum(k.n) ? Math.round(k.n).toLocaleString("es-MX") : "—"),
+        tdn(isNum(k.rho) ? `${f(1000 * k.rho, 1)} <span class="muted">(${f(1000 * k.ci[0], 1)} a ${f(1000 * k.ci[1], 1)})</span>` : "—"),
+        tdn(k.kappa ? Math.round(k.kappa).toLocaleString("es-MX") : "∞"), tdn(pc(w(50), 0)), tdn(pc(w(100), 0))]); });
+    const starterA = (s) => { const S = A.starters[s]; if (!S) return `<p class="muted">Sin abridor anunciado.</p>`;
+      const rows = (S.starts || []).map((x) => tr([td(esc(fmtShort(x.date))), tdn(ipOf(x.outs)), tdn(x.bf), tdn(x.k), tdn(x.bb), tdn(x.hr), tdn(x.er ?? "—")]));
+      const evRows = EVK.map((e) => { const x = S.events[e]; return tr([td(esc(ev[e])), tdn(pp(x.season)), tdn(pp(x.mu)), tdn(x.raw != null ? pp(x.raw) : "—"),
+        tdn(isNum(x.n) ? f(x.n, 0) : "—"), tdn(pc(x.w, 0)), tdn(`<b>${pp(x.post)}</b>`), tdn(isNum(x.mult) ? `×${f(x.mult, 2)}` : "—")]); });
+      return `<div class="panel"><h3 class="sub" style="margin-top:0"><span class="mdot" style="--mc:${col[s]}"></span>${esc(S.name)} (${esc(ab[s])}) contra ${esc(ab[oth(s)])}</h3>
+        <p class="note">${S.faced} apertura${S.faced === 1 ? "" : "s"} contra ${esc(ab[oth(s)])} en 2026 · ${S.bf} bateadores${S.prevBf ? ` · ${S.prevBf} más en 2025 (cuentan a la mitad)` : ""} · ${ipOf(S.outs || 0)} entradas, ${S.er} carreras limpias.</p>
+        ${rows.length ? table(["Fecha", "~EL", "~BF", "~K", "~BB", "~HR", "~CL"], rows) : ""}
+        ${table(["Evento", "~Temporada", "~Esperado vs este rival", "~Observado vs rival", "~n", "~Peso del historial", "~Posterior", "~Efecto"], evRows)}
+        <p class="formula">Efecto del historial en el wOBA que permite: ${pts(S.dWobaA)} puntos (${f(S.wobaMu, 3)} esperado → ${f(S.wobaPost, 3)}).</p></div>`; };
+    // B: arsenal y lineup
+    const sideB = (s) => { const L_ = Bm.lineups[s]; if (!L_) return ""; const P_ = A.starters[oth(s)];
+      const mix = table(["Lanzamiento", "~Uso", "~xwOBA observado", "~xwOBA encogido", "~Liga"], L_.mix.map((m) => tr([td(esc(m.name)), tdn(pc(m.usage, 0)), tdn(f(m.xwobaObs, 3)), tdn(`<b>${f(m.xwoba, 3)}</b>`), tdn(f(Bm.league.byType[m.type], 3))])));
+      const bats = table(["#", "Bateador", "B", "~Nivel vs liga", "~Por lanzamiento", "~Mano", "~xwOBA vs abridor"], L_.batters.map((b, i) => tr([tdn(i + 1), td(esc(b.name)), td(esc(b.bats || "")), tdn(pts(b.level)), tdn(pts(b.pitchEdge)), tdn(pts(b.platoon)), tdn(`<b>${f(b.xwoba, 3)}</b>`)])));
+      return `<div class="panel"><h3 class="sub" style="margin-top:0">${esc(ab[s])} batea contra ${esc(P_ ? P_.name : "abridor")} <span class="code">lineup ${esc(L_.status.toLowerCase())}</span></h3>
+        <div class="two"><div>${mix}</div><div>${bats}</div></div>
+        <p class="formula">Lineup ponderado por turnos: xwOBA ${f(L_.wobaVsSp, 3)} contra el abridor (sin el detalle por lanzamiento ${f(L_.wobaGeneric, 3)}; diferencia ${pts(L_.pitchEdge)} puntos) · ${f(L_.wobaVsPen, 3)} contra el bullpen · liga ${f(Bm.league.xwoba, 3)}</p></div>`; };
+    // C: salida, bullpen y carreras por entrada
+    const inn = [...Array(9).keys()].map((i) => String(i + 1));
+    const stay = groupedBars(["away", "home"].map((s) => ({ name: `${A.starters[s] ? A.starters[s].name : ab[s]} (${ab[s]})`, color: col[s], values: C.detail[oth(s)].frac })), inn, { w: 560, h: 170, label: "Parte de cada entrada que cubre el abridor" });
+    const penTable = (s) => { const P_ = C.pens[s]; return `<div><h3 class="sub">Bullpen de ${esc(ab[s])} <span class="muted">RA9 ${f(P_.ra9Reg, 2)} en temporada → ${f(P_.ra9, 2)} en octubre</span></h3>
+      ${table(["Relevista", "Rol", "~RA9 esperado", "~% temporada", "~% octubre"], P_.rows.slice(0, 9).map((r) => tr([td(esc(r.name)), td(esc(r.role || "")), tdn(f(r.ra9, 2)), tdn(pc(r.shareReg, 0)), tdn(`<b>${pc(r.shareOct, 0)}</b>`)])))}</div>`; };
+    const innRows = ["away", "home"].map((s) => tr([td(`<b>${esc(ab[s])}</b>`), ...C.detail[s].byInning.map((v) => tdn(f(v, 2))), tdn(`<b>${f(G.lambda[s], 2)}</b>`)]));
+    const yearRows = Object.entries(H.byYear || {}).map(([y, v]) => tr([td(esc(y)), tdn(v.starts), tdn(f(v.outsReg, 1)), tdn(f(v.outsPost, 1)), tdn(pc(v.outsPost / v.outsReg, 0))]));
+    const dRows = [["k", "Ponches"], ["bb", "Bases por bolas"], ["hr", "Jonrones"], ["runs", "Carreras"]].map(([k, n]) => { const x = Dm[k]; if (!x) return tr([td(n), td("—"), td("—"), td("—"), td("—")]);
+      return tr([td(esc(n)), tdn(`${sg(100 * x.slope, 1)}%`), tdn(`${f(100 * x.se, 1)}%`), tdn(f(x.t, 1)), td(k === "runs" ? (Dm.used ? `<span class="tag ok">Entra (${sg(100 * x.shrunk, 1)}% por vez)</span>` : `<span class="tag">No entra (|t| < 2)</span>`) : `<span class="muted">solo se reporta</span>`)]); });
+    const byCount = Dm.runs ? table(["Veces que ya lo había enfrentado", "~Aperturas", "~Carreras vs esperado"], Object.entries(Dm.runs.byCount).map(([k, v]) => tr([td(k === "3" ? "3 o más" : k), tdn(v.starts), tdn(`${sg(100 * v.rel, 1)}%`)]))) : "";
+    const kd = G.kDist || {};
+    app.innerHTML = `
+      <a class="back" href="#prolab">← Pro-Lab: todos los modelos</a>
+      <div class="lab-hero">
+        <p class="eyebrow">Pro-Lab · postemporada · ${esc(a.abbr)} @ ${esc(h.abbr)}${g.series && g.series.gameNumber ? ` · juego ${g.series.gameNumber} de ${g.series.totalGames}` : ""}</p>
+        <span class="name">OCTUBRE</span>
+        <p class="lede"><b>Modelo de postemporada centrado en cómo le va a cada abridor contra ESTE rival.</b> Tres partes conectadas: <b>A</b> cuánto vale de verdad el historial del abridor contra ese equipo (Bayes empírico: el peso lo decide toda la liga, no la intuición), <b>B</b> su arsenal contra cómo le batea cada hombre del lineup a cada tipo de lanzamiento, y <b>C</b> cómo se desarrolla un juego de octubre: el mánager saca antes al abridor (medido en 153 aperturas de postemporada), se evita la 3.ª vuelta al lineup y lanzan más los relevistas de confianza. <b>D</b>, la familiaridad (si le va peor al abridor cada vez que el rival ya lo vio), se prueba y solo entra si es clara. Partido: <b>${esc(a.name)} @ ${esc(h.name)}</b>, ${fmtDateLong(g.date)}, ${esc(g.venue.name)}.</p>
+        ${lab.provisional && !res ? `<div class="notice"><span class="ic">!</span><div><b>Versión provisional</b> con los datos del ${fmtStamp(lab.frozenAt)} (lineups proyectados). Se vuelve a congelar antes del primer lanzamiento con los lineups oficiales y esa es la que queda registrada.</div></div>` : ""}
+        <div class="notice"><span class="ic" style="background:var(--verde-soft);color:var(--verde)">✓</span><div><b>Sin fuga de información:</b> datos congelados el ${fmtStamp(lab.frozenAt)} (${mins >= 120 ? `${Math.round(mins / 60)} h` : `${mins} min`} antes del primer lanzamiento) y predicción registrada en el repositorio ${minsBuilt > 0 ? `${minsBuilt >= 120 ? `${Math.round(minsBuilt / 60)} h` : `${minsBuilt} min`} antes del juego` : "después del inicio (solo con los datos congelados)"}.</div></div>
+      </div>
+
+      ${res ? `<section class="block"><h2>Resultado real contra el modelo</h2><div class="res">
+        <div class="tile"><span class="eyebrow">Final</span><span class="big">${esc(a.abbr)} ${res.away} – ${res.home} ${esc(h.abbr)}</span><span class="sub">esperado ${f(G.lambda.away, 1)} – ${f(G.lambda.home, 1)}</span></div>
+        <div class="tile"><span class="eyebrow">Ganador</span><span class="big">${esc(res.homeWon ? h.abbr : a.abbr)}</span><span class="sub">OCTUBRE daba ${pc(res.homeWon ? G.pHome : 1 - G.pHome, 1)} · Brier ${f(res.brierMc, 3)}</span></div>
+        <div class="tile"><span class="eyebrow">Total</span><span class="big">${res.total}</span><span class="sub">percentil ${pc(res.percentileTotal)} de la distribución</span></div>
+        <div class="tile"><span class="eyebrow">Picks calificados</span><span class="big">${res.hits} ✓ · ${res.misses} ✗</span><span class="sub">F5 real ${res.f5[0]}–${res.f5[1]}</span></div></div></section>` : ""}
+
+      <section class="block"><h2>Los dos picks de mayor confianza</h2><div class="toppicks">${top}</div></section>
+
+      <div class="tiles">
+        <div class="tile"><span class="eyebrow">P(${esc(h.abbr)}) OCTUBRE</span><span class="big">${pc(G.pHome, 1)}</span><span class="sub">intervalo 90% ${pc(G.ci90[0], 0)}–${pc(G.ci90[1], 0)} (${G.draws} sorteos de los parámetros)</span></div>
+        <div class="tile"><span class="eyebrow">Carreras esperadas</span><span class="big">${f(G.lambda.away, 2)} – ${f(G.lambda.home, 2)}</span><span class="sub">total ${f(total, 2)} · F5 ${f(G.f5.away, 2)} – ${f(G.f5.home, 2)} · NRFI ${pc(G.nrfi, 0)}</span></div>
+        <div class="tile"><span class="eyebrow">Outs del abridor: temporada → octubre</span><span class="big" style="font-size:24px">${f(C.detail.home.regOuts, 1)} → ${f(C.detail.home.expOuts, 1)} · ${f(C.detail.away.regOuts, 1)} → ${f(C.detail.away.expOuts, 1)}</span><span class="sub">${esc(A.starters.away ? A.starters.away.name : a.abbr)} · ${esc(A.starters.home ? A.starters.home.name : h.abbr)}</span></div>
+        <div class="tile"><span class="eyebrow">Consenso de 4 métodos</span><span class="big">${pc(cons.pHome, 1)}</span><span class="sub">divergencia ${pc(cons.spread, 1)}</span></div>
+      </div>
+
+      <section class="block"><h2>¿En qué enfocarse? Lo que mueve la predicción</h2>
+        <p class="note">Mismo partido, quitando una parte a la vez. La que más mueve la probabilidad es la que más pesa para este duelo.</p>
+        ${table(["Versión", `~P(${esc(h.abbr)})`, "~Cambio"], [tr([td("<b>OCTUBRE completo</b>"), tdn(`<b>${pc(G.pHome, 1)}</b>`), tdn("—")]),
+          tr([td("A · sin historial contra el rival"), tdn(pc(abl.noA, 1)), tdn(dpp(abl.noA))]),
+          tr([td("B · sin el detalle por tipo de lanzamiento"), tdn(pc(abl.noB, 1)), tdn(dpp(abl.noB))]),
+          tr([td("C · con la salida y el bullpen de temporada regular"), tdn(pc(abl.noC, 1)), tdn(dpp(abl.noC))]),
+          ...(Dm.used ? [tr([td("D · sin familiaridad"), tdn(pc(abl.noD, 1)), tdn(dpp(abl.noD))])] : [])])}
+        <ul class="clean read-list">${(O.reading || []).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+      </section>
+
+      <div class="step"><span class="n">A</span><div><h2>El abridor contra ESTE rival: cuánto vale el historial</h2>
+        <p class="note">Con ${A.starts.toLocaleString("es-MX")} aperturas de ${A.pairs.toLocaleString("es-MX")} parejas pitcher-rival de 2026 se mide, por evento, cuánto se aparta un pitcher de lo esperado contra un equipo en particular <b>más allá</b> de su nivel y del nivel del equipo (razón de momios). ρ es la parte de la varianza que es de la pareja (en milésimas, con su intervalo de 90% por bootstrap); κ = 1/ρ − 1 es cuántos bateadores «vale» lo esperado: el historial pesa n/(n + κ). A la varianza observada se le quitan el azar binomial y el error de estimar la tasa del pitcher.</p>
+        ${table(["Evento", "~Parejas", "~Bateadores", "~ρ (‰)", "~κ", "~Peso con 50 BF", "~Peso con 100 BF"], kapRows)}
+        <p class="rule">Lectura: el <b>ponche</b> y el <b>jonrón</b> sí tienen una parte propia de cada pareja; las <b>bases por bolas</b> y los <b>hits en bola en juego</b> contra un rival son casi puro azar, así que su historial apenas se usa.</p>
+        <div class="stack">${starterA("away")}${starterA("home")}</div>
+      </div></div>
+
+      <div class="step"><span class="n">B</span><div><h2>Pitch contra bateador</h2>
+        <p class="note">Para cada bateador: Σ uso del lanzamiento × [xwOBA de la liga en ese lanzamiento + lo que el abridor se aparta con él + el nivel general del bateador + lo que el bateador se aparta contra ese lanzamiento] + ajuste de mano. Cada término se encoge con su propia muestra; los κ se miden en la liga: arsenal del pitcher κ = ${f(Bm.kappa.pitcher.kappa, 0)} turnos, residuo del bateador por lanzamiento κ = ${f(Bm.kappa.batter.kappa, 0)} turnos.</p>
+        <p class="rule">Lo específico de un bateador contra un tipo de lanzamiento (más allá de su nivel) es casi puro ruido en una temporada (κ ≈ ${f(Bm.kappa.batter.kappa, 0)}): por eso la columna «Por lanzamiento» casi no se mueve. Lo que sí cuenta es el arsenal del abridor, el nivel de cada bateador y la mano.</p>
+        ${sideB("away")}${sideB("home")}
+      </div></div>
+
+      <div class="step"><span class="n">C</span><div><h2>Cómo se desarrolla un juego de octubre</h2>
+        <p class="note"><b>Gancho medido</b> en ${H.n} aperturas de postemporada (2024-2025, sin openers): los abridores sacan <b>${f(H.meanPost, 1)}</b> outs contra <b>${f(H.meanReg, 1)}</b> en su temporada (${pc(H.hook, 0)}, intervalo ${pc(H.ci[0], 0)}–${pc(H.ci[1], 0)}; lanzamientos ${pc(H.pitchRatio, 0)} de los habituales). Regresión: outs en postemporada = ${f(H.alpha, 1)} ${H.beta >= 0 ? "+" : "−"} ${f(Math.abs(H.beta), 2)} × promedio de temporada (β ± ${f(H.seBeta, 2)}): <b>casi no importa cuánto dura el abridor normalmente</b>; el gancho lo decide el partido. El modelo usa β acotado a [0, 1] (= ${f(H.betaUsed, 2)}) y la dispersión medida en postemporada (Weibull de forma ${f(H.shape, 2)}).</p>
+        ${yearRows.length ? table(["Postemporada", "~Aperturas", "~Outs en temporada", "~Outs en postemporada", "~Cociente"], yearRows) : ""}
+        <div class="two"><div><h3 class="sub">Parte de cada entrada que cubre el abridor</h3>${stay}</div>
+          <div><h3 class="sub">Vueltas al lineup</h3><p class="note">Castigo por vuelta (wOBA frente al promedio del abridor): 1.ª ${pts(C.tto[0])}, 2.ª ${pts(C.tto[1])}, 3.ª ${pts(C.tto[2])}, 4.ª ${pts(C.tto[3])} puntos. Con el gancho de octubre casi no hay 3.ª vuelta: el abridor queda mejor que su promedio de temporada, que sí la incluía.</p>
+          ${table(["Entrada", ...inn.map((x) => `~${x}`)], ["away", "home"].map((s) => tr([td(`<b>${esc(ab[s])}</b> <span class="muted">batea</span>`), ...C.detail[s].tto.map((v, i) => tdn(C.detail[s].frac[i] > 0.02 ? pts(v - C.detail[s].tto0) : "—"))])))}</div></div>
+        <div class="stack">${penTable("away")}${penTable("home")}</div>
+        <h3 class="sub">Carreras esperadas por entrada</h3>
+        ${table(["", ...inn.map((x) => `~${x}`), "~Total"], innRows)}
+        <p class="formula">λ por entrada = carreras de la liga en esa entrada × parque (${f(G.park.mult, 3)}) × [parte del abridor × ofensiva contra el abridor (A + B + vuelta) + parte del bullpen × ofensiva contra el bullpen × RA9 del bullpen de octubre / liga]. Marcador con Binomial Negativa (Var/Media ${f(G.varRatio, 2)}; F5 ${f(G.varRatioF5, 2)}).</p>
+      </div></div>
+
+      <div class="step"><span class="n">D</span><div><h2>Familiaridad (variable de prueba)</h2>
+        <p class="note">¿Le va peor a un abridor cada vez que el rival ya lo vio en la temporada? Regresión ponderada del residuo por apertura (lo observado contra lo esperado) contra cuántas veces ya lo había enfrentado, <b>controlando por la fecha</b>. Solo el efecto en carreras puede entrar al modelo, y solo si |t| ≥ 2, encogido por (1 − 1/t²).</p>
+        ${table(["Métrica", "~Por cada vez previa", "~Error estándar", "~t", "Uso"], dRows)}
+        ${byCount}
+      </div></div>
+
+      <section class="block"><h2>Del modelo a los mercados</h2><div class="two">
+        <div><h3 class="sub">Carreras totales</h3>${distChart(G.total.slice(0, 21), [7.5, 8.5], total)}</div>
+        <div><ul class="clean read-list"><li><b>P(${esc(h.abbr)} gana)</b> ${pc(G.pHome, 1)} (empate a 9: ${pc(G.tie, 1)}, se reparte con la ventaja de local en extras)</li>
+          <li><b>F5</b> ${esc(a.abbr)} ${pc(G.f5win.away, 1)} · empate ${pc(G.f5win.tie, 1)} · ${esc(h.abbr)} ${pc(G.f5win.home, 1)}</li>
+          <li><b>NRFI</b> ${pc(G.nrfi, 1)}</li>
+          ${["away", "home"].filter((s) => kd[s] && A.starters[s]).map((s) => `<li><b>Ponches de ${esc(A.starters[s].name)}</b> ${f(meanDist(kd[s]), 2)} esperados (bateador por bateador y con la probabilidad de que siga en el juego)</li>`).join("")}</ul></div></div></section>
+
+      <section class="block"><h2>Consenso de cuatro métodos</h2><div class="panel">
+        ${[["Log5 (5.7.2)", cons.methods.log5], ["Elo + abridor (5.7.7)", cons.methods.elo], ["λ + Binomial Negativa (5.3 · 5.7.5)", cons.methods.lambda], ["OCTUBRE", cons.methods.octubre]].map(([n, v]) => `<div class="mbar" style="grid-template-columns:minmax(0,260px) 1fr 52px"><span>${n}</span><span class="track"><i style="width:${(v * 100).toFixed(1)}%"></i></span><span class="num">${pc(v, 1)}</span></div>`).join("")}
+        <p class="note">P(${esc(h.abbr)}) de consenso <b>${pc(cons.pHome, 1)}</b> · divergencia ${pc(cons.spread, 1)}.</p></div></section>
+
+      ${newsBlock(base.sections.s1.news)}
+      <section class="block"><h2 class="bh">Alineaciones ${stPill(sectionStatus(base).lu)}</h2>
+        <div class="lineups">${lineupCard(a.abbr, base.sections.s5.lineups.away, base.summary.probables.home.name)}${lineupCard(h.abbr, base.sections.s5.lineups.home, base.summary.probables.away.name)}</div></section>
+
+      <section class="block"><h2>Todos los picks del partido por nivel de confianza</h2>${picksTable(lab.picks, lab.pk, res ? res.graded : null)}</section>
+      <a class="callout-link btn" href="#lab${lab.pk}base">Ver el análisis completo del framework (10 secciones) para este partido →</a>
+      ${footer()}`;
+    window.scrollTo(0, 0);
+  }
+
   function labModelSummary(lab) {
     const k = labKey(lab);
     if (k === "eigen") { const G = lab.eigen.game; return { pHome: G.pHome, ra: G.lambda.away, rh: G.lambda.home, total: meanDist(G.total), nrfi: G.nrfi, kA: null, kH: null, n: G.boot }; }
+    if (k === "octubre") { const G = lab.octubre.game, kd = G.kDist || {}; return { pHome: G.pHome, ra: G.lambda.away, rh: G.lambda.home, total: meanDist(G.total), nrfi: G.nrfi, kA: kd.away ? meanDist(kd.away) : null, kH: kd.home ? meanDist(kd.home) : null, n: G.draws }; }
     if (k === "kronos") { const m = lab.kronos.mc; return { pHome: m.pHome, ra: m.meanRuns.away, rh: m.meanRuns.home, total: meanDist(m.total), nrfi: m.nrfi, kA: meanDist(m.k.away), kH: meanDist(m.k.home), n: m.n }; }
     if (k === "prisma") { const P = lab.prisma, pr = P.predictive; return { pHome: pr.pHome, ra: P.posterior.muAway, rh: P.posterior.muHome, total: pr.meanTotal, nrfi: null, kA: null, kH: null, n: pr.sims }; }
     const m = lab.mc; return { pHome: m.pHome, ra: m.meanRuns.away, rh: m.meanRuns.home, total: meanDist(m.total), nrfi: m.nrfi, kA: meanDist(m.k.away), kH: meanDist(m.k.home), n: m.n };
   }
 
   const LAB_ADDS = {
+    octubre: ["Cuánto vale de verdad el historial de cada abridor contra ESTE rival: el κ medido en toda la liga dice qué parte es señal y qué parte es azar.", "Pitch contra bateador: el arsenal del abridor contra cómo le batea cada hombre del lineup a cada tipo de lanzamiento.", "El juego de octubre: gancho corto medido en postemporadas reales, menos 3.ª vuelta al lineup y más entradas para el bullpen de confianza."],
     eigen: ["La habilidad de cada jugador (no solo su promedio): el PCA resume sus métricas Statcast y la regresión sobre componentes corrige muestras cortas.", "El lineup confirmado bateador por bateador contra el abridor y contra el bullpen, con las entradas que se espera cubra el abridor.", "Cuánto cambia el partido sin PCA (ablación), un intervalo por bootstrap de jugadores y cuántas opiniones independientes aportan Log5, Elo y λ."],
     kronos: ["Juega el partido lanzamiento a lanzamiento: la cuenta de cada bateador contra cada pitcher, no promedios de equipo.", "Cuántos lanzamientos hace el abridor, cuándo sale y qué relevista entra (por rol, situación y fatiga).", "La distribución completa: ponches del abridor, total, F5, margen y extra innings, con su error de simulación."],
     prisma: ["La incertidumbre de la propia probabilidad (intervalo creíble), no solo un número.", "Fuerzas de ataque y defensa de los 30 equipos con regresión bayesiana óptima.", "Validación fuera de muestra contra Log5."],
@@ -3946,7 +4091,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
   const AN_EXTRA = { "Picks combinados con el framework": "Cada pick final promedia la probabilidad de los métodos del framework y del modelo; el índice de confianza premia el acuerdo entre ellos.",
     "Poisson F5 y NRFI": "Primeras 5 y 3 entradas con Poisson; NRFI calibrado con la frecuencia real de ceros (5.4 · 6.8). Método de los tickets anteriores al algoritmo 2026.09.28.2." };
   const liveByPk = (pk, date) => liveGames.find((g) => g.pk === pk && g.date === date) || liveGames.find((g) => g.pk === pk && !isOff(g));
-  const modelOrder = (m) => ["eigen", "kronos", "prisma", "diamante", "framework"].indexOf(m);
+  const modelOrder = (m) => ["octubre", "eigen", "kronos", "prisma", "diamante", "framework"].indexOf(m);
   let HIST_RENDER = null, TK_RENDER = null;
   // descargas: dentro del visor de claude.ai pasan por su capacidad `downloads`; fuera (GitHub Pages) por un enlace normal
   let DL = null, DL_STATE = window.claude && typeof window.claude.use === "function" ? "pending" : "browser";
@@ -4617,7 +4762,7 @@ Responde SOLO con JSON, así (los valores son de ejemplo):
         <p class="note">Cada partido termina en <b>una sola opción</b>: un pick con su stake, «esperar» o «no apostar». Se llega a ella en este orden:</p>
         <ol class="clean">
           <li><b>Framework completo</b> (secciones 1-10): contexto y motivación, forma, abridores, bullpen y fatiga, modelo de carreras y triangulación, totales, parque/clima/umpire, mercado, contradicciones y gate de datos. De ahí salen los picks con su índice de confianza (IC).</li>
-          <li><b>Modelo de apoyo del Pro-Lab</b> (DIAMANTE-24, PRISMA, KRONOS o EIGEN) cuando el partido lo tiene: sus probabilidades entran a los picks y, si ve el pick peor que el framework, el stake baja.</li>
+          <li><b>Modelo de apoyo del Pro-Lab</b> (DIAMANTE-24, PRISMA, KRONOS, EIGEN u OCTUBRE) cuando el partido lo tiene: sus probabilidades entran a los picks y, si ve el pick peor que el framework, el stake baja.</li>
           <li><b>Cuotas</b>: el IC se recalcula con el momio real (el del feed o el tuyo). <b>Sin momio real no hay stake</b>: la decisión es «esperar momio» y la escalera dice desde qué momio conviene.</li>
           <li><b>Decisión</b>: el pick con más confianza que pasa guion, contradicciones y datos obligatorios. Si el mejor solo espera un dato (lineup, umpire…), «esperar»; si ninguno alcanza, «no apostar».</li>
           <li><b>Conclusión de Claude</b> (opcional, en la página de claude.ai): Claude recibe el expediente completo del partido y devuelve la decisión final con su porqué; nunca puede subir el stake por encima de lo que permiten las reglas.</li>

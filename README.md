@@ -286,6 +286,27 @@ python -m mlbgs.prolab --model kronos --pk 823410 --label pre --sims 20000
 
 Cuando el partido termina, cada actualización califica los picks del Pro-Lab con el resultado oficial.
 
+### OCTUBRE (Phillies @ Braves, juego 2 del comodín, 30-sep-2026): postemporada, pitcher contra el rival
+
+Modelo para postemporada centrado en cómo le va a cada abridor contra ESE rival (`mlbgs/octubre.py`):
+
+- **A. Encogimiento pitcher × rival (Bayes empírico Beta-Binomial).** Con los game logs de todos los abridores de la
+  liga (≈ 4,600 aperturas, 3,400 parejas) se mide por evento cuánto se aparta un pitcher de lo esperado contra un
+  equipo más allá de su nivel y del nivel del rival (razón de momios), quitando el azar binomial y el error de estimar
+  la tasa del pitcher. κ = 1/ρ − 1; el historial pesa n/(n + κ). Medido en 2026: ponches κ ≈ 280 y jonrones κ ≈ 390
+  (hay señal de la pareja); bases por bolas y hits en bola en juego, casi puro azar.
+- **B. Matchup por tipo de lanzamiento.** Arsenal del abridor (xwOBA por pitch, encogido) contra el nivel de cada
+  bateador y su residuo contra cada pitch, más la mano. El residuo del bateador por tipo de pitch resultó ruido en una
+  temporada; cuentan el arsenal del abridor, el nivel del bateador y la mano.
+- **C. Juego de octubre.** El gancho medido en 153 aperturas de postemporada (2024-2025): los abridores sacan ≈ 14
+  outs contra ≈ 17 en temporada y casi sin importar cuánto duran normalmente (β ≈ −0.3 ± 0.2); la salida sigue una
+  Weibull con esa dispersión. Se recorta la 3.ª vuelta al lineup y lanzan más los relevistas de confianza.
+- **D. Familiaridad (prueba).** Efecto de haber enfrentado al rival antes en la temporada, controlando por la fecha;
+  solo entra (en carreras) si |t| ≥ 2 y encogido.
+
+Todo termina en carreras por entrada → Binomial Negativa → mercados, ponches de cada abridor y picks, y la página
+muestra una ablación (qué parte mueve la probabilidad) para saber en qué enfocarse.
+
 ## Cotejo de datos
 
 Cada corrida verifica las fuentes entre sí (pestaña *Cotejo*): standings contra resultados, suma por
