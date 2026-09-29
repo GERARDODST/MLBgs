@@ -671,9 +671,59 @@
   "849849": {
    "away": 145,
    "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-29T19:43:05Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -110
+        },
+        "under": {
+         "point": 4.5,
+         "price": -118
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-29T19:43:05Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -110
+        },
+        "under": {
+         "point": 4.5,
+         "price": -118
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
     "betonlineag": {
      "last": {
-      "at": "2026-09-29T19:35:12Z",
+      "at": "2026-09-29T19:43:05Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -115
+        }
+       }
+      },
       "k": {
        "aj blubaugh": {
         "over": {
@@ -700,6 +750,19 @@
      "mx": false,
      "open": {
       "at": "2026-09-29T19:35:12Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -115
+        }
+       }
+      },
       "k": {
        "aj blubaugh": {
         "over": {
@@ -725,6 +788,80 @@
      },
      "src": "the-odds-api",
      "title": "BetOnline"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-29T19:43:05Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -115
+        },
+        "under": {
+         "point": 4.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-29T19:43:05Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -115
+        },
+        "under": {
+         "point": 4.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-29T19:43:05Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-29T19:43:05Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
     },
     "draftkings": {
      "last": {
@@ -785,6 +922,43 @@
      "src": "espn",
      "title": "DraftKings"
     },
+    "fanduel": {
+     "last": {
+      "at": "2026-09-29T19:43:05Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -108
+        },
+        "under": {
+         "point": 4.5,
+         "price": -120
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-29T19:43:05Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -108
+        },
+        "under": {
+         "point": 4.5,
+         "price": -120
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
     "mybookieag": {
      "last": {
       "at": "2026-09-29T19:35:12Z",
@@ -841,7 +1015,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-09-29T19:35:12Z",
+   "checked": "2026-09-29T19:43:05Z",
    "espn": "401907896",
    "home": 117,
    "pk": 849849,
@@ -851,11 +1025,13 @@
    ],
    "start": "2026-09-29T21:00:00Z",
    "theAt": {
-    "pitcher_strikeouts": "2026-09-29T19:35:12Z"
+    "pitcher_strikeouts": "2026-09-29T19:35:12Z",
+    "totals_1st_5_innings": "2026-09-29T19:43:05Z"
    },
    "theId": "3a08d35ecf12b54dc25f5912ccecf222",
    "theN": {
-    "pitcher_strikeouts": 2
+    "pitcher_strikeouts": 2,
+    "totals_1st_5_innings": 1
    },
    "theSwapped": false
   },

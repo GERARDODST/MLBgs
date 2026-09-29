@@ -1169,7 +1169,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T19:35:00+00:00",
+  "registeredAt": "2026-09-29T19:42:58+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4818,
@@ -1454,7 +1454,7 @@
     "fair": -109.0,
     "ic": 33.9,
     "level": "Muy baja",
-    "price": null,
+    "price": -118,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -1491,7 +1491,7 @@
      "h": 1.0056,
      "r": 1.0,
      "maxPrice": 137,
-     "why": "sin momio real: conviene si pagan +109 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -1702,26 +1702,26 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan +109 o mejor (stake 1); stake 5 desde +128",
+   "why": "falta el momio de Team total CWS: conviene si pagan +101 o mejor (stake 1); stake 5 desde +119",
    "source": "Framework v2",
-   "pick": "F5 Under 4.5",
+   "pick": "CWS Under 4.5",
    "waitFor": "momio",
-   "market": "Total primeras 5",
-   "p": 0.5218,
+   "market": "Team total CWS",
+   "p": 0.5394,
    "ic": 33.9,
    "level": 0,
    "amount": 0,
-   "minPrice": 109,
+   "minPrice": 101,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": 109
+     "from": 101
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 128
+     "from": 119
     }
    ]
   }

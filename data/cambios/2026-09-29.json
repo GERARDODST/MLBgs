@@ -481,6 +481,17 @@
    "kind": "decision",
    "pk": 849851,
    "text": "Decisión: apostar Cam Schlittler Under 7.5 K · stake 3 → apostar Cam Schlittler Under 7.5 K · stake 4 · tras: lineup, umpire, movimiento"
+  },
+  {
+   "after": "esperar momio (CWS Under 4.5)",
+   "at": "2026-09-29T19:42:58Z",
+   "before": "esperar momio (F5 Under 4.5)",
+   "date": "2026-09-29",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849849,
+   "text": "Decisión: esperar momio (F5 Under 4.5) → esperar momio (CWS Under 4.5)"
   }
  ],
  "snap": {
@@ -744,7 +755,7 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "F5 Under 4.5",
+    "pick": "CWS Under 4.5",
     "status": "esperar",
     "waitFor": "momio"
    },
@@ -1021,7 +1032,13 @@
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Cloudy",
+    "dir": "cruzado",
+    "speed": 4,
+    "temp": 68.0
+   }
   }
  }
 }
