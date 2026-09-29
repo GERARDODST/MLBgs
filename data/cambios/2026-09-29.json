@@ -416,6 +416,17 @@
    "kind": "decision",
    "pk": 849851,
    "text": "Decisión: esperar momio (NYY F5) → esperar momio (Cam Schlittler Under 6.5 K)"
+  },
+  {
+   "after": "apostar Cam Schlittler Under 7.5 K · stake 3",
+   "at": "2026-09-29T18:14:39Z",
+   "before": "esperar momio (Cam Schlittler Under 6.5 K)",
+   "date": "2026-09-29",
+   "game": "BOS @ NYY",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849851,
+   "text": "Decisión: esperar momio (Cam Schlittler Under 6.5 K) → apostar Cam Schlittler Under 7.5 K · stake 3"
   }
  ],
  "snap": {
@@ -836,10 +847,10 @@
   "849851": {
    "away": 111,
    "dec": {
-    "level": 0,
-    "pick": "Cam Schlittler Under 6.5 K",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 3,
+    "pick": "Cam Schlittler Under 7.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 147,

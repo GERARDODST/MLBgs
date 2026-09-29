@@ -127,7 +127,7 @@
 "pk": 849851,
 "date": "2026-09-29",
 "time": "2026-09-30T00:00:00Z",
-"generatedAt": "2026-09-29T18:06:44+00:00",
+"generatedAt": "2026-09-29T18:14:39+00:00",
 "away": "BOS",
 "home": "NYY",
 "pHome": 0.5549,
@@ -159,6 +159,15 @@
 },
 "topPicks": [
 {
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Cam Schlittler Under 7.5 K",
+"p": 0.6516,
+"line": 7.5,
+"ic": 54.3389,
+"level": "Baja"
+},
+{
 "family": "ML",
 "market": "Moneyline",
 "pick": "NYY",
@@ -166,23 +175,14 @@
 "line": null,
 "ic": 42.8228,
 "level": "Baja"
-},
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 6.0",
-"p": 0.566,
-"line": 6.0,
-"ic": 38.502,
-"level": "Muy baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "K",
-"pick": "Cam Schlittler Under 6.5 K",
-"level": 0
+"pick": "Cam Schlittler Under 7.5 K",
+"level": 3
 }
 },
 {
