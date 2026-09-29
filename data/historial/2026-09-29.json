@@ -14,7 +14,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29",
-   "code": "7f8210777390"
+   "code": "aaef900a445a"
   },
   "analyses": [
    "Contexto del partido",
@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:28:44+00:00",
+  "registeredAt": "2026-09-29T15:42:32+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5455,
@@ -37,7 +37,7 @@
    "projHome": 3.47,
    "total": 7.04,
    "nrfi": 0.6031,
-   "light": "Amarillo",
+   "light": "Verde",
    "confidence": "media",
    "probables": {
     "away": "Jesús Luzardo",
@@ -55,8 +55,8 @@
     "line": null,
     "p": 0.6806,
     "fair": -213.0,
-    "ic": 64.9,
-    "level": "Media",
+    "ic": 73.9,
+    "level": "Alta",
     "price": -143,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -105,8 +105,8 @@
     "line": 6.5,
     "p": 0.5052,
     "fair": -102.0,
-    "ic": 39.5,
-    "level": "Muy baja",
+    "ic": 48.5,
+    "level": "Baja",
     "price": 100,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -156,8 +156,8 @@
     "line": 7.5,
     "p": 0.5074,
     "fair": -103.0,
-    "ic": 39.3,
-    "level": "Muy baja",
+    "ic": 48.3,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Poisson (5.4)"
@@ -207,8 +207,8 @@
     "line": 7.5,
     "p": 0.5162,
     "fair": -107.0,
-    "ic": 39.0,
-    "level": "Muy baja",
+    "ic": 48.0,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Poisson (5.4)"
@@ -258,8 +258,8 @@
     "line": 3.5,
     "p": 0.5654,
     "fair": -130.0,
-    "ic": 38.0,
-    "level": "Muy baja",
+    "ic": 47.0,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
@@ -309,8 +309,8 @@
     "line": 3.5,
     "p": 0.5744,
     "fair": -135.0,
-    "ic": 38.0,
-    "level": "Muy baja",
+    "ic": 47.0,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -360,8 +360,8 @@
     "line": 2.5,
     "p": 0.5608,
     "fair": -128.0,
-    "ic": 38.0,
-    "level": "Muy baja",
+    "ic": 47.0,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -411,8 +411,8 @@
     "line": null,
     "p": 0.6031,
     "fair": -152.0,
-    "ic": 38.0,
-    "level": "Muy baja",
+    "ic": 47.0,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ calibrado a ceros reales (6.8)"
@@ -462,8 +462,8 @@
     "line": null,
     "p": 0.5039,
     "fair": -102.0,
-    "ic": 34.6,
-    "level": "Muy baja",
+    "ic": 43.6,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
@@ -513,7 +513,7 @@
     "line": null,
     "p": 0.5455,
     "fair": -120.0,
-    "ic": 26.7,
+    "ic": 35.7,
     "level": "Muy baja",
     "price": -192,
     "methods": [
@@ -541,7 +541,7 @@
    "pick": "PHI +1.5",
    "market": "Run Line",
    "p": 0.6806,
-   "ic": 64.9,
+   "ic": 73.9,
    "level": 7,
    "amount": 1200,
    "minPrice": -186,
@@ -574,7 +574,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29",
-   "code": "7f8210777390"
+   "code": "aaef900a445a"
   },
   "analyses": [
    "Contexto del partido",
@@ -589,7 +589,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:28:44+00:00",
+  "registeredAt": "2026-09-29T15:42:32+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4808,
@@ -1056,7 +1056,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29",
-   "code": "7f8210777390"
+   "code": "aaef900a445a"
   },
   "analyses": [
    "Contexto del partido",
@@ -1071,7 +1071,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:28:44+00:00",
+  "registeredAt": "2026-09-29T15:42:32+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5549,
@@ -1493,7 +1493,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.29",
-   "code": "7f8210777390"
+   "code": "aaef900a445a"
   },
   "analyses": [
    "Contexto del partido",
@@ -1508,7 +1508,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T15:28:44+00:00",
+  "registeredAt": "2026-09-29T15:42:32+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4912,
