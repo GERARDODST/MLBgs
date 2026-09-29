@@ -538,7 +538,7 @@ def odds(bundle: dict, tracker=None) -> list[dict] | None:
     hot = tracker.hot if tracker else None
     stale = tracker.stale_after() if tracker else None
     bundle["meta"]["odds"] = O.update(bundle, log=log, hot=hot, stale_after=stale)
-    return O.to_bundle(bundle, stale_after=stale)
+    return O.to_bundle(bundle, stale_after=stale, the_key=bool(os.environ.get("ODDS_API_KEY")))
 
 
 def changes(bundle: dict):

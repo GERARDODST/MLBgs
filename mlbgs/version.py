@@ -13,6 +13,11 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CAMBIOS = [
+    {"version": "2026.09.29.4", "fecha": "2026-09-29", "cambios": [
+        "«Esperar momio»: el mercado de la decisión que ESPN no trae (F5, ponches, team total, NRFI) se pide a The Odds "
+        "API desde 12 h antes del partido (antes 6 h), se refresca a las 6 h y a la hora y media, y si ninguna casa lo "
+        "había publicado se vuelve a pedir cada 2 h. La decisión dice de dónde y a qué hora llega el momio.",
+    ]},
     {"version": "2026.09.29.3", "fecha": "2026-09-29", "cambios": [
         "Si el pick de más confianza cae en el filtro contra el mercado (edge ≥ 10 pp a su momio real), la decisión es "
         "«esperar · verificar» ese pick (lesiones, descansos, lineup) en lugar de saltar a otro mercado sin momio.",

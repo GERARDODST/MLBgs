@@ -700,6 +700,7 @@
   .deci.wait .deci-stk, .wait-t { color: var(--amarillo); font-family: var(--display); font-weight: 700; }
   .deci-amt { font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); }
   .deci-sub { font-size: 11.5px; color: var(--muted); line-height: 1.25; }
+  .deci-ask { flex-basis: 100%; color: var(--ink-2); }
   .stk-badge { display: inline-block; font-family: var(--display); font-weight: 700; font-size: 14px; letter-spacing: 0.03em; color: var(--verde); border: 1.5px solid var(--verde); border-radius: 6px; padding: 0 6px; }
   .tag.cl { background: rgba(217, 119, 87, 0.15); color: #b8552f; }
   .deci-big { border-radius: 14px; padding: 16px; border: 2px solid var(--border); background: var(--surface); display: flex; flex-direction: column; gap: 8px; }
@@ -1618,6 +1619,19 @@
     const who = all.length ? all[0][1] : null;
     return who ? `mercado: ${who}` : "mercado";
   }
+  // «esperar momio»: de dónde y cuándo llega el momio (odds.next_ask). ML, run line y total los trae ESPN en cada corrida;
+  // F5, ponches, team total y NRFI solo The Odds API, que pide el mercado de la decisión desde 12 h antes del juego
+  function askTxt(d) {
+    const a = d && d.waitFor === "momio" ? d.ask : null;
+    if (!a) return "";
+    if (a.src === "espn") return "ESPN (DraftKings) lo revisa en cada corrida";
+    if (a.src === "ninguna") return "ningún feed automático trae este mercado: captura el momio de tu casa";
+    const nx = a.next ? new Date(a.next).getTime() : null, soon = nx != null && nx <= Date.now();
+    const when = nx == null ? "" : soon ? "en la próxima revisión" : `a las ${fmtTime(a.next)}`;
+    if (!a.at) return nx == null ? "The Odds API ya no lo pide antes del juego: captura el momio de tu casa" : `The Odds API lo pide ${when}${soon ? "" : " (12 h antes del juego)"}`;
+    if (a.got === 0) return `pedido a The Odds API a las ${fmtTime(a.at)}: ninguna casa lo publica todavía${nx != null ? `; otro intento ${when}` : "; captura el momio de tu casa"}`;
+    return `pedido a The Odds API a las ${fmtTime(a.at)}${isNum(a.got) ? ` (${a.got} casa${a.got === 1 ? "" : "s"}, sin precio para esta línea)` : ""}${nx != null ? `; se vuelve a pedir ${when}` : ""}`;
+  }
   function decisionNow(g) {
     const d = g.decision;
     if (!d || !d.pick) return null;
@@ -1664,7 +1678,7 @@
     const x = decisionNow(g);
     if (!x) return "";
     const head = `<span class="deci-h">${x.src === "Claude" ? "✦ Claude" : "Decisión"}</span>`;
-    if (x.status === "esperar") return `<div class="deci wait">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">${x.d.waitFor === "verificar" ? "Verificar" : `Esperar${x.d.waitFor === "momio" ? " momio" : ""}`}</span><span class="deci-sub">${x.d.waitFor === "verificar" ? "el mercado lo ve 10 pp o más distinto que el modelo: revisar lesiones, descansos y lineup" : x.d.waitFor === "momio" && x.minPrice != null ? `conviene si pagan ${odds(x.minPrice)} o mejor · sin momio real no hay stake` : "falta un dato obligatorio"}</span></div>`;
+    if (x.status === "esperar") return `<div class="deci wait">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">${x.d.waitFor === "verificar" ? "Verificar" : `Esperar${x.d.waitFor === "momio" ? " momio" : ""}`}</span><span class="deci-sub">${x.d.waitFor === "verificar" ? "el mercado lo ve 10 pp o más distinto que el modelo: revisar lesiones, descansos y lineup" : x.d.waitFor === "momio" && x.minPrice != null ? `conviene si pagan ${odds(x.minPrice)} o mejor · sin momio real no hay stake` : "falta un dato obligatorio"}</span>${x.pick === x.d.pick.pick && askTxt(x.d) ? `<span class="deci-sub deci-ask">⏱ ${esc(askTxt(x.d))}</span>` : ""}</div>`;
     if (x.status !== "apostar") return `<div class="deci off">${head}<b class="deci-pick">No apostar</b><span class="deci-sub">${esc(x.why || "")}</span></div>`;
     if (x.pending) return `<div class="deci on pend" data-tip="Este mercado no trae momio en el feed: conviene solo si pagan ${odds(x.minPrice)} o mejor (es el mínimo del modelo, no el momio del casino). El stake se fija con el momio que paguen.">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">${x.range ? `Stake ${x.range[0]}–${x.range[1]}` : `Stake ${x.level}`}</span><span class="deci-sub">según el momio que paguen · recomendado ${odds(x.minPrice)} o mejor</span></div>`;
     return `<div class="deci on" data-tip="Stake ${x.level} de 10 = ${money(x.amt)} · ${esc(x.why || "")}">${head}<b class="deci-pick">${esc(x.pick)}</b><span class="deci-stk">Stake ${x.level}</span><span class="deci-amt">${money(x.amt)}</span><span class="deci-sub">${x.b.api ? `con ${odds(x.b.o.am)} · ${esc(x.b.book)}` : `con tu ${odds(x.b.o.am)} en ${esc(x.b.book)}`}</span></div>`;
@@ -1686,6 +1700,7 @@
         <div class="muted" style="font-size:13px">${esc(ladderTxt(p.stake))} · stake 1 = ${money(amountOf(1))}, 5 = ${money(amountOf(5))}, 10 = ${money(amountOf(10))}</div>
         <div data-pick="${data}">${pickOddsWide(g, p)}</div>` : ""}
         <p class="note">${esc(x.why || "")}</p>
+        ${x.status === "esperar" && x.pick === d.pick.pick && askTxt(d) ? `<p class="note deci-ask">⏱ Momio: ${esc(askTxt(d))}. Si tu casa ya lo tiene, captúralo en el tablero de la sección 7 y la decisión se recalcula.</p>` : ""}
         ${d.alternatives && d.alternatives.length ? `<p class="muted" style="font-size:13px">Otras opciones revisadas: ${d.alternatives.map((a) => `${esc(a.pick)} (${esc(a.market)}, IC ${Math.round(a.ic)})`).join(" · ")}</p>` : ""}
       </div>
       <h3 class="sub">Cómo se conecta todo el análisis</h3>
@@ -1789,7 +1804,7 @@
       L.push(`- "${p.pick}" (${p.market}): prob ${pc(p.p, 1)}, momio justo ${odds(p.fair)}, mínimo aceptable ${odds(p.minPrice)}, IC ${Math.round(p.ic)} (${p.level}), guion ${p.guion || "—"}${p.guionWhy ? ` (${p.guionWhy})` : ""}, contradicción ${p.contradiction || "—"}${(p.contra || []).length ? ` (${p.contra.join("; ")})` : ""}; métodos: ${Object.entries(p.methods || {}).map(([k, v]) => `${k} ${pc(v, 1)}`).join(", ")}; stake por reglas ${p.stake ? p.stake.level : 0}${p.stake && p.stake.block ? ` (bloqueado: ${p.stake.block})` : ""}; ${ladderTxt(p.stake)}${b ? `; TU MOMIO ${odds(b.o.am)} en ${b.book} → edge ${(100 * (p.p - b.o.imp)).toFixed(1)} pp, IC ${Math.round(sv.r.ic)}, stake por reglas ${sv.level}` : "; sin momio capturado"}`);
     });
     const d = g.decision;
-    if (d && d.pick) L.push(`\n[DECISIÓN DEL FRAMEWORK] ${d.status}: "${d.pick.pick}" stake ${d.stake.level} — ${d.why}`);
+    if (d && d.pick) L.push(`\n[DECISIÓN DEL FRAMEWORK] ${d.status}: "${d.pick.pick}" stake ${d.stake.level} — ${d.why}${askTxt(d) ? ` · momio: ${askTxt(d)}` : ""}`);
     const brief = L.join("\n").slice(0, 26000);
     return `Eres el analista final de MLBgs (picks de la MLB). Recibes TODO el análisis de un partido: el Framework MLB Picks v2 (secciones 1-10), el modelo de apoyo del Pro-Lab si existe, las cuotas y el historial. Tu trabajo es conectar todas las partes y decidir UNA sola opción.
 
@@ -2161,7 +2176,7 @@ ${brief}`;
       ? `<b>${esc(f.pick)}</b>${x.p ? ` <span class="muted">${esc(x.p.market)}${isNum(x.p.p) ? ` · ${pc(x.p.p, 1)}` : ""}</span> ${isNum(x.p.ic) ? icBadge(x.p) : ""}` : ""}`
       : f.status === "esperar" ? `<span class="wait-t">${x.pre && x.x && x.x.d && x.x.d.waitFor === "verificar" ? "Verificar" : `Esperar${x.pre && x.x && x.x.d && x.x.d.waitFor === "momio" ? " momio" : ""}`}</span> <span class="muted">${esc(f.pick || "")}</span>` : `<span class="stake-no">No apostar</span>${f.pick ? ` <span class="muted">(mejor: ${esc(f.pick)})</span>` : ""}`;
     let money_ = "";
-    if (x.pre) money_ = cls === "on" ? (x.pending ? `<span class="stk-badge pend">${x.x.range ? `Stake ${x.x.range[0]}–${x.x.range[1]}` : `Stake ${f.level}`}</span> <span class="muted">según el momio que paguen</span>` : `${stakeTag(f.level)} <b class="stake-amt">${money(x.amt)}</b>`) : cls === "wait" ? `<span class="muted">${x.x && x.x.d && x.x.d.waitFor === "verificar" ? "el mercado lo ve 10 pp o más distinto: revisar lesiones, descansos y lineup" : x.x && x.x.d && x.x.d.waitFor === "momio" && x.x.minPrice != null ? `falta el momio: conviene desde ${odds(x.x.minPrice)}` : "se confirma cerca del inicio"}</span>` : `<span class="muted">${esc((x.x && x.x.why) || "")}</span>`;
+    if (x.pre) money_ = cls === "on" ? (x.pending ? `<span class="stk-badge pend">${x.x.range ? `Stake ${x.x.range[0]}–${x.x.range[1]}` : `Stake ${f.level}`}</span> <span class="muted">según el momio que paguen</span>` : `${stakeTag(f.level)} <b class="stake-amt">${money(x.amt)}</b>`) : cls === "wait" ? `<span class="muted">${x.x && x.x.d && x.x.d.waitFor === "verificar" ? "el mercado lo ve 10 pp o más distinto: revisar lesiones, descansos y lineup" : x.x && x.x.d && x.x.d.waitFor === "momio" && x.x.minPrice != null ? `falta el momio: conviene desde ${odds(x.x.minPrice)}${x.x.pick === x.x.d.pick.pick && askTxt(x.x.d) ? `<br>⏱ ${esc(askTxt(x.x.d))}` : ""}` : "se confirma cerca del inicio"}</span>` : `<span class="muted">${esc((x.x && x.x.why) || "")}</span>`;
     else if (x.slip && cls === "on") {
       const sl = x.slip, st = SLIP_STAMP[sl.key];
       money_ = `${stakeTag(sl.level)} <b class="stake-amt">${money(sl.amount)}</b> ${st ? `<span class="res-chip ${sl.key === "ganado" ? "win" : sl.key === "perdido" ? "lose" : "pend"}">${esc(st[1])} ${sl.neto != null ? esc(signed2(sl.neto)) : ""}</span>` : `<span class="res-chip ${sl.r.cls}">${esc(sl.r.text)}</span>`}`;

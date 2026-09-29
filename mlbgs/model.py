@@ -170,7 +170,7 @@ def index_odds(raw, teams: dict) -> dict:
         out[(a, h)].append({"commence": ev.get("commence_time"), "books": books, "pk": ev.get("pk"),
                             "provider": ev.get("provider") or "The Odds API", "checked": ev.get("checked"),
                             "closed": bool(ev.get("closed")), "verify": ev.get("verify") or {},
-                            "staleSince": ev.get("staleSince")})
+                            "staleSince": ev.get("staleSince"), "ask": ev.get("ask")})
     return out
 
 
@@ -270,7 +270,7 @@ def odds_for_game(ctx: Context, g: dict) -> dict | None:
         "refRl": {s: ref(rl_get(s)) for s in SIDES},
         "refTotal": {k: ref(tot_get(k)) for k in ("over", "under")},
         "rlPoint": rl_point,
-        "verify": ev.get("verify") or {}, "stale": stale, "staleSince": ev.get("staleSince"),
+        "verify": ev.get("verify") or {}, "stale": stale, "staleSince": ev.get("staleSince"), "ask": ev.get("ask"),
     }
 
 
@@ -1605,7 +1605,7 @@ def section7(ctx, g, odds, markets, p_tri, total_proj):
         "nMx": odds["nMx"] if odds else 0, "provider": odds.get("provider") if odds else None,
         "checked": odds.get("checked") if odds else None, "closed": odds.get("closed") if odds else None,
         "verify": (odds or {}).get("verify") or {}, "stale": (odds or {}).get("stale") or [],
-        "staleSince": (odds or {}).get("staleSince"),
+        "staleSince": (odds or {}).get("staleSince"), "ask": (odds or {}).get("ask"),
         "ref": ({"ml": odds["refMl"], "rl": odds["refRl"], "total": odds["refTotal"], "rlPoint": odds["rlPoint"],
                  "f5": odds.get("refF5") or {}, "f5total": odds.get("refF5Total") or {}}
                 if odds else None),

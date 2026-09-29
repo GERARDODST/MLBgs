@@ -85,6 +85,23 @@ class Decision(unittest.TestCase):
         self.assertIn("-169", d["why"])
         self.assertIn("falta el momio", d["why"])
 
+    def test_esperar_momio_dice_de_donde_y_cuando_llega(self):
+        g = copy.deepcopy(self.games[0])
+        a = copy.deepcopy(g["picks"][0])
+        a.update(family="F5 total", ic=80.0, priceIsReal=False,
+                 stake={"block": None, "ladder": [{"level": 1, "stake": 500, "from": -103}], "level": 0})
+        info = {"at": None, "got": None, "empty": 0, "next": "2026-09-29T14:00:00Z"}
+        g["sections"]["s7"]["ask"] = {"totals_1st_5_innings": info}
+        d = DE.decide(g, [a])
+        self.assertEqual((d["waitFor"], d["ask"]), ("momio", {"src": "the-odds-api", "market": "totals_1st_5_innings", **info}))
+        a["family"] = "Total"                                    # ML, run line y total: ESPN en cada corrida
+        self.assertEqual(DE.decide(g, [a])["ask"], {"src": "espn"})
+        g["sections"]["s7"]["ask"] = None                        # sin clave de The Odds API: ningún feed lo trae
+        a["family"] = "K"
+        self.assertEqual(DE.decide(g, [a])["ask"], {"src": "ninguna", "market": "pitcher_strikeouts"})
+        a.update(priceIsReal=True, stake=dict(a["stake"], level=3, price=-110))   # con momio real ya no se espera
+        self.assertNotIn("ask", DE.decide(g, [a]))
+
     def test_esperar_si_solo_falta_un_dato(self):
         g = copy.deepcopy(self.games[0])
         for p in g["picks"]:

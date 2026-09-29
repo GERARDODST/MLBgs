@@ -53,7 +53,10 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   The Odds API (`ODDS_API_KEY`, plan gratis de 500 créditos/mes, sin tarjeta) SOLO para lo que ESPN no trae:
   el mercado de los dos picks del último análisis (`data/predictions/`) de cada partido — F5 (`h2h_1st_5_innings`,
   `totals_1st_5_innings`), ponches (`pitcher_strikeouts`), team total (`team_totals`) y primera entrada NRFI/YRFI
-  (`totals_1st_1_innings`) —, cada mercado una vez a ≤ 6 h y un refresco a ≤ 90 min; 1 crédito por mercado y
+  (`totals_1st_1_innings`) —, el de la decisión desde 12 h antes (el otro pick a ≤ 6 h), refrescos al entrar a las 6 h
+  y a ≤ 90 min, y si ninguna casa lo publicaba otro intento cada 2 h (hasta 2; `theGot`/`theEmpty`; `odds.next_ask`);
+  lo pedido antes de las 6 h y los reintentos no tocan la reserva. «Esperar momio» lleva `ask` (de dónde y cuándo
+  llega: ESPN en cada corrida o The Odds API a tal hora) y la página lo muestra con ⏱; 1 crédito por mercado y
   partido; topes `ODDS_API_DAY_CREDITS` (24) y `ODDS_API_MONTH_CREDITS` (470). Con línea del mercado, el pick
   usa esa línea (total, F5 total, team total, ponches). odds-api.net
   (`ODDS_API_NET_KEY`) queda como opción de pago. Nunca raspando casas. `data/odds/<fecha>.json`

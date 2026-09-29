@@ -14,6 +14,7 @@ solo espera datos obligatorios (lineup, umpire…) la decisión es «esperar»; 
 """
 from __future__ import annotations
 
+from . import odds as O
 from . import stake as ST
 
 
@@ -139,6 +140,16 @@ def checklist(a: dict, pick: dict, lab: dict | None, track: dict) -> list[dict]:
     return out
 
 
+def price_ask(a: dict, p: dict) -> dict:
+    """De dónde y cuándo llega el momio que se espera: ML, run line y total los trae ESPN en cada corrida; F5,
+    ponches, team total y NRFI solo The Odds API (se pide desde 12 h antes; ver odds.next_ask)."""
+    key = O.F5_MARKETS.get(p.get("family"))
+    if not key:
+        return {"src": "espn"}
+    info = (((a.get("sections") or {}).get("s7") or {}).get("ask") or {}).get(key)
+    return {"src": "the-odds-api", "market": key, **info} if info else {"src": "ninguna", "market": key}
+
+
 def decide(a: dict, picks: list[dict], lab: dict | None = None, track: dict | None = None) -> dict:
     track = track or {}
     cands = sorted(picks or [], key=lambda p: -p["ic"])
@@ -185,6 +196,7 @@ def decide(a: dict, picks: list[dict], lab: dict | None = None, track: dict | No
     return {
         "status": status, "why": why,
         **({"waitFor": "verificar" if ok and filtered else "momio" if wait_price else "dato"} if status == "esperar" else {}),
+        **({"ask": price_ask(a, p)} if status == "esperar" and wait_price else {}),
         "source": f"Framework v2 + {lab.get('model')}" if lab else "Framework v2",
         "pick": {k: p.get(k) for k in ("pick", "market", "family", "p", "ic", "level", "fair", "minPrice", "line")},
         "stake": {"level": st.get("level", 0) if status == "apostar" else 0, "amount": ST.AMOUNTS.get(st.get("level", 0), 0) if status == "apostar" else 0,

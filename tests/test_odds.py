@@ -450,5 +450,107 @@ class MomiosPropsTheOddsApi(unittest.TestCase):
         self.assertIn(nrp["price"], (-140, 110))
 
 
+class CuandoSePideElMomio(unittest.TestCase):
+    """«Esperar momio»: el mercado de la decisión se pide desde 12 h antes, con reintentos si nadie lo publicaba."""
+    START = dt.datetime(2026, 9, 30, 2, 0, tzinfo=UTC)
+
+    def at(self, h):                                   # h horas antes del partido
+        return self.START - dt.timedelta(hours=h)
+
+    def test_primera_vez_segun_la_prioridad(self):
+        e = {"start": O._iso(self.START)}
+        self.assertFalse(O.market_due(e, "totals_1st_5_innings", self.at(12.5), O.WINDOW[1]))
+        self.assertTrue(O.market_due(e, "totals_1st_5_innings", self.at(11.9), O.WINDOW[1]))    # decisión: 12 h
+        self.assertFalse(O.market_due(e, "totals_1st_5_innings", self.at(7), O.WINDOW[3]))      # otro pick: 6 h
+        self.assertEqual(O.next_ask(e, "totals_1st_5_innings", self.at(20), O.WINDOW[1]), self.at(12))
+
+    def test_refrescos_a_las_6_h_y_hora_y_media(self):
+        e = {"start": O._iso(self.START), "theAt": {"totals_1st_5_innings": O._iso(self.at(11.9))},
+             "theN": {"totals_1st_5_innings": 1}, "theGot": {"totals_1st_5_innings": 5}}
+        self.assertEqual(O.next_ask(e, "totals_1st_5_innings", self.at(11), 720), self.at(6))
+        e["theAt"]["totals_1st_5_innings"] = O._iso(self.at(5.9))
+        self.assertEqual(O.next_ask(e, "totals_1st_5_innings", self.at(5), 720), self.at(1.5))
+        e["theAt"]["totals_1st_5_innings"] = O._iso(self.at(1.4))
+        self.assertIsNone(O.next_ask(e, "totals_1st_5_innings", self.at(1), 720))            # ya no más
+        e["theAt"]["totals_1st_5_innings"] = O._iso(self.at(2))                               # pedido a las 2 h:
+        self.assertEqual(O.next_ask(e, "totals_1st_5_innings", self.at(1.9), 720), self.at(1))  # 60 min después
+
+    def test_si_nadie_lo_publicaba_se_reintenta(self):
+        e = {"start": O._iso(self.START), "theAt": {"team_totals": O._iso(self.at(12))}, "theEmpty": {"team_totals": 1}}
+        self.assertEqual(O.next_ask(e, "team_totals", self.at(11), 720), self.at(10))
+        e["theAt"]["team_totals"], e["theEmpty"]["team_totals"] = O._iso(self.at(8)), 3     # 3 vacíos seguidos
+        self.assertEqual(O.next_ask(e, "team_totals", self.at(7.5), 720), self.at(6))       # solo los refrescos
+        chg = O._iso(self.at(3))                                                             # cambió el abridor
+        e["theAt"]["team_totals"] = O._iso(self.at(5))
+        self.assertTrue(O.market_due(e, "team_totals", self.at(2.9), 720, chg))
+
+    def test_la_pagina_sabe_cuando_llega(self):
+        e = {"start": O._iso(self.START), "theAt": {"totals_1st_5_innings": O._iso(self.at(11))},
+             "theGot": {"totals_1st_5_innings": 0}, "theEmpty": {"totals_1st_5_innings": 1}}
+        v = O.ask_view(e, self.at(10.5))
+        self.assertEqual(v["totals_1st_5_innings"], {"at": O._iso(self.at(11)), "got": 0, "empty": 1, "next": O._iso(self.at(9))})
+        self.assertEqual(v["pitcher_strikeouts"]["next"], O._iso(self.at(12)))                # nunca pedido
+
+
+class EsperarMomioConTheOddsApi(unittest.TestCase):
+    """La decisión espera el F5: se pide desde 12 h antes; si ninguna casa lo tiene se reintenta sin tocar la reserva."""
+
+    def setUp(self):
+        with gzip.open(FIXTURE, "rt", encoding="utf-8") as f:
+            self.bundle = json.load(f)
+        self.dir, self.pred = tempfile.mkdtemp(), tempfile.mkdtemp()
+        self.g = next(g for g in self.bundle["upcoming"] if g["pk"] == 824785)
+        self.start = dt.datetime.fromisoformat(self.g["time"].replace("Z", "+00:00"))
+        with open(os.path.join(self.pred, f"{self.g['date']}.json"), "w") as f:
+            json.dump([{"pk": 824785, "decision": {"status": "esperar", "waitFor": "momio", "family": "F5 total"},
+                        "topPicks": [{"family": "F5 total", "pick": "F5 Under 4.5"}]}], f)
+        self.events = [{"id": "t824785", "home_team": "Baltimore Orioles", "away_team": "Toronto Blue Jays",
+                        "commence_time": self.g["time"]}]
+        self.calls, self.posted = [], False
+
+    def fetch(self, url, headers=None):
+        self.calls.append(url)
+        if urllib.parse.urlparse(url).path.endswith("/events"):
+            return self.events
+        if not self.posted:                                   # las casas todavía no publican el F5
+            return dict(self.events[0], bookmakers=[])
+        return f5_event("t824785", "Baltimore Orioles", "Toronto Blue Jays")
+
+    def run_before(self, h):
+        return O.update(self.bundle, now=self.start - dt.timedelta(hours=h), base=self.dir,
+                        env={"ODDS_API_KEY": "k", "ODDS_ESPN": "0"}, fetch=self.fetch, log=lambda *a: None, pred_dir=self.pred)
+
+    def asked(self):
+        return len([c for c in self.calls if "/odds?" in c])
+
+    def test_se_pide_temprano_y_se_reintenta(self):
+        self.run_before(11.8)
+        self.assertEqual(self.asked(), 1)                                          # 12 h antes, no 6
+        e = O.load_day(self.g["date"], self.dir)["games"]["824785"]
+        self.assertEqual((e["theGot"]["totals_1st_5_innings"], e["theEmpty"]["totals_1st_5_innings"]), (0, 1))
+        self.run_before(10.8)
+        self.assertEqual(self.asked(), 1)                                          # el reintento es a las 2 h
+        self.posted = True
+        self.run_before(9.7)
+        self.assertEqual(self.asked(), 2)
+        e = O.load_day(self.g["date"], self.dir)["games"]["824785"]
+        self.assertEqual(e["theEmpty"]["totals_1st_5_innings"], 0)
+        self.assertGreater(e["theGot"]["totals_1st_5_innings"], 0)
+        b = copy.deepcopy(self.bundle)
+        now = self.start - dt.timedelta(hours=9.6)
+        b["odds"] = O.to_bundle(b, base=self.dir, now=now, the_key=True)
+        ask = b["odds"][0]["ask"]["totals_1st_5_innings"]
+        self.assertEqual(ask["next"], O._iso(self.start - dt.timedelta(hours=6)))   # refresco a las 6 h
+
+    def test_lo_temprano_no_toca_la_reserva(self):
+        usage = {"calls": {(self.start - dt.timedelta(hours=11)).strftime("%Y-%m-%d"): {"the-odds-api": O.THE_DAY_CREDITS - O.RESERVE}}}
+        O.save_usage(usage, self.dir)
+        st = self.run_before(11)
+        self.assertEqual(self.asked(), 0)
+        self.assertEqual(st["theQueue"][0]["skipped"], ["totals_1st_5_innings"])
+        st = self.run_before(5.5)                                                  # dentro de las 6 h sí la usa
+        self.assertEqual(self.asked(), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

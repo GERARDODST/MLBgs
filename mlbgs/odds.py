@@ -28,6 +28,10 @@ The Odds API gasta créditos, así que se reparte por prioridad (dentro de los t
   2  verificación: el mercado de la decisión (ML, run line o total) en otras casas, si hay stake o se espera momio
   3  el mercado del otro pick principal
 Las prioridades 2 y 3 dejan libres los últimos RESERVE créditos del día para los cambios de última hora.
+Cuándo (`next_ask`): el mercado de la decisión (prioridad 1) se pide desde 12 h antes del partido, para que
+«esperar momio» dure lo menos posible; la verificación (2) desde 3 h y el otro pick (3) desde 6 h. Luego se
+refresca al entrar a las 6 h y en la última hora y media. Si ninguna casa lo había publicado, se vuelve a pedir
+cada 2 h (hasta 2 veces seguidas). Los pedidos antes de las 6 h y los reintentos tampoco tocan la reserva.
 
 Verificación entre fuentes (`verify`): DraftKings (ESPN) contra la mediana de las otras casas, por mercado
 (moneyline sin vig y total). Si difieren ≥ 3 pp (o la línea del total es otra) se marca «difiere»; el stake ya
@@ -58,6 +62,9 @@ PRED_DIR = os.path.join(ROOT, "data", "predictions")
 F5_MARKETS = {"F5": "h2h_1st_5_innings", "F5 total": "totals_1st_5_innings", "K": "pitcher_strikeouts",
               "Team total": "team_totals", "NRFI": "totals_1st_1_innings"}
 MAIN_MARKETS = {"ML": "h2h", "RL": "spreads", "Total": "totals"}       # verificación contra otras casas
+WINDOW = {0: 720, 1: 720, 2: 180, 3: 360}   # minutos antes del partido en que se pide por primera vez, por prioridad
+REFRESH = (360, 90)                         # refrescos: al entrar a las 6 h y en la última hora y media
+EMPTY_GAP, EMPTY_TRIES = 120, 2             # ninguna casa lo había publicado: otro intento cada 2 h, hasta 2 seguidos
 MAIN_KEY = {"h2h": "ml", "spreads": "rl", "totals": "total"}
 THE_DAY_CREDITS = int(os.environ.get("ODDS_API_DAY_CREDITS", "24"))
 RESERVE = int(os.environ.get("ODDS_API_RESERVE", "4"))      # créditos del día guardados para cambios de última hora
@@ -451,23 +458,41 @@ def f5_needs(date: str, pred_dir: str = PRED_DIR) -> dict:
     return {pk: sorted(m) for pk, m in market_needs(date, pred_dir).items()}
 
 
-def market_due(entry: dict, market: str, now: dt.datetime, window: int = 360, changed_at: str | None = None) -> bool:
-    """Cada mercado de The Odds API: una vez cuando faltan ≤ `window` min (6 h; 3 h para verificar) y un refresco
-    en la última hora y media. Si el abridor cambió después de pedirlo, se pide otra vez (una vez por cambio)."""
+def next_ask(entry: dict, market: str, now: dt.datetime, window: int = 360,
+             changed_at: str | None = None) -> dt.datetime | None:
+    """Cuándo toca pedir este mercado a The Odds API (None: ya no se pide). La primera vez cuando faltan ≤ `window`
+    min (12 h el de la decisión); luego un refresco al entrar a las 6 h y otro en la última hora y media (al menos
+    60 min después del anterior). Si ninguna casa lo tenía, otro intento cada 2 h (hasta 2 seguidos). Si el abridor
+    cambió después de pedirlo, se pide otra vez (prioridad 0)."""
     start = _ts(entry.get("start"))
     if not start or start <= now:
-        return False
-    mins = (start - now).total_seconds() / 60
-    at, n = (entry.get("theAt") or {}).get(market), (entry.get("theN") or {}).get(market, 0)
+        return None
+    at = (entry.get("theAt") or {}).get(market)
     if at is None and market in ("h2h_1st_5_innings", "totals_1st_5_innings") and entry.get("f5at"):
-        at, n = entry["f5at"], entry.get("f5n", 1)          # datos guardados antes de llevar la cuenta por mercado
+        at = entry["f5at"]                                  # datos guardados antes de llevar la cuenta por mercado
     last = _ts(at)
     if last is None:
-        return mins <= window
+        return start - dt.timedelta(minutes=window)
     chg = _ts(changed_at)
     if chg and last < chg:
-        return True                                         # prioridad 0: el momio pedido es de antes del cambio
-    return n < 2 and mins <= 90 and (now - last).total_seconds() / 60 >= 60
+        return chg                                          # prioridad 0: el momio pedido es de antes del cambio
+    cands = []
+    empty = (entry.get("theEmpty") or {}).get(market, 0)
+    if 0 < empty <= EMPTY_TRIES:
+        cands.append(last + dt.timedelta(minutes=EMPTY_GAP))
+    for r in REFRESH:
+        t = start - dt.timedelta(minutes=r)
+        if last < t:
+            cands.append(max(t, last + dt.timedelta(minutes=60)))
+            break
+    t = min(cands) if cands else None
+    return t if t and t < start else None
+
+
+def market_due(entry: dict, market: str, now: dt.datetime, window: int = 360, changed_at: str | None = None) -> bool:
+    """¿Toca pedir este mercado en esta corrida? (ver next_ask)."""
+    t = next_ask(entry, market, now, window, changed_at)
+    return t is not None and t <= now
 
 
 def f5_due(entry: dict, now: dt.datetime) -> bool:
@@ -722,9 +747,13 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
             for g in games:
                 e, chg = entry(g), stale_after.get(g["pk"])
                 for m, pr in (needs.get(g["pk"]) or {}).items():
-                    if market_due(e, m, now, 180 if pr == 2 else 360, chg):
+                    if market_due(e, m, now, WINDOW.get(pr, 360), chg):
                         last = _ts((e.get("theAt") or {}).get(m))
-                        plan.setdefault(g["pk"], []).append((0 if last and chg and last < _ts(chg) else pr, m))
+                        p0 = last and chg and last < _ts(chg)
+                        # extra: antes de las 6 h o reintento de un mercado vacío (no toca la reserva del día)
+                        extra = not p0 and ((_ts(g["time"]) - now).total_seconds() / 60 > REFRESH[0]
+                                            or (e.get("theEmpty") or {}).get(m, 0) > 0)
+                        plan.setdefault(g["pk"], []).append((0 if p0 else pr, m, extra))
             want = sorted((g for g in games if plan.get(g["pk"])), key=lambda g: (min(plan[g["pk"]])[0], g["time"]))
             if want and any(not entry(g).get("theId") for g in want):
                 evs = fetch(f"{THE}/events?" + urllib.parse.urlencode({"apiKey": key_the, "dateFormat": "iso"})) or []
@@ -738,14 +767,14 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
                     continue
                 day_used, month_used = budget.calls.get("the-odds-api", 0), credits.get(month, 0)
                 mk, skipped = [], []
-                for pr, m in sorted(plan[g["pk"]]):
-                    keep = 0 if pr <= 1 else RESERVE          # prioridades 2 y 3 no tocan la reserva del día
+                for pr, m, extra in sorted(plan[g["pk"]]):
+                    keep = 0 if pr <= 1 and not extra else RESERVE    # 2, 3 y los extras no tocan la reserva del día
                     if day_used + len(mk) + 1 <= THE_DAY_CREDITS - keep and month_used + len(mk) + 1 <= THE_MONTH_CREDITS - keep:
                         mk.append(m)
                     else:
                         skipped.append(m)
                 status["theQueue"].append({"pk": g["pk"], "markets": mk, "skipped": skipped,
-                                           "priority": min(pr for pr, _ in plan[g["pk"]])})
+                                           "priority": min(pr for pr, _, _ in plan[g["pk"]])})
                 if skipped:
                     log(f"odds: tope de créditos de The Odds API; {g['pk']} queda sin {', '.join(skipped)}")
                 if not mk:
@@ -766,8 +795,12 @@ def update(bundle: dict, now: dt.datetime | None = None, base: str = ODDS_DIR, e
                         for k, v in rows.items()}
                 rows = {k: v for k, v in rows.items() if any(v.get(x) for x in ("f5", "k", "tt", "nrfi", *main))}
                 for m in mk:
+                    n_books = sum(1 for b in ev.get("bookmakers", []) if any(x.get("key") == m for x in b.get("markets", [])))
                     e.setdefault("theAt", {})[m] = _iso(now)
                     e.setdefault("theN", {})[m] = e.get("theN", {}).get(m, 0) + 1
+                    e.setdefault("theGot", {})[m] = n_books
+                    empty = e.setdefault("theEmpty", {})
+                    empty[m] = 0 if n_books else empty.get(m, 0) + 1
                 if rows:
                     merge(e, rows, now, set(), provider="the-odds-api")
                     fresh.add(g["pk"])
@@ -889,12 +922,24 @@ def is_stale(book: dict, since: str | None) -> bool:
     return bool(at and chg and at < chg)
 
 
+def ask_view(e: dict, now: dt.datetime, since: str | None = None) -> dict:
+    """Por mercado de The Odds API: cuándo se pidió, cuántas casas lo traían y cuándo se vuelve a pedir si es el
+    de la decisión (prioridad 1). Con esto la página dice cuándo llega el momio que se espera."""
+    out = {}
+    for m in F5_MARKETS.values():
+        nxt = next_ask(e, m, now, WINDOW[1], since)
+        out[m] = {"at": (e.get("theAt") or {}).get(m), "got": (e.get("theGot") or {}).get(m),
+                  "empty": (e.get("theEmpty") or {}).get(m, 0), "next": _iso(nxt) if nxt else None}
+    return out
+
+
 def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None,
-              stale_after: dict | None = None) -> list[dict] | None:
+              stale_after: dict | None = None, the_key: bool = False) -> list[dict] | None:
     """Momios guardados de los partidos del bundle, con la forma de The Odds API (lo que lee el modelo).
 
     stale_after: {pk: hora del último cambio de abridor}; las casas cuyo último momio es anterior salen con
-    `stale` (el modelo no las usa para el stake y la página las muestra aparte)."""
+    `stale` (el modelo no las usa para el stake y la página las muestra aparte). the_key: hay clave de The Odds
+    API (cada partido lleva `ask`: cuándo se pide cada mercado que ESPN no trae)."""
     now = now or dt.datetime.now(dt.timezone.utc)
     stale_after = {int(k): v for k, v in (stale_after or {}).items()}
     teams = {int(t["id"]): t for t in (bundle.get("teams") or {}).values()}
@@ -926,6 +971,7 @@ def to_bundle(bundle: dict, base: str = ODDS_DIR, now: dt.datetime | None = None
                         "commence_time": e.get("start"), "home_team": name(g["home"]), "away_team": name(g["away"]),
                         "checked": e.get("checked"), "closed": bool(start and start <= now), "bookmakers": books,
                         "verify": verify(fresh_rows, ab(g["away"]), ab(g["home"])),
+                        **({"ask": ask_view(e, now, since)} if the_key else {}),
                         **({"staleSince": since} if since else {})})
     return out or None
 

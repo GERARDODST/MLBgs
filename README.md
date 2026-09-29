@@ -110,7 +110,7 @@ misma corrida: el modelo se recalcula y los momios de ese partido se revisan aun
 | --- | --- | --- |
 | MLB (abridores, lineups, umpire, clima, bajas) | cada revisión: ~12 min con un partido a ≤ 2.5 h, ~18 min a ≤ 6 h, ~30 min más lejos (`mlbgs/cadencia.py`) | sin costo |
 | Momios DraftKings (ESPN) | > 6 h: cada 3 h · 1–6 h: cada hora · < 1 h: cada revisión · con cambio: al momento; cada llamada actualiza toda la fecha | sin costo |
-| The Odds API | por prioridad: 0) mercado cuyo abridor cambió después de pedirlo, 1) mercado de la decisión que ESPN no trae (F5, K, team total, NRFI), 2) verificación del mercado de la decisión (ML, RL, total) en otras casas si hay stake o se espera momio, 3) el otro pick | 1 crédito por mercado y partido; tope 24/día (4 reservados para cambios) y 470/mes |
+| The Odds API | por prioridad: 0) mercado cuyo abridor cambió después de pedirlo, 1) mercado de la decisión que ESPN no trae (F5, K, team total, NRFI), 2) verificación del mercado de la decisión (ML, RL, total) en otras casas si hay stake o se espera momio, 3) el otro pick. El mercado de la decisión se pide desde 12 h antes (se refresca a las 6 h y a 1.5 h; si ninguna casa lo había publicado, otro intento cada 2 h) y la página dice a qué hora llega el momio que se espera | 1 crédito por mercado y partido; tope 24/día (4 reservados para cambios) y 470/mes |
 
 **Verificación entre casas:** DraftKings (ESPN) contra la mediana de las otras casas (moneyline sin vig y
 total). Si difieren 3 pp o más, o la línea del total es otra, se marca «difiere»; el stake ya usa la
