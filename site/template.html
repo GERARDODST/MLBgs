@@ -1611,6 +1611,8 @@
 
   // de dónde sale el momio de referencia de un pick (mediana de las casas MX del feed)
   function refLabel(g, p) {
+    const lv = p ? liveOdds(g, p) : null;          // la misma fuente que el «momio actual» del pick (ponches, team total…)
+    if (lv && !lv.mine) return lv.n ? `mercado: mediana de ${lv.n} casas` : `mercado: ${lv.book}`;
     const r = (g.sections.s7 || {}).ref || {};
     const mk = p && p.market;
     const src = mk === "F5 Moneyline" ? r.f5 : mk === "F5 total" || mk === "Total primeras 5" ? r.f5total
