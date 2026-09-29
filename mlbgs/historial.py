@@ -405,6 +405,12 @@ def update(bundle: dict, analyses: list[dict], labs: list[dict], generated: str,
         old = tickets.get(t["id"])
         if old and old.get("lock"):
             continue
+        refrozen = bool(old) and old.get("frozenAt") != t.get("frozenAt")
+        if old and refrozen and not old.get("result"):
+            # el Pro-Lab se volvió a congelar antes del juego (p. ej. la versión provisional → la definitiva con los
+            # lineups oficiales): la versión nueva reemplaza a la anterior, decisión y escalera incluidas
+            tickets[t["id"]] = t
+            continue
         if old:
             # la escalera de stake y el resultado ya registrados no cambian con corridas posteriores
             prev = {q["pick"]: q for q in old["picks"]}
