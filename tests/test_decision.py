@@ -92,8 +92,11 @@ class Decision(unittest.TestCase):
                  stake={"block": None, "ladder": [{"level": 1, "stake": 500, "from": -103}], "level": 0})
         info = {"at": None, "got": None, "empty": 0, "next": "2026-09-29T14:00:00Z"}
         g["sections"]["s7"]["ask"] = {"totals_1st_5_innings": info}
-        d = DE.decide(g, [a])
+        b = copy.deepcopy(a)
+        b.update(pick="Otro", family="K", ic=70.0)               # otro candidato sin momio: su mercado va en la misma llamada
+        d = DE.decide(g, [a, b])
         self.assertEqual((d["waitFor"], d["ask"]), ("momio", {"src": "the-odds-api", "market": "totals_1st_5_innings", **info}))
+        self.assertEqual(d["unpriced"], ["F5 total", "K"])
         a["family"] = "Total"                                    # ML, run line y total: ESPN en cada corrida
         self.assertEqual(DE.decide(g, [a])["ask"], {"src": "espn"})
         g["sections"]["s7"]["ask"] = False                       # sin clave de The Odds API: ningún feed lo trae

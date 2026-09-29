@@ -79,7 +79,7 @@ def decision_row(d: dict | None) -> dict | None:
         return None
     return {"status": d.get("status"), "waitFor": d.get("waitFor"), "family": (d.get("pick") or {}).get("family"),
             "pick": (d.get("pick") or {}).get("pick"), "level": (d.get("stake") or {}).get("level", 0),
-            "alts": [x["family"] for x in d.get("alternatives") or [] if x.get("family")]}
+            "alts": d.get("unpriced") or [x["family"] for x in d.get("alternatives") or [] if x.get("family")]}
 
 
 def save_predictions(analyses: list[dict], generated: str) -> None:

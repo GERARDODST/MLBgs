@@ -200,6 +200,9 @@ def decide(a: dict, picks: list[dict], lab: dict | None = None, track: dict | No
         "status": status, "why": why,
         **({"waitFor": "verificar" if ok and filtered else "momio" if wait_price else "dato"} if status == "esperar" else {}),
         **({"ask": ask} if status == "esperar" and wait_price and (ask := price_ask(a, p)) else {}),
+        # los candidatos que aún no tienen momio real: sus mercados se piden juntos (odds.market_needs, prioridad 1.5)
+        **({"unpriced": list(dict.fromkeys(q.get("family") for q in ok if not q.get("priceIsReal") and q.get("family")))}
+           if status == "esperar" and wait_price else {}),
         "source": f"Framework v2 + {lab.get('model')}" if lab else "Framework v2",
         "pick": {k: p.get(k) for k in ("pick", "market", "family", "p", "ic", "level", "fair", "minPrice", "line")},
         "stake": {"level": st.get("level", 0) if status == "apostar" else 0, "amount": ST.AMOUNTS.get(st.get("level", 0), 0) if status == "apostar" else 0,

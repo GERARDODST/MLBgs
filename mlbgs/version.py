@@ -17,7 +17,7 @@ CAMBIOS = [
         "«Esperar momio»: el mercado de la decisión que ESPN no trae (F5, ponches, team total, NRFI) se pide a The Odds "
         "API desde 12 h antes del partido (antes 6 h), se refresca a las 6 h y a la hora y media, y si ninguna casa lo "
         "había publicado se vuelve a pedir cada 2 h. La decisión dice de dónde y a qué hora llega el momio.",
-        "Si la decisión espera momio, en la misma llamada se piden los mercados de sus alternativas que ESPN no trae: "
+        "Si la decisión espera momio, en la misma llamada se piden los mercados de los candidatos sin momio que ESPN no trae: "
         "si el precio no alcanza, la siguiente opción ya tiene el suyo (antes tomaba una corrida por mercado).",
         "Corrección: pedir el F5 ganador en otra llamada borraba el F5 total guardado (pasó con CHC @ SD el 29-sep); "
         "ya no, y un mercado que llegó pero ya no está guardado se vuelve a pedir.",
