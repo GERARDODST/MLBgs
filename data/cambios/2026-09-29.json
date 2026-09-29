@@ -492,6 +492,17 @@
    "kind": "decision",
    "pk": 849849,
    "text": "Decisión: esperar momio (F5 Under 4.5) → esperar momio (CWS Under 4.5)"
+  },
+  {
+   "after": "esperar verificar (Hagen Smith Over 1.5 K)",
+   "at": "2026-09-29T19:50:48Z",
+   "before": "esperar momio (CWS Under 4.5)",
+   "date": "2026-09-29",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849849,
+   "text": "Decisión: esperar momio (CWS Under 4.5) → esperar verificar (Hagen Smith Over 1.5 K)"
   }
  ],
  "snap": {
@@ -755,9 +766,9 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "CWS Under 4.5",
+    "pick": "Hagen Smith Over 1.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Pre-Game",
    "home": 117,
