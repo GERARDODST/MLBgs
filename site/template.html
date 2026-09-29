@@ -1603,6 +1603,9 @@
   const claudeStore = (() => { try { return JSON.parse(store.get("mlbgs-claude") || "{}"); } catch { return {}; } })();
   const saveClaude = () => store.set("mlbgs-claude", JSON.stringify(claudeStore));
   const CLAUDE_RUN = {}, CLAUDE_ERR = {};
+  // la conclusión de Claude vale solo si se hizo con el mismo modelo del Pro-Lab que tiene hoy el partido
+  const claudeStale = (g) => { const cl = claudeStore[g.pk], lab = LAB_BY_PK[String(g.pk)]; return !!(cl && cl.result && lab && cl.lab !== lab.frozenAt); };
+  const claudeFor = (g) => { const cl = claudeStore[g.pk]; return cl && cl.result && !claudeStale(g) ? cl : null; };
   const candPicks = (g) => { const lab = LAB_BY_PK[String(g.pk)]; return ((lab ? lab.picks : g.picks) || []).slice().sort((x, y) => y.ic - x.ic); };
 
   // de dónde sale el momio de referencia de un pick (mediana de las casas MX del feed)
@@ -1619,7 +1622,7 @@
     const d = g.decision;
     if (!d || !d.pick) return null;
     const cands = candPicks(g);
-    const cl = (claudeStore[g.pk] || {}).result ? claudeStore[g.pk] : null;
+    const cl = claudeFor(g);
     let src = d.source, status = d.status, name = d.pick.pick, why = d.why;
     if (cl) { src = "Claude"; status = cl.result.decision; name = cl.result.pick || name; why = cl.result.resumen || why; }
     // con momios del casino capturados, la decisión se recalcula: primero los candidatos con momio que pasan las reglas, por confianza
@@ -1697,13 +1700,15 @@
     let h = `<div class="claude-box"><div class="cb-head"><span class="eyebrow">✦ Conclusión de Claude</span>${avail && !run ? `<button type="button" class="btn" data-claude="${g.pk}">${cl && cl.result ? "Volver a analizar" : "Analizar con Claude"}</button>` : ""}${run ? `<button type="button" class="btn" data-claude-stop="${g.pk}">Detener</button>` : ""}</div>`;
     if (run) h += `<p class="note"><span class="spin" aria-hidden="true"></span> Claude está revisando el partido completo (framework, modelo, cuotas, contexto)… ${Math.round((Date.now() - run.t0) / 1000)} s${run.chars ? ` · escribiendo (${run.chars} caracteres)` : ""}</p>`;
     if (err) h += `<p class="note" style="color:var(--rojo)">${esc(err)}</p>`;
+    const labG = LAB_BY_PK[String(g.pk)];
+    if (claudeStale(g) && !run) h += `<div class="notice"><span class="ic">!</span><div><b>Este análisis de Claude no vio el modelo ${esc(LAB_INFO[labKey(labG)].name.join(""))} del Pro-Lab</b>${cl.labModel ? " en su versión actual" : ""}: se hizo antes de que el modelo entrara al partido. Mientras no lo vuelvas a analizar, manda la decisión de las reglas (framework + Pro-Lab + cuota). Pulsa «Volver a analizar» para el análisis completo.</div></div>`;
     if (cl && cl.result) {
       const r = cl.result;
       const list = (title, xs, cls) => xs && xs.length ? `<div><h4 class="lt">${title}</h4><ul class="clean ${cls}">${xs.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>` : "";
       h += `<div class="cb-res"><div class="cb-dec ${r.decision === "apostar" ? "on" : r.decision === "esperar" ? "wait" : "off"}"><b>${r.decision === "apostar" ? esc(r.pick) : r.decision === "esperar" ? `Esperar${r.pick ? " · " + esc(r.pick) : ""}` : "No apostar"}</b>${r.decision === "apostar" ? ` <span class="deci-stk">Stake ${r.stake}</span> <span class="deci-amt">${money(amountOf(r.stake))}</span>` : ""} <span class="muted">confianza ${r.confianza}/100</span></div>
         <p>${esc(r.resumen)}</p>${r.nota ? `<p class="note muted">${esc(r.nota)}</p>` : ""}
         <div class="two cb-lists">${list("A favor", r.a_favor, "pro")}${list("En contra", r.en_contra, "contra")}</div>${list("Qué vigilar antes de apostar", r.vigilar, "")}
-        <p class="note muted">Análisis del ${fmtStamp(cl.at)} con los datos de ${fmtStamp(cl.dataAt)}${cl.odds ? ` y tus momios (${esc(cl.odds)})` : " sin momios capturados"}. Si cambian lineups o momios, vuelve a analizar.</p></div>`;
+        <p class="note muted">Análisis del ${fmtStamp(cl.at)} con los datos de ${fmtStamp(cl.dataAt)}${cl.labModel ? ` y el modelo ${esc(cl.labModel)} del Pro-Lab` : ""}${cl.odds ? ` y tus momios (${esc(cl.odds)})` : " sin momios capturados"}. Si cambian lineups o momios, vuelve a analizar.</p></div>`;
     } else if (!avail) {
       h += `<p class="note muted">La conclusión de Claude se pide desde la página publicada en claude.ai (usa tu propia cuenta de Claude). Aquí manda la decisión del framework.</p>`;
     } else if (!run) {
@@ -1725,6 +1730,32 @@
   }
 
   // expediente del partido para Claude: todo lo que el framework, el modelo y las cuotas saben
+  // el modelo del Pro-Lab dentro del expediente que recibe Claude (lo mismo que se ve en su página)
+  function labBrief(lab, g) {
+    const k = labKey(lab), info = LAB_INFO[k], m = labModelSummary(lab), A = g.teams.away.abbr, H = g.teams.home.abbr;
+    const ab = { away: A, home: H }, oth = (s) => (s === "away" ? "home" : "away");
+    const out = [`\n[PRO-LAB] Modelo ${info.name.join("")} (${info.kind})${lab.provisional ? " · versión provisional" : ""}; datos congelados ${fmtStamp(lab.frozenAt)}. Sus probabilidades ya entran a los picks candidatos (métodos) y a la decisión; si ve el pick 10 pp o más peor que el framework, el stake por reglas baja (×0.70).`,
+      `- P(${H}) del modelo ${pc(m.pHome, 1)} · framework ${pc(g.summary.pHome, 1)} · consenso ${pc(lab.consensus.pHome, 1)} (divergencia ${pc(lab.consensus.spread, 1)}). Carreras ${A} ${f(m.ra, 2)} – ${f(m.rh, 2)} ${H}, total ${f(m.total, 2)}${isNum(m.nrfi) ? `, NRFI ${pc(m.nrfi, 1)}` : ""}${isNum(m.kA) ? `; ponches esperados del abridor de ${A} ${f(m.kA, 1)}` : ""}${isNum(m.kH) ? `, de ${H} ${f(m.kH, 1)}` : ""}.`];
+    if (k === "octubre" && lab.octubre) {
+      const O = lab.octubre, G = O.game, C = O.C, Aa = O.A, B = O.B, Dm = O.D, Hk = C.hook, ab_ = O.ablation;
+      const pt = (v) => `${v >= 0 ? "+" : ""}${Math.round(1000 * v)}`;
+      out.push(`- Intervalo 90% de P(${H}): ${pc(G.ci90[0], 1)}–${pc(G.ci90[1], 1)} · F5 ${A} ${pc(G.f5win.away, 1)} / empate ${pc(G.f5win.tie, 1)} / ${H} ${pc(G.f5win.home, 1)}.`);
+      out.push(`- A (historial contra el rival, κ medido en la liga): ${["k", "bb", "hr", "babip"].map((e) => `${Aa.events[e]} κ=${Aa.kappa[e] && Aa.kappa[e].kappa ? Math.round(Aa.kappa[e].kappa) : "∞"}`).join(", ")} (el historial pesa n/(n+κ)).`);
+      ["away", "home"].forEach((s) => { const S = Aa.starters[s]; if (!S) return; const e = S.events;
+        out.push(`- ${S.name} (${ab[s]}) contra ${ab[oth(s)]}: ${S.faced} aperturas en 2026, ${Math.round(S.bf)} bateadores${S.prevBf ? ` (+${Math.round(S.prevBf)} en 2025 a la mitad)` : ""}; K% esperado ${pc(e.k.mu, 1)}, observado ${e.k.raw != null ? pc(e.k.raw, 1) : "—"} → ${pc(e.k.post, 1)} (peso ${pc(e.k.w, 0)}); HR% ${pc(e.hr.mu, 1)} → ${pc(e.hr.post, 1)}; efecto en el wOBA que permite ${pt(S.dWobaA)} puntos.`); });
+      ["away", "home"].forEach((s) => { const L_ = B.lineups[s], S = Aa.starters[oth(s)]; if (!L_) return;
+        const best = L_.batters.slice().sort((x, y) => y.xwoba - x.xwoba).slice(0, 3).map((b) => `${b.name} ${f(b.xwoba, 3)}`).join(", ");
+        out.push(`- B (pitch contra bateador) ${ab[s]} vs ${S ? S.name : "abridor"} (lineup ${L_.status.toLowerCase()}): xwOBA ${f(L_.wobaVsSp, 3)} contra el abridor, ${f(L_.wobaVsPen, 3)} contra el bullpen (liga ${f(B.league.xwoba, 3)}); detalle por lanzamiento ${pt(L_.pitchEdge)} puntos; más peligrosos: ${best}. Arsenal: ${L_.mix.map((x) => `${x.name} ${pc(x.usage, 0)} xwOBA ${f(x.xwoba, 3)}`).join(", ")}.`); });
+      out.push(`- C (juego de octubre): en ${Hk.n} aperturas de postemporada los abridores sacan ${f(Hk.meanPost, 1)} outs contra ${f(Hk.meanReg, 1)} en temporada (β ${f(Hk.beta, 2)} ± ${f(Hk.seBeta, 2)}: casi no depende de cuánto duran). Outs esperados: ${["away", "home"].map((s) => Aa.starters[s] ? `${Aa.starters[s].name} ${f(C.detail[oth(s)].regOuts, 1)} → ${f(C.detail[oth(s)].expOuts, 1)}` : "").filter(Boolean).join(" · ")}. Bullpen de octubre: ${["away", "home"].map((s) => `${ab[s]} RA9 ${f(C.pens[s].ra9, 2)} (temporada ${f(C.pens[s].ra9Reg, 2)}; más uso: ${C.pens[s].rows.slice(0, 3).map((r) => r.name).join(", ")})`).join(" · ")}.`);
+      out.push(`- D (familiaridad, prueba): ${Dm.used ? `entra, ${pc(Dm.effect, 1)} de carreras por enfrentamiento previo` : `no entra (carreras t = ${Dm.runs ? f(Dm.runs.t, 1) : "—"})`}${Dm.k ? `; ponches ${Dm.k.slope >= 0 ? "+" : ""}${f(100 * Dm.k.slope, 1)}% por vez previa (t = ${f(Dm.k.t, 1)}, solo se reporta)` : ""}.`);
+      out.push(`- Qué mueve la predicción (P(${H})): completo ${pc(G.pHome, 1)} · sin A ${pc(ab_.noA, 1)} · sin B ${pc(ab_.noB, 1)} · con salida y bullpen de temporada regular ${pc(ab_.noC, 1)}.`);
+    } else if (Array.isArray(lab.reading)) {
+      out.push(`- Lectura del modelo: ${lab.reading.slice(0, 5).map((r) => (typeof r === "string" ? r : `${r.k}: ${r.v}`)).join(" | ")}`);
+    }
+    out.push(`- Picks principales del modelo: ${(lab.topPicks || []).map((p) => `${p.pick} ${pc(p.p, 1)} (IC ${Math.round(p.ic)})`).join("; ") || "—"}.`);
+    return out;
+  }
+
   function dossier(g) {
     const S = g.sections, s = g.summary, t = g.teams, A = t.away.abbr, H = t.home.abbr, lab = LAB_BY_PK[String(g.pk)];
     const L = [];
@@ -1749,10 +1780,7 @@
     L.push(`\n[8] DECISIONES POR MERCADO (framework): ${(S.s8.decisions || []).map((d) => `${d.market} ${d.pick} ${pc(d.p, 1)} · guion ${d.guion} · contradicción ${d.contradiction} · ${d.decision}`).join(" | ")}`);
     L.push(`- Auditoría: ${(S.s8.audit || []).filter((a) => a.status && a.status !== "OK").map((a) => `${a.title} (${a.status}): ${a.detail}`).join(" | ") || "sin alertas"}`);
     L.push(`\n[9] DATOS OBLIGATORIOS: ${s.gate.ok}/${s.gate.total}; faltan: ${(S.s9.fields || []).filter((x) => x.status === "faltante").map((x) => x.field).join(", ") || "ninguno"}.`);
-    if (lab) {
-      const k = labKey(lab), info = LAB_INFO[k];
-      L.push(`\n[PRO-LAB] Modelo ${info.name.join("")} (${info.kind}): P(${H}) del modelo ${pc((lab.consensus.methods || {})[k === "diamante" ? "mc" : k], 1)}, consenso con el framework ${pc(lab.consensus.pHome, 1)}; datos congelados ${fmtStamp(lab.frozenAt)}. ${(lab.reading || []).slice(0, 5).map((r) => `${r.k}: ${r.v}`).join(" | ")}`);
-    }
+    if (lab) labBrief(lab, g).forEach((x) => L.push(x));
     const tr = SK.track || {};
     if (Object.keys(tr).length) L.push(`\n[HISTORIAL] ${Object.entries(tr).map(([m, v]) => `${m}: acierto ${pc(v.hit)} vs esperado ${pc(v.exp)} en ${v.n} picks (factor ${f(v.h, 3)})`).join("; ")}`);
     L.push(`\n[PICKS CANDIDATOS] (texto exacto entre comillas; stake por reglas = lo máximo que permite la confianza)`);
@@ -1770,6 +1798,7 @@ Reglas:
 2. Stake de 1 a 10 por confianza: 1 = $500, 5 = $1,000, 10 = $1,500. Nunca más alto que su "stake por reglas" (con tu momio si lo hay); puedes bajarlo si el contexto lo pide.
 3. "esperar" si el mejor pick está bloqueado por un dato obligatorio (lineup, umpire, clima, abridor). "no apostar" si ninguno tiene valor real, si el guion no acompaña, si hay contradicción alta o si el momio capturado no alcanza.
 4. Revisa todo antes de decidir: contexto y motivación, forma, abridores, bullpen y fatiga, modelo y triangulación, totales, parque/clima/umpire, lineups, noticias, mercado, contradicciones, el modelo del Pro-Lab y el historial. Di qué pesa a favor y qué en contra, en español, con cifras concretas del expediente.
+5. Si hay modelo del Pro-Lab, conéctalo con el framework: di si confirma o contradice el pick (compara su probabilidad con la del framework en ese mercado) y usa sus hallazgos propios (p. ej. en OCTUBRE: historial del abridor contra el rival, pitch contra bateador, gancho y bullpen de octubre). Si lo contradice, baja el stake o no apuestes.
 
 Responde SOLO con un objeto JSON, sin texto adicional:
 {"decision": "apostar" | "esperar" | "no apostar", "pick": "texto exacto del candidato o vacío", "stake": 0-10, "confianza": 0-100, "resumen": "2-3 frases con la razón principal", "a_favor": ["..."], "en_contra": ["..."], "vigilar": ["qué revisar antes de apostar"]}
@@ -1811,7 +1840,9 @@ ${brief}`;
     try {
       const res = await SAMPLE.json(dossier(g), opts);
       const captured = candPicks(g).slice(0, 8).map((p) => { const b = bestOdds(g.pk, p.pick); return b ? `${p.pick} ${odds(b.o.am)}` : null; }).filter(Boolean).join(", ");
-      claudeStore[g.pk] = { at: new Date().toISOString(), dataAt: D.meta.generatedAt, odds: captured, result: checkClaude(res, g) };
+      const labNow = LAB_BY_PK[String(g.pk)];
+      claudeStore[g.pk] = { at: new Date().toISOString(), dataAt: D.meta.generatedAt, odds: captured, result: checkClaude(res, g),
+        lab: labNow ? labNow.frozenAt : null, labModel: labNow ? LAB_INFO[labKey(labNow)].name.join("") : null };
       saveClaude();
     } catch (e) {
       const code = e && e.code;
@@ -2093,7 +2124,7 @@ ${brief}`;
       const fin = { status: x.status, pick: x.pick, level: x.level };
       return { r, e, pre: true, lab, labName, x, p: x.p, fw, comb, fin, amt: x.status === "apostar" && !x.pending ? x.amt : 0, pending: x.pending,
         labP: lab ? labProb(lab, r.an.picks, comb.pick) : null, odds: x.b ? { am: x.b.o.am, src: x.b.api ? "mercado" : "tuyo", book: x.b.book } : x.minPrice != null ? { am: x.minPrice, src: "min" } : null,
-        claude: x.cl ? { pick: x.pick, level: x.level, status: x.status } : null };
+        claude: x.cl ? { pick: x.pick, level: x.level, status: x.status } : null, claudeStale: claudeStale(r.an) };
     }
     const ts = (TK_BY_PK[String(r.pk)] || []).filter((t) => t.date === r.date && t.decision);
     const fwT = ts.find((t) => t.model === "framework"), labT = ts.find((t) => t.model !== "framework");
@@ -2115,7 +2146,7 @@ ${brief}`;
       ${step(fwCls, "Framework", decTxt(x.fw), "Las 10 secciones del framework: su decisión por sí solo")}<span class="ch-arr" aria-hidden="true">›</span>
       ${step(labCls, x.lab ? x.labName : "Pro-Lab", x.lab ? `${isNum(x.labP) ? pc(x.labP) + " · " : ""}${eff}` : "—", x.lab ? `Modelo del Pro-Lab: su probabilidad entra a los picks y su acuerdo mueve el stake` : "Este partido no tiene modelo del Pro-Lab")}<span class="ch-arr" aria-hidden="true">›</span>
       ${step(x.odds && (x.odds.src === "tuyo" || x.odds.src === "mercado") ? "on" : "none", "Cuota", oddsTxt, x.odds && x.odds.src === "tuyo" ? "Tu momio: el IC y el stake se recalculan con él" : x.odds && x.odds.src === "mercado" ? "Momio del feed (mediana de las casas MX): el IC y el stake salen de él; si escribes el de tu casa, manda el tuyo" : "No es el momio del casino: es el mínimo que acepta el modelo. Escribe el de tu casa y se recalcula")}<span class="ch-arr" aria-hidden="true">›</span>
-      ${step(cl ? "on" : "none", "Claude", cl ? decTxt(cl) : "—", cl ? "Conclusión de Claude con el expediente completo" : "Pulsa «Analizar con Claude» en el partido para su conclusión")}
+      ${step(cl ? "on" : x.claudeStale ? "warn" : "none", "Claude", cl ? decTxt(cl) : x.claudeStale ? "volver a analizar" : "—", cl ? "Conclusión de Claude con el expediente completo (framework + Pro-Lab + cuota)" : x.claudeStale ? `Su análisis se hizo sin el modelo ${x.labName} del Pro-Lab: vuelve a analizar para el análisis completo` : "Pulsa «Analizar con Claude» en el partido para su conclusión")}
     </div></div>`;
   }
   function planRowHtml(x) {
