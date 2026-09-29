@@ -30,6 +30,12 @@ _gd = (snap.get("feed") or {}).get("gameData") or {}
 TEAMS = [_gd["teams"]["away"]["id"], _gd["teams"]["home"]["id"]]
 GAME_DATE = (_gd.get("datetime") or {}).get("officialDate") or dt.date.today().isoformat()
 snap["status"] = _gd.get("status")
+_st = _gd.get("status") or {}
+if (_st.get("abstractGameState") == "Final" or (_st.get("abstractGameState") == "Live"
+                                                  and _st.get("detailedState") not in ("Warmup", "Pre-Game"))):
+    # sin fuga: un snapshot previo nunca se toma (ni se sobrescribe) después del primer lanzamiento
+    F.log("ALTO: el partido ya empezó", _st, "- el snapshot previo no se toma; para después del juego usa PROLAB_POST")
+    sys.exit(1)
 grab("content", lambda: F.get(f"{B}/game/{PK}/content"))
 grab("standingsRaw", lambda: F.get(f"{B}/standings?leagueId=103,104&season=2026&standingsTypes=regularSeason&hydrate=team"))
 grab("remaining", lambda: F.get(f"{B}/schedule?sportId=1&season=2026&gameType=R&startDate={GAME_DATE}&endDate=2026-10-06"))
@@ -218,7 +224,7 @@ grab("peopleAdvanced", lambda: F.get(f"{B}/people?personIds={','.join(ids)}&hydr
 # ---------------------------------------------------------------- OCTUBRE (postemporada: pitcher contra el rival)
 if os.environ.get("PROLAB_MODEL") == "octubre":
     SEASON = int(GAME_DATE[:4])
-    LOG_KEYS = ("gamesStarted", "battersFaced", "strikeOuts", "baseOnBalls", "hitByPitch", "homeRuns", "hits",
+    LOG_KEYS = ("gamesStarted", "gamesPlayed", "battersFaced", "strikeOuts", "baseOnBalls", "hitByPitch", "homeRuns", "hits",
                 "doubles", "triples", "runs", "earnedRuns", "inningsPitched", "numberOfPitches", "atBats", "sacFlies")
 
     def slim_log(js):
