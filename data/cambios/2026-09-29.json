@@ -536,6 +536,17 @@
    "kind": "decision",
    "pk": 849843,
    "text": "Decisión: esperar momio (F5 Under 4.5) → esperar momio (CHC F5)"
+  },
+  {
+   "after": "esperar momio (F5 Under 4.5)",
+   "at": "2026-09-29T20:14:31Z",
+   "before": "esperar momio (CHC F5)",
+   "date": "2026-09-29",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849843,
+   "text": "Decisión: esperar momio (CHC F5) → esperar momio (F5 Under 4.5)"
   }
  ],
  "snap": {
@@ -543,7 +554,7 @@
    "away": 112,
    "dec": {
     "level": 0,
-    "pick": "CHC F5",
+    "pick": "F5 Under 4.5",
     "status": "esperar",
     "waitFor": "momio"
    },
