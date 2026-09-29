@@ -525,6 +525,17 @@
    "kind": "decision",
    "pk": 849851,
    "text": "Decisión: apostar Cam Schlittler Under 7.5 K · stake 4 → apostar Cam Schlittler Under 7.5 K · stake 2 · tras: lineup, umpire, movimiento"
+  },
+  {
+   "after": "esperar momio (CHC F5)",
+   "at": "2026-09-29T20:06:41Z",
+   "before": "esperar momio (F5 Under 4.5)",
+   "date": "2026-09-29",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849843,
+   "text": "Decisión: esperar momio (F5 Under 4.5) → esperar momio (CHC F5)"
   }
  ],
  "snap": {
@@ -532,7 +543,7 @@
    "away": 112,
    "dec": {
     "level": 0,
-    "pick": "F5 Under 4.5",
+    "pick": "CHC F5",
     "status": "esperar",
     "waitFor": "momio"
    },
