@@ -64,6 +64,14 @@ jobs:
           for d in data/expedientes data/correcciones data/mercado data/cambios; do if [ -e "$d" ]; then git add -A "$d"; fi; done
           git commit -m "Predicciones MLBgs $(date -u +%Y-%m-%dT%H:%MZ)" || echo "sin cambios"
           git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Guardar la página construida en la rama «pagina» (un solo commit, se reemplaza cada corrida)
+        # la rutina de Claude que republica el artefacto en claude.ai toma de aquí la última página
+        if: github.ref == 'refs/heads/main'
+        run: |
+          blob=$(git hash-object -w site/index.html)
+          tree=$(printf "100644 blob %s\tindex.html\n" "$blob" | git mktree)
+          commit=$(git commit-tree "$tree" -m "Página MLBgs $(date -u +%Y-%m-%dT%H:%MZ)")
+          git push -f origin "$commit:refs/heads/pagina" || echo "no se pudo guardar la página en la rama pagina"
       - name: Empaquetar la página
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3

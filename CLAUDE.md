@@ -134,3 +134,6 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   dispara al cambiar su línea de comentario en la rama) y no se sube a `main`
   (`git rm --cached dev/raw_bundle.json.gz` antes del PR).
 - Al publicar el artefacto, conservar sus capacidades (`downloads`, `sample`, `db`).
+- Cada corrida de producción deja la página construida en la rama `pagina` (un solo commit que se reemplaza).
+  Una rutina de Claude (Routine, sesión nueva en cada disparo) la republica en el artefacto cada ~2 h en horario
+  de juegos: `git fetch origin pagina` → publicar `index.html` en el URL del artefacto sin tocar capacidades.

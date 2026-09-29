@@ -328,6 +328,7 @@ python -m unittest discover -s tests                        # pruebas
 | `mlbgs/odds.py` | Momios previos al partido (ESPN sin clave; odds-api.net / The Odds API con clave): apertura, último y cierre por casa en `data/odds/`, prioridad de créditos y verificación entre casas |
 | `mlbgs/cambios.py` | Qué cambió entre revisiones (abridor, lineup, umpire, clima, horario, bajas, momio, decisión) en `data/cambios/` |
 | `mlbgs/cadencia.py` | Cada cuánto se revisa según el siguiente primer lanzamiento (espera del relevo de `update.yml`) |
+| rama `pagina` | La última página construida por producción (un solo commit); de ahí la republica en claude.ai una rutina cada ~2 h |
 | `mlbgs/features.py` | Liga, Pitágoras, Elo, perfiles de abridores con shrinkage, bullpen y fatiga |
 | `mlbgs/model.py` | Análisis de cada partido: secciones 1-10 del framework |
 | `mlbgs/context.py` | Lineup proyectado, bullpen completo, importancia (simulación de playoffs), noticias, arsenal |
