@@ -492,6 +492,39 @@
    "kind": "decision",
    "pk": 849849,
    "text": "Decisión: esperar momio (F5 Under 4.5) → esperar momio (CWS Under 4.5)"
+  },
+  {
+   "after": "esperar verificar (Hagen Smith Over 1.5 K)",
+   "at": "2026-09-29T19:50:48Z",
+   "before": "esperar momio (CWS Under 4.5)",
+   "date": "2026-09-29",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849849,
+   "text": "Decisión: esperar momio (CWS Under 4.5) → esperar verificar (Hagen Smith Over 1.5 K)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-29T19:58:57Z",
+   "date": "2026-09-29",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849851,
+   "side": "away",
+   "text": "Lineup confirmado (BOS)"
+  },
+  {
+   "after": "apostar Cam Schlittler Under 7.5 K · stake 2",
+   "at": "2026-09-29T19:58:47Z",
+   "before": "apostar Cam Schlittler Under 7.5 K · stake 4",
+   "date": "2026-09-29",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849851,
+   "text": "Decisión: apostar Cam Schlittler Under 7.5 K · stake 4 → apostar Cam Schlittler Under 7.5 K · stake 2 · tras: lineup, umpire, movimiento"
   }
  ],
  "snap": {
@@ -755,9 +788,9 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "CWS Under 4.5",
+    "pick": "Hagen Smith Over 1.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Pre-Game",
    "home": 117,
@@ -912,7 +945,7 @@
   "849851": {
    "away": 111,
    "dec": {
-    "level": 4,
+    "level": 2,
     "pick": "Cam Schlittler Under 7.5 K",
     "status": "apostar",
     "waitFor": null
@@ -920,7 +953,17 @@
    "detailed": "Pre-Game",
    "home": 147,
    "lu": {
-    "away": [],
+    "away": [
+     701350,
+     668939,
+     575929,
+     677800,
+     678882,
+     686765,
+     680776,
+     596115,
+     702332
+    ],
     "home": [
      502671,
      700250,
@@ -935,13 +978,22 @@
    },
    "names": {
     "502671": "Paul Goldschmidt",
+    "575929": "Willson Contreras",
+    "596115": "Trevor Story",
     "641355": "Cody Bellinger",
     "642708": "Amed Rosario",
+    "668939": "Adley Rutschman",
     "669224": "Austin Wells",
     "671218": "Heliot Ramos",
+    "677800": "Wilyer Abreu",
+    "678882": "Ceddanne Rafaela",
+    "680776": "Jarren Duran",
     "682987": "Spencer Jones",
     "683011": "Anthony Volpe",
+    "686765": "Nick Sogard",
     "700250": "Ben Rice",
+    "701350": "Roman Anthony",
+    "702332": "Caleb Durbin",
     "806146": "George Lombard Jr."
    },
    "odds": {

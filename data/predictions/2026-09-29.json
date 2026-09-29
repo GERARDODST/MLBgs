@@ -65,7 +65,7 @@
 "pk": 849849,
 "date": "2026-09-29",
 "time": "2026-09-29T21:00:00Z",
-"generatedAt": "2026-09-29T19:42:58+00:00",
+"generatedAt": "2026-09-29T19:50:48+00:00",
 "away": "CWS",
 "home": "HOU",
 "pHome": 0.4818,
@@ -117,9 +117,9 @@
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "momio",
-"family": "Team total",
-"pick": "CWS Under 4.5",
+"waitFor": "verificar",
+"family": "K",
+"pick": "Hagen Smith Over 1.5 K",
 "level": 0
 }
 },
@@ -127,23 +127,23 @@
 "pk": 849851,
 "date": "2026-09-29",
 "time": "2026-09-30T00:00:00Z",
-"generatedAt": "2026-09-29T19:35:00+00:00",
+"generatedAt": "2026-09-29T19:58:47+00:00",
 "away": "BOS",
 "home": "NYY",
-"pHome": 0.5569,
+"pHome": 0.5547,
 "methods": {
 "log5": 0.561,
 "elo": 0.5576,
-"lambda": 0.552
+"lambda": 0.5454
 },
 "confidence": "alta",
-"projAway": 3.3443,
+"projAway": 3.4054,
 "projHome": 3.8561,
-"total": 7.2004,
-"f5Away": 1.7057,
+"total": 7.2614,
+"f5Away": 1.7368,
 "f5Home": 2.2118,
-"nrfi": 0.5751,
-"pOver85": 0.3253,
+"nrfi": 0.5728,
+"pOver85": 0.3309,
 "probables": {
 "away": "Payton Tolle",
 "home": "Cam Schlittler"
@@ -152,7 +152,7 @@
 "best": {
 "market": "NRFI/YRFI",
 "pick": "NRFI",
-"p": 0.5751,
+"p": 0.5728,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -162,18 +162,18 @@
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Cam Schlittler Under 7.5 K",
-"p": 0.6516,
+"p": 0.6215,
 "line": 7.5,
-"ic": 57.6723,
-"level": "Media"
+"ic": 50.0931,
+"level": "Baja"
 },
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "NYY",
-"p": 0.5569,
-"line": null,
-"ic": 44.0298,
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.0",
+"p": 0.5791,
+"line": 6.0,
+"ic": 45.4394,
 "level": "Baja"
 }
 ],
@@ -182,7 +182,7 @@
 "waitFor": null,
 "family": "K",
 "pick": "Cam Schlittler Under 7.5 K",
-"level": 4
+"level": 2
 }
 },
 {
