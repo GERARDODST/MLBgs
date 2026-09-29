@@ -22,4 +22,6 @@ jobs:
           git config user.email "mlbgs-bot@users.noreply.github.com"
           git add prolab
           git commit -m "Pro-Lab: snapshot previo al partido $(date -u +%H:%MZ)" || echo "sin cambios"
+          # la descarga del bundle también toca data/ (momios y cambios): aquí no se guarda, es de producción
+          git stash -u -q || true
           git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"
