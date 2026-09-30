@@ -70,66 +70,65 @@
 "pk": 849846,
 "date": "2026-09-30",
 "time": "2026-09-30T21:00:00Z",
-"generatedAt": "2026-09-30T01:07:17+00:00",
+"generatedAt": "2026-09-30T01:15:14+00:00",
 "away": "CWS",
 "home": "HOU",
-"pHome": 0.5522,
+"pHome": 0.53,
 "methods": {
 "log5": 0.5015,
-"elo": 0.6086,
-"lambda": 0.5466
+"elo": 0.5629,
+"lambda": 0.5255
 },
-"confidence": "baja",
+"confidence": "media",
 "projAway": 4.1521,
-"projHome": 4.6576,
-"total": 8.8097,
+"projHome": 4.43,
+"total": 8.5821,
 "f5Away": 2.0316,
-"f5Home": 2.8087,
-"nrfi": 0.5033,
-"pOver85": 0.4747,
+"f5Home": 2.603,
+"nrfi": 0.5204,
+"pOver85": 0.4537,
 "probables": {
-"away": "Por anunciar",
+"away": "Sean Burke",
 "home": "Hunter Brown"
 },
-"light": "Amarillo",
+"light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Over 7.5",
-"p": 0.5677,
-"price": -110,
-"edge": 0.0439,
-"light": "Amarillo"
+"market": "F5",
+"pick": "HOU F5",
+"p": 0.5898,
+"price": null,
+"edge": null,
+"light": "Gris"
 },
 "topPicks": [
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.5",
-"p": 0.5677,
+"p": 0.5468,
 "line": 7.5,
-"ic": 46.3272,
+"ic": 42.7974,
 "level": "Baja"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "CWS +1.5",
-"p": 0.601,
+"p": 0.6237,
 "line": null,
-"ic": 33.5247,
+"ic": 36.0866,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 7.5",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Under 4.5",
 "level": 0,
 "alts": [
-"RL",
 "F5 total",
-"Team total"
+"F5"
 ]
 }
 },

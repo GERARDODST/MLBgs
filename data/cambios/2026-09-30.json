@@ -96,6 +96,29 @@
    "kind": "decision",
    "pk": 849842,
    "text": "Decisión: esperar dato (CHC) → esperar dato (CHC +1.5) · tras: abridor"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Sean Burke",
+   "at": "2026-09-30T01:15:27Z",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849846,
+   "side": "away",
+   "text": "Abridor anunciado (CWS): Sean Burke"
+  },
+  {
+   "after": "esperar momio (F5 Under 4.5)",
+   "at": "2026-09-30T01:15:14Z",
+   "before": "esperar dato (Over 7.5)",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849846,
+   "text": "Decisión: esperar dato (Over 7.5) → esperar momio (F5 Under 4.5) · tras: momio, abridor"
   }
  ],
  "snap": {
@@ -298,9 +321,9 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "Over 7.5",
+    "pick": "F5 Under 4.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 117,
@@ -319,7 +342,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 680732,
+     "name": "Sean Burke"
+    },
     "home": {
      "id": 686613,
      "name": "Hunter Brown"
