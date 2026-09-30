@@ -236,6 +236,17 @@
    "kind": "decision",
    "pk": 849842,
    "text": "Decisión: esperar momio (Kevin Gausman Under 5.5 K) → esperar verificar (Kevin Gausman Over 4.5 K)"
+  },
+  {
+   "after": "esperar momio (NRFI)",
+   "at": "2026-09-30T16:16:15Z",
+   "before": "esperar momio (F5 Over 3.5)",
+   "date": "2026-09-30",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849841,
+   "text": "Decisión: esperar momio (F5 Over 3.5) → esperar momio (NRFI) · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -243,7 +254,7 @@
    "away": 143,
    "dec": {
     "level": 0,
-    "pick": "F5 Over 3.5",
+    "pick": "NRFI",
     "status": "esperar",
     "waitFor": "momio"
    },
