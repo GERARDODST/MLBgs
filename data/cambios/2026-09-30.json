@@ -384,6 +384,27 @@
    "pk": 849848,
    "side": "away",
    "text": "BOS: LF Roman Anthony roster status changed by Boston Red Sox."
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-30T21:38:04Z",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849842,
+   "side": "home",
+   "text": "Lineup confirmado (SD)"
+  },
+  {
+   "after": "Erich Bacchus",
+   "at": "2026-09-30T21:38:04Z",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849842,
+   "text": "Umpire de home asignado: Erich Bacchus"
   }
  ],
  "snap": {
@@ -537,13 +558,33 @@
     "status": "esperar",
     "waitFor": "verificar"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 135,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     665487,
+     687957,
+     592518,
+     664034,
+     701538,
+     593428,
+     806956,
+     669720,
+     630105
+    ]
    },
-   "names": {},
+   "names": {
+    "592518": "Manny Machado",
+    "593428": "Xander Bogaerts",
+    "630105": "Jake Cronenworth",
+    "664034": "Ty France",
+    "665487": "Fernando Tatis Jr.",
+    "669720": "Austin Hays",
+    "687957": "Dustin Harris",
+    "701538": "Jackson Merrill",
+    "806956": "Ethan Salas"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -636,13 +677,19 @@
     "944743",
     "944744"
    ],
-   "ump": null,
+   "ump": "Erich Bacchus",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Partly Cloudy",
+    "dir": "in",
+    "speed": 4,
+    "temp": 70.0
+   }
   },
   "849846": {
    "away": 145,
