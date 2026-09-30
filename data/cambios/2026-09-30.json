@@ -53,6 +53,49 @@
    "kind": "momio",
    "pk": 849841,
    "text": "Mercado abierto: PHI -115 / ATL -105 · total 7.0"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Nick Pivetta",
+   "at": "2026-09-30T01:07:25Z",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849842,
+   "side": "home",
+   "text": "Abridor anunciado (SD): Nick Pivetta"
+  },
+  {
+   "at": "2026-09-30T01:07:25Z",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849846,
+   "text": "Mercado abierto: CWS +123 / HOU -149 · total 7.5"
+  },
+  {
+   "after": "esperar dato (Over 7.5)",
+   "at": "2026-09-30T01:07:17Z",
+   "before": "esperar dato (CWS +1.5)",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849846,
+   "text": "Decisión: esperar dato (CWS +1.5) → esperar dato (Over 7.5) · tras: momio"
+  },
+  {
+   "after": "esperar dato (CHC +1.5)",
+   "at": "2026-09-30T01:07:17Z",
+   "before": "esperar dato (CHC)",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849842,
+   "text": "Decisión: esperar dato (CHC) → esperar dato (CHC +1.5) · tras: abridor"
   }
  ],
  "snap": {
@@ -157,7 +200,7 @@
    "away": 112,
    "dec": {
     "level": 0,
-    "pick": "CHC",
+    "pick": "CHC +1.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -170,7 +213,10 @@
    "names": {},
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 601713,
+     "name": "Nick Pivetta"
+    }
    },
    "probChangedAt": null,
    "since": "2026-09-29T15:14:46Z",
@@ -252,7 +298,7 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "CWS +1.5",
+    "pick": "Over 7.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -263,6 +309,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.5,
+    "ml": {
+     "away": 123,
+     "home": -149
+    },
+    "pHome": 0.5716,
+    "src": "draftkings"
+   },
    "prob": {
     "away": null,
     "home": {
@@ -342,6 +397,11 @@
     "944539"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   },
   "849848": {
