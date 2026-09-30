@@ -1748,7 +1748,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T21:29:56+00:00",
+  "registeredAt": "2026-09-30T22:34:05+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5516,
@@ -1774,16 +1774,16 @@
     "line": 5.5,
     "p": 0.5834,
     "fair": -140.0,
-    "ic": 63.5,
+    "ic": 67.7,
     "level": "Media",
-    "price": 100,
+    "price": 106,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 6,
+     "level": 8,
      "ladder": [
       {
        "level": 1,
@@ -1824,16 +1824,16 @@
     "line": 5.5,
     "p": 0.6297,
     "fair": -170.0,
-    "ic": 59.2,
+    "ic": 56.4,
     "level": "Media",
-    "price": -125,
+    "price": -130,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 5,
+     "level": 4,
      "ladder": [
       {
        "level": 1,
@@ -2204,14 +2204,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+100)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+106)",
    "source": "Framework v2",
    "pick": "Sonny Gray Over 5.5 K",
    "market": "Prop de ponches",
    "p": 0.5834,
-   "ic": 63.5,
-   "level": 6,
-   "amount": 1100,
+   "ic": 67.7,
+   "level": 8,
+   "amount": 1300,
    "minPrice": -123,
    "ladder": [
     {

@@ -437,6 +437,17 @@
    "kind": "clima",
    "pk": 849848,
    "text": "Viento: 3 mph cruzado → 8 mph in"
+  },
+  {
+   "after": "apostar Sonny Gray Over 5.5 K · stake 8",
+   "at": "2026-09-30T22:34:05Z",
+   "before": "apostar Sonny Gray Over 5.5 K · stake 6",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849848,
+   "text": "Decisión: apostar Sonny Gray Over 5.5 K · stake 6 → apostar Sonny Gray Over 5.5 K · stake 8 · tras: clima"
   }
  ],
  "snap": {
@@ -903,7 +914,7 @@
   "849848": {
    "away": 111,
    "dec": {
-    "level": 6,
+    "level": 8,
     "pick": "Sonny Gray Over 5.5 K",
     "status": "apostar",
     "waitFor": null
