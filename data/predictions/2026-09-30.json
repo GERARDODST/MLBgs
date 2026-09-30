@@ -3,7 +3,7 @@
 "pk": 849841,
 "date": "2026-09-30",
 "time": "2026-09-30T18:00:00Z",
-"generatedAt": "2026-09-30T04:18:26+00:00",
+"generatedAt": "2026-09-30T05:36:23+00:00",
 "away": "PHI",
 "home": "ATL",
 "pHome": 0.532,
@@ -35,21 +35,21 @@
 },
 "topPicks": [
 {
+"family": "RL",
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.6689,
+"line": null,
+"ic": 44.1829,
+"level": "Baja"
+},
+{
 "family": "ML",
 "market": "Moneyline",
 "pick": "ATL",
 "p": 0.532,
 "line": null,
-"ic": 45.3986,
-"level": "Baja"
-},
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.5532,
-"line": 7.0,
-"ic": 42.9392,
+"ic": 43.9968,
 "level": "Baja"
 }
 ],
@@ -202,64 +202,64 @@
 "pk": 849842,
 "date": "2026-09-30",
 "time": "2026-10-01T02:00:00Z",
-"generatedAt": "2026-09-30T04:18:26+00:00",
+"generatedAt": "2026-09-30T05:36:23+00:00",
 "away": "CHC",
 "home": "SD",
-"pHome": 0.5372,
+"pHome": 0.5116,
 "methods": {
 "log5": 0.4787,
-"elo": 0.6048,
-"lambda": 0.528
+"elo": 0.5425,
+"lambda": 0.5136
 },
-"confidence": "baja",
+"confidence": "media",
 "projAway": 4.2584,
-"projHome": 4.5666,
-"total": 8.825,
+"projHome": 4.4122,
+"total": 8.6706,
 "f5Away": 2.2941,
-"f5Home": 2.6789,
-"nrfi": 0.4949,
-"pOver85": 0.4761,
+"f5Home": 2.5404,
+"nrfi": 0.5061,
+"pOver85": 0.4619,
 "probables": {
-"away": "Por anunciar",
+"away": "Kevin Gausman",
 "home": "Nick Pivetta"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "Team total",
-"pick": "SD Over 3.5",
-"p": 0.565,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.6141,
+"price": -123,
+"edge": 0.0625,
+"light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "CHC +1.5",
-"p": 0.6204,
-"line": null,
-"ic": 31.4944,
-"level": "Muy baja"
-},
-{
 "family": "Total",
 "market": "Total completo",
-"pick": "Under 8.5",
-"p": 0.5239,
-"line": 8.5,
-"ic": 31.4944,
+"pick": "Over 7.0",
+"p": 0.6141,
+"line": 7.0,
+"ic": 52.3687,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Kevin Gausman Under 5.5 K",
+"p": 0.5551,
+"line": 5.5,
+"ic": 34.889,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "RL",
-"pick": "CHC +1.5",
+"waitFor": "momio",
+"family": "K",
+"pick": "Kevin Gausman Under 5.5 K",
 "level": 0,
 "alts": [
-"Total",
+"K",
 "F5 total",
 "F5"
 ]

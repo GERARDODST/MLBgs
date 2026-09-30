@@ -139,6 +139,38 @@
    "kind": "decision",
    "pk": 849848,
    "text": "Decisión: esperar momio (NYY) → esperar momio (NYY F5) · tras: momio"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Kevin Gausman",
+   "at": "2026-09-30T05:36:32Z",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849842,
+   "side": "away",
+   "text": "Abridor anunciado (CHC): Kevin Gausman"
+  },
+  {
+   "at": "2026-09-30T05:36:32Z",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849842,
+   "text": "Mercado abierto: CHC +120 / SD -145 · total 7.0"
+  },
+  {
+   "after": "esperar momio (Kevin Gausman Under 5.5 K)",
+   "at": "2026-09-30T05:36:23Z",
+   "before": "esperar dato (CHC +1.5)",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849842,
+   "text": "Decisión: esperar dato (CHC +1.5) → esperar momio (Kevin Gausman Under 5.5 K) · tras: abridor, momio"
   }
  ],
  "snap": {
@@ -243,9 +275,9 @@
    "away": 112,
    "dec": {
     "level": 0,
-    "pick": "CHC +1.5",
+    "pick": "Kevin Gausman Under 5.5 K",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 135,
@@ -254,8 +286,20 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.0,
+    "ml": {
+     "away": 120,
+     "home": -145
+    },
+    "pHome": 0.5656,
+    "src": "draftkings"
+   },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 592332,
+     "name": "Kevin Gausman"
+    },
     "home": {
      "id": 601713,
      "name": "Nick Pivetta"
@@ -335,6 +379,11 @@
     "944744"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   },
   "849846": {
