@@ -122,6 +122,11 @@ class Decision(unittest.TestCase):
         self.assertFalse(other["priceIsReal"])                                # otra línea: no hay precio comparable
         BU.reprice_labs([], [lab])                                            # partido ya empezado: no se toca
         self.assertEqual(frozen["price"], q["price"])
+        # el lado contrario del mismo mercado (el framework eligió YRFI, el Pro-Lab NRFI): sale de las filas de mercado
+        nrfi = {**copy.deepcopy(q), "pick": "NRFI", "family": "NRFI", "price": -120, "priceIsReal": False}
+        g["markets"] = [{"pick": "NRFI", "price": -146.0}, {"pick": "YRFI", "price": 113.0}]
+        BU.reprice_labs([g], [{"pk": g["pk"], "picks": [nrfi], "topPicks": []}])
+        self.assertEqual((nrfi["price"], nrfi["priceIsReal"]), (-146, True))
 
     def test_esperar_si_solo_falta_un_dato(self):
         g = copy.deepcopy(self.games[0])

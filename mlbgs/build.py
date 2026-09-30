@@ -83,12 +83,14 @@ def reprice_labs(analyses: list[dict], labs: list[dict]) -> None:
         a = by_pk.get(lab.get("pk"))
         if not a:
             continue
-        cur = {q["pick"]: q for q in a.get("picks") or []}
+        # todos los mercados del análisis (cada lado y línea: NRFI y YRFI, Over y Under) con su momio real de referencia
+        cur = {r["pick"]: r["price"] for r in a.get("markets") or [] if r.get("price") is not None}
+        cur.update({q["pick"]: q["price"] for q in a.get("picks") or [] if q.get("priceIsReal") and q.get("price") is not None})
         for p in (lab.get("picks") or []) + (lab.get("topPicks") or []):
-            q = cur.get(p["pick"])
-            if q and q.get("priceIsReal") and q.get("price") is not None and q.get("price") != p.get("price"):
+            price = cur.get(p["pick"])
+            if price is not None and (price != p.get("price") or not p.get("priceIsReal")):
                 p.setdefault("frozenPrice", p.get("price") if p.get("priceIsReal") else None)
-                p.update(price=q["price"], priceIsReal=True)
+                p.update(price=round(price), priceIsReal=True)
 
 
 def decision_row(d: dict | None) -> dict | None:
