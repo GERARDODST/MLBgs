@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T05:36:23+00:00",
+  "registeredAt": "2026-09-30T06:02:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.532,
@@ -185,9 +185,9 @@
     "line": 3.5,
     "p": 0.5561,
     "fair": -125.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": null,
+    "ic": 41.3,
+    "level": "Baja",
+    "price": -118,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -224,7 +224,7 @@
      "h": 0.9987,
      "r": 1.0,
      "maxPrice": 119,
-     "why": "sin momio real: conviene si pagan -107 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -290,7 +290,7 @@
     "fair": -109.0,
     "ic": 35.3,
     "level": "Muy baja",
-    "price": null,
+    "price": -118,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -327,7 +327,7 @@
      "h": 0.9987,
      "r": 1.0,
      "maxPrice": 137,
-     "why": "sin momio real: conviene si pagan +110 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -335,13 +335,13 @@
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
-    "pick": "Tyler Mahle Over 4.5 K",
-    "line": 4.5,
-    "p": 0.5757,
-    "fair": -136.0,
+    "pick": "Tyler Mahle Under 5.5 K",
+    "line": 5.5,
+    "p": 0.5997,
+    "fair": -150.0,
     "ic": 34.3,
     "level": "Muy baja",
-    "price": null,
+    "price": -175,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -353,21 +353,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -112
+       "from": -123
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 105
+       "from": -105
       }
      ],
      "steps": [
-      -112,
-      -109,
-      -104,
+      -123,
+      -121,
+      -115,
+      -110,
+      -105,
       -100,
-      105,
-      110,
       null,
       null,
       null,
@@ -377,8 +377,8 @@
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0,
-     "maxPrice": 110,
-     "why": "sin momio real: conviene si pagan -112 o mejor"
+     "maxPrice": 100,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -436,27 +436,26 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan -107 o mejor (stake 1); stake 5 desde +109",
+   "status": "no apostar",
+   "why": "con el momio de referencia (-181): edge menor a 3 pp con ese momio (stake 1 desde -171)",
    "source": "Framework v2",
-   "pick": "F5 Over 3.5",
-   "waitFor": "momio",
-   "market": "Total primeras 5",
-   "p": 0.5561,
-   "ic": 37.0,
+   "pick": "ATL +1.5",
+   "market": "Run Line",
+   "p": 0.6689,
+   "ic": 44.2,
    "level": 0,
    "amount": 0,
-   "minPrice": -107,
+   "minPrice": -171,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -107
+     "from": -171
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 109
+     "from": -144
     }
    ]
   }
