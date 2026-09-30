@@ -171,6 +171,17 @@
    "kind": "decision",
    "pk": 849842,
    "text": "Decisión: esperar dato (CHC +1.5) → esperar momio (Kevin Gausman Under 5.5 K) · tras: abridor, momio"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-09-30T09:49:42Z",
+   "before": "esperar momio (F5 Under 4.5)",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849846,
+   "text": "Decisión: esperar momio (F5 Under 4.5) → no apostar"
   }
  ],
  "snap": {
@@ -390,9 +401,9 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "F5 Under 4.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "pick": "CWS +1.5",
+    "status": "no apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 117,
