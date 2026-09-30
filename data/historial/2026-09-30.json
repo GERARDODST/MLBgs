@@ -1748,7 +1748,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T22:34:05+00:00",
+  "registeredAt": "2026-09-30T23:05:40+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5516,
@@ -1874,9 +1874,9 @@
     "line": 6.5,
     "p": 0.5821,
     "fair": -139.0,
-    "ic": 43.3,
+    "ic": 44.5,
     "level": "Baja",
-    "price": -122,
+    "price": -120,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -2257,7 +2257,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T22:18:05+00:00",
+  "registeredAt": "2026-09-30T23:05:40+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5166,
@@ -2265,7 +2265,7 @@
    "projHome": 4.5,
    "total": 8.68,
    "nrfi": 0.5051,
-   "light": "Amarillo",
+   "light": "Verde",
    "confidence": "media",
    "probables": {
     "away": "Kevin Gausman",
@@ -2283,7 +2283,7 @@
     "line": 4.5,
     "p": 0.5932,
     "fair": -146.0,
-    "ic": 70.2,
+    "ic": 79.2,
     "level": "Alta",
     "price": 105,
     "methods": [
@@ -2330,13 +2330,13 @@
     "principal": true,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Over 7.0",
-    "line": 7.0,
-    "p": 0.6151,
-    "fair": -160.0,
-    "ic": 53.3,
-    "level": "Baja",
-    "price": -124,
+    "pick": "Over 7.5",
+    "line": 7.5,
+    "p": 0.5559,
+    "fair": -125.0,
+    "ic": 64.2,
+    "level": "Media",
+    "price": 105,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -2351,20 +2351,20 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -137
+       "from": -108
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -110
+       "from": 115
       }
      ],
      "steps": [
-      -137,
-      -131,
-      -124,
-      -117,
-      -110,
+      -108,
+      -103,
+      103,
+      109,
+      115,
       null,
       null,
       null,
@@ -2375,7 +2375,7 @@
      "a": 1.0,
      "h": 0.9984,
      "r": 0.8,
-     "maxPrice": -107
+     "maxPrice": 119
     }
    },
    {
@@ -2387,8 +2387,8 @@
     "line": 4.0,
     "p": 0.5445,
     "fair": -120.0,
-    "ic": 38.2,
-    "level": "Muy baja",
+    "ic": 47.2,
+    "level": "Baja",
     "price": -115,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
@@ -2438,8 +2438,8 @@
     "line": 4.5,
     "p": 0.5254,
     "fair": -111.0,
-    "ic": 37.4,
-    "level": "Muy baja",
+    "ic": 46.4,
+    "level": "Baja",
     "price": -105,
     "methods": [
      "λ + Poisson (5.4)"
@@ -2489,8 +2489,8 @@
     "line": null,
     "p": 0.6219,
     "fair": -164.0,
-    "ic": 35.3,
-    "level": "Muy baja",
+    "ic": 44.3,
+    "level": "Baja",
     "price": -179,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -2540,8 +2540,8 @@
     "line": 3.5,
     "p": 0.5139,
     "fair": -106.0,
-    "ic": 35.3,
-    "level": "Muy baja",
+    "ic": 44.3,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -2591,8 +2591,8 @@
     "line": 3.5,
     "p": 0.5557,
     "fair": -125.0,
-    "ic": 35.3,
-    "level": "Muy baja",
+    "ic": 44.3,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -2645,8 +2645,8 @@
     "line": null,
     "p": 0.5511,
     "fair": -123.0,
-    "ic": 35.3,
-    "level": "Muy baja",
+    "ic": 44.3,
+    "level": "Baja",
     "price": -148,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
@@ -2699,8 +2699,8 @@
     "line": null,
     "p": 0.4949,
     "fair": 102.0,
-    "ic": 35.3,
-    "level": "Muy baja",
+    "ic": 44.3,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ calibrado a ceros reales (6.8)"
@@ -2753,8 +2753,8 @@
     "line": null,
     "p": 0.5166,
     "fair": -107.0,
-    "ic": 34.6,
-    "level": "Muy baja",
+    "ic": 43.6,
+    "level": "Baja",
     "price": -149,
     "methods": [
      "Elo + abridor (5.7.7)",
@@ -2804,25 +2804,25 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-124)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+105)",
    "source": "Framework v2",
-   "pick": "Over 7.0",
+   "pick": "Over 7.5",
    "market": "Total completo",
-   "p": 0.6151,
-   "ic": 53.3,
+   "p": 0.5559,
+   "ic": 64.2,
    "level": 3,
    "amount": 750,
-   "minPrice": -137,
+   "minPrice": -108,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -137
+     "from": -108
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -110
+     "from": 115
     }
    ]
   }

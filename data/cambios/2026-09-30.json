@@ -448,6 +448,27 @@
    "kind": "decision",
    "pk": 849848,
    "text": "Decisión: apostar Sonny Gray Over 5.5 K · stake 6 → apostar Sonny Gray Over 5.5 K · stake 8 · tras: clima"
+  },
+  {
+   "action": "El stake usa la mediana de las casas, no una sola.",
+   "at": "2026-09-30T23:05:51Z",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "verificacion",
+   "pk": 849842,
+   "text": "Total: DraftKings pone 7.0 y 6 de 8 casas 7.5"
+  },
+  {
+   "after": "apostar Over 7.5 · stake 3",
+   "at": "2026-09-30T23:05:40Z",
+   "before": "apostar Over 7.0 · stake 3",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849842,
+   "text": "Decisión: apostar Over 7.0 · stake 3 → apostar Over 7.5 · stake 3 · tras: lineup, verificación"
   }
  ],
  "snap": {
@@ -597,7 +618,7 @@
    "away": 112,
    "dec": {
     "level": 3,
-    "pick": "Over 7.0",
+    "pick": "Over 7.5",
     "status": "apostar",
     "waitFor": null
    },
@@ -743,7 +764,7 @@
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
-    "total": "una fuente"
+    "total": "difiere"
    },
    "wx": {
     "closed": false,
