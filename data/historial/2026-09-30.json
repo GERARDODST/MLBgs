@@ -2022,7 +2022,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T18:58:42+00:00",
+  "registeredAt": "2026-09-30T20:02:55+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5116,
@@ -2048,9 +2048,9 @@
     "line": 4.5,
     "p": 0.6184,
     "fair": -162.0,
-    "ic": 65.9,
+    "ic": 69.9,
     "level": "Media",
-    "price": -105,
+    "price": 105,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -2460,13 +2460,13 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "con el momio de referencia (-105) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -108 o menos ya pasa el filtro",
+   "why": "con el momio de referencia (+105) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -108 o menos ya pasa el filtro",
    "source": "Framework v2",
    "pick": "Kevin Gausman Over 4.5 K",
    "waitFor": "verificar",
    "market": "Prop de ponches",
    "p": 0.6184,
-   "ic": 65.9,
+   "ic": 69.9,
    "level": 0,
    "amount": 0,
    "minPrice": -134,
