@@ -13,6 +13,11 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 CAMBIOS = [
+    {"version": "2026.09.30", "fecha": "2026-09-30", "cambios": [
+        "Pro-Lab: el modelo congela su probabilidad, no el momio. Cada corrida sus picks toman el momio actual del mismo "
+        "pick (misma línea) y la decisión del partido y la de su ticket siguen al momio hasta el primer lanzamiento; antes "
+        "un momio que llegaba después de congelar (NRFI, ponches) nunca entraba y la decisión se quedaba en «esperar momio».",
+    ]},
     {"version": "2026.09.29.5", "fecha": "2026-09-29", "cambios": [
         "OCTUBRE v2 (post-mortem de PHI @ ATL juego 1, validado fuera de muestra con los juegos de abridores de 2026): la "
         "forma del día ya no se confunde con un efecto del rival (el historial contra el rival empeoraba los ponches y ya "

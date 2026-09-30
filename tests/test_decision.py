@@ -107,6 +107,22 @@ class Decision(unittest.TestCase):
         a.update(priceIsReal=True, stake=dict(a["stake"], level=3, price=-110))   # con momio real ya no se espera
         self.assertNotIn("ask", DE.decide(g, [a]))
 
+    def test_pro_lab_congelado_toma_el_momio_actual(self):
+        """El Pro-Lab congela su probabilidad, no el momio: el precio que llega después (misma línea) entra a la decisión."""
+        from mlbgs import build as BU
+        g = copy.deepcopy(self.games[0])
+        q = g["picks"][0]
+        q.update(price=-120, priceIsReal=True)                                # momio real de esta corrida
+        frozen = {**copy.deepcopy(q), "price": None, "priceIsReal": False, "p": q["p"] + 0.01}
+        other = {**copy.deepcopy(q), "pick": q["pick"] + " (otra línea)", "price": None, "priceIsReal": False}
+        lab = {"pk": g["pk"], "picks": [frozen, other], "topPicks": []}
+        BU.reprice_labs([g], [lab])
+        self.assertEqual((frozen["price"], frozen["priceIsReal"]), (q["price"], True))
+        self.assertAlmostEqual(frozen["p"], q["p"] + 0.01)                    # la probabilidad sigue congelada
+        self.assertFalse(other["priceIsReal"])                                # otra línea: no hay precio comparable
+        BU.reprice_labs([], [lab])                                            # partido ya empezado: no se toca
+        self.assertEqual(frozen["price"], q["price"])
+
     def test_esperar_si_solo_falta_un_dato(self):
         g = copy.deepcopy(self.games[0])
         for p in g["picks"]:

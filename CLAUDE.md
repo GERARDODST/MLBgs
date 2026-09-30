@@ -149,7 +149,9 @@ Nunca se da un pick sin haber conectado antes todas las partes:
 - Estado del partido: la MLB marca `Live` desde el calentamiento (`Warmup`/`Pre-Game`, 20–30 min antes). Eso
   sigue siendo «por jugar» en la descarga (análisis y momios), en los tickets y en la página («calentamiento ·
   en N min»); «en juego» es solo desde el primer lanzamiento.
-- Las predicciones del Pro-Lab se registran ANTES del primer lanzamiento y no se cambian después.
+- Las predicciones del Pro-Lab se registran ANTES del primer lanzamiento y no se cambian después. Lo congelado es la
+  probabilidad del modelo, no el momio: en cada corrida sus picks toman el momio actual del mismo pick (misma línea,
+  `build.reprice_labs`) y la decisión del partido y la de su ticket siguen al momio hasta el bloqueo (algoritmo 2026.09.30).
 - El Historial de la página solo muestra partidos terminados; hoy y mañana viven en la Jornada.
 - **Boletos** (`mlbgs/boleto.py`, repetido en la página): un boleto por partido con la decisión única
   (manda el ticket del Pro-Lab). Momio decimal a 2 cifras (−137 → 1.73), pago = stake × decimal;

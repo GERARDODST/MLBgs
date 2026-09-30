@@ -230,7 +230,9 @@ class Bloqueo(unittest.TestCase):
         dec2 = {**dec1, "status": "apostar", "stake": {"level": 4, "amount": 875, "minPrice": -150, "ladder": []}}
         self.run_update([], [sb("Preview")], "2026-09-24T20:00:00+00:00", labs=[self.lab(dec1)])
         again = self.run_update([], [sb("Preview")], "2026-09-24T21:00:00+00:00", labs=[self.lab(dec2)])["2026-09-24-1-kronos"]
-        self.assertEqual(again["decision"]["status"], "esperar")          # misma versión congelada: no cambia
+        # misma versión congelada con otro momio: la decisión sigue al momio hasta el primer lanzamiento (2026.09.30)
+        self.assertEqual(again["decision"]["status"], "apostar")
+        self.assertEqual(again["frozenAt"], "2026-09-24T16:55:00+00:00")
         final = {**self.lab(dec2), "frozenAt": "2026-09-24T22:30:00+00:00", "builtAt": "2026-09-24T22:35:00+00:00"}
         t = self.run_update([], [sb("Preview")], "2026-09-24T22:40:00+00:00", labs=[final])["2026-09-24-1-kronos"]
         self.assertEqual(t["decision"]["status"], "apostar")              # congelada de nuevo: manda la nueva

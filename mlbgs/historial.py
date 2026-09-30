@@ -416,7 +416,9 @@ def update(bundle: dict, analyses: list[dict], labs: list[dict], generated: str,
             prev = {q["pick"]: q for q in old["picks"]}
             t = {**t, "picks": [{**p, **({"stake": prev[p["pick"]]["stake"]} if prev.get(p["pick"], {}).get("stake") else {}),
                                  "res": (prev.get(p["pick"]) or {}).get("res")} for p in t["picks"]]}
-            if old.get("decision"):
+            # la decisión sigue al momio actual hasta el primer lanzamiento (como la del framework); la probabilidad
+            # del modelo es la congelada (algoritmo 2026.09.30)
+            if old.get("decision") and not t.get("decision"):
                 t = {**t, "decision": old["decision"]}
             if old.get("result"):
                 t = {**t, "status": old["status"], "result": old["result"]}

@@ -74,6 +74,23 @@ def prediction_row(a: dict, generated: str) -> dict:
     }
 
 
+def reprice_labs(analyses: list[dict], labs: list[dict]) -> None:
+    """Los picks del Pro-Lab guardan su probabilidad congelada, pero el momio es el de esta corrida: el del mismo pick (misma
+    línea) en el análisis del framework. Sin esto, un momio que llegó después de congelar (p. ej. NRFI o ponches de The Odds
+    API) nunca entraba y la decisión se quedaba en «esperar momio». Partidos ya empezados: el Pro-Lab queda como estaba."""
+    by_pk = {a["pk"]: a for a in analyses}
+    for lab in labs:
+        a = by_pk.get(lab.get("pk"))
+        if not a:
+            continue
+        cur = {q["pick"]: q for q in a.get("picks") or []}
+        for p in (lab.get("picks") or []) + (lab.get("topPicks") or []):
+            q = cur.get(p["pick"])
+            if q and q.get("priceIsReal") and q.get("price") is not None and q.get("price") != p.get("price"):
+                p.setdefault("frozenPrice", p.get("price") if p.get("priceIsReal") else None)
+                p.update(price=q["price"], priceIsReal=True)
+
+
 def decision_row(d: dict | None) -> dict | None:
     if not d:
         return None
@@ -204,6 +221,7 @@ def build(bundle: dict, save: bool = True) -> dict:
     lab = next((x for x in labs if x.get("modelKey") == "diamante"), labs[0] if labs else None)
     # stake de cada pick (usa el historial ya calificado) antes de registrar los tickets, para que quede guardado
     prev = HI.load() or HI.update(bundle, analyses, labs, generated, save_files=False)
+    reprice_labs(analyses, labs)
     stake_cfg = ST.attach(analyses, labs, prev)
     DE.attach(analyses, labs, stake_cfg["track"])     # una decisión por partido: framework + modelo + cuotas
     if save:
