@@ -29,41 +29,242 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T09:49:42+00:00",
+  "registeredAt": "2026-09-30T16:07:55+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.532,
-   "projAway": 3.99,
-   "projHome": 4.08,
-   "total": 8.07,
-   "nrfi": 0.5338,
-   "light": "Gris",
+   "pHome": 0.5293,
+   "projAway": 4.11,
+   "projHome": 4.12,
+   "total": 8.22,
+   "nrfi": 0.5279,
+   "light": "Amarillo",
    "confidence": "media",
    "probables": {
     "away": "Cristopher Sánchez",
     "home": "Tyler Mahle"
    },
-   "lineups": "Proyectados"
+   "lineups": "Confirmados"
   },
   "picks": [
    {
     "rank": 1,
     "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Tyler Mahle Over 4.5 K",
+    "line": 4.5,
+    "p": 0.5608,
+    "fair": -128.0,
+    "ic": 67.3,
+    "level": "Media",
+    "price": 116,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 7,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -113
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 102
+      }
+     ],
+     "steps": [
+      -113,
+      -112,
+      -107,
+      -103,
+      102,
+      107,
+      112,
+      117,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9987,
+     "r": 1.0,
+     "maxPrice": 117
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Cristopher Sánchez Over 6.5 K",
+    "line": 6.5,
+    "p": 0.5066,
+    "fair": -103.0,
+    "ic": 50.0,
+    "level": "Baja",
+    "price": 112,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 2,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 110
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 125
+      }
+     ],
+     "steps": [
+      110,
+      110,
+      114,
+      119,
+      125,
+      131,
+      137,
+      144,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9987,
+     "r": 1.0,
+     "maxPrice": 145
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5689,
+    "fair": -132.0,
+    "ic": 48.1,
+    "level": "Baja",
+    "price": -115,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 2,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -116
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -100
+      }
+     ],
+     "steps": [
+      -116,
+      -115,
+      -110,
+      -105,
+      -100,
+      104,
+      109,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9987,
+     "r": 1.0,
+     "maxPrice": 113
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 3.5",
+    "line": 3.5,
+    "p": 0.567,
+    "fair": -131.0,
+    "ic": 45.7,
+    "level": "Baja",
+    "price": -118,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -115
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -100
+      }
+     ],
+     "steps": [
+      -115,
+      -114,
+      -109,
+      -104,
+      -100,
+      105,
+      110,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9987,
+     "r": 1.0,
+     "maxPrice": 114,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "ATL",
     "line": null,
-    "p": 0.532,
-    "fair": -114.0,
-    "ic": 43.3,
+    "p": 0.5293,
+    "fair": -112.0,
+    "ic": 44.8,
     "level": "Baja",
-    "price": -106,
+    "price": -102,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.2% · Elo + abridor (5.7.7) 52.6% · λ + Binomial Negativa (5.3 · 5.7.5) 50.8%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.2% · Elo + abridor (5.7.7) 52.6% · λ + Binomial Negativa (5.3 · 5.7.5) 50.0%",
     "res": null,
     "stake": {
      "level": 0,
@@ -81,12 +282,12 @@
      ],
      "steps": [
       101,
-      103,
-      108,
-      113,
+      102,
+      107,
+      112,
       118,
-      124,
-      130,
+      123,
+      129,
       null,
       null,
       null
@@ -95,46 +296,20 @@
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0,
-     "maxPrice": 131,
+     "maxPrice": 132,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
-    "rank": 2,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.0",
-    "line": 7.0,
-    "p": 0.5532,
-    "fair": -124.0,
-    "ic": 42.9,
-    "level": "Baja",
-    "price": -114,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9987,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
+    "rank": 6,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "ATL +1.5",
     "line": null,
-    "p": 0.6689,
-    "fair": -202.0,
-    "ic": 42.7,
+    "p": 0.6599,
+    "fair": -194.0,
+    "ic": 41.3,
     "level": "Baja",
     "price": -185,
     "methods": [
@@ -148,22 +323,22 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -171
+       "from": -170
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -144
+       "from": -145
       }
      ],
      "steps": [
-      -171,
-      -167,
-      -159,
-      -151,
-      -144,
+      -170,
+      -168,
+      -160,
+      -152,
+      -145,
       -138,
-      null,
+      -132,
       null,
       null,
       null
@@ -172,26 +347,26 @@
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0,
-     "maxPrice": -132,
+     "maxPrice": -128,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
-    "rank": 4,
+    "rank": 7,
     "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Over 3.5",
-    "line": 3.5,
-    "p": 0.5561,
-    "fair": -125.0,
-    "ic": 41.3,
-    "level": "Baja",
-    "price": -118,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "NRFI",
+    "line": null,
+    "p": 0.5279,
+    "fair": -112.0,
+    "ic": 38.2,
+    "level": "Muy baja",
+    "price": null,
     "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
+     "λ calibrado a ceros reales (6.8)"
     ],
-    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
      "level": 0,
@@ -199,22 +374,22 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -107
+       "from": 101
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 109
+       "from": 117
       }
      ],
      "steps": [
-      -107,
-      -105,
-      -100,
-      104,
-      109,
-      114,
-      null,
+      101,
+      102,
+      107,
+      112,
+      117,
+      123,
+      129,
       null,
       null,
       null
@@ -223,20 +398,20 @@
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0,
-     "maxPrice": 119,
-     "why": "edge menor a 3 pp con ese momio"
+     "maxPrice": 133,
+     "why": "sin momio real: conviene si pagan +101 o mejor"
     }
    },
    {
-    "rank": 5,
+    "rank": 8,
     "principal": false,
     "family": "Team total",
     "market": "Team total PHI",
-    "pick": "PHI Under 3.5",
+    "pick": "PHI Over 3.5",
     "line": 3.5,
-    "p": 0.5135,
-    "fair": -106.0,
-    "ic": 37.0,
+    "p": 0.5028,
+    "fair": -101.0,
+    "ic": 34.8,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -247,22 +422,22 @@
     "stake": {
      "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "block": "el guion del partido no acompaña",
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0
     }
    },
    {
-    "rank": 6,
+    "rank": 9,
     "principal": false,
     "family": "Team total",
     "market": "Team total ATL",
-    "pick": "ATL Under 3.5",
+    "pick": "ATL Over 3.5",
     "line": 3.5,
-    "p": 0.5002,
-    "fair": -100.0,
-    "ic": 37.0,
+    "p": 0.5044,
+    "fair": -102.0,
+    "ic": 34.8,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -273,124 +448,22 @@
     "stake": {
      "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "block": "el guion del partido no acompaña",
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0
     }
    },
    {
-    "rank": 7,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Cristopher Sánchez Under 6.5 K",
-    "line": 6.5,
-    "p": 0.5211,
-    "fair": -109.0,
-    "ic": 35.3,
-    "level": "Muy baja",
-    "price": -118,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 110
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 129
-      }
-     ],
-     "steps": [
-      110,
-      112,
-      117,
-      123,
-      129,
-      135,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9987,
-     "r": 1.0,
-     "maxPrice": 137,
-     "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Tyler Mahle Under 5.5 K",
-    "line": 5.5,
-    "p": 0.5997,
-    "fair": -150.0,
-    "ic": 34.3,
-    "level": "Muy baja",
-    "price": -175,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -123
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": -105
-      }
-     ],
-     "steps": [
-      -123,
-      -121,
-      -115,
-      -110,
-      -105,
-      -100,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9987,
-     "r": 1.0,
-     "maxPrice": 100,
-     "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 9,
+    "rank": 10,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "ATL F5",
     "line": null,
-    "p": 0.5183,
-    "fair": -108.0,
-    "ic": 33.6,
+    "p": 0.5109,
+    "fair": -104.0,
+    "ic": 34.8,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -406,56 +479,30 @@
      "h": 0.9987,
      "r": 1.0
     }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "NRFI",
-    "line": null,
-    "p": 0.5338,
-    "fair": -114.0,
-    "ic": 33.6,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9987,
-     "r": 1.0
-    }
    }
   ],
   "result": null,
   "decision": {
-   "status": "no apostar",
-   "why": "con el momio de referencia (-106): edge menor a 3 pp con ese momio (stake 1 desde +101)",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+116)",
    "source": "Framework v2",
-   "pick": "ATL",
-   "market": "Moneyline",
-   "p": 0.532,
-   "ic": 43.3,
-   "level": 0,
-   "amount": 0,
-   "minPrice": 101,
+   "pick": "Tyler Mahle Over 4.5 K",
+   "market": "Prop de ponches",
+   "p": 0.5608,
+   "ic": 67.3,
+   "level": 7,
+   "amount": 1200,
+   "minPrice": -113,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": 101
+     "from": -113
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 118
+     "from": 102
     }
    ]
   }
@@ -921,7 +968,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T09:49:42+00:00",
+  "registeredAt": "2026-09-30T16:07:55+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5286,
@@ -947,9 +994,9 @@
     "line": 7.5,
     "p": 0.5477,
     "fair": -121.0,
-    "ic": 43.0,
+    "ic": 44.4,
     "level": "Baja",
-    "price": -110,
+    "price": -108,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -975,7 +1022,7 @@
     "fair": -168.0,
     "ic": 36.1,
     "level": "Muy baja",
-    "price": -179,
+    "price": -191,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1128,7 +1175,7 @@
     "fair": -112.0,
     "ic": 35.8,
     "level": "Muy baja",
-    "price": -155,
+    "price": -147,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1304,7 +1351,7 @@
   "result": null,
   "decision": {
    "status": "no apostar",
-   "why": "con el momio de referencia (-179): edge menor a 3 pp con ese momio (stake 1 desde -142)",
+   "why": "con el momio de referencia (-191): edge menor a 3 pp con ese momio (stake 1 desde -142)",
    "source": "Framework v2",
    "pick": "CWS +1.5",
    "market": "Run Line",
@@ -1357,7 +1404,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T09:49:42+00:00",
+  "registeredAt": "2026-09-30T16:07:55+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5514,
@@ -1377,6 +1424,108 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Sonny Gray Over 5.5 K",
+    "line": 5.5,
+    "p": 0.6026,
+    "fair": -152.0,
+    "ic": 65.3,
+    "level": "Media",
+    "price": 101,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -125
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -107
+      }
+     ],
+     "steps": [
+      -125,
+      -123,
+      -117,
+      -112,
+      -107,
+      -102,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9987,
+     "r": 1.0,
+     "maxPrice": -102,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Max Fried Under 5.5 K",
+    "line": 5.5,
+    "p": 0.6603,
+    "fair": -194.0,
+    "ic": 63.1,
+    "level": "Media",
+    "price": -126,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -156
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -132
+      }
+     ],
+     "steps": [
+      -156,
+      -152,
+      -145,
+      -138,
+      -132,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9987,
+     "r": 1.0,
+     "maxPrice": -128,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "NYY",
@@ -1385,7 +1534,7 @@
     "fair": -123.0,
     "ic": 40.2,
     "level": "Baja",
-    "price": -142,
+    "price": -136,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1428,17 +1577,17 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 4,
+    "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 6.5",
     "line": 6.5,
     "p": 0.5674,
     "fair": -131.0,
-    "ic": 39.0,
+    "ic": 37.8,
     "level": "Muy baja",
-    "price": -120,
+    "price": -122,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1454,7 +1603,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 5,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -1480,7 +1629,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total BOS",
@@ -1506,7 +1655,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total NYY",
@@ -1532,7 +1681,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 8,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -1542,7 +1691,7 @@
     "fair": -122.0,
     "ic": 35.9,
     "level": "Muy baja",
-    "price": null,
+    "price": -142,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -1579,109 +1728,7 @@
      "h": 0.9987,
      "r": 1.0,
      "maxPrice": 122,
-     "why": "sin momio real: conviene si pagan -103 o mejor"
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Sonny Gray Under 6.5 K",
-    "line": 6.5,
-    "p": 0.5568,
-    "fair": -126.0,
-    "ic": 34.6,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -104
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 113
-      }
-     ],
-     "steps": [
-      -104,
-      -102,
-      103,
-      108,
-      113,
-      118,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9987,
-     "r": 1.0,
-     "maxPrice": 118,
-     "why": "sin momio real: conviene si pagan -104 o mejor"
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Max Fried Over 4.5 K",
-    "line": 4.5,
-    "p": 0.514,
-    "fair": -106.0,
-    "ic": 33.1,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 116
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 137
-      }
-     ],
-     "steps": [
-      116,
-      119,
-      125,
-      130,
-      137,
-      null,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9987,
-     "r": 1.0,
-     "maxPrice": 141,
-     "why": "sin momio real: conviene si pagan +116 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -1721,7 +1768,7 @@
     "fair": -173.0,
     "ic": 29.3,
     "level": "Muy baja",
-    "price": -204,
+    "price": -198,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1740,26 +1787,26 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de F5 Moneyline: conviene si pagan -103 o mejor (stake 1); stake 5 desde +114",
+   "why": "con el momio de referencia (+101) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -102 o menos ya pasa el filtro",
    "source": "Framework v2",
-   "pick": "NYY F5",
-   "waitFor": "momio",
-   "market": "F5 Moneyline",
-   "p": 0.5497,
-   "ic": 35.9,
+   "pick": "Sonny Gray Over 5.5 K",
+   "waitFor": "verificar",
+   "market": "Prop de ponches",
+   "p": 0.6026,
+   "ic": 65.3,
    "level": 0,
    "amount": 0,
-   "minPrice": -103,
+   "minPrice": -125,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -103
+     "from": -125
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 114
+     "from": -107
     }
    ]
   }
@@ -1794,7 +1841,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T09:49:42+00:00",
+  "registeredAt": "2026-09-30T16:07:55+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5116,
@@ -1813,6 +1860,57 @@
   "picks": [
    {
     "rank": 1,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Kevin Gausman Over 4.5 K",
+    "line": 4.5,
+    "p": 0.6184,
+    "fair": -162.0,
+    "ic": 65.9,
+    "level": "Media",
+    "price": -105,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -134
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -114
+      }
+     ],
+     "steps": [
+      -134,
+      -131,
+      -125,
+      -120,
+      -114,
+      -109,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9987,
+     "r": 1.0,
+     "maxPrice": -108,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 2,
     "principal": true,
     "family": "Total",
     "market": "Total completo",
@@ -1841,21 +1939,21 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Kevin Gausman Under 5.5 K",
-    "line": 5.5,
-    "p": 0.5551,
-    "fair": -125.0,
-    "ic": 34.9,
+    "rank": 3,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 4.0",
+    "line": 4.0,
+    "p": 0.5433,
+    "fair": -119.0,
+    "ic": 36.6,
     "level": "Muy baja",
-    "price": null,
+    "price": -115,
     "methods": [
-     "λ + Poisson (5.4)"
+     "λ + Binomial Negativa F5 (5.4)"
     ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
      "level": 0,
@@ -1863,21 +1961,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -104
+       "from": 102
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 113
+       "from": 120
       }
      ],
      "steps": [
-      -104,
-      -102,
-      103,
-      108,
-      113,
-      118,
+      102,
+      104,
+      109,
+      114,
+      120,
+      125,
       null,
       null,
       null,
@@ -1887,12 +1985,12 @@
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0,
-     "maxPrice": 119,
-     "why": "sin momio real: conviene si pagan -104 o mejor"
+     "maxPrice": 125,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
@@ -1902,7 +2000,7 @@
     "fair": -174.0,
     "ic": 34.1,
     "level": "Muy baja",
-    "price": -184,
+    "price": -177,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1943,57 +2041,6 @@
     }
    },
    {
-    "rank": 4,
-    "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Under 4.5",
-    "line": 4.5,
-    "p": 0.5287,
-    "fair": -112.0,
-    "ic": 34.1,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 108
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 127
-      }
-     ],
-     "steps": [
-      108,
-      111,
-      116,
-      121,
-      127,
-      133,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9987,
-     "r": 1.0,
-     "maxPrice": 133,
-     "why": "sin momio real: conviene si pagan +108 o mejor"
-    }
-   },
-   {
     "rank": 5,
     "principal": false,
     "family": "F5",
@@ -2004,7 +2051,7 @@
     "fair": -116.0,
     "ic": 34.1,
     "level": "Muy baja",
-    "price": null,
+    "price": -148,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -2044,7 +2091,7 @@
      "h": 0.9987,
      "r": 0.8,
      "maxPrice": 128,
-     "why": "sin momio real: conviene si pagan +104 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -2058,7 +2105,7 @@
     "fair": -105.0,
     "ic": 33.4,
     "level": "Muy baja",
-    "price": -145,
+    "price": -150,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -2193,7 +2240,7 @@
     "fair": -103.0,
     "ic": 29.0,
     "level": "Muy baja",
-    "price": null,
+    "price": -105,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -2225,33 +2272,33 @@
      "h": 0.9987,
      "r": 1.0,
      "maxPrice": 145,
-     "why": "sin momio real: conviene si pagan +127 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    }
   ],
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Prop de ponches: conviene si pagan -104 o mejor (stake 1); stake 5 desde +113",
+   "why": "con el momio de referencia (-105) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -108 o menos ya pasa el filtro",
    "source": "Framework v2",
-   "pick": "Kevin Gausman Under 5.5 K",
-   "waitFor": "momio",
+   "pick": "Kevin Gausman Over 4.5 K",
+   "waitFor": "verificar",
    "market": "Prop de ponches",
-   "p": 0.5551,
-   "ic": 34.9,
+   "p": 0.6184,
+   "ic": 65.9,
    "level": 0,
    "amount": 0,
-   "minPrice": -104,
+   "minPrice": -134,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -104
+     "from": -134
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 113
+     "from": -114
     }
    ]
   }
