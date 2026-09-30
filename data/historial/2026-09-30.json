@@ -1057,15 +1057,15 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T17:12:45+00:00",
+  "registeredAt": "2026-09-30T17:37:08+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5286,
-   "projAway": 4.18,
+   "pHome": 0.5258,
+   "projAway": 4.26,
    "projHome": 4.41,
-   "total": 8.59,
-   "nrfi": 0.5204,
-   "light": "Gris",
+   "total": 8.68,
+   "nrfi": 0.5176,
+   "light": "Amarillo",
    "confidence": "media",
    "probables": {
     "away": "Sean Burke",
@@ -1081,9 +1081,9 @@
     "market": "Total completo",
     "pick": "Over 7.5",
     "line": 7.5,
-    "p": 0.5477,
-    "fair": -121.0,
-    "ic": 44.4,
+    "p": 0.5556,
+    "fair": -125.0,
+    "ic": 46.7,
     "level": "Baja",
     "price": -108,
     "methods": [
@@ -1107,8 +1107,8 @@
     "market": "Run Line",
     "pick": "CWS +1.5",
     "line": null,
-    "p": 0.6272,
-    "fair": -168.0,
+    "p": 0.6339,
+    "fair": -173.0,
     "ic": 36.1,
     "level": "Muy baja",
     "price": -175,
@@ -1123,21 +1123,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -142
+       "from": -146
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -120
+       "from": -124
       }
      ],
      "steps": [
+      -146,
       -142,
-      -138,
-      -132,
-      -126,
-      -120,
-      -115,
+      -136,
+      -129,
+      -124,
+      -118,
       null,
       null,
       null,
@@ -1147,7 +1147,7 @@
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0,
-     "maxPrice": -112,
+     "maxPrice": -115,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -1158,8 +1158,8 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.0",
     "line": 4.0,
-    "p": 0.5136,
-    "fair": -106.0,
+    "p": 0.5199,
+    "fair": -108.0,
     "ic": 36.1,
     "level": "Muy baja",
     "price": -115,
@@ -1174,21 +1174,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 112
+       "from": 109
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 131
+       "from": 128
       }
      ],
      "steps": [
-      112,
-      114,
-      120,
-      125,
-      131,
-      137,
+      109,
+      111,
+      117,
+      122,
+      128,
+      134,
       null,
       null,
       null,
@@ -1198,7 +1198,7 @@
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0,
-     "maxPrice": 141,
+     "maxPrice": 138,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -1209,8 +1209,8 @@
     "market": "F5 Moneyline",
     "pick": "HOU F5",
     "line": null,
-    "p": 0.5891,
-    "fair": -143.0,
+    "p": 0.5821,
+    "fair": -139.0,
     "ic": 36.1,
     "level": "Muy baja",
     "price": -145,
@@ -1225,21 +1225,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -121
+       "from": -118
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -103
+       "from": -100
       }
      ],
      "steps": [
-      -121,
       -118,
-      -113,
-      -108,
-      -103,
-      102,
+      -115,
+      -110,
+      -105,
+      -100,
+      104,
       null,
       null,
       null,
@@ -1249,7 +1249,7 @@
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0,
-     "maxPrice": 104,
+     "maxPrice": 107,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -1260,8 +1260,8 @@
     "market": "Moneyline",
     "pick": "HOU",
     "line": null,
-    "p": 0.5286,
-    "fair": -112.0,
+    "p": 0.5258,
+    "fair": -111.0,
     "ic": 35.8,
     "level": "Muy baja",
     "price": -155,
@@ -1270,7 +1270,7 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 50.2% · Elo + abridor (5.7.7) 56.3% · λ + Binomial Negativa (5.3 · 5.7.5) 52.1%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 50.2% · Elo + abridor (5.7.7) 56.3% · λ + Binomial Negativa (5.3 · 5.7.5) 51.3%",
     "res": null,
     "stake": {
      "level": 0,
@@ -1278,21 +1278,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 106
+       "from": 107
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 124
+       "from": 125
       }
      ],
      "steps": [
-      106,
-      108,
-      113,
-      118,
-      124,
-      130,
+      107,
+      109,
+      114,
+      120,
+      125,
+      131,
       null,
       null,
       null,
@@ -1302,7 +1302,7 @@
      "a": 1.0,
      "h": 0.9987,
      "r": 1.0,
-     "maxPrice": 133,
+     "maxPrice": 134,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -1339,8 +1339,8 @@
     "market": "Prop de ponches",
     "pick": "Hunter Brown Over 6.5 K",
     "line": 6.5,
-    "p": 0.5021,
-    "fair": -101.0,
+    "p": 0.5063,
+    "fair": -103.0,
     "ic": 33.2,
     "level": "Muy baja",
     "price": null,
@@ -1365,8 +1365,8 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.4796,
-    "fair": 108.0,
+    "p": 0.4824,
+    "fair": 107.0,
     "ic": 32.8,
     "level": "Muy baja",
     "price": null,
@@ -1391,8 +1391,8 @@
     "market": "Team total CWS",
     "pick": "CWS Over 3.5",
     "line": 3.5,
-    "p": 0.5129,
-    "fair": -105.0,
+    "p": 0.5248,
+    "fair": -110.0,
     "ic": 29.4,
     "level": "Muy baja",
     "price": null,
@@ -1440,25 +1440,25 @@
   "result": null,
   "decision": {
    "status": "no apostar",
-   "why": "con el momio de referencia (-175): edge menor a 3 pp con ese momio (stake 1 desde -142)",
+   "why": "con el momio de referencia (-175): edge menor a 3 pp con ese momio (stake 1 desde -146)",
    "source": "Framework v2",
    "pick": "CWS +1.5",
    "market": "Run Line",
-   "p": 0.6272,
+   "p": 0.6339,
    "ic": 36.1,
    "level": 0,
    "amount": 0,
-   "minPrice": -142,
+   "minPrice": -146,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -142
+     "from": -146
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -120
+     "from": -124
     }
    ]
   }

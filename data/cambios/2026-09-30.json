@@ -267,6 +267,27 @@
    "kind": "clima",
    "pk": 849841,
    "text": "Temperatura: 70 °F → 84 °F"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-30T17:37:18Z",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849846,
+   "side": "away",
+   "text": "Lineup confirmado (CWS)"
+  },
+  {
+   "after": "Alex Tosi",
+   "at": "2026-09-30T17:37:18Z",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849846,
+   "text": "Umpire de home asignado: Alex Tosi"
   }
  ],
  "snap": {
@@ -535,13 +556,33 @@
     "status": "no apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 117,
    "lu": {
-    "away": [],
+    "away": [
+     803011,
+     691019,
+     678246,
+     808959,
+     643217,
+     671976,
+     805367,
+     695731,
+     695657
+    ],
     "home": []
    },
-   "names": {},
+   "names": {
+    "643217": "Andrew Benintendi",
+    "671976": "Tristan Peters",
+    "678246": "Miguel Vargas",
+    "691019": "Kyle Teel",
+    "695657": "Colson Montgomery",
+    "695731": "Braden Montgomery",
+    "803011": "Sam Antonacci",
+    "805367": "Chase Meidroth",
+    "808959": "Munetaka Murakami"
+   },
    "odds": {
     "line": 7.5,
     "ml": {
@@ -632,13 +673,19 @@
     "944536",
     "944539"
    ],
-   "ump": null,
+   "ump": "Alex Tosi",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Roof Closed",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 73.0
+   }
   },
   "849848": {
    "away": 111,
