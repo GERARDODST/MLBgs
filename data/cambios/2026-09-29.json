@@ -613,13 +613,24 @@
    "pk": 849843,
    "side": "away",
    "text": "Lineup confirmado (CHC)"
+  },
+  {
+   "after": "apostar Michael King Over 4.5 K · stake 3",
+   "at": "2026-09-30T00:36:01Z",
+   "before": "apostar Michael King Over 4.5 K · stake 2",
+   "date": "2026-09-29",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849843,
+   "text": "Decisión: apostar Michael King Over 4.5 K · stake 2 → apostar Michael King Over 4.5 K · stake 3"
   }
  ],
  "snap": {
   "849843": {
    "away": 112,
    "dec": {
-    "level": 2,
+    "level": 3,
     "pick": "Michael King Over 4.5 K",
     "status": "apostar",
     "waitFor": null
@@ -771,9 +782,9 @@
    "wx": {
     "closed": false,
     "cond": "Clear",
-    "dir": "in",
+    "dir": "cruzado",
     "speed": 4,
-    "temp": 73.0
+    "temp": 77.0
    }
   },
   "849845": {

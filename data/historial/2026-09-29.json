@@ -2440,7 +2440,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-29T23:56:41+00:00",
+  "registeredAt": "2026-09-30T00:36:01+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4974,
@@ -2468,7 +2468,7 @@
     "fair": -209.0,
     "ic": 73.2,
     "level": "Alta",
-    "price": -108,
+    "price": -105,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -2492,17 +2492,17 @@
       -182,
       -180,
       -172,
-      -164,
+      -163,
       -156,
       -148,
-      -142,
+      -141,
       null,
       null,
       null
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": -137,
      "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
@@ -2517,16 +2517,16 @@
     "line": 4.5,
     "p": 0.5391,
     "fair": -117.0,
-    "ic": 50.9,
+    "ic": 52.3,
     "level": "Baja",
-    "price": 100,
+    "price": 102,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 2,
+     "level": 3,
      "ladder": [
       {
        "level": 1,
@@ -2545,7 +2545,7 @@
       101,
       105,
       110,
-      115,
+      116,
       121,
       127,
       null,
@@ -2553,7 +2553,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": 127
     }
@@ -2603,7 +2603,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": 126,
      "why": "edge menor a 3 pp con ese momio"
@@ -2646,7 +2646,7 @@
       112,
       117,
       123,
-      128,
+      129,
       135,
       null,
       null,
@@ -2654,7 +2654,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": 138,
      "why": "edge menor a 3 pp con ese momio"
@@ -2707,7 +2707,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": 148,
      "why": "edge menor a 3 pp con ese momio"
@@ -2750,7 +2750,7 @@
       -168,
       -160,
       -153,
-      -146,
+      -145,
       -139,
       null,
       null,
@@ -2758,7 +2758,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": -135,
      "why": "edge menor a 3 pp con ese momio"
@@ -2798,7 +2798,7 @@
      "steps": [
       103,
       105,
-      109,
+      110,
       115,
       120,
       126,
@@ -2809,7 +2809,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": 135,
      "why": "edge menor a 3 pp con ese momio"
@@ -2860,7 +2860,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": 126,
      "why": "sin momio real: conviene si pagan -104 o mejor"
@@ -2911,7 +2911,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": 146,
      "why": "sin momio real: conviene si pagan +110 o mejor"
@@ -2955,14 +2955,14 @@
       136,
       142,
       149,
-      156,
+      157,
       null,
       null,
       null
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.999,
+     "h": 0.9958,
      "r": 1.0,
      "maxPrice": 161,
      "why": "sin momio real: conviene si pagan +122 o mejor"
@@ -2972,14 +2972,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+100)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+102)",
    "source": "Framework v2",
    "pick": "Michael King Over 4.5 K",
    "market": "Prop de ponches",
    "p": 0.5391,
-   "ic": 50.9,
-   "level": 2,
-   "amount": 625,
+   "ic": 52.3,
+   "level": 3,
+   "amount": 750,
    "minPrice": -103,
    "ladder": [
     {
