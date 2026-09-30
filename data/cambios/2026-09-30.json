@@ -182,6 +182,60 @@
    "kind": "decision",
    "pk": 849846,
    "text": "Decisión: esperar momio (F5 Under 4.5) → no apostar"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-30T16:08:05Z",
+   "date": "2026-09-30",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849841,
+   "side": "away",
+   "text": "Lineup confirmado (PHI)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-30T16:08:05Z",
+   "date": "2026-09-30",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849841,
+   "side": "home",
+   "text": "Lineup confirmado (ATL)"
+  },
+  {
+   "after": "Adam Beck",
+   "at": "2026-09-30T16:08:05Z",
+   "date": "2026-09-30",
+   "game": "PHI @ ATL",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849841,
+   "text": "Umpire de home asignado: Adam Beck"
+  },
+  {
+   "after": "esperar verificar (Sonny Gray Over 5.5 K)",
+   "at": "2026-09-30T16:07:55Z",
+   "before": "esperar momio (NYY F5)",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849848,
+   "text": "Decisión: esperar momio (NYY F5) → esperar verificar (Sonny Gray Over 5.5 K)"
+  },
+  {
+   "after": "esperar verificar (Kevin Gausman Over 4.5 K)",
+   "at": "2026-09-30T16:07:55Z",
+   "before": "esperar momio (Kevin Gausman Under 5.5 K)",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849842,
+   "text": "Decisión: esperar momio (Kevin Gausman Under 5.5 K) → esperar verificar (Kevin Gausman Over 4.5 K)"
   }
  ],
  "snap": {
@@ -193,13 +247,52 @@
     "status": "esperar",
     "waitFor": "momio"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 144,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     607208,
+     656941,
+     547180,
+     664761,
+     681082,
+     669016,
+     624641,
+     702222,
+     592663
+    ],
+    "home": [
+     660670,
+     686948,
+     645277,
+     621566,
+     643289,
+     663586,
+     671739,
+     669221,
+     673490
+    ]
    },
-   "names": {},
+   "names": {
+    "547180": "Bryce Harper",
+    "592663": "J.T. Realmuto",
+    "607208": "Trea Turner",
+    "621566": "Matt Olson",
+    "624641": "Edmundo Sosa",
+    "643289": "Mauricio Dubón",
+    "645277": "Ozzie Albies",
+    "656941": "Kyle Schwarber",
+    "660670": "Ronald Acuña Jr.",
+    "663586": "Austin Riley",
+    "664761": "Alec Bohm",
+    "669016": "Brandon Marsh",
+    "669221": "Sean Murphy",
+    "671739": "Michael Harris II",
+    "673490": "Ha-Seong Kim",
+    "681082": "Bryson Stott",
+    "686948": "Drake Baldwin",
+    "702222": "Justin Crawford"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -274,21 +367,27 @@
     "944727",
     "944751"
    ],
-   "ump": null,
+   "ump": "Adam Beck",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Cloudy",
+    "dir": "cruzado",
+    "speed": 3,
+    "temp": 70.0
+   }
   },
   "849842": {
    "away": 112,
    "dec": {
     "level": 0,
-    "pick": "Kevin Gausman Under 5.5 K",
+    "pick": "Kevin Gausman Over 4.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Scheduled",
    "home": 135,
@@ -514,9 +613,9 @@
    "away": 111,
    "dec": {
     "level": 0,
-    "pick": "NYY F5",
+    "pick": "Sonny Gray Over 5.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Scheduled",
    "home": 147,
