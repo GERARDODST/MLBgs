@@ -342,6 +342,28 @@
    "kind": "decision",
    "pk": 849848,
    "text": "Decisión: apostar Sonny Gray Over 5.5 K · stake 5 → apostar Sonny Gray Over 5.5 K · stake 6 · tras: lineup, umpire"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-30T20:10:59Z",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849846,
+   "side": "home",
+   "text": "Lineup confirmado (HOU)"
+  },
+  {
+   "after": "apostar Over 7.5 · stake 2",
+   "at": "2026-09-30T20:10:54Z",
+   "before": "no apostar",
+   "date": "2026-09-30",
+   "game": "CWS @ HOU",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849846,
+   "text": "Decisión: no apostar → apostar Over 7.5 · stake 2 · tras: lineup"
   }
  ],
  "snap": {
@@ -605,9 +627,9 @@
   "849846": {
    "away": 145,
    "dec": {
-    "level": 0,
-    "pick": "CWS +1.5",
-    "status": "no apostar",
+    "level": 2,
+    "pick": "Over 7.5",
+    "status": "apostar",
     "waitFor": null
    },
    "detailed": "Pre-Game",
@@ -624,18 +646,37 @@
      695731,
      695657
     ],
-    "home": []
+    "home": [
+     665161,
+     670541,
+     670623,
+     514888,
+     673237,
+     572233,
+     828599,
+     701358,
+     669397
+    ]
    },
    "names": {
+    "514888": "Jose Altuve",
+    "572233": "Christian Walker",
     "643217": "Andrew Benintendi",
+    "665161": "Jeremy Peña",
+    "669397": "Nick Allen",
+    "670541": "Yordan Alvarez",
+    "670623": "Isaac Paredes",
     "671976": "Tristan Peters",
+    "673237": "Yainer Diaz",
     "678246": "Miguel Vargas",
     "691019": "Kyle Teel",
     "695657": "Colson Montgomery",
     "695731": "Braden Montgomery",
+    "701358": "Cam Smith",
     "803011": "Sam Antonacci",
     "805367": "Chase Meidroth",
-    "808959": "Munetaka Murakami"
+    "808959": "Munetaka Murakami",
+    "828599": "Lucas Spence"
    },
    "odds": {
     "line": 7.5,
