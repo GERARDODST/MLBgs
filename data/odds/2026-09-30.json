@@ -6,7 +6,7 @@
    "books": {
     "betmgm": {
      "last": {
-      "at": "2026-09-30T16:08:05Z",
+      "at": "2026-09-30T16:24:22Z",
       "f5": {
        "ml": {},
        "total": {
@@ -41,6 +41,10 @@
          "price": -150
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -155,
+       "yrfi": 120
       }
      },
      "mx": false,
@@ -80,6 +84,10 @@
          "price": -150
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -155,
+       "yrfi": 120
       }
      },
      "src": "the-odds-api",
@@ -87,7 +95,7 @@
     },
     "betonlineag": {
      "last": {
-      "at": "2026-09-30T16:08:05Z",
+      "at": "2026-09-30T16:24:22Z",
       "f5": {
        "ml": {},
        "total": {
@@ -122,6 +130,10 @@
          "price": -154
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -167,
+       "yrfi": 125
       }
      },
      "mx": false,
@@ -161,10 +173,33 @@
          "price": -179
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -167,
+       "yrfi": 125
       }
      },
      "src": "the-odds-api",
      "title": "BetOnline"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-30T16:24:22Z",
+      "nrfi": {
+       "nrfi": -132,
+       "yrfi": 100
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-30T16:24:22Z",
+      "nrfi": {
+       "nrfi": -132,
+       "yrfi": 100
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
     },
     "betus": {
      "last": {
@@ -389,7 +424,7 @@
     },
     "fanduel": {
      "last": {
-      "at": "2026-09-30T16:08:05Z",
+      "at": "2026-09-30T16:24:22Z",
       "f5": {
        "ml": {},
        "total": {
@@ -424,6 +459,10 @@
          "price": -148
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -136,
+       "yrfi": 106
       }
      },
      "mx": false,
@@ -463,6 +502,10 @@
          "price": -172
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -136,
+       "yrfi": 106
       }
      },
      "src": "the-odds-api",
@@ -524,7 +567,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-09-30T16:08:05Z",
+   "checked": "2026-09-30T16:24:22Z",
    "espn": "401907972",
    "home": 144,
    "pk": 849841,
@@ -535,19 +578,23 @@
    "start": "2026-09-30T18:00:00Z",
    "theAt": {
     "pitcher_strikeouts": "2026-09-30T16:08:05Z",
+    "totals_1st_1_innings": "2026-09-30T16:24:22Z",
     "totals_1st_5_innings": "2026-09-30T16:08:05Z"
    },
    "theEmpty": {
     "pitcher_strikeouts": 0,
+    "totals_1st_1_innings": 0,
     "totals_1st_5_innings": 0
    },
    "theGot": {
     "pitcher_strikeouts": 6,
+    "totals_1st_1_innings": 4,
     "totals_1st_5_innings": 5
    },
    "theId": "9e23239e0075a017225697fa3bcd88b3",
    "theN": {
     "pitcher_strikeouts": 2,
+    "totals_1st_1_innings": 1,
     "totals_1st_5_innings": 2
    },
    "theSwapped": false
