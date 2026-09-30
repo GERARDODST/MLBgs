@@ -933,7 +933,7 @@
     },
     "draftkings": {
      "last": {
-      "at": "2026-09-30T20:10:59Z",
+      "at": "2026-09-30T20:18:57Z",
       "f5": {
        "ml": {
         "away": 120,
@@ -1223,7 +1223,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-09-30T20:10:59Z",
+   "checked": "2026-09-30T20:18:57Z",
    "espn": "401907975",
    "home": 135,
    "pk": 849842,
@@ -1258,9 +1258,84 @@
   "849846": {
    "away": 145,
    "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-09-30T20:18:57Z",
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": 100
+        },
+        "under": {
+         "point": 6.5,
+         "price": -135
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -135
+        },
+        "under": {
+         "point": 4.5,
+         "price": 100
+        }
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -115
+       },
+       "under": {
+        "point": 7.5,
+        "price": -105
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-30T20:18:57Z",
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": 100
+        },
+        "under": {
+         "point": 6.5,
+         "price": -135
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -135
+        },
+        "under": {
+         "point": 4.5,
+         "price": 100
+        }
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -115
+       },
+       "under": {
+        "point": 7.5,
+        "price": -105
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
     "betonlineag": {
      "last": {
-      "at": "2026-09-30T09:49:56Z",
+      "at": "2026-09-30T20:18:57Z",
       "f5": {
        "ml": {
         "away": 115,
@@ -1276,121 +1351,27 @@
          "price": -110
         }
        }
-      }
-     },
-     "mx": false,
-     "open": {
-      "at": "2026-09-30T09:49:56Z",
-      "f5": {
-       "ml": {
-        "away": 115,
-        "home": -135
-       },
-       "total": {
-        "over": {
-         "point": 4.0,
-         "price": -110
-        },
-        "under": {
-         "point": 4.0,
-         "price": -110
-        }
-       }
-      }
-     },
-     "src": "the-odds-api",
-     "title": "BetOnline"
-    },
-    "betrivers": {
-     "last": {
-      "at": "2026-09-30T09:49:56Z",
-      "f5": {
-       "ml": {
-        "away": 117,
-        "home": -155
-       },
-       "total": {}
-      }
-     },
-     "mx": false,
-     "open": {
-      "at": "2026-09-30T09:49:56Z",
-      "f5": {
-       "ml": {
-        "away": 117,
-        "home": -155
-       },
-       "total": {}
-      }
-     },
-     "src": "the-odds-api",
-     "title": "BetRivers"
-    },
-    "bovada": {
-     "last": {
-      "at": "2026-09-30T09:49:56Z",
-      "f5": {
-       "ml": {
-        "away": 110,
-        "home": -145
-       },
-       "total": {
-        "over": {
-         "point": 4.0,
-         "price": -115
-        },
-        "under": {
-         "point": 4.0,
-         "price": -115
-        }
-       }
-      }
-     },
-     "mx": false,
-     "open": {
-      "at": "2026-09-30T09:49:56Z",
-      "f5": {
-       "ml": {
-        "away": 110,
-        "home": -145
-       },
-       "total": {
-        "over": {
-         "point": 4.0,
-         "price": -115
-        },
-        "under": {
-         "point": 4.0,
-         "price": -115
-        }
-       }
-      }
-     },
-     "src": "the-odds-api",
-     "title": "Bovada"
-    },
-    "draftkings": {
-     "last": {
-      "at": "2026-09-30T20:10:59Z",
-      "f5": {
-       "ml": {
-        "away": 114,
-        "home": -145
-       },
-       "total": {}
       },
-      "ml": {
-       "away": 129,
-       "home": -155
-      },
-      "rl": {
-       "away": {
-        "point": 1.5,
-        "price": -174
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": -108
+        },
+        "under": {
+         "point": 6.5,
+         "price": -120
+        }
        },
-       "home": {
-        "point": -1.5,
-        "price": 143
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -149
+        },
+        "under": {
+         "point": 4.5,
+         "price": 115
+        }
        }
       },
       "total": {
@@ -1406,6 +1387,301 @@
      },
      "mx": false,
      "open": {
+      "at": "2026-09-30T09:49:56Z",
+      "f5": {
+       "ml": {
+        "away": 115,
+        "home": -135
+       },
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -110
+        },
+        "under": {
+         "point": 4.0,
+         "price": -110
+        }
+       }
+      },
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": -108
+        },
+        "under": {
+         "point": 6.5,
+         "price": -120
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -149
+        },
+        "under": {
+         "point": 4.5,
+         "price": 115
+        }
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -111
+       },
+       "under": {
+        "point": 7.5,
+        "price": -109
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-09-30T20:18:57Z",
+      "f5": {
+       "ml": {
+        "away": 117,
+        "home": -155
+       },
+       "total": {}
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -110
+       },
+       "under": {
+        "point": 7.5,
+        "price": -110
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-30T09:49:56Z",
+      "f5": {
+       "ml": {
+        "away": 117,
+        "home": -155
+       },
+       "total": {}
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -110
+       },
+       "under": {
+        "point": 7.5,
+        "price": -110
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-09-30T20:18:57Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -115
+       },
+       "under": {
+        "point": 7.5,
+        "price": -105
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-30T20:18:57Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -115
+       },
+       "under": {
+        "point": 7.5,
+        "price": -105
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-09-30T20:18:57Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -145
+       },
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -115
+        },
+        "under": {
+         "point": 4.0,
+         "price": -115
+        }
+       }
+      },
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": 110
+        },
+        "under": {
+         "point": 6.5,
+         "price": -145
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -150
+        },
+        "under": {
+         "point": 4.5,
+         "price": 115
+        }
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -110
+       },
+       "under": {
+        "point": 7.5,
+        "price": -110
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-30T09:49:56Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -145
+       },
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -115
+        },
+        "under": {
+         "point": 4.0,
+         "price": -115
+        }
+       }
+      },
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": 110
+        },
+        "under": {
+         "point": 6.5,
+         "price": -145
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -150
+        },
+        "under": {
+         "point": 4.5,
+         "price": 115
+        }
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -110
+       },
+       "under": {
+        "point": 7.5,
+        "price": -110
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
+    "draftkings": {
+     "last": {
+      "at": "2026-09-30T20:18:57Z",
+      "f5": {
+       "ml": {
+        "away": 114,
+        "home": -145
+       },
+       "total": {}
+      },
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": -101
+        },
+        "under": {
+         "point": 6.5,
+         "price": -126
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -136
+        },
+        "under": {
+         "point": 4.5,
+         "price": 107
+        }
+       }
+      },
+      "ml": {
+       "away": 128,
+       "home": -155
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -173
+       },
+       "home": {
+        "point": -1.5,
+        "price": 143
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -114
+       },
+       "under": {
+        "point": 7.5,
+        "price": -106
+       }
+      }
+     },
+     "mx": false,
+     "open": {
       "at": "2026-09-30T01:07:25Z",
       "f5": {
        "ml": {
@@ -1413,6 +1689,28 @@
         "home": -145
        },
        "total": {}
+      },
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": -101
+        },
+        "under": {
+         "point": 6.5,
+         "price": -126
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -136
+        },
+        "under": {
+         "point": 4.5,
+         "price": 107
+        }
+       }
       },
       "ml": {
        "away": 126,
@@ -1439,12 +1737,12 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
     },
     "fanduel": {
      "last": {
-      "at": "2026-09-30T09:49:56Z",
+      "at": "2026-09-30T20:18:57Z",
       "f5": {
        "ml": {
         "away": 116,
@@ -1459,6 +1757,38 @@
          "point": 3.5,
          "price": 112
         }
+       }
+      },
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": 110
+        },
+        "under": {
+         "point": 6.5,
+         "price": -140
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -146
+        },
+        "under": {
+         "point": 4.5,
+         "price": 114
+        }
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -115
+       },
+       "under": {
+        "point": 7.5,
+        "price": -105
        }
       }
      },
@@ -1479,15 +1809,78 @@
          "point": 3.5,
          "price": 112
         }
+       }
+      },
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": 110
+        },
+        "under": {
+         "point": 6.5,
+         "price": -140
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -146
+        },
+        "under": {
+         "point": 4.5,
+         "price": 114
+        }
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -115
+       },
+       "under": {
+        "point": 7.5,
+        "price": -105
        }
       }
      },
      "src": "the-odds-api",
      "title": "FanDuel"
     },
+    "lowvig": {
+     "last": {
+      "at": "2026-09-30T20:18:57Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -108
+       },
+       "under": {
+        "point": 7.5,
+        "price": -106
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-09-30T20:18:57Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -108
+       },
+       "under": {
+        "point": 7.5,
+        "price": -106
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "LowVig"
+    },
     "mybookieag": {
      "last": {
-      "at": "2026-09-30T09:49:56Z",
+      "at": "2026-09-30T20:18:57Z",
       "f5": {
        "ml": {
         "away": 116,
@@ -1502,6 +1895,38 @@
          "point": 4.0,
          "price": -110
         }
+       }
+      },
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": -111
+        },
+        "under": {
+         "point": 6.5,
+         "price": -124
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -152
+        },
+        "under": {
+         "point": 4.5,
+         "price": 109
+        }
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -115
+       },
+       "under": {
+        "point": 7.5,
+        "price": -106
        }
       }
      },
@@ -1522,6 +1947,38 @@
          "point": 4.0,
          "price": -110
         }
+       }
+      },
+      "k": {
+       "hunter brown": {
+        "over": {
+         "point": 6.5,
+         "price": -111
+        },
+        "under": {
+         "point": 6.5,
+         "price": -124
+        }
+       },
+       "sean burke": {
+        "over": {
+         "point": 4.5,
+         "price": -152
+        },
+        "under": {
+         "point": 4.5,
+         "price": 109
+        }
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -115
+       },
+       "under": {
+        "point": 7.5,
+        "price": -106
        }
       }
      },
@@ -1529,7 +1986,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-09-30T20:10:59Z",
+   "checked": "2026-09-30T20:18:57Z",
    "espn": "401907897",
    "home": 117,
    "pk": 849846,
@@ -1540,19 +1997,27 @@
    "start": "2026-09-30T21:00:00Z",
    "theAt": {
     "h2h_1st_5_innings": "2026-09-30T09:49:56Z",
+    "pitcher_strikeouts": "2026-09-30T20:18:57Z",
+    "totals": "2026-09-30T20:18:57Z",
     "totals_1st_5_innings": "2026-09-30T09:49:56Z"
    },
    "theEmpty": {
     "h2h_1st_5_innings": 0,
+    "pitcher_strikeouts": 0,
+    "totals": 0,
     "totals_1st_5_innings": 0
    },
    "theGot": {
     "h2h_1st_5_innings": 6,
+    "pitcher_strikeouts": 6,
+    "totals": 9,
     "totals_1st_5_innings": 4
    },
    "theId": "766096a9312f4528ba2e8b59fe9550fd",
    "theN": {
     "h2h_1st_5_innings": 1,
+    "pitcher_strikeouts": 1,
+    "totals": 1,
     "totals_1st_5_innings": 1
    },
    "theSwapped": false
@@ -1819,7 +2284,7 @@
     },
     "draftkings": {
      "last": {
-      "at": "2026-09-30T20:10:59Z",
+      "at": "2026-09-30T20:18:57Z",
       "f5": {
        "ml": {
         "away": 110,
@@ -2073,7 +2538,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-09-30T20:10:59Z",
+   "checked": "2026-09-30T20:18:57Z",
    "espn": "401907963",
    "home": 147,
    "pk": 849848,
