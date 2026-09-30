@@ -1,0 +1,268 @@
+[
+{
+"pk": 849844,
+"date": "2026-10-01",
+"time": "2026-10-01T18:00:00Z",
+"generatedAt": "2026-09-30T04:18:26+00:00",
+"away": "PHI",
+"home": "ATL",
+"pHome": 0.5331,
+"methods": {
+"log5": 0.5622,
+"elo": 0.5171,
+"lambda": 0.52
+},
+"confidence": "alta",
+"projAway": 4.0468,
+"projHome": 4.263,
+"total": 8.3098,
+"f5Away": 2.2381,
+"f5Home": 2.4153,
+"nrfi": 0.5195,
+"pOver85": 0.4285,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Rojo",
+"best": {
+"market": "ML",
+"pick": "ATL",
+"p": 0.5331,
+"price": null,
+"edge": null,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "ATL",
+"p": 0.5331,
+"line": null,
+"ic": 34.8978,
+"level": "Muy baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "PHI +1.5",
+"p": 0.6345,
+"line": null,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "ML",
+"pick": "ATL",
+"level": 0,
+"alts": [
+"RL",
+"Total",
+"F5 total"
+]
+}
+},
+{
+"pk": 849850,
+"date": "2026-10-01",
+"time": "2026-10-01T21:00:00Z",
+"generatedAt": "2026-09-30T04:18:26+00:00",
+"away": "CWS",
+"home": "HOU",
+"pHome": 0.4867,
+"methods": {
+"log5": 0.5015,
+"elo": 0.502,
+"lambda": 0.4567
+},
+"confidence": "alta",
+"projAway": 5.1184,
+"projHome": 4.6415,
+"total": 9.7599,
+"f5Away": 2.8646,
+"f5Home": 2.8068,
+"nrfi": 0.4476,
+"pOver85": 0.5595,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Rojo",
+"best": {
+"market": "Team total",
+"pick": "HOU Under 4.5",
+"p": 0.5561,
+"price": null,
+"edge": null,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "CWS",
+"p": 0.5133,
+"line": null,
+"ic": 34.8597,
+"level": "Muy baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "CWS +1.5",
+"p": 0.6764,
+"line": null,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "ML",
+"pick": "CWS",
+"level": 0,
+"alts": [
+"RL",
+"Total",
+"F5 total"
+]
+}
+},
+{
+"pk": 849847,
+"date": "2026-10-01",
+"time": "2026-10-02T00:00:00Z",
+"generatedAt": "2026-09-30T04:18:26+00:00",
+"away": "BOS",
+"home": "NYY",
+"pHome": 0.5325,
+"methods": {
+"log5": 0.561,
+"elo": 0.5302,
+"lambda": 0.5063
+},
+"confidence": "media",
+"projAway": 4.0554,
+"projHome": 4.134,
+"total": 8.1894,
+"f5Away": 2.3041,
+"f5Home": 2.4414,
+"nrfi": 0.5114,
+"pOver85": 0.4172,
+"probables": {
+"away": "Ranger Suarez",
+"home": "Gerrit Cole"
+},
+"light": "Rojo",
+"best": {
+"market": "ML",
+"pick": "NYY",
+"p": 0.5325,
+"price": null,
+"edge": null,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "NYY",
+"p": 0.5325,
+"line": null,
+"ic": 37.1885,
+"level": "Muy baja"
+},
+{
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Under 4.5",
+"p": 0.5402,
+"line": 4.5,
+"ic": 36.0712,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "momio",
+"family": "K",
+"pick": "Ranger Suarez Over 5.5 K",
+"level": 0,
+"alts": [
+"K"
+]
+}
+},
+{
+"pk": 849840,
+"date": "2026-10-01",
+"time": "2026-10-02T02:00:00Z",
+"generatedAt": "2026-09-30T04:18:26+00:00",
+"away": "CHC",
+"home": "SD",
+"pHome": 0.4928,
+"methods": {
+"log5": 0.4787,
+"elo": 0.5226,
+"lambda": 0.477
+},
+"confidence": "alta",
+"projAway": 4.8089,
+"projHome": 4.5666,
+"total": 9.3755,
+"f5Away": 2.7912,
+"f5Home": 2.6789,
+"nrfi": 0.4608,
+"pOver85": 0.5259,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Gris",
+"best": {
+"market": "Team total",
+"pick": "SD Over 3.5",
+"p": 0.565,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "CHC",
+"p": 0.5072,
+"line": null,
+"ic": 34.7957,
+"level": "Muy baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "CHC +1.5",
+"p": 0.6628,
+"line": null,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "ML",
+"pick": "CHC",
+"level": 0,
+"alts": [
+"RL",
+"Total",
+"F5 total"
+]
+}
+}
+]

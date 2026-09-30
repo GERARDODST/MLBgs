@@ -119,6 +119,26 @@
    "kind": "decision",
    "pk": 849846,
    "text": "Decisión: esperar dato (Over 7.5) → esperar momio (F5 Under 4.5) · tras: momio, abridor"
+  },
+  {
+   "at": "2026-09-30T04:18:40Z",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849848,
+   "text": "Mercado abierto: BOS +113 / NYY -136 · total 6.5"
+  },
+  {
+   "after": "esperar momio (NYY F5)",
+   "at": "2026-09-30T04:18:26Z",
+   "before": "esperar momio (NYY)",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849848,
+   "text": "Decisión: esperar momio (NYY) → esperar momio (NYY F5) · tras: momio"
   }
  ],
  "snap": {
@@ -434,7 +454,7 @@
    "away": 111,
    "dec": {
     "level": 0,
-    "pick": "NYY",
+    "pick": "NYY F5",
     "status": "esperar",
     "waitFor": "momio"
    },
@@ -445,6 +465,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 6.5,
+    "ml": {
+     "away": 113,
+     "home": -136
+    },
+    "pHome": 0.5511,
+    "src": "draftkings"
+   },
    "prob": {
     "away": {
      "id": 543243,
@@ -519,6 +548,11 @@
     "944745"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   }
  }

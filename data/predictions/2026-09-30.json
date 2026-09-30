@@ -3,23 +3,23 @@
 "pk": 849841,
 "date": "2026-09-30",
 "time": "2026-09-30T18:00:00Z",
-"generatedAt": "2026-09-30T01:07:17+00:00",
+"generatedAt": "2026-09-30T04:18:26+00:00",
 "away": "PHI",
 "home": "ATL",
-"pHome": 0.5325,
+"pHome": 0.532,
 "methods": {
 "log5": 0.5622,
 "elo": 0.5255,
-"lambda": 0.5097
+"lambda": 0.5083
 },
 "confidence": "media",
-"projAway": 3.9979,
-"projHome": 4.1066,
-"total": 8.1045,
-"f5Away": 2.1767,
-"f5Home": 2.29,
+"projAway": 3.9888,
+"projHome": 4.0834,
+"total": 8.0722,
+"f5Away": 2.1763,
+"f5Home": 2.2892,
 "nrfi": 0.5338,
-"pOver85": 0.4093,
+"pOver85": 0.4063,
 "probables": {
 "away": "Cristopher Sánchez",
 "home": "Tyler Mahle"
@@ -38,18 +38,18 @@
 "family": "ML",
 "market": "Moneyline",
 "pick": "ATL",
-"p": 0.5325,
+"p": 0.532,
 "line": null,
-"ic": 46.5453,
+"ic": 45.3986,
 "level": "Baja"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "ATL +1.5",
-"p": 0.6697,
-"line": null,
-"ic": 44.7846,
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5532,
+"line": 7.0,
+"ic": 42.9392,
 "level": "Baja"
 }
 ],
@@ -70,23 +70,23 @@
 "pk": 849846,
 "date": "2026-09-30",
 "time": "2026-09-30T21:00:00Z",
-"generatedAt": "2026-09-30T01:15:14+00:00",
+"generatedAt": "2026-09-30T04:18:26+00:00",
 "away": "CWS",
 "home": "HOU",
-"pHome": 0.53,
+"pHome": 0.5286,
 "methods": {
 "log5": 0.5015,
 "elo": 0.5629,
-"lambda": 0.5255
+"lambda": 0.5214
 },
 "confidence": "media",
-"projAway": 4.1521,
-"projHome": 4.43,
-"total": 8.5821,
-"f5Away": 2.0316,
-"f5Home": 2.603,
+"projAway": 4.1781,
+"projHome": 4.4131,
+"total": 8.5912,
+"f5Away": 2.0337,
+"f5Home": 2.6006,
 "nrfi": 0.5204,
-"pOver85": 0.4537,
+"pOver85": 0.4546,
 "probables": {
 "away": "Sean Burke",
 "home": "Hunter Brown"
@@ -95,7 +95,7 @@
 "best": {
 "market": "F5",
 "pick": "HOU F5",
-"p": 0.5898,
+"p": 0.5891,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -105,16 +105,16 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.5",
-"p": 0.5468,
+"p": 0.5477,
 "line": 7.5,
-"ic": 42.7974,
+"ic": 43.0433,
 "level": "Baja"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "CWS +1.5",
-"p": 0.6237,
+"p": 0.6272,
 "line": null,
 "ic": 36.0866,
 "level": "Muy baja"
@@ -136,65 +136,63 @@
 "pk": 849848,
 "date": "2026-09-30",
 "time": "2026-10-01T00:00:00Z",
-"generatedAt": "2026-09-29T20:30:25+00:00",
+"generatedAt": "2026-09-30T04:18:26+00:00",
 "away": "BOS",
 "home": "NYY",
-"pHome": 0.5506,
+"pHome": 0.5514,
 "methods": {
 "log5": 0.561,
 "elo": 0.5665,
-"lambda": 0.5244
+"lambda": 0.5268
 },
 "confidence": "alta",
-"projAway": 3.7346,
-"projHome": 3.9919,
-"total": 7.7266,
-"f5Away": 2.0377,
-"f5Home": 2.3397,
+"projAway": 3.7388,
+"projHome": 4.0195,
+"total": 7.7583,
+"f5Away": 2.0381,
+"f5Home": 2.341,
 "nrfi": 0.5387,
-"pOver85": 0.374,
+"pOver85": 0.377,
 "probables": {
 "away": "Sonny Gray",
 "home": "Max Fried"
 },
-"light": "Gris",
+"light": "Rojo",
 "best": {
-"market": "ML",
-"pick": "NYY",
-"p": 0.5506,
+"market": "F5",
+"pick": "NYY F5",
+"p": 0.5497,
 "price": null,
 "edge": null,
-"light": "Gris"
+"light": "Rojo"
 },
 "topPicks": [
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "NYY",
-"p": 0.5506,
+"p": 0.5514,
 "line": null,
-"ic": 39.6755,
-"level": "Muy baja"
+"ic": 40.1753,
+"level": "Baja"
 },
 {
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Over 3.5",
-"p": 0.5442,
-"line": 3.5,
-"ic": 35.9328,
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.5",
+"p": 0.5674,
+"line": 6.5,
+"ic": 36.0574,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "momio",
-"family": "ML",
-"pick": "NYY",
+"family": "F5",
+"pick": "NYY F5",
 "level": 0,
 "alts": [
-"ML",
-"F5 total",
 "F5",
 "K"
 ]
@@ -204,23 +202,23 @@
 "pk": 849842,
 "date": "2026-09-30",
 "time": "2026-10-01T02:00:00Z",
-"generatedAt": "2026-09-30T01:07:17+00:00",
+"generatedAt": "2026-09-30T04:18:26+00:00",
 "away": "CHC",
 "home": "SD",
-"pHome": 0.5357,
+"pHome": 0.5372,
 "methods": {
 "log5": 0.4787,
 "elo": 0.6048,
-"lambda": 0.5236
+"lambda": 0.528
 },
 "confidence": "baja",
-"projAway": 4.2691,
-"projHome": 4.5311,
-"total": 8.8002,
-"f5Away": 2.2958,
-"f5Home": 2.6746,
+"projAway": 4.2584,
+"projHome": 4.5666,
+"total": 8.825,
+"f5Away": 2.2941,
+"f5Home": 2.6789,
 "nrfi": 0.4949,
-"pOver85": 0.4738,
+"pOver85": 0.4761,
 "probables": {
 "away": "Por anunciar",
 "home": "Nick Pivetta"
@@ -229,7 +227,7 @@
 "best": {
 "market": "Team total",
 "pick": "SD Over 3.5",
-"p": 0.5604,
+"p": 0.565,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -239,7 +237,7 @@
 "family": "RL",
 "market": "Run Line",
 "pick": "CHC +1.5",
-"p": 0.6245,
+"p": 0.6204,
 "line": null,
 "ic": 31.4944,
 "level": "Muy baja"
@@ -247,9 +245,9 @@
 {
 "family": "Total",
 "market": "Total completo",
-"pick": "Over 8.0",
-"p": 0.5224,
-"line": 8.0,
+"pick": "Under 8.5",
+"p": 0.5239,
+"line": 8.5,
 "ic": 31.4944,
 "level": "Muy baja"
 }
