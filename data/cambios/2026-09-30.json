@@ -405,6 +405,28 @@
    "kind": "umpire",
    "pk": 849842,
    "text": "Umpire de home asignado: Erich Bacchus"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-30T22:18:15Z",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849842,
+   "side": "away",
+   "text": "Lineup confirmado (CHC)"
+  },
+  {
+   "after": "apostar Over 7.0 · stake 3",
+   "at": "2026-09-30T22:18:05Z",
+   "before": "esperar verificar (Kevin Gausman Over 4.5 K)",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849842,
+   "text": "Decisión: esperar verificar (Kevin Gausman Over 4.5 K) → apostar Over 7.0 · stake 3 · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -553,15 +575,25 @@
   "849842": {
    "away": 112,
    "dec": {
-    "level": 0,
-    "pick": "Kevin Gausman Over 4.5 K",
-    "status": "esperar",
-    "waitFor": "verificar"
+    "level": 3,
+    "pick": "Over 7.0",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 135,
    "lu": {
-    "away": [],
+    "away": [
+     691718,
+     608324,
+     683737,
+     673548,
+     664023,
+     663538,
+     807713,
+     608348,
+     621020
+    ],
     "home": [
      665487,
      687957,
@@ -577,13 +609,22 @@
    "names": {
     "592518": "Manny Machado",
     "593428": "Xander Bogaerts",
+    "608324": "Alex Bregman",
+    "608348": "Carson Kelly",
+    "621020": "Dansby Swanson",
     "630105": "Jake Cronenworth",
+    "663538": "Nico Hoerner",
+    "664023": "Ian Happ",
     "664034": "Ty France",
     "665487": "Fernando Tatis Jr.",
     "669720": "Austin Hays",
+    "673548": "Seiya Suzuki",
+    "683737": "Michael Busch",
     "687957": "Dustin Harris",
+    "691718": "Pete Crow-Armstrong",
     "701538": "Jackson Merrill",
-    "806956": "Ethan Salas"
+    "806956": "Ethan Salas",
+    "807713": "Matt Shaw"
    },
    "odds": {
     "line": 7.0,
