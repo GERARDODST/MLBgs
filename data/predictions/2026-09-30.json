@@ -70,7 +70,7 @@
 "pk": 849846,
 "date": "2026-09-30",
 "time": "2026-09-30T21:00:00Z",
-"generatedAt": "2026-09-30T19:30:53+00:00",
+"generatedAt": "2026-09-30T19:54:57+00:00",
 "away": "CWS",
 "home": "HOU",
 "pHome": 0.5258,
@@ -107,7 +107,7 @@
 "pick": "Over 7.5",
 "p": 0.5556,
 "line": 7.5,
-"ic": 46.7018,
+"ic": 44.7081,
 "level": "Baja"
 },
 {
@@ -116,7 +116,7 @@
 "pick": "CWS +1.5",
 "p": 0.6339,
 "line": null,
-"ic": 36.94,
+"ic": 36.0866,
 "level": "Muy baja"
 }
 ],
@@ -137,53 +137,53 @@
 "pk": 849848,
 "date": "2026-09-30",
 "time": "2026-10-01T00:00:00Z",
-"generatedAt": "2026-09-30T19:30:53+00:00",
+"generatedAt": "2026-09-30T19:54:57+00:00",
 "away": "BOS",
 "home": "NYY",
-"pHome": 0.5541,
+"pHome": 0.5516,
 "methods": {
 "log5": 0.561,
 "elo": 0.5665,
-"lambda": 0.5348
+"lambda": 0.5273
 },
 "confidence": "alta",
-"projAway": 3.7388,
+"projAway": 3.8119,
 "projHome": 4.0992,
-"total": 7.838,
-"f5Away": 2.0381,
+"total": 7.9111,
+"f5Away": 2.078,
 "f5Home": 2.3875,
-"nrfi": 0.5349,
-"pOver85": 0.3844,
+"nrfi": 0.5321,
+"pOver85": 0.3913,
 "probables": {
 "away": "Sonny Gray",
 "home": "Max Fried"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "Prop pitcher",
-"pick": "Sonny Gray Under 6.5 K",
-"p": 0.5768,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Total",
+"pick": "Over 6.5",
+"p": 0.5821,
+"price": -122,
+"edge": 0.0326,
+"light": "Amarillo"
 },
 "topPicks": [
-{
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Max Fried Under 5.5 K",
-"p": 0.6603,
-"line": 5.5,
-"ic": 66.9681,
-"level": "Media"
-},
 {
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Sonny Gray Over 5.5 K",
 "p": 0.5834,
 "line": 5.5,
-"ic": 62.2636,
+"ic": 63.4636,
+"level": "Media"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Max Fried Under 5.5 K",
+"p": 0.6297,
+"line": 5.5,
+"ic": 59.2431,
 "level": "Media"
 }
 ],
@@ -192,11 +192,11 @@
 "waitFor": null,
 "family": "K",
 "pick": "Sonny Gray Over 5.5 K",
-"level": 5,
+"level": 6,
 "alts": [
 "K",
-"ML",
-"Total"
+"Total",
+"ML"
 ]
 }
 },

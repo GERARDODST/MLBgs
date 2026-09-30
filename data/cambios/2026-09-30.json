@@ -320,6 +320,28 @@
    "kind": "decision",
    "pk": 849848,
    "text": "Decisión: esperar verificar (Sonny Gray Over 5.5 K) → apostar Sonny Gray Over 5.5 K · stake 5 · tras: lineup, umpire"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-30T19:55:07Z",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849848,
+   "side": "away",
+   "text": "Lineup confirmado (BOS)"
+  },
+  {
+   "after": "apostar Sonny Gray Over 5.5 K · stake 6",
+   "at": "2026-09-30T19:54:57Z",
+   "before": "apostar Sonny Gray Over 5.5 K · stake 5",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849848,
+   "text": "Decisión: apostar Sonny Gray Over 5.5 K · stake 5 → apostar Sonny Gray Over 5.5 K · stake 6 · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -722,7 +744,7 @@
   "849848": {
    "away": 111,
    "dec": {
-    "level": 5,
+    "level": 6,
     "pick": "Sonny Gray Over 5.5 K",
     "status": "apostar",
     "waitFor": null
@@ -730,7 +752,17 @@
    "detailed": "Pre-Game",
    "home": 147,
    "lu": {
-    "away": [],
+    "away": [
+     663330,
+     668939,
+     575929,
+     677800,
+     678882,
+     702332,
+     686765,
+     596115,
+     681987
+    ],
     "home": [
      700250,
      641355,
@@ -744,14 +776,23 @@
     ]
    },
    "names": {
+    "575929": "Willson Contreras",
+    "596115": "Trevor Story",
     "641355": "Cody Bellinger",
     "641857": "Ryan McMahon",
+    "663330": "Jahmai Jones",
     "663757": "Trent Grisham",
     "665862": "Jazz Chisholm Jr.",
+    "668939": "Adley Rutschman",
     "669224": "Austin Wells",
     "671277": "Luis García Jr.",
+    "677800": "Wilyer Abreu",
+    "678882": "Ceddanne Rafaela",
+    "681987": "Nate Eaton",
     "682987": "Spencer Jones",
+    "686765": "Nick Sogard",
     "700250": "Ben Rice",
+    "702332": "Caleb Durbin",
     "806146": "George Lombard Jr."
    },
    "odds": {
