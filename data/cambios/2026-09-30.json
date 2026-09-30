@@ -288,6 +288,38 @@
    "kind": "umpire",
    "pk": 849846,
    "text": "Umpire de home asignado: Alex Tosi"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-09-30T19:31:10Z",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849848,
+   "side": "home",
+   "text": "Lineup confirmado (NYY)"
+  },
+  {
+   "after": "Scott Barry",
+   "at": "2026-09-30T19:31:10Z",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849848,
+   "text": "Umpire de home asignado: Scott Barry"
+  },
+  {
+   "after": "apostar Sonny Gray Over 5.5 K · stake 5",
+   "at": "2026-09-30T19:30:53Z",
+   "before": "esperar verificar (Sonny Gray Over 5.5 K)",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849848,
+   "text": "Decisión: esperar verificar (Sonny Gray Over 5.5 K) → apostar Sonny Gray Over 5.5 K · stake 5 · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -690,18 +722,38 @@
   "849848": {
    "away": 111,
    "dec": {
-    "level": 0,
+    "level": 5,
     "pick": "Sonny Gray Over 5.5 K",
-    "status": "esperar",
-    "waitFor": "verificar"
+    "status": "apostar",
+    "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 147,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     700250,
+     641355,
+     671277,
+     682987,
+     806146,
+     665862,
+     663757,
+     669224,
+     641857
+    ]
    },
-   "names": {},
+   "names": {
+    "641355": "Cody Bellinger",
+    "641857": "Ryan McMahon",
+    "663757": "Trent Grisham",
+    "665862": "Jazz Chisholm Jr.",
+    "669224": "Austin Wells",
+    "671277": "Luis García Jr.",
+    "682987": "Spencer Jones",
+    "700250": "Ben Rice",
+    "806146": "George Lombard Jr."
+   },
    "odds": {
     "line": 6.5,
     "ml": {
@@ -784,13 +836,19 @@
     "944392",
     "944745"
    ],
-   "ump": null,
+   "ump": "Scott Barry",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Cloudy",
+    "dir": "cruzado",
+    "speed": 3,
+    "temp": 73.0
+   }
   }
  }
 }

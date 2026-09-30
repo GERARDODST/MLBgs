@@ -70,7 +70,7 @@
 "pk": 849846,
 "date": "2026-09-30",
 "time": "2026-09-30T21:00:00Z",
-"generatedAt": "2026-09-30T17:45:41+00:00",
+"generatedAt": "2026-09-30T19:30:53+00:00",
 "away": "CWS",
 "home": "HOU",
 "pHome": 0.5258,
@@ -116,7 +116,7 @@
 "pick": "CWS +1.5",
 "p": 0.6339,
 "line": null,
-"ic": 36.0866,
+"ic": 36.94,
 "level": "Muy baja"
 }
 ],
@@ -137,62 +137,62 @@
 "pk": 849848,
 "date": "2026-09-30",
 "time": "2026-10-01T00:00:00Z",
-"generatedAt": "2026-09-30T18:01:43+00:00",
+"generatedAt": "2026-09-30T19:30:53+00:00",
 "away": "BOS",
 "home": "NYY",
-"pHome": 0.5514,
+"pHome": 0.5541,
 "methods": {
 "log5": 0.561,
 "elo": 0.5665,
-"lambda": 0.5268
+"lambda": 0.5348
 },
 "confidence": "alta",
 "projAway": 3.7388,
-"projHome": 4.0195,
-"total": 7.7583,
+"projHome": 4.0992,
+"total": 7.838,
 "f5Away": 2.0381,
-"f5Home": 2.341,
-"nrfi": 0.5387,
-"pOver85": 0.377,
+"f5Home": 2.3875,
+"nrfi": 0.5349,
+"pOver85": 0.3844,
 "probables": {
 "away": "Sonny Gray",
 "home": "Max Fried"
 },
-"light": "Rojo",
+"light": "Gris",
 "best": {
-"market": "Team total",
-"pick": "BOS Under 3.5",
-"p": 0.5494,
+"market": "Prop pitcher",
+"pick": "Sonny Gray Under 6.5 K",
+"p": 0.5768,
 "price": null,
 "edge": null,
-"light": "Rojo"
+"light": "Gris"
 },
 "topPicks": [
-{
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Sonny Gray Over 5.5 K",
-"p": 0.6026,
-"line": 5.5,
-"ic": 64.5303,
-"level": "Media"
-},
 {
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Max Fried Under 5.5 K",
 "p": 0.6603,
 "line": 5.5,
-"ic": 63.6348,
+"ic": 66.9681,
+"level": "Media"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Sonny Gray Over 5.5 K",
+"p": 0.5834,
+"line": 5.5,
+"ic": 62.2636,
 "level": "Media"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "verificar",
+"status": "apostar",
+"waitFor": null,
 "family": "K",
 "pick": "Sonny Gray Over 5.5 K",
-"level": 0,
+"level": 5,
 "alts": [
 "K",
 "ML",
