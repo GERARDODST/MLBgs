@@ -427,6 +427,16 @@
    "kind": "decision",
    "pk": 849842,
    "text": "Decisión: esperar verificar (Kevin Gausman Over 4.5 K) → apostar Over 7.0 · stake 3 · tras: lineup, umpire"
+  },
+  {
+   "action": "El total proyectado ya usa el viento nuevo.",
+   "at": "2026-09-30T22:26:15Z",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "clima",
+   "pk": 849848,
+   "text": "Viento: 3 mph cruzado → 8 mph in"
   }
  ],
  "snap": {
@@ -1037,9 +1047,9 @@
    "wx": {
     "closed": false,
     "cond": "Cloudy",
-    "dir": "cruzado",
-    "speed": 3,
-    "temp": 73.0
+    "dir": "in",
+    "speed": 8,
+    "temp": 72.0
    }
   }
  }
