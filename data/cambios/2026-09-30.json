@@ -247,6 +247,17 @@
    "kind": "decision",
    "pk": 849841,
    "text": "Decisión: esperar momio (F5 Over 3.5) → esperar momio (NRFI) · tras: lineup, umpire"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-09-30T16:32:15Z",
+   "before": "esperar momio (NRFI)",
+   "date": "2026-09-30",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849841,
+   "text": "Decisión: esperar momio (NRFI) → no apostar · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -254,9 +265,9 @@
    "away": 143,
    "dec": {
     "level": 0,
-    "pick": "NRFI",
-    "status": "esperar",
-    "waitFor": "momio"
+    "pick": "F5 Over 3.5",
+    "status": "no apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 144,

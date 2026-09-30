@@ -14,7 +14,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.30",
-   "code": "cf25af643945"
+   "code": "1c492a3d964b"
   },
   "analyses": [
    "Contexto del partido",
@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T16:24:15+00:00",
+  "registeredAt": "2026-09-30T16:32:15+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5293,
@@ -522,7 +522,7 @@
   "kind": "Postemporada: pitcher contra el rival",
   "algo": {
    "version": "2026.09.30",
-   "code": "cf25af643945"
+   "code": "1c492a3d964b"
   },
   "analyses": [
    "Encogimiento pitcher × rival",
@@ -700,7 +700,7 @@
     "fair": -118.0,
     "ic": 45.3,
     "level": "Baja",
-    "price": null,
+    "price": -145,
     "methods": [
      "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
      "λ calibrado a ceros reales (6.8)"
@@ -836,7 +836,7 @@
     "fair": -142.0,
     "ic": 40.4,
     "level": "Baja",
-    "price": -118,
+    "price": -145,
     "methods": [
      "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
      "λ + Poisson (5.4)"
@@ -998,32 +998,31 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de NRFI/YRFI: conviene si pagan -104 o mejor (stake 1); stake 10 desde +127",
+   "status": "no apostar",
+   "why": "con el momio de referencia (-118): edge menor a 3 pp con ese momio (stake 1 desde -112)",
    "source": "Framework v2 + OCTUBRE",
-   "pick": "NRFI",
-   "waitFor": "momio",
-   "market": "NRFI/YRFI",
-   "p": 0.5407,
-   "ic": 45.3,
+   "pick": "F5 Over 3.5",
+   "market": "Total primeras 5",
+   "p": 0.5597,
+   "ic": 53.0,
    "level": 0,
    "amount": 0,
-   "minPrice": -104,
+   "minPrice": -112,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -104
+     "from": -112
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 101
+     "from": -110
     },
     {
      "level": 10,
      "stake": 1500,
-     "from": 127
+     "from": 114
     }
    ]
   }
@@ -1043,7 +1042,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.30",
-   "code": "cf25af643945"
+   "code": "1c492a3d964b"
   },
   "analyses": [
    "Contexto del partido",
@@ -1058,7 +1057,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T16:24:15+00:00",
+  "registeredAt": "2026-09-30T16:32:15+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5286,
@@ -1479,7 +1478,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.30",
-   "code": "cf25af643945"
+   "code": "1c492a3d964b"
   },
   "analyses": [
    "Contexto del partido",
@@ -1494,7 +1493,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T16:24:15+00:00",
+  "registeredAt": "2026-09-30T16:32:15+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5514,
@@ -1916,7 +1915,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.30",
-   "code": "cf25af643945"
+   "code": "1c492a3d964b"
   },
   "analyses": [
    "Contexto del partido",
@@ -1931,7 +1930,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T16:24:15+00:00",
+  "registeredAt": "2026-09-30T16:32:15+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5116,
