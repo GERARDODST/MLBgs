@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T16:32:15+00:00",
+  "registeredAt": "2026-09-30T17:12:45+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5293,
@@ -105,9 +105,9 @@
     "line": 6.5,
     "p": 0.5066,
     "fair": -103.0,
-    "ic": 50.0,
+    "ic": 48.7,
     "level": "Baja",
-    "price": 112,
+    "price": 110,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -155,16 +155,16 @@
     "line": 7.0,
     "p": 0.5689,
     "fair": -132.0,
-    "ic": 48.1,
+    "ic": 47.4,
     "level": "Baja",
-    "price": -115,
+    "price": -116,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
-     "level": 2,
+     "level": 1,
      "ladder": [
       {
        "level": 1,
@@ -256,9 +256,9 @@
     "line": null,
     "p": 0.5293,
     "fair": -112.0,
-    "ic": 44.8,
+    "ic": 44.1,
     "level": "Baja",
-    "price": -102,
+    "price": -103,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -621,7 +621,7 @@
     "fair": -125.0,
     "ic": 51.4,
     "level": "Baja",
-    "price": -115,
+    "price": -116,
     "methods": [
      "OCTUBRE · pitcher contra el rival y juego de postemporada (5.7.4 · 5.7.9)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -957,7 +957,7 @@
     "fair": -106.0,
     "ic": 33.3,
     "level": "Muy baja",
-    "price": -102,
+    "price": -103,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1057,7 +1057,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T16:32:15+00:00",
+  "registeredAt": "2026-09-30T17:12:45+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5286,
@@ -1111,7 +1111,7 @@
     "fair": -168.0,
     "ic": 36.1,
     "level": "Muy baja",
-    "price": -191,
+    "price": -175,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1264,7 +1264,7 @@
     "fair": -112.0,
     "ic": 35.8,
     "level": "Muy baja",
-    "price": -147,
+    "price": -155,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1440,7 +1440,7 @@
   "result": null,
   "decision": {
    "status": "no apostar",
-   "why": "con el momio de referencia (-191): edge menor a 3 pp con ese momio (stake 1 desde -142)",
+   "why": "con el momio de referencia (-175): edge menor a 3 pp con ese momio (stake 1 desde -142)",
    "source": "Framework v2",
    "pick": "CWS +1.5",
    "market": "Run Line",
