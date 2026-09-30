@@ -1,6 +1,27 @@
 {
  "date": "2026-10-01",
- "events": [],
+ "events": [
+  {
+   "at": "2026-09-30T22:10:15Z",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849844,
+   "text": "Mercado abierto: PHI -116 / ATL -104 · total 7.0"
+  },
+  {
+   "after": "esperar dato (Over 7.0)",
+   "at": "2026-09-30T22:10:07Z",
+   "before": "esperar dato (ATL)",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849844,
+   "text": "Decisión: esperar dato (ATL) → esperar dato (Over 7.0) · tras: momio"
+  }
+ ],
  "snap": {
   "849840": {
    "away": 112,
@@ -98,7 +119,7 @@
    "away": 143,
    "dec": {
     "level": 0,
-    "pick": "ATL",
+    "pick": "Over 7.0",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -109,6 +130,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.0,
+    "ml": {
+     "away": -116,
+     "home": -104
+    },
+    "pHome": 0.487,
+    "src": "draftkings"
+   },
    "prob": {
     "away": null,
     "home": null
@@ -169,6 +199,11 @@
     "944751"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   },
   "849847": {

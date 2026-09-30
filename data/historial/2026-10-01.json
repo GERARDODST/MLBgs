@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T21:29:56+00:00",
+  "registeredAt": "2026-09-30T22:10:07+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5331,
@@ -37,7 +37,7 @@
    "projHome": 4.26,
    "total": 8.31,
    "nrfi": 0.5195,
-   "light": "Rojo",
+   "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Por anunciar",
@@ -49,15 +49,41 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5779,
+    "fair": -137.0,
+    "ic": 43.7,
+    "level": "Baja",
+    "price": -116,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9984,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
     "family": "ML",
     "market": "Moneyline",
     "pick": "ATL",
     "line": null,
     "p": 0.5331,
     "fair": -114.0,
-    "ic": 34.9,
-    "level": "Muy baja",
-    "price": null,
+    "ic": 41.7,
+    "level": "Baja",
+    "price": -104,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -75,47 +101,21 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 3,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
-    "pick": "PHI +1.5",
+    "pick": "ATL +1.5",
     "line": null,
-    "p": 0.6345,
-    "fair": -174.0,
-    "ic": 31.8,
+    "p": 0.6767,
+    "fair": -209.0,
+    "ic": 39.5,
     "level": "Muy baja",
-    "price": null,
+    "price": -186,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9984,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.5",
-    "line": 7.5,
-    "p": 0.5213,
-    "fair": -109.0,
-    "ic": 31.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
      "level": 0,
@@ -262,11 +262,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "ATL",
+   "pick": "Over 7.0",
    "waitFor": "dato",
-   "market": "Moneyline",
-   "p": 0.5331,
-   "ic": 34.9,
+   "market": "Total completo",
+   "p": 0.5779,
+   "ic": 43.7,
    "level": 0,
    "amount": 0,
    "minPrice": null,
