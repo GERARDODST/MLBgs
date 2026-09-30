@@ -30,7 +30,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-30T17:53:47+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5293,
    "projAway": 4.11,
@@ -505,6 +505,16 @@
      "from": 102
     }
    ]
+  },
+  "lock": {
+   "at": "2026-09-30T18:01:43+00:00",
+   "hash": "e97a3e41f524c62d6ab7022fde92e1ad35b4053e04f0b7e75f09169d4f34d25e",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "1c492a3d964b"
+   },
+   "expediente": "data/expedientes/2026-09-30/849841.json.gz",
+   "coincide": true
   }
  },
  {
@@ -1025,6 +1035,16 @@
      "from": 114
     }
    ]
+  },
+  "lock": {
+   "at": "2026-09-30T18:01:43+00:00",
+   "hash": "208c28b0d60ff4f10675787959d113dc827d5628a5c8e47831a73cfead70231c",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "1c492a3d964b"
+   },
+   "expediente": "data/expedientes/2026-09-30/849841.json.gz",
+   "coincide": true
   }
  },
  {
@@ -1493,7 +1513,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-09-30T17:53:47+00:00",
+  "registeredAt": "2026-09-30T18:01:43+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5514,
@@ -1519,9 +1539,9 @@
     "line": 5.5,
     "p": 0.6026,
     "fair": -152.0,
-    "ic": 65.3,
+    "ic": 64.5,
     "level": "Media",
-    "price": 101,
+    "price": 100,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -1570,9 +1590,9 @@
     "line": 5.5,
     "p": 0.6603,
     "fair": -194.0,
-    "ic": 63.1,
+    "ic": 63.6,
     "level": "Media",
-    "price": -126,
+    "price": -125,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -1901,13 +1921,13 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "con el momio de referencia (+101) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -102 o menos ya pasa el filtro",
+   "why": "con el momio de referencia (+100) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -102 o menos ya pasa el filtro",
    "source": "Framework v2",
    "pick": "Sonny Gray Over 5.5 K",
    "waitFor": "verificar",
    "market": "Prop de ponches",
    "p": 0.6026,
-   "ic": 65.3,
+   "ic": 64.5,
    "level": 0,
    "amount": 0,
    "minPrice": -125,
