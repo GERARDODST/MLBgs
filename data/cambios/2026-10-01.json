@@ -63,6 +63,28 @@
    "kind": "decision",
    "pk": 849844,
    "text": "Decisión: esperar dato (Over 7.0) → esperar dato (Over 7.5) · tras: momio"
+  },
+  {
+   "after": "2026-10-02T00:00:00Z",
+   "at": "2026-10-01T05:07:54Z",
+   "before": "2026-10-01T18:00:00Z",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "horario",
+   "pk": 849844,
+   "text": "Cambia la hora del partido (+360 min)"
+  },
+  {
+   "after": "esperar dato (ATL +1.5)",
+   "at": "2026-10-01T05:07:49Z",
+   "before": "esperar dato (Over 7.5)",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849844,
+   "text": "Decisión: esperar dato (Over 7.5) → esperar dato (ATL +1.5) · tras: momio, horario"
   }
  ],
  "snap": {
@@ -162,7 +184,7 @@
    "away": 143,
    "dec": {
     "level": 0,
-    "pick": "Over 7.5",
+    "pick": "ATL +1.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -188,7 +210,7 @@
    },
    "probChangedAt": null,
    "since": "2026-09-30T04:18:40Z",
-   "time": "2026-10-01T18:00:00Z",
+   "time": "2026-10-02T00:00:00Z",
    "tx": [
     "941805",
     "941806",

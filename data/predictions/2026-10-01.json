@@ -1,72 +1,5 @@
 [
 {
-"pk": 849844,
-"date": "2026-10-01",
-"time": "2026-10-01T18:00:00Z",
-"generatedAt": "2026-10-01T04:16:05+00:00",
-"away": "PHI",
-"home": "ATL",
-"pHome": 0.5328,
-"methods": {
-"log5": 0.5622,
-"elo": 0.5171,
-"lambda": 0.5192
-},
-"confidence": "alta",
-"projAway": 4.0869,
-"projHome": 4.2956,
-"total": 8.3825,
-"f5Away": 2.2424,
-"f5Home": 2.4193,
-"nrfi": 0.5195,
-"pOver85": 0.4352,
-"probables": {
-"away": "Por anunciar",
-"home": "Por anunciar"
-},
-"light": "Rojo",
-"best": {
-"market": "Total",
-"pick": "Over 7.5",
-"p": 0.5282,
-"price": 100,
-"edge": 0.0282,
-"light": "Rojo"
-},
-"topPicks": [
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.5",
-"p": 0.5282,
-"line": 7.5,
-"ic": 40.0135,
-"level": "Baja"
-},
-{
-"family": "ML",
-"market": "Moneyline",
-"pick": "ATL",
-"p": 0.5328,
-"line": null,
-"ic": 39.5328,
-"level": "Muy baja"
-}
-],
-"decision": {
-"status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 7.5",
-"level": 0,
-"alts": [
-"ML",
-"RL",
-"F5 total"
-]
-}
-},
-{
 "pk": 849850,
 "date": "2026-10-01",
 "time": "2026-10-01T21:00:00Z",
@@ -128,6 +61,73 @@
 "level": 0,
 "alts": [
 "RL",
+"Total",
+"F5 total"
+]
+}
+},
+{
+"pk": 849844,
+"date": "2026-10-01",
+"time": "2026-10-02T00:00:00Z",
+"generatedAt": "2026-10-01T05:07:49+00:00",
+"away": "PHI",
+"home": "ATL",
+"pHome": 0.5328,
+"methods": {
+"log5": 0.5622,
+"elo": 0.5171,
+"lambda": 0.5192
+},
+"confidence": "alta",
+"projAway": 4.0869,
+"projHome": 4.2956,
+"total": 8.3825,
+"f5Away": 2.2424,
+"f5Home": 2.4193,
+"nrfi": 0.5195,
+"pOver85": 0.4352,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Amarillo",
+"best": {
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.6753,
+"price": -174,
+"edge": 0.0402,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.6753,
+"line": null,
+"ic": 43.5317,
+"level": "Baja"
+},
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "ATL",
+"p": 0.5328,
+"line": null,
+"ic": 43.0204,
+"level": "Baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "RL",
+"pick": "ATL +1.5",
+"level": 0,
+"alts": [
+"ML",
 "Total",
 "F5 total"
 ]
