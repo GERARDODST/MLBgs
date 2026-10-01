@@ -11,9 +11,164 @@
   "849844": {
    "away": 143,
    "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 100
+       },
+       "under": {
+        "point": 7.5,
+        "price": -120
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 100
+       },
+       "under": {
+        "point": 7.5,
+        "price": -120
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 100
+       },
+       "under": {
+        "point": 7.5,
+        "price": -120
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 100
+       },
+       "under": {
+        "point": 7.5,
+        "price": -120
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.0,
+        "price": -124
+       },
+       "under": {
+        "point": 7.0,
+        "price": 102
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.0,
+        "price": -124
+       },
+       "under": {
+        "point": 7.0,
+        "price": 102
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 100
+       },
+       "under": {
+        "point": 7.5,
+        "price": -120
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 100
+       },
+       "under": {
+        "point": 7.5,
+        "price": -120
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -105
+       },
+       "under": {
+        "point": 7.5,
+        "price": -115
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -105
+       },
+       "under": {
+        "point": 7.5,
+        "price": -115
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
     "draftkings": {
      "last": {
-      "at": "2026-10-01T20:50:18Z",
+      "at": "2026-10-01T21:06:13Z",
       "ml": {
        "away": -110,
        "home": -109
@@ -67,18 +222,126 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -104
+       },
+       "under": {
+        "point": 7.5,
+        "price": -118
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -104
+       },
+       "under": {
+        "point": 7.5,
+        "price": -118
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "lowvig": {
+     "last": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 103
+       },
+       "under": {
+        "point": 7.5,
+        "price": -118
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": 103
+       },
+       "under": {
+        "point": 7.5,
+        "price": -118
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "LowVig"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -102
+       },
+       "under": {
+        "point": 7.5,
+        "price": -120
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-01T21:06:13Z",
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -102
+       },
+       "under": {
+        "point": 7.5,
+        "price": -120
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie"
     }
    },
-   "checked": "2026-10-01T20:50:18Z",
+   "checked": "2026-10-01T21:06:13Z",
    "espn": "401907973",
    "home": 144,
    "pk": 849844,
    "providers": [
-    "espn"
+    "espn",
+    "the-odds-api"
    ],
-   "start": "2026-10-02T00:00:00Z"
+   "start": "2026-10-02T00:00:00Z",
+   "theAt": {
+    "totals": "2026-10-01T21:06:13Z"
+   },
+   "theEmpty": {
+    "totals": 0
+   },
+   "theGot": {
+    "totals": 9
+   },
+   "theId": "5524c44b05e28aa899909c9e001184ec",
+   "theN": {
+    "totals": 1
+   },
+   "theSwapped": false
   },
   "849847": {
    "away": 111,

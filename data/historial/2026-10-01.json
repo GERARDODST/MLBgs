@@ -30,7 +30,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-09-30T21:29:56+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.4867,
    "projAway": 5.12,
@@ -271,6 +271,16 @@
    "amount": 0,
    "minPrice": null,
    "ladder": []
+  },
+  "lock": {
+   "at": "2026-10-01T21:06:02+00:00",
+   "hash": "d6ef5572024c45946bbeb4fec62955171741f821d563f2f8910108cc4d71af82",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "1c492a3d964b"
+   },
+   "expediente": "data/expedientes/2026-10-01/849850.json.gz",
+   "coincide": true
   }
  },
  {
@@ -303,7 +313,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-01T20:50:13+00:00",
+  "registeredAt": "2026-10-01T21:06:02+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5684,
@@ -311,7 +321,7 @@
    "projHome": 4.85,
    "total": 9.05,
    "nrfi": 0.4786,
-   "light": "Amarillo",
+   "light": "Verde",
    "confidence": "alta",
    "probables": {
     "away": "Aaron Nola",
@@ -329,9 +339,9 @@
     "line": 7.5,
     "p": 0.5893,
     "fair": -143.0,
-    "ic": 59.0,
+    "ic": 68.8,
     "level": "Media",
-    "price": -102,
+    "price": -101,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -379,7 +389,7 @@
     "line": null,
     "p": 0.5684,
     "fair": -132.0,
-    "ic": 55.8,
+    "ic": 64.8,
     "level": "Media",
     "price": -109,
     "methods": [
@@ -431,8 +441,8 @@
     "line": null,
     "p": 0.7048,
     "fair": -239.0,
-    "ic": 48.2,
-    "level": "Baja",
+    "ic": 57.2,
+    "level": "Media",
     "price": -192,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -481,8 +491,8 @@
     "line": 5.5,
     "p": 0.5679,
     "fair": -131.0,
-    "ic": 39.4,
-    "level": "Muy baja",
+    "ic": 48.4,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Poisson (5.4)"
@@ -532,8 +542,8 @@
     "line": 4.5,
     "p": 0.5147,
     "fair": -106.0,
-    "ic": 34.4,
-    "level": "Muy baja",
+    "ic": 43.4,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
@@ -583,8 +593,8 @@
     "line": 3.5,
     "p": 0.5155,
     "fair": -106.0,
-    "ic": 34.4,
-    "level": "Muy baja",
+    "ic": 43.4,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -634,8 +644,8 @@
     "line": 4.5,
     "p": 0.529,
     "fair": -112.0,
-    "ic": 34.4,
-    "level": "Muy baja",
+    "ic": 43.4,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -685,8 +695,8 @@
     "line": null,
     "p": 0.5839,
     "fair": -140.0,
-    "ic": 34.4,
-    "level": "Muy baja",
+    "ic": 43.4,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
@@ -736,8 +746,8 @@
     "line": null,
     "p": 0.5214,
     "fair": -109.0,
-    "ic": 34.4,
-    "level": "Muy baja",
+    "ic": 43.4,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ calibrado a ceros reales (6.8)"
@@ -787,8 +797,8 @@
     "line": 2.5,
     "p": 0.5514,
     "fair": -123.0,
-    "ic": 31.4,
-    "level": "Muy baja",
+    "ic": 40.4,
+    "level": "Baja",
     "price": null,
     "methods": [
      "λ + Poisson (5.4)"
@@ -833,12 +843,12 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-102)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-101)",
    "source": "Framework v2",
    "pick": "Over 7.5",
    "market": "Total completo",
    "p": 0.5893,
-   "ic": 59.0,
+   "ic": 68.8,
    "level": 5,
    "amount": 1000,
    "minPrice": -122,
