@@ -313,7 +313,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-01T21:06:02+00:00",
+  "registeredAt": "2026-10-01T22:10:10+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5684,
@@ -389,9 +389,9 @@
     "line": null,
     "p": 0.5684,
     "fair": -132.0,
-    "ic": 64.8,
+    "ic": 61.5,
     "level": "Media",
-    "price": -109,
+    "price": -114,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -400,7 +400,7 @@
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.2% · Elo + abridor (5.7.7) 58.3% · λ + Binomial Negativa (5.3 · 5.7.5) 56.0%",
     "res": null,
     "stake": {
-     "level": 4,
+     "level": 3,
      "ladder": [
       {
        "level": 1,
@@ -441,16 +441,16 @@
     "line": null,
     "p": 0.7048,
     "fair": -239.0,
-    "ic": 57.2,
+    "ic": 55.2,
     "level": "Media",
-    "price": -192,
+    "price": -198,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
-     "level": 2,
+     "level": 1,
      "ladder": [
       {
        "level": 1,
