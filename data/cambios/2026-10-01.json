@@ -85,6 +85,61 @@
    "kind": "decision",
    "pk": 849844,
    "text": "Decisión: esperar dato (Over 7.5) → esperar dato (ATL +1.5) · tras: momio, horario"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Aaron Nola",
+   "at": "2026-10-01T17:38:09Z",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849844,
+   "side": "away",
+   "text": "Abridor anunciado (PHI): Aaron Nola"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Ray Kerr",
+   "at": "2026-10-01T17:38:09Z",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849844,
+   "side": "home",
+   "text": "Abridor anunciado (ATL): Ray Kerr"
+  },
+  {
+   "at": "2026-10-01T17:38:09Z",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849844,
+   "side": "away",
+   "text": "PHI: RHP José Urquidy elected free agency."
+  },
+  {
+   "at": "2026-10-01T17:38:09Z",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849844,
+   "side": "home",
+   "text": "ATL: 10 movimientos del roster (James Karinchak, Blake Burkhalter, Jim Jarvis, Tyler Uberstine, Rolddy Muñoz, James Karinchak…)"
+  },
+  {
+   "after": "apostar ATL · stake 3",
+   "at": "2026-10-01T17:38:03Z",
+   "before": "esperar dato (ATL +1.5)",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849844,
+   "text": "Decisión: esperar dato (ATL +1.5) → apostar ATL · stake 3 · tras: abridor, movimiento"
   }
  ],
  "snap": {
@@ -183,10 +238,10 @@
   "849844": {
    "away": 143,
    "dec": {
-    "level": 0,
-    "pick": "ATL +1.5",
-    "status": "esperar",
-    "waitFor": "dato"
+    "level": 3,
+    "pick": "ATL",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 144,
@@ -205,8 +260,14 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
-    "home": null
+    "away": {
+     "id": 605400,
+     "name": "Aaron Nola"
+    },
+    "home": {
+     "id": 678061,
+     "name": "Ray Kerr"
+    }
    },
    "probChangedAt": null,
    "since": "2026-09-30T04:18:40Z",
@@ -263,7 +324,18 @@
     "944727",
     "944751",
     "944787",
-    "944788"
+    "944788",
+    "944852",
+    "944853",
+    "944854",
+    "944855",
+    "944856",
+    "944857",
+    "944858",
+    "944859",
+    "944860",
+    "944861",
+    "944863"
    ],
    "ump": null,
    "verify": {

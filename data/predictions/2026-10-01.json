@@ -70,66 +70,66 @@
 "pk": 849844,
 "date": "2026-10-01",
 "time": "2026-10-02T00:00:00Z",
-"generatedAt": "2026-10-01T05:07:49+00:00",
+"generatedAt": "2026-10-01T17:38:03+00:00",
 "away": "PHI",
 "home": "ATL",
-"pHome": 0.5328,
+"pHome": 0.5686,
 "methods": {
 "log5": 0.5622,
-"elo": 0.5171,
-"lambda": 0.5192
+"elo": 0.5831,
+"lambda": 0.5605
 },
 "confidence": "alta",
-"projAway": 4.0869,
-"projHome": 4.2956,
-"total": 8.3825,
-"f5Away": 2.2424,
-"f5Home": 2.4193,
-"nrfi": 0.5195,
-"pOver85": 0.4352,
+"projAway": 4.0679,
+"projHome": 4.7226,
+"total": 8.7906,
+"f5Away": 2.2308,
+"f5Home": 2.7984,
+"nrfi": 0.4888,
+"pOver85": 0.473,
 "probables": {
-"away": "Por anunciar",
-"home": "Por anunciar"
+"away": "Aaron Nola",
+"home": "Ray Kerr"
 },
 "light": "Amarillo",
 "best": {
-"market": "Run Line",
-"pick": "ATL +1.5",
-"p": 0.6753,
-"price": -174,
-"edge": 0.0402,
+"market": "Total",
+"pick": "Over 7.5",
+"p": 0.566,
+"price": -102,
+"edge": 0.061,
 "light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "ATL +1.5",
-"p": 0.6753,
-"line": null,
-"ic": 43.5317,
-"level": "Baja"
-},
-{
 "family": "ML",
 "market": "Moneyline",
 "pick": "ATL",
-"p": 0.5328,
+"p": 0.5686,
 "line": null,
-"ic": 43.0204,
+"ic": 55.439,
+"level": "Media"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.5",
+"p": 0.566,
+"line": 7.5,
+"ic": 51.0357,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "dato",
-"family": "RL",
-"pick": "ATL +1.5",
-"level": 0,
+"status": "apostar",
+"waitFor": null,
+"family": "ML",
+"pick": "ATL",
+"level": 3,
 "alts": [
-"ML",
 "Total",
-"F5 total"
+"RL",
+"K"
 ]
 }
 },
