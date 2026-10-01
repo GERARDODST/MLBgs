@@ -2326,8 +2326,8 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-01T01:45:17+00:00",
-  "status": "abierto",
+  "registeredAt": "2026-10-01T02:01:18+00:00",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5166,
    "projAway": 4.19,
@@ -2401,7 +2401,7 @@
     "market": "Total completo",
     "pick": "Over 7.0",
     "line": 7.0,
-    "p": 0.6151,
+    "p": 0.6152,
     "fair": -160.0,
     "ic": 64.7,
     "level": "Media",
@@ -2822,7 +2822,7 @@
     "line": null,
     "p": 0.5166,
     "fair": -107.0,
-    "ic": 43.6,
+    "ic": 43.5,
     "level": "Baja",
     "price": -149,
     "methods": [
@@ -2877,7 +2877,7 @@
    "source": "Framework v2",
    "pick": "Over 7.0",
    "market": "Total completo",
-   "p": 0.6151,
+   "p": 0.6152,
    "ic": 64.7,
    "level": 3,
    "amount": 750,
@@ -2894,6 +2894,16 @@
      "from": -110
     }
    ]
+  },
+  "lock": {
+   "at": "2026-10-01T02:01:18+00:00",
+   "hash": "d5439be94f959e1e3567d21dd42b3e8ab14710569921b5832e8b093013d93722",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "1c492a3d964b"
+   },
+   "expediente": "data/expedientes/2026-09-30/849842.json.gz",
+   "coincide": true
   }
  }
 ]
