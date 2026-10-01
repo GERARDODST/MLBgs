@@ -313,7 +313,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-01T22:10:10+00:00",
+  "registeredAt": "2026-10-01T22:33:55+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5684,
@@ -339,9 +339,9 @@
     "line": 7.5,
     "p": 0.5893,
     "fair": -143.0,
-    "ic": 68.8,
+    "ic": 68.0,
     "level": "Media",
-    "price": -101,
+    "price": -102,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -843,12 +843,12 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-101)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-102)",
    "source": "Framework v2",
    "pick": "Over 7.5",
    "market": "Total completo",
    "p": 0.5893,
-   "ic": 68.8,
+   "ic": 68.0,
    "level": 5,
    "amount": 1000,
    "minPrice": -122,
