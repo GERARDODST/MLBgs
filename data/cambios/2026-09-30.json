@@ -490,6 +490,16 @@
    "kind": "decision",
    "pk": 849842,
    "text": "Decisión: apostar Over 7.5 · stake 3 → apostar Over 7.0 · stake 3"
+  },
+  {
+   "action": "El total proyectado ya usa el viento nuevo.",
+   "at": "2026-10-01T01:53:31Z",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "medio",
+   "kind": "clima",
+   "pk": 849842,
+   "text": "Viento: 4 mph in → 6 mph cruzado"
   }
  ],
  "snap": {
@@ -790,9 +800,9 @@
    "wx": {
     "closed": false,
     "cond": "Partly Cloudy",
-    "dir": "in",
-    "speed": 4,
-    "temp": 70.0
+    "dir": "cruzado",
+    "speed": 6,
+    "temp": 71.0
    }
   },
   "849846": {
