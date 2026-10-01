@@ -40,6 +40,29 @@
    "pk": 849844,
    "side": "home",
    "text": "ATL: RHP Reynaldo López roster status changed by Atlanta Braves."
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 7.5,
+   "at": "2026-10-01T04:16:16Z",
+   "before": 7.0,
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849844,
+   "text": "La línea del total pasa de 7.0 a 7.5"
+  },
+  {
+   "after": "esperar dato (Over 7.5)",
+   "at": "2026-10-01T04:16:05Z",
+   "before": "esperar dato (Over 7.0)",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849844,
+   "text": "Decisión: esperar dato (Over 7.0) → esperar dato (Over 7.5) · tras: momio"
   }
  ],
  "snap": {
@@ -139,7 +162,7 @@
    "away": 143,
    "dec": {
     "level": 0,
-    "pick": "Over 7.0",
+    "pick": "Over 7.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -151,12 +174,12 @@
    },
    "names": {},
    "odds": {
-    "line": 7.0,
+    "line": 7.5,
     "ml": {
-     "away": -116,
-     "home": -104
+     "away": -112,
+     "home": -107
     },
-    "pHome": 0.487,
+    "pHome": 0.4945,
     "src": "draftkings"
    },
    "prob": {
