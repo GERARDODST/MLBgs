@@ -140,6 +140,27 @@
    "kind": "decision",
    "pk": 849844,
    "text": "Decisión: esperar dato (ATL +1.5) → apostar ATL · stake 3 · tras: abridor, movimiento"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-01T20:26:42Z",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849844,
+   "side": "home",
+   "text": "Lineup confirmado (ATL)"
+  },
+  {
+   "after": "Mark Ripperger",
+   "at": "2026-10-01T20:26:42Z",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849844,
+   "text": "Umpire de home asignado: Mark Ripperger"
   }
  ],
  "snap": {
@@ -243,13 +264,33 @@
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 144,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     686948,
+     660670,
+     621566,
+     671739,
+     643289,
+     573262,
+     663586,
+     645277,
+     642086
+    ]
    },
-   "names": {},
+   "names": {
+    "573262": "Mike Yastrzemski",
+    "621566": "Matt Olson",
+    "642086": "Dominic Smith",
+    "643289": "Mauricio Dubón",
+    "645277": "Ozzie Albies",
+    "660670": "Ronald Acuña Jr.",
+    "663586": "Austin Riley",
+    "671739": "Michael Harris II",
+    "686948": "Drake Baldwin"
+   },
    "odds": {
     "line": 7.5,
     "ml": {
@@ -337,13 +378,19 @@
     "944861",
     "944863"
    ],
-   "ump": null,
+   "ump": "Mark Ripperger",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "cruzado",
+    "speed": 5,
+    "temp": 79.0
+   }
   },
   "849847": {
    "away": 111,
