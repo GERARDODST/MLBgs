@@ -469,6 +469,16 @@
    "kind": "decision",
    "pk": 849842,
    "text": "Decisión: apostar Over 7.0 · stake 3 → apostar Over 7.5 · stake 3 · tras: lineup, verificación"
+  },
+  {
+   "action": "El total proyectado ya usa el viento nuevo.",
+   "at": "2026-10-01T00:08:59Z",
+   "date": "2026-09-30",
+   "game": "BOS @ NYY",
+   "impact": "medio",
+   "kind": "clima",
+   "pk": 849848,
+   "text": "Viento: 8 mph in → 5 mph cruzado"
   }
  ],
  "snap": {
@@ -1079,9 +1089,9 @@
    "wx": {
     "closed": false,
     "cond": "Cloudy",
-    "dir": "in",
-    "speed": 8,
-    "temp": 72.0
+    "dir": "cruzado",
+    "speed": 5,
+    "temp": 68.0
    }
   }
  }
