@@ -2326,7 +2326,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-01T00:25:19+00:00",
+  "registeredAt": "2026-10-01T00:33:16+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5166,
@@ -2352,9 +2352,9 @@
     "line": 4.5,
     "p": 0.5932,
     "fair": -146.0,
-    "ic": 79.2,
+    "ic": 83.4,
     "level": "Alta",
-    "price": 105,
+    "price": 115,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -2399,13 +2399,13 @@
     "principal": true,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Over 7.5",
-    "line": 7.5,
-    "p": 0.5559,
-    "fair": -125.0,
-    "ic": 64.2,
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.6151,
+    "fair": -160.0,
+    "ic": 64.6,
     "level": "Media",
-    "price": 105,
+    "price": -120,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -2420,20 +2420,20 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -108
+       "from": -137
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 115
+       "from": -110
       }
      ],
      "steps": [
-      -108,
-      -103,
-      103,
-      109,
-      115,
+      -137,
+      -131,
+      -124,
+      -117,
+      -110,
       null,
       null,
       null,
@@ -2444,7 +2444,7 @@
      "a": 1.0,
      "h": 0.9981,
      "r": 0.8,
-     "maxPrice": 119
+     "maxPrice": -107
     }
    },
    {
@@ -2873,25 +2873,25 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+105)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-120)",
    "source": "Framework v2",
-   "pick": "Over 7.5",
+   "pick": "Over 7.0",
    "market": "Total completo",
-   "p": 0.5559,
-   "ic": 64.2,
+   "p": 0.6151,
+   "ic": 64.6,
    "level": 3,
    "amount": 750,
-   "minPrice": -108,
+   "minPrice": -137,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -108
+     "from": -137
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 115
+     "from": -110
     }
    ]
   }

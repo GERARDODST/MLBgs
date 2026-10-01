@@ -479,6 +479,17 @@
    "kind": "clima",
    "pk": 849848,
    "text": "Viento: 8 mph in → 5 mph cruzado"
+  },
+  {
+   "after": "apostar Over 7.0 · stake 3",
+   "at": "2026-10-01T00:33:16Z",
+   "before": "apostar Over 7.5 · stake 3",
+   "date": "2026-09-30",
+   "game": "CHC @ SD",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849842,
+   "text": "Decisión: apostar Over 7.5 · stake 3 → apostar Over 7.0 · stake 3"
   }
  ],
  "snap": {
@@ -628,7 +639,7 @@
    "away": 112,
    "dec": {
     "level": 3,
-    "pick": "Over 7.5",
+    "pick": "Over 7.0",
     "status": "apostar",
     "waitFor": null
    },
@@ -774,7 +785,7 @@
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
-    "total": "difiere"
+    "total": "ok"
    },
    "wx": {
     "closed": false,
