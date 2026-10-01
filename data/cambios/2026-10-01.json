@@ -161,6 +161,28 @@
    "kind": "umpire",
    "pk": 849844,
    "text": "Umpire de home asignado: Mark Ripperger"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-01T20:50:18Z",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849844,
+   "side": "away",
+   "text": "Lineup confirmado (PHI)"
+  },
+  {
+   "after": "apostar Over 7.5 · stake 5",
+   "at": "2026-10-01T20:50:13Z",
+   "before": "apostar ATL · stake 3",
+   "date": "2026-10-01",
+   "game": "PHI @ ATL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849844,
+   "text": "Decisión: apostar ATL · stake 3 → apostar Over 7.5 · stake 5 · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -259,15 +281,25 @@
   "849844": {
    "away": 143,
    "dec": {
-    "level": 3,
-    "pick": "ATL",
+    "level": 5,
+    "pick": "Over 7.5",
     "status": "apostar",
     "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 144,
    "lu": {
-    "away": [],
+    "away": [
+     607208,
+     656941,
+     547180,
+     664761,
+     681082,
+     650559,
+     624641,
+     592663,
+     702222
+    ],
     "home": [
      686948,
      660670,
@@ -281,15 +313,24 @@
     ]
    },
    "names": {
+    "547180": "Bryce Harper",
     "573262": "Mike Yastrzemski",
+    "592663": "J.T. Realmuto",
+    "607208": "Trea Turner",
     "621566": "Matt Olson",
+    "624641": "Edmundo Sosa",
     "642086": "Dominic Smith",
     "643289": "Mauricio Dubón",
     "645277": "Ozzie Albies",
+    "650559": "Bryan De La Cruz",
+    "656941": "Kyle Schwarber",
     "660670": "Ronald Acuña Jr.",
     "663586": "Austin Riley",
+    "664761": "Alec Bohm",
     "671739": "Michael Harris II",
-    "686948": "Drake Baldwin"
+    "681082": "Bryson Stott",
+    "686948": "Drake Baldwin",
+    "702222": "Justin Crawford"
    },
    "odds": {
     "line": 7.5,
