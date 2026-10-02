@@ -1,0 +1,270 @@
+[
+{
+"pk": 849829,
+"date": "2026-10-03",
+"time": "2026-10-03T17:00:00Z",
+"generatedAt": "2026-10-02T04:14:33+00:00",
+"away": "CWS",
+"home": "CLE",
+"pHome": 0.5497,
+"methods": {
+"log5": 0.5181,
+"elo": 0.5887,
+"lambda": 0.5425
+},
+"confidence": "media",
+"projAway": 3.8777,
+"projHome": 4.3281,
+"total": 8.2058,
+"f5Away": 1.9924,
+"f5Home": 2.6167,
+"nrfi": 0.5193,
+"pOver85": 0.4188,
+"probables": {
+"away": "Por anunciar",
+"home": "Parker Messick"
+},
+"light": "Amarillo",
+"best": {
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.5672,
+"price": 101,
+"edge": 0.0697,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5672,
+"line": 7.0,
+"ic": 54.7583,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Parker Messick Over 5.5 K",
+"p": 0.5563,
+"line": 5.5,
+"ic": 34.8771,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 7.0",
+"level": 0,
+"alts": [
+"K",
+"RL",
+"F5 total"
+]
+}
+},
+{
+"pk": 849828,
+"date": "2026-10-03",
+"time": "2026-10-03T20:00:00Z",
+"generatedAt": "2026-10-02T04:14:33+00:00",
+"away": "ATL",
+"home": "LAD",
+"pHome": 0.5839,
+"methods": {
+"log5": 0.5808,
+"elo": 0.6164,
+"lambda": 0.5545
+},
+"confidence": "media",
+"projAway": 4.084,
+"projHome": 4.6734,
+"total": 8.7575,
+"f5Away": 2.1548,
+"f5Home": 2.7671,
+"nrfi": 0.4977,
+"pOver85": 0.4699,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Amarillo",
+"best": {
+"market": "ML",
+"pick": "ATL",
+"p": 0.4161,
+"price": 168,
+"edge": 0.0429,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.5956,
+"line": null,
+"ic": 40.1244,
+"level": "Baja"
+},
+{
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Under 4.5",
+"p": 0.5175,
+"line": 4.5,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "RL",
+"pick": "ATL +1.5",
+"level": 0,
+"alts": [
+"F5 total",
+"Team total",
+"Team total"
+]
+}
+},
+{
+"pk": 849835,
+"date": "2026-10-03",
+"time": "2026-10-03T22:30:00Z",
+"generatedAt": "2026-10-02T04:14:33+00:00",
+"away": "NYY",
+"home": "TB",
+"pHome": 0.5048,
+"methods": {
+"log5": 0.4905,
+"elo": 0.5088,
+"lambda": 0.5152
+},
+"confidence": "alta",
+"projAway": 3.603,
+"projHome": 3.7672,
+"total": 7.3702,
+"f5Away": 1.7432,
+"f5Home": 2.1452,
+"nrfi": 0.5795,
+"pOver85": 0.3409,
+"probables": {
+"away": "Por anunciar",
+"home": "Drew Rasmussen"
+},
+"light": "Gris",
+"best": {
+"market": "F5",
+"pick": "TB F5",
+"p": 0.5716,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "TB",
+"p": 0.5048,
+"line": null,
+"ic": 41.5865,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Drew Rasmussen Over 5.5 K",
+"p": 0.5796,
+"line": 5.5,
+"ic": 34.541,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "ML",
+"pick": "TB",
+"level": 0,
+"alts": [
+"K",
+"Total",
+"F5 total"
+]
+}
+},
+{
+"pk": 849830,
+"date": "2026-10-03",
+"time": "2026-10-04T00:30:00Z",
+"generatedAt": "2026-10-02T04:14:33+00:00",
+"away": "SD",
+"home": "MIL",
+"pHome": 0.6455,
+"methods": {
+"log5": 0.6128,
+"elo": 0.6743,
+"lambda": 0.6495
+},
+"confidence": "media",
+"projAway": 3.3824,
+"projHome": 4.9666,
+"total": 8.349,
+"f5Away": 1.6527,
+"f5Home": 3.0944,
+"nrfi": 0.5047,
+"pOver85": 0.4321,
+"probables": {
+"away": "Por anunciar",
+"home": "Jacob Misiorowski"
+},
+"light": "Amarillo",
+"best": {
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.5819,
+"price": -102,
+"edge": 0.077,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5819,
+"line": 7.0,
+"ic": 53.3523,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Jacob Misiorowski Over 6.5 K",
+"p": 0.5317,
+"line": 6.5,
+"ic": 34.5222,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 7.0",
+"level": 0,
+"alts": [
+"K",
+"F5 total",
+"F5"
+]
+}
+}
+]
