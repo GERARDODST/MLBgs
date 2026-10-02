@@ -66,6 +66,29 @@
    "kind": "decision",
    "pk": 849828,
    "text": "Decisión: esperar dato (ATL +1.5) → esperar dato (Under 8.0) · tras: abridor"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Hagen Smith",
+   "at": "2026-10-02T19:32:59Z",
+   "date": "2026-10-03",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849829,
+   "side": "away",
+   "text": "Abridor anunciado (CWS): Hagen Smith"
+  },
+  {
+   "after": "esperar momio (Parker Messick Over 5.5 K)",
+   "at": "2026-10-02T19:32:48Z",
+   "before": "esperar dato (Over 7.0)",
+   "date": "2026-10-03",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849829,
+   "text": "Decisión: esperar dato (Over 7.0) → esperar momio (Parker Messick Over 5.5 K) · tras: abridor"
   }
  ],
  "snap": {
@@ -180,9 +203,9 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "Over 7.0",
+    "pick": "Parker Messick Over 5.5 K",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 114,
@@ -201,7 +224,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 696146,
+     "name": "Hagen Smith"
+    },
     "home": {
      "id": 800048,
      "name": "Parker Messick"
