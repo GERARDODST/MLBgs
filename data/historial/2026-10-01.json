@@ -314,7 +314,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-10-01T23:29:10+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5684,
    "projAway": 4.2,
@@ -864,6 +864,16 @@
      "from": -103
     }
    ]
+  },
+  "lock": {
+   "at": "2026-10-02T00:00:47+00:00",
+   "hash": "0f3fb442ded8d3afa462a6ccb608cd3407b4d9babfcd729bbe214de4a6b9dfe2",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "1c492a3d964b"
+   },
+   "expediente": "data/expedientes/2026-10-01/849844.json.gz",
+   "coincide": true
   }
  },
  {
@@ -897,7 +907,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-10-01T02:09:01+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5326,
    "projAway": 4.05,
@@ -1260,6 +1270,16 @@
      "from": 134
     }
    ]
+  },
+  "lock": {
+   "at": "2026-10-02T00:00:47+00:00",
+   "hash": "60a702d0e78127a8fd038a673fa5d614db403178ddc1bd41e13b54e9e428dc61",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "1c492a3d964b"
+   },
+   "expediente": "data/expedientes/2026-10-01/849847.json.gz",
+   "coincide": true
   }
  },
  {
