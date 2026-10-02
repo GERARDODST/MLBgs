@@ -89,6 +89,29 @@
    "kind": "decision",
    "pk": 849829,
    "text": "Decisión: esperar dato (Over 7.0) → esperar momio (Parker Messick Over 5.5 K) · tras: abridor"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Robbie Ray",
+   "at": "2026-10-02T20:50:55Z",
+   "date": "2026-10-03",
+   "game": "SD @ MIL",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849830,
+   "side": "away",
+   "text": "Abridor anunciado (SD): Robbie Ray"
+  },
+  {
+   "after": "esperar momio (MIL F5)",
+   "at": "2026-10-02T20:50:49Z",
+   "before": "esperar dato (Over 7.0)",
+   "date": "2026-10-03",
+   "game": "SD @ MIL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849830,
+   "text": "Decisión: esperar dato (Over 7.0) → esperar momio (MIL F5) · tras: abridor"
   }
  ],
  "snap": {
@@ -299,9 +322,9 @@
    "away": 135,
    "dec": {
     "level": 0,
-    "pick": "Over 7.0",
+    "pick": "MIL F5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 158,
@@ -320,7 +343,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 592662,
+     "name": "Robbie Ray"
+    },
     "home": {
      "id": 694819,
      "name": "Jacob Misiorowski"

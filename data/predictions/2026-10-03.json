@@ -69,7 +69,7 @@
 "pk": 849828,
 "date": "2026-10-03",
 "time": "2026-10-03T20:00:00Z",
-"generatedAt": "2026-10-02T19:06:58+00:00",
+"generatedAt": "2026-10-02T20:50:49+00:00",
 "away": "ATL",
 "home": "LAD",
 "pHome": 0.6009,
@@ -106,7 +106,7 @@
 "pick": "Under 8.0",
 "p": 0.5246,
 "line": 8.0,
-"ic": 39.1338,
+"ic": 37.7321,
 "level": "Muy baja"
 },
 {
@@ -203,66 +203,65 @@
 "pk": 849830,
 "date": "2026-10-03",
 "time": "2026-10-04T00:30:00Z",
-"generatedAt": "2026-10-02T16:57:18+00:00",
+"generatedAt": "2026-10-02T20:50:49+00:00",
 "away": "SD",
 "home": "MIL",
-"pHome": 0.6455,
+"pHome": 0.623,
 "methods": {
 "log5": 0.6128,
-"elo": 0.6743,
-"lambda": 0.6495
+"elo": 0.6345,
+"lambda": 0.6219
 },
-"confidence": "media",
+"confidence": "alta",
 "projAway": 3.3824,
-"projHome": 4.9666,
-"total": 8.349,
+"projHome": 4.64,
+"total": 8.0224,
 "f5Away": 1.6527,
-"f5Home": 3.0944,
-"nrfi": 0.5047,
-"pOver85": 0.4321,
+"f5Home": 2.8027,
+"nrfi": 0.5286,
+"pOver85": 0.4017,
 "probables": {
-"away": "Por anunciar",
+"away": "Robbie Ray",
 "home": "Jacob Misiorowski"
 },
-"light": "Amarillo",
+"light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Over 7.0",
-"p": 0.5819,
-"price": -109,
-"edge": 0.0604,
-"light": "Amarillo"
+"market": "F5",
+"pick": "MIL F5",
+"p": 0.6817,
+"price": null,
+"edge": null,
+"light": "Gris"
 },
 "topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "MIL",
+"p": 0.623,
+"line": null,
+"ic": 41.4057,
+"level": "Baja"
+},
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.0",
-"p": 0.5819,
+"p": 0.548,
 "line": 7.0,
-"ic": 48.5163,
+"ic": 41.1414,
 "level": "Baja"
-},
-{
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Jacob Misiorowski Over 6.5 K",
-"p": 0.5317,
-"line": 6.5,
-"ic": 34.5222,
-"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 7.0",
+"waitFor": "momio",
+"family": "F5",
+"pick": "MIL F5",
 "level": 0,
 "alts": [
-"K",
-"F5 total",
-"F5"
+"F5",
+"K"
 ]
 }
 }
