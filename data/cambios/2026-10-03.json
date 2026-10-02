@@ -1,6 +1,50 @@
 {
  "date": "2026-10-03",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Gerrit Cole",
+   "at": "2026-10-02T16:57:24Z",
+   "date": "2026-10-03",
+   "game": "NYY @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849835,
+   "side": "away",
+   "text": "Abridor anunciado (NYY): Gerrit Cole"
+  },
+  {
+   "at": "2026-10-02T16:57:24Z",
+   "date": "2026-10-03",
+   "game": "SD @ MIL",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849830,
+   "side": "away",
+   "text": "SD: San Diego Padres signed free agent RHP Roel Ramírez to a minor league contract."
+  },
+  {
+   "at": "2026-10-02T16:57:24Z",
+   "date": "2026-10-03",
+   "game": "SD @ MIL",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849830,
+   "side": "home",
+   "text": "MIL: Milwaukee Brewers signed free agent RHP Orlando Noguera to a minor league contract."
+  },
+  {
+   "after": "esperar momio (F5 Over 3.5)",
+   "at": "2026-10-02T16:57:18Z",
+   "before": "esperar dato (TB)",
+   "date": "2026-10-03",
+   "game": "NYY @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849835,
+   "text": "Decisión: esperar dato (TB) → esperar momio (F5 Over 3.5) · tras: abridor"
+  }
+ ],
  "snap": {
   "849828": {
    "away": 144,
@@ -281,7 +325,9 @@
     "944716",
     "944717",
     "944718",
-    "944744"
+    "944744",
+    "944943",
+    "944947"
    ],
    "ump": null,
    "verify": {
@@ -295,9 +341,9 @@
    "away": 147,
    "dec": {
     "level": 0,
-    "pick": "TB",
+    "pick": "F5 Over 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 139,
@@ -316,7 +362,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 543037,
+     "name": "Gerrit Cole"
+    },
     "home": {
      "id": 656876,
      "name": "Drew Rasmussen"
