@@ -43,6 +43,29 @@
    "kind": "decision",
    "pk": 849835,
    "text": "Decisión: esperar dato (TB) → esperar momio (F5 Over 3.5) · tras: abridor"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Tarik Skubal",
+   "at": "2026-10-02T19:07:05Z",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849828,
+   "side": "home",
+   "text": "Abridor anunciado (LAD): Tarik Skubal"
+  },
+  {
+   "after": "esperar dato (Under 8.0)",
+   "at": "2026-10-02T19:06:58Z",
+   "before": "esperar dato (ATL +1.5)",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849828,
+   "text": "Decisión: esperar dato (ATL +1.5) → esperar dato (Under 8.0) · tras: abridor"
   }
  ],
  "snap": {
@@ -50,7 +73,7 @@
    "away": 144,
    "dec": {
     "level": 0,
-    "pick": "ATL +1.5",
+    "pick": "Under 8.0",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -72,7 +95,10 @@
    },
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 669373,
+     "name": "Tarik Skubal"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-02T04:14:40Z",
