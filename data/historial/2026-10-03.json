@@ -1161,7 +1161,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T18:54:50+00:00",
+  "registeredAt": "2026-10-03T19:02:46+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5413,
@@ -1234,56 +1234,6 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Gerrit Cole Under 4.5 K",
-    "line": 4.5,
-    "p": 0.5018,
-    "fair": -101.0,
-    "ic": 47.7,
-    "level": "Baja",
-    "price": 113,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 1,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 112
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 131
-      }
-     ],
-     "steps": [
-      112,
-      114,
-      119,
-      125,
-      131,
-      137,
-      143,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9907,
-     "r": 1.0,
-     "maxPrice": 148
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 7.0",
@@ -1335,7 +1285,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 3,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
@@ -1364,6 +1314,57 @@
     }
    },
    {
+    "rank": 4,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Gerrit Cole Under 4.5 K",
+    "line": 4.5,
+    "p": 0.5018,
+    "fair": -101.0,
+    "ic": 40.2,
+    "level": "Baja",
+    "price": 102,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 112
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 131
+      }
+     ],
+     "steps": [
+      112,
+      114,
+      119,
+      125,
+      131,
+      137,
+      143,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9907,
+     "r": 1.0,
+     "maxPrice": 148,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
     "rank": 5,
     "principal": false,
     "family": "K",
@@ -1372,9 +1373,9 @@
     "line": 6.5,
     "p": 0.6,
     "fair": -150.0,
-    "ic": 41.9,
-    "level": "Baja",
-    "price": -144,
+    "ic": 39.1,
+    "level": "Muy baja",
+    "price": -150,
     "methods": [
      "λ + Poisson (5.4)"
     ],
