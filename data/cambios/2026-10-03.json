@@ -383,6 +383,39 @@
    "kind": "clima",
    "pk": 849829,
    "text": "Viento: 9 mph out → 9 mph cruzado"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Dylan Dodd",
+   "at": "2026-10-03T17:11:38Z",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849828,
+   "side": "away",
+   "text": "Abridor anunciado (ATL): Dylan Dodd"
+  },
+  {
+   "at": "2026-10-03T17:11:38Z",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849828,
+   "side": "away",
+   "text": "ATL: 6 movimientos del roster (DaShawn Keirsey Jr., Dominic Smith, Lane Thomas, Luke Williams, JR Ritchie, AJ Smith-Shawver)"
+  },
+  {
+   "after": "esperar momio (F5 Over 3.5)",
+   "at": "2026-10-03T17:11:18Z",
+   "before": "esperar dato (Under 8.5)",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849828,
+   "text": "Decisión: esperar dato (Under 8.5) → esperar momio (F5 Over 3.5) · tras: abridor, movimiento"
   }
  ],
  "snap": {
@@ -390,9 +423,9 @@
    "away": 144,
    "dec": {
     "level": 0,
-    "pick": "Under 8.5",
+    "pick": "F5 Over 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 119,
@@ -411,7 +444,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 689266,
+     "name": "Dylan Dodd"
+    },
     "home": {
      "id": 669373,
      "name": "Tarik Skubal"
@@ -484,7 +520,13 @@
     "944861",
     "944903",
     "944904",
-    "944966"
+    "944966",
+    "944988",
+    "944989",
+    "944990",
+    "944991",
+    "944992",
+    "944993"
    ],
    "ump": null,
    "verify": {

@@ -70,34 +70,34 @@
 "pk": 849828,
 "date": "2026-10-03",
 "time": "2026-10-03T20:00:00Z",
-"generatedAt": "2026-10-03T15:20:09+00:00",
+"generatedAt": "2026-10-03T17:11:18+00:00",
 "away": "ATL",
 "home": "LAD",
-"pHome": 0.6009,
+"pHome": 0.5956,
 "methods": {
 "log5": 0.5808,
-"elo": 0.626,
-"lambda": 0.596
+"elo": 0.6223,
+"lambda": 0.5836
 },
 "confidence": "alta",
 "projAway": 3.6661,
-"projHome": 4.6734,
-"total": 8.3395,
+"projHome": 4.5356,
+"total": 8.2017,
 "f5Away": 1.831,
-"f5Home": 2.7671,
-"nrfi": 0.5192,
-"pOver85": 0.4312,
+"f5Home": 2.6444,
+"nrfi": 0.5273,
+"pOver85": 0.4184,
 "probables": {
-"away": "Por anunciar",
+"away": "Dylan Dodd",
 "home": "Tarik Skubal"
 },
 "light": "Amarillo",
 "best": {
-"market": "ML",
-"pick": "ATL",
-"p": 0.3991,
-"price": 173,
-"edge": 0.0328,
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.5735,
+"price": -119,
+"edge": 0.0301,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -105,31 +105,31 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Under 8.5",
-"p": 0.5688,
+"p": 0.5816,
 "line": 8.5,
-"ic": 38.7905,
-"level": "Muy baja"
+"ic": 42.7366,
+"level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "LAD",
-"p": 0.6009,
+"p": 0.5956,
 "line": null,
-"ic": 37.205,
+"ic": 34.8358,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Under 8.5",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Over 3.5",
 "level": 0,
 "alts": [
-"ML",
-"K",
-"RL"
+"F5 total",
+"F5",
+"K"
 ]
 }
 },
