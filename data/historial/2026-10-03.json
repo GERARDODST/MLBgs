@@ -661,8 +661,8 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T19:42:15+00:00",
-  "status": "abierto",
+  "registeredAt": "2026-10-03T20:06:52+00:00",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5944,
    "projAway": 3.7,
@@ -723,7 +723,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 112
     }
@@ -773,7 +773,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 108,
      "why": "confianza menor a 55 con ese momio"
@@ -824,7 +824,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 111,
      "why": "edge menor a 3 pp con ese momio"
@@ -875,7 +875,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 108,
      "why": "edge menor a 3 pp con ese momio"
@@ -905,7 +905,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0
     }
    },
@@ -944,7 +944,7 @@
       159,
       163,
       171,
-      179,
+      180,
       189,
       199,
       209,
@@ -954,7 +954,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 209,
      "why": "edge menor a 3 pp con ese momio"
@@ -997,7 +997,7 @@
       -100,
       104,
       109,
-      114,
+      115,
       120,
       null,
       null,
@@ -1005,7 +1005,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 119,
      "why": "edge menor a 3 pp con ese momio"
@@ -1056,7 +1056,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": -112,
      "why": "edge menor a 3 pp con ese momio"
@@ -1107,7 +1107,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 134,
      "why": "edge menor a 3 pp con ese momio"
@@ -1158,7 +1158,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 131,
      "why": "sin momio real: conviene si pagan +103 o mejor"
@@ -1189,6 +1189,16 @@
      "from": 103
     }
    ]
+  },
+  "lock": {
+   "at": "2026-10-03T20:06:52+00:00",
+   "hash": "33678ac4b67809da9acd57f1595202cef926fbebb2c5e7e45620782bdb9a5842",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "1c492a3d964b"
+   },
+   "expediente": "data/expedientes/2026-10-03/849828.json.gz",
+   "coincide": true
   }
  },
  {
@@ -1221,7 +1231,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T19:02:46+00:00",
+  "registeredAt": "2026-10-03T20:06:52+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5413,
@@ -1286,7 +1296,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 0.8,
      "maxPrice": -115
     }
@@ -1339,7 +1349,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 0.8,
      "maxPrice": 124
     }
@@ -1369,7 +1379,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 0.8
     }
    },
@@ -1418,7 +1428,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 148,
      "why": "edge menor a 3 pp con ese momio"
@@ -1469,7 +1479,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": -101,
      "why": "edge menor a 3 pp con ese momio"
@@ -1520,7 +1530,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 124,
      "why": "edge menor a 3 pp con ese momio"
@@ -1571,7 +1581,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 117,
      "why": "sin momio real: conviene si pagan -112 o mejor"
@@ -1625,7 +1635,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 0.8,
      "maxPrice": 130,
      "why": "sin momio real: conviene si pagan -101 o mejor"
@@ -1676,7 +1686,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 129,
      "why": "sin momio real: conviene si pagan -102 o mejor"
@@ -1709,7 +1719,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 0.8
     }
    }
@@ -1770,7 +1780,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T18:54:50+00:00",
+  "registeredAt": "2026-10-03T20:06:52+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.623,
@@ -1832,7 +1842,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": -182,
      "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
@@ -1860,7 +1870,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0
     }
    },
@@ -1888,7 +1898,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0
     }
    },
@@ -1937,7 +1947,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": -103,
      "why": "edge menor a 3 pp con ese momio"
@@ -1988,7 +1998,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": 175,
      "why": "edge menor a 3 pp con ese momio"
@@ -2016,7 +2026,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0
     }
    },
@@ -2042,7 +2052,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0
     }
    },
@@ -2068,7 +2078,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0
     }
    },
@@ -2109,7 +2119,7 @@
       -167,
       -159,
       -152,
-      -145,
+      -144,
       null,
       null,
       null,
@@ -2117,7 +2127,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0,
      "maxPrice": -140,
      "why": "edge menor a 3 pp con ese momio"
@@ -2145,7 +2155,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9907,
+     "h": 0.989,
      "r": 1.0
     }
    }
