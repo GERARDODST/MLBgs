@@ -486,7 +486,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-02T23:52:50+00:00",
+  "registeredAt": "2026-10-03T02:54:43+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6009,
@@ -508,13 +508,13 @@
     "principal": true,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Under 8.0",
-    "line": 8.0,
-    "p": 0.5246,
-    "fair": -110.0,
-    "ic": 37.7,
+    "pick": "Under 8.5",
+    "line": 8.5,
+    "p": 0.5688,
+    "fair": -132.0,
+    "ic": 38.8,
     "level": "Muy baja",
-    "price": -105,
+    "price": -118,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -540,7 +540,7 @@
     "fair": -151.0,
     "ic": 37.2,
     "level": "Muy baja",
-    "price": -230,
+    "price": -226,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -594,7 +594,7 @@
     "fair": 127.0,
     "ic": 34.1,
     "level": "Muy baja",
-    "price": -107,
+    "price": -110,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -745,11 +745,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "Under 8.0",
+   "pick": "Under 8.5",
    "waitFor": "dato",
    "market": "Total completo",
-   "p": 0.5246,
-   "ic": 37.7,
+   "p": 0.5688,
+   "ic": 38.8,
    "level": 0,
    "amount": 0,
    "minPrice": null,
@@ -1235,7 +1235,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-02T23:52:50+00:00",
+  "registeredAt": "2026-10-03T02:54:43+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.623,
@@ -1263,7 +1263,7 @@
     "fair": -165.0,
     "ic": 41.4,
     "level": "Baja",
-    "price": -205,
+    "price": -204,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",

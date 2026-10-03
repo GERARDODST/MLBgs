@@ -122,6 +122,29 @@
    "pk": 849830,
    "side": "home",
    "text": "MIL: Milwaukee Brewers activated 1B Andrew Vaughn from the 10-day injured list."
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 8.5,
+   "at": "2026-10-03T02:54:54Z",
+   "before": 8.0,
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849828,
+   "text": "La línea del total pasa de 8.0 a 8.5"
+  },
+  {
+   "after": "esperar dato (Under 8.5)",
+   "at": "2026-10-03T02:54:43Z",
+   "before": "esperar dato (Under 8.0)",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849828,
+   "text": "Decisión: esperar dato (Under 8.0) → esperar dato (Under 8.5) · tras: momio"
   }
  ],
  "snap": {
@@ -129,7 +152,7 @@
    "away": 144,
    "dec": {
     "level": 0,
-    "pick": "Under 8.0",
+    "pick": "Under 8.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -141,12 +164,12 @@
    },
    "names": {},
    "odds": {
-    "line": 8.0,
+    "line": 8.5,
     "ml": {
-     "away": 168,
-     "home": -205
+     "away": 184,
+     "home": -226
     },
-    "pHome": 0.643,
+    "pHome": 0.6632,
     "src": "draftkings"
    },
    "prob": {
