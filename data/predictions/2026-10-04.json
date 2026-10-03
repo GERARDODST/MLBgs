@@ -1,0 +1,137 @@
+[
+{
+"pk": 849825,
+"date": "2026-10-04",
+"time": "2026-10-04T20:00:00Z",
+"generatedAt": "2026-10-03T04:12:15+00:00",
+"away": "SD",
+"home": "MIL",
+"pHome": 0.6027,
+"methods": {
+"log5": 0.6128,
+"elo": 0.5866,
+"lambda": 0.6086
+},
+"confidence": "alta",
+"projAway": 3.6794,
+"projHome": 4.8353,
+"total": 8.5147,
+"f5Away": 1.9281,
+"f5Home": 2.935,
+"nrfi": 0.4997,
+"pOver85": 0.4475,
+"probables": {
+"away": "Michael King",
+"home": "Logan Henderson"
+},
+"light": "Gris",
+"best": {
+"market": "F5",
+"pick": "MIL F5",
+"p": 0.6511,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "MIL",
+"p": 0.6027,
+"line": null,
+"ic": 42.8605,
+"level": "Baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 8.0",
+"p": 0.5066,
+"line": 8.0,
+"ic": 35.816,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "momio",
+"family": "ML",
+"pick": "MIL",
+"level": 0,
+"alts": [
+"ML",
+"F5 total",
+"F5",
+"K"
+]
+}
+},
+{
+"pk": 849823,
+"date": "2026-10-04",
+"time": "2026-10-05T00:00:00Z",
+"generatedAt": "2026-10-03T04:12:15+00:00",
+"away": "ATL",
+"home": "LAD",
+"pHome": 0.5839,
+"methods": {
+"log5": 0.5808,
+"elo": 0.6164,
+"lambda": 0.5545
+},
+"confidence": "media",
+"projAway": 4.084,
+"projHome": 4.6734,
+"total": 8.7575,
+"f5Away": 2.1548,
+"f5Home": 2.7671,
+"nrfi": 0.4977,
+"pOver85": 0.4699,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Gris",
+"best": {
+"market": "ML",
+"pick": "LAD",
+"p": 0.5839,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Under 4.5",
+"p": 0.5175,
+"line": 4.5,
+"ic": 31.8,
+"level": "Muy baja"
+},
+{
+"family": "Team total",
+"market": "Team total ATL",
+"pick": "ATL Under 3.5",
+"p": 0.5001,
+"line": 3.5,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "F5 total",
+"pick": "F5 Under 4.5",
+"level": 0,
+"alts": [
+"Team total",
+"Team total",
+"ML"
+]
+}
+}
+]
