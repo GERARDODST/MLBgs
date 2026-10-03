@@ -601,7 +601,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T17:11:18+00:00",
+  "registeredAt": "2026-10-03T17:19:20+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5956,
@@ -620,6 +620,57 @@
   "picks": [
    {
     "rank": 1,
+    "principal": true,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 4.5",
+    "line": 4.5,
+    "p": 0.5756,
+    "fair": -136.0,
+    "ic": 43.1,
+    "level": "Baja",
+    "price": -120,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -112
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 105
+      }
+     ],
+     "steps": [
+      -112,
+      -109,
+      -104,
+      -100,
+      105,
+      110,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9907,
+     "r": 1.0,
+     "maxPrice": 110,
+     "why": "confianza menor a 55 con ese momio"
+    }
+   },
+   {
+    "rank": 2,
     "principal": true,
     "family": "Total",
     "market": "Total completo",
@@ -645,8 +696,8 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 3,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "LAD",
@@ -673,7 +724,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
@@ -724,57 +775,6 @@
     }
    },
    {
-    "rank": 4,
-    "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Over 3.5",
-    "line": 3.5,
-    "p": 0.5574,
-    "fair": -126.0,
-    "ic": 34.3,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -104
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 113
-      }
-     ],
-     "steps": [
-      -104,
-      -102,
-      103,
-      108,
-      113,
-      118,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9907,
-     "r": 1.0,
-     "maxPrice": 118,
-     "why": "sin momio real: conviene si pagan -104 o mejor"
-    }
-   },
-   {
     "rank": 5,
     "principal": false,
     "family": "F5",
@@ -785,7 +785,7 @@
     "fair": -170.0,
     "ic": 34.3,
     "level": "Muy baja",
-    "price": null,
+    "price": -250,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -822,7 +822,7 @@
      "h": 0.9907,
      "r": 1.0,
      "maxPrice": -113,
-     "why": "sin momio real: conviene si pagan -140 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -836,7 +836,7 @@
     "fair": -124.0,
     "ic": 34.3,
     "level": "Muy baja",
-    "price": null,
+    "price": -141,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -873,7 +873,7 @@
      "h": 0.9907,
      "r": 1.0,
      "maxPrice": 120,
-     "why": "sin momio real: conviene si pagan -102 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -1004,26 +1004,21 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan -104 o mejor (stake 1); stake 5 desde +113",
+   "why": "falta el momio de Prop de ponches: conviene si pagan +112 o mejor (stake 1)",
    "source": "Framework v2",
-   "pick": "F5 Over 3.5",
+   "pick": "Dylan Dodd Over 1.5 K",
    "waitFor": "momio",
-   "market": "Total primeras 5",
-   "p": 0.5574,
-   "ic": 34.3,
+   "market": "Prop de ponches",
+   "p": 0.5325,
+   "ic": 30.1,
    "level": 0,
    "amount": 0,
-   "minPrice": -104,
+   "minPrice": 112,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -104
-    },
-    {
-     "level": 5,
-     "stake": 1000,
-     "from": 113
+     "from": 112
     }
    ]
   }

@@ -70,7 +70,7 @@
 "pk": 849828,
 "date": "2026-10-03",
 "time": "2026-10-03T20:00:00Z",
-"generatedAt": "2026-10-03T17:11:18+00:00",
+"generatedAt": "2026-10-03T17:19:20+00:00",
 "away": "ATL",
 "home": "LAD",
 "pHome": 0.5956,
@@ -102,6 +102,15 @@
 },
 "topPicks": [
 {
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Under 4.5",
+"p": 0.5756,
+"line": 4.5,
+"ic": 43.0873,
+"level": "Baja"
+},
+{
 "family": "Total",
 "market": "Total completo",
 "pick": "Under 8.5",
@@ -109,26 +118,15 @@
 "line": 8.5,
 "ic": 42.7366,
 "level": "Baja"
-},
-{
-"family": "ML",
-"market": "Moneyline",
-"pick": "LAD",
-"p": 0.5956,
-"line": null,
-"ic": 34.8358,
-"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "momio",
-"family": "F5 total",
-"pick": "F5 Over 3.5",
+"family": "K",
+"pick": "Dylan Dodd Over 1.5 K",
 "level": 0,
 "alts": [
-"F5 total",
-"F5",
 "K"
 ]
 }
