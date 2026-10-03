@@ -469,6 +469,28 @@
    "kind": "decision",
    "pk": 849830,
    "text": "Decisión: esperar verificar (Jacob Misiorowski Under 7.5 K) → esperar verificar (Jacob Misiorowski Under 8.5 K)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-03T18:39:06Z",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849828,
+   "side": "away",
+   "text": "Lineup confirmado (ATL)"
+  },
+  {
+   "after": "esperar momio (ATL Under 3.5)",
+   "at": "2026-10-03T18:38:58Z",
+   "before": "esperar momio (Dylan Dodd Over 1.5 K)",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849828,
+   "text": "Decisión: esperar momio (Dylan Dodd Over 1.5 K) → esperar momio (ATL Under 3.5) · tras: lineup"
   }
  ],
  "snap": {
@@ -476,14 +498,24 @@
    "away": 144,
    "dec": {
     "level": 0,
-    "pick": "Dylan Dodd Over 1.5 K",
+    "pick": "ATL Under 3.5",
     "status": "esperar",
     "waitFor": "momio"
    },
    "detailed": "Pre-Game",
    "home": 119,
    "lu": {
-    "away": [],
+    "away": [
+     686948,
+     660670,
+     645277,
+     621566,
+     671739,
+     643289,
+     663586,
+     669221,
+     673490
+    ],
     "home": [
      605141,
      660271,
@@ -501,11 +533,20 @@
     "571970": "Max Muncy",
     "605141": "Mookie Betts",
     "606192": "Teoscar Hernández",
+    "621566": "Matt Olson",
+    "643289": "Mauricio Dubón",
+    "645277": "Ozzie Albies",
     "660271": "Shohei Ohtani",
+    "660670": "Ronald Acuña Jr.",
+    "663586": "Austin Riley",
     "663656": "Kyle Tucker",
+    "669221": "Sean Murphy",
     "669242": "Tommy Edman",
     "669257": "Will Smith",
-    "681624": "Andy Pages"
+    "671739": "Michael Harris II",
+    "673490": "Ha-Seong Kim",
+    "681624": "Andy Pages",
+    "686948": "Drake Baldwin"
    },
    "odds": {
     "line": 8.5,
