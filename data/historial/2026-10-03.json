@@ -891,7 +891,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T15:20:09+00:00",
+  "registeredAt": "2026-10-03T16:31:37+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5401,
@@ -917,9 +917,9 @@
     "line": null,
     "p": 0.6308,
     "fair": -171.0,
-    "ic": 47.6,
+    "ic": 47.1,
     "level": "Baja",
-    "price": -145,
+    "price": -146,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -1286,12 +1286,12 @@
   "result": null,
   "decision": {
    "status": "no apostar",
-   "why": "con el momio de referencia (-145): confianza menor a 55 con ese momio (stake 1 desde -144)",
+   "why": "con el momio de referencia (-146): confianza menor a 55 con ese momio (stake 1 desde -144)",
    "source": "Framework v2",
    "pick": "TB F5",
    "market": "F5 Moneyline",
    "p": 0.6308,
-   "ic": 47.6,
+   "ic": 47.1,
    "level": 0,
    "amount": 0,
    "minPrice": -144,
