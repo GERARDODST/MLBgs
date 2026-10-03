@@ -1851,7 +1851,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T21:52:52+00:00",
+  "registeredAt": "2026-10-03T23:04:22+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6211,
@@ -1873,13 +1873,13 @@
     "principal": true,
     "family": "K",
     "market": "Prop de ponches",
-    "pick": "Jacob Misiorowski Under 8.5 K",
-    "line": 8.5,
-    "p": 0.7762,
-    "fair": -347.0,
+    "pick": "Jacob Misiorowski Under 7.5 K",
+    "line": 7.5,
+    "p": 0.654,
+    "fair": -189.0,
     "ic": 74.1,
     "level": "Alta",
-    "price": -154,
+    "price": 108,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -1891,31 +1891,31 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -293
+       "from": -165
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -246
+       "from": -143
       }
      ],
      "steps": [
-      -293,
-      -293,
-      -277,
-      -261,
-      -246,
-      -233,
-      -221,
-      -209,
+      -165,
+      -165,
+      -158,
+      -150,
+      -143,
+      -136,
+      -130,
+      -124,
       null,
       null
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0,
-     "maxPrice": -209,
+     "maxPrice": -125,
      "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
     }
    },
@@ -1928,16 +1928,16 @@
     "line": 3.5,
     "p": 0.6724,
     "fair": -205.0,
-    "ic": 63.7,
+    "ic": 66.7,
     "level": "Media",
-    "price": -143,
+    "price": -137,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 6,
+     "level": 7,
      "ladder": [
       {
        "level": 1,
@@ -1964,7 +1964,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0,
      "maxPrice": -134
     }
@@ -1991,7 +1991,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0
     }
    },
@@ -2019,7 +2019,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0
     }
    },
@@ -2057,7 +2057,7 @@
      "steps": [
       134,
       136,
-      142,
+      143,
       149,
       157,
       165,
@@ -2068,7 +2068,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0,
      "maxPrice": 179,
      "why": "edge menor a 3 pp con ese momio"
@@ -2096,7 +2096,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0
     }
    },
@@ -2137,7 +2137,7 @@
       -106,
       -101,
       104,
-      108,
+      109,
       114,
       null,
       null,
@@ -2145,7 +2145,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0,
      "maxPrice": 117,
      "why": "sin momio real: conviene si pagan -112 o mejor"
@@ -2196,7 +2196,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0,
      "maxPrice": 121,
      "why": "sin momio real: conviene si pagan -109 o mejor"
@@ -2247,7 +2247,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0,
      "maxPrice": -137,
      "why": "edge menor a 3 pp con ese momio"
@@ -2298,7 +2298,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.989,
+     "h": 0.9884,
      "r": 1.0,
      "maxPrice": 135,
      "why": "sin momio real: conviene si pagan +103 o mejor"
@@ -2308,14 +2308,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-143)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-137)",
    "source": "Framework v2",
    "pick": "Robbie Ray Over 3.5 K",
    "market": "Prop de ponches",
    "p": 0.6724,
-   "ic": 63.7,
-   "level": 6,
-   "amount": 1100,
+   "ic": 66.7,
+   "level": 7,
+   "amount": 1200,
    "minPrice": -179,
    "ladder": [
     {
