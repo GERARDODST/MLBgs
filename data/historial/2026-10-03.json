@@ -1232,7 +1232,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-10-03T22:24:59+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5413,
    "projAway": 3.67,
@@ -1749,6 +1749,16 @@
      "from": -122
     }
    ]
+  },
+  "lock": {
+   "at": "2026-10-03T22:32:51+00:00",
+   "hash": "d94d2119c4804cfb41d28d3b7cf5c56e09ee8e1fdda2c60967de5793bf222d46",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "1c492a3d964b"
+   },
+   "expediente": "data/expedientes/2026-10-03/849835.json.gz",
+   "coincide": true
   }
  },
  {
