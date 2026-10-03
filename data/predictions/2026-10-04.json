@@ -71,66 +71,66 @@
 "pk": 849823,
 "date": "2026-10-04",
 "time": "2026-10-05T00:00:00Z",
-"generatedAt": "2026-10-03T04:12:15+00:00",
+"generatedAt": "2026-10-03T16:15:50+00:00",
 "away": "ATL",
 "home": "LAD",
-"pHome": 0.5839,
+"pHome": 0.5867,
 "methods": {
 "log5": 0.5808,
-"elo": 0.6164,
-"lambda": 0.5545
+"elo": 0.5984,
+"lambda": 0.5808
 },
-"confidence": "media",
-"projAway": 4.084,
+"confidence": "alta",
+"projAway": 3.8176,
 "projHome": 4.6734,
-"total": 8.7575,
-"f5Away": 2.1548,
+"total": 8.4911,
+"f5Away": 1.9114,
 "f5Home": 2.7671,
-"nrfi": 0.4977,
-"pOver85": 0.4699,
+"nrfi": 0.5156,
+"pOver85": 0.4453,
 "probables": {
 "away": "Por anunciar",
-"home": "Por anunciar"
+"home": "Blake Snell"
 },
 "light": "Gris",
 "best": {
-"market": "ML",
-"pick": "LAD",
-"p": 0.5839,
+"market": "F5",
+"pick": "LAD F5",
+"p": 0.6325,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Under 4.5",
-"p": 0.5175,
-"line": 4.5,
-"ic": 31.8,
-"level": "Muy baja"
+"family": "ML",
+"market": "Moneyline",
+"pick": "LAD",
+"p": 0.5867,
+"line": null,
+"ic": 40.6311,
+"level": "Baja"
 },
 {
-"family": "Team total",
-"market": "Team total ATL",
-"pick": "ATL Under 3.5",
-"p": 0.5001,
-"line": 3.5,
-"ic": 31.8,
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 8.0",
+"p": 0.509,
+"line": 8.0,
+"ic": 31.8144,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "dato",
-"family": "F5 total",
-"pick": "F5 Under 4.5",
+"family": "ML",
+"pick": "LAD",
 "level": 0,
 "alts": [
-"Team total",
-"Team total",
-"ML"
+"Total",
+"F5 total",
+"Team total"
 ]
 }
 }

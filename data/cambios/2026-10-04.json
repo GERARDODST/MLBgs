@@ -1,12 +1,36 @@
 {
  "date": "2026-10-04",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Blake Snell",
+   "at": "2026-10-03T16:16:01Z",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849823,
+   "side": "home",
+   "text": "Abridor anunciado (LAD): Blake Snell"
+  },
+  {
+   "after": "esperar dato (LAD)",
+   "at": "2026-10-03T16:15:50Z",
+   "before": "esperar dato (F5 Under 4.5)",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849823,
+   "text": "Decisión: esperar dato (F5 Under 4.5) → esperar dato (LAD) · tras: abridor"
+  }
+ ],
  "snap": {
   "849823": {
    "away": 144,
    "dec": {
     "level": 0,
-    "pick": "F5 Under 4.5",
+    "pick": "LAD",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -19,7 +43,10 @@
    "names": {},
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 605483,
+     "name": "Blake Snell"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-03T04:12:26Z",
