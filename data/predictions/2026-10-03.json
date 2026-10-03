@@ -137,23 +137,23 @@
 "pk": 849835,
 "date": "2026-10-03",
 "time": "2026-10-03T22:30:00Z",
-"generatedAt": "2026-10-03T16:31:37+00:00",
+"generatedAt": "2026-10-03T18:54:50+00:00",
 "away": "NYY",
 "home": "TB",
-"pHome": 0.5401,
+"pHome": 0.5413,
 "methods": {
 "log5": 0.4905,
 "elo": 0.57,
-"lambda": 0.5599
+"lambda": 0.5633
 },
 "confidence": "media",
-"projAway": 3.603,
-"projHome": 4.218,
-"total": 7.821,
-"f5Away": 1.7432,
-"f5Home": 2.5374,
-"nrfi": 0.5446,
-"pOver85": 0.3828,
+"projAway": 3.6745,
+"projHome": 4.3305,
+"total": 8.005,
+"f5Away": 1.7778,
+"f5Home": 2.6051,
+"nrfi": 0.5366,
+"pOver85": 0.4,
 "probables": {
 "away": "Gerrit Cole",
 "home": "Drew Rasmussen"
@@ -162,9 +162,9 @@
 "best": {
 "market": "F5",
 "pick": "TB F5",
-"p": 0.6308,
+"p": 0.634,
 "price": -146,
-"edge": 0.0373,
+"edge": 0.0405,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -172,31 +172,31 @@
 "family": "F5",
 "market": "F5 Moneyline",
 "pick": "TB F5",
-"p": 0.6308,
+"p": 0.634,
 "line": null,
-"ic": 47.1225,
+"ic": 49.2326,
 "level": "Baja"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.5265,
-"line": 7.0,
-"ic": 40.3932,
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Gerrit Cole Under 4.5 K",
+"p": 0.5018,
+"line": 4.5,
+"ic": 47.6691,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "no apostar",
+"status": "apostar",
 "waitFor": null,
 "family": "F5",
 "pick": "TB F5",
-"level": 0,
+"level": 2,
 "alts": [
+"K",
 "Total",
-"F5 total",
-"Team total"
+"RL"
 ]
 }
 },
@@ -204,7 +204,7 @@
 "pk": 849830,
 "date": "2026-10-03",
 "time": "2026-10-04T00:30:00Z",
-"generatedAt": "2026-10-03T18:31:07+00:00",
+"generatedAt": "2026-10-03T18:54:50+00:00",
 "away": "SD",
 "home": "MIL",
 "pHome": 0.623,
@@ -230,8 +230,8 @@
 "market": "Total",
 "pick": "Over 7.0",
 "p": 0.548,
-"price": -107,
-"edge": 0.0311,
+"price": -105,
+"edge": 0.0358,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -250,7 +250,7 @@
 "pick": "Over 7.0",
 "p": 0.548,
 "line": 7.0,
-"ic": 42.4897,
+"ic": 43.8644,
 "level": "Baja"
 }
 ],
