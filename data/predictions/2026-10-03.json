@@ -3,23 +3,23 @@
 "pk": 849829,
 "date": "2026-10-03",
 "time": "2026-10-03T17:00:00Z",
-"generatedAt": "2026-10-03T05:03:57+00:00",
+"generatedAt": "2026-10-03T15:20:09+00:00",
 "away": "CWS",
 "home": "CLE",
-"pHome": 0.5134,
+"pHome": 0.5169,
 "methods": {
 "log5": 0.5181,
 "elo": 0.5325,
-"lambda": 0.4896
+"lambda": 0.5
 },
 "confidence": "alta",
-"projAway": 3.8777,
-"projHome": 3.7908,
-"total": 7.6685,
-"f5Away": 1.9924,
-"f5Home": 2.115,
-"nrfi": 0.5672,
-"pOver85": 0.3686,
+"projAway": 3.9263,
+"projHome": 3.9404,
+"total": 7.8667,
+"f5Away": 2.0174,
+"f5Home": 2.1985,
+"nrfi": 0.5585,
+"pOver85": 0.3871,
 "probables": {
 "away": "Hagen Smith",
 "home": "Parker Messick"
@@ -28,41 +28,41 @@
 "best": {
 "market": "ML",
 "pick": "CWS",
-"p": 0.4866,
-"price": 129,
-"edge": 0.0499,
+"p": 0.4831,
+"price": 123,
+"edge": 0.0347,
 "light": "Amarillo"
 },
 "topPicks": [
 {
 "family": "K",
 "market": "Prop de ponches",
-"pick": "Hagen Smith Over 1.5 K",
-"p": 0.9521,
-"line": 1.5,
-"ic": 63.1974,
+"pick": "Hagen Smith Over 2.5 K",
+"p": 0.7918,
+"line": 2.5,
+"ic": 67.7308,
 "level": "Media"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Parker Messick Under 6.5 K",
-"p": 0.6043,
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.5",
+"p": 0.5779,
 "line": 6.5,
-"ic": 49.6729,
+"ic": 43.2664,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "apostar",
-"waitFor": null,
+"status": "esperar",
+"waitFor": "verificar",
 "family": "K",
-"pick": "Parker Messick Under 6.5 K",
-"level": 2,
+"pick": "Hagen Smith Over 2.5 K",
+"level": 0,
 "alts": [
-"K",
-"RL",
-"Total"
+"Total",
+"ML",
+"K"
 ]
 }
 },
@@ -70,7 +70,7 @@
 "pk": 849828,
 "date": "2026-10-03",
 "time": "2026-10-03T20:00:00Z",
-"generatedAt": "2026-10-03T09:12:48+00:00",
+"generatedAt": "2026-10-03T15:20:09+00:00",
 "away": "ATL",
 "home": "LAD",
 "pHome": 0.6009,
@@ -107,8 +107,8 @@
 "pick": "Under 8.5",
 "p": 0.5688,
 "line": 8.5,
-"ic": 40.6574,
-"level": "Baja"
+"ic": 38.7905,
+"level": "Muy baja"
 },
 {
 "family": "ML",
@@ -137,7 +137,7 @@
 "pk": 849835,
 "date": "2026-10-03",
 "time": "2026-10-03T22:30:00Z",
-"generatedAt": "2026-10-02T19:06:58+00:00",
+"generatedAt": "2026-10-03T15:20:09+00:00",
 "away": "NYY",
 "home": "TB",
 "pHome": 0.5401,
@@ -158,45 +158,45 @@
 "away": "Gerrit Cole",
 "home": "Drew Rasmussen"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
 "market": "F5",
 "pick": "TB F5",
 "p": 0.6308,
-"price": null,
-"edge": null,
-"light": "Gris"
+"price": -145,
+"edge": 0.039,
+"light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "TB F5",
+"p": 0.6308,
+"line": null,
+"ic": 47.6064,
+"level": "Baja"
+},
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.0",
 "p": 0.5265,
 "line": 7.0,
-"ic": 39.0185,
-"level": "Muy baja"
-},
-{
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Over 3.5",
-"p": 0.531,
-"line": 3.5,
-"ic": 36.2292,
-"level": "Muy baja"
+"ic": 40.3932,
+"level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
-"family": "F5 total",
-"pick": "F5 Over 3.5",
+"status": "no apostar",
+"waitFor": null,
+"family": "F5",
+"pick": "TB F5",
 "level": 0,
 "alts": [
+"Total",
 "F5 total",
-"F5",
-"K"
+"Team total"
 ]
 }
 },
@@ -204,7 +204,7 @@
 "pk": 849830,
 "date": "2026-10-03",
 "time": "2026-10-04T00:30:00Z",
-"generatedAt": "2026-10-03T05:55:44+00:00",
+"generatedAt": "2026-10-03T15:20:09+00:00",
 "away": "SD",
 "home": "MIL",
 "pHome": 0.623,
@@ -225,24 +225,24 @@
 "away": "Robbie Ray",
 "home": "Jacob Misiorowski"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "F5",
-"pick": "MIL F5",
-"p": 0.6817,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.548,
+"price": -106,
+"edge": 0.0334,
+"light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "MIL",
-"p": 0.623,
-"line": null,
-"ic": 41.4057,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Jacob Misiorowski Under 7.5 K",
+"p": 0.6172,
+"line": 7.5,
+"ic": 69.5222,
+"level": "Media"
 },
 {
 "family": "Total",
@@ -250,19 +250,20 @@
 "pick": "Over 7.0",
 "p": 0.548,
 "line": 7.0,
-"ic": 39.1666,
-"level": "Muy baja"
+"ic": 43.1737,
+"level": "Baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "momio",
-"family": "F5",
-"pick": "MIL F5",
+"waitFor": "verificar",
+"family": "K",
+"pick": "Jacob Misiorowski Under 7.5 K",
 "level": 0,
 "alts": [
-"F5",
-"K"
+"Total",
+"ML",
+"F5 total"
 ]
 }
 }
