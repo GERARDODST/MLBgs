@@ -491,16 +491,27 @@
    "kind": "decision",
    "pk": 849828,
    "text": "Decisión: esperar momio (Dylan Dodd Over 1.5 K) → esperar momio (ATL Under 3.5) · tras: lineup"
+  },
+  {
+   "after": "apostar LAD Under 4.5 · stake 3",
+   "at": "2026-10-03T18:46:53Z",
+   "before": "esperar momio (ATL Under 3.5)",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849828,
+   "text": "Decisión: esperar momio (ATL Under 3.5) → apostar LAD Under 4.5 · stake 3 · tras: lineup"
   }
  ],
  "snap": {
   "849828": {
    "away": 144,
    "dec": {
-    "level": 0,
-    "pick": "ATL Under 3.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 3,
+    "pick": "LAD Under 4.5",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 119,
