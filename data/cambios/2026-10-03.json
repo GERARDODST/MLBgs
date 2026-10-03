@@ -437,6 +437,27 @@
    "pk": 849828,
    "side": "home",
    "text": "LAD: 4 movimientos del roster (Alex Call, Alex Freeland, Justin Wrobleski, Jack Dreyer)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-03T17:35:11Z",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849828,
+   "side": "home",
+   "text": "Lineup confirmado (LAD)"
+  },
+  {
+   "after": "Roberto Ortiz",
+   "at": "2026-10-03T17:35:11Z",
+   "date": "2026-10-03",
+   "game": "ATL @ LAD",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849828,
+   "text": "Umpire de home asignado: Roberto Ortiz"
   }
  ],
  "snap": {
@@ -448,13 +469,33 @@
     "status": "esperar",
     "waitFor": "momio"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 119,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     605141,
+     660271,
+     669257,
+     518692,
+     606192,
+     663656,
+     681624,
+     571970,
+     669242
+    ]
    },
-   "names": {},
+   "names": {
+    "518692": "Freddie Freeman",
+    "571970": "Max Muncy",
+    "605141": "Mookie Betts",
+    "606192": "Teoscar Hernández",
+    "660271": "Shohei Ohtani",
+    "663656": "Kyle Tucker",
+    "669242": "Tommy Edman",
+    "669257": "Will Smith",
+    "681624": "Andy Pages"
+   },
    "odds": {
     "line": 8.5,
     "ml": {
@@ -556,13 +597,19 @@
     "944999",
     "945000"
    ],
-   "ump": null,
+   "ump": "Roberto Ortiz",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Sunny",
+    "dir": "cruzado",
+    "speed": 2,
+    "temp": 94.0
+   }
   },
   "849829": {
    "away": 145,
