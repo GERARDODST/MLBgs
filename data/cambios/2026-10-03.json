@@ -565,6 +565,38 @@
    "pk": 849828,
    "side": "home",
    "text": "LAD: RHP Paul Gervase roster status changed by Los Angeles Dodgers."
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-03T20:14:56Z",
+   "date": "2026-10-03",
+   "game": "SD @ MIL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849830,
+   "side": "home",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "Nick Mahrley",
+   "at": "2026-10-03T20:14:56Z",
+   "date": "2026-10-03",
+   "game": "SD @ MIL",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849830,
+   "text": "Umpire de home asignado: Nick Mahrley"
+  },
+  {
+   "after": "apostar Robbie Ray Over 3.5 K · stake 4",
+   "at": "2026-10-03T20:14:49Z",
+   "before": "esperar verificar (Jacob Misiorowski Under 8.5 K)",
+   "date": "2026-10-03",
+   "game": "SD @ MIL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849830,
+   "text": "Decisión: esperar verificar (Jacob Misiorowski Under 8.5 K) → apostar Robbie Ray Over 3.5 K · stake 4 · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -886,18 +918,38 @@
   "849830": {
    "away": 135,
    "dec": {
-    "level": 0,
-    "pick": "Jacob Misiorowski Under 8.5 K",
-    "status": "esperar",
-    "waitFor": "verificar"
+    "level": 4,
+    "pick": "Robbie Ray Over 3.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 158,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     694192,
+     668930,
+     661388,
+     641343,
+     592885,
+     806198,
+     800325,
+     669003,
+     687401
+    ]
    },
-   "names": {},
+   "names": {
+    "592885": "Christian Yelich",
+    "641343": "Jake Bauers",
+    "661388": "William Contreras",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
+    "687401": "Joey Ortiz",
+    "694192": "Jackson Chourio",
+    "800325": "Luis Lara",
+    "806198": "Cooper Pratt"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -983,13 +1035,19 @@
     "944986",
     "944987"
    ],
-   "ump": null,
+   "ump": "Nick Mahrley",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Roof Closed",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 71.0
+   }
   },
   "849835": {
    "away": 147,

@@ -1780,14 +1780,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T20:06:52+00:00",
+  "registeredAt": "2026-10-03T20:14:49+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.623,
+   "pHome": 0.6239,
    "projAway": 3.38,
-   "projHome": 4.64,
-   "total": 8.02,
-   "nrfi": 0.5286,
+   "projHome": 4.67,
+   "total": 8.05,
+   "nrfi": 0.5271,
    "light": "Amarillo",
    "confidence": "alta",
    "probables": {
@@ -1851,13 +1851,63 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Robbie Ray Over 3.5 K",
+    "line": 3.5,
+    "p": 0.6724,
+    "fair": -205.0,
+    "ic": 59.2,
+    "level": "Media",
+    "price": -143,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 4,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -168
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -142
+      }
+     ],
+     "steps": [
+      -168,
+      -164,
+      -156,
+      -149,
+      -142,
+      -135,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.989,
+     "r": 1.0,
+     "maxPrice": -134
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 7.0",
     "line": 7.0,
-    "p": 0.548,
-    "fair": -121.0,
-    "ic": 43.9,
+    "p": 0.5512,
+    "fair": -123.0,
+    "ic": 44.8,
     "level": "Baja",
     "price": -105,
     "methods": [
@@ -1875,14 +1925,14 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "MIL",
     "line": null,
-    "p": 0.623,
-    "fair": -165.0,
+    "p": 0.6239,
+    "fair": -166.0,
     "ic": 41.4,
     "level": "Baja",
     "price": -209,
@@ -1891,7 +1941,7 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 61.3% · Elo + abridor (5.7.7) 63.4% · λ + Binomial Negativa (5.3 · 5.7.5) 62.2%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 61.3% · Elo + abridor (5.7.7) 63.4% · λ + Binomial Negativa (5.3 · 5.7.5) 62.5%",
     "res": null,
     "stake": {
      "level": 0,
@@ -1903,65 +1953,14 @@
     }
    },
    {
-    "rank": 4,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Robbie Ray Over 3.5 K",
-    "line": 3.5,
-    "p": 0.6058,
-    "fair": -154.0,
-    "ic": 39.7,
-    "level": "Muy baja",
-    "price": -143,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -127
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": -108
-      }
-     ],
-     "steps": [
-      -127,
-      -124,
-      -119,
-      -113,
-      -108,
-      -103,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.989,
-     "r": 1.0,
-     "maxPrice": -103,
-     "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
     "rank": 5,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "MIL -1.5",
     "line": null,
-    "p": 0.4627,
-    "fair": 116.0,
+    "p": 0.4658,
+    "fair": 115.0,
     "ic": 36.8,
     "level": "Muy baja",
     "price": 104,
@@ -1976,21 +1975,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 136
+       "from": 134
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 161
+       "from": 159
       }
      ],
      "steps": [
-      136,
-      139,
-      146,
-      153,
-      161,
-      169,
+      134,
+      137,
+      144,
+      151,
+      159,
+      167,
       null,
       null,
       null,
@@ -2000,7 +1999,7 @@
      "a": 1.0,
      "h": 0.989,
      "r": 1.0,
-     "maxPrice": 175,
+     "maxPrice": 173,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -2011,8 +2010,8 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
     "line": 3.5,
-    "p": 0.5547,
-    "fair": -125.0,
+    "p": 0.5572,
+    "fair": -126.0,
     "ic": 36.8,
     "level": "Muy baja",
     "price": null,
@@ -2063,8 +2062,8 @@
     "market": "Team total MIL",
     "pick": "MIL Under 4.5",
     "line": 4.5,
-    "p": 0.5563,
-    "fair": -125.0,
+    "p": 0.5524,
+    "fair": -123.0,
     "ic": 36.8,
     "level": "Muy baja",
     "price": null,
@@ -2089,8 +2088,8 @@
     "market": "F5 Moneyline",
     "pick": "MIL F5",
     "line": null,
-    "p": 0.6817,
-    "fair": -214.0,
+    "p": 0.684,
+    "fair": -216.0,
     "ic": 36.8,
     "level": "Muy baja",
     "price": -265,
@@ -2105,21 +2104,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -180
+       "from": -182
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -152
+       "from": -153
       }
      ],
      "steps": [
-      -180,
-      -176,
-      -167,
-      -159,
-      -152,
-      -144,
+      -182,
+      -177,
+      -169,
+      -161,
+      -153,
+      -146,
       null,
       null,
       null,
@@ -2129,7 +2128,7 @@
      "a": 1.0,
      "h": 0.989,
      "r": 1.0,
-     "maxPrice": -140,
+     "maxPrice": -141,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -2140,8 +2139,8 @@
     "market": "NRFI/YRFI",
     "pick": "NRFI",
     "line": null,
-    "p": 0.5286,
-    "fair": -112.0,
+    "p": 0.5271,
+    "fair": -111.0,
     "ic": 33.4,
     "level": "Muy baja",
     "price": null,
@@ -2162,27 +2161,26 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "con el momio de referencia (-154) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -182 o menos ya pasa el filtro",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-143)",
    "source": "Framework v2",
-   "pick": "Jacob Misiorowski Under 8.5 K",
-   "waitFor": "verificar",
+   "pick": "Robbie Ray Over 3.5 K",
    "market": "Prop de ponches",
-   "p": 0.7451,
-   "ic": 69.5,
-   "level": 0,
-   "amount": 0,
-   "minPrice": -232,
+   "p": 0.6724,
+   "ic": 59.2,
+   "level": 4,
+   "amount": 875,
+   "minPrice": -168,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -232
+     "from": -168
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -193
+     "from": -142
     }
    ]
   }

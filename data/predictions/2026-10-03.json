@@ -204,23 +204,23 @@
 "pk": 849830,
 "date": "2026-10-03",
 "time": "2026-10-04T00:30:00Z",
-"generatedAt": "2026-10-03T18:54:50+00:00",
+"generatedAt": "2026-10-03T20:14:49+00:00",
 "away": "SD",
 "home": "MIL",
-"pHome": 0.623,
+"pHome": 0.6239,
 "methods": {
 "log5": 0.6128,
 "elo": 0.6345,
-"lambda": 0.6219
+"lambda": 0.6245
 },
 "confidence": "alta",
 "projAway": 3.3824,
-"projHome": 4.64,
-"total": 8.0224,
+"projHome": 4.6706,
+"total": 8.0529,
 "f5Away": 1.6527,
-"f5Home": 2.8027,
-"nrfi": 0.5286,
-"pOver85": 0.4017,
+"f5Home": 2.8212,
+"nrfi": 0.5271,
+"pOver85": 0.4045,
 "probables": {
 "away": "Robbie Ray",
 "home": "Jacob Misiorowski"
@@ -229,9 +229,9 @@
 "best": {
 "market": "Total",
 "pick": "Over 7.0",
-"p": 0.548,
+"p": 0.5512,
 "price": -105,
-"edge": 0.0358,
+"edge": 0.039,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -245,25 +245,25 @@
 "level": "Media"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.548,
-"line": 7.0,
-"ic": 43.8644,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Robbie Ray Over 3.5 K",
+"p": 0.6724,
+"line": 3.5,
+"ic": 59.1671,
+"level": "Media"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "verificar",
+"status": "apostar",
+"waitFor": null,
 "family": "K",
-"pick": "Jacob Misiorowski Under 8.5 K",
-"level": 0,
+"pick": "Robbie Ray Over 3.5 K",
+"level": 4,
 "alts": [
+"K",
 "Total",
-"ML",
-"K"
+"ML"
 ]
 }
 }
