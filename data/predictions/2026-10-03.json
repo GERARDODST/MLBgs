@@ -3,7 +3,7 @@
 "pk": 849829,
 "date": "2026-10-03",
 "time": "2026-10-03T17:00:00Z",
-"generatedAt": "2026-10-02T19:32:48+00:00",
+"generatedAt": "2026-10-03T05:03:57+00:00",
 "away": "CWS",
 "home": "CLE",
 "pHome": 0.5134,
@@ -35,33 +35,34 @@
 },
 "topPicks": [
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "CWS +1.5",
-"p": 0.6683,
-"line": null,
-"ic": 43.1135,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Hagen Smith Over 1.5 K",
+"p": 0.9521,
+"line": 1.5,
+"ic": 63.1974,
+"level": "Media"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.5099,
-"line": 7.0,
-"ic": 38.1462,
-"level": "Muy baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Parker Messick Under 6.5 K",
+"p": 0.6043,
+"line": 6.5,
+"ic": 49.6729,
+"level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "K",
-"pick": "Parker Messick Over 5.5 K",
-"level": 0,
+"pick": "Parker Messick Under 6.5 K",
+"level": 2,
 "alts": [
 "K",
-"F5 total"
+"RL",
+"Total"
 ]
 }
 },

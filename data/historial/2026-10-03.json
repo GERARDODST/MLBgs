@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-02T19:32:48+00:00",
+  "registeredAt": "2026-10-03T05:03:57+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5134,
@@ -49,6 +49,102 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Hagen Smith Over 1.5 K",
+    "line": 1.5,
+    "p": 0.9521,
+    "fair": -1986.0,
+    "ic": 63.2,
+    "level": "Media",
+    "price": -176,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -768
+      }
+     ],
+     "steps": [
+      -768,
+      -726,
+      -654,
+      -593,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9907,
+     "r": 1.0,
+     "maxPrice": -576,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Parker Messick Under 6.5 K",
+    "line": 6.5,
+    "p": 0.6043,
+    "fair": -153.0,
+    "ic": 49.7,
+    "level": "Baja",
+    "price": -124,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 2,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -127
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -108
+      }
+     ],
+     "steps": [
+      -127,
+      -124,
+      -118,
+      -113,
+      -108,
+      -103,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9907,
+     "r": 1.0,
+     "maxPrice": -102
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "CWS +1.5",
@@ -98,8 +194,8 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 4,
+    "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 7.0",
@@ -124,7 +220,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 5,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -177,58 +273,7 @@
     }
    },
    {
-    "rank": 4,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Parker Messick Over 5.5 K",
-    "line": 5.5,
-    "p": 0.5563,
-    "fair": -125.0,
-    "ic": 34.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -104
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 113
-      }
-     ],
-     "steps": [
-      -104,
-      -102,
-      103,
-      108,
-      113,
-      118,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9907,
-     "r": 1.0,
-     "maxPrice": 119,
-     "why": "sin momio real: conviene si pagan -104 o mejor"
-    }
-   },
-   {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -238,7 +283,7 @@
     "fair": -103.0,
     "ic": 33.8,
     "level": "Muy baja",
-    "price": null,
+    "price": -116,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -275,11 +320,11 @@
      "h": 0.9907,
      "r": 1.0,
      "maxPrice": 145,
-     "why": "sin momio real: conviene si pagan +118 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total CWS",
@@ -305,7 +350,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "Team total",
     "market": "Team total CLE",
@@ -331,7 +376,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 9,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -357,7 +402,7 @@
     }
    },
    {
-    "rank": 9,
+    "rank": 10,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
@@ -381,77 +426,30 @@
      "h": 0.9907,
      "r": 1.0
     }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Hagen Smith Over 4.5 K",
-    "line": 4.5,
-    "p": 0.5228,
-    "fair": -110.0,
-    "ic": 28.2,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 120
-      }
-     ],
-     "steps": [
-      120,
-      123,
-      129,
-      135,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9907,
-     "r": 1.0,
-     "maxPrice": 136,
-     "why": "sin momio real: conviene si pagan +120 o mejor"
-    }
    }
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de Prop de ponches: conviene si pagan -104 o mejor (stake 1); stake 5 desde +113",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-124)",
    "source": "Framework v2",
-   "pick": "Parker Messick Over 5.5 K",
-   "waitFor": "momio",
+   "pick": "Parker Messick Under 6.5 K",
    "market": "Prop de ponches",
-   "p": 0.5563,
-   "ic": 34.9,
-   "level": 0,
-   "amount": 0,
-   "minPrice": -104,
+   "p": 0.6043,
+   "ic": 49.7,
+   "level": 2,
+   "amount": 625,
+   "minPrice": -127,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -104
+     "from": -127
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 113
+     "from": -108
     }
    ]
   }

@@ -145,6 +145,17 @@
    "kind": "decision",
    "pk": 849828,
    "text": "Decisión: esperar dato (Under 8.0) → esperar dato (Under 8.5) · tras: momio"
+  },
+  {
+   "after": "apostar Parker Messick Under 6.5 K · stake 2",
+   "at": "2026-10-03T05:03:57Z",
+   "before": "esperar momio (Parker Messick Over 5.5 K)",
+   "date": "2026-10-03",
+   "game": "CWS @ CLE",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849829,
+   "text": "Decisión: esperar momio (Parker Messick Over 5.5 K) → apostar Parker Messick Under 6.5 K · stake 2"
   }
  ],
  "snap": {
@@ -258,10 +269,10 @@
   "849829": {
    "away": 145,
    "dec": {
-    "level": 0,
-    "pick": "Parker Messick Over 5.5 K",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 2,
+    "pick": "Parker Messick Under 6.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 114,
