@@ -597,6 +597,28 @@
    "kind": "decision",
    "pk": 849830,
    "text": "Decisión: esperar verificar (Jacob Misiorowski Under 8.5 K) → apostar Robbie Ray Over 3.5 K · stake 4 · tras: lineup, umpire"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-03T20:31:33Z",
+   "date": "2026-10-03",
+   "game": "SD @ MIL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849830,
+   "side": "away",
+   "text": "Lineup confirmado (SD)"
+  },
+  {
+   "after": "apostar Robbie Ray Over 3.5 K · stake 6",
+   "at": "2026-10-03T20:31:24Z",
+   "before": "apostar Robbie Ray Over 3.5 K · stake 4",
+   "date": "2026-10-03",
+   "game": "SD @ MIL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849830,
+   "text": "Decisión: apostar Robbie Ray Over 3.5 K · stake 4 → apostar Robbie Ray Over 3.5 K · stake 6 · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -918,7 +940,7 @@
   "849830": {
    "away": 135,
    "dec": {
-    "level": 4,
+    "level": 6,
     "pick": "Robbie Ray Over 3.5 K",
     "status": "apostar",
     "waitFor": null
@@ -926,7 +948,17 @@
    "detailed": "Pre-Game",
    "home": 158,
    "lu": {
-    "away": [],
+    "away": [
+     665487,
+     687957,
+     592518,
+     664034,
+     701538,
+     593428,
+     806956,
+     669134,
+     630105
+    ],
     "home": [
      694192,
      668930,
@@ -940,15 +972,24 @@
     ]
    },
    "names": {
+    "592518": "Manny Machado",
     "592885": "Christian Yelich",
+    "593428": "Xander Bogaerts",
+    "630105": "Jake Cronenworth",
     "641343": "Jake Bauers",
     "661388": "William Contreras",
+    "664034": "Ty France",
+    "665487": "Fernando Tatis Jr.",
     "668930": "Brice Turang",
     "669003": "Garrett Mitchell",
+    "669134": "Luis Campusano",
     "687401": "Joey Ortiz",
+    "687957": "Dustin Harris",
     "694192": "Jackson Chourio",
+    "701538": "Jackson Merrill",
     "800325": "Luis Lara",
-    "806198": "Cooper Pratt"
+    "806198": "Cooper Pratt",
+    "806956": "Ethan Salas"
    },
    "odds": {
     "line": 7.0,
