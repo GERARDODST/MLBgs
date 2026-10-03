@@ -343,6 +343,16 @@
    "kind": "decision",
    "pk": 849830,
    "text": "Decisión: esperar momio (MIL F5) → esperar verificar (Jacob Misiorowski Under 7.5 K) · tras: movimiento, momio"
+  },
+  {
+   "action": "El total proyectado ya usa el viento nuevo.",
+   "at": "2026-10-03T15:28:10Z",
+   "date": "2026-10-03",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "clima",
+   "pk": 849829,
+   "text": "Viento: 3 mph cruzado → 9 mph out"
   }
  ],
  "snap": {
@@ -593,9 +603,9 @@
    "wx": {
     "closed": false,
     "cond": "Partly Cloudy",
-    "dir": "cruzado",
-    "speed": 3,
-    "temp": 56.0
+    "dir": "out",
+    "speed": 9,
+    "temp": 61.0
    }
   },
   "849830": {
