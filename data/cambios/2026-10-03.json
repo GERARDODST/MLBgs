@@ -373,6 +373,16 @@
    "pk": 849830,
    "side": "away",
    "text": "SD: San Diego Padres activated RHP Randy Vásquez."
+  },
+  {
+   "action": "El total proyectado ya usa el viento nuevo.",
+   "at": "2026-10-03T16:55:33Z",
+   "date": "2026-10-03",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "clima",
+   "pk": 849829,
+   "text": "Viento: 9 mph out → 9 mph cruzado"
   }
  ],
  "snap": {
@@ -623,9 +633,9 @@
    "wx": {
     "closed": false,
     "cond": "Partly Cloudy",
-    "dir": "out",
+    "dir": "cruzado",
     "speed": 9,
-    "temp": 61.0
+    "temp": 63.0
    }
   },
   "849830": {
