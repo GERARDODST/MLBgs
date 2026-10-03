@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T15:20:09+00:00",
+  "registeredAt": "2026-10-03T16:23:44+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5169,
@@ -57,7 +57,7 @@
     "fair": -380.0,
     "ic": 67.7,
     "level": "Media",
-    "price": 132,
+    "price": 130,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -212,7 +212,7 @@
     "fair": -114.0,
     "ic": 39.4,
     "level": "Muy baja",
-    "price": -118,
+    "price": -120,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -537,7 +537,7 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "con el momio de referencia (+132) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -225 o menos ya pasa el filtro",
+   "why": "con el momio de referencia (+130) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -225 o menos ya pasa el filtro",
    "source": "Framework v2",
    "pick": "Hagen Smith Over 2.5 K",
    "waitFor": "verificar",
