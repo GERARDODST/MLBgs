@@ -70,23 +70,23 @@
 "pk": 849823,
 "date": "2026-10-04",
 "time": "2026-10-05T00:00:00Z",
-"generatedAt": "2026-10-04T19:18:11+00:00",
+"generatedAt": "2026-10-04T20:06:04+00:00",
 "away": "ATL",
 "home": "LAD",
-"pHome": 0.5864,
+"pHome": 0.5848,
 "methods": {
 "log5": 0.5808,
 "elo": 0.5988,
-"lambda": 0.5796
+"lambda": 0.5748
 },
 "confidence": "alta",
 "projAway": 3.8176,
-"projHome": 4.661,
-"total": 8.4786,
+"projHome": 4.6072,
+"total": 8.4248,
 "f5Away": 1.9114,
-"f5Home": 2.763,
-"nrfi": 0.5147,
-"pOver85": 0.4442,
+"f5Home": 2.7311,
+"nrfi": 0.5172,
+"pOver85": 0.4392,
 "probables": {
 "away": "Ray Kerr",
 "home": "Blake Snell"
@@ -95,9 +95,9 @@
 "best": {
 "market": "Run Line",
 "pick": "ATL +1.5",
-"p": 0.574,
+"p": 0.5794,
 "price": -118,
-"edge": 0.0328,
+"edge": 0.0381,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -105,31 +105,29 @@
 "family": "ML",
 "market": "Moneyline",
 "pick": "LAD",
-"p": 0.5864,
+"p": 0.5848,
 "line": null,
-"ic": 35.7952,
+"ic": 34.7784,
 "level": "Muy baja"
 },
 {
-"family": "F5",
-"market": "F5 Moneyline",
-"pick": "LAD F5",
-"p": 0.632,
-"line": null,
-"ic": 31.7069,
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Blake Snell Under 5.5 K",
+"p": 0.5055,
+"line": 5.5,
+"ic": 33.0285,
 "level": "Muy baja"
 }
 ],
 "decision": {
-"status": "no apostar",
-"waitFor": null,
-"family": "F5",
-"pick": "LAD F5",
+"status": "esperar",
+"waitFor": "momio",
+"family": "K",
+"pick": "Blake Snell Under 5.5 K",
 "level": 0,
 "alts": [
-"ML",
-"RL",
-"F5 total"
+"K"
 ]
 }
 }

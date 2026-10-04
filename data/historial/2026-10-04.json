@@ -30,7 +30,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-10-04T19:58:09+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5995,
    "projAway": 3.77,
@@ -507,6 +507,16 @@
      "from": -111
     }
    ]
+  },
+  "lock": {
+   "at": "2026-10-04T20:06:04+00:00",
+   "hash": "8a24be92748808166340e735dc7b9cd31fac0831b626631b9a2efea758c3f435",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "1c492a3d964b"
+   },
+   "expediente": "data/expedientes/2026-10-04/849825.json.gz",
+   "coincide": true
   }
  },
  {
@@ -539,14 +549,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-04T19:50:17+00:00",
+  "registeredAt": "2026-10-04T20:06:04+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5864,
+   "pHome": 0.5848,
    "projAway": 3.82,
-   "projHome": 4.66,
-   "total": 8.48,
-   "nrfi": 0.5147,
+   "projHome": 4.61,
+   "total": 8.42,
+   "nrfi": 0.5172,
    "light": "Amarillo",
    "confidence": "alta",
    "probables": {
@@ -563,9 +573,9 @@
     "market": "Moneyline",
     "pick": "LAD",
     "line": null,
-    "p": 0.5864,
-    "fair": -142.0,
-    "ic": 35.8,
+    "p": 0.5848,
+    "fair": -141.0,
+    "ic": 34.8,
     "level": "Muy baja",
     "price": -212,
     "methods": [
@@ -573,7 +583,7 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 58.1% · Elo + abridor (5.7.7) 59.9% · λ + Binomial Negativa (5.3 · 5.7.5) 58.0%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 58.1% · Elo + abridor (5.7.7) 59.9% · λ + Binomial Negativa (5.3 · 5.7.5) 57.5%",
     "res": null,
     "stake": {
      "level": 0,
@@ -587,19 +597,19 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "LAD F5",
-    "line": null,
-    "p": 0.632,
-    "fair": -172.0,
-    "ic": 31.7,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Blake Snell Under 5.5 K",
+    "line": 5.5,
+    "p": 0.5055,
+    "fair": -102.0,
+    "ic": 33.0,
     "level": "Muy baja",
-    "price": -169,
+    "price": null,
     "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
+     "λ + Poisson (5.4)"
     ],
-    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
      "level": 0,
@@ -607,20 +617,20 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -134
+       "from": 120
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -113
+       "from": 142
       }
      ],
      "steps": [
-      -134,
-      -131,
-      -124,
-      -119,
-      -113,
+      120,
+      123,
+      129,
+      135,
+      142,
       null,
       null,
       null,
@@ -631,8 +641,8 @@
      "a": 1.0,
      "h": 0.9863,
      "r": 1.0,
-     "maxPrice": -114,
-     "why": "edge menor a 3 pp con ese momio"
+     "maxPrice": 146,
+     "why": "sin momio real: conviene si pagan +120 o mejor"
     }
    },
    {
@@ -642,8 +652,8 @@
     "market": "Run Line",
     "pick": "LAD -1.5",
     "line": null,
-    "p": 0.426,
-    "fair": 135.0,
+    "p": 0.4206,
+    "fair": 138.0,
     "ic": 30.6,
     "level": "Muy baja",
     "price": -102,
@@ -658,20 +668,20 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 173
+       "from": 177
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 207
+       "from": 212
       }
      ],
      "steps": [
-      173,
       177,
-      187,
-      196,
-      207,
+      182,
+      191,
+      201,
+      212,
       null,
       null,
       null,
@@ -682,7 +692,7 @@
      "a": 1.0,
      "h": 0.9863,
      "r": 1.0,
-     "maxPrice": 206,
+     "maxPrice": 211,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -693,8 +703,8 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.0",
     "line": 4.0,
-    "p": 0.5196,
-    "fair": -108.0,
+    "p": 0.5149,
+    "fair": -106.0,
     "ic": 30.6,
     "level": "Muy baja",
     "price": -125,
@@ -745,8 +755,8 @@
     "market": "Team total LAD",
     "pick": "LAD Under 4.5",
     "line": 4.5,
-    "p": 0.5536,
-    "fair": -124.0,
+    "p": 0.5605,
+    "fair": -128.0,
     "ic": 30.6,
     "level": "Muy baja",
     "price": null,
@@ -767,13 +777,64 @@
    {
     "rank": 7,
     "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "LAD F5",
+    "line": null,
+    "p": 0.6277,
+    "fair": -169.0,
+    "ic": 30.6,
+    "level": "Muy baja",
+    "price": -169,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -131
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -111
+      }
+     ],
+     "steps": [
+      -131,
+      -128,
+      -122,
+      -117,
+      -111,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9863,
+     "r": 1.0,
+     "maxPrice": -112,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
-    "pick": "Blake Snell Under 5.5 K",
-    "line": 5.5,
-    "p": 0.5055,
-    "fair": -102.0,
-    "ic": 29.7,
+    "pick": "Ray Kerr Under 2.5 K",
+    "line": 2.5,
+    "p": 0.5215,
+    "fair": -109.0,
+    "ic": 30.2,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -783,22 +844,42 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 117
+      }
+     ],
+     "steps": [
+      117,
+      120,
+      126,
+      132,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9863,
-     "r": 1.0
+     "r": 1.0,
+     "maxPrice": 137,
+     "why": "sin momio real: conviene si pagan +117 o mejor"
     }
    },
    {
-    "rank": 8,
+    "rank": 9,
     "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 7.5",
     "line": 7.5,
-    "p": 0.5372,
-    "fair": -116.0,
+    "p": 0.5321,
+    "fair": -114.0,
     "ic": 27.3,
     "level": "Muy baja",
     "price": -117,
@@ -817,14 +898,14 @@
     }
    },
    {
-    "rank": 9,
+    "rank": 10,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.4853,
-    "fair": 106.0,
+    "p": 0.4828,
+    "fair": 107.0,
     "ic": 27.3,
     "level": "Muy baja",
     "price": null,
@@ -841,56 +922,31 @@
      "h": 0.9863,
      "r": 1.0
     }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Ray Kerr Over 2.5 K",
-    "line": 2.5,
-    "p": 0.5212,
-    "fair": -109.0,
-    "ic": 26.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9863,
-     "r": 1.0
-    }
    }
   ],
   "result": null,
   "decision": {
-   "status": "no apostar",
-   "why": "con el momio de referencia (-169): edge menor a 3 pp con ese momio (stake 1 desde -134)",
+   "status": "esperar",
+   "why": "falta el momio de Prop de ponches: conviene si pagan +120 o mejor (stake 1); stake 5 desde +142",
    "source": "Framework v2",
-   "pick": "LAD F5",
-   "market": "F5 Moneyline",
-   "p": 0.632,
-   "ic": 31.7,
+   "pick": "Blake Snell Under 5.5 K",
+   "waitFor": "momio",
+   "market": "Prop de ponches",
+   "p": 0.5055,
+   "ic": 33.0,
    "level": 0,
    "amount": 0,
-   "minPrice": -134,
+   "minPrice": 120,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -134
+     "from": 120
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -113
+     "from": 142
     }
    ]
   }

@@ -266,6 +266,38 @@
    "pk": 849825,
    "side": "away",
    "text": "Cambio en el lineup (SD): sale Ethan Salas; entra Gavin Sheets"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-04T20:06:12Z",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849823,
+   "side": "home",
+   "text": "Lineup confirmado (LAD)"
+  },
+  {
+   "after": "Chris Guccione",
+   "at": "2026-10-04T20:06:12Z",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849823,
+   "text": "Umpire de home asignado: Chris Guccione"
+  },
+  {
+   "after": "esperar momio (Blake Snell Under 5.5 K)",
+   "at": "2026-10-04T20:06:04Z",
+   "before": "no apostar",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849823,
+   "text": "Decisión: no apostar → esperar momio (Blake Snell Under 5.5 K) · tras: momio, lineup, umpire"
   }
  ],
  "snap": {
@@ -273,17 +305,37 @@
    "away": 144,
    "dec": {
     "level": 0,
-    "pick": "LAD F5",
-    "status": "no apostar",
-    "waitFor": null
+    "pick": "Blake Snell Under 5.5 K",
+    "status": "esperar",
+    "waitFor": "momio"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 119,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     605141,
+     660271,
+     669257,
+     518692,
+     606192,
+     663656,
+     681624,
+     500743,
+     669242
+    ]
    },
-   "names": {},
+   "names": {
+    "500743": "Miguel Rojas",
+    "518692": "Freddie Freeman",
+    "605141": "Mookie Betts",
+    "606192": "Teoscar Hernández",
+    "660271": "Shohei Ohtani",
+    "663656": "Kyle Tucker",
+    "669242": "Tommy Edman",
+    "669257": "Will Smith",
+    "681624": "Andy Pages"
+   },
    "odds": {
     "line": 7.5,
     "ml": {
@@ -384,13 +436,19 @@
     "945021",
     "945022"
    ],
-   "ump": null,
+   "ump": "Chris Guccione",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Partly Cloudy",
+    "dir": "cruzado",
+    "speed": 4,
+    "temp": 88.0
+   }
   },
   "849825": {
    "away": 135,
