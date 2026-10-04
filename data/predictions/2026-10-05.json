@@ -1,0 +1,135 @@
+[
+{
+"pk": 849834,
+"date": "2026-10-05",
+"time": "2026-10-05T21:00:00Z",
+"generatedAt": "2026-10-04T04:04:19+00:00",
+"away": "CWS",
+"home": "CLE",
+"pHome": 0.5432,
+"methods": {
+"log5": 0.5181,
+"elo": 0.5636,
+"lambda": 0.5478
+},
+"confidence": "alta",
+"projAway": 3.8253,
+"projHome": 4.3281,
+"total": 8.1534,
+"f5Away": 1.9337,
+"f5Home": 2.6167,
+"nrfi": 0.5245,
+"pOver85": 0.4139,
+"probables": {
+"away": "Por anunciar",
+"home": "Gavin Williams"
+},
+"light": "Amarillo",
+"best": {
+"market": "Total",
+"pick": "Over 6.5",
+"p": 0.6049,
+"price": -119,
+"edge": 0.0616,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.5",
+"p": 0.6049,
+"line": 6.5,
+"ic": 52.3854,
+"level": "Baja"
+},
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "CLE",
+"p": 0.5432,
+"line": null,
+"ic": 37.4381,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 6.5",
+"level": 0,
+"alts": [
+"ML",
+"K",
+"RL"
+]
+}
+},
+{
+"pk": 849839,
+"date": "2026-10-05",
+"time": "2026-10-06T00:00:00Z",
+"generatedAt": "2026-10-04T04:04:19+00:00",
+"away": "NYY",
+"home": "TB",
+"pHome": 0.4767,
+"methods": {
+"log5": 0.4905,
+"elo": 0.4811,
+"lambda": 0.4586
+},
+"confidence": "alta",
+"projAway": 3.8819,
+"projHome": 3.4991,
+"total": 7.381,
+"f5Away": 1.968,
+"f5Home": 1.9255,
+"nrfi": 0.5813,
+"pOver85": 0.3419,
+"probables": {
+"away": "Cam Schlittler",
+"home": "Freddy Peralta"
+},
+"light": "Gris",
+"best": {
+"market": "NRFI/YRFI",
+"pick": "NRFI",
+"p": 0.5813,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "NYY",
+"p": 0.5233,
+"line": null,
+"ic": 39.581,
+"level": "Muy baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "TB +1.5",
+"p": 0.6353,
+"line": null,
+"ic": 37.9131,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "momio",
+"family": "F5",
+"pick": "NYY F5",
+"level": 0,
+"alts": [
+"F5",
+"K"
+]
+}
+}
+]
