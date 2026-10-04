@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-04T10:04:31+00:00",
+  "registeredAt": "2026-10-04T16:04:56+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6027,
@@ -48,6 +48,32 @@
   "picks": [
    {
     "rank": 1,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL -1.5",
+    "line": null,
+    "p": 0.4553,
+    "fair": 120.0,
+    "ic": 53.5,
+    "level": "Baja",
+    "price": 161,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9863,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
     "principal": true,
     "family": "Total",
     "market": "Total completo",
@@ -73,32 +99,6 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "MIL -1.5",
-    "line": null,
-    "p": 0.4553,
-    "fair": 120.0,
-    "ic": 50.0,
-    "level": "Baja",
-    "price": 153,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9863,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 3,
     "principal": false,
     "family": "ML",
@@ -107,9 +107,9 @@
     "line": null,
     "p": 0.6027,
     "fair": -152.0,
-    "ic": 47.0,
+    "ic": 50.0,
     "level": "Baja",
-    "price": -143,
+    "price": -137,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -412,12 +412,12 @@
   "result": null,
   "decision": {
    "status": "no apostar",
-   "why": "con el momio de referencia (-143): edge menor a 3 pp con ese momio (stake 1 desde -134)",
+   "why": "con el momio de referencia (-137): edge menor a 3 pp con ese momio (stake 1 desde -134)",
    "source": "Framework v2",
    "pick": "MIL",
    "market": "Moneyline",
    "p": 0.6027,
-   "ic": 47.0,
+   "ic": 50.0,
    "level": 0,
    "amount": 0,
    "minPrice": -134,
@@ -465,7 +465,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-04T10:04:31+00:00",
+  "registeredAt": "2026-10-04T16:04:56+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5867,
@@ -519,7 +519,7 @@
     "fair": -142.0,
     "ic": 40.6,
     "level": "Baja",
-    "price": -158,
+    "price": -157,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
