@@ -63,6 +63,17 @@
    "kind": "decision",
    "pk": 849825,
    "text": "Decisión: esperar momio (MIL) → esperar momio (MIL F5) · tras: momio"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-10-04T10:04:31Z",
+   "before": "esperar momio (MIL F5)",
+   "date": "2026-10-04",
+   "game": "SD @ MIL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849825,
+   "text": "Decisión: esperar momio (MIL F5) → no apostar"
   }
  ],
  "snap": {
@@ -188,9 +199,9 @@
    "away": 135,
    "dec": {
     "level": 0,
-    "pick": "MIL F5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "pick": "MIL",
+    "status": "no apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 158,

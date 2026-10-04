@@ -6,29 +6,29 @@
    "books": {
     "draftkings": {
      "last": {
-      "at": "2026-10-04T04:30:22Z",
+      "at": "2026-10-04T10:04:42Z",
       "ml": {
-       "away": 122,
-       "home": -147
+       "away": 130,
+       "home": -158
       },
       "rl": {
        "away": {
         "point": 1.5,
-        "price": -182
+        "price": -175
        },
        "home": {
         "point": -1.5,
-        "price": 150
+        "price": 144
        }
       },
       "total": {
        "over": {
         "point": 7.0,
-        "price": -116
+        "price": -110
        },
        "under": {
         "point": 7.0,
-        "price": -104
+        "price": -110
        }
       }
      },
@@ -64,7 +64,7 @@
      "title": "DraftKings"
     }
    },
-   "checked": "2026-10-04T04:30:22Z",
+   "checked": "2026-10-04T10:04:42Z",
    "espn": "401908014",
    "home": 119,
    "pk": 849823,
@@ -76,37 +76,244 @@
   "849825": {
    "away": 135,
    "books": {
+    "betonlineag": {
+     "last": {
+      "at": "2026-10-04T10:04:42Z",
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": 104
+        },
+        "under": {
+         "point": 6.5,
+         "price": -135
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 5.5,
+         "price": 109
+        },
+        "under": {
+         "point": 5.5,
+         "price": -141
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-04T10:04:42Z",
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": 104
+        },
+        "under": {
+         "point": 6.5,
+         "price": -135
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 5.5,
+         "price": 109
+        },
+        "under": {
+         "point": 5.5,
+         "price": -141
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-10-04T10:04:42Z",
+      "f5": {
+       "ml": {
+        "away": 128,
+        "home": -175
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-04T10:04:42Z",
+      "f5": {
+       "ml": {
+        "away": 128,
+        "home": -175
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-10-04T10:04:42Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": 105
+        },
+        "under": {
+         "point": 6.5,
+         "price": -135
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 5.5,
+         "price": 110
+        },
+        "under": {
+         "point": 5.5,
+         "price": -145
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-04T10:04:42Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": 105
+        },
+        "under": {
+         "point": 6.5,
+         "price": -135
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 5.5,
+         "price": 110
+        },
+        "under": {
+         "point": 5.5,
+         "price": -145
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
     "draftkings": {
      "last": {
-      "at": "2026-10-04T04:30:22Z",
+      "at": "2026-10-04T10:04:42Z",
+      "f5": {
+       "ml": {
+        "away": 124,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": -102
+        },
+        "under": {
+         "point": 6.5,
+         "price": -126
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 4.5,
+         "price": -158
+        },
+        "under": {
+         "point": 4.5,
+         "price": 124
+        }
+       }
+      },
       "ml": {
-       "away": 118,
-       "home": -142
+       "away": 119,
+       "home": -143
       },
       "rl": {
        "away": {
         "point": 1.5,
-        "price": -198
+        "price": -186
        },
        "home": {
         "point": -1.5,
-        "price": 162
+        "price": 153
        }
       },
       "total": {
        "over": {
         "point": 7.0,
-        "price": -111
+        "price": -115
        },
        "under": {
         "point": 7.0,
-        "price": -109
+        "price": -105
        }
       }
      },
      "mx": false,
      "open": {
       "at": "2026-10-04T04:30:22Z",
+      "f5": {
+       "ml": {
+        "away": 124,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": -102
+        },
+        "under": {
+         "point": 6.5,
+         "price": -126
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 4.5,
+         "price": -158
+        },
+        "under": {
+         "point": 4.5,
+         "price": 124
+        }
+       }
+      },
       "ml": {
        "away": 109,
        "home": -131
@@ -132,18 +339,161 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-10-04T10:04:42Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -164
+       },
+       "total": {}
+      },
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": 106
+        },
+        "under": {
+         "point": 6.5,
+         "price": -136
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 5.5,
+         "price": 112
+        },
+        "under": {
+         "point": 5.5,
+         "price": -142
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-04T10:04:42Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -164
+       },
+       "total": {}
+      },
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": 106
+        },
+        "under": {
+         "point": 6.5,
+         "price": -136
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 5.5,
+         "price": 112
+        },
+        "under": {
+         "point": 5.5,
+         "price": -142
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-10-04T10:04:42Z",
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": 100
+        },
+        "under": {
+         "point": 6.5,
+         "price": -138
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 5.5,
+         "price": 104
+        },
+        "under": {
+         "point": 5.5,
+         "price": -144
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-04T10:04:42Z",
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": 100
+        },
+        "under": {
+         "point": 6.5,
+         "price": -138
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 5.5,
+         "price": 104
+        },
+        "under": {
+         "point": 5.5,
+         "price": -144
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie"
     }
    },
-   "checked": "2026-10-04T04:30:22Z",
+   "checked": "2026-10-04T10:04:42Z",
    "espn": "401908003",
    "home": 158,
    "pk": 849825,
    "providers": [
-    "espn"
+    "espn",
+    "the-odds-api"
    ],
-   "start": "2026-10-04T20:00:00Z"
+   "start": "2026-10-04T20:00:00Z",
+   "theAt": {
+    "h2h_1st_5_innings": "2026-10-04T10:04:42Z",
+    "pitcher_strikeouts": "2026-10-04T10:04:42Z"
+   },
+   "theEmpty": {
+    "h2h_1st_5_innings": 0,
+    "pitcher_strikeouts": 0
+   },
+   "theGot": {
+    "h2h_1st_5_innings": 4,
+    "pitcher_strikeouts": 5
+   },
+   "theId": "6da40e91a31110e51e84ba5671996deb",
+   "theN": {
+    "h2h_1st_5_innings": 1,
+    "pitcher_strikeouts": 1
+   },
+   "theSwapped": false
   }
  }
 }
