@@ -3,7 +3,7 @@
 "pk": 849825,
 "date": "2026-10-04",
 "time": "2026-10-04T20:00:00Z",
-"generatedAt": "2026-10-03T04:12:15+00:00",
+"generatedAt": "2026-10-04T04:30:13+00:00",
 "away": "SD",
 "home": "MIL",
 "pHome": 0.6027,
@@ -24,44 +24,42 @@
 "away": "Michael King",
 "home": "Logan Henderson"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "F5",
-"pick": "MIL F5",
-"p": 0.6511,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Run Line",
+"pick": "MIL -1.5",
+"p": 0.4553,
+"price": 162,
+"edge": 0.0736,
+"light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "MIL",
-"p": 0.6027,
+"family": "RL",
+"market": "Run Line",
+"pick": "MIL -1.5",
+"p": 0.4553,
 "line": null,
-"ic": 42.8605,
+"ic": 53.9432,
 "level": "Baja"
 },
 {
 "family": "Total",
 "market": "Total completo",
-"pick": "Under 8.0",
-"p": 0.5066,
-"line": 8.0,
-"ic": 35.816,
-"level": "Muy baja"
+"pick": "Over 7.0",
+"p": 0.5987,
+"line": 7.0,
+"ic": 53.6558,
+"level": "Baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "momio",
-"family": "ML",
-"pick": "MIL",
+"family": "F5",
+"pick": "MIL F5",
 "level": 0,
 "alts": [
-"ML",
-"F5 total",
 "F5",
 "K"
 ]

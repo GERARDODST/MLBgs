@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-04T01:54:07+00:00",
+  "registeredAt": "2026-10-04T04:30:13+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6027,
@@ -37,7 +37,7 @@
    "projHome": 4.84,
    "total": 8.51,
    "nrfi": 0.4997,
-   "light": "Gris",
+   "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Michael King",
@@ -49,15 +49,67 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL -1.5",
+    "line": null,
+    "p": 0.4553,
+    "fair": 120.0,
+    "ic": 53.9,
+    "level": "Baja",
+    "price": 162,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9877,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5987,
+    "fair": -149.0,
+    "ic": 53.7,
+    "level": "Baja",
+    "price": -111,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9877,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "MIL",
     "line": null,
     "p": 0.6027,
     "fair": -152.0,
-    "ic": 42.9,
+    "ic": 47.5,
     "level": "Baja",
-    "price": null,
+    "price": -142,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -96,37 +148,11 @@
      "h": 0.9877,
      "r": 1.0,
      "maxPrice": -102,
-     "why": "sin momio real: conviene si pagan -134 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
-    "rank": 2,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Under 8.0",
-    "line": 8.0,
-    "p": 0.5066,
-    "fair": -103.0,
-    "ic": 35.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9877,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -144,40 +170,15 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 107
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 126
-      }
-     ],
-     "steps": [
-      107,
-      110,
-      115,
-      120,
-      126,
-      132,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
      "a": 1.0,
      "h": 0.9877,
-     "r": 1.0,
-     "maxPrice": 135,
-     "why": "sin momio real: conviene si pagan +107 o mejor"
+     "r": 1.0
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "Team total",
     "market": "Team total SD",
@@ -203,7 +204,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total MIL",
@@ -229,7 +230,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -280,7 +281,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -331,7 +332,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 9,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -382,32 +383,6 @@
     }
    },
    {
-    "rank": 9,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "MIL -1.5",
-    "line": null,
-    "p": 0.4553,
-    "fair": 120.0,
-    "ic": 32.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9877,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 10,
     "principal": false,
     "family": "NRFI",
@@ -437,26 +412,26 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Moneyline: conviene si pagan -134 o mejor (stake 1); stake 5 desde -119",
+   "why": "falta el momio de F5 Moneyline: conviene si pagan -156 o mejor (stake 1); stake 5 desde -132",
    "source": "Framework v2",
-   "pick": "MIL",
+   "pick": "MIL F5",
    "waitFor": "momio",
-   "market": "Moneyline",
-   "p": 0.6027,
-   "ic": 42.9,
+   "market": "F5 Moneyline",
+   "p": 0.6511,
+   "ic": 35.8,
    "level": 0,
    "amount": 0,
-   "minPrice": -134,
+   "minPrice": -156,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -134
+     "from": -156
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -119
+     "from": -132
     }
    ]
   }

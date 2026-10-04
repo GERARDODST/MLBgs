@@ -43,6 +43,26 @@
    "kind": "decision",
    "pk": 849823,
    "text": "Decisión: esperar dato (LAD) → esperar dato (Over 7.0) · tras: momio"
+  },
+  {
+   "at": "2026-10-04T04:30:22Z",
+   "date": "2026-10-04",
+   "game": "SD @ MIL",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849825,
+   "text": "Mercado abierto: SD +118 / MIL -142 · total 7.0"
+  },
+  {
+   "after": "esperar momio (MIL F5)",
+   "at": "2026-10-04T04:30:13Z",
+   "before": "esperar momio (MIL)",
+   "date": "2026-10-04",
+   "game": "SD @ MIL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849825,
+   "text": "Decisión: esperar momio (MIL) → esperar momio (MIL F5) · tras: momio"
   }
  ],
  "snap": {
@@ -168,7 +188,7 @@
    "away": 135,
    "dec": {
     "level": 0,
-    "pick": "MIL",
+    "pick": "MIL F5",
     "status": "esperar",
     "waitFor": "momio"
    },
@@ -179,6 +199,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.0,
+    "ml": {
+     "away": 118,
+     "home": -142
+    },
+    "pHome": 0.5612,
+    "src": "draftkings"
+   },
    "prob": {
     "away": {
      "id": 650633,
@@ -254,6 +283,11 @@
     "944987"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   }
  }
