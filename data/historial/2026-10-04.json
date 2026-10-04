@@ -539,7 +539,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-04T19:01:32+00:00",
+  "registeredAt": "2026-10-04T19:09:44+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5864,
@@ -717,13 +717,13 @@
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
-    "pick": "F5 Under 4.5",
-    "line": 4.5,
-    "p": 0.5494,
-    "fair": -122.0,
+    "pick": "F5 Over 4.0",
+    "line": 4.0,
+    "p": 0.5196,
+    "fair": -108.0,
     "ic": 30.6,
     "level": "Muy baja",
-    "price": null,
+    "price": -125,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -735,20 +735,20 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 104
+       "from": 118
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 123
+       "from": 139
       }
      ],
      "steps": [
-      104,
-      107,
-      112,
-      117,
-      123,
+      118,
+      120,
+      126,
+      132,
+      139,
       null,
       null,
       null,
@@ -759,8 +759,8 @@
      "a": 1.0,
      "h": 0.9863,
      "r": 1.0,
-     "maxPrice": 122,
-     "why": "sin momio real: conviene si pagan +104 o mejor"
+     "maxPrice": 138,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -896,27 +896,26 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan +104 o mejor (stake 1); stake 5 desde +123",
+   "status": "no apostar",
+   "why": "con el momio de referencia (-169): edge menor a 3 pp con ese momio (stake 1 desde -134)",
    "source": "Framework v2",
-   "pick": "F5 Under 4.5",
-   "waitFor": "momio",
-   "market": "Total primeras 5",
-   "p": 0.5494,
-   "ic": 30.6,
+   "pick": "LAD F5",
+   "market": "F5 Moneyline",
+   "p": 0.632,
+   "ic": 31.7,
    "level": 0,
    "amount": 0,
-   "minPrice": 104,
+   "minPrice": -134,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": 104
+     "from": -134
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 123
+     "from": -113
     }
    ]
   }
