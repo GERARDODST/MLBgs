@@ -10,6 +10,29 @@
    "pk": 849839,
    "side": "away",
    "text": "NYY: LF Max Schuemann roster status changed by New York Yankees."
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Anthony Kay",
+   "at": "2026-10-04T17:28:25Z",
+   "date": "2026-10-05",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849834,
+   "side": "away",
+   "text": "Abridor anunciado (CWS): Anthony Kay"
+  },
+  {
+   "after": "esperar momio (F5 Under 4.5)",
+   "at": "2026-10-04T17:28:18Z",
+   "before": "esperar dato (Over 6.5)",
+   "date": "2026-10-05",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849834,
+   "text": "Decisión: esperar dato (Over 6.5) → esperar momio (F5 Under 4.5) · tras: abridor"
   }
  ],
  "snap": {
@@ -17,9 +40,9 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "Over 6.5",
+    "pick": "F5 Under 4.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 114,
@@ -38,7 +61,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 641743,
+     "name": "Anthony Kay"
+    },
     "home": {
      "id": 668909,
      "name": "Gavin Williams"
