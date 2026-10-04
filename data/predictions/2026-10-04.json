@@ -3,7 +3,7 @@
 "pk": 849825,
 "date": "2026-10-04",
 "time": "2026-10-04T20:00:00Z",
-"generatedAt": "2026-10-04T18:38:01+00:00",
+"generatedAt": "2026-10-04T19:01:32+00:00",
 "away": "SD",
 "home": "MIL",
 "pHome": 0.5994,
@@ -29,20 +29,11 @@
 "market": "Total",
 "pick": "Over 7.0",
 "p": 0.6068,
-"price": -115,
-"edge": 0.0719,
+"price": -119,
+"edge": 0.0634,
 "light": "Amarillo"
 },
 "topPicks": [
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.6068,
-"line": 7.0,
-"ic": 54.6616,
-"level": "Baja"
-},
 {
 "family": "Team total",
 "market": "Team total MIL",
@@ -50,6 +41,15 @@
 "p": 0.5979,
 "line": 3.5,
 "ic": 53.5197,
+"level": "Baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.6068,
+"line": 7.0,
+"ic": 52.1838,
 "level": "Baja"
 }
 ],
@@ -70,7 +70,7 @@
 "pk": 849823,
 "date": "2026-10-04",
 "time": "2026-10-05T00:00:00Z",
-"generatedAt": "2026-10-04T18:21:45+00:00",
+"generatedAt": "2026-10-04T19:01:32+00:00",
 "away": "ATL",
 "home": "LAD",
 "pHome": 0.5864,
@@ -93,23 +93,14 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "Total",
-"pick": "Over 7.0",
-"p": 0.595,
-"price": -110,
-"edge": 0.0712,
+"market": "ML",
+"pick": "ATL",
+"p": 0.4136,
+"price": 172,
+"edge": 0.0459,
 "light": "Amarillo"
 },
 "topPicks": [
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.595,
-"line": 7.0,
-"ic": 48.0711,
-"level": "Baja"
-},
 {
 "family": "ML",
 "market": "Moneyline",
@@ -118,18 +109,25 @@
 "line": null,
 "ic": 35.7952,
 "level": "Muy baja"
+},
+{
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "LAD F5",
+"p": 0.632,
+"line": null,
+"ic": 31.7069,
+"level": "Muy baja"
 }
 ],
 "decision": {
-"status": "no apostar",
-"waitFor": null,
-"family": "F5",
-"pick": "LAD F5",
+"status": "esperar",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Under 4.5",
 "level": 0,
 "alts": [
-"Total",
-"ML",
-"RL"
+"F5 total"
 ]
 }
 }
