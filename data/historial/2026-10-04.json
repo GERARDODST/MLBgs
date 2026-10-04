@@ -29,14 +29,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-04T19:18:11+00:00",
+  "registeredAt": "2026-10-04T19:26:03+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5994,
+   "pHome": 0.5995,
    "projAway": 3.77,
    "projHome": 4.83,
-   "total": 8.6,
-   "nrfi": 0.497,
+   "total": 8.59,
+   "nrfi": 0.4971,
    "light": "Amarillo",
    "confidence": "alta",
    "probables": {
@@ -103,9 +103,9 @@
     "market": "Run Line",
     "pick": "MIL -1.5",
     "line": null,
-    "p": 0.4464,
+    "p": 0.4467,
     "fair": 124.0,
-    "ic": 52.6,
+    "ic": 52.7,
     "level": "Baja",
     "price": 162,
     "methods": [
@@ -129,9 +129,9 @@
     "market": "Total completo",
     "pick": "Over 7.0",
     "line": 7.0,
-    "p": 0.6068,
+    "p": 0.6065,
     "fair": -154.0,
-    "ic": 52.2,
+    "ic": 52.1,
     "level": "Baja",
     "price": -119,
     "methods": [
@@ -155,7 +155,7 @@
     "market": "Moneyline",
     "pick": "MIL",
     "line": null,
-    "p": 0.5994,
+    "p": 0.5995,
     "fair": -150.0,
     "ic": 50.8,
     "level": "Baja",
@@ -208,7 +208,7 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.503,
+    "p": 0.5029,
     "fair": -101.0,
     "ic": 44.8,
     "level": "Baja",
@@ -235,7 +235,7 @@
      "steps": [
       112,
       115,
-      120,
+      121,
       126,
       132,
       139,
@@ -259,9 +259,9 @@
     "market": "F5 Moneyline",
     "pick": "MIL F5",
     "line": null,
-    "p": 0.6426,
+    "p": 0.6429,
     "fair": -180.0,
-    "ic": 44.1,
+    "ic": 44.2,
     "level": "Baja",
     "price": -162,
     "methods": [
@@ -305,6 +305,57 @@
    },
    {
     "rank": 7,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Logan Henderson Under 6.5 K",
+    "line": 6.5,
+    "p": 0.6175,
+    "fair": -161.0,
+    "ic": 40.3,
+    "level": "Baja",
+    "price": -154,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -142
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -120
+      }
+     ],
+     "steps": [
+      -142,
+      -138,
+      -132,
+      -126,
+      -120,
+      -114,
+      -109,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9863,
+     "r": 1.0,
+     "maxPrice": -108,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 8,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -355,64 +406,13 @@
     }
    },
    {
-    "rank": 8,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Logan Henderson Under 6.5 K",
-    "line": 6.5,
-    "p": 0.6093,
-    "fair": -156.0,
-    "ic": 37.9,
-    "level": "Muy baja",
-    "price": -154,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -137
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": -116
-      }
-     ],
-     "steps": [
-      -137,
-      -134,
-      -127,
-      -121,
-      -116,
-      -111,
-      -106,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9863,
-     "r": 1.0,
-     "maxPrice": -104,
-     "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
     "rank": 9,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Under 4.5",
     "line": 4.5,
-    "p": 0.5196,
+    "p": 0.5199,
     "fair": -108.0,
     "ic": 37.0,
     "level": "Muy baja",
@@ -438,7 +438,7 @@
     "market": "Team total SD",
     "pick": "SD Under 3.5",
     "line": 3.5,
-    "p": 0.5448,
+    "p": 0.5453,
     "fair": -120.0,
     "ic": 37.0,
     "level": "Muy baja",
@@ -469,7 +469,7 @@
       107,
       112,
       117,
-      123,
+      122,
       null,
       null,
       null
