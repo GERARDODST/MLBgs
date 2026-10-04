@@ -3,7 +3,7 @@
 "pk": 849825,
 "date": "2026-10-04",
 "time": "2026-10-04T20:00:00Z",
-"generatedAt": "2026-10-04T19:26:03+00:00",
+"generatedAt": "2026-10-04T19:42:22+00:00",
 "away": "SD",
 "home": "MIL",
 "pHome": 0.5995,
@@ -26,14 +26,23 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "Run Line",
-"pick": "MIL -1.5",
-"p": 0.4467,
-"price": 162,
-"edge": 0.0651,
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.6065,
+"price": -114,
+"edge": 0.0738,
 "light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.6065,
+"line": 7.0,
+"ic": 55.1959,
+"level": "Media"
+},
 {
 "family": "Team total",
 "market": "Team total MIL",
@@ -41,15 +50,6 @@
 "p": 0.5979,
 "line": 3.5,
 "ic": 53.5197,
-"level": "Baja"
-},
-{
-"family": "RL",
-"market": "Run Line",
-"pick": "MIL -1.5",
-"p": 0.4467,
-"line": null,
-"ic": 52.6573,
 "level": "Baja"
 }
 ],
@@ -60,8 +60,8 @@
 "pick": "MIL Over 3.5",
 "level": 3,
 "alts": [
-"RL",
 "Total",
+"RL",
 "ML"
 ]
 }
