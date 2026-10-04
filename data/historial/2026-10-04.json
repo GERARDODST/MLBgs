@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-04T17:14:09+00:00",
+  "registeredAt": "2026-10-04T18:38:01+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5994,
@@ -81,9 +81,9 @@
     "line": 3.5,
     "p": 0.5979,
     "fair": -149.0,
-    "ic": 52.3,
+    "ic": 53.5,
     "level": "Baja",
-    "price": -120,
+    "price": -118,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -442,7 +442,7 @@
     "fair": -120.0,
     "ic": 37.0,
     "level": "Muy baja",
-    "price": -139,
+    "price": -140,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -486,12 +486,12 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-120)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-118)",
    "source": "Framework v2",
    "pick": "MIL Over 3.5",
    "market": "Team total MIL",
    "p": 0.5979,
-   "ic": 52.3,
+   "ic": 53.5,
    "level": 3,
    "amount": 750,
    "minPrice": -130,
