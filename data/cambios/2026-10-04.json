@@ -182,6 +182,17 @@
    "kind": "decision",
    "pk": 849823,
    "text": "Decisión: esperar dato (Over 7.0) → esperar momio (LAD F5) · tras: abridor"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-10-04T18:21:45Z",
+   "before": "esperar momio (LAD F5)",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849823,
+   "text": "Decisión: esperar momio (LAD F5) → no apostar · tras: abridor"
   }
  ],
  "snap": {
@@ -190,8 +201,8 @@
    "dec": {
     "level": 0,
     "pick": "LAD F5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "status": "no apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 119,

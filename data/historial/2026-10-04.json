@@ -539,7 +539,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-04T18:13:50+00:00",
+  "registeredAt": "2026-10-04T18:21:45+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5864,
@@ -639,93 +639,15 @@
    {
     "rank": 4,
     "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Under 4.5",
-    "line": 4.5,
-    "p": 0.5494,
-    "fair": -122.0,
-    "ic": 30.6,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9863,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total ATL",
-    "pick": "ATL Under 3.5",
-    "line": 3.5,
-    "p": 0.538,
-    "fair": -116.0,
-    "ic": 30.6,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de ATL",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9863,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total LAD",
-    "pick": "LAD Under 4.5",
-    "line": 4.5,
-    "p": 0.5536,
-    "fair": -124.0,
-    "ic": 30.6,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de LAD",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9863,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "LAD F5",
     "line": null,
     "p": 0.632,
     "fair": -172.0,
-    "ic": 30.6,
+    "ic": 31.7,
     "level": "Muy baja",
-    "price": null,
+    "price": -169,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -762,7 +684,85 @@
      "h": 0.9863,
      "r": 1.0,
      "maxPrice": -114,
-     "why": "sin momio real: conviene si pagan -134 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 4.5",
+    "line": 4.5,
+    "p": 0.5494,
+    "fair": -122.0,
+    "ic": 30.6,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9863,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total ATL",
+    "pick": "ATL Under 3.5",
+    "line": 3.5,
+    "p": 0.538,
+    "fair": -116.0,
+    "ic": 30.6,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de ATL",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9863,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total LAD",
+    "pick": "LAD Under 4.5",
+    "line": 4.5,
+    "p": 0.5536,
+    "fair": -124.0,
+    "ic": 30.6,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de LAD",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9863,
+     "r": 1.0
     }
    },
    {
@@ -846,14 +846,13 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de F5 Moneyline: conviene si pagan -134 o mejor (stake 1); stake 5 desde -113",
+   "status": "no apostar",
+   "why": "con el momio de referencia (-169): edge menor a 3 pp con ese momio (stake 1 desde -134)",
    "source": "Framework v2",
    "pick": "LAD F5",
-   "waitFor": "momio",
    "market": "F5 Moneyline",
    "p": 0.632,
-   "ic": 30.6,
+   "ic": 31.7,
    "level": 0,
    "amount": 0,
    "minPrice": -134,
