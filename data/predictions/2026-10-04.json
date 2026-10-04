@@ -71,7 +71,7 @@
 "pk": 849823,
 "date": "2026-10-04",
 "time": "2026-10-05T00:00:00Z",
-"generatedAt": "2026-10-03T16:15:50+00:00",
+"generatedAt": "2026-10-04T01:28:17+00:00",
 "away": "ATL",
 "home": "LAD",
 "pHome": 0.5867,
@@ -92,16 +92,25 @@
 "away": "Por anunciar",
 "home": "Blake Snell"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "F5",
-"pick": "LAD F5",
-"p": 0.6325,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.5963,
+"price": -116,
+"edge": 0.0593,
+"light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5963,
+"line": 7.0,
+"ic": 45.7657,
+"level": "Baja"
+},
 {
 "family": "ML",
 "market": "Moneyline",
@@ -110,27 +119,18 @@
 "line": null,
 "ic": 40.6311,
 "level": "Baja"
-},
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Under 8.0",
-"p": 0.509,
-"line": 8.0,
-"ic": 31.8144,
-"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "dato",
-"family": "ML",
-"pick": "LAD",
+"family": "Total",
+"pick": "Over 7.0",
 "level": 0,
 "alts": [
-"Total",
-"F5 total",
-"Team total"
+"ML",
+"RL",
+"F5 total"
 ]
 }
 }

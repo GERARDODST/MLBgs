@@ -23,6 +23,26 @@
    "kind": "decision",
    "pk": 849823,
    "text": "Decisión: esperar dato (F5 Under 4.5) → esperar dato (LAD) · tras: abridor"
+  },
+  {
+   "at": "2026-10-04T01:28:23Z",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849823,
+   "text": "Mercado abierto: ATL +121 / LAD -147 · total 7.0"
+  },
+  {
+   "after": "esperar dato (Over 7.0)",
+   "at": "2026-10-04T01:28:17Z",
+   "before": "esperar dato (LAD)",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849823,
+   "text": "Decisión: esperar dato (LAD) → esperar dato (Over 7.0) · tras: momio"
   }
  ],
  "snap": {
@@ -30,7 +50,7 @@
    "away": 144,
    "dec": {
     "level": 0,
-    "pick": "LAD",
+    "pick": "Over 7.0",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -41,6 +61,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.0,
+    "ml": {
+     "away": 121,
+     "home": -147
+    },
+    "pHome": 0.5681,
+    "src": "draftkings"
+   },
    "prob": {
     "away": null,
     "home": {
@@ -128,6 +157,11 @@
     "945006"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   },
   "849825": {

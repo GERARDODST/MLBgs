@@ -491,7 +491,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-03T23:04:22+00:00",
+  "registeredAt": "2026-10-04T01:28:17+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5867,
@@ -499,7 +499,7 @@
    "projHome": 4.67,
    "total": 8.49,
    "nrfi": 0.5156,
-   "light": "Gris",
+   "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Por anunciar",
@@ -511,6 +511,32 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5963,
+    "fair": -148.0,
+    "ic": 45.8,
+    "level": "Baja",
+    "price": -116,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9884,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
     "family": "ML",
     "market": "Moneyline",
     "pick": "LAD",
@@ -519,7 +545,7 @@
     "fair": -142.0,
     "ic": 40.6,
     "level": "Baja",
-    "price": null,
+    "price": -147,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -537,21 +563,21 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Under 8.0",
-    "line": 8.0,
-    "p": 0.509,
-    "fair": -104.0,
-    "ic": 31.8,
+    "rank": 3,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "LAD -1.5",
+    "line": null,
+    "p": 0.4272,
+    "fair": 134.0,
+    "ic": 36.4,
     "level": "Muy baja",
-    "price": null,
+    "price": 150,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
      "level": 0,
@@ -563,7 +589,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -589,7 +615,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "Team total",
     "market": "Team total ATL",
@@ -615,7 +641,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total LAD",
@@ -641,7 +667,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -667,7 +693,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -682,32 +708,6 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9884,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "LAD -1.5",
-    "line": null,
-    "p": 0.4272,
-    "fair": 134.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
      "level": 0,
@@ -750,11 +750,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "LAD",
+   "pick": "Over 7.0",
    "waitFor": "dato",
-   "market": "Moneyline",
-   "p": 0.5867,
-   "ic": 40.6,
+   "market": "Total completo",
+   "p": 0.5963,
+   "ic": 45.8,
    "level": 0,
    "amount": 0,
    "minPrice": null,

@@ -3,14 +3,79 @@
  "games": {
   "849823": {
    "away": 144,
-   "checked": "2026-10-03T22:17:13Z",
+   "books": {
+    "draftkings": {
+     "last": {
+      "at": "2026-10-04T01:28:23Z",
+      "ml": {
+       "away": 121,
+       "home": -147
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -182
+       },
+       "home": {
+        "point": -1.5,
+        "price": 150
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.0,
+        "price": -116
+       },
+       "under": {
+        "point": 7.0,
+        "price": -103
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-04T01:28:23Z",
+      "ml": {
+       "away": 124,
+       "home": -149
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -171
+       },
+       "home": {
+        "point": -1.5,
+        "price": 141
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.0,
+        "price": -101
+       },
+       "under": {
+        "point": 7.0,
+        "price": -120
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    }
+   },
+   "checked": "2026-10-04T01:28:23Z",
+   "espn": "401908014",
    "home": 119,
    "pk": 849823,
+   "providers": [
+    "espn"
+   ],
    "start": "2026-10-05T00:00:00Z"
   },
   "849825": {
    "away": 135,
-   "checked": "2026-10-03T22:17:13Z",
+   "checked": "2026-10-04T01:28:23Z",
    "home": 158,
    "pk": 849825,
    "start": "2026-10-04T20:00:00Z"
