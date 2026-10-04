@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-04T17:00:16+00:00",
+  "registeredAt": "2026-10-04T17:14:09+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5994,
@@ -75,6 +75,56 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "Team total",
+    "market": "Team total MIL",
+    "pick": "MIL Over 3.5",
+    "line": 3.5,
+    "p": 0.5979,
+    "fair": -149.0,
+    "ic": 52.3,
+    "level": "Baja",
+    "price": -120,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de MIL",
+    "res": null,
+    "stake": {
+     "level": 3,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -130
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -111
+      }
+     ],
+     "steps": [
+      -130,
+      -127,
+      -121,
+      -116,
+      -111,
+      -106,
+      -101,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9863,
+     "r": 1.0,
+     "maxPrice": 100
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "MIL -1.5",
@@ -99,7 +149,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -152,7 +202,58 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.503,
+    "fair": -101.0,
+    "ic": 44.8,
+    "level": "Baja",
+    "price": 110,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 112
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 132
+      }
+     ],
+     "steps": [
+      112,
+      115,
+      120,
+      126,
+      132,
+      139,
+      145,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9863,
+     "r": 1.0,
+     "maxPrice": 148,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 6,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -203,7 +304,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 7,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -254,7 +355,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 8,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -305,7 +406,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 9,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -331,7 +432,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 10,
     "principal": false,
     "family": "Team total",
     "market": "Team total SD",
@@ -341,7 +442,7 @@
     "fair": -120.0,
     "ic": 37.0,
     "level": "Muy baja",
-    "price": null,
+    "price": -139,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -378,135 +479,32 @@
      "h": 0.9863,
      "r": 1.0,
      "maxPrice": 124,
-     "why": "sin momio real: conviene si pagan -105 o mejor"
-    }
-   },
-   {
-    "rank": 9,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total MIL",
-    "pick": "MIL Under 4.5",
-    "line": 4.5,
-    "p": 0.5325,
-    "fair": -114.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de MIL",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -100
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 117
-      }
-     ],
-     "steps": [
-      -100,
-      102,
-      107,
-      112,
-      117,
-      123,
-      129,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9863,
-     "r": 1.0,
-     "maxPrice": 131,
-     "why": "sin momio real: conviene si pagan -100 o mejor"
-    }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "YRFI",
-    "line": null,
-    "p": 0.503,
-    "fair": -101.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 112
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 132
-      }
-     ],
-     "steps": [
-      112,
-      115,
-      120,
-      126,
-      132,
-      139,
-      145,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9863,
-     "r": 1.0,
-     "maxPrice": 148,
-     "why": "sin momio real: conviene si pagan +112 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    }
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de Team total SD: conviene si pagan -105 o mejor (stake 1); stake 5 desde +112",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-120)",
    "source": "Framework v2",
-   "pick": "SD Under 3.5",
-   "waitFor": "momio",
-   "market": "Team total SD",
-   "p": 0.5448,
-   "ic": 37.0,
-   "level": 0,
-   "amount": 0,
-   "minPrice": -105,
+   "pick": "MIL Over 3.5",
+   "market": "Team total MIL",
+   "p": 0.5979,
+   "ic": 52.3,
+   "level": 3,
+   "amount": 750,
+   "minPrice": -130,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -105
+     "from": -130
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 112
+     "from": -111
     }
    ]
   }
