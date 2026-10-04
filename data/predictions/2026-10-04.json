@@ -70,34 +70,34 @@
 "pk": 849823,
 "date": "2026-10-04",
 "time": "2026-10-05T00:00:00Z",
-"generatedAt": "2026-10-04T10:04:31+00:00",
+"generatedAt": "2026-10-04T18:13:50+00:00",
 "away": "ATL",
 "home": "LAD",
-"pHome": 0.5867,
+"pHome": 0.5864,
 "methods": {
 "log5": 0.5808,
-"elo": 0.5984,
-"lambda": 0.5808
+"elo": 0.5988,
+"lambda": 0.5796
 },
 "confidence": "alta",
 "projAway": 3.8176,
-"projHome": 4.6734,
-"total": 8.4911,
+"projHome": 4.661,
+"total": 8.4786,
 "f5Away": 1.9114,
-"f5Home": 2.7671,
-"nrfi": 0.5156,
-"pOver85": 0.4453,
+"f5Home": 2.763,
+"nrfi": 0.5147,
+"pOver85": 0.4442,
 "probables": {
-"away": "Por anunciar",
+"away": "Ray Kerr",
 "home": "Blake Snell"
 },
 "light": "Amarillo",
 "best": {
 "market": "Total",
 "pick": "Over 7.0",
-"p": 0.5963,
+"p": 0.595,
 "price": -110,
-"edge": 0.0725,
+"edge": 0.0712,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -105,31 +105,29 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.0",
-"p": 0.5963,
+"p": 0.595,
 "line": 7.0,
-"ic": 49.6237,
+"ic": 48.0711,
 "level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "LAD",
-"p": 0.5867,
+"p": 0.5864,
 "line": null,
-"ic": 40.6311,
-"level": "Baja"
+"ic": 35.7952,
+"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 7.0",
+"waitFor": "momio",
+"family": "F5",
+"pick": "LAD F5",
 "level": 0,
 "alts": [
-"ML",
-"RL",
-"F5 total"
+"F5"
 ]
 }
 }

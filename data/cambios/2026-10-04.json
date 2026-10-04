@@ -159,6 +159,29 @@
    "kind": "decision",
    "pk": 849825,
    "text": "Decisión: esperar momio (SD Under 3.5) → apostar MIL Over 3.5 · stake 3 · tras: lineup, umpire"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Ray Kerr",
+   "at": "2026-10-04T18:13:56Z",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849823,
+   "side": "away",
+   "text": "Abridor anunciado (ATL): Ray Kerr"
+  },
+  {
+   "after": "esperar momio (LAD F5)",
+   "at": "2026-10-04T18:13:50Z",
+   "before": "esperar dato (Over 7.0)",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849823,
+   "text": "Decisión: esperar dato (Over 7.0) → esperar momio (LAD F5) · tras: abridor"
   }
  ],
  "snap": {
@@ -166,9 +189,9 @@
    "away": 144,
    "dec": {
     "level": 0,
-    "pick": "Over 7.0",
+    "pick": "LAD F5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 119,
@@ -187,7 +210,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 678061,
+     "name": "Ray Kerr"
+    },
     "home": {
      "id": 605483,
      "name": "Blake Snell"
