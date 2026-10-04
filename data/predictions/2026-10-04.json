@@ -70,7 +70,7 @@
 "pk": 849823,
 "date": "2026-10-04",
 "time": "2026-10-05T00:00:00Z",
-"generatedAt": "2026-10-04T20:06:04+00:00",
+"generatedAt": "2026-10-04T20:14:02+00:00",
 "away": "ATL",
 "home": "LAD",
 "pHome": 0.5848,
@@ -102,6 +102,15 @@
 },
 "topPicks": [
 {
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Blake Snell Under 6.5 K",
+"p": 0.6643,
+"line": 6.5,
+"ic": 68.0285,
+"level": "Media"
+},
+{
 "family": "ML",
 "market": "Moneyline",
 "pick": "LAD",
@@ -109,25 +118,18 @@
 "line": null,
 "ic": 34.7784,
 "level": "Muy baja"
-},
-{
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Blake Snell Under 5.5 K",
-"p": 0.5055,
-"line": 5.5,
-"ic": 33.0285,
-"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "momio",
+"waitFor": "verificar",
 "family": "K",
-"pick": "Blake Snell Under 5.5 K",
+"pick": "Blake Snell Under 6.5 K",
 "level": 0,
 "alts": [
-"K"
+"ML",
+"RL",
+"F5 total"
 ]
 }
 }

@@ -298,6 +298,17 @@
    "kind": "decision",
    "pk": 849823,
    "text": "Decisión: no apostar → esperar momio (Blake Snell Under 5.5 K) · tras: momio, lineup, umpire"
+  },
+  {
+   "after": "esperar verificar (Blake Snell Under 6.5 K)",
+   "at": "2026-10-04T20:14:02Z",
+   "before": "esperar momio (Blake Snell Under 5.5 K)",
+   "date": "2026-10-04",
+   "game": "ATL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849823,
+   "text": "Decisión: esperar momio (Blake Snell Under 5.5 K) → esperar verificar (Blake Snell Under 6.5 K) · tras: momio, lineup, umpire"
   }
  ],
  "snap": {
@@ -305,9 +316,9 @@
    "away": 144,
    "dec": {
     "level": 0,
-    "pick": "Blake Snell Under 5.5 K",
+    "pick": "Blake Snell Under 6.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Pre-Game",
    "home": 119,
