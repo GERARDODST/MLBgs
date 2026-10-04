@@ -137,6 +137,17 @@
    "kind": "decision",
    "pk": 849825,
    "text": "Decisión: no apostar → apostar Logan Henderson Under 6.5 K · stake 1 · tras: movimiento, lineup, umpire"
+  },
+  {
+   "after": "esperar momio (SD Under 3.5)",
+   "at": "2026-10-04T17:00:16Z",
+   "before": "apostar Logan Henderson Under 6.5 K · stake 1",
+   "date": "2026-10-04",
+   "game": "SD @ MIL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849825,
+   "text": "Decisión: apostar Logan Henderson Under 6.5 K · stake 1 → esperar momio (SD Under 3.5) · tras: movimiento, lineup, umpire"
   }
  ],
  "snap": {
@@ -263,10 +274,10 @@
   "849825": {
    "away": 135,
    "dec": {
-    "level": 1,
-    "pick": "Logan Henderson Under 6.5 K",
-    "status": "apostar",
-    "waitFor": null
+    "level": 0,
+    "pick": "SD Under 3.5",
+    "status": "esperar",
+    "waitFor": "momio"
    },
    "detailed": "Pre-Game",
    "home": 158,

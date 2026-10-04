@@ -76,28 +76,83 @@
   "849825": {
    "away": 135,
    "books": {
-    "betonlineag": {
+    "betmgm": {
      "last": {
-      "at": "2026-10-04T10:04:42Z",
+      "at": "2026-10-04T17:00:26Z",
       "k": {
        "logan henderson": {
         "over": {
-         "point": 6.5,
-         "price": 104
+         "point": 5.5,
+         "price": -160
         },
         "under": {
-         "point": 6.5,
-         "price": -135
+         "point": 5.5,
+         "price": 120
         }
        },
        "michael king": {
         "over": {
+         "point": 4.5,
+         "price": -160
+        },
+        "under": {
+         "point": 4.5,
+         "price": 120
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-04T17:00:26Z",
+      "k": {
+       "logan henderson": {
+        "over": {
          "point": 5.5,
-         "price": 109
+         "price": -160
         },
         "under": {
          "point": 5.5,
-         "price": -141
+         "price": 120
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 4.5,
+         "price": -160
+        },
+        "under": {
+         "point": 4.5,
+         "price": 120
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-10-04T17:00:26Z",
+      "k": {
+       "logan henderson": {
+        "over": {
+         "point": 6.5,
+         "price": 118
+        },
+        "under": {
+         "point": 6.5,
+         "price": -154
+        }
+       },
+       "michael king": {
+        "over": {
+         "point": 4.5,
+         "price": -143
+        },
+        "under": {
+         "point": 4.5,
+         "price": 110
         }
        }
       }
@@ -158,7 +213,7 @@
     },
     "bovada": {
      "last": {
-      "at": "2026-10-04T10:04:42Z",
+      "at": "2026-10-04T17:00:26Z",
       "f5": {
        "ml": {
         "away": 120,
@@ -170,21 +225,21 @@
        "logan henderson": {
         "over": {
          "point": 6.5,
-         "price": 105
+         "price": 115
         },
         "under": {
          "point": 6.5,
-         "price": -135
+         "price": -150
         }
        },
        "michael king": {
         "over": {
          "point": 5.5,
-         "price": 110
+         "price": 125
         },
         "under": {
          "point": 5.5,
-         "price": -145
+         "price": -165
         }
        }
       }
@@ -227,7 +282,7 @@
     },
     "draftkings": {
      "last": {
-      "at": "2026-10-04T16:46:31Z",
+      "at": "2026-10-04T17:00:26Z",
       "f5": {
        "ml": {
         "away": 124,
@@ -239,21 +294,21 @@
        "logan henderson": {
         "over": {
          "point": 6.5,
-         "price": -102
+         "price": 131
         },
         "under": {
          "point": 6.5,
-         "price": -126
+         "price": -168
         }
        },
        "michael king": {
         "over": {
          "point": 4.5,
-         "price": -158
+         "price": -157
         },
         "under": {
          "point": 4.5,
-         "price": 124
+         "price": 123
         }
        }
       },
@@ -339,12 +394,12 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
     },
     "fanduel": {
      "last": {
-      "at": "2026-10-04T10:04:42Z",
+      "at": "2026-10-04T17:00:26Z",
       "f5": {
        "ml": {
         "away": 130,
@@ -356,21 +411,21 @@
        "logan henderson": {
         "over": {
          "point": 6.5,
-         "price": 106
+         "price": 114
         },
         "under": {
          "point": 6.5,
-         "price": -136
+         "price": -146
         }
        },
        "michael king": {
         "over": {
          "point": 5.5,
-         "price": 112
+         "price": 128
         },
         "under": {
          "point": 5.5,
-         "price": -142
+         "price": -164
         }
        }
       }
@@ -413,26 +468,26 @@
     },
     "mybookieag": {
      "last": {
-      "at": "2026-10-04T10:04:42Z",
+      "at": "2026-10-04T17:00:26Z",
       "k": {
        "logan henderson": {
         "over": {
          "point": 6.5,
-         "price": 100
+         "price": 111
         },
         "under": {
          "point": 6.5,
-         "price": -138
+         "price": -154
         }
        },
        "michael king": {
         "over": {
-         "point": 5.5,
-         "price": 104
+         "point": 4.5,
+         "price": -145
         },
         "under": {
-         "point": 5.5,
-         "price": -144
+         "point": 4.5,
+         "price": 105
         }
        }
       }
@@ -467,7 +522,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-10-04T16:46:31Z",
+   "checked": "2026-10-04T17:00:26Z",
    "espn": "401908003",
    "home": 158,
    "pk": 849825,
@@ -478,7 +533,7 @@
    "start": "2026-10-04T20:00:00Z",
    "theAt": {
     "h2h_1st_5_innings": "2026-10-04T10:04:42Z",
-    "pitcher_strikeouts": "2026-10-04T10:04:42Z"
+    "pitcher_strikeouts": "2026-10-04T17:00:26Z"
    },
    "theEmpty": {
     "h2h_1st_5_innings": 0,
@@ -486,12 +541,12 @@
    },
    "theGot": {
     "h2h_1st_5_innings": 4,
-    "pitcher_strikeouts": 5
+    "pitcher_strikeouts": 6
    },
    "theId": "6da40e91a31110e51e84ba5671996deb",
    "theN": {
     "h2h_1st_5_innings": 1,
-    "pitcher_strikeouts": 1
+    "pitcher_strikeouts": 2
    },
    "theSwapped": false
   }
