@@ -94,6 +94,49 @@
    "pk": 849823,
    "side": "home",
    "text": "LAD: RHP Landon Knack roster status changed by Los Angeles Dodgers."
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-04T16:46:31Z",
+   "date": "2026-10-04",
+   "game": "SD @ MIL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849825,
+   "side": "away",
+   "text": "Lineup confirmado (SD)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-04T16:46:31Z",
+   "date": "2026-10-04",
+   "game": "SD @ MIL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849825,
+   "side": "home",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "Lance Barrett",
+   "at": "2026-10-04T16:46:31Z",
+   "date": "2026-10-04",
+   "game": "SD @ MIL",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849825,
+   "text": "Umpire de home asignado: Lance Barrett"
+  },
+  {
+   "after": "apostar Logan Henderson Under 6.5 K · stake 1",
+   "at": "2026-10-04T16:46:23Z",
+   "before": "no apostar",
+   "date": "2026-10-04",
+   "game": "SD @ MIL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849825,
+   "text": "Decisión: no apostar → apostar Logan Henderson Under 6.5 K · stake 1 · tras: movimiento, lineup, umpire"
   }
  ],
  "snap": {
@@ -220,18 +263,57 @@
   "849825": {
    "away": 135,
    "dec": {
-    "level": 0,
-    "pick": "MIL",
-    "status": "no apostar",
+    "level": 1,
+    "pick": "Logan Henderson Under 6.5 K",
+    "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 158,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     665487,
+     687957,
+     592518,
+     664034,
+     701538,
+     806956,
+     593428,
+     669134,
+     630105
+    ],
+    "home": [
+     694192,
+     668930,
+     641343,
+     661388,
+     669003,
+     592885,
+     686217,
+     806198,
+     666152
+    ]
    },
-   "names": {},
+   "names": {
+    "592518": "Manny Machado",
+    "592885": "Christian Yelich",
+    "593428": "Xander Bogaerts",
+    "630105": "Jake Cronenworth",
+    "641343": "Jake Bauers",
+    "661388": "William Contreras",
+    "664034": "Ty France",
+    "665487": "Fernando Tatis Jr.",
+    "666152": "David Hamilton",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
+    "669134": "Luis Campusano",
+    "686217": "Sal Frelick",
+    "687957": "Dustin Harris",
+    "694192": "Jackson Chourio",
+    "701538": "Jackson Merrill",
+    "806198": "Cooper Pratt",
+    "806956": "Ethan Salas"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -317,13 +399,19 @@
     "945024",
     "945025"
    ],
-   "ump": null,
+   "ump": "Lance Barrett",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Roof Closed",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 69.0
+   }
   }
  }
 }

@@ -3,66 +3,66 @@
 "pk": 849825,
 "date": "2026-10-04",
 "time": "2026-10-04T20:00:00Z",
-"generatedAt": "2026-10-04T16:04:56+00:00",
+"generatedAt": "2026-10-04T16:46:23+00:00",
 "away": "SD",
 "home": "MIL",
-"pHome": 0.6027,
+"pHome": 0.5994,
 "methods": {
 "log5": 0.6128,
 "elo": 0.5866,
-"lambda": 0.6086
+"lambda": 0.5987
 },
 "confidence": "alta",
-"projAway": 3.6794,
-"projHome": 4.8353,
-"total": 8.5147,
-"f5Away": 1.9281,
-"f5Home": 2.935,
-"nrfi": 0.4997,
-"pOver85": 0.4475,
+"projAway": 3.7707,
+"projHome": 4.826,
+"total": 8.5967,
+"f5Away": 1.9759,
+"f5Home": 2.9294,
+"nrfi": 0.497,
+"pOver85": 0.4551,
 "probables": {
 "away": "Michael King",
 "home": "Logan Henderson"
 },
 "light": "Amarillo",
 "best": {
-"market": "F5",
-"pick": "MIL F5",
-"p": 0.6511,
-"price": -162,
-"edge": 0.0328,
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.6068,
+"price": -115,
+"edge": 0.0719,
 "light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "MIL -1.5",
-"p": 0.4553,
-"line": null,
-"ic": 53.5166,
-"level": "Baja"
-},
-{
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.0",
-"p": 0.5987,
+"p": 0.6068,
 "line": 7.0,
-"ic": 51.0841,
+"ic": 54.6616,
+"level": "Baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "MIL -1.5",
+"p": 0.4464,
+"line": null,
+"ic": 52.1441,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "no apostar",
+"status": "apostar",
 "waitFor": null,
-"family": "ML",
-"pick": "MIL",
-"level": 0,
+"family": "K",
+"pick": "Logan Henderson Under 6.5 K",
+"level": 1,
 "alts": [
-"RL",
 "Total",
-"F5"
+"RL",
+"ML"
 ]
 }
 },
