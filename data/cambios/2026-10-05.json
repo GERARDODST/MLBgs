@@ -109,14 +109,36 @@
    "kind": "decision",
    "pk": 849834,
    "text": "Decisión: apostar F5 Over 3.5 · stake 4 → apostar Over 6.5 · stake 4 · tras: lineup, umpire"
+  },
+  {
+   "after": "apostar F5 Over 3.5 · stake 3",
+   "at": "2026-10-05T18:07:24Z",
+   "before": "apostar Over 6.5 · stake 4",
+   "date": "2026-10-05",
+   "game": "CWS @ CLE",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849834,
+   "text": "Decisión: apostar Over 6.5 · stake 4 → apostar F5 Over 3.5 · stake 3 · tras: lineup, umpire"
+  },
+  {
+   "after": "esperar verificar (Freddy Peralta Over 4.5 K)",
+   "at": "2026-10-05T18:07:24Z",
+   "before": "esperar verificar (Cam Schlittler Under 6.5 K)",
+   "date": "2026-10-05",
+   "game": "NYY @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849839,
+   "text": "Decisión: esperar verificar (Cam Schlittler Under 6.5 K) → esperar verificar (Freddy Peralta Over 4.5 K)"
   }
  ],
  "snap": {
   "849834": {
    "away": 145,
    "dec": {
-    "level": 4,
-    "pick": "Over 6.5",
+    "level": 3,
+    "pick": "F5 Over 3.5",
     "status": "apostar",
     "waitFor": null
    },
@@ -246,7 +268,7 @@
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
-    "total": "una fuente"
+    "total": "ok"
    },
    "wx": {
     "closed": false,
@@ -260,7 +282,7 @@
    "away": 147,
    "dec": {
     "level": 0,
-    "pick": "Cam Schlittler Under 6.5 K",
+    "pick": "Freddy Peralta Over 4.5 K",
     "status": "esperar",
     "waitFor": "verificar"
    },
