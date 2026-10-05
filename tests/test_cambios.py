@@ -333,13 +333,38 @@ class MovimientoDeMomios(unittest.TestCase):
         self.assertEqual(g["pk"], t.new[0]["pk"])
 
 
+class Estado(unittest.TestCase):
+    def test_huella_de_cambios(self):
+        """La rutina solo republica si cambia algo que se ve; los relojes no cuentan."""
+        from mlbgs import build as BU
+        p = {"meta": {"generatedAt": "2026-10-05T10:00:00+00:00"},
+             "games": [{"pk": 1, "time": "2026-10-05T21:00:00Z", "decision": {"status": "esperar", "waitFor": "momio",
+                                                                             "pick": {"pick": "NRFI"}, "stake": {"level": 0}},
+                        "summary": {"lineupsConfirmed": {"away": False, "home": False}}, "picks": [{"pick": "NRFI", "price": -120, "ic": 45.3}]}],
+             "live": {"games": []}, "historial": {"tickets": []}, "prolabs": [], "cambios": {"events": []}}
+        e = BU.estado(p)
+        self.assertEqual((e["games"], e["nextGame"], e["live"]), (1, "2026-10-05T21:00:00Z", 0))
+        q = json.loads(json.dumps(p))
+        q["meta"]["generatedAt"] = "2026-10-05T10:30:00+00:00"
+        self.assertEqual(BU.estado(q)["digest"], e["digest"])                  # solo pasó el tiempo
+        q["games"][0]["summary"]["lineupsConfirmed"] = {"away": True, "home": True}
+        self.assertNotEqual(BU.estado(q)["digest"], e["digest"])               # salió el lineup
+        q = json.loads(json.dumps(p))
+        q["games"][0]["picks"][0]["price"] = -145
+        self.assertNotEqual(BU.estado(q)["digest"], e["digest"])               # se movió el momio
+
+
 class Cadencia(unittest.TestCase):
     def test_mas_seguido_cerca_del_juego(self):
         now = at("2026-09-29T12:00:00")
         self.assertEqual(CA.plan([at("2026-09-29T14:00:00")], now)["sleep"], 420)
         self.assertEqual(CA.plan([at("2026-09-29T17:00:00")], now)["sleep"], 780)
-        self.assertEqual(CA.plan([at("2026-09-30T01:00:00")], now)["sleep"], 1500)
-        self.assertEqual(CA.plan([], now)["sleep"], 1500)
+        self.assertEqual(CA.plan([at("2026-09-29T21:00:00")], now)["sleep"], 1500)       # ≤ 12 h
+        self.assertEqual(CA.plan([at("2026-09-30T12:00:00")], now)["sleep"], 3300)       # ≤ 36 h: cada hora
+        self.assertEqual(CA.plan([at("2026-10-02T12:00:00")], now)["sleep"], 0)          # nada en 36 h: se detiene
+        self.assertEqual(CA.plan([], now)["sleep"], 0)
+        # un partido en juego (empezó hace 2 h) con el siguiente lejos: cada ~15 min
+        self.assertEqual(CA.plan([at("2026-09-29T10:00:00"), at("2026-09-30T12:00:00")], now)["sleep"], 780)
         self.assertEqual(CA.plan([at("2026-09-29T11:45:00")], now)["sleep"], 420)   # en calentamiento o retrasado
 
 

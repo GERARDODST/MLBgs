@@ -108,7 +108,7 @@ misma corrida: el modelo se recalcula y los momios de ese partido se revisan aun
 
 | Qué | Cada cuánto | Costo |
 | --- | --- | --- |
-| MLB (abridores, lineups, umpire, clima, bajas) | cada revisión: ~12 min con un partido a ≤ 2.5 h, ~18 min a ≤ 6 h, ~30 min más lejos (`mlbgs/cadencia.py`) | sin costo |
+| MLB (abridores, lineups, umpire, clima, bajas) | a cualquier hora mientras haya un partido en 36 h: ~9 min con uno a ≤ 2.5 h, ~15 min a ≤ 6 h o en juego, ~27 min a ≤ 12 h, cada hora a ≤ 36 h (`mlbgs/cadencia.py`; cron de respaldo cada hora) | sin costo |
 | Momios DraftKings (ESPN) | > 6 h: cada 3 h · 1–6 h: cada hora · < 1 h: cada revisión · con cambio: al momento; cada llamada actualiza toda la fecha | sin costo |
 | The Odds API | por prioridad: 0) mercado cuyo abridor cambió después de pedirlo, 1) mercado de la decisión que ESPN no trae (F5, K, team total, NRFI), 1.5) si la decisión espera momio, los de los demás candidatos sin momio (en la misma llamada), 2) verificación del mercado de la decisión (ML, RL, total) en otras casas si hay stake o se espera momio, 3) el otro pick. El mercado de la decisión se pide desde 12 h antes (se refresca a las 6 h y a 1.5 h; si ninguna casa lo había publicado, otro intento cada 2 h) y la página dice a qué hora llega el momio que se espera | 1 crédito por mercado y partido; tope 24/día (4 reservados para cambios) y 470/mes |
 
@@ -369,7 +369,7 @@ python -m unittest discover -s tests                        # pruebas
 | `mlbgs/odds.py` | Momios previos al partido (ESPN sin clave; odds-api.net / The Odds API con clave): apertura, último y cierre por casa en `data/odds/`, prioridad de créditos y verificación entre casas |
 | `mlbgs/cambios.py` | Qué cambió entre revisiones (abridor, lineup, umpire, clima, horario, bajas, momio, decisión) en `data/cambios/` |
 | `mlbgs/cadencia.py` | Cada cuánto se revisa según el siguiente primer lanzamiento (espera del relevo de `update.yml`) |
-| rama `pagina` | La última página construida por producción (un solo commit); de ahí la republica en claude.ai una rutina cada ~2 h |
+| rama `pagina` | La última página construida por producción (un solo commit) con `estado.json` (huella de cambios); de ahí la republica en claude.ai una rutina cada hora, solo si algo cambió |
 | `mlbgs/features.py` | Liga, Pitágoras, Elo, perfiles de abridores con shrinkage, bullpen y fatiga |
 | `mlbgs/model.py` | Análisis de cada partido: secciones 1-10 del framework |
 | `mlbgs/context.py` | Lineup proyectado, bullpen completo, importancia (simulación de playoffs), noticias, arsenal |

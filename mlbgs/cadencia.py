@@ -1,17 +1,19 @@
 """Cada cuánto se vuelve a revisar todo (MLB y momios), según lo cerca que esté el siguiente primer lanzamiento.
 
 La MLB publica los lineups 1–4 h antes y los cambios de último minuto (abridor, bajas) llegan en la última hora y
-media; lejos del juego casi nada cambia. Por eso el relevo de update.yml espera menos cuando hay un partido cerca:
+media; lejos del juego casi nada cambia. El relevo de update.yml corre TODO el día mientras haya un partido en las
+próximas 36 h (antes se apagaba de 06:00 a 15:00 UTC y dependía del cron de GitHub, que se retrasa horas):
 
-  primer lanzamiento en ≤ 2.5 h (o partido en calentamiento)   espera  7 min  → una revisión cada ~12 min
-  primer lanzamiento en ≤ 6 h                                  espera 13 min  → cada ~20 min
-  más lejos                                                    espera 25 min  → cada ~30 min
+  primer lanzamiento en ≤ 2.5 h (o partido en calentamiento)   espera  7 min  → una revisión cada ~9 min
+  primer lanzamiento en ≤ 6 h, o un partido en juego            espera 13 min  → cada ~15 min
+  primer lanzamiento en ≤ 12 h                                  espera 25 min  → cada ~27 min
+  primer lanzamiento en ≤ 36 h                                  espera 55 min  → cada hora
+  sin partidos en 36 h                                          se detiene (el cron de respaldo corre cada hora)
 
-La corrida en sí tarda ~5 min. Revisar la MLB no cuesta; los momios de ESPN tampoco (una llamada por fecha) y
-los de The Odds API solo se piden por prioridad y con topes de créditos (ver mlbgs/odds.py), así que una
-cadencia más corta no gasta créditos de más.
+Revisar la MLB no cuesta; los momios de ESPN tampoco (una llamada por fecha) y los de The Odds API solo se piden por
+prioridad y con topes de créditos (ver mlbgs/odds.py), así que una cadencia más corta no gasta créditos de más.
 
-Uso: python -m mlbgs.cadencia  →  imprime los segundos que debe esperar el relevo (lee data/odds y data/cambios).
+Uso: python -m mlbgs.cadencia  →  imprime los segundos que debe esperar el relevo (0: no lanzar otra corrida).
 """
 from __future__ import annotations
 
@@ -23,14 +25,17 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STEPS = ((150, 420, "partido en ≤ 2.5 h: lineups y cambios de último minuto"),
          (360, 780, "partido en ≤ 6 h"),
-         (None, 1500, "sin partidos cerca"))
-RUN_MIN = 5          # lo que tarda una corrida, para decir cada cuánto se revisa
-# horario de update.yml (UTC): cada 20 min de 15:00 a 05:59 (más el relevo) y una corrida suelta a las 12:00
-RUN_HOURS = frozenset(range(0, 6)) | frozenset(range(15, 24))
+         (720, 1500, "partido en ≤ 12 h"),
+         (2160, 3300, "partido en ≤ 36 h: una revisión por hora"),
+         (None, 0, "sin partidos en 36 h: el relevo se detiene (lo reanuda el cron de cada hora)"))
+LIVE_MIN = 240       # un partido que empezó hace menos de 4 h puede seguir en juego: se revisa como uno cercano
+RUN_MIN = 2          # lo que tarda una corrida, para decir cada cuánto se revisa
+# el relevo corre todo el día mientras haya un partido en 36 h y el cron de respaldo es cada hora: no hay horas sin corrida
+RUN_HOURS = frozenset(range(24))
 
 
 def first_run_after(t: dt.datetime) -> dt.datetime:
-    """La primera corrida de producción desde `t`: de 06:00 a 11:59 UTC no hay (la de las 12:00), ni de 12:01 a 14:59."""
+    """La primera corrida de producción desde `t` (hoy hay corrida a toda hora: el relevo o el cron de cada hora)."""
     if t.hour in RUN_HOURS:
         return t
     noon = t.replace(hour=12, minute=0, second=0, microsecond=0)
@@ -70,11 +75,16 @@ def plan(times: list[dt.datetime], now: dt.datetime | None = None) -> dict:
     ahead = [t for t in times if t > now - dt.timedelta(minutes=30)]
     nxt = min(ahead) if ahead else None
     mins = (nxt - now).total_seconds() / 60 if nxt else None
+    live = [t for t in times if now - dt.timedelta(minutes=LIVE_MIN) < t <= now - dt.timedelta(minutes=30)]
+    if live and (mins is None or mins > 360):       # en juego: marcador, finales y calificación de tickets al día
+        return {"sleep": 780, "every": round(780 / 60 + RUN_MIN), "why": "partido en juego",
+                "next": nxt.strftime("%Y-%m-%dT%H:%M:%SZ") if nxt else None,
+                "steps": [{"within": lim, "every": round(sl / 60 + RUN_MIN) if sl else None} for lim, sl, _ in STEPS]}
     for limit, sleep, why in STEPS:
         if limit is None or (mins is not None and mins <= limit):
-            return {"sleep": sleep, "every": round(sleep / 60 + RUN_MIN), "why": why,
+            return {"sleep": sleep, "every": round(sleep / 60 + RUN_MIN) if sleep else None, "why": why,
                     "next": nxt.strftime("%Y-%m-%dT%H:%M:%SZ") if nxt else None,
-                    "steps": [{"within": lim, "every": round(sl / 60 + RUN_MIN)} for lim, sl, _ in STEPS]}
+                    "steps": [{"within": lim, "every": round(sl / 60 + RUN_MIN) if sl else None} for lim, sl, _ in STEPS]}
     raise AssertionError("inalcanzable")
 
 

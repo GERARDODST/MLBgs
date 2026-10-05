@@ -89,8 +89,10 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   mercado de la decisión (ML/RL/total, `h2h`/`spreads`/`totals`) si hay stake o se espera momio (≤ 3 h), 3 el otro
   pick; 2 y 3 no tocan los últimos `ODDS_API_RESERVE` (4) créditos del día. `verify`: DraftKings vs mediana de las
   otras casas (difiere ≥ 3 pp o línea distinta). Algoritmo 2026.09.29: el momio visto antes de un cambio de
-  abridor (`stale`) no cuenta para el stake hasta que la casa publique otro. El relevo de `update.yml` espera
-  7 min con un partido a ≤ 2.5 h, 13 min a ≤ 6 h y 25 min más lejos. `data/predictions` guarda la `decision`.
+  abridor (`stale`) no cuenta para el stake hasta que la casa publique otro. El relevo de `update.yml` corre a
+  cualquier hora mientras haya un partido en 36 h y espera 7 min con un partido a ≤ 2.5 h, 13 min a ≤ 6 h o con uno
+  en juego, 25 min a ≤ 12 h y 55 min a ≤ 36 h; sin partidos en 36 h se detiene y el cron de respaldo (cada hora, :17)
+  lo reanuda. `data/predictions` guarda la `decision`.
   La página: «Última hora» en la Jornada, aviso en la tarjeta, «Qué cambió» y verificación en el partido.
 - Momios de Playdoit: su sitio bloquea el acceso automático (Cloudflare, 403 «Acceso bloqueado» desde
   GitHub Actions); no evadirlo. La Jornada tiene «Momios de Playdoit»: el usuario sube una captura o pega
@@ -169,6 +171,10 @@ Nunca se da un pick sin haber conectado antes todas las partes:
   dispara al cambiar su línea de comentario en la rama) y no se sube a `main`
   (`git rm --cached dev/raw_bundle.json.gz` antes del PR).
 - Al publicar el artefacto, conservar sus capacidades (`downloads`, `sample`, `db`).
-- Cada corrida de producción deja la página construida en la rama `pagina` (un solo commit que se reemplaza).
-  Una rutina de Claude (Routine, sesión nueva en cada disparo) la republica en el artefacto cada ~2 h en horario
-  de juegos: `git fetch origin pagina` → publicar `index.html` en el URL del artefacto sin tocar capacidades.
+- Cada corrida de producción deja la página construida en la rama `pagina` (un solo commit que se reemplaza) con
+  `estado.json` (hora del corte, siguiente partido y `digest`: huella de decisiones, picks y momios, lineups, marcadores,
+  calificados y Pro-Labs; `build.estado`). La rutina «Republicar MLBgs» (sesión nueva en cada disparo, cada hora a las
+  :41 de 12 a 04 UTC) arma la página con `--from-payload` y la publica en el URL del artefacto sin tocar capacidades,
+  SOLO si la huella o la plantilla cambiaron desde la última publicación (lo guarda en la base `db` del artefacto,
+  colección `estado`, doc `publicacion`) o si pasaron 3 h; si producción lleva > 75 min sin correr y hay partido en
+  12 h o en juego, la relanza (`update.yml`, workflow_dispatch).

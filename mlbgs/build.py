@@ -10,6 +10,7 @@ import argparse
 import datetime as dt
 import glob
 import gzip
+import hashlib
 import json
 import math
 import os
@@ -407,11 +408,40 @@ def write_html(payload: dict, out: str = OUT_HTML) -> None:
         f.write(html)
 
 
+def estado(payload: dict) -> dict:
+    """Resumen chico de una corrida para la rutina que republica el artefacto (rama pagina, estado.json): hora del corte,
+    siguiente partido y una huella de lo que importa a quien mira la página. Si la huella no cambió desde la última
+    publicación, la rutina no vuelve a publicar; los relojes («hace N min», momios revisados) no cuentan."""
+    def r(x, n=0):
+        return round(x, n) if isinstance(x, (int, float)) else x
+
+    games = []
+    for g in payload.get("games") or []:
+        d = g.get("decision") or {}
+        sm = g.get("summary") or {}
+        games.append([g.get("pk"), g.get("time"), d.get("status"), d.get("waitFor"), (d.get("pick") or {}).get("pick"),
+                      (d.get("stake") or {}).get("level"), sm.get("lineupsConfirmed"), sm.get("probables"),
+                      [[p.get("pick"), r(p.get("price")), p.get("priceIsReal"), r(p.get("ic"))] for p in (g.get("picks") or [])[:4]]])
+    live = [[x.get("pk"), x.get("state"), x.get("detailed"), x.get("ar"), x.get("hr"), x.get("inning"), x.get("top")]
+            for x in ((payload.get("live") or {}).get("games") or [])]
+    tickets = ((payload.get("historial") or {}).get("tickets") or [])
+    graded = sorted(t.get("id") for t in tickets if isinstance(t, dict) and t.get("result"))
+    labs = [[l.get("pk"), l.get("frozenAt"), bool(l.get("result")), bool(l.get("auditoria"))] for l in payload.get("prolabs") or []]
+    core = {"games": games, "live": live, "graded": graded, "labs": labs,
+            "changes": len((payload.get("cambios") or {}).get("events") or [])}
+    digest = hashlib.sha256(json.dumps(core, sort_keys=True, ensure_ascii=False, default=str).encode()).hexdigest()[:16]
+    times = sorted(g.get("time") for g in payload.get("games") or [] if g.get("time"))
+    m = payload.get("meta") or {}
+    return {"generatedAt": m.get("generatedAt"), "digest": digest, "games": len(games), "nextGame": times[0] if times else None,
+            "live": sum(1 for x in live if x[1] == "Live"), "cadence": (payload.get("revision") or {}).get("cadence")}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="Genera la página MLBgs")
     ap.add_argument("--bundle", default=".cache/raw_bundle.json.gz")
     ap.add_argument("--out", default=OUT_HTML)
     ap.add_argument("--json", help="además escribe el payload como JSON")
+    ap.add_argument("--estado", help="además escribe estado.json (huella de cambios para la rutina que republica)")
     ap.add_argument("--no-save", action="store_true", help="no actualizar data/predictions")
     ap.add_argument("--from-payload", help="arma la página con un payload ya calculado (rama pagina) sin correr el modelo")
     args = ap.parse_args()
@@ -430,6 +460,9 @@ def main() -> None:
         opener = gzip.open if args.json.endswith(".gz") else open
         with opener(args.json, "wt", encoding="utf-8") as f:
             json.dump(payload, f, ensure_ascii=False, separators=(",", ":"))
+    if args.estado:
+        with open(args.estado, "w", encoding="utf-8") as f:
+            json.dump(estado(payload), f, ensure_ascii=False, indent=1)
     print(f"{len(payload['games'])} partidos → {args.out} ({os.path.getsize(args.out) / 1e6:.2f} MB); "
           f"seguimiento: {payload['track']['n']} partidos evaluados", file=sys.stderr)
 

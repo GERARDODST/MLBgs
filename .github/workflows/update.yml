@@ -2,12 +2,10 @@ name: Actualizar MLBgs
 
 on:
   schedule:
-    # Días de juego: cada 20 minutos de 15:00 a 05:59 UTC (lineups, abridores, bullpen y modelo al día); el relevo
-    # (abajo) acorta la espera cerca del primer lanzamiento. Cada corrida anota qué cambió (data/cambios) y revisa
-    # enseguida los momios de esos partidos. El marcador en vivo lo consulta el navegador directo de statsapi.mlb.com.
-    - cron: "*/20 15-23 * * *"
-    - cron: "*/20 0-5 * * *"
-    - cron: "0 12 * * *"
+    # El relevo (abajo) encadena las corridas todo el día mientras haya un partido en 36 h (mlbgs/cadencia.py). Este
+    # cron es solo el respaldo que lo reanuda si se corta: cada hora, en el minuto 17 (GitHub retrasa más los de :00).
+    # Cada corrida anota qué cambió (data/cambios) y revisa enseguida los momios de esos partidos.
+    - cron: "17 * * * *"
   workflow_dispatch:
   push:
     branches: ["main"]
@@ -46,7 +44,7 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python -m mlbgs.fetch --out .cache/raw_bundle.json.gz
       - name: Correr el modelo y construir la página
-        run: python -m mlbgs.build --bundle .cache/raw_bundle.json.gz --json .cache/payload.json.gz
+        run: python -m mlbgs.build --bundle .cache/raw_bundle.json.gz --json .cache/payload.json.gz --estado .cache/estado.json
       - name: Guardar los expedientes pendientes para la siguiente corrida
         if: always()
         uses: actions/cache/save@v4
@@ -70,9 +68,11 @@ jobs:
         run: |
           # payload.json.gz: los datos ya calculados; la rutina arma la página con la plantilla del repo
           # (python -m mlbgs.build --from-payload payload.json.gz). index.html: la misma página, ya armada.
+          # estado.json: hora del corte, siguiente partido y huella de cambios (la rutina solo republica si cambió)
           blob=$(git hash-object -w site/index.html)
           pay=$(git hash-object -w .cache/payload.json.gz)
-          tree=$(printf "100644 blob %s\tindex.html\n100644 blob %s\tpayload.json.gz\n" "$blob" "$pay" | git mktree)
+          est=$(git hash-object -w .cache/estado.json)
+          tree=$(printf "100644 blob %s\testado.json\n100644 blob %s\tindex.html\n100644 blob %s\tpayload.json.gz\n" "$est" "$blob" "$pay" | git mktree)
           commit=$(git commit-tree "$tree" -m "Página MLBgs $(date -u +%Y-%m-%dT%H:%MZ)")
           git push -f origin "$commit:refs/heads/pagina" || echo "no se pudo guardar la página en la rama pagina"
       - name: Empaquetar la página
@@ -95,9 +95,10 @@ jobs:
         uses: actions/deploy-pages@v4
 
   relevo:
-    # El cron de GitHub no garantiza la frecuencia (en repos nuevos puede saltarse corridas): en horario de
-    # juegos, cada corrida en main espera y lanza la siguiente. La espera depende del siguiente primer lanzamiento
-    # (mlbgs/cadencia.py): ≤ 2.5 h → 7 min, ≤ 6 h → 13 min, más lejos → 25 min. La concurrencia deja una sola en fila.
+    # El cron de GitHub no garantiza la frecuencia (se retrasa horas o se salta corridas): cada corrida en main espera y
+    # lanza la siguiente, a cualquier hora, mientras haya un partido en 36 h. La espera depende del siguiente primer
+    # lanzamiento (mlbgs/cadencia.py): ≤ 2.5 h → 7 min, ≤ 6 h o en juego → 13 min, ≤ 12 h → 25 min, ≤ 36 h → 55 min;
+    # sin partidos en 36 h se detiene y lo reanuda el cron. La concurrencia deja una sola en fila.
     if: always() && github.ref == 'refs/heads/main'
     needs: [update, deploy]
     runs-on: ubuntu-latest
@@ -111,17 +112,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Lanzar la siguiente actualización en horario de juegos
+      - name: Lanzar la siguiente actualización
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          h=$(date -u +%-H)
-          if [ "$h" -ge 15 ] || [ "$h" -le 5 ]; then
-            wait=$(python -m mlbgs.cadencia 2>/dev/null || echo 900)
+          wait=$(python -m mlbgs.cadencia 2>/dev/null || echo 900)
+          if [ "$wait" -gt 0 ]; then
             echo "espera ${wait} s (según el siguiente primer lanzamiento)"
             sleep "$wait"
             gh workflow run update.yml --repo "${GITHUB_REPOSITORY}" --ref main
             echo "siguiente corrida lanzada ($(date -u +%H:%MZ))"
           else
-            echo "fuera del horario de juegos: la reanuda el cron de las 12:00 o 15:00 UTC"
+            echo "sin partidos en las próximas 36 h: el relevo se detiene (lo reanuda el cron de cada hora)"
           fi
