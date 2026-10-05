@@ -1,0 +1,133 @@
+[
+{
+"pk": 849819,
+"date": "2026-10-06",
+"time": "2026-10-06T22:00:00Z",
+"generatedAt": "2026-10-05T04:00:43+00:00",
+"away": "LAD",
+"home": "ATL",
+"pHome": 0.505,
+"methods": {
+"log5": 0.4757,
+"elo": 0.54,
+"lambda": 0.4994
+},
+"confidence": "media",
+"projAway": 3.7939,
+"projHome": 3.8023,
+"total": 7.5963,
+"f5Away": 1.8892,
+"f5Home": 2.1283,
+"nrfi": 0.5686,
+"pOver85": 0.3619,
+"probables": {
+"away": "Yoshinobu Yamamoto",
+"home": "Chris Sale"
+},
+"light": "Gris",
+"best": {
+"market": "Prop pitcher",
+"pick": "Yoshinobu Yamamoto Over 5.5 K",
+"p": 0.5783,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.6696,
+"line": null,
+"ic": 39.2197,
+"level": "Muy baja"
+},
+{
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Under 3.5",
+"p": 0.506,
+"line": 3.5,
+"ic": 36.7298,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "momio",
+"family": "F5",
+"pick": "ATL F5",
+"level": 0,
+"alts": [
+"F5",
+"K"
+]
+}
+},
+{
+"pk": 849826,
+"date": "2026-10-06",
+"time": "2026-10-07T01:30:00Z",
+"generatedAt": "2026-10-05T04:00:43+00:00",
+"away": "MIL",
+"home": "SD",
+"pHome": 0.495,
+"methods": {
+"log5": 0.4428,
+"elo": 0.5501,
+"lambda": 0.492
+},
+"confidence": "baja",
+"projAway": 4.317,
+"projHome": 4.2507,
+"total": 8.5676,
+"f5Away": 2.3721,
+"f5Home": 2.6496,
+"nrfi": 0.4756,
+"pOver85": 0.4524,
+"probables": {
+"away": "Dustin May",
+"home": "Nick Pivetta"
+},
+"light": "Amarillo",
+"best": {
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.6039,
+"price": -109,
+"edge": 0.0824,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.6039,
+"line": 7.0,
+"ic": 54.5079,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Dustin May Over 2.5 K",
+"p": 0.6094,
+"line": 2.5,
+"ic": 34.3052,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "momio",
+"family": "F5",
+"pick": "SD F5",
+"level": 0,
+"alts": [
+"F5"
+]
+}
+}
+]
