@@ -573,7 +573,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-05T22:01:13+00:00",
+  "registeredAt": "2026-10-05T22:33:56+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4775,
@@ -601,7 +601,7 @@
     "fair": -207.0,
     "ic": 74.5,
     "level": "Alta",
-    "price": 100,
+    "price": -104,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -652,7 +652,7 @@
     "fair": -290.0,
     "ic": 74.3,
     "level": "Alta",
-    "price": -149,
+    "price": -152,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -1031,7 +1031,7 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "con el momio de referencia (+100) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -136 o menos ya pasa el filtro",
+   "why": "con el momio de referencia (-104) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -136 o menos ya pasa el filtro",
    "source": "Framework v2",
    "pick": "Cam Schlittler Under 6.5 K",
    "waitFor": "verificar",
