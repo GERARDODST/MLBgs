@@ -33,16 +33,27 @@
    "kind": "decision",
    "pk": 849834,
    "text": "Decisión: esperar dato (Over 6.5) → esperar momio (F5 Under 4.5) · tras: abridor"
+  },
+  {
+   "after": "apostar F5 Over 3.5 · stake 3",
+   "at": "2026-10-05T10:49:17Z",
+   "before": "esperar momio (F5 Under 4.5)",
+   "date": "2026-10-05",
+   "game": "CWS @ CLE",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849834,
+   "text": "Decisión: esperar momio (F5 Under 4.5) → apostar F5 Over 3.5 · stake 3"
   }
  ],
  "snap": {
   "849834": {
    "away": 145,
    "dec": {
-    "level": 0,
-    "pick": "F5 Under 4.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 3,
+    "pick": "F5 Over 3.5",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 114,

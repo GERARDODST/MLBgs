@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-05T05:44:15+00:00",
+  "registeredAt": "2026-10-05T10:49:17+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5415,
@@ -49,15 +49,116 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Gavin Williams Under 7.5 K",
+    "line": 7.5,
+    "p": 0.6727,
+    "fair": -206.0,
+    "ic": 69.9,
+    "level": "Media",
+    "price": -103,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -169
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -142
+      }
+     ],
+     "steps": [
+      -169,
+      -164,
+      -156,
+      -149,
+      -142,
+      -135,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9873,
+     "r": 1.0,
+     "maxPrice": -135,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 3.5",
+    "line": 3.5,
+    "p": 0.5708,
+    "fair": -133.0,
+    "ic": 55.5,
+    "level": "Media",
+    "price": -103,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 3,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -114
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 103
+      }
+     ],
+     "steps": [
+      -114,
+      -111,
+      -106,
+      -101,
+      103,
+      108,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9873,
+     "r": 1.0,
+     "maxPrice": 112
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 6.5",
     "line": 6.5,
     "p": 0.6067,
     "fair": -154.0,
-    "ic": 53.7,
+    "ic": 54.9,
     "level": "Baja",
-    "price": -122,
+    "price": -120,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -73,8 +174,8 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 4,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "CLE",
@@ -101,7 +202,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 5,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
@@ -127,58 +228,7 @@
     }
    },
    {
-    "rank": 4,
-    "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Under 4.5",
-    "line": 4.5,
-    "p": 0.5622,
-    "fair": -128.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -110
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 107
-      }
-     ],
-     "steps": [
-      -110,
-      -107,
-      -103,
-      102,
-      107,
-      112,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9873,
-     "r": 1.0,
-     "maxPrice": 116,
-     "why": "sin momio real: conviene si pagan -110 o mejor"
-    }
-   },
-   {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total CWS",
@@ -204,7 +254,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total CLE",
@@ -230,7 +280,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -240,7 +290,7 @@
     "fair": -158.0,
     "ic": 37.0,
     "level": "Muy baja",
-    "price": null,
+    "price": -164,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -277,58 +327,7 @@
      "h": 0.9873,
      "r": 1.0,
      "maxPrice": -105,
-     "why": "sin momio real: conviene si pagan -135 o mejor"
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Gavin Williams Under 6.5 K",
-    "line": 6.5,
-    "p": 0.5264,
-    "fair": -111.0,
-    "ic": 34.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 108
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 127
-      }
-     ],
-     "steps": [
-      108,
-      111,
-      116,
-      121,
-      127,
-      133,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9873,
-     "r": 1.0,
-     "maxPrice": 134,
-     "why": "sin momio real: conviene si pagan +108 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -411,27 +410,26 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan -110 o mejor (stake 1); stake 5 desde +107",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-103)",
    "source": "Framework v2",
-   "pick": "F5 Under 4.5",
-   "waitFor": "momio",
+   "pick": "F5 Over 3.5",
    "market": "Total primeras 5",
-   "p": 0.5622,
-   "ic": 37.0,
-   "level": 0,
-   "amount": 0,
-   "minPrice": -110,
+   "p": 0.5708,
+   "ic": 55.5,
+   "level": 3,
+   "amount": 750,
+   "minPrice": -114,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -110
+     "from": -114
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 107
+     "from": 103
     }
    ]
   }
@@ -466,7 +464,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-05T05:44:15+00:00",
+  "registeredAt": "2026-10-05T10:49:17+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4767,
@@ -752,7 +750,7 @@
     "fair": -113.0,
     "ic": 33.7,
     "level": "Muy baja",
-    "price": -115,
+    "price": -113,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],

@@ -3,7 +3,7 @@
 "pk": 849834,
 "date": "2026-10-05",
 "time": "2026-10-05T21:00:00Z",
-"generatedAt": "2026-10-04T17:28:18+00:00",
+"generatedAt": "2026-10-05T10:49:17+00:00",
 "away": "CWS",
 "home": "CLE",
 "pHome": 0.5415,
@@ -29,40 +29,40 @@
 "market": "Total",
 "pick": "Over 6.5",
 "p": 0.6067,
-"price": -122,
-"edge": 0.0572,
+"price": -120,
+"edge": 0.0613,
 "light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 6.5",
-"p": 0.6067,
-"line": 6.5,
-"ic": 53.6608,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Gavin Williams Under 7.5 K",
+"p": 0.6727,
+"line": 7.5,
+"ic": 69.8731,
+"level": "Media"
 },
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "CLE",
-"p": 0.5415,
-"line": null,
-"ic": 38.0409,
-"level": "Muy baja"
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Over 3.5",
+"p": 0.5708,
+"line": 3.5,
+"ic": 55.4746,
+"level": "Media"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "F5 total",
-"pick": "F5 Under 4.5",
-"level": 0,
+"pick": "F5 Over 3.5",
+"level": 3,
 "alts": [
-"F5 total",
-"F5",
-"K"
+"K",
+"Total",
+"ML"
 ]
 }
 },
