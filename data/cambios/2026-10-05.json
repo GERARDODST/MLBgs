@@ -44,13 +44,35 @@
    "kind": "decision",
    "pk": 849834,
    "text": "Decisión: esperar momio (F5 Under 4.5) → apostar F5 Over 3.5 · stake 3"
+  },
+  {
+   "after": "apostar F5 Over 3.5 · stake 4",
+   "at": "2026-10-05T15:03:58Z",
+   "before": "apostar F5 Over 3.5 · stake 3",
+   "date": "2026-10-05",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849834,
+   "text": "Decisión: apostar F5 Over 3.5 · stake 3 → apostar F5 Over 3.5 · stake 4"
+  },
+  {
+   "after": "esperar verificar (Cam Schlittler Under 6.5 K)",
+   "at": "2026-10-05T15:03:58Z",
+   "before": "esperar momio (NYY F5)",
+   "date": "2026-10-05",
+   "game": "NYY @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849839,
+   "text": "Decisión: esperar momio (NYY F5) → esperar verificar (Cam Schlittler Under 6.5 K)"
   }
  ],
  "snap": {
   "849834": {
    "away": 145,
    "dec": {
-    "level": 3,
+    "level": 4,
     "pick": "F5 Over 3.5",
     "status": "apostar",
     "waitFor": null
@@ -150,9 +172,9 @@
    "away": 147,
    "dec": {
     "level": 0,
-    "pick": "NYY F5",
+    "pick": "Cam Schlittler Under 6.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Scheduled",
    "home": 139,

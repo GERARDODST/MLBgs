@@ -3,7 +3,7 @@
 "pk": 849834,
 "date": "2026-10-05",
 "time": "2026-10-05T21:00:00Z",
-"generatedAt": "2026-10-05T10:49:17+00:00",
+"generatedAt": "2026-10-05T15:03:58+00:00",
 "away": "CWS",
 "home": "CLE",
 "pHome": 0.5415,
@@ -29,8 +29,8 @@
 "market": "Total",
 "pick": "Over 6.5",
 "p": 0.6067,
-"price": -120,
-"edge": 0.0613,
+"price": -115,
+"edge": 0.0719,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -44,12 +44,12 @@
 "level": "Media"
 },
 {
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Over 3.5",
-"p": 0.5708,
-"line": 3.5,
-"ic": 55.4746,
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.5",
+"p": 0.6067,
+"line": 6.5,
+"ic": 57.9384,
 "level": "Media"
 }
 ],
@@ -58,7 +58,7 @@
 "waitFor": null,
 "family": "F5 total",
 "pick": "F5 Over 3.5",
-"level": 3,
+"level": 4,
 "alts": [
 "K",
 "Total",
@@ -70,7 +70,7 @@
 "pk": 849839,
 "date": "2026-10-05",
 "time": "2026-10-06T00:00:00Z",
-"generatedAt": "2026-10-05T05:44:15+00:00",
+"generatedAt": "2026-10-05T15:03:58+00:00",
 "away": "NYY",
 "home": "TB",
 "pHome": 0.4767,
@@ -102,33 +102,34 @@
 },
 "topPicks": [
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "NYY",
-"p": 0.5233,
-"line": null,
-"ic": 39.581,
-"level": "Muy baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Cam Schlittler Under 6.5 K",
+"p": 0.6195,
+"line": 6.5,
+"ic": 69.9321,
+"level": "Media"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "TB +1.5",
-"p": 0.6353,
-"line": null,
-"ic": 37.9131,
-"level": "Muy baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Freddy Peralta Over 5.5 K",
+"p": 0.6087,
+"line": 5.5,
+"ic": 69.8083,
+"level": "Media"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "momio",
-"family": "F5",
-"pick": "NYY F5",
+"waitFor": "verificar",
+"family": "K",
+"pick": "Cam Schlittler Under 6.5 K",
 "level": 0,
 "alts": [
-"F5",
-"K"
+"K",
+"ML",
+"RL"
 ]
 }
 }

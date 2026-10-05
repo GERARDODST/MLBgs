@@ -14,7 +14,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.30",
-   "code": "1c492a3d964b"
+   "code": "9e5e812e949e"
   },
   "analyses": [
    "Contexto del partido",
@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-05T10:49:17+00:00",
+  "registeredAt": "2026-10-05T15:03:58+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5415,
@@ -57,7 +57,7 @@
     "fair": -206.0,
     "ic": 69.9,
     "level": "Media",
-    "price": -103,
+    "price": -105,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -100,22 +100,48 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.6067,
+    "fair": -154.0,
+    "ic": 57.9,
+    "level": "Media",
+    "price": -115,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9873,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
     "line": 3.5,
     "p": 0.5708,
     "fair": -133.0,
-    "ic": 55.5,
+    "ic": 56.9,
     "level": "Media",
-    "price": -103,
+    "price": -101,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "level": 3,
+     "level": 4,
      "ladder": [
       {
        "level": 1,
@@ -148,32 +174,6 @@
     }
    },
    {
-    "rank": 3,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.5",
-    "line": 6.5,
-    "p": 0.6067,
-    "fair": -154.0,
-    "ic": 54.9,
-    "level": "Baja",
-    "price": -120,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9873,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 4,
     "principal": false,
     "family": "ML",
@@ -184,7 +184,7 @@
     "fair": -118.0,
     "ic": 38.0,
     "level": "Muy baja",
-    "price": -163,
+    "price": -149,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -212,7 +212,7 @@
     "fair": -154.0,
     "ic": 37.0,
     "level": "Muy baja",
-    "price": -174,
+    "price": -191,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -411,14 +411,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-103)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-101)",
    "source": "Framework v2",
    "pick": "F5 Over 3.5",
    "market": "Total primeras 5",
    "p": 0.5708,
-   "ic": 55.5,
-   "level": 3,
-   "amount": 750,
+   "ic": 56.9,
+   "level": 4,
+   "amount": 875,
    "minPrice": -114,
    "ladder": [
     {
@@ -449,7 +449,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.30",
-   "code": "1c492a3d964b"
+   "code": "9e5e812e949e"
   },
   "analyses": [
    "Contexto del partido",
@@ -464,7 +464,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-05T10:49:17+00:00",
+  "registeredAt": "2026-10-05T15:03:58+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4767,
@@ -484,6 +484,108 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Cam Schlittler Under 6.5 K",
+    "line": 6.5,
+    "p": 0.6195,
+    "fair": -163.0,
+    "ic": 69.9,
+    "level": "Media",
+    "price": 111,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -135
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -114
+      }
+     ],
+     "steps": [
+      -135,
+      -132,
+      -126,
+      -120,
+      -114,
+      -109,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9873,
+     "r": 1.0,
+     "maxPrice": -109,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Freddy Peralta Over 5.5 K",
+    "line": 5.5,
+    "p": 0.6087,
+    "fair": -156.0,
+    "ic": 69.8,
+    "level": "Media",
+    "price": 120,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -129
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -109
+      }
+     ],
+     "steps": [
+      -129,
+      -126,
+      -120,
+      -115,
+      -109,
+      -104,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9873,
+     "r": 1.0,
+     "maxPrice": -104,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "NYY",
@@ -492,7 +594,7 @@
     "fair": -110.0,
     "ic": 39.6,
     "level": "Muy baja",
-    "price": -131,
+    "price": -127,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -510,8 +612,8 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 4,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "TB +1.5",
@@ -561,7 +663,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 5,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -587,7 +689,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 6,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -597,7 +699,7 @@
     "fair": -103.0,
     "ic": 37.1,
     "level": "Muy baja",
-    "price": null,
+    "price": -146,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -634,109 +736,7 @@
      "h": 0.9873,
      "r": 1.0,
      "maxPrice": 145,
-     "why": "sin momio real: conviene si pagan +113 o mejor"
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Cam Schlittler Over 5.5 K",
-    "line": 5.5,
-    "p": 0.5411,
-    "fair": -118.0,
-    "ic": 34.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 102
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 120
-      }
-     ],
-     "steps": [
-      102,
-      104,
-      109,
-      114,
-      120,
-      125,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9873,
-     "r": 1.0,
-     "maxPrice": 126,
-     "why": "sin momio real: conviene si pagan +102 o mejor"
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Freddy Peralta Under 6.5 K",
-    "line": 6.5,
-    "p": 0.5504,
-    "fair": -122.0,
-    "ic": 34.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -102
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 115
-      }
-     ],
-     "steps": [
-      -102,
-      101,
-      105,
-      110,
-      115,
-      121,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9873,
-     "r": 1.0,
-     "maxPrice": 122,
-     "why": "sin momio real: conviene si pagan -102 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -748,9 +748,9 @@
     "line": 6.5,
     "p": 0.5301,
     "fair": -113.0,
-    "ic": 33.7,
+    "ic": 34.2,
     "level": "Muy baja",
-    "price": -113,
+    "price": -112,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -847,26 +847,26 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de F5 Moneyline: conviene si pagan +113 o mejor (stake 1); stake 5 desde +133",
+   "why": "con el momio de referencia (+111) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -109 o menos ya pasa el filtro",
    "source": "Framework v2",
-   "pick": "NYY F5",
-   "waitFor": "momio",
-   "market": "F5 Moneyline",
-   "p": 0.5076,
-   "ic": 37.1,
+   "pick": "Cam Schlittler Under 6.5 K",
+   "waitFor": "verificar",
+   "market": "Prop de ponches",
+   "p": 0.6195,
+   "ic": 69.9,
    "level": 0,
    "amount": 0,
-   "minPrice": 113,
+   "minPrice": -135,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": 113
+     "from": -135
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 133
+     "from": -114
     }
    ]
   }

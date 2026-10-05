@@ -1,6 +1,19 @@
 {
  "date": "2026-10-06",
- "events": [],
+ "events": [
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 6.0,
+   "at": "2026-10-05T15:04:07Z",
+   "before": 6.5,
+   "date": "2026-10-06",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849819,
+   "text": "La línea del total pasa de 6.5 a 6.0"
+  }
+ ],
  "snap": {
   "849819": {
    "away": 119,
@@ -18,12 +31,12 @@
    },
    "names": {},
    "odds": {
-    "line": 6.5,
+    "line": 6.0,
     "ml": {
-     "away": -111,
-     "home": -108
+     "away": -110,
+     "home": -109
     },
-    "pHome": 0.4967,
+    "pHome": 0.4989,
     "src": "draftkings"
    },
    "prob": {

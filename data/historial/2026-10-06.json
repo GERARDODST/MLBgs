@@ -14,7 +14,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.30",
-   "code": "1c492a3d964b"
+   "code": "9e5e812e949e"
   },
   "analyses": [
    "Contexto del partido",
@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-05T10:49:17+00:00",
+  "registeredAt": "2026-10-05T15:03:58+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.505,
@@ -51,13 +51,13 @@
     "principal": true,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Over 6.5",
-    "line": 6.5,
-    "p": 0.5515,
-    "fair": -123.0,
-    "ic": 40.2,
+    "pick": "Over 6.0",
+    "line": 6.0,
+    "p": 0.6154,
+    "fair": -160.0,
+    "ic": 52.9,
     "level": "Baja",
-    "price": -107,
+    "price": -116,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -81,9 +81,9 @@
     "line": null,
     "p": 0.6696,
     "fair": -203.0,
-    "ic": 37.9,
+    "ic": 39.2,
     "level": "Muy baja",
-    "price": -199,
+    "price": -195,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -263,7 +263,7 @@
     "fair": -102.0,
     "ic": 35.8,
     "level": "Muy baja",
-    "price": -107,
+    "price": -109,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -476,7 +476,7 @@
   "kind": "Modelo estadístico por secciones",
   "algo": {
    "version": "2026.09.30",
-   "code": "1c492a3d964b"
+   "code": "9e5e812e949e"
   },
   "analyses": [
    "Contexto del partido",
@@ -491,7 +491,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-05T10:49:17+00:00",
+  "registeredAt": "2026-10-05T15:03:58+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.495,
