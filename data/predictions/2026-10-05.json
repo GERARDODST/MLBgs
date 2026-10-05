@@ -3,7 +3,7 @@
 "pk": 849834,
 "date": "2026-10-05",
 "time": "2026-10-05T21:00:00Z",
-"generatedAt": "2026-10-05T18:07:24+00:00",
+"generatedAt": "2026-10-05T20:01:57+00:00",
 "away": "CWS",
 "home": "CLE",
 "pHome": 0.5435,
@@ -49,7 +49,7 @@
 "pick": "F5 Over 3.5",
 "p": 0.5579,
 "line": 3.5,
-"ic": 63.3492,
+"ic": 64.0748,
 "level": "Media"
 }
 ],
@@ -58,7 +58,7 @@
 "waitFor": null,
 "family": "F5 total",
 "pick": "F5 Over 3.5",
-"level": 3,
+"level": 4,
 "alts": [
 "K",
 "Total",
@@ -70,37 +70,46 @@
 "pk": 849839,
 "date": "2026-10-05",
 "time": "2026-10-06T00:00:00Z",
-"generatedAt": "2026-10-05T18:07:24+00:00",
+"generatedAt": "2026-10-05T20:01:57+00:00",
 "away": "NYY",
 "home": "TB",
-"pHome": 0.4767,
+"pHome": 0.48,
 "methods": {
 "log5": 0.4905,
 "elo": 0.4811,
-"lambda": 0.4586
+"lambda": 0.4685
 },
 "confidence": "alta",
 "projAway": 3.8819,
-"projHome": 3.4991,
-"total": 7.381,
+"projHome": 3.5925,
+"total": 7.4743,
 "f5Away": 1.968,
-"f5Home": 1.9255,
-"nrfi": 0.5813,
-"pOver85": 0.3419,
+"f5Home": 1.9768,
+"nrfi": 0.5769,
+"pOver85": 0.3506,
 "probables": {
 "away": "Cam Schlittler",
 "home": "Freddy Peralta"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "NRFI/YRFI",
-"pick": "NRFI",
-"p": 0.5813,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "F5",
+"pick": "TB F5",
+"p": 0.5016,
+"price": 116,
+"edge": 0.0386,
+"light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Cam Schlittler Under 6.5 K",
+"p": 0.6746,
+"line": 6.5,
+"ic": 69.9321,
+"level": "Media"
+},
 {
 "family": "K",
 "market": "Prop de ponches",
@@ -109,27 +118,18 @@
 "line": 4.5,
 "ic": 69.8083,
 "level": "Media"
-},
-{
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Cam Schlittler Under 6.5 K",
-"p": 0.6195,
-"line": 6.5,
-"ic": 69.7863,
-"level": "Media"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "verificar",
 "family": "K",
-"pick": "Freddy Peralta Over 4.5 K",
+"pick": "Cam Schlittler Under 6.5 K",
 "level": 0,
 "alts": [
 "K",
-"ML",
-"RL"
+"F5",
+"ML"
 ]
 }
 }
