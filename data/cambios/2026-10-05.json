@@ -66,6 +66,49 @@
    "kind": "decision",
    "pk": 849839,
    "text": "Decisión: esperar momio (NYY F5) → esperar verificar (Cam Schlittler Under 6.5 K)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-05T17:11:19Z",
+   "date": "2026-10-05",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849834,
+   "side": "away",
+   "text": "Lineup confirmado (CWS)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-05T17:11:19Z",
+   "date": "2026-10-05",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849834,
+   "side": "home",
+   "text": "Lineup confirmado (CLE)"
+  },
+  {
+   "after": "Gabe Morales",
+   "at": "2026-10-05T17:11:19Z",
+   "date": "2026-10-05",
+   "game": "CWS @ CLE",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849834,
+   "text": "Umpire de home asignado: Gabe Morales"
+  },
+  {
+   "after": "apostar Over 6.5 · stake 4",
+   "at": "2026-10-05T17:11:08Z",
+   "before": "apostar F5 Over 3.5 · stake 4",
+   "date": "2026-10-05",
+   "game": "CWS @ CLE",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849834,
+   "text": "Decisión: apostar F5 Over 3.5 · stake 4 → apostar Over 6.5 · stake 4 · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -73,17 +116,56 @@
    "away": 145,
    "dec": {
     "level": 4,
-    "pick": "F5 Over 3.5",
+    "pick": "Over 6.5",
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 114,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     803011,
+     691019,
+     678246,
+     808959,
+     643217,
+     671976,
+     695731,
+     805367,
+     695657
+    ],
+    "home": [
+     680757,
+     608070,
+     800050,
+     666176,
+     663993,
+     682657,
+     683953,
+     672275,
+     677587
+    ]
    },
-   "names": {},
+   "names": {
+    "608070": "José Ramírez",
+    "643217": "Andrew Benintendi",
+    "663993": "Nathaniel Lowe",
+    "666176": "Jo Adell",
+    "671976": "Tristan Peters",
+    "672275": "Patrick Bailey",
+    "677587": "Brayan Rocchio",
+    "678246": "Miguel Vargas",
+    "680757": "Steven Kwan",
+    "682657": "Angel Martínez",
+    "683953": "Travis Bazzana",
+    "691019": "Kyle Teel",
+    "695657": "Colson Montgomery",
+    "695731": "Braden Montgomery",
+    "800050": "Chase DeLauter",
+    "803011": "Sam Antonacci",
+    "805367": "Chase Meidroth",
+    "808959": "Munetaka Murakami"
+   },
    "odds": {
     "line": 6.5,
     "ml": {
@@ -160,13 +242,19 @@
     "944960",
     "944961"
    ],
-   "ump": null,
+   "ump": "Gabe Morales",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "in",
+    "speed": 12,
+    "temp": 60.0
+   }
   },
   "849839": {
    "away": 147,
