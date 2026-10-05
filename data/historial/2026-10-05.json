@@ -573,7 +573,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-05T23:05:24+00:00",
+  "registeredAt": "2026-10-05T23:21:21+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4775,
@@ -695,21 +695,19 @@
    {
     "rank": 3,
     "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "NYY",
-    "line": null,
-    "p": 0.5225,
-    "fair": -109.0,
-    "ic": 41.3,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.5471,
+    "fair": -121.0,
+    "ic": 43.1,
     "level": "Baja",
-    "price": -125,
+    "price": -108,
     "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.0% · Elo + abridor (5.7.7) 51.9% · λ + Binomial Negativa (5.3 · 5.7.5) 53.9%",
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
      "level": 0,
@@ -723,19 +721,21 @@
    {
     "rank": 4,
     "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.5",
-    "line": 6.5,
-    "p": 0.5471,
-    "fair": -121.0,
-    "ic": 39.1,
-    "level": "Muy baja",
-    "price": -114,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "NYY",
+    "line": null,
+    "p": 0.5225,
+    "fair": -109.0,
+    "ic": 41.3,
+    "level": "Baja",
+    "price": -126,
     "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.0% · Elo + abridor (5.7.7) 51.9% · λ + Binomial Negativa (5.3 · 5.7.5) 53.9%",
     "res": null,
     "stake": {
      "level": 0,
@@ -755,9 +755,9 @@
     "line": null,
     "p": 0.6349,
     "fair": -174.0,
-    "ic": 39.0,
+    "ic": 38.3,
     "level": "Muy baja",
-    "price": -172,
+    "price": -175,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
