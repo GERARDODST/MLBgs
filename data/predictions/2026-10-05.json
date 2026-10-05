@@ -70,35 +70,35 @@
 "pk": 849839,
 "date": "2026-10-05",
 "time": "2026-10-06T00:00:00Z",
-"generatedAt": "2026-10-05T20:01:57+00:00",
+"generatedAt": "2026-10-05T22:01:13+00:00",
 "away": "NYY",
 "home": "TB",
-"pHome": 0.48,
+"pHome": 0.4775,
 "methods": {
 "log5": 0.4905,
 "elo": 0.4811,
-"lambda": 0.4685
+"lambda": 0.4609
 },
 "confidence": "alta",
-"projAway": 3.8819,
+"projAway": 3.9589,
 "projHome": 3.5925,
-"total": 7.4743,
-"f5Away": 1.968,
+"total": 7.5514,
+"f5Away": 2.0071,
 "f5Home": 1.9768,
-"nrfi": 0.5769,
-"pOver85": 0.3506,
+"nrfi": 0.574,
+"pOver85": 0.3577,
 "probables": {
 "away": "Cam Schlittler",
 "home": "Freddy Peralta"
 },
-"light": "Amarillo",
+"light": "Gris",
 "best": {
-"market": "F5",
-"pick": "TB F5",
-"p": 0.5016,
-"price": 116,
-"edge": 0.0386,
-"light": "Amarillo"
+"market": "NRFI/YRFI",
+"pick": "NRFI",
+"p": 0.574,
+"price": null,
+"edge": null,
+"light": "Gris"
 },
 "topPicks": [
 {
@@ -107,17 +107,17 @@
 "pick": "Cam Schlittler Under 6.5 K",
 "p": 0.6746,
 "line": 6.5,
-"ic": 69.9321,
-"level": "Media"
+"ic": 74.4654,
+"level": "Alta"
 },
 {
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Freddy Peralta Over 4.5 K",
-"p": 0.759,
+"p": 0.7437,
 "line": 4.5,
-"ic": 69.8083,
-"level": "Media"
+"ic": 74.3416,
+"level": "Alta"
 }
 ],
 "decision": {
@@ -128,8 +128,8 @@
 "level": 0,
 "alts": [
 "K",
-"F5",
-"ML"
+"ML",
+"RL"
 ]
 }
 }

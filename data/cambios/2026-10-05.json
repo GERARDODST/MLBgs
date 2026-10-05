@@ -174,6 +174,17 @@
    "kind": "decision",
    "pk": 849839,
    "text": "Decisión: esperar verificar (Freddy Peralta Over 4.5 K) → esperar verificar (Cam Schlittler Under 6.5 K) · tras: lineup, umpire"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-05T22:01:19Z",
+   "date": "2026-10-05",
+   "game": "NYY @ TB",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849839,
+   "side": "away",
+   "text": "Lineup confirmado (NYY)"
   }
  ],
  "snap": {
@@ -333,7 +344,17 @@
    "detailed": "Pre-Game",
    "home": 139,
    "lu": {
-    "away": [],
+    "away": [
+     700250,
+     641355,
+     671277,
+     682987,
+     806146,
+     665862,
+     663757,
+     669224,
+     641857
+    ],
     "home": [
      650490,
      666018,
@@ -347,15 +368,24 @@
     ]
    },
    "names": {
+    "641355": "Cody Bellinger",
+    "641857": "Ryan McMahon",
     "650490": "Yandy Díaz",
+    "663757": "Trent Grisham",
+    "665862": "Jazz Chisholm Jr.",
     "666018": "Jonathan Aranda",
+    "669224": "Austin Wells",
     "670764": "Taylor Walls",
+    "671277": "Luis García Jr.",
     "676356": "Jonny DeLuca",
     "680700": "Richie Palacios",
+    "682987": "Spencer Jones",
     "683748": "Victor Mesa Jr.",
     "689414": "Liam Hicks",
     "691406": "Junior Caminero",
-    "802415": "Chandler Simpson"
+    "700250": "Ben Rice",
+    "802415": "Chandler Simpson",
+    "806146": "George Lombard Jr."
    },
    "odds": {
     "line": 6.5,
