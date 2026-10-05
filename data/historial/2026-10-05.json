@@ -573,7 +573,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-05T22:33:56+00:00",
+  "registeredAt": "2026-10-05T23:05:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4775,
@@ -723,6 +723,32 @@
    {
     "rank": 4,
     "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.5471,
+    "fair": -121.0,
+    "ic": 39.1,
+    "level": "Muy baja",
+    "price": -114,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9873,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "TB +1.5",
@@ -772,7 +798,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -798,7 +824,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total NYY",
@@ -849,7 +875,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "Team total",
     "market": "Team total TB",
@@ -900,7 +926,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 9,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -951,7 +977,7 @@
     }
    },
    {
-    "rank": 9,
+    "rank": 10,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
@@ -999,32 +1025,6 @@
      "r": 1.0,
      "maxPrice": 110,
      "why": "sin momio real: conviene si pagan -119 o mejor"
-    }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.5",
-    "line": 6.5,
-    "p": 0.5471,
-    "fair": -121.0,
-    "ic": 37.2,
-    "level": "Muy baja",
-    "price": -117,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9873,
-     "r": 1.0
     }
    }
   ],
