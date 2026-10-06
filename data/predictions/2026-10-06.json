@@ -70,32 +70,32 @@
 "pk": 849826,
 "date": "2026-10-06",
 "time": "2026-10-07T01:30:00Z",
-"generatedAt": "2026-10-06T21:45:41+00:00",
+"generatedAt": "2026-10-06T22:10:31+00:00",
 "away": "MIL",
 "home": "SD",
-"pHome": 0.4975,
+"pHome": 0.497,
 "methods": {
 "log5": 0.4428,
 "elo": 0.5501,
-"lambda": 0.4997
+"lambda": 0.4982
 },
 "confidence": "baja",
-"projAway": 4.317,
+"projAway": 4.3332,
 "projHome": 4.3301,
-"total": 8.6471,
-"f5Away": 2.3721,
+"total": 8.6633,
+"f5Away": 2.381,
 "f5Home": 2.6991,
-"nrfi": 0.4718,
-"pOver85": 0.4598,
+"nrfi": 0.4713,
+"pOver85": 0.4613,
 "probables": {
 "away": "Dustin May",
 "home": "Nick Pivetta"
 },
 "light": "Rojo",
 "best": {
-"market": "Team total",
-"pick": "SD Over 3.5",
-"p": 0.5337,
+"market": "NRFI/YRFI",
+"pick": "YRFI",
+"p": 0.5287,
 "price": null,
 "edge": null,
 "light": "Rojo"
@@ -105,31 +105,29 @@
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Nick Pivetta Over 3.5 K",
-"p": 0.7159,
+"p": 0.708,
 "line": 3.5,
-"ic": 59.9173,
+"ic": 58.8131,
 "level": "Media"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Dustin May Over 2.5 K",
-"p": 0.5804,
-"line": 2.5,
-"ic": 37.6385,
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.5",
+"p": 0.5543,
+"line": 7.5,
+"ic": 39.2627,
 "level": "Muy baja"
 }
 ],
 "decision": {
-"status": "no apostar",
-"waitFor": null,
-"family": "RL",
-"pick": "MIL +1.5",
+"status": "esperar",
+"waitFor": "momio",
+"family": "NRFI",
+"pick": "YRFI",
 "level": 0,
 "alts": [
-"K",
-"K",
-"Total"
+"NRFI"
 ]
 }
 }

@@ -202,6 +202,28 @@
    "pk": 849826,
    "side": "home",
    "text": "SD: San Diego Padres activated RHP Walker Buehler from the paternity list."
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-06T22:10:41Z",
+   "date": "2026-10-06",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849826,
+   "side": "away",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "esperar momio (YRFI)",
+   "at": "2026-10-06T22:10:31Z",
+   "before": "no apostar",
+   "date": "2026-10-06",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849826,
+   "text": "Decisión: no apostar → esperar momio (YRFI) · tras: lineup, umpire, movimiento"
   }
  ],
  "snap": {
@@ -369,22 +391,32 @@
     "closed": false,
     "cond": "Clear",
     "dir": "cruzado",
-    "speed": 8,
-    "temp": 78.0
+    "speed": 6,
+    "temp": 75.0
    }
   },
   "849826": {
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "MIL +1.5",
-    "status": "no apostar",
-    "waitFor": null
+    "pick": "YRFI",
+    "status": "esperar",
+    "waitFor": "momio"
    },
    "detailed": "Pre-Game",
    "home": 135,
    "lu": {
-    "away": [],
+    "away": [
+     694192,
+     641343,
+     661388,
+     668930,
+     592885,
+     669003,
+     806198,
+     686217,
+     687401
+    ],
     "home": [
      665487,
      701538,
@@ -399,13 +431,22 @@
    },
    "names": {
     "592518": "Manny Machado",
+    "592885": "Christian Yelich",
     "593428": "Xander Bogaerts",
     "630105": "Jake Cronenworth",
+    "641343": "Jake Bauers",
     "657757": "Gavin Sheets",
+    "661388": "William Contreras",
     "664034": "Ty France",
     "665487": "Fernando Tatis Jr.",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
+    "686217": "Sal Frelick",
+    "687401": "Joey Ortiz",
     "687957": "Dustin Harris",
+    "694192": "Jackson Chourio",
     "701538": "Jackson Merrill",
+    "806198": "Cooper Pratt",
     "806956": "Ethan Salas"
    },
    "odds": {
