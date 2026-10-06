@@ -3,66 +3,66 @@
 "pk": 849819,
 "date": "2026-10-06",
 "time": "2026-10-06T22:00:00Z",
-"generatedAt": "2026-10-06T18:29:46+00:00",
+"generatedAt": "2026-10-06T18:43:55+00:00",
 "away": "LAD",
 "home": "ATL",
-"pHome": 0.505,
+"pHome": 0.508,
 "methods": {
 "log5": 0.4757,
 "elo": 0.54,
-"lambda": 0.4994
+"lambda": 0.5084
 },
 "confidence": "media",
-"projAway": 3.7939,
-"projHome": 3.8023,
-"total": 7.5963,
-"f5Away": 1.8892,
-"f5Home": 2.1283,
-"nrfi": 0.5686,
-"pOver85": 0.3619,
+"projAway": 3.7411,
+"projHome": 3.8371,
+"total": 7.5782,
+"f5Away": 1.8628,
+"f5Home": 2.1477,
+"nrfi": 0.5689,
+"pOver85": 0.3602,
 "probables": {
 "away": "Yoshinobu Yamamoto",
 "home": "Chris Sale"
 },
 "light": "Gris",
 "best": {
-"market": "Prop pitcher",
-"pick": "Yoshinobu Yamamoto Over 5.5 K",
-"p": 0.5783,
+"market": "NRFI/YRFI",
+"pick": "NRFI",
+"p": 0.5689,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "ATL +1.5",
-"p": 0.6696,
-"line": null,
-"ic": 40.5787,
-"level": "Baja"
-},
-{
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Chris Sale Under 7.5 K",
-"p": 0.6152,
+"p": 0.6451,
 "line": 7.5,
-"ic": 38.8741,
-"level": "Muy baja"
+"ic": 52.1283,
+"level": "Baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.6776,
+"line": null,
+"ic": 44.1306,
+"level": "Baja"
 }
 ],
 "decision": {
-"status": "no apostar",
+"status": "apostar",
 "waitFor": null,
-"family": "RL",
-"pick": "ATL +1.5",
-"level": 0,
+"family": "K",
+"pick": "Chris Sale Under 7.5 K",
+"level": 3,
 "alts": [
-"K",
+"RL",
 "Total",
-"F5 total"
+"K"
 ]
 }
 },
@@ -70,7 +70,7 @@
 "pk": 849826,
 "date": "2026-10-06",
 "time": "2026-10-07T01:30:00Z",
-"generatedAt": "2026-10-06T14:00:00+00:00",
+"generatedAt": "2026-10-06T18:43:55+00:00",
 "away": "MIL",
 "home": "SD",
 "pHome": 0.495,
@@ -111,12 +111,12 @@
 "level": "Muy baja"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Dustin May Over 2.5 K",
-"p": 0.6094,
-"line": 2.5,
-"ic": 34.3052,
+"family": "RL",
+"market": "Run Line",
+"pick": "MIL +1.5",
+"p": 0.6548,
+"line": null,
+"ic": 34.7603,
 "level": "Muy baja"
 }
 ],

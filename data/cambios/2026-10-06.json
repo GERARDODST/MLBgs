@@ -112,21 +112,53 @@
    "kind": "decision",
    "pk": 849819,
    "text": "Decisión: no apostar → no apostar · tras: lineup, umpire"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-06T18:44:05Z",
+   "date": "2026-10-06",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849819,
+   "side": "away",
+   "text": "Lineup confirmado (LAD)"
+  },
+  {
+   "after": "apostar Chris Sale Under 7.5 K · stake 3",
+   "at": "2026-10-06T18:43:55Z",
+   "before": "no apostar",
+   "date": "2026-10-06",
+   "game": "LAD @ ATL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849819,
+   "text": "Decisión: no apostar → apostar Chris Sale Under 7.5 K · stake 3 · tras: lineup, umpire"
   }
  ],
  "snap": {
   "849819": {
    "away": 119,
    "dec": {
-    "level": 0,
-    "pick": "ATL +1.5",
-    "status": "no apostar",
+    "level": 3,
+    "pick": "Chris Sale Under 7.5 K",
+    "status": "apostar",
     "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 144,
    "lu": {
-    "away": [],
+    "away": [
+     605141,
+     518692,
+     606192,
+     669257,
+     660271,
+     500743,
+     681624,
+     663656,
+     571771
+    ],
     "home": [
      686948,
      660670,
@@ -140,14 +172,23 @@
     ]
    },
    "names": {
+    "500743": "Miguel Rojas",
+    "518692": "Freddie Freeman",
+    "571771": "Enrique Hernández",
+    "605141": "Mookie Betts",
+    "606192": "Teoscar Hernández",
     "621566": "Matt Olson",
     "643289": "Mauricio Dubón",
     "645277": "Ozzie Albies",
+    "660271": "Shohei Ohtani",
     "660670": "Ronald Acuña Jr.",
     "663586": "Austin Riley",
+    "663656": "Kyle Tucker",
     "669221": "Sean Murphy",
+    "669257": "Will Smith",
     "671739": "Michael Harris II",
     "673490": "Ha-Seong Kim",
+    "681624": "Andy Pages",
     "686948": "Drake Baldwin"
    },
    "odds": {
