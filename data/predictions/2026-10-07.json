@@ -137,66 +137,66 @@
 "pk": 849838,
 "date": "2026-10-07",
 "time": "2026-10-08T00:00:00Z",
-"generatedAt": "2026-10-06T04:01:10+00:00",
+"generatedAt": "2026-10-06T04:56:57+00:00",
 "away": "TB",
 "home": "NYY",
-"pHome": 0.5448,
+"pHome": 0.5642,
 "methods": {
 "log5": 0.5664,
-"elo": 0.5274,
-"lambda": 0.5404
+"elo": 0.574,
+"lambda": 0.552
 },
 "confidence": "alta",
 "projAway": 3.8959,
-"projHome": 4.3195,
-"total": 8.2154,
+"projHome": 4.4432,
+"total": 8.3391,
 "f5Away": 1.9956,
-"f5Home": 2.3952,
-"nrfi": 0.5414,
-"pOver85": 0.4197,
+"f5Home": 2.511,
+"nrfi": 0.531,
+"pOver85": 0.4312,
 "probables": {
-"away": "Por anunciar",
+"away": "Nick Martinez",
 "home": "Max Fried"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "F5",
-"pick": "NYY F5",
-"p": 0.5654,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.5809,
+"price": -122,
+"edge": 0.0314,
+"light": "Amarillo"
 },
 "topPicks": [
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.0",
-"p": 0.5682,
+"p": 0.5809,
 "line": 7.0,
-"ic": 38.8889,
-"level": "Muy baja"
+"ic": 45.1789,
+"level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "NYY",
-"p": 0.5448,
+"p": 0.5642,
 "line": null,
-"ic": 37.831,
-"level": "Muy baja"
+"ic": 40.6202,
+"level": "Baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 7.0",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Over 3.5",
 "level": 0,
 "alts": [
-"ML",
-"RL",
-"F5 total"
+"F5 total",
+"F5",
+"K"
 ]
 }
 },

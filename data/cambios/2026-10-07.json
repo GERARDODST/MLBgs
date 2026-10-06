@@ -1,6 +1,30 @@
 {
  "date": "2026-10-07",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Nick Martinez",
+   "at": "2026-10-06T04:57:07Z",
+   "date": "2026-10-07",
+   "game": "TB @ NYY",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849838,
+   "side": "away",
+   "text": "Abridor anunciado (TB): Nick Martinez"
+  },
+  {
+   "after": "esperar momio (F5 Over 3.5)",
+   "at": "2026-10-06T04:56:57Z",
+   "before": "esperar dato (Over 7.0)",
+   "date": "2026-10-07",
+   "game": "TB @ NYY",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849838,
+   "text": "Decisión: esperar dato (Over 7.0) → esperar momio (F5 Over 3.5) · tras: abridor"
+  }
+ ],
  "snap": {
   "849822": {
    "away": 119,
@@ -97,7 +121,7 @@
     "945022"
    ],
    "ump": null,
-   "wx": null
+   "wx": {}
   },
   "849827": {
    "away": 158,
@@ -184,7 +208,7 @@
     "945025"
    ],
    "ump": null,
-   "wx": null
+   "wx": {}
   },
   "849833": {
    "away": 114,
@@ -277,15 +301,15 @@
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": null
+   "wx": {}
   },
   "849838": {
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "Over 7.0",
+    "pick": "F5 Over 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 147,
@@ -304,7 +328,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 607259,
+     "name": "Nick Martinez"
+    },
     "home": {
      "id": 608331,
      "name": "Max Fried"
@@ -382,7 +409,7 @@
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": null
+   "wx": {}
   }
  }
 }
