@@ -564,7 +564,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-06T21:37:41+00:00",
+  "registeredAt": "2026-10-06T21:45:41+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4975,
@@ -572,7 +572,7 @@
    "projHome": 4.33,
    "total": 8.65,
    "nrfi": 0.4718,
-   "light": "Gris",
+   "light": "Rojo",
    "confidence": "baja",
    "probables": {
     "away": "Dustin May",
@@ -584,24 +584,24 @@
    {
     "rank": 1,
     "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.5",
-    "line": 7.5,
-    "p": 0.5528,
-    "fair": -124.0,
-    "ic": 38.3,
-    "level": "Muy baja",
-    "price": -111,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Nick Pivetta Over 3.5 K",
+    "line": 3.5,
+    "p": 0.7159,
+    "fair": -252.0,
+    "ic": 59.9,
+    "level": "Media",
+    "price": -164,
     "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
+     "λ + Poisson (5.4)"
     ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
      "level": 0,
      "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "block": "el guion del partido no acompaña",
      "a": 1.0,
      "h": 0.9803,
      "r": 1.0
@@ -618,7 +618,7 @@
     "fair": -138.0,
     "ic": 37.6,
     "level": "Muy baja",
-    "price": null,
+    "price": -151,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -636,6 +636,32 @@
    {
     "rank": 3,
     "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.5",
+    "line": 7.5,
+    "p": 0.5528,
+    "fair": -124.0,
+    "ic": 36.3,
+    "level": "Muy baja",
+    "price": -114,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "MIL +1.5",
@@ -644,7 +670,7 @@
     "fair": -183.0,
     "ic": 33.8,
     "level": "Muy baja",
-    "price": -192,
+    "price": -187,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -685,7 +711,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -711,7 +737,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total MIL",
@@ -737,7 +763,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total SD",
@@ -763,7 +789,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -811,32 +837,6 @@
      "r": 1.0,
      "maxPrice": 122,
      "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Nick Pivetta Over 4.5 K",
-    "line": 4.5,
-    "p": 0.536,
-    "fair": -116.0,
-    "ic": 32.3,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0
     }
    },
    {
@@ -897,7 +897,7 @@
   "result": null,
   "decision": {
    "status": "no apostar",
-   "why": "con el momio de referencia (-192): edge menor a 3 pp con ese momio (stake 1 desde -149)",
+   "why": "con el momio de referencia (-187): edge menor a 3 pp con ese momio (stake 1 desde -149)",
    "source": "Framework v2",
    "pick": "MIL +1.5",
    "market": "Run Line",
