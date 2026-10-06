@@ -3,66 +3,66 @@
 "pk": 849819,
 "date": "2026-10-06",
 "time": "2026-10-06T22:00:00Z",
-"generatedAt": "2026-10-06T18:15:48+00:00",
+"generatedAt": "2026-10-06T18:29:46+00:00",
 "away": "LAD",
 "home": "ATL",
-"pHome": 0.5062,
+"pHome": 0.505,
 "methods": {
 "log5": 0.4757,
 "elo": 0.54,
-"lambda": 0.503
+"lambda": 0.4994
 },
 "confidence": "media",
 "projAway": 3.7939,
-"projHome": 3.8371,
-"total": 7.631,
+"projHome": 3.8023,
+"total": 7.5963,
 "f5Away": 1.8892,
-"f5Home": 2.1477,
-"nrfi": 0.5669,
-"pOver85": 0.3651,
+"f5Home": 2.1283,
+"nrfi": 0.5686,
+"pOver85": 0.3619,
 "probables": {
 "away": "Yoshinobu Yamamoto",
 "home": "Chris Sale"
 },
 "light": "Gris",
 "best": {
-"market": "NRFI/YRFI",
-"pick": "NRFI",
-"p": 0.5669,
+"market": "Prop pitcher",
+"pick": "Yoshinobu Yamamoto Over 5.5 K",
+"p": 0.5783,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
+"family": "RL",
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.6696,
+"line": null,
+"ic": 40.5787,
+"level": "Baja"
+},
+{
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Chris Sale Under 7.5 K",
 "p": 0.6152,
 "line": 7.5,
-"ic": 42.2075,
-"level": "Baja"
-},
-{
-"family": "RL",
-"market": "Run Line",
-"pick": "ATL +1.5",
-"p": 0.6722,
-"line": null,
-"ic": 41.3545,
-"level": "Baja"
+"ic": 38.8741,
+"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "no apostar",
 "waitFor": null,
-"family": "K",
-"pick": "Chris Sale Under 7.5 K",
+"family": "RL",
+"pick": "ATL +1.5",
 "level": 0,
 "alts": [
-"RL",
+"K",
 "Total",
-"K"
+"F5 total"
 ]
 }
 },
