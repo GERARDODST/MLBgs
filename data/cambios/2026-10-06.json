@@ -34,6 +34,18 @@
    "kind": "decision",
    "pk": 849826,
    "text": "Decisión: esperar momio (SD F5) → no apostar"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 7.5,
+   "at": "2026-10-06T14:00:08Z",
+   "before": 7.0,
+   "date": "2026-10-06",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849826,
+   "text": "La línea del total pasa de 7.0 a 7.5"
   }
  ],
  "snap": {
@@ -175,12 +187,12 @@
    },
    "names": {},
    "odds": {
-    "line": 7.0,
+    "line": 7.5,
     "ml": {
      "away": 113,
-     "home": -136
+     "home": -137
     },
-    "pHome": 0.5511,
+    "pHome": 0.5518,
     "src": "draftkings"
    },
    "prob": {
