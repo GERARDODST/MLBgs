@@ -3,53 +3,53 @@
 "pk": 849833,
 "date": "2026-10-07",
 "time": "2026-10-07T20:00:00Z",
-"generatedAt": "2026-10-06T18:01:54+00:00",
+"generatedAt": "2026-10-06T19:25:46+00:00",
 "away": "CLE",
 "home": "CWS",
-"pHome": 0.5122,
+"pHome": 0.5348,
 "methods": {
 "log5": 0.5391,
-"elo": 0.4945,
-"lambda": 0.5029
+"elo": 0.5279,
+"lambda": 0.5374
 },
 "confidence": "alta",
-"projAway": 4.2551,
+"projAway": 3.9021,
 "projHome": 4.298,
-"total": 8.553,
-"f5Away": 2.3914,
+"total": 8.2001,
+"f5Away": 2.0662,
 "f5Home": 2.5288,
-"nrfi": 0.4981,
-"pOver85": 0.4511,
+"nrfi": 0.5255,
+"pOver85": 0.4182,
 "probables": {
 "away": "Por anunciar",
-"home": "Por anunciar"
+"home": "Sean Newcomb"
 },
-"light": "Rojo",
+"light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Over 7.5",
-"p": 0.5441,
-"price": -119,
-"edge": 0.0007,
-"light": "Rojo"
+"market": "F5",
+"pick": "CWS F5",
+"p": 0.5733,
+"price": null,
+"edge": null,
+"light": "Gris"
 },
 "topPicks": [
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "CWS",
-"p": 0.5122,
+"p": 0.5348,
 "line": null,
-"ic": 34.9926,
-"level": "Muy baja"
+"ic": 43.3196,
+"level": "Baja"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.5",
-"p": 0.5441,
-"line": 7.5,
-"ic": 32.0172,
+"family": "RL",
+"market": "Run Line",
+"pick": "CWS +1.5",
+"p": 0.6945,
+"line": null,
+"ic": 39.3783,
 "level": "Muy baja"
 }
 ],
@@ -60,8 +60,8 @@
 "pick": "CWS",
 "level": 0,
 "alts": [
-"Total",
 "RL",
+"Total",
 "F5 total"
 ]
 }

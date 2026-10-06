@@ -29,19 +29,19 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-06T18:01:54+00:00",
+  "registeredAt": "2026-10-06T19:25:46+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5122,
-   "projAway": 4.26,
+   "pHome": 0.5348,
+   "projAway": 3.9,
    "projHome": 4.3,
-   "total": 8.55,
-   "nrfi": 0.4981,
-   "light": "Rojo",
+   "total": 8.2,
+   "nrfi": 0.5255,
+   "light": "Gris",
    "confidence": "alta",
    "probables": {
     "away": "Por anunciar",
-    "home": "Por anunciar"
+    "home": "Sean Newcomb"
    },
    "lineups": "Proyectados"
   },
@@ -53,17 +53,17 @@
     "market": "Moneyline",
     "pick": "CWS",
     "line": null,
-    "p": 0.5122,
-    "fair": -105.0,
-    "ic": 35.0,
-    "level": "Muy baja",
+    "p": 0.5348,
+    "fair": -115.0,
+    "ic": 43.3,
+    "level": "Baja",
     "price": -121,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 49.4% · λ + Binomial Negativa (5.3 · 5.7.5) 50.3%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 52.8% · λ + Binomial Negativa (5.3 · 5.7.5) 53.7%",
     "res": null,
     "stake": {
      "level": 0,
@@ -77,39 +77,13 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.5",
-    "line": 7.5,
-    "p": 0.5441,
-    "fair": -119.0,
-    "ic": 32.0,
-    "level": "Muy baja",
-    "price": -119,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "CWS +1.5",
     "line": null,
-    "p": 0.6593,
-    "fair": -194.0,
-    "ic": 31.8,
+    "p": 0.6945,
+    "fair": -227.0,
+    "ic": 39.4,
     "level": "Muy baja",
     "price": -206,
     "methods": [
@@ -127,15 +101,41 @@
     }
    },
    {
+    "rank": 3,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.5",
+    "line": 7.5,
+    "p": 0.5108,
+    "fair": -104.0,
+    "ic": 33.2,
+    "level": "Muy baja",
+    "price": -119,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
     "rank": 4,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Under 4.5",
     "line": 4.5,
-    "p": 0.5177,
-    "fair": -107.0,
-    "ic": 31.8,
+    "p": 0.5598,
+    "fair": -127.0,
+    "ic": 33.2,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -155,65 +155,13 @@
    {
     "rank": 5,
     "principal": false,
-    "family": "Team total",
-    "market": "Team total CLE",
-    "pick": "CLE Over 3.5",
-    "line": 3.5,
-    "p": 0.5235,
-    "fair": -110.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de CLE",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total CWS",
-    "pick": "CWS Over 3.5",
-    "line": 3.5,
-    "p": 0.5293,
-    "fair": -112.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de CWS",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "CWS F5",
     "line": null,
-    "p": 0.5209,
-    "fair": -109.0,
-    "ic": 28.5,
+    "p": 0.5733,
+    "fair": -134.0,
+    "ic": 33.2,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -231,15 +179,93 @@
     }
    },
    {
+    "rank": 6,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Sean Newcomb Under 2.5 K",
+    "line": 2.5,
+    "p": 0.587,
+    "fair": -142.0,
+    "ic": 32.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total CLE",
+    "pick": "CLE Under 3.5",
+    "line": 3.5,
+    "p": 0.5259,
+    "fair": -111.0,
+    "ic": 29.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de CLE",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
     "rank": 8,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total CWS",
+    "pick": "CWS Over 3.5",
+    "line": 3.5,
+    "p": 0.5293,
+    "fair": -112.0,
+    "ic": 29.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de CWS",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 9,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
-    "pick": "YRFI",
+    "pick": "NRFI",
     "line": null,
-    "p": 0.5019,
-    "fair": -101.0,
-    "ic": 28.5,
+    "p": 0.5255,
+    "fair": -111.0,
+    "ic": 29.8,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -265,8 +291,8 @@
    "pick": "CWS",
    "waitFor": "dato",
    "market": "Moneyline",
-   "p": 0.5122,
-   "ic": 35.0,
+   "p": 0.5348,
+   "ic": 43.3,
    "level": 0,
    "amount": 0,
    "minPrice": null,

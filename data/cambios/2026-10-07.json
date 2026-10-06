@@ -23,6 +23,18 @@
    "kind": "decision",
    "pk": 849838,
    "text": "Decisión: esperar dato (Over 7.0) → esperar momio (F5 Over 3.5) · tras: abridor"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Sean Newcomb",
+   "at": "2026-10-06T19:25:58Z",
+   "date": "2026-10-07",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849833,
+   "side": "home",
+   "text": "Abridor anunciado (CWS): Sean Newcomb"
   }
  ],
  "snap": {
@@ -236,7 +248,10 @@
    },
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 656794,
+     "name": "Sean Newcomb"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-06T04:01:17Z",
