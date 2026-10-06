@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-06T07:44:42+00:00",
+  "registeredAt": "2026-10-06T10:32:36+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.505,
@@ -75,6 +75,108 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Chris Sale Under 7.5 K",
+    "line": 7.5,
+    "p": 0.6152,
+    "fair": -160.0,
+    "ic": 40.8,
+    "level": "Baja",
+    "price": -146,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -132
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -112
+      }
+     ],
+     "steps": [
+      -132,
+      -129,
+      -123,
+      -117,
+      -112,
+      -106,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0,
+     "maxPrice": -107,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Yoshinobu Yamamoto Under 6.5 K",
+    "line": 6.5,
+    "p": 0.582,
+    "fair": -139.0,
+    "ic": 36.9,
+    "level": "Muy baja",
+    "price": -135,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -116
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 102
+      }
+     ],
+     "steps": [
+      -116,
+      -113,
+      -108,
+      -103,
+      102,
+      107,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0,
+     "maxPrice": 107,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "ATL +1.5",
@@ -124,7 +226,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 5,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -150,7 +252,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total LAD",
@@ -176,7 +278,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total ATL",
@@ -202,7 +304,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 8,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -212,7 +314,7 @@
     "fair": -118.0,
     "ic": 36.7,
     "level": "Muy baja",
-    "price": null,
+    "price": -120,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -249,11 +351,11 @@
      "h": 0.9803,
      "r": 1.0,
      "maxPrice": 126,
-     "why": "sin momio real: conviene si pagan -101 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
-    "rank": 7,
+    "rank": 9,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -278,108 +380,6 @@
      "a": 1.0,
      "h": 0.9803,
      "r": 1.0
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Yoshinobu Yamamoto Over 5.5 K",
-    "line": 5.5,
-    "p": 0.5783,
-    "fair": -137.0,
-    "ic": 34.7,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -114
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 104
-      }
-     ],
-     "steps": [
-      -114,
-      -111,
-      -106,
-      -101,
-      104,
-      109,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0,
-     "maxPrice": 109,
-     "why": "sin momio real: conviene si pagan -114 o mejor"
-    }
-   },
-   {
-    "rank": 9,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Chris Sale Over 6.5 K",
-    "line": 6.5,
-    "p": 0.5337,
-    "fair": -114.0,
-    "ic": 34.4,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 105
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 124
-      }
-     ],
-     "steps": [
-      105,
-      108,
-      113,
-      119,
-      124,
-      130,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0,
-     "maxPrice": 130,
-     "why": "sin momio real: conviene si pagan +105 o mejor"
     }
    },
    {
@@ -411,27 +411,26 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de F5 Moneyline: conviene si pagan -101 o mejor (stake 1); stake 5 desde +117",
+   "status": "no apostar",
+   "why": "con el momio de referencia (-146): edge menor a 3 pp con ese momio (stake 1 desde -132)",
    "source": "Framework v2",
-   "pick": "ATL F5",
-   "waitFor": "momio",
-   "market": "F5 Moneyline",
-   "p": 0.5417,
-   "ic": 36.7,
+   "pick": "Chris Sale Under 7.5 K",
+   "market": "Prop de ponches",
+   "p": 0.6152,
+   "ic": 40.8,
    "level": 0,
    "amount": 0,
-   "minPrice": -101,
+   "minPrice": -132,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -101
+     "from": -132
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 117
+     "from": -112
     }
    ]
   }
