@@ -35,6 +35,41 @@
    "pk": 849833,
    "side": "home",
    "text": "Abridor anunciado (CWS): Sean Newcomb"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Tyler Glasnow",
+   "at": "2026-10-06T19:39:59Z",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849822,
+   "side": "away",
+   "text": "Abridor anunciado (LAD): Tyler Glasnow"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Tyler Mahle",
+   "at": "2026-10-06T19:39:59Z",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849822,
+   "side": "home",
+   "text": "Abridor anunciado (ATL): Tyler Mahle"
+  },
+  {
+   "after": "esperar momio (LAD)",
+   "at": "2026-10-06T19:39:48Z",
+   "before": "esperar dato (LAD)",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849822,
+   "text": "Decisión: esperar dato (LAD) → esperar momio (LAD) · tras: abridor"
   }
  ],
  "snap": {
@@ -44,7 +79,7 @@
     "level": 0,
     "pick": "LAD",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 144,
@@ -54,8 +89,14 @@
    },
    "names": {},
    "prob": {
-    "away": null,
-    "home": null
+    "away": {
+     "id": 607192,
+     "name": "Tyler Glasnow"
+    },
+    "home": {
+     "id": 641816,
+     "name": "Tyler Mahle"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-06T04:01:17Z",

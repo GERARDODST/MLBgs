@@ -70,32 +70,32 @@
 "pk": 849822,
 "date": "2026-10-07",
 "time": "2026-10-07T22:00:00Z",
-"generatedAt": "2026-10-06T04:01:10+00:00",
+"generatedAt": "2026-10-06T19:39:48+00:00",
 "away": "LAD",
 "home": "ATL",
-"pHome": 0.4599,
+"pHome": 0.4704,
 "methods": {
 "log5": 0.4757,
-"elo": 0.4507,
-"lambda": 0.4533
+"elo": 0.4886,
+"lambda": 0.4469
 },
 "confidence": "alta",
-"projAway": 4.5174,
-"projHome": 4.0419,
-"total": 8.5593,
-"f5Away": 2.4799,
-"f5Home": 2.3098,
-"nrfi": 0.5111,
-"pOver85": 0.4516,
+"projAway": 4.461,
+"projHome": 3.9246,
+"total": 8.3856,
+"f5Away": 2.4218,
+"f5Home": 2.2046,
+"nrfi": 0.5246,
+"pOver85": 0.4355,
 "probables": {
-"away": "Por anunciar",
-"home": "Por anunciar"
+"away": "Tyler Glasnow",
+"home": "Tyler Mahle"
 },
 "light": "Rojo",
 "best": {
-"market": "ML",
-"pick": "LAD",
-"p": 0.5401,
+"market": "F5",
+"pick": "LAD F5",
+"p": 0.5344,
 "price": null,
 "edge": null,
 "light": "Rojo"
@@ -105,31 +105,32 @@
 "family": "ML",
 "market": "Moneyline",
 "pick": "LAD",
-"p": 0.5401,
+"p": 0.5296,
 "line": null,
-"ic": 39.081,
+"ic": 38.7975,
 "level": "Muy baja"
 },
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Under 8.0",
-"p": 0.502,
+"p": 0.5199,
 "line": 8.0,
-"ic": 31.8,
+"ic": 34.981,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
+"waitFor": "momio",
 "family": "ML",
 "pick": "LAD",
 "level": 0,
 "alts": [
-"Total",
+"ML",
 "F5 total",
-"RL"
+"F5",
+"K"
 ]
 }
 },
