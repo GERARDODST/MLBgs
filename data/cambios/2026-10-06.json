@@ -134,6 +134,74 @@
    "kind": "decision",
    "pk": 849819,
    "text": "Decisión: no apostar → apostar Chris Sale Under 7.5 K · stake 3 · tras: lineup, umpire"
+  },
+  {
+   "action": "Modelo recalculado con el lineup nuevo; momios revisados en esta corrida.",
+   "after": [
+    "Lane Thomas"
+   ],
+   "at": "2026-10-06T21:37:48Z",
+   "before": [
+    "Sean Murphy"
+   ],
+   "date": "2026-10-06",
+   "game": "LAD @ ATL",
+   "impact": "alto",
+   "kind": "lineup",
+   "pk": 849819,
+   "side": "home",
+   "text": "Cambio en el lineup (ATL): sale Sean Murphy; entra Lane Thomas"
+  },
+  {
+   "action": "El total proyectado ya usa el viento nuevo.",
+   "at": "2026-10-06T21:37:48Z",
+   "date": "2026-10-06",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "clima",
+   "pk": 849819,
+   "text": "Viento: 8 mph in → 8 mph cruzado"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-06T21:37:48Z",
+   "date": "2026-10-06",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849826,
+   "side": "home",
+   "text": "Lineup confirmado (SD)"
+  },
+  {
+   "after": "Alfonso Márquez",
+   "at": "2026-10-06T21:37:48Z",
+   "date": "2026-10-06",
+   "game": "MIL @ SD",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849826,
+   "text": "Umpire de home asignado: Alfonso Márquez"
+  },
+  {
+   "at": "2026-10-06T21:37:48Z",
+   "date": "2026-10-06",
+   "game": "MIL @ SD",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849826,
+   "side": "home",
+   "text": "SD: RHP Randy Vásquez roster status changed by San Diego Padres."
+  },
+  {
+   "at": "2026-10-06T21:37:48Z",
+   "date": "2026-10-06",
+   "game": "MIL @ SD",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849826,
+   "side": "home",
+   "text": "SD: San Diego Padres activated RHP Walker Buehler from the paternity list."
   }
  ],
  "snap": {
@@ -166,7 +234,7 @@
      645277,
      671739,
      643289,
-     669221,
+     657041,
      663586,
      673490
     ]
@@ -180,6 +248,7 @@
     "621566": "Matt Olson",
     "643289": "Mauricio Dubón",
     "645277": "Ozzie Albies",
+    "657041": "Lane Thomas",
     "660271": "Shohei Ohtani",
     "660670": "Ronald Acuña Jr.",
     "663586": "Austin Riley",
@@ -299,9 +368,9 @@
    "wx": {
     "closed": false,
     "cond": "Clear",
-    "dir": "in",
+    "dir": "cruzado",
     "speed": 8,
-    "temp": 76.0
+    "temp": 77.0
    }
   },
   "849826": {
@@ -312,13 +381,33 @@
     "status": "no apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 135,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     665487,
+     701538,
+     592518,
+     664034,
+     806956,
+     657757,
+     593428,
+     687957,
+     630105
+    ]
    },
-   "names": {},
+   "names": {
+    "592518": "Manny Machado",
+    "593428": "Xander Bogaerts",
+    "630105": "Jake Cronenworth",
+    "657757": "Gavin Sheets",
+    "664034": "Ty France",
+    "665487": "Fernando Tatis Jr.",
+    "687957": "Dustin Harris",
+    "701538": "Jackson Merrill",
+    "806956": "Ethan Salas"
+   },
    "odds": {
     "line": 7.5,
     "ml": {
@@ -402,15 +491,23 @@
     "944986",
     "944987",
     "945024",
-    "945025"
+    "945025",
+    "945203",
+    "945204"
    ],
-   "ump": null,
+   "ump": "Alfonso Márquez",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "in",
+    "speed": 9,
+    "temp": 83.0
+   }
   }
  }
 }

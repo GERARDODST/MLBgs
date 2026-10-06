@@ -29,18 +29,18 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-06T19:39:48+00:00",
+  "registeredAt": "2026-10-06T21:37:41+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5348,
+   "pHome": 0.5359,
    "projAway": 3.9,
-   "projHome": 4.3,
-   "total": 8.2,
-   "nrfi": 0.5255,
+   "projHome": 4.19,
+   "total": 8.09,
+   "nrfi": 0.5348,
    "light": "Gris",
    "confidence": "alta",
    "probables": {
-    "away": "Por anunciar",
+    "away": "Daniel Espino",
     "home": "Sean Newcomb"
    },
    "lineups": "Proyectados"
@@ -53,25 +53,53 @@
     "market": "Moneyline",
     "pick": "CWS",
     "line": null,
-    "p": 0.5348,
+    "p": 0.5359,
     "fair": -115.0,
-    "ic": 43.3,
+    "ic": 41.3,
     "level": "Baja",
-    "price": -121,
+    "price": -120,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 52.8% · λ + Binomial Negativa (5.3 · 5.7.5) 53.7%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 54.2% · λ + Binomial Negativa (5.3 · 5.7.5) 52.7%",
     "res": null,
+    "alerts": [
+     "depende de que Daniel Espino siga en mala racha (8.3)"
+    ],
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -102
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 118
+      }
+     ],
+     "steps": [
+      -102,
+      -101,
+      105,
+      111,
+      118,
+      125,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9803,
-     "r": 1.0
+     "r": 0.8,
+     "maxPrice": 129,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -81,23 +109,46 @@
     "market": "Run Line",
     "pick": "CWS +1.5",
     "line": null,
-    "p": 0.6945,
-    "fair": -227.0,
-    "ic": 39.4,
+    "p": 0.6863,
+    "fair": -219.0,
+    "ic": 36.1,
     "level": "Muy baja",
-    "price": -206,
+    "price": -205,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
+    "alerts": [
+     "depende de que Daniel Espino siga en mala racha (8.3)"
+    ],
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -171
+      }
+     ],
+     "steps": [
+      -171,
+      -164,
+      -154,
+      -145,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9803,
-     "r": 1.0
+     "r": 0.8,
+     "maxPrice": -142,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -105,13 +156,13 @@
     "principal": false,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Over 7.5",
-    "line": 7.5,
-    "p": 0.5108,
-    "fair": -104.0,
-    "ic": 33.2,
+    "pick": "Under 8.0",
+    "line": 8.0,
+    "p": 0.5507,
+    "fair": -123.0,
+    "ic": 32.6,
     "level": "Muy baja",
-    "price": -118,
+    "price": -116,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -129,58 +180,6 @@
    {
     "rank": 4,
     "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Under 4.5",
-    "line": 4.5,
-    "p": 0.5598,
-    "fair": -127.0,
-    "ic": 33.2,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "CWS F5",
-    "line": null,
-    "p": 0.5733,
-    "fair": -134.0,
-    "ic": 33.2,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Sean Newcomb Under 2.5 K",
@@ -197,15 +196,91 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -114
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 103
+      }
+     ],
+     "steps": [
+      -114,
+      -112,
+      -107,
+      -102,
+      103,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9803,
-     "r": 1.0
+     "r": 1.0,
+     "maxPrice": 105,
+     "why": "sin momio real: conviene si pagan -114 o mejor"
     }
    },
    {
-    "rank": 7,
+    "rank": 5,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 3.5",
+    "line": 3.5,
+    "p": 0.5597,
+    "fair": -127.0,
+    "ic": 32.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -102
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 116
+      }
+     ],
+     "steps": [
+      -102,
+      101,
+      106,
+      111,
+      116,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0,
+     "maxPrice": 117,
+     "why": "sin momio real: conviene si pagan -102 o mejor"
+    }
+   },
+   {
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total CLE",
@@ -213,7 +288,7 @@
     "line": 3.5,
     "p": 0.5259,
     "fair": -111.0,
-    "ic": 29.8,
+    "ic": 32.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -231,15 +306,15 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total CWS",
     "pick": "CWS Over 3.5",
     "line": 3.5,
-    "p": 0.5293,
-    "fair": -112.0,
-    "ic": 29.8,
+    "p": 0.514,
+    "fair": -106.0,
+    "ic": 32.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -247,13 +322,65 @@
     ],
     "how": "Binomial Negativa de carreras de CWS",
     "res": null,
+    "alerts": [
+     "depende de que Daniel Espino siga en mala racha (8.3)"
+    ],
     "stake": {
      "level": 0,
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
      "h": 0.9803,
-     "r": 1.0
+     "r": 0.8
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "CWS F5",
+    "line": null,
+    "p": 0.5581,
+    "fair": -126.0,
+    "ic": 32.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "alerts": [
+     "depende de que Daniel Espino siga en mala racha (8.3)"
+    ],
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -101
+      }
+     ],
+     "steps": [
+      -101,
+      103,
+      109,
+      116,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 0.8,
+     "maxPrice": 118,
+     "why": "sin momio real: conviene si pagan -101 o mejor"
     }
    },
    {
@@ -263,9 +390,9 @@
     "market": "NRFI/YRFI",
     "pick": "NRFI",
     "line": null,
-    "p": 0.5255,
-    "fair": -111.0,
-    "ic": 29.8,
+    "p": 0.5348,
+    "fair": -115.0,
+    "ic": 28.6,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -281,22 +408,79 @@
      "h": 0.9803,
      "r": 1.0
     }
+   },
+   {
+    "rank": 10,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Daniel Espino Over 3.5 K",
+    "line": 3.5,
+    "p": 0.539,
+    "fair": -117.0,
+    "ic": 26.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 115
+      }
+     ],
+     "steps": [
+      115,
+      117,
+      123,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0,
+     "maxPrice": 127,
+     "why": "sin momio real: conviene si pagan +115 o mejor"
+    }
    }
   ],
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "why": "falta el momio de Prop de ponches: conviene si pagan -114 o mejor (stake 1); stake 5 desde +103",
    "source": "Framework v2",
-   "pick": "CWS",
-   "waitFor": "dato",
-   "market": "Moneyline",
-   "p": 0.5348,
-   "ic": 43.3,
+   "pick": "Sean Newcomb Under 2.5 K",
+   "waitFor": "momio",
+   "market": "Prop de ponches",
+   "p": 0.587,
+   "ic": 32.5,
    "level": 0,
    "amount": 0,
-   "minPrice": null,
-   "ladder": []
+   "minPrice": -114,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": -114
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": 103
+    }
+   ]
   }
  },
  {

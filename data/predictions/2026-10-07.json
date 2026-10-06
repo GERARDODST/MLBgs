@@ -3,32 +3,32 @@
 "pk": 849833,
 "date": "2026-10-07",
 "time": "2026-10-07T20:00:00Z",
-"generatedAt": "2026-10-06T19:25:46+00:00",
+"generatedAt": "2026-10-06T21:37:41+00:00",
 "away": "CLE",
 "home": "CWS",
-"pHome": 0.5348,
+"pHome": 0.5359,
 "methods": {
 "log5": 0.5391,
-"elo": 0.5279,
-"lambda": 0.5374
+"elo": 0.5418,
+"lambda": 0.5267
 },
 "confidence": "alta",
 "projAway": 3.9021,
-"projHome": 4.298,
-"total": 8.2001,
+"projHome": 4.1861,
+"total": 8.0882,
 "f5Away": 2.0662,
-"f5Home": 2.5288,
-"nrfi": 0.5255,
-"pOver85": 0.4182,
+"f5Home": 2.4265,
+"nrfi": 0.5348,
+"pOver85": 0.4078,
 "probables": {
-"away": "Por anunciar",
+"away": "Daniel Espino",
 "home": "Sean Newcomb"
 },
 "light": "Gris",
 "best": {
-"market": "F5",
-"pick": "CWS F5",
-"p": 0.5733,
+"market": "Prop pitcher",
+"pick": "Sean Newcomb Under 2.5 K",
+"p": 0.587,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -38,31 +38,31 @@
 "family": "ML",
 "market": "Moneyline",
 "pick": "CWS",
-"p": 0.5348,
+"p": 0.5359,
 "line": null,
-"ic": 43.3196,
+"ic": 41.3125,
 "level": "Baja"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "CWS +1.5",
-"p": 0.6945,
+"p": 0.6863,
 "line": null,
-"ic": 39.3783,
+"ic": 36.0919,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "ML",
-"pick": "CWS",
+"waitFor": "momio",
+"family": "K",
+"pick": "Sean Newcomb Under 2.5 K",
 "level": 0,
 "alts": [
-"RL",
-"Total",
-"F5 total"
+"K",
+"F5 total",
+"F5"
 ]
 }
 },

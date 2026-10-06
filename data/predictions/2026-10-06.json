@@ -3,35 +3,35 @@
 "pk": 849819,
 "date": "2026-10-06",
 "time": "2026-10-06T22:00:00Z",
-"generatedAt": "2026-10-06T18:43:55+00:00",
+"generatedAt": "2026-10-06T21:37:41+00:00",
 "away": "LAD",
 "home": "ATL",
-"pHome": 0.508,
+"pHome": 0.5087,
 "methods": {
 "log5": 0.4757,
 "elo": 0.54,
-"lambda": 0.5084
+"lambda": 0.5105
 },
 "confidence": "media",
 "projAway": 3.7411,
-"projHome": 3.8371,
-"total": 7.5782,
+"projHome": 3.8579,
+"total": 7.599,
 "f5Away": 1.8628,
-"f5Home": 2.1477,
-"nrfi": 0.5689,
-"pOver85": 0.3602,
+"f5Home": 2.1594,
+"nrfi": 0.5679,
+"pOver85": 0.3621,
 "probables": {
 "away": "Yoshinobu Yamamoto",
 "home": "Chris Sale"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "NRFI/YRFI",
-"pick": "NRFI",
-"p": 0.5689,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Total",
+"pick": "Over 6.5",
+"p": 0.5518,
+"price": -109,
+"edge": 0.0303,
+"light": "Amarillo"
 },
 "topPicks": [
 {
@@ -40,16 +40,16 @@
 "pick": "Chris Sale Under 7.5 K",
 "p": 0.6451,
 "line": 7.5,
-"ic": 52.1283,
+"ic": 51.2024,
 "level": "Baja"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "ATL +1.5",
-"p": 0.6776,
+"p": 0.6792,
 "line": null,
-"ic": 44.1306,
+"ic": 45.2829,
 "level": "Baja"
 }
 ],
@@ -70,23 +70,23 @@
 "pk": 849826,
 "date": "2026-10-06",
 "time": "2026-10-07T01:30:00Z",
-"generatedAt": "2026-10-06T18:43:55+00:00",
+"generatedAt": "2026-10-06T21:37:41+00:00",
 "away": "MIL",
 "home": "SD",
-"pHome": 0.495,
+"pHome": 0.4975,
 "methods": {
 "log5": 0.4428,
 "elo": 0.5501,
-"lambda": 0.492
+"lambda": 0.4997
 },
 "confidence": "baja",
 "projAway": 4.317,
-"projHome": 4.2507,
-"total": 8.5676,
+"projHome": 4.3301,
+"total": 8.6471,
 "f5Away": 2.3721,
-"f5Home": 2.6496,
-"nrfi": 0.4756,
-"pOver85": 0.4524,
+"f5Home": 2.6991,
+"nrfi": 0.4718,
+"pOver85": 0.4598,
 "probables": {
 "away": "Dustin May",
 "home": "Nick Pivetta"
@@ -95,7 +95,7 @@
 "best": {
 "market": "Prop pitcher",
 "pick": "Dustin May Over 2.5 K",
-"p": 0.6094,
+"p": 0.5804,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -105,18 +105,18 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.5",
-"p": 0.5455,
+"p": 0.5528,
 "line": 7.5,
-"ic": 38.1288,
+"ic": 38.2782,
 "level": "Muy baja"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "MIL +1.5",
-"p": 0.6548,
-"line": null,
-"ic": 34.7603,
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Dustin May Over 2.5 K",
+"p": 0.5804,
+"line": 2.5,
+"ic": 37.6385,
 "level": "Muy baja"
 }
 ],

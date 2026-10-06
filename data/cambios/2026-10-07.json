@@ -70,6 +70,41 @@
    "kind": "decision",
    "pk": 849822,
    "text": "Decisión: esperar dato (LAD) → esperar momio (LAD) · tras: abridor"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Daniel Espino",
+   "at": "2026-10-06T21:37:48Z",
+   "date": "2026-10-07",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849833,
+   "side": "away",
+   "text": "Abridor anunciado (CLE): Daniel Espino"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 8.0,
+   "at": "2026-10-06T21:37:48Z",
+   "before": 7.5,
+   "date": "2026-10-07",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849833,
+   "text": "La línea del total pasa de 7.5 a 8.0"
+  },
+  {
+   "after": "esperar momio (Sean Newcomb Under 2.5 K)",
+   "at": "2026-10-06T21:37:41Z",
+   "before": "esperar dato (CWS)",
+   "date": "2026-10-07",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849833,
+   "text": "Decisión: esperar dato (CWS) → esperar momio (Sean Newcomb Under 2.5 K) · tras: abridor, momio"
   }
  ],
  "snap": {
@@ -258,7 +293,9 @@
     "944986",
     "944987",
     "945024",
-    "945025"
+    "945025",
+    "945203",
+    "945204"
    ],
    "ump": null,
    "wx": {}
@@ -267,9 +304,9 @@
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "CWS",
+    "pick": "Sean Newcomb Under 2.5 K",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 145,
@@ -279,16 +316,19 @@
    },
    "names": {},
    "odds": {
-    "line": 7.5,
+    "line": 8.0,
     "ml": {
-     "away": 101,
-     "home": -122
+     "away": 100,
+     "home": -120
     },
-    "pHome": 0.5248,
+    "pHome": 0.5217,
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 682982,
+     "name": "Daniel Espino"
+    },
     "home": {
      "id": 656794,
      "name": "Sean Newcomb"
