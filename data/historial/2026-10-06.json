@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-06T16:09:52+00:00",
+  "registeredAt": "2026-10-06T17:19:51+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.505,
@@ -55,9 +55,9 @@
     "line": null,
     "p": 0.6696,
     "fair": -203.0,
-    "ic": 38.9,
-    "level": "Muy baja",
-    "price": -196,
+    "ic": 42.7,
+    "level": "Baja",
+    "price": -185,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -151,6 +151,32 @@
    {
     "rank": 3,
     "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.5515,
+    "fair": -123.0,
+    "ic": 37.5,
+    "level": "Muy baja",
+    "price": -111,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Under 3.5",
@@ -175,7 +201,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "Team total",
     "market": "Team total LAD",
@@ -201,7 +227,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total ATL",
@@ -227,7 +253,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -278,7 +304,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -288,7 +314,7 @@
     "fair": -102.0,
     "ic": 35.8,
     "level": "Muy baja",
-    "price": -110,
+    "price": -105,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -328,32 +354,6 @@
      "r": 1.0,
      "maxPrice": 146,
      "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.5",
-    "line": 6.5,
-    "p": 0.5515,
-    "fair": -123.0,
-    "ic": 35.6,
-    "level": "Muy baja",
-    "price": -114,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0
     }
    },
    {
@@ -437,12 +437,12 @@
   "result": null,
   "decision": {
    "status": "no apostar",
-   "why": "con el momio de referencia (-196): edge menor a 3 pp con ese momio (stake 1 desde -171)",
+   "why": "con el momio de referencia (-185): edge menor a 3 pp con ese momio (stake 1 desde -171)",
    "source": "Framework v2",
    "pick": "ATL +1.5",
    "market": "Run Line",
    "p": 0.6696,
-   "ic": 38.9,
+   "ic": 42.7,
    "level": 0,
    "amount": 0,
    "minPrice": -171,
