@@ -69,6 +69,38 @@
    "kind": "decision",
    "pk": 849819,
    "text": "Decisión: no apostar → no apostar · tras: momio"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-06T18:15:54Z",
+   "date": "2026-10-06",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849819,
+   "side": "home",
+   "text": "Lineup confirmado (ATL)"
+  },
+  {
+   "after": "James Hoye",
+   "at": "2026-10-06T18:15:54Z",
+   "date": "2026-10-06",
+   "game": "LAD @ ATL",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849819,
+   "text": "Umpire de home asignado: James Hoye"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-10-06T18:15:48Z",
+   "before": "no apostar",
+   "date": "2026-10-06",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849819,
+   "text": "Decisión: no apostar → no apostar · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -76,17 +108,37 @@
    "away": 119,
    "dec": {
     "level": 0,
-    "pick": "ATL +1.5",
+    "pick": "Chris Sale Under 7.5 K",
     "status": "no apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 144,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     686948,
+     660670,
+     621566,
+     645277,
+     671739,
+     643289,
+     669221,
+     663586,
+     673490
+    ]
    },
-   "names": {},
+   "names": {
+    "621566": "Matt Olson",
+    "643289": "Mauricio Dubón",
+    "645277": "Ozzie Albies",
+    "660670": "Ronald Acuña Jr.",
+    "663586": "Austin Riley",
+    "669221": "Sean Murphy",
+    "671739": "Michael Harris II",
+    "673490": "Ha-Seong Kim",
+    "686948": "Drake Baldwin"
+   },
    "odds": {
     "line": 6.5,
     "ml": {
@@ -186,13 +238,19 @@
     "945021",
     "945022"
    ],
-   "ump": null,
+   "ump": "James Hoye",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "in",
+    "speed": 8,
+    "temp": 76.0
+   }
   },
   "849826": {
    "away": 158,
