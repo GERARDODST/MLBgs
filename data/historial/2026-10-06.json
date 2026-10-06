@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-06T10:32:36+00:00",
+  "registeredAt": "2026-10-06T10:58:26+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.505,
@@ -55,9 +55,9 @@
     "line": 6.0,
     "p": 0.6154,
     "fair": -160.0,
-    "ic": 51.7,
+    "ic": 53.6,
     "level": "Baja",
-    "price": -118,
+    "price": -115,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -126,6 +126,57 @@
    {
     "rank": 3,
     "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "ATL +1.5",
+    "line": null,
+    "p": 0.6696,
+    "fair": -203.0,
+    "ic": 39.2,
+    "level": "Muy baja",
+    "price": -195,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -171
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -144
+      }
+     ],
+     "steps": [
+      -171,
+      -167,
+      -158,
+      -151,
+      -144,
+      -137,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0,
+     "maxPrice": -133,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Yoshinobu Yamamoto Under 6.5 K",
@@ -171,57 +222,6 @@
      "h": 0.9803,
      "r": 1.0,
      "maxPrice": 107,
-     "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "ATL +1.5",
-    "line": null,
-    "p": 0.6696,
-    "fair": -203.0,
-    "ic": 36.7,
-    "level": "Muy baja",
-    "price": -208,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -171
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": -144
-      }
-     ],
-     "steps": [
-      -171,
-      -167,
-      -158,
-      -151,
-      -144,
-      -137,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0,
-     "maxPrice": -133,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -365,7 +365,7 @@
     "fair": -102.0,
     "ic": 35.8,
     "level": "Muy baja",
-    "price": -115,
+    "price": -109,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -375,11 +375,36 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 116
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 137
+      }
+     ],
+     "steps": [
+      116,
+      119,
+      125,
+      131,
+      137,
+      144,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9803,
-     "r": 1.0
+     "r": 1.0,
+     "maxPrice": 146,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
