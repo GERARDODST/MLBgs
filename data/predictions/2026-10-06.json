@@ -70,7 +70,7 @@
 "pk": 849826,
 "date": "2026-10-06",
 "time": "2026-10-07T01:30:00Z",
-"generatedAt": "2026-10-06T22:10:31+00:00",
+"generatedAt": "2026-10-06T22:18:29+00:00",
 "away": "MIL",
 "home": "SD",
 "pHome": 0.497,
@@ -91,14 +91,14 @@
 "away": "Dustin May",
 "home": "Nick Pivetta"
 },
-"light": "Rojo",
+"light": "Amarillo",
 "best": {
 "market": "NRFI/YRFI",
 "pick": "YRFI",
 "p": 0.5287,
-"price": null,
-"edge": null,
-"light": "Rojo"
+"price": 105,
+"edge": 0.0409,
+"light": "Amarillo"
 },
 "topPicks": [
 {
@@ -111,23 +111,25 @@
 "level": "Media"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.5",
-"p": 0.5543,
-"line": 7.5,
-"ic": 39.2627,
-"level": "Muy baja"
+"family": "NRFI",
+"market": "NRFI/YRFI",
+"pick": "YRFI",
+"p": 0.5287,
+"line": null,
+"ic": 46.9472,
+"level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "NRFI",
 "pick": "YRFI",
-"level": 0,
+"level": 1,
 "alts": [
-"NRFI"
+"K",
+"Total",
+"K"
 ]
 }
 }

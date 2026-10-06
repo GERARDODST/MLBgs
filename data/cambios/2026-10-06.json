@@ -224,6 +224,17 @@
    "kind": "decision",
    "pk": 849826,
    "text": "Decisión: no apostar → esperar momio (YRFI) · tras: lineup, umpire, movimiento"
+  },
+  {
+   "after": "apostar YRFI · stake 1",
+   "at": "2026-10-06T22:18:29Z",
+   "before": "esperar momio (YRFI)",
+   "date": "2026-10-06",
+   "game": "MIL @ SD",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849826,
+   "text": "Decisión: esperar momio (YRFI) → apostar YRFI · stake 1 · tras: lineup, umpire, movimiento"
   }
  ],
  "snap": {
@@ -398,10 +409,10 @@
   "849826": {
    "away": 158,
    "dec": {
-    "level": 0,
+    "level": 1,
     "pick": "YRFI",
-    "status": "esperar",
-    "waitFor": "momio"
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 135,

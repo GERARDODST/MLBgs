@@ -574,7 +574,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-06T22:10:31+00:00",
+  "registeredAt": "2026-10-06T22:18:29+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.497,
@@ -582,7 +582,7 @@
    "projHome": 4.33,
    "total": 8.66,
    "nrfi": 0.4713,
-   "light": "Rojo",
+   "light": "Amarillo",
    "confidence": "baja",
    "probables": {
     "away": "Dustin May",
@@ -620,6 +620,56 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.5287,
+    "fair": -112.0,
+    "ic": 46.9,
+    "level": "Baja",
+    "price": 105,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 1,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 104
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 123
+      }
+     ],
+     "steps": [
+      104,
+      107,
+      112,
+      117,
+      123,
+      129,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0,
+     "maxPrice": 133
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 7.5",
@@ -644,7 +694,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -670,7 +720,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
@@ -721,7 +771,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -747,7 +797,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -795,57 +845,6 @@
      "r": 1.0,
      "maxPrice": 123,
      "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "YRFI",
-    "line": null,
-    "p": 0.5287,
-    "fair": -112.0,
-    "ic": 35.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 104
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 123
-      }
-     ],
-     "steps": [
-      104,
-      107,
-      112,
-      117,
-      123,
-      129,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9803,
-     "r": 1.0,
-     "maxPrice": 133,
-     "why": "sin momio real: conviene si pagan +104 o mejor"
     }
    },
    {
@@ -931,16 +930,15 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de NRFI/YRFI: conviene si pagan +104 o mejor (stake 1); stake 5 desde +123",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+105)",
    "source": "Framework v2",
    "pick": "YRFI",
-   "waitFor": "momio",
    "market": "NRFI/YRFI",
    "p": 0.5287,
-   "ic": 35.0,
-   "level": 0,
-   "amount": 0,
+   "ic": 46.9,
+   "level": 1,
+   "amount": 500,
    "minPrice": 104,
    "ladder": [
     {

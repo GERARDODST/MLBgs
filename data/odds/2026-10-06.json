@@ -550,7 +550,7 @@
    "books": {
     "betmgm": {
      "last": {
-      "at": "2026-10-06T21:45:47Z",
+      "at": "2026-10-06T22:18:44Z",
       "f5": {
        "ml": {
         "away": 105,
@@ -579,6 +579,10 @@
          "price": 120
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -135,
+       "yrfi": 105
       }
      },
      "mx": false,
@@ -612,6 +616,10 @@
          "price": 120
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -135,
+       "yrfi": 105
       }
      },
      "src": "the-odds-api",
@@ -619,7 +627,7 @@
     },
     "betonlineag": {
      "last": {
-      "at": "2026-10-06T21:45:47Z",
+      "at": "2026-10-06T22:18:44Z",
       "f5": {
        "ml": {
         "away": 115,
@@ -648,6 +656,10 @@
          "price": 125
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -139,
+       "yrfi": 105
       }
      },
      "mx": false,
@@ -681,6 +693,10 @@
          "price": 125
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -139,
+       "yrfi": 105
       }
      },
      "src": "the-odds-api",
@@ -924,7 +940,7 @@
     },
     "fanduel": {
      "last": {
-      "at": "2026-10-06T21:45:47Z",
+      "at": "2026-10-06T22:18:44Z",
       "f5": {
        "ml": {
         "away": 108,
@@ -953,6 +969,10 @@
          "price": -172
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -122,
+       "yrfi": -104
       }
      },
      "mx": false,
@@ -986,6 +1006,10 @@
          "price": -172
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -122,
+       "yrfi": -104
       }
      },
      "src": "the-odds-api",
@@ -1061,7 +1085,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-10-06T22:10:41Z",
+   "checked": "2026-10-06T22:18:44Z",
    "espn": "401908004",
    "home": 135,
    "pk": 849826,
@@ -1072,20 +1096,24 @@
    "start": "2026-10-07T01:30:00Z",
    "theAt": {
     "h2h_1st_5_innings": "2026-10-06T13:34:14Z",
-    "pitcher_strikeouts": "2026-10-06T21:45:47Z"
+    "pitcher_strikeouts": "2026-10-06T21:45:47Z",
+    "totals_1st_1_innings": "2026-10-06T22:18:44Z"
    },
    "theEmpty": {
     "h2h_1st_5_innings": 0,
-    "pitcher_strikeouts": 0
+    "pitcher_strikeouts": 0,
+    "totals_1st_1_innings": 0
    },
    "theGot": {
     "h2h_1st_5_innings": 8,
-    "pitcher_strikeouts": 6
+    "pitcher_strikeouts": 6,
+    "totals_1st_1_innings": 3
    },
    "theId": "62d8e1c18355ab6b3913d7a28fa677c2",
    "theN": {
     "h2h_1st_5_innings": 1,
-    "pitcher_strikeouts": 1
+    "pitcher_strikeouts": 1,
+    "totals_1st_1_innings": 1
    },
    "theSwapped": false
   }
