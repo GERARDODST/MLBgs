@@ -1,0 +1,1124 @@
+[
+ {
+  "id": "2026-10-07-849833-framework",
+  "pk": 849833,
+  "date": "2026-10-07",
+  "time": "2026-10-07T20:00:00Z",
+  "away": "CLE",
+  "home": "CWS",
+  "awayName": "Cleveland Guardians",
+  "homeName": "Chicago White Sox",
+  "venue": "Rate Field",
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "algo": {
+   "version": "2026.09.30",
+   "code": "9e5e812e949e"
+  },
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Binomial Negativa F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "modelo",
+  "registeredAt": "2026-10-06T04:01:10+00:00",
+  "status": "abierto",
+  "pred": {
+   "pHome": 0.5122,
+   "projAway": 4.26,
+   "projHome": 4.3,
+   "total": 8.55,
+   "nrfi": 0.4981,
+   "light": "Rojo",
+   "confidence": "alta",
+   "probables": {
+    "away": "Por anunciar",
+    "home": "Por anunciar"
+   },
+   "lineups": "Proyectados"
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "CWS",
+    "line": null,
+    "p": 0.5122,
+    "fair": -105.0,
+    "ic": 35.0,
+    "level": "Muy baja",
+    "price": -122,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 49.4% · λ + Binomial Negativa (5.3 · 5.7.5) 50.3%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.5",
+    "line": 7.5,
+    "p": 0.5441,
+    "fair": -119.0,
+    "ic": 32.6,
+    "level": "Muy baja",
+    "price": -118,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "CWS +1.5",
+    "line": null,
+    "p": 0.6593,
+    "fair": -194.0,
+    "ic": 31.8,
+    "level": "Muy baja",
+    "price": -205,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 4.5",
+    "line": 4.5,
+    "p": 0.5177,
+    "fair": -107.0,
+    "ic": 31.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total CLE",
+    "pick": "CLE Over 3.5",
+    "line": 3.5,
+    "p": 0.5235,
+    "fair": -110.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de CLE",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total CWS",
+    "pick": "CWS Over 3.5",
+    "line": 3.5,
+    "p": 0.5293,
+    "fair": -112.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de CWS",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "CWS F5",
+    "line": null,
+    "p": 0.5209,
+    "fair": -109.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.5019,
+    "fair": -101.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   }
+  ],
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "CWS",
+   "waitFor": "dato",
+   "market": "Moneyline",
+   "p": 0.5122,
+   "ic": 35.0,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
+ },
+ {
+  "id": "2026-10-07-849822-framework",
+  "pk": 849822,
+  "date": "2026-10-07",
+  "time": "2026-10-07T22:00:00Z",
+  "away": "LAD",
+  "home": "ATL",
+  "awayName": "Los Angeles Dodgers",
+  "homeName": "Atlanta Braves",
+  "venue": "Truist Park",
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "algo": {
+   "version": "2026.09.30",
+   "code": "9e5e812e949e"
+  },
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Binomial Negativa F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "modelo",
+  "registeredAt": "2026-10-06T04:01:10+00:00",
+  "status": "abierto",
+  "pred": {
+   "pHome": 0.4599,
+   "projAway": 4.52,
+   "projHome": 4.04,
+   "total": 8.56,
+   "nrfi": 0.5111,
+   "light": "Rojo",
+   "confidence": "alta",
+   "probables": {
+    "away": "Por anunciar",
+    "home": "Por anunciar"
+   },
+   "lineups": "Proyectados"
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "LAD",
+    "line": null,
+    "p": 0.5401,
+    "fair": -117.0,
+    "ic": 39.1,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.4% · Elo + abridor (5.7.7) 54.9% · λ + Binomial Negativa (5.3 · 5.7.5) 54.7%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Under 8.0",
+    "line": 8.0,
+    "p": 0.502,
+    "fair": -101.0,
+    "ic": 31.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 4.5",
+    "line": 4.5,
+    "p": 0.5345,
+    "fair": -115.0,
+    "ic": 31.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "LAD +1.5",
+    "line": null,
+    "p": 0.6907,
+    "fair": -223.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total LAD",
+    "pick": "LAD Over 3.5",
+    "line": 3.5,
+    "p": 0.5586,
+    "fair": -127.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de LAD",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total ATL",
+    "pick": "ATL Under 3.5",
+    "line": 3.5,
+    "p": 0.506,
+    "fair": -102.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de ATL",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "LAD F5",
+    "line": null,
+    "p": 0.5263,
+    "fair": -111.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.4889,
+    "fair": 105.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   }
+  ],
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "LAD",
+   "waitFor": "dato",
+   "market": "Moneyline",
+   "p": 0.5401,
+   "ic": 39.1,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
+ },
+ {
+  "id": "2026-10-07-849838-framework",
+  "pk": 849838,
+  "date": "2026-10-07",
+  "time": "2026-10-08T00:00:00Z",
+  "away": "TB",
+  "home": "NYY",
+  "awayName": "Tampa Bay Rays",
+  "homeName": "New York Yankees",
+  "venue": "Yankee Stadium",
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "algo": {
+   "version": "2026.09.30",
+   "code": "9e5e812e949e"
+  },
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Binomial Negativa F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "modelo",
+  "registeredAt": "2026-10-06T04:01:10+00:00",
+  "status": "abierto",
+  "pred": {
+   "pHome": 0.5448,
+   "projAway": 3.9,
+   "projHome": 4.32,
+   "total": 8.22,
+   "nrfi": 0.5414,
+   "light": "Gris",
+   "confidence": "alta",
+   "probables": {
+    "away": "Por anunciar",
+    "home": "Max Fried"
+   },
+   "lineups": "Proyectados"
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5682,
+    "fair": -132.0,
+    "ic": 38.9,
+    "level": "Muy baja",
+    "price": -122,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "NYY",
+    "line": null,
+    "p": 0.5448,
+    "fair": -120.0,
+    "ic": 37.8,
+    "level": "Muy baja",
+    "price": -161,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.6% · Elo + abridor (5.7.7) 52.7% · λ + Binomial Negativa (5.3 · 5.7.5) 54.0%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "TB +1.5",
+    "line": null,
+    "p": 0.616,
+    "fair": -160.0,
+    "ic": 33.5,
+    "level": "Muy baja",
+    "price": -191,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 3.5",
+    "line": 3.5,
+    "p": 0.546,
+    "fair": -120.0,
+    "ic": 33.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "NYY F5",
+    "line": null,
+    "p": 0.5654,
+    "fair": -130.0,
+    "ic": 33.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Max Fried Over 3.5 K",
+    "line": 3.5,
+    "p": 0.5587,
+    "fair": -127.0,
+    "ic": 33.1,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "NRFI",
+    "line": null,
+    "p": 0.5414,
+    "fair": -118.0,
+    "ic": 30.1,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total TB",
+    "pick": "TB Under 3.5",
+    "line": 3.5,
+    "p": 0.5267,
+    "fair": -111.0,
+    "ic": 26.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de TB",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total NYY",
+    "pick": "NYY Over 3.5",
+    "line": 3.5,
+    "p": 0.5322,
+    "fair": -114.0,
+    "ic": 26.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de NYY",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   }
+  ],
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "Over 7.0",
+   "waitFor": "dato",
+   "market": "Total completo",
+   "p": 0.5682,
+   "ic": 38.9,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
+ },
+ {
+  "id": "2026-10-07-849827-framework",
+  "pk": 849827,
+  "date": "2026-10-07",
+  "time": "2026-10-08T02:00:00Z",
+  "away": "MIL",
+  "home": "SD",
+  "awayName": "Milwaukee Brewers",
+  "homeName": "San Diego Padres",
+  "venue": "Petco Park",
+  "model": "framework",
+  "modelName": "Framework MLB Picks v2",
+  "kind": "Modelo estadístico por secciones",
+  "algo": {
+   "version": "2026.09.30",
+   "code": "9e5e812e949e"
+  },
+  "analyses": [
+   "Contexto del partido",
+   "Pitágoras + Log5",
+   "Elo con abridor",
+   "Abridores regresados",
+   "Bullpen y fatiga",
+   "λ + Binomial Negativa",
+   "Binomial Negativa F5 y NRFI",
+   "Parque, clima y umpire",
+   "Valor contra el mercado",
+   "Contradicciones y semáforo"
+  ],
+  "source": "modelo",
+  "registeredAt": "2026-10-06T04:01:10+00:00",
+  "status": "abierto",
+  "pred": {
+   "pHome": 0.4217,
+   "projAway": 4.76,
+   "projHome": 3.81,
+   "total": 8.57,
+   "nrfi": 0.4965,
+   "light": "Gris",
+   "confidence": "alta",
+   "probables": {
+    "away": "Por anunciar",
+    "home": "Por anunciar"
+   },
+   "lineups": "Proyectados"
+  },
+  "picks": [
+   {
+    "rank": 1,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "MIL",
+    "line": null,
+    "p": 0.5783,
+    "fair": -137.0,
+    "ic": 37.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 55.7% · Elo + abridor (5.7.7) 58.5% · λ + Binomial Negativa (5.3 · 5.7.5) 59.2%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Under 8.0",
+    "line": 8.0,
+    "p": 0.5013,
+    "fair": -101.0,
+    "ic": 31.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 4.5",
+    "line": 4.5,
+    "p": 0.5106,
+    "fair": -104.0,
+    "ic": 31.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total MIL",
+    "pick": "MIL Under 4.5",
+    "line": 4.5,
+    "p": 0.5408,
+    "fair": -118.0,
+    "ic": 31.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de MIL",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total SD",
+    "pick": "SD Under 3.5",
+    "line": 3.5,
+    "p": 0.5398,
+    "fair": -117.0,
+    "ic": 31.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de SD",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL +1.5",
+    "line": null,
+    "p": 0.7299,
+    "fair": -270.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "MIL F5",
+    "line": null,
+    "p": 0.5838,
+    "fair": -140.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.5035,
+    "fair": -101.0,
+    "ic": 28.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9803,
+     "r": 1.0
+    }
+   }
+  ],
+  "result": null,
+  "decision": {
+   "status": "esperar",
+   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "source": "Framework v2",
+   "pick": "MIL",
+   "waitFor": "dato",
+   "market": "Moneyline",
+   "p": 0.5783,
+   "ic": 37.0,
+   "level": 0,
+   "amount": 0,
+   "minPrice": null,
+   "ladder": []
+  }
+ }
+]

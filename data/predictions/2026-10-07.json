@@ -1,0 +1,270 @@
+[
+{
+"pk": 849833,
+"date": "2026-10-07",
+"time": "2026-10-07T20:00:00Z",
+"generatedAt": "2026-10-06T04:01:10+00:00",
+"away": "CLE",
+"home": "CWS",
+"pHome": 0.5122,
+"methods": {
+"log5": 0.5391,
+"elo": 0.4945,
+"lambda": 0.5029
+},
+"confidence": "alta",
+"projAway": 4.2551,
+"projHome": 4.298,
+"total": 8.553,
+"f5Away": 2.3914,
+"f5Home": 2.5288,
+"nrfi": 0.4981,
+"pOver85": 0.4511,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Rojo",
+"best": {
+"market": "Total",
+"pick": "Over 7.5",
+"p": 0.5441,
+"price": -118,
+"edge": 0.0028,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "CWS",
+"p": 0.5122,
+"line": null,
+"ic": 34.9926,
+"level": "Muy baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.5",
+"p": 0.5441,
+"line": 7.5,
+"ic": 32.6281,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "ML",
+"pick": "CWS",
+"level": 0,
+"alts": [
+"Total",
+"RL",
+"F5 total"
+]
+}
+},
+{
+"pk": 849822,
+"date": "2026-10-07",
+"time": "2026-10-07T22:00:00Z",
+"generatedAt": "2026-10-06T04:01:10+00:00",
+"away": "LAD",
+"home": "ATL",
+"pHome": 0.4599,
+"methods": {
+"log5": 0.4757,
+"elo": 0.4507,
+"lambda": 0.4533
+},
+"confidence": "alta",
+"projAway": 4.5174,
+"projHome": 4.0419,
+"total": 8.5593,
+"f5Away": 2.4799,
+"f5Home": 2.3098,
+"nrfi": 0.5111,
+"pOver85": 0.4516,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Rojo",
+"best": {
+"market": "ML",
+"pick": "LAD",
+"p": 0.5401,
+"price": null,
+"edge": null,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "LAD",
+"p": 0.5401,
+"line": null,
+"ic": 39.081,
+"level": "Muy baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 8.0",
+"p": 0.502,
+"line": 8.0,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "ML",
+"pick": "LAD",
+"level": 0,
+"alts": [
+"Total",
+"F5 total",
+"RL"
+]
+}
+},
+{
+"pk": 849838,
+"date": "2026-10-07",
+"time": "2026-10-08T00:00:00Z",
+"generatedAt": "2026-10-06T04:01:10+00:00",
+"away": "TB",
+"home": "NYY",
+"pHome": 0.5448,
+"methods": {
+"log5": 0.5664,
+"elo": 0.5274,
+"lambda": 0.5404
+},
+"confidence": "alta",
+"projAway": 3.8959,
+"projHome": 4.3195,
+"total": 8.2154,
+"f5Away": 1.9956,
+"f5Home": 2.3952,
+"nrfi": 0.5414,
+"pOver85": 0.4197,
+"probables": {
+"away": "Por anunciar",
+"home": "Max Fried"
+},
+"light": "Gris",
+"best": {
+"market": "F5",
+"pick": "NYY F5",
+"p": 0.5654,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5682,
+"line": 7.0,
+"ic": 38.8889,
+"level": "Muy baja"
+},
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "NYY",
+"p": 0.5448,
+"line": null,
+"ic": 37.831,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 7.0",
+"level": 0,
+"alts": [
+"ML",
+"RL",
+"F5 total"
+]
+}
+},
+{
+"pk": 849827,
+"date": "2026-10-07",
+"time": "2026-10-08T02:00:00Z",
+"generatedAt": "2026-10-06T04:01:10+00:00",
+"away": "MIL",
+"home": "SD",
+"pHome": 0.4217,
+"methods": {
+"log5": 0.4428,
+"elo": 0.4146,
+"lambda": 0.4078
+},
+"confidence": "alta",
+"projAway": 4.7607,
+"projHome": 3.8053,
+"total": 8.566,
+"f5Away": 2.768,
+"f5Home": 2.2086,
+"nrfi": 0.4965,
+"pOver85": 0.4523,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Gris",
+"best": {
+"market": "ML",
+"pick": "MIL",
+"p": 0.5783,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "MIL",
+"p": 0.5783,
+"line": null,
+"ic": 37.0094,
+"level": "Muy baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 8.0",
+"p": 0.5013,
+"line": 8.0,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "ML",
+"pick": "MIL",
+"level": 0,
+"alts": [
+"Total",
+"F5 total",
+"Team total"
+]
+}
+}
+]
