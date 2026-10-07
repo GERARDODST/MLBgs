@@ -457,6 +457,17 @@
    "kind": "decision",
    "pk": 849827,
    "text": "Decisión: no apostar → esperar momio (MIL Under 4.5) · tras: abridor, lineup, umpire, movimiento"
+  },
+  {
+   "after": "apostar MIL Over 3.5 · stake 3",
+   "at": "2026-10-07T22:46:11Z",
+   "before": "esperar momio (MIL Under 4.5)",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849827,
+   "text": "Decisión: esperar momio (MIL Under 4.5) → apostar MIL Over 3.5 · stake 3 · tras: abridor, lineup, umpire, movimiento"
   }
  ],
  "snap": {
@@ -628,10 +639,10 @@
   "849827": {
    "away": 158,
    "dec": {
-    "level": 0,
-    "pick": "MIL Under 4.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 3,
+    "pick": "MIL Over 3.5",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 135,

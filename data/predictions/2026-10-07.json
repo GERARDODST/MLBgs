@@ -202,7 +202,7 @@
 "pk": 849827,
 "date": "2026-10-07",
 "time": "2026-10-08T02:00:00Z",
-"generatedAt": "2026-10-07T22:38:14+00:00",
+"generatedAt": "2026-10-07T22:46:11+00:00",
 "away": "MIL",
 "home": "SD",
 "pHome": 0.4637,
@@ -225,14 +225,23 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "Total",
-"pick": "Over 7.5",
-"p": 0.5882,
-"price": -111,
-"edge": 0.0621,
+"market": "NRFI/YRFI",
+"pick": "YRFI",
+"p": 0.5335,
+"price": -101,
+"edge": 0.0311,
 "light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "Team total",
+"market": "Team total MIL",
+"pick": "MIL Over 3.5",
+"p": 0.6029,
+"line": 3.5,
+"ic": 52.1264,
+"level": "Baja"
+},
 {
 "family": "Total",
 "market": "Total completo",
@@ -241,26 +250,18 @@
 "line": 7.5,
 "ic": 51.9527,
 "level": "Baja"
-},
-{
-"family": "RL",
-"market": "Run Line",
-"pick": "MIL -1.5",
-"p": 0.4098,
-"line": null,
-"ic": 40.3059,
-"level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "Team total",
-"pick": "MIL Under 4.5",
-"level": 0,
+"pick": "MIL Over 3.5",
+"level": 3,
 "alts": [
-"Team total",
-"NRFI"
+"Total",
+"NRFI",
+"RL"
 ]
 }
 }
