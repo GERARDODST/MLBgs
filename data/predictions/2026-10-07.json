@@ -68,23 +68,23 @@
 "pk": 849822,
 "date": "2026-10-07",
 "time": "2026-10-07T22:00:00Z",
-"generatedAt": "2026-10-07T16:01:45+00:00",
+"generatedAt": "2026-10-07T21:58:44+00:00",
 "away": "LAD",
 "home": "ATL",
-"pHome": 0.4704,
+"pHome": 0.4738,
 "methods": {
 "log5": 0.4757,
 "elo": 0.4886,
-"lambda": 0.4469
+"lambda": 0.4569
 },
 "confidence": "alta",
-"projAway": 4.461,
-"projHome": 3.9246,
-"total": 8.3856,
-"f5Away": 2.4218,
-"f5Home": 2.2046,
-"nrfi": 0.5246,
-"pOver85": 0.4355,
+"projAway": 4.448,
+"projHome": 4.0127,
+"total": 8.4607,
+"f5Away": 2.4147,
+"f5Home": 2.2541,
+"nrfi": 0.5212,
+"pOver85": 0.4425,
 "probables": {
 "away": "Tyler Glasnow",
 "home": "Tyler Mahle"
@@ -93,9 +93,9 @@
 "best": {
 "market": "Run Line",
 "pick": "ATL +1.5",
-"p": 0.61,
-"price": -138,
-"edge": 0.0302,
+"p": 0.6184,
+"price": -136,
+"edge": 0.0421,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -103,29 +103,29 @@
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Tyler Mahle Over 3.5 K",
-"p": 0.7112,
+"p": 0.7151,
 "line": 3.5,
-"ic": 63.5243,
-"level": "Media"
+"ic": 73.802,
+"level": "Alta"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "ATL +1.5",
-"p": 0.61,
+"p": 0.6184,
 "line": null,
-"ic": 43.7773,
+"ic": 48.4708,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "verificar",
-"family": "K",
-"pick": "Tyler Mahle Over 3.5 K",
-"level": 0,
+"status": "apostar",
+"waitFor": null,
+"family": "RL",
+"pick": "ATL +1.5",
+"level": 2,
 "alts": [
-"RL",
+"K",
 "K",
 "ML"
 ]
@@ -135,23 +135,23 @@
 "pk": 849838,
 "date": "2026-10-07",
 "time": "2026-10-08T00:00:00Z",
-"generatedAt": "2026-10-07T13:31:59+00:00",
+"generatedAt": "2026-10-07T21:58:44+00:00",
 "away": "TB",
 "home": "NYY",
-"pHome": 0.5642,
+"pHome": 0.5625,
 "methods": {
 "log5": 0.5664,
 "elo": 0.574,
-"lambda": 0.552
+"lambda": 0.5471
 },
 "confidence": "alta",
-"projAway": 3.8959,
-"projHome": 4.4432,
-"total": 8.3391,
-"f5Away": 1.9956,
-"f5Home": 2.511,
-"nrfi": 0.531,
-"pOver85": 0.4312,
+"projAway": 4.0169,
+"projHome": 4.5182,
+"total": 8.5351,
+"f5Away": 2.0575,
+"f5Home": 2.5534,
+"nrfi": 0.5234,
+"pOver85": 0.4494,
 "probables": {
 "away": "Nick Martinez",
 "home": "Max Fried"
@@ -160,40 +160,40 @@
 "best": {
 "market": "Total",
 "pick": "Over 7.0",
-"p": 0.5809,
-"price": -122,
-"edge": 0.0314,
+"p": 0.6007,
+"price": -118,
+"edge": 0.0594,
 "light": "Amarillo"
 },
 "topPicks": [
 {
 "family": "K",
 "market": "Prop de ponches",
-"pick": "Nick Martinez Over 3.5 K",
-"p": 0.5287,
-"line": 3.5,
-"ic": 62.1676,
+"pick": "Nick Martinez Over 2.5 K",
+"p": 0.6834,
+"line": 2.5,
+"ic": 59.5793,
 "level": "Media"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Max Fried Under 4.5 K",
-"p": 0.6366,
-"line": 4.5,
-"ic": 56.7223,
-"level": "Media"
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.6007,
+"line": 7.0,
+"ic": 54.5593,
+"level": "Baja"
 }
 ],
 "decision": {
 "status": "apostar",
 "waitFor": null,
 "family": "K",
-"pick": "Nick Martinez Over 3.5 K",
+"pick": "Nick Martinez Over 2.5 K",
 "level": 5,
 "alts": [
-"K",
 "Total",
+"K",
 "ML"
 ]
 }
@@ -202,66 +202,64 @@
 "pk": 849827,
 "date": "2026-10-07",
 "time": "2026-10-08T02:00:00Z",
-"generatedAt": "2026-10-07T15:33:51+00:00",
+"generatedAt": "2026-10-07T21:58:44+00:00",
 "away": "MIL",
 "home": "SD",
-"pHome": 0.4321,
+"pHome": 0.464,
 "methods": {
 "log5": 0.4428,
-"elo": 0.454,
-"lambda": 0.3995
+"elo": 0.5139,
+"lambda": 0.4352
 },
 "confidence": "media",
 "projAway": 4.8562,
-"projHome": 3.8053,
-"total": 8.6615,
+"projHome": 4.1715,
+"total": 9.0277,
 "f5Away": 2.86,
-"f5Home": 2.2086,
-"nrfi": 0.4894,
-"pOver85": 0.4611,
+"f5Home": 2.5041,
+"nrfi": 0.4668,
+"pOver85": 0.4946,
 "probables": {
-"away": "Por anunciar",
+"away": "Robert Gasser",
 "home": "Walker Buehler"
 },
 "light": "Amarillo",
 "best": {
-"market": "ML",
-"pick": "MIL",
-"p": 0.5679,
-"price": -107,
-"edge": 0.051,
+"market": "Total",
+"pick": "Over 7.5",
+"p": 0.5873,
+"price": -111,
+"edge": 0.0612,
 "light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "MIL",
-"p": 0.5679,
-"line": null,
-"ic": 50.2034,
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.5",
+"p": 0.5873,
+"line": 7.5,
+"ic": 50.4873,
 "level": "Baja"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "MIL -1.5",
-"p": 0.44,
+"p": 0.4088,
 "line": null,
-"ic": 46.5742,
-"level": "Baja"
+"ic": 39.6924,
+"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "ML",
-"pick": "MIL",
+"waitFor": "momio",
+"family": "F5",
+"pick": "MIL F5",
 "level": 0,
 "alts": [
-"RL",
-"Total",
-"K"
+"F5"
 ]
 }
 }

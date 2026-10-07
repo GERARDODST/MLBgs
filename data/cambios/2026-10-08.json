@@ -23,6 +23,29 @@
    "kind": "decision",
    "pk": 849832,
    "text": "Decisión: esperar dato (CWS) → esperar dato (Parker Messick Over 5.5 K) · tras: abridor"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Drew Rasmussen",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-08",
+   "game": "TB @ NYY",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849837,
+   "side": "away",
+   "text": "Abridor anunciado (TB): Drew Rasmussen"
+  },
+  {
+   "after": "esperar momio (F5 Over 3.5)",
+   "at": "2026-10-07T21:58:44Z",
+   "before": "esperar dato (TB +1.5)",
+   "date": "2026-10-08",
+   "game": "TB @ NYY",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849837,
+   "text": "Decisión: esperar dato (TB +1.5) → esperar momio (F5 Over 3.5) · tras: abridor"
   }
  ],
  "snap": {
@@ -109,9 +132,9 @@
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "TB +1.5",
+    "pick": "F5 Over 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 147,
@@ -121,7 +144,10 @@
    },
    "names": {},
    "prob": {
-    "away": null,
+    "away": {
+     "id": 656876,
+     "name": "Drew Rasmussen"
+    },
     "home": {
      "id": 607074,
      "name": "Carlos Rodón"

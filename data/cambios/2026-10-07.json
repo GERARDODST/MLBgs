@@ -264,24 +264,223 @@
    "kind": "decision",
    "pk": 849822,
    "text": "Decisión: apostar Tyler Mahle Over 4.5 K · stake 5 → esperar verificar (Tyler Mahle Over 3.5 K)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849822,
+   "side": "away",
+   "text": "Lineup confirmado (LAD)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849822,
+   "side": "home",
+   "text": "Lineup confirmado (ATL)"
+  },
+  {
+   "after": "Tripp Gibson",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849822,
+   "text": "Umpire de home asignado: Tripp Gibson"
+  },
+  {
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849822,
+   "side": "home",
+   "text": "ATL: Atlanta Braves signed free agent RHP Logan Cummins to a minor league contract."
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "TB @ NYY",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849838,
+   "side": "away",
+   "text": "Lineup confirmado (TB)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "TB @ NYY",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849838,
+   "side": "home",
+   "text": "Lineup confirmado (NYY)"
+  },
+  {
+   "after": "Dan Bellino",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "TB @ NYY",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849838,
+   "text": "Umpire de home asignado: Dan Bellino"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Robert Gasser",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849827,
+   "side": "away",
+   "text": "Abridor anunciado (MIL): Robert Gasser"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849827,
+   "side": "home",
+   "text": "Lineup confirmado (SD)"
+  },
+  {
+   "after": "Nic Lentz",
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849827,
+   "text": "Umpire de home asignado: Nic Lentz"
+  },
+  {
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849827,
+   "side": "home",
+   "text": "SD: San Diego Padres activated RHP Mason Miller from the paternity list."
+  },
+  {
+   "at": "2026-10-07T21:58:53Z",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "bajo",
+   "kind": "movimiento",
+   "pk": 849827,
+   "side": "home",
+   "text": "SD: LHP Wandy Peralta roster status changed by San Diego Padres."
+  },
+  {
+   "after": "apostar ATL +1.5 · stake 2",
+   "at": "2026-10-07T21:58:44Z",
+   "before": "esperar verificar (Tyler Mahle Over 3.5 K)",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849822,
+   "text": "Decisión: esperar verificar (Tyler Mahle Over 3.5 K) → apostar ATL +1.5 · stake 2 · tras: lineup, umpire, movimiento"
+  },
+  {
+   "after": "apostar Nick Martinez Over 2.5 K · stake 5",
+   "at": "2026-10-07T21:58:44Z",
+   "before": "apostar Nick Martinez Over 3.5 K · stake 5",
+   "date": "2026-10-07",
+   "game": "TB @ NYY",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849838,
+   "text": "Decisión: apostar Nick Martinez Over 3.5 K · stake 5 → apostar Nick Martinez Over 2.5 K · stake 5 · tras: lineup, umpire"
+  },
+  {
+   "after": "esperar momio (MIL F5)",
+   "at": "2026-10-07T21:58:44Z",
+   "before": "esperar dato (MIL)",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849827,
+   "text": "Decisión: esperar dato (MIL) → esperar momio (MIL F5) · tras: abridor, lineup, umpire, movimiento"
   }
  ],
  "snap": {
   "849822": {
    "away": 119,
    "dec": {
-    "level": 0,
-    "pick": "Tyler Mahle Over 3.5 K",
-    "status": "esperar",
-    "waitFor": "verificar"
+    "level": 2,
+    "pick": "ATL +1.5",
+    "status": "apostar",
+    "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Warmup",
    "home": 144,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     605141,
+     518692,
+     669257,
+     660271,
+     606192,
+     571970,
+     571771,
+     663656,
+     681624
+    ],
+    "home": [
+     671739,
+     660670,
+     621566,
+     645277,
+     686948,
+     573262,
+     643289,
+     663586,
+     669221
+    ]
    },
-   "names": {},
+   "names": {
+    "518692": "Freddie Freeman",
+    "571771": "Enrique Hernández",
+    "571970": "Max Muncy",
+    "573262": "Mike Yastrzemski",
+    "605141": "Mookie Betts",
+    "606192": "Teoscar Hernández",
+    "621566": "Matt Olson",
+    "643289": "Mauricio Dubón",
+    "645277": "Ozzie Albies",
+    "660271": "Shohei Ohtani",
+    "660670": "Ronald Acuña Jr.",
+    "663586": "Austin Riley",
+    "663656": "Kyle Tucker",
+    "669221": "Sean Murphy",
+    "669257": "Will Smith",
+    "671739": "Michael Harris II",
+    "681624": "Andy Pages",
+    "686948": "Drake Baldwin"
+   },
    "odds": {
     "line": 7.5,
     "ml": {
@@ -376,31 +575,58 @@
     "945021",
     "945022",
     "945206",
-    "945207"
+    "945207",
+    "945309"
    ],
-   "ump": null,
+   "ump": "Tripp Gibson",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "cruzado",
+    "speed": 4,
+    "temp": 80.0
+   }
   },
   "849827": {
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "MIL",
+    "pick": "MIL F5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 135,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     665487,
+     701538,
+     592518,
+     664034,
+     669720,
+     593428,
+     669134,
+     630105,
+     669392
+    ]
    },
-   "names": {},
+   "names": {
+    "592518": "Manny Machado",
+    "593428": "Xander Bogaerts",
+    "630105": "Jake Cronenworth",
+    "664034": "Ty France",
+    "665487": "Fernando Tatis Jr.",
+    "669134": "Luis Campusano",
+    "669392": "Samad Taylor",
+    "669720": "Austin Hays",
+    "701538": "Jackson Merrill"
+   },
    "odds": {
     "line": 7.5,
     "ml": {
@@ -411,7 +637,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 688107,
+     "name": "Robert Gasser"
+    },
     "home": {
      "id": 621111,
      "name": "Walker Buehler"
@@ -484,15 +713,23 @@
     "945203",
     "945204",
     "945208",
-    "945209"
+    "945209",
+    "945348",
+    "945350"
    ],
-   "ump": null,
+   "ump": "Nic Lentz",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "in",
+    "speed": 6,
+    "temp": 78.0
+   }
   },
   "849833": {
    "away": 114,
@@ -623,17 +860,56 @@
    "away": 139,
    "dec": {
     "level": 5,
-    "pick": "Nick Martinez Over 3.5 K",
+    "pick": "Nick Martinez Over 2.5 K",
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 147,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     650490,
+     666018,
+     691406,
+     683748,
+     668723,
+     689414,
+     676356,
+     680700,
+     670764
+    ],
+    "home": [
+     663757,
+     700250,
+     671277,
+     641355,
+     806146,
+     669224,
+     683011,
+     682987,
+     676609
+    ]
    },
-   "names": {},
+   "names": {
+    "641355": "Cody Bellinger",
+    "650490": "Yandy Díaz",
+    "663757": "Trent Grisham",
+    "666018": "Jonathan Aranda",
+    "668723": "Ryan Vilade",
+    "669224": "Austin Wells",
+    "670764": "Taylor Walls",
+    "671277": "Luis García Jr.",
+    "676356": "Jonny DeLuca",
+    "676609": "José Caballero",
+    "680700": "Richie Palacios",
+    "682987": "Spencer Jones",
+    "683011": "Anthony Volpe",
+    "683748": "Victor Mesa Jr.",
+    "689414": "Liam Hicks",
+    "691406": "Junior Caminero",
+    "700250": "Ben Rice",
+    "806146": "George Lombard Jr."
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -720,13 +996,19 @@
     "945027",
     "945205"
    ],
-   "ump": null,
+   "ump": "Dan Bellino",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "cruzado",
+    "speed": 15,
+    "temp": 67.0
+   }
   }
  }
 }

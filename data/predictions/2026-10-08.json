@@ -70,66 +70,65 @@
 "pk": 849837,
 "date": "2026-10-08",
 "time": "2026-10-09T00:00:00Z",
-"generatedAt": "2026-10-07T04:08:23+00:00",
+"generatedAt": "2026-10-07T21:58:44+00:00",
 "away": "TB",
 "home": "NYY",
-"pHome": 0.5348,
+"pHome": 0.5256,
 "methods": {
 "log5": 0.5664,
-"elo": 0.4942,
-"lambda": 0.5436
+"elo": 0.4975,
+"lambda": 0.5127
 },
 "confidence": "media",
 "projAway": 3.8641,
-"projHome": 4.3195,
-"total": 8.1835,
+"projHome": 4.0015,
+"total": 7.8656,
 "f5Away": 1.9676,
-"f5Home": 2.3952,
-"nrfi": 0.5435,
-"pOver85": 0.4167,
+"f5Home": 2.1508,
+"nrfi": 0.563,
+"pOver85": 0.387,
 "probables": {
-"away": "Por anunciar",
+"away": "Drew Rasmussen",
 "home": "Carlos Rodón"
 },
 "light": "Gris",
 "best": {
-"market": "F5",
-"pick": "NYY F5",
-"p": 0.5702,
+"market": "Prop pitcher",
+"pick": "Drew Rasmussen Over 5.5 K",
+"p": 0.5796,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "TB +1.5",
-"p": 0.6133,
-"line": null,
-"ic": 32.9959,
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 7.5",
+"p": 0.5214,
+"line": 7.5,
+"ic": 35.4396,
 "level": "Muy baja"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.5",
-"p": 0.5093,
-"line": 7.5,
-"ic": 32.9959,
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Over 3.5",
+"p": 0.5083,
+"line": 3.5,
+"ic": 35.4396,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "RL",
-"pick": "TB +1.5",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Over 3.5",
 "level": 0,
 "alts": [
-"Total",
 "F5 total",
-"F5"
+"K"
 ]
 }
 }
