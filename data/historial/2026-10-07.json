@@ -1078,7 +1078,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T23:33:29+00:00",
+  "registeredAt": "2026-10-07T23:49:17+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5625,
@@ -1097,6 +1097,32 @@
   "picks": [
    {
     "rank": 1,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.6007,
+    "fair": -150.0,
+    "ic": 59.7,
+    "level": "Media",
+    "price": -110,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9778,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
     "principal": true,
     "family": "K",
     "market": "Prop de ponches",
@@ -1143,32 +1169,6 @@
      "h": 0.9778,
      "r": 1.0,
      "maxPrice": -141
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.0",
-    "line": 7.0,
-    "p": 0.6007,
-    "fair": -150.0,
-    "ic": 57.1,
-    "level": "Media",
-    "price": -114,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9778,
-     "r": 1.0
     }
    },
    {
@@ -1232,7 +1232,7 @@
     "fair": -129.0,
     "ic": 44.1,
     "level": "Baja",
-    "price": -180,
+    "price": -179,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1311,7 +1311,7 @@
     "fair": -154.0,
     "ic": 37.2,
     "level": "Muy baja",
-    "price": -157,
+    "price": -156,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
