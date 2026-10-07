@@ -135,6 +135,26 @@
    "pk": 849838,
    "side": "home",
    "text": "NYY: RHP Clarke Schmidt roster status changed by New York Yankees."
+  },
+  {
+   "at": "2026-10-07T03:40:48Z",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849822,
+   "text": "Mercado abierto: LAD -144 / ATL +120 · total 7.0"
+  },
+  {
+   "after": "esperar momio (LAD F5)",
+   "at": "2026-10-07T03:40:42Z",
+   "before": "esperar momio (LAD)",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849822,
+   "text": "Decisión: esperar momio (LAD) → esperar momio (LAD F5) · tras: momio"
   }
  ],
  "snap": {
@@ -142,7 +162,7 @@
    "away": 119,
    "dec": {
     "level": 0,
-    "pick": "LAD",
+    "pick": "LAD F5",
     "status": "esperar",
     "waitFor": "momio"
    },
@@ -153,6 +173,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.0,
+    "ml": {
+     "away": -144,
+     "home": 120
+    },
+    "pHome": 0.4351,
+    "src": "draftkings"
+   },
    "prob": {
     "away": {
      "id": 607192,
@@ -241,6 +270,11 @@
     "945207"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   },
   "849827": {

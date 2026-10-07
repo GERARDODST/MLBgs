@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T01:16:30+00:00",
+  "registeredAt": "2026-10-07T03:40:42+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5359,
@@ -111,9 +111,9 @@
     "line": null,
     "p": 0.6863,
     "fair": -219.0,
-    "ic": 38.3,
+    "ic": 36.4,
     "level": "Muy baja",
-    "price": -198,
+    "price": -204,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -513,7 +513,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T01:16:30+00:00",
+  "registeredAt": "2026-10-07T03:40:42+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4704,
@@ -521,7 +521,7 @@
    "projHome": 3.92,
    "total": 8.39,
    "nrfi": 0.5246,
-   "light": "Rojo",
+   "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Tyler Glasnow",
@@ -533,68 +533,15 @@
    {
     "rank": 1,
     "principal": true,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "LAD",
-    "line": null,
-    "p": 0.5296,
-    "fair": -113.0,
-    "ic": 38.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.4% · Elo + abridor (5.7.7) 51.1% · λ + Binomial Negativa (5.3 · 5.7.5) 55.3%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 101
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 119
-      }
-     ],
-     "steps": [
-      101,
-      103,
-      108,
-      114,
-      119,
-      125,
-      131,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9791,
-     "r": 1.0,
-     "maxPrice": 132,
-     "why": "sin momio real: conviene si pagan +101 o mejor"
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Under 8.0",
-    "line": 8.0,
-    "p": 0.5199,
-    "fair": -108.0,
-    "ic": 35.0,
-    "level": "Muy baja",
-    "price": null,
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5857,
+    "fair": -141.0,
+    "ic": 43.4,
+    "level": "Baja",
+    "price": -120,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -610,7 +557,86 @@
     }
    },
    {
+    "rank": 2,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "ATL +1.5",
+    "line": null,
+    "p": 0.61,
+    "fair": -156.0,
+    "ic": 35.6,
+    "level": "Muy baja",
+    "price": -155,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -130
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -110
+      }
+     ],
+     "steps": [
+      -130,
+      -127,
+      -121,
+      -115,
+      -110,
+      -105,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9791,
+     "r": 1.0,
+     "maxPrice": -105,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
     "rank": 3,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "LAD",
+    "line": null,
+    "p": 0.5296,
+    "fair": -113.0,
+    "ic": 35.5,
+    "level": "Muy baja",
+    "price": -144,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.4% · Elo + abridor (5.7.7) 51.1% · λ + Binomial Negativa (5.3 · 5.7.5) 55.3%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9791,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -628,40 +654,15 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -104
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 113
-      }
-     ],
-     "steps": [
-      -104,
-      -102,
-      103,
-      108,
-      113,
-      118,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
      "a": 1.0,
      "h": 0.9791,
-     "r": 1.0,
-     "maxPrice": 119,
-     "why": "sin momio real: conviene si pagan -104 o mejor"
+     "r": 1.0
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -712,7 +713,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -760,32 +761,6 @@
      "r": 1.0,
      "maxPrice": 132,
      "why": "sin momio real: conviene si pagan +107 o mejor"
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "LAD +1.5",
-    "line": null,
-    "p": 0.6982,
-    "fair": -231.0,
-    "ic": 31.6,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9791,
-     "r": 1.0
     }
    },
    {
@@ -921,26 +896,26 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Moneyline: conviene si pagan +101 o mejor (stake 1); stake 5 desde +119",
+   "why": "falta el momio de F5 Moneyline: conviene si pagan +104 o mejor (stake 1); stake 5 desde +123",
    "source": "Framework v2",
-   "pick": "LAD",
+   "pick": "LAD F5",
    "waitFor": "momio",
-   "market": "Moneyline",
-   "p": 0.5296,
-   "ic": 38.8,
+   "market": "F5 Moneyline",
+   "p": 0.5344,
+   "ic": 35.0,
    "level": 0,
    "amount": 0,
-   "minPrice": 101,
+   "minPrice": 104,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": 101
+     "from": 104
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 119
+     "from": 123
     }
    ]
   }

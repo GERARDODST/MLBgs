@@ -3,7 +3,7 @@
 "pk": 849833,
 "date": "2026-10-07",
 "time": "2026-10-07T20:00:00Z",
-"generatedAt": "2026-10-07T00:37:15+00:00",
+"generatedAt": "2026-10-07T03:40:42+00:00",
 "away": "CLE",
 "home": "CWS",
 "pHome": 0.5359,
@@ -49,7 +49,7 @@
 "pick": "CWS +1.5",
 "p": 0.6863,
 "line": null,
-"ic": 38.3382,
+"ic": 36.4065,
 "level": "Muy baja"
 }
 ],
@@ -70,7 +70,7 @@
 "pk": 849822,
 "date": "2026-10-07",
 "time": "2026-10-07T22:00:00Z",
-"generatedAt": "2026-10-06T19:39:48+00:00",
+"generatedAt": "2026-10-07T03:40:42+00:00",
 "away": "LAD",
 "home": "ATL",
 "pHome": 0.4704,
@@ -91,44 +91,42 @@
 "away": "Tyler Glasnow",
 "home": "Tyler Mahle"
 },
-"light": "Rojo",
+"light": "Amarillo",
 "best": {
-"market": "F5",
-"pick": "LAD F5",
-"p": 0.5344,
-"price": null,
-"edge": null,
-"light": "Rojo"
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.5857,
+"price": -120,
+"edge": 0.0402,
+"light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "LAD",
-"p": 0.5296,
-"line": null,
-"ic": 38.7975,
-"level": "Muy baja"
-},
-{
 "family": "Total",
 "market": "Total completo",
-"pick": "Under 8.0",
-"p": 0.5199,
-"line": 8.0,
-"ic": 34.981,
+"pick": "Over 7.0",
+"p": 0.5857,
+"line": 7.0,
+"ic": 43.3724,
+"level": "Baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.61,
+"line": null,
+"ic": 35.6073,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "momio",
-"family": "ML",
-"pick": "LAD",
+"family": "F5",
+"pick": "LAD F5",
 "level": 0,
 "alts": [
-"ML",
-"F5 total",
 "F5",
 "K"
 ]
