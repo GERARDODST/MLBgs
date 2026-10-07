@@ -3,66 +3,66 @@
 "pk": 849832,
 "date": "2026-10-08",
 "time": "2026-10-08T21:00:00Z",
-"generatedAt": "2026-10-07T04:08:23+00:00",
+"generatedAt": "2026-10-07T14:38:00+00:00",
 "away": "CLE",
 "home": "CWS",
-"pHome": 0.5122,
+"pHome": 0.5048,
 "methods": {
 "log5": 0.5391,
-"elo": 0.4945,
-"lambda": 0.5029
+"elo": 0.4795,
+"lambda": 0.4957
 },
-"confidence": "alta",
+"confidence": "media",
 "projAway": 4.2551,
-"projHome": 4.298,
-"total": 8.553,
+"projHome": 4.2233,
+"total": 8.4784,
 "f5Away": 2.3914,
-"f5Home": 2.5288,
-"nrfi": 0.4981,
-"pOver85": 0.4511,
+"f5Home": 2.46,
+"nrfi": 0.5038,
+"pOver85": 0.4441,
 "probables": {
-"away": "Por anunciar",
+"away": "Parker Messick",
 "home": "Por anunciar"
 },
 "light": "Rojo",
 "best": {
-"market": "ML",
-"pick": "CWS",
-"p": 0.5122,
+"market": "Total",
+"pick": "Under 8.0",
+"p": 0.5103,
 "price": null,
 "edge": null,
 "light": "Rojo"
 },
 "topPicks": [
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "CWS",
-"p": 0.5122,
-"line": null,
-"ic": 34.9926,
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Parker Messick Over 5.5 K",
+"p": 0.5563,
+"line": 5.5,
+"ic": 34.8771,
 "level": "Muy baja"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "CLE +1.5",
-"p": 0.6468,
+"family": "ML",
+"market": "Moneyline",
+"pick": "CWS",
+"p": 0.5048,
 "line": null,
-"ic": 31.8,
+"ic": 34.5042,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "dato",
-"family": "ML",
-"pick": "CWS",
+"family": "K",
+"pick": "Parker Messick Over 5.5 K",
 "level": 0,
 "alts": [
+"ML",
 "RL",
-"Total",
-"F5 total"
+"Total"
 ]
 }
 },

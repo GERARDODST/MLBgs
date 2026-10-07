@@ -29,18 +29,18 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T05:19:00+00:00",
+  "registeredAt": "2026-10-07T14:38:00+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5122,
+   "pHome": 0.5048,
    "projAway": 4.26,
-   "projHome": 4.3,
-   "total": 8.55,
-   "nrfi": 0.4981,
+   "projHome": 4.22,
+   "total": 8.48,
+   "nrfi": 0.5038,
    "light": "Rojo",
-   "confidence": "alta",
+   "confidence": "media",
    "probables": {
-    "away": "Por anunciar",
+    "away": "Parker Messick",
     "home": "Por anunciar"
    },
    "lineups": "Proyectados"
@@ -49,21 +49,19 @@
    {
     "rank": 1,
     "principal": true,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "CWS",
-    "line": null,
-    "p": 0.5122,
-    "fair": -105.0,
-    "ic": 35.0,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Parker Messick Over 5.5 K",
+    "line": 5.5,
+    "p": 0.5563,
+    "fair": -125.0,
+    "ic": 34.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
+     "λ + Poisson (5.4)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 49.4% · λ + Binomial Negativa (5.3 · 5.7.5) 50.3%",
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
      "level": 0,
@@ -77,13 +75,41 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "CWS",
+    "line": null,
+    "p": 0.5048,
+    "fair": -102.0,
+    "ic": 34.5,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 47.9% · λ + Binomial Negativa (5.3 · 5.7.5) 49.6%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9782,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "CLE +1.5",
     "line": null,
-    "p": 0.6468,
-    "fair": -183.0,
-    "ic": 31.8,
+    "p": 0.6542,
+    "fair": -189.0,
+    "ic": 34.4,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -101,15 +127,15 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Under 8.0",
     "line": 8.0,
-    "p": 0.5027,
-    "fair": -101.0,
-    "ic": 31.8,
+    "p": 0.5103,
+    "fair": -104.0,
+    "ic": 34.4,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -127,15 +153,15 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Under 4.5",
     "line": 4.5,
-    "p": 0.5177,
-    "fair": -107.0,
-    "ic": 31.8,
+    "p": 0.5265,
+    "fair": -111.0,
+    "ic": 34.4,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -153,67 +179,15 @@
     }
    },
    {
-    "rank": 5,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total CLE",
-    "pick": "CLE Over 3.5",
-    "line": 3.5,
-    "p": 0.5235,
-    "fair": -110.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de CLE",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9782,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 6,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total CWS",
-    "pick": "CWS Over 3.5",
-    "line": 3.5,
-    "p": 0.5293,
-    "fair": -112.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de CWS",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9782,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 7,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "CWS F5",
     "line": null,
-    "p": 0.5209,
-    "fair": -109.0,
-    "ic": 28.5,
+    "p": 0.5105,
+    "fair": -104.0,
+    "ic": 31.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -231,21 +205,73 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 7,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5019,
-    "fair": -101.0,
-    "ic": 28.5,
+    "p": 0.4962,
+    "fair": 102.0,
+    "ic": 31.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9782,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total CLE",
+    "pick": "CLE Over 3.5",
+    "line": 3.5,
+    "p": 0.5235,
+    "fair": -110.0,
+    "ic": 27.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de CLE",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9782,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "Team total",
+    "market": "Team total CWS",
+    "pick": "CWS Over 3.5",
+    "line": 3.5,
+    "p": 0.5191,
+    "fair": -108.0,
+    "ic": 27.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Binomial Negativa de carreras de CWS",
     "res": null,
     "stake": {
      "level": 0,
@@ -262,11 +288,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "CWS",
+   "pick": "Parker Messick Over 5.5 K",
    "waitFor": "dato",
-   "market": "Moneyline",
-   "p": 0.5122,
-   "ic": 35.0,
+   "market": "Prop de ponches",
+   "p": 0.5563,
+   "ic": 34.9,
    "level": 0,
    "amount": 0,
    "minPrice": null,

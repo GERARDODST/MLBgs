@@ -1,12 +1,36 @@
 {
  "date": "2026-10-08",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Parker Messick",
+   "at": "2026-10-07T14:38:13Z",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849832,
+   "side": "away",
+   "text": "Abridor anunciado (CLE): Parker Messick"
+  },
+  {
+   "after": "esperar dato (Parker Messick Over 5.5 K)",
+   "at": "2026-10-07T14:38:00Z",
+   "before": "esperar dato (CWS)",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849832,
+   "text": "Decisión: esperar dato (CWS) → esperar dato (Parker Messick Over 5.5 K) · tras: abridor"
+  }
+ ],
  "snap": {
   "849832": {
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "CWS",
+    "pick": "Parker Messick Over 5.5 K",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -18,7 +42,10 @@
    },
    "names": {},
    "prob": {
-    "away": null,
+    "away": {
+     "id": 800048,
+     "name": "Parker Messick"
+    },
     "home": null
    },
    "probChangedAt": null,
