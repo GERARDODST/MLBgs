@@ -424,6 +424,17 @@
    "kind": "decision",
    "pk": 849827,
    "text": "Decisión: esperar dato (MIL) → esperar momio (MIL F5) · tras: abridor, lineup, umpire, movimiento"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-10-07T22:06:37Z",
+   "before": "esperar momio (MIL F5)",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849827,
+   "text": "Decisión: esperar momio (MIL F5) → no apostar · tras: abridor, lineup, umpire, movimiento"
   }
  ],
  "snap": {
@@ -588,8 +599,8 @@
     "closed": false,
     "cond": "Clear",
     "dir": "cruzado",
-    "speed": 4,
-    "temp": 80.0
+    "speed": 3,
+    "temp": 79.0
    }
   },
   "849827": {
@@ -597,8 +608,8 @@
    "dec": {
     "level": 0,
     "pick": "MIL F5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "status": "no apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 135,

@@ -501,7 +501,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-10-07T21:58:44+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.4738,
    "projAway": 4.45,
@@ -977,6 +977,16 @@
      "from": -119
     }
    ]
+  },
+  "lock": {
+   "at": "2026-10-07T22:06:37+00:00",
+   "hash": "d016ea09dd828fde740f7c1e689e9c2d62d37d62d9f154de316585b3e63ec3d0",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "9e5e812e949e"
+   },
+   "expediente": "data/expedientes/2026-10-07/849822.json.gz",
+   "coincide": true
   }
  },
  {
@@ -1468,7 +1478,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T21:58:44+00:00",
+  "registeredAt": "2026-10-07T22:06:37+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.464,
@@ -1540,6 +1550,57 @@
    {
     "rank": 3,
     "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "MIL F5",
+    "line": null,
+    "p": 0.5509,
+    "fair": -123.0,
+    "ic": 38.8,
+    "level": "Muy baja",
+    "price": -118,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -104
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 114
+      }
+     ],
+     "steps": [
+      -104,
+      -101,
+      104,
+      108,
+      114,
+      119,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9782,
+     "r": 1.0,
+     "maxPrice": 121,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "MIL",
@@ -1591,7 +1652,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -1617,7 +1678,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total MIL",
@@ -1643,7 +1704,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total SD",
@@ -1666,57 +1727,6 @@
      "a": 1.0,
      "h": 0.9782,
      "r": 1.0
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "MIL F5",
-    "line": null,
-    "p": 0.5509,
-    "fair": -123.0,
-    "ic": 36.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -104
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 114
-      }
-     ],
-     "steps": [
-      -104,
-      -101,
-      104,
-      108,
-      114,
-      119,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9782,
-     "r": 1.0,
-     "maxPrice": 121,
-     "why": "sin momio real: conviene si pagan -104 o mejor"
     }
    },
    {
@@ -1800,14 +1810,13 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de F5 Moneyline: conviene si pagan -104 o mejor (stake 1); stake 5 desde +114",
+   "status": "no apostar",
+   "why": "con el momio de referencia (-118): edge menor a 3 pp con ese momio (stake 1 desde -104)",
    "source": "Framework v2",
    "pick": "MIL F5",
-   "waitFor": "momio",
    "market": "F5 Moneyline",
    "p": 0.5509,
-   "ic": 36.0,
+   "ic": 38.8,
    "level": 0,
    "amount": 0,
    "minPrice": -104,

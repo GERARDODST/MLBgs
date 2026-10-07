@@ -481,9 +481,141 @@
   "849827": {
    "away": 158,
    "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -120,
+        "home": -102
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -120,
+        "home": -102
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -139,
+        "home": 106
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -139,
+        "home": 106
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -115
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -115,
+        "home": -115
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
     "draftkings": {
      "last": {
-      "at": "2026-10-07T21:58:53Z",
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -125,
+        "home": -105
+       },
+       "total": {}
+      },
       "ml": {
        "away": -107,
        "home": -112
@@ -512,6 +644,13 @@
      "mx": false,
      "open": {
       "at": "2026-10-07T07:24:48Z",
+      "f5": {
+       "ml": {
+        "away": -125,
+        "home": -105
+       },
+       "total": {}
+      },
       "ml": {
        "away": -103,
        "home": -116
@@ -537,18 +676,83 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -124,
+        "home": 100
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -124,
+        "home": 100
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -116,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T22:06:43Z",
+      "f5": {
+       "ml": {
+        "away": -116,
+        "home": -105
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie"
     }
    },
-   "checked": "2026-10-07T21:58:53Z",
+   "checked": "2026-10-07T22:06:43Z",
    "espn": "401908005",
    "home": 135,
    "pk": 849827,
    "providers": [
-    "espn"
+    "espn",
+    "the-odds-api"
    ],
-   "start": "2026-10-08T02:00:00Z"
+   "start": "2026-10-08T02:00:00Z",
+   "theAt": {
+    "h2h_1st_5_innings": "2026-10-07T22:06:43Z"
+   },
+   "theEmpty": {
+    "h2h_1st_5_innings": 0
+   },
+   "theGot": {
+    "h2h_1st_5_innings": 8
+   },
+   "theId": "3c71012ad7a75e6c11575285e6841e14",
+   "theN": {
+    "h2h_1st_5_innings": 1
+   },
+   "theSwapped": false
   },
   "849833": {
    "away": 114,
