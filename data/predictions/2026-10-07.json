@@ -70,7 +70,7 @@
 "pk": 849822,
 "date": "2026-10-07",
 "time": "2026-10-07T22:00:00Z",
-"generatedAt": "2026-10-07T03:40:42+00:00",
+"generatedAt": "2026-10-07T07:24:40+00:00",
 "away": "LAD",
 "home": "ATL",
 "pHome": 0.4704,
@@ -91,24 +91,24 @@
 "away": "Tyler Glasnow",
 "home": "Tyler Mahle"
 },
-"light": "Amarillo",
+"light": "Rojo",
 "best": {
-"market": "Total",
-"pick": "Over 7.0",
-"p": 0.5857,
-"price": -120,
-"edge": 0.0402,
-"light": "Amarillo"
+"market": "F5",
+"pick": "LAD F5",
+"p": 0.5344,
+"price": null,
+"edge": null,
+"light": "Rojo"
 },
 "topPicks": [
 {
 "family": "Total",
 "market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.5857,
-"line": 7.0,
-"ic": 43.3724,
-"level": "Baja"
+"pick": "Over 7.5",
+"p": 0.5285,
+"line": 7.5,
+"ic": 39.2206,
+"level": "Muy baja"
 },
 {
 "family": "RL",
@@ -116,7 +116,7 @@
 "pick": "ATL +1.5",
 "p": 0.61,
 "line": null,
-"ic": 35.6073,
+"ic": 38.8358,
 "level": "Muy baja"
 }
 ],
@@ -203,54 +203,54 @@
 "pk": 849827,
 "date": "2026-10-07",
 "time": "2026-10-08T02:00:00Z",
-"generatedAt": "2026-10-06T04:01:10+00:00",
+"generatedAt": "2026-10-07T07:24:40+00:00",
 "away": "MIL",
 "home": "SD",
-"pHome": 0.4217,
+"pHome": 0.4321,
 "methods": {
 "log5": 0.4428,
-"elo": 0.4146,
-"lambda": 0.4078
+"elo": 0.454,
+"lambda": 0.3995
 },
-"confidence": "alta",
-"projAway": 4.7607,
+"confidence": "media",
+"projAway": 4.8562,
 "projHome": 3.8053,
-"total": 8.566,
-"f5Away": 2.768,
+"total": 8.6615,
+"f5Away": 2.86,
 "f5Home": 2.2086,
-"nrfi": 0.4965,
-"pOver85": 0.4523,
+"nrfi": 0.4894,
+"pOver85": 0.4611,
 "probables": {
 "away": "Por anunciar",
-"home": "Por anunciar"
+"home": "Walker Buehler"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
 "market": "ML",
 "pick": "MIL",
-"p": 0.5783,
-"price": null,
-"edge": null,
-"light": "Gris"
+"p": 0.5679,
+"price": -108,
+"edge": 0.0487,
+"light": "Amarillo"
 },
 "topPicks": [
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "MIL",
-"p": 0.5783,
+"p": 0.5679,
 "line": null,
-"ic": 37.0094,
-"level": "Muy baja"
+"ic": 49.526,
+"level": "Baja"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Under 8.0",
-"p": 0.5013,
-"line": 8.0,
-"ic": 31.8,
-"level": "Muy baja"
+"family": "RL",
+"market": "Run Line",
+"pick": "MIL -1.5",
+"p": 0.44,
+"line": null,
+"ic": 46.5742,
+"level": "Baja"
 }
 ],
 "decision": {
@@ -260,9 +260,9 @@
 "pick": "MIL",
 "level": 0,
 "alts": [
+"RL",
 "Total",
-"F5 total",
-"Team total"
+"K"
 ]
 }
 }
