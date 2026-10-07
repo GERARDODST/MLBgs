@@ -199,6 +199,17 @@
    "kind": "decision",
    "pk": 849822,
    "text": "Decisión: esperar momio (LAD F5) → apostar Tyler Mahle Over 4.5 K · stake 5"
+  },
+  {
+   "after": "esperar dato (MIL +1.5)",
+   "at": "2026-10-07T10:30:51Z",
+   "before": "esperar dato (MIL)",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849827,
+   "text": "Decisión: esperar dato (MIL) → esperar dato (MIL +1.5)"
   }
  ],
  "snap": {
@@ -325,7 +336,7 @@
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "MIL",
+    "pick": "MIL +1.5",
     "status": "esperar",
     "waitFor": "dato"
    },
