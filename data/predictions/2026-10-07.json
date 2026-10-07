@@ -3,23 +3,23 @@
 "pk": 849833,
 "date": "2026-10-07",
 "time": "2026-10-07T20:00:00Z",
-"generatedAt": "2026-10-07T15:33:51+00:00",
+"generatedAt": "2026-10-07T16:01:45+00:00",
 "away": "CLE",
 "home": "CWS",
-"pHome": 0.5359,
+"pHome": 0.5402,
 "methods": {
 "log5": 0.5391,
 "elo": 0.5418,
-"lambda": 0.5267
+"lambda": 0.5396
 },
 "confidence": "alta",
 "projAway": 3.9021,
-"projHome": 4.1861,
-"total": 8.0882,
+"projHome": 4.3195,
+"total": 8.2216,
 "f5Away": 2.0662,
-"f5Home": 2.4265,
-"nrfi": 0.5348,
-"pOver85": 0.4078,
+"f5Home": 2.5038,
+"nrfi": 0.5286,
+"pOver85": 0.4203,
 "probables": {
 "away": "Daniel Espino",
 "home": "Sean Newcomb"
@@ -38,18 +38,18 @@
 "family": "ML",
 "market": "Moneyline",
 "pick": "CWS",
-"p": 0.5359,
+"p": 0.5402,
 "line": null,
-"ic": 41.3125,
+"ic": 43.909,
 "level": "Baja"
 },
 {
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Under 4.0",
-"p": 0.5078,
-"line": 4.0,
-"ic": 33.522,
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Sean Newcomb Under 2.5 K",
+"p": 0.587,
+"line": 2.5,
+"ic": 32.5249,
 "level": "Muy baja"
 }
 ],
@@ -68,7 +68,7 @@
 "pk": 849822,
 "date": "2026-10-07",
 "time": "2026-10-07T22:00:00Z",
-"generatedAt": "2026-10-07T15:33:51+00:00",
+"generatedAt": "2026-10-07T16:01:45+00:00",
 "away": "LAD",
 "home": "ATL",
 "pHome": 0.4704,
@@ -102,31 +102,31 @@
 {
 "family": "K",
 "market": "Prop de ponches",
-"pick": "Tyler Mahle Over 4.5 K",
-"p": 0.5303,
-"line": 4.5,
-"ic": 61.0155,
+"pick": "Tyler Mahle Over 3.5 K",
+"p": 0.7112,
+"line": 3.5,
+"ic": 63.5243,
 "level": "Media"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Tyler Glasnow Under 6.5 K",
-"p": 0.6024,
-"line": 6.5,
-"ic": 44.0932,
+"family": "RL",
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.61,
+"line": null,
+"ic": 43.7773,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "apostar",
-"waitFor": null,
+"status": "esperar",
+"waitFor": "verificar",
 "family": "K",
-"pick": "Tyler Mahle Over 4.5 K",
-"level": 5,
+"pick": "Tyler Mahle Over 3.5 K",
+"level": 0,
 "alts": [
-"K",
 "RL",
+"K",
 "ML"
 ]
 }

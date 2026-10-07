@@ -232,16 +232,48 @@
    "kind": "decision",
    "pk": 849827,
    "text": "Decisión: esperar dato (MIL +1.5) → esperar dato (MIL)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-07T16:01:55Z",
+   "date": "2026-10-07",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849833,
+   "side": "home",
+   "text": "Lineup confirmado (CWS)"
+  },
+  {
+   "after": "Todd Tichenor",
+   "at": "2026-10-07T16:01:55Z",
+   "date": "2026-10-07",
+   "game": "CLE @ CWS",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849833,
+   "text": "Umpire de home asignado: Todd Tichenor"
+  },
+  {
+   "after": "esperar verificar (Tyler Mahle Over 3.5 K)",
+   "at": "2026-10-07T16:01:45Z",
+   "before": "apostar Tyler Mahle Over 4.5 K · stake 5",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849822,
+   "text": "Decisión: apostar Tyler Mahle Over 4.5 K · stake 5 → esperar verificar (Tyler Mahle Over 3.5 K)"
   }
  ],
  "snap": {
   "849822": {
    "away": 119,
    "dec": {
-    "level": 5,
-    "pick": "Tyler Mahle Over 4.5 K",
-    "status": "apostar",
-    "waitFor": null
+    "level": 0,
+    "pick": "Tyler Mahle Over 3.5 K",
+    "status": "esperar",
+    "waitFor": "verificar"
    },
    "detailed": "Scheduled",
    "home": 144,
@@ -470,13 +502,33 @@
     "status": "esperar",
     "waitFor": "momio"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 145,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     803011,
+     678246,
+     808959,
+     691019,
+     805367,
+     671976,
+     695731,
+     545341,
+     695657
+    ]
    },
-   "names": {},
+   "names": {
+    "545341": "Randal Grichuk",
+    "671976": "Tristan Peters",
+    "678246": "Miguel Vargas",
+    "691019": "Kyle Teel",
+    "695657": "Colson Montgomery",
+    "695731": "Braden Montgomery",
+    "803011": "Sam Antonacci",
+    "805367": "Chase Meidroth",
+    "808959": "Munetaka Murakami"
+   },
    "odds": {
     "line": 8.0,
     "ml": {
@@ -553,13 +605,19 @@
     "945042",
     "945110"
    ],
-   "ump": null,
+   "ump": "Todd Tichenor",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Sunny",
+    "dir": "cruzado",
+    "speed": 8,
+    "temp": 75.0
+   }
   },
   "849838": {
    "away": 139,
