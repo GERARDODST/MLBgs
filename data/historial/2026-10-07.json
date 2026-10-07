@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T14:24:00+00:00",
+  "registeredAt": "2026-10-07T15:33:51+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5359,
@@ -57,7 +57,7 @@
     "fair": -115.0,
     "ic": 41.3,
     "level": "Baja",
-    "price": -121,
+    "price": -126,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -105,55 +105,6 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "CWS +1.5",
-    "line": null,
-    "p": 0.6863,
-    "fair": -219.0,
-    "ic": 36.4,
-    "level": "Muy baja",
-    "price": -204,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "alerts": [
-     "depende de que Daniel Espino siga en mala racha (8.3)"
-    ],
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -171
-      }
-     ],
-     "steps": [
-      -171,
-      -164,
-      -154,
-      -145,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9782,
-     "r": 0.8,
-     "maxPrice": -142,
-     "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Under 4.0",
@@ -203,7 +154,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 3,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -251,6 +202,32 @@
      "r": 1.0,
      "maxPrice": 105,
      "why": "sin momio real: conviene si pagan -114 o mejor"
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "CLE +1.5",
+    "line": null,
+    "p": 0.6298,
+    "fair": -170.0,
+    "ic": 32.0,
+    "level": "Muy baja",
+    "price": -199,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9782,
+     "r": 1.0
     }
    },
    {
@@ -513,7 +490,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T13:31:59+00:00",
+  "registeredAt": "2026-10-07T15:33:51+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4704,
@@ -640,9 +617,9 @@
     "line": null,
     "p": 0.61,
     "fair": -156.0,
-    "ic": 41.3,
+    "ic": 43.8,
     "level": "Baja",
-    "price": -143,
+    "price": -138,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -679,37 +656,11 @@
      "h": 0.9782,
      "r": 1.0,
      "maxPrice": -105,
-     "why": "edge menor a 3 pp con ese momio"
+     "why": "confianza menor a 55 con ese momio"
     }
    },
    {
     "rank": 4,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.5",
-    "line": 7.5,
-    "p": 0.5285,
-    "fair": -112.0,
-    "ic": 37.1,
-    "level": "Muy baja",
-    "price": -104,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9782,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -737,7 +688,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 5,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -763,7 +714,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 6,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -811,6 +762,32 @@
      "r": 1.0,
      "maxPrice": 130,
      "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.5",
+    "line": 7.5,
+    "p": 0.5285,
+    "fair": -112.0,
+    "ic": 32.3,
+    "level": "Muy baja",
+    "price": -111,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9782,
+     "r": 1.0
     }
    },
    {
@@ -948,7 +925,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T13:31:59+00:00",
+  "registeredAt": "2026-10-07T15:33:51+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5642,
@@ -1102,7 +1079,7 @@
     "fair": -129.0,
     "ic": 40.6,
     "level": "Baja",
-    "price": -164,
+    "price": -167,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1130,7 +1107,7 @@
     "fair": -152.0,
     "ic": 36.0,
     "level": "Muy baja",
-    "price": -165,
+    "price": -164,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1382,7 +1359,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T13:31:59+00:00",
+  "registeredAt": "2026-10-07T15:33:51+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4321,
@@ -1408,9 +1385,9 @@
     "line": null,
     "p": 0.5679,
     "fair": -131.0,
-    "ic": 51.6,
+    "ic": 50.2,
     "level": "Baja",
-    "price": -105,
+    "price": -107,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1436,9 +1413,9 @@
     "line": null,
     "p": 0.44,
     "fair": 127.0,
-    "ic": 49.1,
+    "ic": 46.6,
     "level": "Baja",
-    "price": 165,
+    "price": 159,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1462,9 +1439,9 @@
     "line": 7.5,
     "p": 0.5542,
     "fair": -124.0,
-    "ic": 44.5,
-    "level": "Baja",
-    "price": -103,
+    "ic": 39.1,
+    "level": "Muy baja",
+    "price": -111,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1645,7 +1622,7 @@
    "waitFor": "dato",
    "market": "Moneyline",
    "p": 0.5679,
-   "ic": 51.6,
+   "ic": 50.2,
    "level": 0,
    "amount": 0,
    "minPrice": null,
