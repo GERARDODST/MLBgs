@@ -555,7 +555,7 @@
    "books": {
     "betmgm": {
      "last": {
-      "at": "2026-10-07T08:20:42Z",
+      "at": "2026-10-07T14:24:10Z",
       "f5": {
        "ml": {
         "away": 105,
@@ -563,12 +563,12 @@
        },
        "total": {
         "over": {
-         "point": 4.5,
-         "price": -105
+         "point": 4.0,
+         "price": -130
         },
         "under": {
-         "point": 4.5,
-         "price": -125
+         "point": 4.0,
+         "price": 100
         }
        }
       }
@@ -596,6 +596,43 @@
      "src": "the-odds-api",
      "title": "BetMGM"
     },
+    "betonlineag": {
+     "last": {
+      "at": "2026-10-07T14:24:10Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -120
+        },
+        "under": {
+         "point": 4.0,
+         "price": 100
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T14:24:10Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -120
+        },
+        "under": {
+         "point": 4.0,
+         "price": 100
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline"
+    },
     "betrivers": {
      "last": {
       "at": "2026-10-07T08:20:42Z",
@@ -621,9 +658,46 @@
      "src": "the-odds-api",
      "title": "BetRivers"
     },
+    "betus": {
+     "last": {
+      "at": "2026-10-07T14:24:10Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -120
+        },
+        "under": {
+         "point": 4.0,
+         "price": -110
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T14:24:10Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -120
+        },
+        "under": {
+         "point": 4.0,
+         "price": -110
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
     "bovada": {
      "last": {
-      "at": "2026-10-07T08:20:42Z",
+      "at": "2026-10-07T14:24:10Z",
       "f5": {
        "ml": {
         "away": 100,
@@ -632,11 +706,11 @@
        "total": {
         "over": {
          "point": 4.5,
-         "price": -115
+         "price": -105
         },
         "under": {
          "point": 4.5,
-         "price": -115
+         "price": -125
         }
        }
       }
@@ -739,7 +813,7 @@
     },
     "fanduel": {
      "last": {
-      "at": "2026-10-07T08:20:42Z",
+      "at": "2026-10-07T14:24:10Z",
       "f5": {
        "ml": {
         "away": 104,
@@ -748,11 +822,11 @@
        "total": {
         "over": {
          "point": 4.5,
-         "price": -108
+         "price": -102
         },
         "under": {
          "point": 4.5,
-         "price": -120
+         "price": -128
         }
        }
       }
@@ -779,9 +853,46 @@
      },
      "src": "the-odds-api",
      "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-10-07T14:24:10Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -120
+        },
+        "under": {
+         "point": 4.0,
+         "price": -102
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T14:24:10Z",
+      "f5": {
+       "ml": {},
+       "total": {
+        "over": {
+         "point": 4.0,
+         "price": -120
+        },
+        "under": {
+         "point": 4.0,
+         "price": -102
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie"
     }
    },
-   "checked": "2026-10-07T13:32:05Z",
+   "checked": "2026-10-07T14:24:10Z",
    "espn": "401907992",
    "home": 145,
    "pk": 849833,
@@ -792,24 +903,24 @@
    "start": "2026-10-07T20:00:00Z",
    "theAt": {
     "h2h_1st_5_innings": "2026-10-07T08:20:42Z",
-    "pitcher_strikeouts": "2026-10-07T12:40:20Z",
-    "totals_1st_5_innings": "2026-10-07T08:20:42Z"
+    "pitcher_strikeouts": "2026-10-07T14:24:10Z",
+    "totals_1st_5_innings": "2026-10-07T14:24:10Z"
    },
    "theEmpty": {
     "h2h_1st_5_innings": 0,
-    "pitcher_strikeouts": 3,
+    "pitcher_strikeouts": 4,
     "totals_1st_5_innings": 0
    },
    "theGot": {
     "h2h_1st_5_innings": 5,
     "pitcher_strikeouts": 0,
-    "totals_1st_5_innings": 3
+    "totals_1st_5_innings": 6
    },
    "theId": "cd974d85e2a617152370056d22cd8deb",
    "theN": {
     "h2h_1st_5_innings": 1,
-    "pitcher_strikeouts": 3,
-    "totals_1st_5_innings": 1
+    "pitcher_strikeouts": 4,
+    "totals_1st_5_innings": 2
    },
    "theSwapped": false
   },

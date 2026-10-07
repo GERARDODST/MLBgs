@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T13:31:59+00:00",
+  "registeredAt": "2026-10-07T14:24:00+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5359,
@@ -105,57 +105,6 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Under 4.5",
-    "line": 4.5,
-    "p": 0.5733,
-    "fair": -134.0,
-    "ic": 40.1,
-    "level": "Baja",
-    "price": -120,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -107
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 110
-      }
-     ],
-     "steps": [
-      -107,
-      -105,
-      -100,
-      105,
-      110,
-      null,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9782,
-     "r": 1.0,
-     "maxPrice": 111,
-     "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "CWS +1.5",
@@ -199,6 +148,57 @@
      "h": 0.9782,
      "r": 0.8,
      "maxPrice": -142,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Under 4.0",
+    "line": 4.0,
+    "p": 0.5078,
+    "fair": -103.0,
+    "ic": 33.5,
+    "level": "Muy baja",
+    "price": -101,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 121
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 143
+      }
+     ],
+     "steps": [
+      121,
+      124,
+      130,
+      136,
+      143,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9782,
+     "r": 1.0,
+     "maxPrice": 145,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
