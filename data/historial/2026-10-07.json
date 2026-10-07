@@ -30,7 +30,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-10-07T16:01:45+00:00",
-  "status": "cerrado",
+  "status": "calificado",
   "pred": {
    "pHome": 0.5402,
    "projAway": 3.9,
@@ -64,7 +64,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 54.2% · λ + Binomial Negativa (5.3 · 5.7.5) 54.0%",
-    "res": null,
+    "res": "perdido",
     "alerts": [
      "depende de que Daniel Espino siga en mala racha (8.3)"
     ],
@@ -118,7 +118,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -169,7 +169,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -195,7 +195,7 @@
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
+    "res": "ganado",
     "stake": {
      "level": 0,
      "ladder": [
@@ -246,7 +246,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de CLE",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -272,7 +272,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de CWS",
-    "res": null,
+    "res": "perdido",
     "alerts": [
      "depende de que Daniel Espino siga en mala racha (8.3)"
     ],
@@ -301,7 +301,7 @@
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
-    "res": null,
+    "res": "perdido",
     "alerts": [
      "depende de que Daniel Espino siga en mala racha (8.3)"
     ],
@@ -350,7 +350,7 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -376,7 +376,7 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [],
@@ -402,7 +402,7 @@
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
+    "res": "perdido",
     "stake": {
      "level": 0,
      "ladder": [
@@ -433,7 +433,66 @@
     }
    }
   ],
-  "result": null,
+  "result": {
+   "state": "Final",
+   "ar": 9,
+   "hr": 3,
+   "inn": [
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     2,
+     0
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "decisions": {
+    "winner": "Foster Griffin",
+    "loser": "Bryan Hudson"
+   },
+   "rhe": {
+    "away": [
+     9,
+     11,
+     0
+    ],
+    "home": [
+     3,
+     6,
+     0
+    ]
+   },
+   "gradedAt": "2026-10-07T23:25:47+00:00"
+  },
   "decision": {
    "status": "esperar",
    "why": "falta el momio de Prop de ponches: conviene si pagan -114 o mejor (stake 1); stake 5 desde +103",
@@ -1019,7 +1078,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T23:02:01+00:00",
+  "registeredAt": "2026-10-07T23:25:47+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5625,
@@ -1095,9 +1154,9 @@
     "line": 7.0,
     "p": 0.6007,
     "fair": -150.0,
-    "ic": 55.2,
+    "ic": 57.1,
     "level": "Media",
-    "price": -117,
+    "price": -114,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1173,7 +1232,7 @@
     "fair": -129.0,
     "ic": 44.1,
     "level": "Baja",
-    "price": -174,
+    "price": -180,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1478,7 +1537,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T23:09:57+00:00",
+  "registeredAt": "2026-10-07T23:25:47+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4637,
@@ -1554,9 +1613,9 @@
     "line": 7.5,
     "p": 0.5882,
     "fair": -143.0,
-    "ic": 52.0,
+    "ic": 50.0,
     "level": "Baja",
-    "price": -111,
+    "price": -114,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1630,9 +1689,9 @@
     "line": null,
     "p": 0.4098,
     "fair": 144.0,
-    "ic": 41.2,
+    "ic": 40.3,
     "level": "Baja",
-    "price": 160,
+    "price": 158,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
