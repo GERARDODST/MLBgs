@@ -68,7 +68,7 @@
 "pk": 849822,
 "date": "2026-10-07",
 "time": "2026-10-07T22:00:00Z",
-"generatedAt": "2026-10-07T10:04:09+00:00",
+"generatedAt": "2026-10-07T13:31:59+00:00",
 "away": "LAD",
 "home": "ATL",
 "pHome": 0.4704,
@@ -89,14 +89,14 @@
 "away": "Tyler Glasnow",
 "home": "Tyler Mahle"
 },
-"light": "Rojo",
+"light": "Amarillo",
 "best": {
-"market": "Run Line",
-"pick": "ATL +1.5",
-"p": 0.61,
-"price": -148,
-"edge": 0.0132,
-"light": "Rojo"
+"market": "ML",
+"pick": "ATL",
+"p": 0.4704,
+"price": 128,
+"edge": 0.0318,
+"light": "Amarillo"
 },
 "topPicks": [
 {
@@ -126,8 +126,8 @@
 "level": 5,
 "alts": [
 "K",
-"Total",
-"RL"
+"RL",
+"Total"
 ]
 }
 },
@@ -135,7 +135,7 @@
 "pk": 849838,
 "date": "2026-10-07",
 "time": "2026-10-08T00:00:00Z",
-"generatedAt": "2026-10-07T12:14:20+00:00",
+"generatedAt": "2026-10-07T13:31:59+00:00",
 "away": "TB",
 "home": "NYY",
 "pHome": 0.5642,
@@ -161,8 +161,8 @@
 "market": "Total",
 "pick": "Over 7.0",
 "p": 0.5809,
-"price": -120,
-"edge": 0.0355,
+"price": -122,
+"edge": 0.0314,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -202,7 +202,7 @@
 "pk": 849827,
 "date": "2026-10-07",
 "time": "2026-10-08T02:00:00Z",
-"generatedAt": "2026-10-07T10:30:51+00:00",
+"generatedAt": "2026-10-07T13:31:59+00:00",
 "away": "MIL",
 "home": "SD",
 "pHome": 0.4321,
@@ -225,23 +225,14 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "Run Line",
-"pick": "MIL +1.5",
-"p": 0.7361,
-"price": -207,
-"edge": 0.0618,
+"market": "ML",
+"pick": "MIL",
+"p": 0.5679,
+"price": -105,
+"edge": 0.0557,
 "light": "Amarillo"
 },
 "topPicks": [
-{
-"family": "RL",
-"market": "Run Line",
-"pick": "MIL +1.5",
-"p": 0.7361,
-"line": null,
-"ic": 52.2245,
-"level": "Baja"
-},
 {
 "family": "ML",
 "market": "Moneyline",
@@ -250,16 +241,25 @@
 "line": null,
 "ic": 51.5781,
 "level": "Baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "MIL -1.5",
+"p": 0.44,
+"line": null,
+"ic": 49.124,
+"level": "Baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "dato",
-"family": "RL",
-"pick": "MIL +1.5",
+"family": "ML",
+"pick": "MIL",
 "level": 0,
 "alts": [
-"ML",
+"RL",
 "Total",
 "K"
 ]

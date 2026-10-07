@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T10:30:51+00:00",
+  "registeredAt": "2026-10-07T13:31:59+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5359,
@@ -57,7 +57,7 @@
     "fair": -115.0,
     "ic": 41.3,
     "level": "Baja",
-    "price": -123,
+    "price": -121,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -162,9 +162,9 @@
     "line": null,
     "p": 0.6863,
     "fair": -219.0,
-    "ic": 35.8,
+    "ic": 36.4,
     "level": "Muy baja",
-    "price": -206,
+    "price": -204,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -366,9 +366,9 @@
     "line": 8.0,
     "p": 0.5507,
     "fair": -123.0,
-    "ic": 30.8,
+    "ic": 31.4,
     "level": "Muy baja",
-    "price": -119,
+    "price": -118,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -513,7 +513,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T10:04:09+00:00",
+  "registeredAt": "2026-10-07T13:31:59+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4704,
@@ -521,7 +521,7 @@
    "projHome": 3.92,
    "total": 8.39,
    "nrfi": 0.5246,
-   "light": "Rojo",
+   "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Tyler Glasnow",
@@ -634,41 +634,15 @@
    {
     "rank": 3,
     "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.5",
-    "line": 7.5,
-    "p": 0.5285,
-    "fair": -112.0,
-    "ic": 39.2,
-    "level": "Muy baja",
-    "price": -101,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9782,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "ATL +1.5",
     "line": null,
     "p": 0.61,
     "fair": -156.0,
-    "ic": 38.8,
-    "level": "Muy baja",
-    "price": -148,
+    "ic": 41.3,
+    "level": "Baja",
+    "price": -143,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -709,6 +683,32 @@
     }
    },
    {
+    "rank": 4,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.5",
+    "line": 7.5,
+    "p": 0.5285,
+    "fair": -112.0,
+    "ic": 37.1,
+    "level": "Muy baja",
+    "price": -104,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9782,
+     "r": 1.0
+    }
+   },
+   {
     "rank": 5,
     "principal": false,
     "family": "ML",
@@ -719,7 +719,7 @@
     "fair": -113.0,
     "ic": 35.5,
     "level": "Muy baja",
-    "price": -148,
+    "price": -155,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -948,7 +948,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T12:14:20+00:00",
+  "registeredAt": "2026-10-07T13:31:59+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5642,
@@ -1074,9 +1074,9 @@
     "line": 7.0,
     "p": 0.5809,
     "fair": -139.0,
-    "ic": 46.4,
+    "ic": 45.2,
     "level": "Baja",
-    "price": -120,
+    "price": -122,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1102,7 +1102,7 @@
     "fair": -129.0,
     "ic": 40.6,
     "level": "Baja",
-    "price": -167,
+    "price": -164,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1130,7 +1130,7 @@
     "fair": -152.0,
     "ic": 36.0,
     "level": "Muy baja",
-    "price": -168,
+    "price": -165,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1382,7 +1382,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T10:30:51+00:00",
+  "registeredAt": "2026-10-07T13:31:59+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4321,
@@ -1401,32 +1401,6 @@
   "picks": [
    {
     "rank": 1,
-    "principal": true,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "MIL +1.5",
-    "line": null,
-    "p": 0.7361,
-    "fair": -279.0,
-    "ic": 52.2,
-    "level": "Baja",
-    "price": -207,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9782,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 2,
     "principal": true,
     "family": "ML",
     "market": "Moneyline",
@@ -1454,6 +1428,32 @@
     }
    },
    {
+    "rank": 2,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL -1.5",
+    "line": null,
+    "p": 0.44,
+    "fair": 127.0,
+    "ic": 49.1,
+    "level": "Baja",
+    "price": 165,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9782,
+     "r": 1.0
+    }
+   },
+   {
     "rank": 3,
     "principal": false,
     "family": "Total",
@@ -1462,9 +1462,9 @@
     "line": 7.5,
     "p": 0.5542,
     "fair": -124.0,
-    "ic": 43.1,
+    "ic": 44.5,
     "level": "Baja",
-    "price": -105,
+    "price": -103,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1641,11 +1641,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "MIL +1.5",
+   "pick": "MIL",
    "waitFor": "dato",
-   "market": "Run Line",
-   "p": 0.7361,
-   "ic": 52.2,
+   "market": "Moneyline",
+   "p": 0.5679,
+   "ic": 51.6,
    "level": 0,
    "amount": 0,
    "minPrice": null,

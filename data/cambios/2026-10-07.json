@@ -221,6 +221,17 @@
    "kind": "decision",
    "pk": 849838,
    "text": "Decisión: esperar momio (F5 Over 3.5) → apostar Nick Martinez Over 3.5 K · stake 5"
+  },
+  {
+   "after": "esperar dato (MIL)",
+   "at": "2026-10-07T13:31:59Z",
+   "before": "esperar dato (MIL +1.5)",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849827,
+   "text": "Decisión: esperar dato (MIL +1.5) → esperar dato (MIL)"
   }
  ],
  "snap": {
@@ -347,7 +358,7 @@
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "MIL +1.5",
+    "pick": "MIL",
     "status": "esperar",
     "waitFor": "dato"
    },
