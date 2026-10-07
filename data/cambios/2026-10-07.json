@@ -435,6 +435,28 @@
    "kind": "decision",
    "pk": 849827,
    "text": "Decisión: esperar momio (MIL F5) → no apostar · tras: abridor, lineup, umpire, movimiento"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-07T22:38:22Z",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849827,
+   "side": "away",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "esperar momio (MIL Under 4.5)",
+   "at": "2026-10-07T22:38:14Z",
+   "before": "no apostar",
+   "date": "2026-10-07",
+   "game": "MIL @ SD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849827,
+   "text": "Decisión: no apostar → esperar momio (MIL Under 4.5) · tras: abridor, lineup, umpire, movimiento"
   }
  ],
  "snap": {
@@ -607,14 +629,24 @@
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "MIL F5",
-    "status": "no apostar",
-    "waitFor": null
+    "pick": "MIL Under 4.5",
+    "status": "esperar",
+    "waitFor": "momio"
    },
    "detailed": "Pre-Game",
    "home": 135,
    "lu": {
-    "away": [],
+    "away": [
+     694192,
+     592885,
+     661388,
+     668930,
+     641343,
+     806198,
+     686217,
+     669003,
+     687401
+    ],
     "home": [
      665487,
      701538,
@@ -629,14 +661,23 @@
    },
    "names": {
     "592518": "Manny Machado",
+    "592885": "Christian Yelich",
     "593428": "Xander Bogaerts",
     "630105": "Jake Cronenworth",
+    "641343": "Jake Bauers",
+    "661388": "William Contreras",
     "664034": "Ty France",
     "665487": "Fernando Tatis Jr.",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
     "669134": "Luis Campusano",
     "669392": "Samad Taylor",
     "669720": "Austin Hays",
-    "701538": "Jackson Merrill"
+    "686217": "Sal Frelick",
+    "687401": "Joey Ortiz",
+    "694192": "Jackson Chourio",
+    "701538": "Jackson Merrill",
+    "806198": "Cooper Pratt"
    },
    "odds": {
     "line": 7.5,

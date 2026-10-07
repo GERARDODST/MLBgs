@@ -135,7 +135,7 @@
 "pk": 849838,
 "date": "2026-10-07",
 "time": "2026-10-08T00:00:00Z",
-"generatedAt": "2026-10-07T21:58:44+00:00",
+"generatedAt": "2026-10-07T22:38:14+00:00",
 "away": "TB",
 "home": "NYY",
 "pHome": 0.5625,
@@ -161,8 +161,8 @@
 "market": "Total",
 "pick": "Over 7.0",
 "p": 0.6007,
-"price": -118,
-"edge": 0.0594,
+"price": -117,
+"edge": 0.0615,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -181,8 +181,8 @@
 "pick": "Over 7.0",
 "p": 0.6007,
 "line": 7.0,
-"ic": 54.5593,
-"level": "Baja"
+"ic": 55.1759,
+"level": "Media"
 }
 ],
 "decision": {
@@ -202,23 +202,23 @@
 "pk": 849827,
 "date": "2026-10-07",
 "time": "2026-10-08T02:00:00Z",
-"generatedAt": "2026-10-07T22:06:37+00:00",
+"generatedAt": "2026-10-07T22:38:14+00:00",
 "away": "MIL",
 "home": "SD",
-"pHome": 0.464,
+"pHome": 0.4637,
 "methods": {
 "log5": 0.4428,
 "elo": 0.5139,
-"lambda": 0.4352
+"lambda": 0.4343
 },
 "confidence": "media",
-"projAway": 4.8562,
+"projAway": 4.8664,
 "projHome": 4.1715,
-"total": 9.0277,
-"f5Away": 2.86,
+"total": 9.0379,
+"f5Away": 2.866,
 "f5Home": 2.5041,
-"nrfi": 0.4668,
-"pOver85": 0.4946,
+"nrfi": 0.4665,
+"pOver85": 0.4955,
 "probables": {
 "away": "Robert Gasser",
 "home": "Walker Buehler"
@@ -227,9 +227,9 @@
 "best": {
 "market": "Total",
 "pick": "Over 7.5",
-"p": 0.5873,
+"p": 0.5882,
 "price": -111,
-"edge": 0.0612,
+"edge": 0.0621,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -237,31 +237,30 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 7.5",
-"p": 0.5873,
+"p": 0.5882,
 "line": 7.5,
-"ic": 50.4873,
+"ic": 51.9527,
 "level": "Baja"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "MIL -1.5",
-"p": 0.4088,
+"p": 0.4098,
 "line": null,
-"ic": 39.6924,
-"level": "Muy baja"
+"ic": 40.3059,
+"level": "Baja"
 }
 ],
 "decision": {
-"status": "no apostar",
-"waitFor": null,
-"family": "F5",
-"pick": "MIL F5",
+"status": "esperar",
+"waitFor": "momio",
+"family": "Team total",
+"pick": "MIL Under 4.5",
 "level": 0,
 "alts": [
-"Total",
-"RL",
-"ML"
+"Team total",
+"NRFI"
 ]
 }
 }
