@@ -210,6 +210,17 @@
    "kind": "decision",
    "pk": 849827,
    "text": "Decisión: esperar dato (MIL) → esperar dato (MIL +1.5)"
+  },
+  {
+   "after": "apostar Nick Martinez Over 3.5 K · stake 5",
+   "at": "2026-10-07T12:14:20Z",
+   "before": "esperar momio (F5 Over 3.5)",
+   "date": "2026-10-07",
+   "game": "TB @ NYY",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849838,
+   "text": "Decisión: esperar momio (F5 Over 3.5) → apostar Nick Martinez Over 3.5 K · stake 5"
   }
  ],
  "snap": {
@@ -542,10 +553,10 @@
   "849838": {
    "away": 139,
    "dec": {
-    "level": 0,
-    "pick": "F5 Over 3.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 5,
+    "pick": "Nick Martinez Over 3.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 147,

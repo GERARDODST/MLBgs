@@ -135,7 +135,7 @@
 "pk": 849838,
 "date": "2026-10-07",
 "time": "2026-10-08T00:00:00Z",
-"generatedAt": "2026-10-06T14:51:56+00:00",
+"generatedAt": "2026-10-07T12:14:20+00:00",
 "away": "TB",
 "home": "NYY",
 "pHome": 0.5642,
@@ -167,34 +167,34 @@
 },
 "topPicks": [
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.5809,
-"line": 7.0,
-"ic": 46.3732,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Nick Martinez Over 3.5 K",
+"p": 0.5287,
+"line": 3.5,
+"ic": 62.1676,
+"level": "Media"
 },
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "NYY",
-"p": 0.5642,
-"line": null,
-"ic": 40.6202,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Max Fried Under 4.5 K",
+"p": 0.6366,
+"line": 4.5,
+"ic": 56.7223,
+"level": "Media"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
-"family": "F5 total",
-"pick": "F5 Over 3.5",
-"level": 0,
+"status": "apostar",
+"waitFor": null,
+"family": "K",
+"pick": "Nick Martinez Over 3.5 K",
+"level": 5,
 "alts": [
-"F5 total",
-"F5",
-"K"
+"K",
+"Total",
+"ML"
 ]
 }
 },
