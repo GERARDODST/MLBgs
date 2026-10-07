@@ -188,16 +188,27 @@
    "kind": "momio",
    "pk": 849827,
    "text": "Mercado abierto: MIL -108 / SD -111 · total 7.5"
+  },
+  {
+   "after": "apostar Tyler Mahle Over 4.5 K · stake 5",
+   "at": "2026-10-07T10:04:09Z",
+   "before": "esperar momio (LAD F5)",
+   "date": "2026-10-07",
+   "game": "LAD @ ATL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849822,
+   "text": "Decisión: esperar momio (LAD F5) → apostar Tyler Mahle Over 4.5 K · stake 5"
   }
  ],
  "snap": {
   "849822": {
    "away": 119,
    "dec": {
-    "level": 0,
-    "pick": "LAD F5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 5,
+    "pick": "Tyler Mahle Over 4.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 144,

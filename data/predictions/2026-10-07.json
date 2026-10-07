@@ -68,7 +68,7 @@
 "pk": 849822,
 "date": "2026-10-07",
 "time": "2026-10-07T22:00:00Z",
-"generatedAt": "2026-10-07T07:24:40+00:00",
+"generatedAt": "2026-10-07T10:04:09+00:00",
 "away": "LAD",
 "home": "ATL",
 "pHome": 0.4704,
@@ -91,42 +91,43 @@
 },
 "light": "Rojo",
 "best": {
-"market": "F5",
-"pick": "LAD F5",
-"p": 0.5344,
-"price": null,
-"edge": null,
+"market": "Run Line",
+"pick": "ATL +1.5",
+"p": 0.61,
+"price": -148,
+"edge": 0.0132,
 "light": "Rojo"
 },
 "topPicks": [
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.5",
-"p": 0.5285,
-"line": 7.5,
-"ic": 39.2206,
-"level": "Muy baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Tyler Mahle Over 4.5 K",
+"p": 0.5303,
+"line": 4.5,
+"ic": 61.0155,
+"level": "Media"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "ATL +1.5",
-"p": 0.61,
-"line": null,
-"ic": 38.8358,
-"level": "Muy baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Tyler Glasnow Under 6.5 K",
+"p": 0.6024,
+"line": 6.5,
+"ic": 44.0932,
+"level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
-"family": "F5",
-"pick": "LAD F5",
-"level": 0,
+"status": "apostar",
+"waitFor": null,
+"family": "K",
+"pick": "Tyler Mahle Over 4.5 K",
+"level": 5,
 "alts": [
-"F5",
-"K"
+"K",
+"Total",
+"RL"
 ]
 }
 },
