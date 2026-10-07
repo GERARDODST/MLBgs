@@ -148,9 +148,127 @@
   "849833": {
    "away": 114,
    "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-10-07T08:20:42Z",
+      "f5": {
+       "ml": {
+        "away": 105,
+        "home": -135
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T08:20:42Z",
+      "f5": {
+       "ml": {
+        "away": 105,
+        "home": -135
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -105
+        },
+        "under": {
+         "point": 4.5,
+         "price": -125
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-10-07T08:20:42Z",
+      "f5": {
+       "ml": {
+        "away": 100,
+        "home": -134
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T08:20:42Z",
+      "f5": {
+       "ml": {
+        "away": 100,
+        "home": -134
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-10-07T08:20:42Z",
+      "f5": {
+       "ml": {
+        "away": 100,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -115
+        },
+        "under": {
+         "point": 4.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T08:20:42Z",
+      "f5": {
+       "ml": {
+        "away": 100,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -115
+        },
+        "under": {
+         "point": 4.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
     "draftkings": {
      "last": {
-      "at": "2026-10-07T07:24:48Z",
+      "at": "2026-10-07T08:20:42Z",
+      "f5": {
+       "ml": {
+        "away": 105,
+        "home": -135
+       },
+       "total": {}
+      },
       "ml": {
        "away": 101,
        "home": -122
@@ -179,6 +297,13 @@
      "mx": false,
      "open": {
       "at": "2026-10-06T04:01:17Z",
+      "f5": {
+       "ml": {
+        "away": 105,
+        "home": -135
+       },
+       "total": {}
+      },
       "ml": {
        "away": -101,
        "home": -120
@@ -204,18 +329,84 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-10-07T08:20:42Z",
+      "f5": {
+       "ml": {
+        "away": 104,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -108
+        },
+        "under": {
+         "point": 4.5,
+         "price": -120
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-07T08:20:42Z",
+      "f5": {
+       "ml": {
+        "away": 104,
+        "home": -130
+       },
+       "total": {
+        "over": {
+         "point": 4.5,
+         "price": -108
+        },
+        "under": {
+         "point": 4.5,
+         "price": -120
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
     }
    },
-   "checked": "2026-10-07T07:24:48Z",
+   "checked": "2026-10-07T08:20:42Z",
    "espn": "401907992",
    "home": 145,
    "pk": 849833,
    "providers": [
-    "espn"
+    "espn",
+    "the-odds-api"
    ],
-   "start": "2026-10-07T20:00:00Z"
+   "start": "2026-10-07T20:00:00Z",
+   "theAt": {
+    "h2h_1st_5_innings": "2026-10-07T08:20:42Z",
+    "pitcher_strikeouts": "2026-10-07T08:20:42Z",
+    "totals_1st_5_innings": "2026-10-07T08:20:42Z"
+   },
+   "theEmpty": {
+    "h2h_1st_5_innings": 0,
+    "pitcher_strikeouts": 1,
+    "totals_1st_5_innings": 0
+   },
+   "theGot": {
+    "h2h_1st_5_innings": 5,
+    "pitcher_strikeouts": 0,
+    "totals_1st_5_innings": 3
+   },
+   "theId": "cd974d85e2a617152370056d22cd8deb",
+   "theN": {
+    "h2h_1st_5_innings": 1,
+    "pitcher_strikeouts": 1,
+    "totals_1st_5_innings": 1
+   },
+   "theSwapped": false
   },
   "849838": {
    "away": 139,
