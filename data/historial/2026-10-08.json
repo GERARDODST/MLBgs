@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-08T20:46:15+00:00",
+  "registeredAt": "2026-10-08T21:49:48+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5376,
@@ -75,6 +75,34 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "CWS",
+    "line": null,
+    "p": 0.5376,
+    "fair": -116.0,
+    "ic": 56.5,
+    "level": "Media",
+    "price": -102,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 53.6% · λ + Binomial Negativa (5.3 · 5.7.5) 53.7%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9732,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "CWS F5",
@@ -123,34 +151,6 @@
     }
    },
    {
-    "rank": 3,
-    "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "CWS",
-    "line": null,
-    "p": 0.5376,
-    "fair": -116.0,
-    "ic": 55.8,
-    "level": "Media",
-    "price": -103,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 53.6% · λ + Binomial Negativa (5.3 · 5.7.5) 53.7%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9732,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 4,
     "principal": false,
     "family": "K",
@@ -185,9 +185,9 @@
     "line": null,
     "p": 0.6953,
     "fair": -228.0,
-    "ic": 48.5,
+    "ic": 49.9,
     "level": "Baja",
-    "price": -185,
+    "price": -181,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
