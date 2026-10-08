@@ -1607,7 +1607,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-08T01:01:33+00:00",
+  "registeredAt": "2026-10-08T01:17:35+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4637,
@@ -1626,6 +1626,32 @@
   "picks": [
    {
     "rank": 1,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.5",
+    "line": 7.5,
+    "p": 0.5882,
+    "fair": -143.0,
+    "ic": 55.3,
+    "level": "Media",
+    "price": -106,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9766,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
     "principal": true,
     "family": "Team total",
     "market": "Team total MIL",
@@ -1669,35 +1695,9 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9778,
+     "h": 0.9766,
      "r": 1.0,
      "maxPrice": -102
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.5",
-    "line": 7.5,
-    "p": 0.5882,
-    "fair": -143.0,
-    "ic": 50.0,
-    "level": "Baja",
-    "price": -114,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9778,
-     "r": 1.0
     }
    },
    {
@@ -1734,7 +1734,7 @@
      "steps": [
       -101,
       102,
-      106,
+      107,
       112,
       117,
       123,
@@ -1745,7 +1745,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9778,
+     "h": 0.9766,
      "r": 1.0,
      "maxPrice": 130
     }
@@ -1759,9 +1759,9 @@
     "line": null,
     "p": 0.4098,
     "fair": 144.0,
-    "ic": 40.3,
+    "ic": 41.2,
     "level": "Baja",
-    "price": 158,
+    "price": 160,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1772,7 +1772,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9778,
+     "h": 0.9766,
      "r": 1.0
     }
    },
@@ -1821,7 +1821,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9778,
+     "h": 0.9766,
      "r": 1.0,
      "maxPrice": 121,
      "why": "edge menor a 3 pp con ese momio"
@@ -1849,7 +1849,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9778,
+     "h": 0.9766,
      "r": 1.0
     }
    },
@@ -1900,7 +1900,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9778,
+     "h": 0.9766,
      "r": 1.0,
      "maxPrice": 129,
      "why": "edge menor a 3 pp con ese momio"
@@ -1928,7 +1928,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9778,
+     "h": 0.9766,
      "r": 1.0
     }
    },
@@ -1954,7 +1954,7 @@
      "ladder": [],
      "block": "el guion del partido no acompaña",
      "a": 1.0,
-     "h": 0.9778,
+     "h": 0.9766,
      "r": 1.0
     }
    },
@@ -1986,7 +1986,7 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": 127
+       "from": 128
       }
      ],
      "steps": [
@@ -1994,7 +1994,7 @@
       111,
       116,
       122,
-      127,
+      128,
       134,
       140,
       null,
@@ -2003,7 +2003,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9778,
+     "h": 0.9766,
      "r": 1.0,
      "maxPrice": 142,
      "why": "edge menor a 3 pp con ese momio"
