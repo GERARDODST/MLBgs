@@ -77,16 +77,39 @@
    "kind": "horario",
    "pk": 849832,
    "text": "Cambia la hora del partido (+180 min)"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Hagen Smith",
+   "at": "2026-10-08T03:32:20Z",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849832,
+   "side": "home",
+   "text": "Abridor anunciado (CWS): Hagen Smith"
+  },
+  {
+   "after": "apostar CWS · stake 3",
+   "at": "2026-10-08T03:32:11Z",
+   "before": "esperar dato (Over 7.5)",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849832,
+   "text": "Decisión: esperar dato (Over 7.5) → apostar CWS · stake 3 · tras: horario, abridor"
   }
  ],
  "snap": {
   "849832": {
    "away": 114,
    "dec": {
-    "level": 0,
-    "pick": "Over 7.5",
-    "status": "esperar",
-    "waitFor": "dato"
+    "level": 3,
+    "pick": "CWS",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 145,
@@ -109,7 +132,10 @@
      "id": 800048,
      "name": "Parker Messick"
     },
-    "home": null
+    "home": {
+     "id": 696146,
+     "name": "Hagen Smith"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-07T04:08:32Z",
