@@ -134,6 +134,27 @@
    "kind": "momio",
    "pk": 849832,
    "text": "La línea del total pasa de 7.5 a 7.0"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-08T20:03:59Z",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849832,
+   "side": "home",
+   "text": "Lineup confirmado (CWS)"
+  },
+  {
+   "after": "Jansen Visconti",
+   "at": "2026-10-08T20:03:59Z",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849832,
+   "text": "Umpire de home asignado: Jansen Visconti"
   }
  ],
  "snap": {
@@ -145,13 +166,33 @@
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 145,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     805367,
+     545341,
+     678246,
+     808959,
+     502054,
+     686668,
+     691019,
+     695731,
+     695657
+    ]
    },
-   "names": {},
+   "names": {
+    "502054": "Tommy Pham",
+    "545341": "Randal Grichuk",
+    "678246": "Miguel Vargas",
+    "686668": "Brenton Doyle",
+    "691019": "Kyle Teel",
+    "695657": "Colson Montgomery",
+    "695731": "Braden Montgomery",
+    "805367": "Chase Meidroth",
+    "808959": "Munetaka Murakami"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -225,13 +266,19 @@
     "945042",
     "945110"
    ],
-   "ump": null,
+   "ump": "Jansen Visconti",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "cruzado",
+    "speed": 11,
+    "temp": 69.0
+   }
   },
   "849837": {
    "away": 139,
