@@ -1607,7 +1607,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-08T01:41:19+00:00",
+  "registeredAt": "2026-10-08T01:49:21+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4637,
@@ -1633,9 +1633,9 @@
     "line": 7.5,
     "p": 0.5882,
     "fair": -143.0,
-    "ic": 55.3,
+    "ic": 58.8,
     "level": "Media",
-    "price": -106,
+    "price": -101,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1759,9 +1759,9 @@
     "line": null,
     "p": 0.4098,
     "fair": 144.0,
-    "ic": 41.6,
+    "ic": 40.7,
     "level": "Baja",
-    "price": 161,
+    "price": 159,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -1856,15 +1856,41 @@
    {
     "rank": 7,
     "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Robert Gasser Over 4.5 K",
+    "line": 4.5,
+    "p": 0.5223,
+    "fair": -109.0,
+    "ic": 37.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9766,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "MIL",
     "line": null,
     "p": 0.5363,
     "fair": -116.0,
-    "ic": 38.8,
+    "ic": 37.4,
     "level": "Muy baja",
-    "price": -107,
+    "price": -109,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -1904,32 +1930,6 @@
      "r": 1.0,
      "maxPrice": 129,
      "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Robert Gasser Over 4.5 K",
-    "line": 4.5,
-    "p": 0.5223,
-    "fair": -109.0,
-    "ic": 37.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9766,
-     "r": 1.0
     }
    },
    {
