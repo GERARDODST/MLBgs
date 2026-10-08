@@ -3,7 +3,7 @@
 "pk": 849832,
 "date": "2026-10-08",
 "time": "2026-10-09T00:00:00Z",
-"generatedAt": "2026-10-08T04:13:59+00:00",
+"generatedAt": "2026-10-08T16:28:23+00:00",
 "away": "CLE",
 "home": "CWS",
 "pHome": 0.5416,
@@ -26,43 +26,43 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "Run Line",
-"pick": "CWS +1.5",
-"p": 0.7081,
-"price": -185,
-"edge": 0.0589,
+"market": "F5",
+"pick": "CWS F5",
+"p": 0.5942,
+"price": -105,
+"edge": 0.082,
 "light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "CWS",
-"p": 0.5416,
-"line": null,
-"ic": 53.605,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Hagen Smith Over 2.5 K",
+"p": 0.857,
+"line": 2.5,
+"ic": 63.1974,
+"level": "Media"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "CWS +1.5",
-"p": 0.7081,
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "CWS F5",
+"p": 0.5942,
 "line": null,
-"ic": 50.9925,
-"level": "Baja"
+"ic": 57.7272,
+"level": "Media"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
-"family": "K",
-"pick": "Parker Messick Over 5.5 K",
-"level": 0,
+"status": "apostar",
+"waitFor": null,
+"family": "F5",
+"pick": "CWS F5",
+"level": 4,
 "alts": [
 "K",
-"F5 total",
-"F5"
+"ML",
+"RL"
 ]
 }
 },
