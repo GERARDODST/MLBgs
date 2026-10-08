@@ -1,0 +1,69 @@
+[
+{
+"pk": 849824,
+"date": "2026-10-09",
+"time": "2026-10-10T00:00:00Z",
+"generatedAt": "2026-10-08T04:13:59+00:00",
+"away": "SD",
+"home": "MIL",
+"pHome": 0.6455,
+"methods": {
+"log5": 0.6128,
+"elo": 0.6743,
+"lambda": 0.6495
+},
+"confidence": "media",
+"projAway": 3.3824,
+"projHome": 4.9666,
+"total": 8.349,
+"f5Away": 1.6527,
+"f5Home": 3.0944,
+"nrfi": 0.5047,
+"pOver85": 0.4321,
+"probables": {
+"away": "Por anunciar",
+"home": "Jacob Misiorowski"
+},
+"light": "Gris",
+"best": {
+"market": "F5",
+"pick": "MIL F5",
+"p": 0.7153,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Jacob Misiorowski Over 6.5 K",
+"p": 0.5317,
+"line": 6.5,
+"ic": 34.5222,
+"level": "Muy baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 8.0",
+"p": 0.5236,
+"line": 8.0,
+"ic": 34.2331,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "K",
+"pick": "Jacob Misiorowski Over 6.5 K",
+"level": 0,
+"alts": [
+"Total",
+"F5 total",
+"F5"
+]
+}
+}
+]
