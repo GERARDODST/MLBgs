@@ -155,6 +155,16 @@
    "kind": "umpire",
    "pk": 849832,
    "text": "Umpire de home asignado: Jansen Visconti"
+  },
+  {
+   "action": "El total proyectado ya usa el viento nuevo.",
+   "at": "2026-10-08T20:17:50Z",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "clima",
+   "pk": 849832,
+   "text": "Viento: 11 mph cruzado → 3 mph in"
   }
  ],
  "snap": {
@@ -275,9 +285,9 @@
    "wx": {
     "closed": false,
     "cond": "Clear",
-    "dir": "cruzado",
-    "speed": 11,
-    "temp": 69.0
+    "dir": "in",
+    "speed": 3,
+    "temp": 64.0
    }
   },
   "849837": {
