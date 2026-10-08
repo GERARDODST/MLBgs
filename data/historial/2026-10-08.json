@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-07T23:33:29+00:00",
+  "registeredAt": "2026-10-08T01:01:33+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5048,
@@ -37,7 +37,7 @@
    "projHome": 4.22,
    "total": 8.48,
    "nrfi": 0.5038,
-   "light": "Rojo",
+   "light": "Amarillo",
    "confidence": "media",
    "probables": {
     "away": "Parker Messick",
@@ -49,6 +49,58 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.5",
+    "line": 7.5,
+    "p": 0.5372,
+    "fair": -116.0,
+    "ic": 46.0,
+    "level": "Baja",
+    "price": 101,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9778,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "CWS +1.5",
+    "line": null,
+    "p": 0.6535,
+    "fair": -189.0,
+    "ic": 35.4,
+    "level": "Muy baja",
+    "price": -186,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9778,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Parker Messick Over 5.5 K",
@@ -73,8 +125,8 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 4,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "CWS",
@@ -83,65 +135,13 @@
     "fair": -102.0,
     "ic": 34.5,
     "level": "Muy baja",
-    "price": null,
+    "price": -108,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 47.9% · λ + Binomial Negativa (5.3 · 5.7.5) 49.6%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9778,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "CLE +1.5",
-    "line": null,
-    "p": 0.6542,
-    "fair": -189.0,
-    "ic": 34.4,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9778,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Under 8.0",
-    "line": 8.0,
-    "p": 0.5103,
-    "fair": -104.0,
-    "ic": 34.4,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
      "level": 0,
@@ -288,11 +288,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "Parker Messick Over 5.5 K",
+   "pick": "Over 7.5",
    "waitFor": "dato",
-   "market": "Prop de ponches",
-   "p": 0.5563,
-   "ic": 34.9,
+   "market": "Total completo",
+   "p": 0.5372,
+   "ic": 46.0,
    "level": 0,
    "amount": 0,
    "minPrice": null,

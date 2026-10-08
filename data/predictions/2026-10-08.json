@@ -3,7 +3,7 @@
 "pk": 849832,
 "date": "2026-10-08",
 "time": "2026-10-08T21:00:00Z",
-"generatedAt": "2026-10-07T14:38:00+00:00",
+"generatedAt": "2026-10-08T01:01:33+00:00",
 "away": "CLE",
 "home": "CWS",
 "pHome": 0.5048,
@@ -24,45 +24,45 @@
 "away": "Parker Messick",
 "home": "Por anunciar"
 },
-"light": "Rojo",
+"light": "Amarillo",
 "best": {
 "market": "Total",
-"pick": "Under 8.0",
-"p": 0.5103,
-"price": null,
-"edge": null,
-"light": "Rojo"
+"pick": "Over 7.5",
+"p": 0.5372,
+"price": 101,
+"edge": 0.0397,
+"light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Parker Messick Over 5.5 K",
-"p": 0.5563,
-"line": 5.5,
-"ic": 34.8771,
-"level": "Muy baja"
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.5",
+"p": 0.5372,
+"line": 7.5,
+"ic": 46.0001,
+"level": "Baja"
 },
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "CWS",
-"p": 0.5048,
+"family": "RL",
+"market": "Run Line",
+"pick": "CWS +1.5",
+"p": 0.6535,
 "line": null,
-"ic": 34.5042,
+"ic": 35.3671,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "dato",
-"family": "K",
-"pick": "Parker Messick Over 5.5 K",
+"family": "Total",
+"pick": "Over 7.5",
 "level": 0,
 "alts": [
-"ML",
 "RL",
-"Total"
+"K",
+"ML"
 ]
 }
 },

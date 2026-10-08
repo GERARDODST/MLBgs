@@ -46,6 +46,26 @@
    "kind": "decision",
    "pk": 849837,
    "text": "Decisión: esperar dato (TB +1.5) → esperar momio (F5 Over 3.5) · tras: abridor"
+  },
+  {
+   "at": "2026-10-08T01:01:50Z",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849832,
+   "text": "Mercado abierto: CLE -112 / CWS -108 · total 7.5"
+  },
+  {
+   "after": "esperar dato (Over 7.5)",
+   "at": "2026-10-08T01:01:33Z",
+   "before": "esperar dato (Parker Messick Over 5.5 K)",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849832,
+   "text": "Decisión: esperar dato (Parker Messick Over 5.5 K) → esperar dato (Over 7.5) · tras: momio"
   }
  ],
  "snap": {
@@ -53,7 +73,7 @@
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "Parker Messick Over 5.5 K",
+    "pick": "Over 7.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -64,6 +84,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.5,
+    "ml": {
+     "away": -112,
+     "home": -108
+    },
+    "pHome": 0.4957,
+    "src": "draftkings"
+   },
    "prob": {
     "away": {
      "id": 800048,
@@ -126,6 +155,11 @@
     "945110"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   },
   "849837": {
