@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-08T21:49:48+00:00",
+  "registeredAt": "2026-10-08T22:36:45+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5376,
@@ -51,13 +51,13 @@
     "principal": true,
     "family": "K",
     "market": "Prop de ponches",
-    "pick": "Hagen Smith Over 2.5 K",
-    "line": 2.5,
-    "p": 0.7816,
-    "fair": -358.0,
+    "pick": "Hagen Smith Over 1.5 K",
+    "line": 1.5,
+    "p": 0.9181,
+    "fair": -1121.0,
     "ic": 67.7,
     "level": "Media",
-    "price": 128,
+    "price": -150,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -103,22 +103,48 @@
    {
     "rank": 3,
     "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Parker Messick Over 5.5 K",
+    "line": 5.5,
+    "p": 0.6258,
+    "fair": -167.0,
+    "ic": 54.4,
+    "level": "Baja",
+    "price": -135,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9732,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "CWS F5",
     "line": null,
     "p": 0.5838,
     "fair": -140.0,
-    "ic": 55.9,
-    "level": "Media",
-    "price": -105,
+    "ic": 53.2,
+    "level": "Baja",
+    "price": -109,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
     "res": null,
     "stake": {
-     "level": 4,
+     "level": 3,
      "ladder": [
       {
        "level": 1,
@@ -148,32 +174,6 @@
      "h": 0.9732,
      "r": 1.0,
      "maxPrice": 106
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Parker Messick Over 5.5 K",
-    "line": 5.5,
-    "p": 0.6258,
-    "fair": -167.0,
-    "ic": 51.3,
-    "level": "Baja",
-    "price": -141,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9732,
-     "r": 1.0
     }
    },
    {
@@ -386,14 +386,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-105)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-109)",
    "source": "Framework v2",
    "pick": "CWS F5",
    "market": "F5 Moneyline",
    "p": 0.5838,
-   "ic": 55.9,
-   "level": 4,
-   "amount": 875,
+   "ic": 53.2,
+   "level": 3,
+   "amount": 750,
    "minPrice": -120,
    "ladder": [
     {
