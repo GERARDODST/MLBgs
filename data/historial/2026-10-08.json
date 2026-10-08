@@ -29,21 +29,21 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-08T20:03:54+00:00",
+  "registeredAt": "2026-10-08T20:46:15+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5433,
-   "projAway": 3.71,
+   "pHome": 0.5376,
+   "projAway": 3.88,
    "projHome": 4.28,
-   "total": 7.99,
-   "nrfi": 0.5428,
+   "total": 8.16,
+   "nrfi": 0.5369,
    "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Parker Messick",
     "home": "Hagen Smith"
    },
-   "lineups": "Proyectados"
+   "lineups": "Confirmados"
   },
   "picks": [
    {
@@ -53,9 +53,9 @@
     "market": "Prop de ponches",
     "pick": "Hagen Smith Over 2.5 K",
     "line": 2.5,
-    "p": 0.857,
-    "fair": -599.0,
-    "ic": 66.5,
+    "p": 0.7816,
+    "fair": -358.0,
+    "ic": 67.7,
     "level": "Media",
     "price": 128,
     "methods": [
@@ -65,36 +65,11 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -403
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": -316
-      }
-     ],
-     "steps": [
-      -403,
-      -387,
-      -361,
-      -337,
-      -316,
-      null,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
      "a": 1.0,
      "h": 0.9732,
-     "r": 1.0,
-     "maxPrice": -312,
-     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+     "r": 1.0
     }
    },
    {
@@ -104,9 +79,9 @@
     "market": "F5 Moneyline",
     "pick": "CWS F5",
     "line": null,
-    "p": 0.5987,
-    "fair": -149.0,
-    "ic": 59.0,
+    "p": 0.5838,
+    "fair": -140.0,
+    "ic": 55.9,
     "level": "Media",
     "price": -105,
     "methods": [
@@ -120,21 +95,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -122
+       "from": -120
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -103
+       "from": -101
       }
      ],
      "steps": [
-      -122,
-      -119,
-      -114,
-      -108,
-      -103,
-      null,
+      -120,
+      -117,
+      -111,
+      -106,
+      -101,
+      103,
       null,
       null,
       null,
@@ -144,19 +119,73 @@
      "a": 1.0,
      "h": 0.9732,
      "r": 1.0,
-     "maxPrice": 100
+     "maxPrice": 106
     }
    },
    {
     "rank": 3,
     "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "CWS",
+    "line": null,
+    "p": 0.5376,
+    "fair": -116.0,
+    "ic": 55.8,
+    "level": "Media",
+    "price": -103,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 53.6% · λ + Binomial Negativa (5.3 · 5.7.5) 53.7%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9732,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Parker Messick Over 5.5 K",
+    "line": 5.5,
+    "p": 0.6258,
+    "fair": -167.0,
+    "ic": 51.3,
+    "level": "Baja",
+    "price": -141,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9732,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "CWS +1.5",
     "line": null,
-    "p": 0.7117,
-    "fair": -247.0,
-    "ic": 52.1,
+    "p": 0.6953,
+    "fair": -228.0,
+    "ic": 48.5,
     "level": "Baja",
     "price": -185,
     "methods": [
@@ -174,95 +203,17 @@
     }
    },
    {
-    "rank": 4,
-    "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "CWS",
-    "line": null,
-    "p": 0.5433,
-    "fair": -119.0,
-    "ic": 51.6,
-    "level": "Baja",
-    "price": -105,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.9% · Elo + abridor (5.7.7) 53.6% · λ + Binomial Negativa (5.3 · 5.7.5) 55.4%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9732,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Parker Messick Over 5.5 K",
-    "line": 5.5,
-    "p": 0.6258,
-    "fair": -167.0,
-    "ic": 50.1,
-    "level": "Baja",
-    "price": -141,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 2,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -145
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": -122
-      }
-     ],
-     "steps": [
-      -145,
-      -141,
-      -135,
-      -128,
-      -122,
-      -117,
-      -111,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9732,
-     "r": 1.0,
-     "maxPrice": -111
-    }
-   },
-   {
     "rank": 6,
     "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 7.0",
     "line": 7.0,
-    "p": 0.5446,
-    "fair": -120.0,
-    "ic": 37.3,
-    "level": "Muy baja",
-    "price": -114,
+    "p": 0.5624,
+    "fair": -128.0,
+    "ic": 44.9,
+    "level": "Baja",
+    "price": -112,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -284,9 +235,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
     "line": 3.5,
-    "p": 0.5441,
-    "fair": -119.0,
-    "ic": 33.8,
+    "p": 0.5557,
+    "fair": -125.0,
+    "ic": 35.0,
     "level": "Muy baja",
     "price": -130,
     "methods": [
@@ -300,21 +251,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 102
+       "from": -107
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 120
+       "from": 110
       }
      ],
      "steps": [
-      102,
+      -107,
+      -104,
+      -100,
       105,
       110,
-      115,
-      120,
-      null,
+      116,
       null,
       null,
       null,
@@ -324,7 +275,7 @@
      "a": 1.0,
      "h": 0.9732,
      "r": 1.0,
-     "maxPrice": 125,
+     "maxPrice": 119,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -335,9 +286,9 @@
     "market": "Team total CLE",
     "pick": "CLE Under 3.5",
     "line": 3.5,
-    "p": 0.553,
-    "fair": -124.0,
-    "ic": 33.8,
+    "p": 0.5286,
+    "fair": -112.0,
+    "ic": 35.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -363,7 +314,7 @@
     "line": 3.5,
     "p": 0.5264,
     "fair": -111.0,
-    "ic": 33.8,
+    "ic": 35.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -387,9 +338,9 @@
     "market": "NRFI/YRFI",
     "pick": "NRFI",
     "line": null,
-    "p": 0.5428,
-    "fair": -119.0,
-    "ic": 30.5,
+    "p": 0.5369,
+    "fair": -116.0,
+    "ic": 35.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -399,11 +350,36 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 101
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 119
+      }
+     ],
+     "steps": [
+      101,
+      103,
+      108,
+      113,
+      119,
+      125,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9732,
-     "r": 1.0
+     "r": 1.0,
+     "maxPrice": 128,
+     "why": "sin momio real: conviene si pagan +101 o mejor"
     }
    }
   ],
@@ -414,21 +390,21 @@
    "source": "Framework v2",
    "pick": "CWS F5",
    "market": "F5 Moneyline",
-   "p": 0.5987,
-   "ic": 59.0,
+   "p": 0.5838,
+   "ic": 55.9,
    "level": 4,
    "amount": 875,
-   "minPrice": -122,
+   "minPrice": -120,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -122
+     "from": -120
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -103
+     "from": -101
     }
    ]
   }

@@ -165,6 +165,17 @@
    "kind": "clima",
    "pk": 849832,
    "text": "Viento: 11 mph cruzado → 3 mph in"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-08T20:46:24Z",
+   "date": "2026-10-08",
+   "game": "CLE @ CWS",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849832,
+   "side": "away",
+   "text": "Lineup confirmado (CLE)"
   }
  ],
  "snap": {
@@ -179,7 +190,17 @@
    "detailed": "Pre-Game",
    "home": 145,
    "lu": {
-    "away": [],
+    "away": [
+     680757,
+     608070,
+     800050,
+     666176,
+     663993,
+     682657,
+     683953,
+     595978,
+     677587
+    ],
     "home": [
      805367,
      545341,
@@ -195,11 +216,20 @@
    "names": {
     "502054": "Tommy Pham",
     "545341": "Randal Grichuk",
+    "595978": "Austin Hedges",
+    "608070": "José Ramírez",
+    "663993": "Nathaniel Lowe",
+    "666176": "Jo Adell",
+    "677587": "Brayan Rocchio",
     "678246": "Miguel Vargas",
+    "680757": "Steven Kwan",
+    "682657": "Angel Martínez",
+    "683953": "Travis Bazzana",
     "686668": "Brenton Doyle",
     "691019": "Kyle Teel",
     "695657": "Colson Montgomery",
     "695731": "Braden Montgomery",
+    "800050": "Chase DeLauter",
     "805367": "Chase Meidroth",
     "808959": "Munetaka Murakami"
    },
