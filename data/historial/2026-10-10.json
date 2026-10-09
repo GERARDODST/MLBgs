@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-09T11:29:20+00:00",
+  "registeredAt": "2026-10-09T17:35:22+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.533,
@@ -55,9 +55,9 @@
     "line": 7.0,
     "p": 0.6041,
     "fair": -153.0,
-    "ic": 49.5,
+    "ic": 48.9,
     "level": "Baja",
-    "price": -119,
+    "price": -120,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -135,7 +135,7 @@
     "fair": -114.0,
     "ic": 30.3,
     "level": "Muy baja",
-    "price": -138,
+    "price": -137,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -266,7 +266,7 @@
    "waitFor": "dato",
    "market": "Total completo",
    "p": 0.6041,
-   "ic": 49.5,
+   "ic": 48.9,
    "level": 0,
    "amount": 0,
    "minPrice": null,
