@@ -1,0 +1,69 @@
+[
+{
+"pk": 849831,
+"date": "2026-10-10",
+"time": "2026-10-11T00:00:00Z",
+"generatedAt": "2026-10-09T04:02:31+00:00",
+"away": "CWS",
+"home": "CLE",
+"pHome": 0.533,
+"methods": {
+"log5": 0.5181,
+"elo": 0.5741,
+"lambda": 0.5069
+},
+"confidence": "media",
+"projAway": 4.2412,
+"projHome": 4.3281,
+"total": 8.5693,
+"f5Away": 2.3119,
+"f5Home": 2.6167,
+"nrfi": 0.4965,
+"pOver85": 0.4526,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Amarillo",
+"best": {
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.6041,
+"price": -117,
+"edge": 0.0649,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.6041,
+"line": 7.0,
+"ic": 50.7384,
+"level": "Baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "CWS +1.5",
+"p": 0.6418,
+"line": null,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 7.0",
+"level": 0,
+"alts": [
+"RL",
+"F5 total",
+"ML"
+]
+}
+}
+]
