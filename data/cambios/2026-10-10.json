@@ -22,6 +22,29 @@
    "pk": 849831,
    "side": "away",
    "text": "Abridor anunciado (CWS): Sean Burke"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Gavin Williams",
+   "at": "2026-10-09T20:05:42Z",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849831,
+   "side": "home",
+   "text": "Abridor anunciado (CLE): Gavin Williams"
+  },
+  {
+   "after": "esperar momio (F5 Over 3.5)",
+   "at": "2026-10-09T20:05:32Z",
+   "before": "esperar dato (Over 7.0)",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849831,
+   "text": "Decisión: esperar dato (Over 7.0) → esperar momio (F5 Over 3.5) · tras: abridor"
   }
  ],
  "snap": {
@@ -29,9 +52,9 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "Over 7.0",
+    "pick": "F5 Over 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 114,
@@ -54,7 +77,10 @@
      "id": 680732,
      "name": "Sean Burke"
     },
-    "home": null
+    "home": {
+     "id": 668909,
+     "name": "Gavin Williams"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-09T04:02:36Z",

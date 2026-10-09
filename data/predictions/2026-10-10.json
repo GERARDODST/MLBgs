@@ -3,65 +3,65 @@
 "pk": 849831,
 "date": "2026-10-10",
 "time": "2026-10-11T00:00:00Z",
-"generatedAt": "2026-10-09T18:01:16+00:00",
+"generatedAt": "2026-10-09T20:05:32+00:00",
 "away": "CWS",
 "home": "CLE",
-"pHome": 0.5108,
+"pHome": 0.521,
 "methods": {
 "log5": 0.5181,
-"elo": 0.5274,
-"lambda": 0.4871
+"elo": 0.5168,
+"lambda": 0.5281
 },
 "confidence": "alta",
-"projAway": 4.2412,
+"projAway": 3.8253,
 "projHome": 4.1228,
-"total": 8.364,
-"f5Away": 2.3119,
+"total": 7.9481,
+"f5Away": 1.9337,
 "f5Home": 2.4314,
-"nrfi": 0.5117,
-"pOver85": 0.4335,
+"nrfi": 0.5405,
+"pOver85": 0.3947,
 "probables": {
 "away": "Sean Burke",
-"home": "Por anunciar"
+"home": "Gavin Williams"
 },
-"light": "Amarillo",
+"light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Over 7.0",
-"p": 0.5835,
-"price": -120,
-"edge": 0.038,
-"light": "Amarillo"
+"market": "F5",
+"pick": "CLE F5",
+"p": 0.5816,
+"price": null,
+"edge": null,
+"light": "Gris"
 },
 "topPicks": [
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.5835,
-"line": 7.0,
-"ic": 45.445,
-"level": "Baja"
-},
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "CLE",
-"p": 0.5108,
+"p": 0.521,
 "line": null,
-"ic": 38.4639,
+"ic": 47.1445,
+"level": "Baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5401,
+"line": 7.0,
+"ic": 36.994,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 7.0",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Over 3.5",
 "level": 0,
 "alts": [
-"ML",
-"RL",
+"F5 total",
+"F5",
 "K"
 ]
 }
