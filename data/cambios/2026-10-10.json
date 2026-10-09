@@ -10,6 +10,18 @@
    "pk": 849831,
    "side": "home",
    "text": "CLE: Cleveland Guardians signed free agent RHP Anthony Alcantara to a minor league contract."
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Sean Burke",
+   "at": "2026-10-09T18:01:25Z",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849831,
+   "side": "away",
+   "text": "Abridor anunciado (CWS): Sean Burke"
   }
  ],
  "snap": {
@@ -38,7 +50,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 680732,
+     "name": "Sean Burke"
+    },
     "home": null
    },
    "probChangedAt": null,

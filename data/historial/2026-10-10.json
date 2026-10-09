@@ -29,18 +29,18 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-09T17:35:22+00:00",
+  "registeredAt": "2026-10-09T18:01:16+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.533,
+   "pHome": 0.5108,
    "projAway": 4.24,
-   "projHome": 4.33,
-   "total": 8.57,
-   "nrfi": 0.4965,
+   "projHome": 4.12,
+   "total": 8.36,
+   "nrfi": 0.5117,
    "light": "Amarillo",
-   "confidence": "media",
+   "confidence": "alta",
    "probables": {
-    "away": "Por anunciar",
+    "away": "Sean Burke",
     "home": "Por anunciar"
    },
    "lineups": "Proyectados"
@@ -53,9 +53,9 @@
     "market": "Total completo",
     "pick": "Over 7.0",
     "line": 7.0,
-    "p": 0.6041,
-    "fair": -153.0,
-    "ic": 48.9,
+    "p": 0.5835,
+    "fair": -140.0,
+    "ic": 45.4,
     "level": "Baja",
     "price": -120,
     "methods": [
@@ -75,13 +75,41 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "CLE",
+    "line": null,
+    "p": 0.5108,
+    "fair": -104.0,
+    "ic": 38.5,
+    "level": "Muy baja",
+    "price": -137,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.8% · Elo + abridor (5.7.7) 52.7% · λ + Binomial Negativa (5.3 · 5.7.5) 48.7%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9674,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "CWS +1.5",
     "line": null,
-    "p": 0.6418,
-    "fair": -179.0,
-    "ic": 31.8,
+    "p": 0.6624,
+    "fair": -196.0,
+    "ic": 35.4,
     "level": "Muy baja",
     "price": -193,
     "methods": [
@@ -99,15 +127,41 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Sean Burke Under 4.5 K",
+    "line": 4.5,
+    "p": 0.505,
+    "fair": -102.0,
+    "ic": 34.7,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9674,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Under 4.5",
     "line": 4.5,
-    "p": 0.5167,
-    "fair": -107.0,
-    "ic": 31.8,
+    "p": 0.5405,
+    "fair": -118.0,
+    "ic": 34.4,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -125,87 +179,7 @@
     }
    },
    {
-    "rank": 4,
-    "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "CLE",
-    "line": null,
-    "p": 0.533,
-    "fair": -114.0,
-    "ic": 30.3,
-    "level": "Muy baja",
-    "price": -137,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.8% · Elo + abridor (5.7.7) 57.4% · λ + Binomial Negativa (5.3 · 5.7.5) 50.7%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9674,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "CLE F5",
-    "line": null,
-    "p": 0.5462,
-    "fair": -120.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9674,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 6,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "YRFI",
-    "line": null,
-    "p": 0.5035,
-    "fair": -101.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9674,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total CWS",
@@ -213,7 +187,7 @@
     "line": 3.5,
     "p": 0.5216,
     "fair": -109.0,
-    "ic": 25.1,
+    "ic": 31.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -231,21 +205,73 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total CLE",
     "pick": "CLE Over 3.5",
     "line": 3.5,
-    "p": 0.5334,
-    "fair": -114.0,
-    "ic": 25.1,
+    "p": 0.5053,
+    "fair": -102.0,
+    "ic": 31.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de CLE",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9674,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "CLE F5",
+    "line": null,
+    "p": 0.5186,
+    "fair": -108.0,
+    "ic": 31.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9674,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.4883,
+    "fair": 105.0,
+    "ic": 31.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
      "level": 0,
@@ -265,8 +291,8 @@
    "pick": "Over 7.0",
    "waitFor": "dato",
    "market": "Total completo",
-   "p": 0.6041,
-   "ic": 48.9,
+   "p": 0.5835,
+   "ic": 45.4,
    "level": 0,
    "amount": 0,
    "minPrice": null,
