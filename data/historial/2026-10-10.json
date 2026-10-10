@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-09T20:05:32+00:00",
+  "registeredAt": "2026-10-10T12:25:40+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.521,
@@ -37,7 +37,7 @@
    "projHome": 4.12,
    "total": 7.95,
    "nrfi": 0.5405,
-   "light": "Gris",
+   "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Sean Burke",
@@ -49,6 +49,106 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Sean Burke Over 3.5 K",
+    "line": 3.5,
+    "p": 0.6814,
+    "fair": -214.0,
+    "ic": 57.6,
+    "level": "Media",
+    "price": -152,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 4,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -175
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -146
+      }
+     ],
+     "steps": [
+      -175,
+      -170,
+      -162,
+      -154,
+      -146,
+      -139,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9674,
+     "r": 1.0,
+     "maxPrice": -139
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Gavin Williams Under 6.5 K",
+    "line": 6.5,
+    "p": 0.5264,
+    "fair": -111.0,
+    "ic": 48.2,
+    "level": "Baja",
+    "price": 108,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 1,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 108
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 128
+      }
+     ],
+     "steps": [
+      108,
+      111,
+      116,
+      122,
+      128,
+      134,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9674,
+     "r": 1.0,
+     "maxPrice": 134
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "CLE",
@@ -75,136 +175,7 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.0",
-    "line": 7.0,
-    "p": 0.5401,
-    "fair": -117.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": -120,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9674,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Over 3.5",
-    "line": 3.5,
-    "p": 0.5425,
-    "fair": -119.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -102
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 116
-      }
-     ],
-     "steps": [
-      -102,
-      101,
-      106,
-      111,
-      116,
-      122,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9674,
-     "r": 1.0,
-     "maxPrice": 125,
-     "why": "sin momio real: conviene si pagan -102 o mejor"
-    }
-   },
-   {
     "rank": 4,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total CWS",
-    "pick": "CWS Under 3.5",
-    "line": 3.5,
-    "p": 0.5369,
-    "fair": -116.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de CWS",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9674,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "Team total",
-    "market": "Team total CLE",
-    "pick": "CLE Over 3.5",
-    "line": 3.5,
-    "p": 0.5053,
-    "fair": -102.0,
-    "ic": 37.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Binomial Negativa de carreras de CLE",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9674,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 6,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -212,9 +183,9 @@
     "line": null,
     "p": 0.5816,
     "fair": -139.0,
-    "ic": 37.0,
+    "ic": 38.0,
     "level": "Muy baja",
-    "price": null,
+    "price": -137,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -251,109 +222,136 @@
      "h": 0.9674,
      "r": 1.0,
      "maxPrice": 107,
-     "why": "sin momio real: conviene si pagan -119 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5401,
+    "fair": -117.0,
+    "ic": 37.0,
+    "level": "Muy baja",
+    "price": -120,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9674,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 3.5",
+    "line": 3.5,
+    "p": 0.5425,
+    "fair": -119.0,
+    "ic": 37.0,
+    "level": "Muy baja",
+    "price": -125,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -102
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 116
+      }
+     ],
+     "steps": [
+      -102,
+      101,
+      106,
+      111,
+      116,
+      122,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9674,
+     "r": 1.0,
+     "maxPrice": 125,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
     "rank": 7,
     "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Gavin Williams Under 6.5 K",
-    "line": 6.5,
-    "p": 0.5264,
-    "fair": -111.0,
-    "ic": 34.9,
+    "family": "Team total",
+    "market": "Team total CWS",
+    "pick": "CWS Under 3.5",
+    "line": 3.5,
+    "p": 0.5369,
+    "fair": -116.0,
+    "ic": 37.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
-     "λ + Poisson (5.4)"
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "how": "Binomial Negativa de carreras de CWS",
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 108
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 128
-      }
-     ],
-     "steps": [
-      108,
-      111,
-      116,
-      122,
-      128,
-      134,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
      "h": 0.9674,
-     "r": 1.0,
-     "maxPrice": 134,
-     "why": "sin momio real: conviene si pagan +108 o mejor"
+     "r": 1.0
     }
    },
    {
     "rank": 8,
     "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Sean Burke Under 4.5 K",
-    "line": 4.5,
-    "p": 0.505,
+    "family": "Team total",
+    "market": "Team total CLE",
+    "pick": "CLE Over 3.5",
+    "line": 3.5,
+    "p": 0.5053,
     "fair": -102.0,
-    "ic": 34.7,
+    "ic": 37.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
-     "λ + Poisson (5.4)"
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "how": "Binomial Negativa de carreras de CLE",
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 118
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 139
-      }
-     ],
-     "steps": [
-      118,
-      121,
-      127,
-      133,
-      139,
-      146,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
      "h": 0.9674,
-     "r": 1.0,
-     "maxPrice": 146,
-     "why": "sin momio real: conviene si pagan +118 o mejor"
+     "r": 1.0
     }
    },
    {
@@ -411,27 +409,26 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan -102 o mejor (stake 1); stake 5 desde +116",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-152)",
    "source": "Framework v2",
-   "pick": "F5 Over 3.5",
-   "waitFor": "momio",
-   "market": "Total primeras 5",
-   "p": 0.5425,
-   "ic": 37.0,
-   "level": 0,
-   "amount": 0,
-   "minPrice": -102,
+   "pick": "Sean Burke Over 3.5 K",
+   "market": "Prop de ponches",
+   "p": 0.6814,
+   "ic": 57.6,
+   "level": 4,
+   "amount": 875,
+   "minPrice": -175,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -102
+     "from": -175
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 116
+     "from": -146
     }
    ]
   }

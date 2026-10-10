@@ -55,16 +55,27 @@
    "pk": 849831,
    "side": "away",
    "text": "CWS: RHP Luis Castillo roster status changed by Chicago White Sox."
+  },
+  {
+   "after": "apostar Sean Burke Over 3.5 K · stake 4",
+   "at": "2026-10-10T12:25:40Z",
+   "before": "esperar momio (F5 Over 3.5)",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849831,
+   "text": "Decisión: esperar momio (F5 Over 3.5) → apostar Sean Burke Over 3.5 K · stake 4"
   }
  ],
  "snap": {
   "849831": {
    "away": 145,
    "dec": {
-    "level": 0,
-    "pick": "F5 Over 3.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 4,
+    "pick": "Sean Burke Over 3.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 114,
