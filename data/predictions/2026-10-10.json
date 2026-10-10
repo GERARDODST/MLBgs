@@ -3,7 +3,7 @@
 "pk": 849831,
 "date": "2026-10-10",
 "time": "2026-10-11T00:00:00Z",
-"generatedAt": "2026-10-10T20:06:39+00:00",
+"generatedAt": "2026-10-10T20:20:34+00:00",
 "away": "CWS",
 "home": "CLE",
 "pHome": 0.5222,
@@ -44,23 +44,25 @@
 "level": "Baja"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Sean Burke Over 3.5 K",
-"p": 0.6011,
-"line": 3.5,
-"ic": 42.9647,
+"family": "NRFI",
+"market": "NRFI/YRFI",
+"pick": "YRFI",
+"p": 0.4676,
+"line": null,
+"ic": 44.9463,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "no apostar",
+"waitFor": null,
 "family": "NRFI",
-"pick": "NRFI",
+"pick": "YRFI",
 "level": 0,
 "alts": [
-"NRFI"
+"ML",
+"K",
+"Total"
 ]
 }
 }

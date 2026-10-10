@@ -120,6 +120,17 @@
    "kind": "decision",
    "pk": 849831,
    "text": "Decisión: apostar Sean Burke Over 3.5 K · stake 5 → esperar momio (NRFI) · tras: lineup, umpire"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-10-10T20:20:34Z",
+   "before": "esperar momio (NRFI)",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849831,
+   "text": "Decisión: esperar momio (NRFI) → no apostar · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -127,9 +138,9 @@
    "away": 145,
    "dec": {
     "level": 0,
-    "pick": "NRFI",
-    "status": "esperar",
-    "waitFor": "momio"
+    "pick": "YRFI",
+    "status": "no apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 114,
