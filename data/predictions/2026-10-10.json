@@ -3,66 +3,64 @@
 "pk": 849831,
 "date": "2026-10-10",
 "time": "2026-10-11T00:00:00Z",
-"generatedAt": "2026-10-10T18:01:36+00:00",
+"generatedAt": "2026-10-10T20:06:39+00:00",
 "away": "CWS",
 "home": "CLE",
-"pHome": 0.521,
+"pHome": 0.5222,
 "methods": {
 "log5": 0.5181,
 "elo": 0.5168,
-"lambda": 0.5281
+"lambda": 0.5316
 },
 "confidence": "alta",
-"projAway": 3.8253,
-"projHome": 4.1228,
-"total": 7.9481,
-"f5Away": 1.9337,
-"f5Home": 2.4314,
-"nrfi": 0.5405,
-"pOver85": 0.3947,
+"projAway": 3.9004,
+"projHome": 4.2366,
+"total": 8.137,
+"f5Away": 1.9717,
+"f5Home": 2.4985,
+"nrfi": 0.5324,
+"pOver85": 0.4124,
 "probables": {
 "away": "Sean Burke",
 "home": "Gavin Williams"
 },
-"light": "Rojo",
+"light": "Gris",
 "best": {
-"market": "Team total",
-"pick": "CWS Under 3.5",
-"p": 0.5369,
+"market": "Prop pitcher",
+"pick": "Sean Burke Under 4.5 K",
+"p": 0.5934,
 "price": null,
 "edge": null,
-"light": "Rojo"
+"light": "Gris"
 },
 "topPicks": [
-{
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Sean Burke Over 3.5 K",
-"p": 0.6814,
-"line": 3.5,
-"ic": 61.8522,
-"level": "Media"
-},
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "CLE",
-"p": 0.521,
+"p": 0.5222,
 "line": null,
-"ic": 47.1445,
+"ic": 47.6029,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Sean Burke Over 3.5 K",
+"p": 0.6011,
+"line": 3.5,
+"ic": 42.9647,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "apostar",
-"waitFor": null,
-"family": "K",
-"pick": "Sean Burke Over 3.5 K",
-"level": 5,
+"status": "esperar",
+"waitFor": "momio",
+"family": "NRFI",
+"pick": "NRFI",
+"level": 0,
 "alts": [
-"ML",
-"K",
-"F5"
+"NRFI"
 ]
 }
 }

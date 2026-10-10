@@ -77,24 +77,106 @@
    "kind": "decision",
    "pk": 849831,
    "text": "Decisión: apostar Sean Burke Over 3.5 K · stake 4 → apostar Sean Burke Over 3.5 K · stake 5"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-10T20:06:49Z",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849831,
+   "side": "away",
+   "text": "Lineup confirmado (CWS)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-10T20:06:49Z",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849831,
+   "side": "home",
+   "text": "Lineup confirmado (CLE)"
+  },
+  {
+   "after": "Vic Carapazza",
+   "at": "2026-10-10T20:06:49Z",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849831,
+   "text": "Umpire de home asignado: Vic Carapazza"
+  },
+  {
+   "after": "esperar momio (NRFI)",
+   "at": "2026-10-10T20:06:39Z",
+   "before": "apostar Sean Burke Over 3.5 K · stake 5",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849831,
+   "text": "Decisión: apostar Sean Burke Over 3.5 K · stake 5 → esperar momio (NRFI) · tras: lineup, umpire"
   }
  ],
  "snap": {
   "849831": {
    "away": 145,
    "dec": {
-    "level": 5,
-    "pick": "Sean Burke Over 3.5 K",
-    "status": "apostar",
-    "waitFor": null
+    "level": 0,
+    "pick": "NRFI",
+    "status": "esperar",
+    "waitFor": "momio"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 114,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     803011,
+     691019,
+     678246,
+     808959,
+     643217,
+     671976,
+     805367,
+     695657,
+     686668
+    ],
+    "home": [
+     680757,
+     608070,
+     800050,
+     666176,
+     663993,
+     683953,
+     672275,
+     690984,
+     677587
+    ]
    },
-   "names": {},
+   "names": {
+    "608070": "José Ramírez",
+    "643217": "Andrew Benintendi",
+    "663993": "Nathaniel Lowe",
+    "666176": "Jo Adell",
+    "671976": "Tristan Peters",
+    "672275": "Patrick Bailey",
+    "677587": "Brayan Rocchio",
+    "678246": "Miguel Vargas",
+    "680757": "Steven Kwan",
+    "683953": "Travis Bazzana",
+    "686668": "Brenton Doyle",
+    "690984": "Petey Halpin",
+    "691019": "Kyle Teel",
+    "695657": "Colson Montgomery",
+    "800050": "Chase DeLauter",
+    "803011": "Sam Antonacci",
+    "805367": "Chase Meidroth",
+    "808959": "Munetaka Murakami"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -167,13 +249,19 @@
     "945448",
     "945456"
    ],
-   "ump": null,
+   "ump": "Vic Carapazza",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Cloudy",
+    "dir": "cruzado",
+    "speed": 6,
+    "temp": 73.0
+   }
   }
  }
 }
