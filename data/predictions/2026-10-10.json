@@ -3,7 +3,7 @@
 "pk": 849831,
 "date": "2026-10-10",
 "time": "2026-10-11T00:00:00Z",
-"generatedAt": "2026-10-10T12:25:40+00:00",
+"generatedAt": "2026-10-10T18:01:36+00:00",
 "away": "CWS",
 "home": "CLE",
 "pHome": 0.521,
@@ -24,14 +24,14 @@
 "away": "Sean Burke",
 "home": "Gavin Williams"
 },
-"light": "Amarillo",
+"light": "Rojo",
 "best": {
-"market": "Prop pitcher",
-"pick": "Gavin Williams Under 6.5 K",
-"p": 0.5264,
-"price": 108,
-"edge": 0.0456,
-"light": "Amarillo"
+"market": "Team total",
+"pick": "CWS Under 3.5",
+"p": 0.5369,
+"price": null,
+"edge": null,
+"light": "Rojo"
 },
 "topPicks": [
 {
@@ -40,16 +40,16 @@
 "pick": "Sean Burke Over 3.5 K",
 "p": 0.6814,
 "line": 3.5,
-"ic": 57.5655,
+"ic": 61.8522,
 "level": "Media"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Gavin Williams Under 6.5 K",
-"p": 0.5264,
-"line": 6.5,
-"ic": 48.1821,
+"family": "ML",
+"market": "Moneyline",
+"pick": "CLE",
+"p": 0.521,
+"line": null,
+"ic": 47.1445,
 "level": "Baja"
 }
 ],
@@ -58,10 +58,10 @@
 "waitFor": null,
 "family": "K",
 "pick": "Sean Burke Over 3.5 K",
-"level": 4,
+"level": 5,
 "alts": [
-"K",
 "ML",
+"K",
 "F5"
 ]
 }

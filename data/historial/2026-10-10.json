@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-10T15:26:37+00:00",
+  "registeredAt": "2026-10-10T18:01:36+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.521,
@@ -37,7 +37,7 @@
    "projHome": 4.12,
    "total": 7.95,
    "nrfi": 0.5405,
-   "light": "Amarillo",
+   "light": "Rojo",
    "confidence": "alta",
    "probables": {
     "away": "Sean Burke",
@@ -55,16 +55,16 @@
     "line": 3.5,
     "p": 0.6814,
     "fair": -214.0,
-    "ic": 57.6,
+    "ic": 61.9,
     "level": "Media",
-    "price": -152,
+    "price": -143,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 4,
+     "level": 5,
      "ladder": [
       {
        "level": 1,
@@ -99,22 +99,50 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "CLE",
+    "line": null,
+    "p": 0.521,
+    "fair": -109.0,
+    "ic": 47.1,
+    "level": "Baja",
+    "price": -143,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.8% · Elo + abridor (5.7.7) 51.7% · λ + Binomial Negativa (5.3 · 5.7.5) 52.8%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9674,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Gavin Williams Under 6.5 K",
     "line": 6.5,
     "p": 0.5264,
     "fair": -111.0,
-    "ic": 48.2,
+    "ic": 41.8,
     "level": "Baja",
-    "price": 108,
+    "price": -101,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 1,
+     "level": 0,
      "ladder": [
       {
        "level": 1,
@@ -143,35 +171,8 @@
      "a": 1.0,
      "h": 0.9674,
      "r": 1.0,
-     "maxPrice": 134
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "CLE",
-    "line": null,
-    "p": 0.521,
-    "fair": -109.0,
-    "ic": 47.1,
-    "level": "Baja",
-    "price": -142,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.8% · Elo + abridor (5.7.7) 51.7% · λ + Binomial Negativa (5.3 · 5.7.5) 52.8%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9674,
-     "r": 1.0
+     "maxPrice": 134,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -236,7 +237,7 @@
     "fair": -117.0,
     "ic": 37.0,
     "level": "Muy baja",
-    "price": -122,
+    "price": -120,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -410,14 +411,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-152)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-143)",
    "source": "Framework v2",
    "pick": "Sean Burke Over 3.5 K",
    "market": "Prop de ponches",
    "p": 0.6814,
-   "ic": 57.6,
-   "level": 4,
-   "amount": 875,
+   "ic": 61.9,
+   "level": 5,
+   "amount": 1000,
    "minPrice": -175,
    "ladder": [
     {
