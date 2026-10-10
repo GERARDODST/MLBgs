@@ -131,6 +131,18 @@
    "kind": "decision",
    "pk": 849831,
    "text": "Decisión: esperar momio (NRFI) → no apostar · tras: lineup, umpire"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 7.5,
+   "at": "2026-10-10T21:30:09Z",
+   "before": 7.0,
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849831,
+   "text": "La línea del total pasa de 7.0 a 7.5"
   }
  ],
  "snap": {
@@ -189,12 +201,12 @@
     "808959": "Munetaka Murakami"
    },
    "odds": {
-    "line": 7.0,
+    "line": 7.5,
     "ml": {
      "away": 119,
-     "home": -144
+     "home": -143
     },
-    "pHome": 0.5638,
+    "pHome": 0.5631,
     "src": "draftkings"
    },
    "prob": {
