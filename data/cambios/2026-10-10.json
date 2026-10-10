@@ -143,6 +143,16 @@
    "kind": "momio",
    "pk": 849831,
    "text": "La línea del total pasa de 7.0 a 7.5"
+  },
+  {
+   "action": "El total proyectado ya usa el viento nuevo.",
+   "at": "2026-10-10T21:45:54Z",
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "clima",
+   "pk": 849831,
+   "text": "Viento: 6 mph cruzado → 11 mph out"
   }
  ],
  "snap": {
@@ -280,10 +290,10 @@
    },
    "wx": {
     "closed": false,
-    "cond": "Cloudy",
-    "dir": "cruzado",
-    "speed": 6,
-    "temp": 73.0
+    "cond": "Partly Cloudy",
+    "dir": "out",
+    "speed": 11,
+    "temp": 70.0
    }
   }
  }
