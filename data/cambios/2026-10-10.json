@@ -153,6 +153,18 @@
    "kind": "clima",
    "pk": 849831,
    "text": "Viento: 6 mph cruzado → 11 mph out"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 7.0,
+   "at": "2026-10-10T23:43:44Z",
+   "before": 7.5,
+   "date": "2026-10-10",
+   "game": "CWS @ CLE",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849831,
+   "text": "La línea del total pasa de 7.5 a 7.0"
   }
  ],
  "snap": {
@@ -164,7 +176,7 @@
     "status": "no apostar",
     "waitFor": null
    },
-   "detailed": "Pre-Game",
+   "detailed": "Warmup",
    "home": 114,
    "lu": {
     "away": [
@@ -211,12 +223,12 @@
     "808959": "Munetaka Murakami"
    },
    "odds": {
-    "line": 7.5,
+    "line": 7.0,
     "ml": {
-     "away": 119,
-     "home": -143
+     "away": 127,
+     "home": -142
     },
-    "pHome": 0.5631,
+    "pHome": 0.5712,
     "src": "draftkings"
    },
    "prob": {
