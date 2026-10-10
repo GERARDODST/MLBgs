@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-10T21:30:01+00:00",
+  "registeredAt": "2026-10-10T22:32:49+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5222,
@@ -83,9 +83,9 @@
     "line": null,
     "p": 0.4676,
     "fair": 114.0,
-    "ic": 44.9,
+    "ic": 44.4,
     "level": "Baja",
-    "price": 125,
+    "price": 124,
     "methods": [
      "λ calibrado a ceros reales (6.8)"
     ],
@@ -185,9 +185,9 @@
     "line": 7.5,
     "p": 0.5048,
     "fair": -102.0,
-    "ic": 41.0,
+    "ic": 41.8,
     "level": "Baja",
-    "price": 102,
+    "price": 103,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -437,12 +437,12 @@
   "result": null,
   "decision": {
    "status": "no apostar",
-   "why": "con el momio de referencia (+125): edge menor a 3 pp con ese momio (stake 1 desde +129)",
+   "why": "con el momio de referencia (+124): edge menor a 3 pp con ese momio (stake 1 desde +129)",
    "source": "Framework v2",
    "pick": "YRFI",
    "market": "NRFI/YRFI",
    "p": 0.4676,
-   "ic": 44.9,
+   "ic": 44.4,
    "level": 0,
    "amount": 0,
    "minPrice": 129,
