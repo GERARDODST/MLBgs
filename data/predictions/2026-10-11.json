@@ -1,0 +1,69 @@
+[
+{
+"pk": 849809,
+"date": "2026-10-11",
+"time": "2026-10-12T00:00:00Z",
+"generatedAt": "2026-10-10T04:03:15+00:00",
+"away": "LAD",
+"home": "MIL",
+"pHome": 0.5088,
+"methods": {
+"log5": 0.5356,
+"elo": 0.547,
+"lambda": 0.4437
+},
+"confidence": "baja",
+"projAway": 4.0422,
+"projHome": 3.503,
+"total": 7.5452,
+"f5Away": 2.1708,
+"f5Home": 1.8201,
+"nrfi": 0.5742,
+"pOver85": 0.3571,
+"probables": {
+"away": "Tarik Skubal",
+"home": "Por anunciar"
+},
+"light": "Amarillo",
+"best": {
+"market": "Total",
+"pick": "Over 6.0",
+"p": 0.61,
+"price": -112,
+"edge": 0.0817,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.0",
+"p": 0.61,
+"line": 6.0,
+"ic": 54.6018,
+"level": "Baja"
+},
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Tarik Skubal Over 6.5 K",
+"p": 0.5402,
+"line": 6.5,
+"ic": 34.3,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 6.0",
+"level": 0,
+"alts": [
+"K",
+"F5 total",
+"F5"
+]
+}
+}
+]
