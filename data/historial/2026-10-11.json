@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-11T20:29:45+00:00",
+  "registeredAt": "2026-10-11T22:33:45+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5367,
@@ -55,16 +55,16 @@
     "line": 7.5,
     "p": 0.6535,
     "fair": -189.0,
-    "ic": 59.0,
+    "ic": 65.4,
     "level": "Media",
-    "price": -141,
+    "price": -129,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 5,
+     "level": 7,
      "ladder": [
       {
        "level": 1,
@@ -187,7 +187,7 @@
     "fair": -132.0,
     "ic": 38.8,
     "level": "Muy baja",
-    "price": -149,
+    "price": -152,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -411,14 +411,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-141)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-129)",
    "source": "Framework v2",
    "pick": "Jacob Misiorowski Under 7.5 K",
    "market": "Prop de ponches",
    "p": 0.6535,
-   "ic": 59.0,
-   "level": 5,
-   "amount": 1000,
+   "ic": 65.4,
+   "level": 7,
+   "amount": 1200,
    "minPrice": -165,
    "ladder": [
     {
