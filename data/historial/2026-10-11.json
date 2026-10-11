@@ -29,21 +29,21 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-11T20:01:54+00:00",
+  "registeredAt": "2026-10-11T20:29:45+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5344,
+   "pHome": 0.5367,
    "projAway": 3.54,
-   "projHome": 3.5,
-   "total": 7.05,
-   "nrfi": 0.6113,
-   "light": "Gris",
+   "projHome": 3.57,
+   "total": 7.11,
+   "nrfi": 0.6082,
+   "light": "Amarillo",
    "confidence": "media",
    "probables": {
     "away": "Tarik Skubal",
     "home": "Jacob Misiorowski"
    },
-   "lineups": "Proyectados"
+   "lineups": "Confirmados"
   },
   "picks": [
    {
@@ -55,8 +55,8 @@
     "line": 7.5,
     "p": 0.6535,
     "fair": -189.0,
-    "ic": 54.5,
-    "level": "Baja",
+    "ic": 59.0,
+    "level": "Media",
     "price": -141,
     "methods": [
      "λ + Poisson (5.4)"
@@ -64,27 +64,27 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 3,
+     "level": 5,
      "ladder": [
       {
        "level": 1,
        "stake": 500,
-       "from": -155
+       "from": -165
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -130
+       "from": -142
       }
      ],
      "steps": [
-      -155,
-      -151,
-      -143,
-      -137,
-      -130,
-      -124,
-      null,
+      -165,
+      -165,
+      -157,
+      -149,
+      -142,
+      -135,
+      -129,
       null,
       null,
       null
@@ -103,9 +103,9 @@
     "market": "Run Line",
     "pick": "MIL +1.5",
     "line": null,
-    "p": 0.6711,
-    "fair": -204.0,
-    "ic": 41.9,
+    "p": 0.6762,
+    "fair": -209.0,
+    "ic": 44.6,
     "level": "Baja",
     "price": -188,
     "methods": [
@@ -129,9 +129,9 @@
     "market": "Total completo",
     "pick": "Over 6.0",
     "line": 6.0,
-    "p": 0.555,
-    "fair": -125.0,
-    "ic": 40.4,
+    "p": 0.5624,
+    "fair": -129.0,
+    "ic": 43.7,
     "level": "Baja",
     "price": -113,
     "methods": [
@@ -155,17 +155,17 @@
     "market": "Moneyline",
     "pick": "MIL",
     "line": null,
-    "p": 0.5344,
-    "fair": -115.0,
-    "ic": 37.7,
-    "level": "Muy baja",
+    "p": 0.5367,
+    "fair": -116.0,
+    "ic": 41.0,
+    "level": "Baja",
     "price": -107,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.6% · Elo + abridor (5.7.7) 57.3% · λ + Binomial Negativa (5.3 · 5.7.5) 49.4%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.6% · Elo + abridor (5.7.7) 57.3% · λ + Binomial Negativa (5.3 · 5.7.5) 50.1%",
     "res": null,
     "stake": {
      "level": 0,
@@ -183,9 +183,9 @@
     "market": "Prop de ponches",
     "pick": "Tarik Skubal Under 7.5 K",
     "line": 7.5,
-    "p": 0.6088,
-    "fair": -156.0,
-    "ic": 37.3,
+    "p": 0.5693,
+    "fair": -132.0,
+    "ic": 38.8,
     "level": "Muy baja",
     "price": -149,
     "methods": [
@@ -199,22 +199,22 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -128
+       "from": -117
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -108
+       "from": -101
       }
      ],
      "steps": [
-      -128,
-      -125,
-      -119,
-      -113,
-      -108,
-      -103,
-      null,
+      -117,
+      -116,
+      -111,
+      -106,
+      -101,
+      104,
+      109,
       null,
       null,
       null
@@ -223,7 +223,7 @@
      "a": 1.0,
      "h": 0.9677,
      "r": 1.0,
-     "maxPrice": -104,
+     "maxPrice": 113,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -234,9 +234,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 3.5",
     "line": 3.5,
-    "p": 0.5747,
-    "fair": -135.0,
-    "ic": 36.5,
+    "p": 0.5696,
+    "fair": -132.0,
+    "ic": 37.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -262,7 +262,7 @@
     "line": 2.5,
     "p": 0.5723,
     "fair": -134.0,
-    "ic": 36.5,
+    "ic": 37.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -284,11 +284,11 @@
     "principal": false,
     "family": "Team total",
     "market": "Team total MIL",
-    "pick": "MIL Over 2.5",
-    "line": 2.5,
-    "p": 0.5661,
-    "fair": -130.0,
-    "ic": 36.5,
+    "pick": "MIL Under 3.5",
+    "line": 3.5,
+    "p": 0.5745,
+    "fair": -135.0,
+    "ic": 37.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -308,13 +308,64 @@
    {
     "rank": 9,
     "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "NRFI",
+    "line": null,
+    "p": 0.6082,
+    "fair": -155.0,
+    "ic": 37.7,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -137
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -116
+      }
+     ],
+     "steps": [
+      -137,
+      -134,
+      -128,
+      -122,
+      -116,
+      -111,
+      -105,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9677,
+     "r": 1.0,
+     "maxPrice": -104,
+     "why": "sin momio real: conviene si pagan -137 o mejor"
+    }
+   },
+   {
+    "rank": 10,
+    "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "MIL F5",
     "line": null,
-    "p": 0.5172,
-    "fair": -107.0,
-    "ic": 33.2,
+    "p": 0.5234,
+    "fair": -110.0,
+    "ic": 34.4,
     "level": "Muy baja",
     "price": -121,
     "methods": [
@@ -328,21 +379,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 115
+       "from": 107
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 136
+       "from": 127
       }
      ],
      "steps": [
+      107,
+      110,
       115,
-      117,
-      123,
-      129,
-      136,
-      null,
+      121,
+      127,
+      133,
       null,
       null,
       null,
@@ -352,34 +403,8 @@
      "a": 1.0,
      "h": 0.9677,
      "r": 1.0,
-     "maxPrice": 139,
+     "maxPrice": 136,
      "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "NRFI",
-    "line": null,
-    "p": 0.6113,
-    "fair": -157.0,
-    "ic": 33.2,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9677,
-     "r": 1.0
     }
    }
   ],
@@ -391,20 +416,20 @@
    "pick": "Jacob Misiorowski Under 7.5 K",
    "market": "Prop de ponches",
    "p": 0.6535,
-   "ic": 54.5,
-   "level": 3,
-   "amount": 750,
-   "minPrice": -155,
+   "ic": 59.0,
+   "level": 5,
+   "amount": 1000,
+   "minPrice": -165,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -155
+     "from": -165
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -130
+     "from": -142
     }
    ]
   }
