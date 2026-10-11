@@ -1,0 +1,35 @@
+{
+ "generatedAt": "2026-10-11T01:53:24+00:00",
+ "digest": "42d1f5134b2c7d8e",
+ "games": 1,
+ "nextGame": "2026-10-12T00:00:00Z",
+ "live": 1,
+ "cadence": {
+  "sleep": 3300,
+  "every": 57,
+  "why": "partido en ≤ 36 h: una revisión por hora",
+  "next": "2026-10-12T00:00:00Z",
+  "steps": [
+   {
+    "within": 150,
+    "every": 9
+   },
+   {
+    "within": 360,
+    "every": 15
+   },
+   {
+    "within": 720,
+    "every": 27
+   },
+   {
+    "within": 2160,
+    "every": 57
+   },
+   {
+    "within": null,
+    "every": null
+   }
+  ]
+ }
+}
