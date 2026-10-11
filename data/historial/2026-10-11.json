@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-11T18:10:51+00:00",
+  "registeredAt": "2026-10-11T19:20:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5341,
@@ -37,7 +37,7 @@
    "projHome": 3.5,
    "total": 7.06,
    "nrfi": 0.6109,
-   "light": "Amarillo",
+   "light": "Gris",
    "confidence": "media",
    "probables": {
     "away": "Tarik Skubal",
@@ -99,15 +99,41 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL +1.5",
+    "line": null,
+    "p": 0.6702,
+    "fair": -203.0,
+    "ic": 41.6,
+    "level": "Baja",
+    "price": -188,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9677,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 6.0",
     "line": 6.0,
     "p": 0.556,
     "fair": -125.0,
-    "ic": 42.6,
+    "ic": 40.6,
     "level": "Baja",
-    "price": -110,
+    "price": -113,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -123,7 +149,35 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "MIL",
+    "line": null,
+    "p": 0.5341,
+    "fair": -115.0,
+    "ic": 37.4,
+    "level": "Muy baja",
+    "price": -107,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.6% · Elo + abridor (5.7.7) 57.3% · λ + Binomial Negativa (5.3 · 5.7.5) 49.3%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9677,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -174,33 +228,7 @@
     }
    },
    {
-    "rank": 4,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "MIL +1.5",
-    "line": null,
-    "p": 0.6702,
-    "fair": -203.0,
-    "ic": 36.5,
-    "level": "Muy baja",
-    "price": -204,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9677,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -220,34 +248,6 @@
      "level": 0,
      "ladder": [],
      "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9677,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "MIL",
-    "line": null,
-    "p": 0.5341,
-    "fair": -115.0,
-    "ic": 33.5,
-    "level": "Muy baja",
-    "price": -113,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.6% · Elo + abridor (5.7.7) 57.3% · λ + Binomial Negativa (5.3 · 5.7.5) 49.3%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
      "h": 0.9677,
      "r": 1.0
