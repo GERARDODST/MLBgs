@@ -1,0 +1,136 @@
+[
+{
+"pk": 849812,
+"date": "2026-10-12",
+"time": "2026-10-12T21:00:00Z",
+"generatedAt": "2026-10-11T04:11:48+00:00",
+"away": "LAD",
+"home": "MIL",
+"pHome": 0.5354,
+"methods": {
+"log5": 0.5356,
+"elo": 0.5669,
+"lambda": 0.5037
+},
+"confidence": "media",
+"projAway": 4.0422,
+"projHome": 4.0909,
+"total": 8.1331,
+"f5Away": 2.1708,
+"f5Home": 2.2964,
+"nrfi": 0.5338,
+"pOver85": 0.412,
+"probables": {
+"away": "Yoshinobu Yamamoto",
+"home": "Por anunciar"
+},
+"light": "Rojo",
+"best": {
+"market": "ML",
+"pick": "MIL",
+"p": 0.5354,
+"price": null,
+"edge": null,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Yoshinobu Yamamoto Under 6.5 K",
+"p": 0.558,
+"line": 6.5,
+"ic": 34.7157,
+"level": "Muy baja"
+},
+{
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Over 3.5",
+"p": 0.5563,
+"line": 3.5,
+"ic": 34.3424,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "K",
+"pick": "Yoshinobu Yamamoto Under 6.5 K",
+"level": 0,
+"alts": [
+"F5 total",
+"Team total",
+"Team total"
+]
+}
+},
+{
+"pk": 849820,
+"date": "2026-10-12",
+"time": "2026-10-13T00:00:00Z",
+"generatedAt": "2026-10-11T04:11:48+00:00",
+"away": "CLE",
+"home": "TB",
+"pHome": 0.5634,
+"methods": {
+"log5": 0.5668,
+"elo": 0.5948,
+"lambda": 0.5284
+},
+"confidence": "media",
+"projAway": 3.7563,
+"projHome": 4.0556,
+"total": 7.8119,
+"f5Away": 1.9222,
+"f5Home": 2.3984,
+"nrfi": 0.5434,
+"pOver85": 0.382,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Gris",
+"best": {
+"market": "F5",
+"pick": "TB F5",
+"p": 0.5787,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5255,
+"line": 7.0,
+"ic": 39.9606,
+"level": "Muy baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "CLE +1.5",
+"p": 0.6305,
+"line": null,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 7.0",
+"level": 0,
+"alts": [
+"RL",
+"F5 total",
+"Team total"
+]
+}
+}
+]
