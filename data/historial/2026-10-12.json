@@ -329,7 +329,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-11T07:55:25+00:00",
+  "registeredAt": "2026-10-11T14:44:14+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5634,
@@ -337,7 +337,7 @@
    "projHome": 4.06,
    "total": 7.81,
    "nrfi": 0.5434,
-   "light": "Gris",
+   "light": "Amarillo",
    "confidence": "media",
    "probables": {
     "away": "Por anunciar",
@@ -355,9 +355,9 @@
     "line": 7.0,
     "p": 0.5255,
     "fair": -111.0,
-    "ic": 39.2,
-    "level": "Muy baja",
-    "price": 100,
+    "ic": 40.7,
+    "level": "Baja",
+    "price": 102,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -381,9 +381,9 @@
     "line": null,
     "p": 0.6305,
     "fair": -171.0,
-    "ic": 31.8,
+    "ic": 37.5,
     "level": "Muy baja",
-    "price": -171,
+    "price": -157,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -487,7 +487,7 @@
     "fair": -129.0,
     "ic": 30.5,
     "level": "Muy baja",
-    "price": -174,
+    "price": -180,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -566,7 +566,7 @@
    "waitFor": "dato",
    "market": "Total completo",
    "p": 0.5255,
-   "ic": 39.2,
+   "ic": 40.7,
    "level": 0,
    "amount": 0,
    "minPrice": null,
