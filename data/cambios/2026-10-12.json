@@ -23,6 +23,41 @@
    "kind": "decision",
    "pk": 849812,
    "text": "Decisión: esperar dato (Yoshinobu Yamamoto Under 6.5 K) → esperar momio (F5 Over 3.5) · tras: abridor"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Drew Rasmussen",
+   "at": "2026-10-11T17:45:03Z",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849820,
+   "side": "home",
+   "text": "Abridor anunciado (TB): Drew Rasmussen"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 6.5,
+   "at": "2026-10-11T17:45:03Z",
+   "before": 7.0,
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849820,
+   "text": "La línea del total pasa de 7.0 a 6.5"
+  },
+  {
+   "after": "esperar dato (TB)",
+   "at": "2026-10-11T17:44:56Z",
+   "before": "esperar dato (Over 7.0)",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849820,
+   "text": "Decisión: esperar dato (Over 7.0) → esperar dato (TB) · tras: abridor, momio"
   }
  ],
  "snap": {
@@ -122,7 +157,7 @@
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "Over 7.0",
+    "pick": "TB",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -134,17 +169,20 @@
    },
    "names": {},
    "odds": {
-    "line": 7.0,
+    "line": 6.5,
     "ml": {
-     "away": 138,
-     "home": -168
+     "away": 144,
+     "home": -174
     },
-    "pHome": 0.5987,
+    "pHome": 0.6078,
     "src": "draftkings"
    },
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 656876,
+     "name": "Drew Rasmussen"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-11T04:11:57Z",
