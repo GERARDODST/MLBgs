@@ -1,14 +1,38 @@
 {
  "date": "2026-10-12",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Logan Henderson",
+   "at": "2026-10-11T16:01:39Z",
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849812,
+   "side": "home",
+   "text": "Abridor anunciado (MIL): Logan Henderson"
+  },
+  {
+   "after": "esperar momio (F5 Over 3.5)",
+   "at": "2026-10-11T16:01:30Z",
+   "before": "esperar dato (Yoshinobu Yamamoto Under 6.5 K)",
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849812,
+   "text": "Decisión: esperar dato (Yoshinobu Yamamoto Under 6.5 K) → esperar momio (F5 Over 3.5) · tras: abridor"
+  }
+ ],
  "snap": {
   "849812": {
    "away": 119,
    "dec": {
     "level": 0,
-    "pick": "Yoshinobu Yamamoto Under 6.5 K",
+    "pick": "F5 Over 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 158,
@@ -22,7 +46,10 @@
      "id": 808967,
      "name": "Yoshinobu Yamamoto"
     },
-    "home": null
+    "home": {
+     "id": 701656,
+     "name": "Logan Henderson"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-11T04:11:57Z",
@@ -85,7 +112,8 @@
     "945392",
     "945454",
     "945458",
-    "945460"
+    "945460",
+    "945461"
    ],
    "ump": null,
    "wx": {}
