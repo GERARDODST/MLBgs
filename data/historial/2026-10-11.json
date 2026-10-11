@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-11T23:13:09+00:00",
+  "registeredAt": "2026-10-11T23:52:48+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5367,
@@ -99,15 +99,41 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.0",
+    "line": 6.0,
+    "p": 0.5624,
+    "fair": -129.0,
+    "ic": 47.0,
+    "level": "Baja",
+    "price": -108,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9677,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "MIL +1.5",
     "line": null,
     "p": 0.6762,
     "fair": -209.0,
-    "ic": 44.6,
+    "ic": 46.0,
     "level": "Baja",
-    "price": -188,
+    "price": -184,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -123,7 +149,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -131,41 +157,15 @@
     "line": null,
     "p": 0.5367,
     "fair": -116.0,
-    "ic": 43.8,
+    "ic": 44.5,
     "level": "Baja",
-    "price": -103,
+    "price": -102,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.6% · Elo + abridor (5.7.7) 57.3% · λ + Binomial Negativa (5.3 · 5.7.5) 50.1%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9677,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.0",
-    "line": 6.0,
-    "p": 0.5624,
-    "fair": -129.0,
-    "ic": 43.7,
-    "level": "Baja",
-    "price": -113,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
      "level": 0,
