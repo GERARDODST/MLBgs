@@ -70,66 +70,66 @@
 "pk": 849820,
 "date": "2026-10-12",
 "time": "2026-10-13T00:00:00Z",
-"generatedAt": "2026-10-11T17:44:56+00:00",
+"generatedAt": "2026-10-11T22:25:49+00:00",
 "away": "CLE",
 "home": "TB",
-"pHome": 0.572,
+"pHome": 0.5681,
 "methods": {
 "log5": 0.5668,
-"elo": 0.5917,
-"lambda": 0.5575
+"elo": 0.6187,
+"lambda": 0.5186
 },
-"confidence": "alta",
+"confidence": "baja",
 "projAway": 3.476,
-"projHome": 4.0556,
-"total": 7.5316,
+"projHome": 3.6696,
+"total": 7.1456,
 "f5Away": 1.7064,
-"f5Home": 2.3984,
-"nrfi": 0.5585,
-"pOver85": 0.3559,
+"f5Home": 2.0456,
+"nrfi": 0.592,
+"pOver85": 0.3203,
 "probables": {
-"away": "Por anunciar",
+"away": "Foster Griffin",
 "home": "Drew Rasmussen"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "F5",
-"pick": "TB F5",
-"p": 0.6177,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Run Line",
+"pick": "CLE +1.5",
+"p": 0.6489,
+"price": -158,
+"edge": 0.0365,
+"light": "Amarillo"
 },
 "topPicks": [
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "TB",
-"p": 0.572,
+"family": "RL",
+"market": "Run Line",
+"pick": "CLE +1.5",
+"p": 0.6489,
 "line": null,
-"ic": 39.6293,
-"level": "Muy baja"
+"ic": 47.4601,
+"level": "Baja"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Drew Rasmussen Over 4.5 K",
-"p": 0.5817,
-"line": 4.5,
-"ic": 34.541,
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.5",
+"p": 0.5061,
+"line": 6.5,
+"ic": 36.8175,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "ML",
-"pick": "TB",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Under 3.5",
 "level": 0,
 "alts": [
-"K",
-"RL",
-"Total"
+"F5 total",
+"F5",
+"K"
 ]
 }
 }

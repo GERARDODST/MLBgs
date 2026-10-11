@@ -58,6 +58,29 @@
    "kind": "decision",
    "pk": 849820,
    "text": "Decisión: esperar dato (Over 7.0) → esperar dato (TB) · tras: abridor, momio"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Foster Griffin",
+   "at": "2026-10-11T22:25:57Z",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849820,
+   "side": "away",
+   "text": "Abridor anunciado (CLE): Foster Griffin"
+  },
+  {
+   "after": "esperar momio (F5 Under 3.5)",
+   "at": "2026-10-11T22:25:49Z",
+   "before": "esperar dato (TB)",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849820,
+   "text": "Decisión: esperar dato (TB) → esperar momio (F5 Under 3.5) · tras: abridor"
   }
  ],
  "snap": {
@@ -157,9 +180,9 @@
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "TB",
+    "pick": "F5 Under 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 139,
@@ -178,7 +201,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 656492,
+     "name": "Foster Griffin"
+    },
     "home": {
      "id": 656876,
      "name": "Drew Rasmussen"
