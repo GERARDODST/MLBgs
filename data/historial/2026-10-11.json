@@ -29,14 +29,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-11T19:20:12+00:00",
+  "registeredAt": "2026-10-11T20:01:54+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5341,
-   "projAway": 3.55,
+   "pHome": 0.5344,
+   "projAway": 3.54,
    "projHome": 3.5,
-   "total": 7.06,
-   "nrfi": 0.6109,
+   "total": 7.05,
+   "nrfi": 0.6113,
    "light": "Gris",
    "confidence": "media",
    "probables": {
@@ -53,10 +53,10 @@
     "market": "Prop de ponches",
     "pick": "Jacob Misiorowski Under 7.5 K",
     "line": 7.5,
-    "p": 0.6564,
-    "fair": -191.0,
-    "ic": 55.3,
-    "level": "Media",
+    "p": 0.6535,
+    "fair": -189.0,
+    "ic": 54.5,
+    "level": "Baja",
     "price": -141,
     "methods": [
      "λ + Poisson (5.4)"
@@ -69,21 +69,21 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -156
+       "from": -155
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -132
+       "from": -130
       }
      ],
      "steps": [
-      -156,
-      -152,
-      -145,
-      -138,
-      -132,
-      -125,
+      -155,
+      -151,
+      -143,
+      -137,
+      -130,
+      -124,
       null,
       null,
       null,
@@ -93,7 +93,7 @@
      "a": 1.0,
      "h": 0.9677,
      "r": 1.0,
-     "maxPrice": -126
+     "maxPrice": -124
     }
    },
    {
@@ -103,9 +103,9 @@
     "market": "Run Line",
     "pick": "MIL +1.5",
     "line": null,
-    "p": 0.6702,
-    "fair": -203.0,
-    "ic": 41.6,
+    "p": 0.6711,
+    "fair": -204.0,
+    "ic": 41.9,
     "level": "Baja",
     "price": -188,
     "methods": [
@@ -129,9 +129,9 @@
     "market": "Total completo",
     "pick": "Over 6.0",
     "line": 6.0,
-    "p": 0.556,
+    "p": 0.555,
     "fair": -125.0,
-    "ic": 40.6,
+    "ic": 40.4,
     "level": "Baja",
     "price": -113,
     "methods": [
@@ -155,9 +155,9 @@
     "market": "Moneyline",
     "pick": "MIL",
     "line": null,
-    "p": 0.5341,
+    "p": 0.5344,
     "fair": -115.0,
-    "ic": 37.4,
+    "ic": 37.7,
     "level": "Muy baja",
     "price": -107,
     "methods": [
@@ -165,7 +165,7 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.6% · Elo + abridor (5.7.7) 57.3% · λ + Binomial Negativa (5.3 · 5.7.5) 49.3%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.6% · Elo + abridor (5.7.7) 57.3% · λ + Binomial Negativa (5.3 · 5.7.5) 49.4%",
     "res": null,
     "stake": {
      "level": 0,
@@ -234,7 +234,7 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 3.5",
     "line": 3.5,
-    "p": 0.574,
+    "p": 0.5747,
     "fair": -135.0,
     "ic": 36.5,
     "level": "Muy baja",
@@ -260,9 +260,9 @@
     "market": "Team total LAD",
     "pick": "LAD Over 2.5",
     "line": 2.5,
-    "p": 0.5735,
+    "p": 0.5723,
     "fair": -134.0,
-    "ic": 33.2,
+    "ic": 36.5,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -288,7 +288,7 @@
     "line": 2.5,
     "p": 0.5661,
     "fair": -130.0,
-    "ic": 33.2,
+    "ic": 36.5,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -312,7 +312,7 @@
     "market": "F5 Moneyline",
     "pick": "MIL F5",
     "line": null,
-    "p": 0.5163,
+    "p": 0.5172,
     "fair": -107.0,
     "ic": 33.2,
     "level": "Muy baja",
@@ -338,9 +338,9 @@
      ],
      "steps": [
       115,
-      118,
-      124,
-      130,
+      117,
+      123,
+      129,
       136,
       null,
       null,
@@ -352,7 +352,7 @@
      "a": 1.0,
      "h": 0.9677,
      "r": 1.0,
-     "maxPrice": 140,
+     "maxPrice": 139,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -363,7 +363,7 @@
     "market": "NRFI/YRFI",
     "pick": "NRFI",
     "line": null,
-    "p": 0.6109,
+    "p": 0.6113,
     "fair": -157.0,
     "ic": 33.2,
     "level": "Muy baja",
@@ -390,21 +390,21 @@
    "source": "Framework v2",
    "pick": "Jacob Misiorowski Under 7.5 K",
    "market": "Prop de ponches",
-   "p": 0.6564,
-   "ic": 55.3,
+   "p": 0.6535,
+   "ic": 54.5,
    "level": 3,
    "amount": 750,
-   "minPrice": -156,
+   "minPrice": -155,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -156
+     "from": -155
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -132
+     "from": -130
     }
    ]
   }

@@ -54,6 +54,27 @@
    "pk": 849809,
    "side": "away",
    "text": "LAD: SS Hyeseong Kim roster status changed by Los Angeles Dodgers."
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-11T20:02:08Z",
+   "date": "2026-10-11",
+   "game": "LAD @ MIL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849809,
+   "side": "away",
+   "text": "Lineup confirmado (LAD)"
+  },
+  {
+   "after": "Edwin Moscoso",
+   "at": "2026-10-11T20:02:08Z",
+   "date": "2026-10-11",
+   "game": "LAD @ MIL",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849809,
+   "text": "Umpire de home asignado: Edwin Moscoso"
   }
  ],
  "snap": {
@@ -65,13 +86,33 @@
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 158,
    "lu": {
-    "away": [],
+    "away": [
+     605141,
+     518692,
+     669257,
+     660271,
+     606192,
+     571970,
+     681624,
+     663656,
+     571771
+    ],
     "home": []
    },
-   "names": {},
+   "names": {
+    "518692": "Freddie Freeman",
+    "571771": "Enrique Hernández",
+    "571970": "Max Muncy",
+    "605141": "Mookie Betts",
+    "606192": "Teoscar Hernández",
+    "660271": "Shohei Ohtani",
+    "663656": "Kyle Tucker",
+    "669257": "Will Smith",
+    "681624": "Andy Pages"
+   },
    "odds": {
     "line": 6.0,
     "ml": {
@@ -155,13 +196,19 @@
     "945460",
     "945461"
    ],
-   "ump": null,
+   "ump": "Edwin Moscoso",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Dome",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 68.0
+   }
   }
  }
 }
