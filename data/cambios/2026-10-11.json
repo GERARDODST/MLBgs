@@ -23,16 +23,27 @@
    "kind": "decision",
    "pk": 849809,
    "text": "Decisión: esperar dato (Over 6.0) → esperar momio (Jacob Misiorowski Under 6.5 K) · tras: abridor"
+  },
+  {
+   "after": "apostar Jacob Misiorowski Under 7.5 K · stake 3",
+   "at": "2026-10-11T12:34:51Z",
+   "before": "esperar momio (Jacob Misiorowski Under 6.5 K)",
+   "date": "2026-10-11",
+   "game": "LAD @ MIL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849809,
+   "text": "Decisión: esperar momio (Jacob Misiorowski Under 6.5 K) → apostar Jacob Misiorowski Under 7.5 K · stake 3"
   }
  ],
  "snap": {
   "849809": {
    "away": 119,
    "dec": {
-    "level": 0,
-    "pick": "Jacob Misiorowski Under 6.5 K",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 3,
+    "pick": "Jacob Misiorowski Under 7.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 158,

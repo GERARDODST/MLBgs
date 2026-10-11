@@ -3,7 +3,7 @@
 "pk": 849809,
 "date": "2026-10-11",
 "time": "2026-10-12T00:00:00Z",
-"generatedAt": "2026-10-11T10:43:08+00:00",
+"generatedAt": "2026-10-11T12:34:51+00:00",
 "away": "LAD",
 "home": "MIL",
 "pHome": 0.5341,
@@ -35,6 +35,15 @@
 },
 "topPicks": [
 {
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Jacob Misiorowski Under 7.5 K",
+"p": 0.6564,
+"line": 7.5,
+"ic": 54.829,
+"level": "Baja"
+},
+{
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 6.0",
@@ -42,26 +51,18 @@
 "line": 6.0,
 "ic": 41.2946,
 "level": "Baja"
-},
-{
-"family": "RL",
-"market": "Run Line",
-"pick": "MIL +1.5",
-"p": 0.6702,
-"line": null,
-"ic": 37.5712,
-"level": "Muy baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "K",
-"pick": "Jacob Misiorowski Under 6.5 K",
-"level": 0,
+"pick": "Jacob Misiorowski Under 7.5 K",
+"level": 3,
 "alts": [
-"K",
-"F5"
+"Total",
+"RL",
+"K"
 ]
 }
 }
