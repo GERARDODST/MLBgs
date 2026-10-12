@@ -187,24 +187,106 @@
    "kind": "momio",
    "pk": 849812,
    "text": "La línea del total pasa de 6.5 a 7.0"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-12T17:32:23Z",
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849812,
+   "side": "away",
+   "text": "Lineup confirmado (LAD)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-12T17:32:23Z",
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849812,
+   "side": "home",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "Chris Segal",
+   "at": "2026-10-12T17:32:23Z",
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849812,
+   "text": "Umpire de home asignado: Chris Segal"
+  },
+  {
+   "after": "apostar MIL F5 · stake 5",
+   "at": "2026-10-12T17:32:14Z",
+   "before": "apostar MIL F5 · stake 4",
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849812,
+   "text": "Decisión: apostar MIL F5 · stake 4 → apostar MIL F5 · stake 5 · tras: lineup, umpire"
   }
  ],
  "snap": {
   "849812": {
    "away": 119,
    "dec": {
-    "level": 4,
+    "level": 5,
     "pick": "MIL F5",
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 158,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     605141,
+     518692,
+     606192,
+     660271,
+     669257,
+     571970,
+     681624,
+     663656,
+     669242
+    ],
+    "home": [
+     694192,
+     668930,
+     661388,
+     641343,
+     592885,
+     669003,
+     806198,
+     686217,
+     666152
+    ]
    },
-   "names": {},
+   "names": {
+    "518692": "Freddie Freeman",
+    "571970": "Max Muncy",
+    "592885": "Christian Yelich",
+    "605141": "Mookie Betts",
+    "606192": "Teoscar Hernández",
+    "641343": "Jake Bauers",
+    "660271": "Shohei Ohtani",
+    "661388": "William Contreras",
+    "663656": "Kyle Tucker",
+    "666152": "David Hamilton",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
+    "669242": "Tommy Edman",
+    "669257": "Will Smith",
+    "681624": "Andy Pages",
+    "686217": "Sal Frelick",
+    "694192": "Jackson Chourio",
+    "806198": "Cooper Pratt"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -288,13 +370,19 @@
     "945460",
     "945461"
    ],
-   "ump": null,
+   "ump": "Chris Segal",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Dome",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 72.0
+   }
   },
   "849820": {
    "away": 114,
