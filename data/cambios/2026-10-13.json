@@ -1,12 +1,36 @@
 {
  "date": "2026-10-13",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Freddy Peralta",
+   "at": "2026-10-12T20:08:52Z",
+   "date": "2026-10-13",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849813,
+   "side": "home",
+   "text": "Abridor anunciado (TB): Freddy Peralta"
+  },
+  {
+   "after": "esperar dato (TB)",
+   "at": "2026-10-12T20:08:44Z",
+   "before": "esperar dato (Under 7.5)",
+   "date": "2026-10-13",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849813,
+   "text": "Decisión: esperar dato (Under 7.5) → esperar dato (TB) · tras: abridor"
+  }
+ ],
  "snap": {
   "849813": {
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "Under 7.5",
+    "pick": "TB",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -19,7 +43,10 @@
    "names": {},
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 642547,
+     "name": "Freddy Peralta"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-12T04:01:05Z",

@@ -296,6 +296,17 @@
    "kind": "decision",
    "pk": 849820,
    "text": "Decisión: apostar Drew Rasmussen Under 5.5 K · stake 2 → esperar momio (NRFI) · tras: momio, lineup, umpire"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-10-12T20:08:44Z",
+   "before": "esperar momio (NRFI)",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849820,
+   "text": "Decisión: esperar momio (NRFI) → no apostar · tras: momio, lineup, umpire"
   }
  ],
  "snap": {
@@ -454,9 +465,9 @@
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "NRFI",
-    "status": "esperar",
-    "waitFor": "momio"
+    "pick": "F5 Under 3.5",
+    "status": "no apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 139,

@@ -3,66 +3,66 @@
 "pk": 849813,
 "date": "2026-10-13",
 "time": "2026-10-14T00:00:00Z",
-"generatedAt": "2026-10-12T04:00:49+00:00",
+"generatedAt": "2026-10-12T20:08:44+00:00",
 "away": "CLE",
 "home": "TB",
-"pHome": 0.5634,
+"pHome": 0.5491,
 "methods": {
 "log5": 0.5668,
-"elo": 0.5948,
-"lambda": 0.5284
+"elo": 0.5509,
+"lambda": 0.5294
 },
-"confidence": "media",
-"projAway": 3.7563,
+"confidence": "alta",
+"projAway": 3.7462,
 "projHome": 4.0556,
-"total": 7.8119,
-"f5Away": 1.9222,
+"total": 7.8017,
+"f5Away": 1.926,
 "f5Home": 2.3984,
-"nrfi": 0.5434,
-"pOver85": 0.382,
+"nrfi": 0.5423,
+"pOver85": 0.381,
 "probables": {
 "away": "Por anunciar",
-"home": "Por anunciar"
+"home": "Freddy Peralta"
 },
 "light": "Gris",
 "best": {
-"market": "ML",
-"pick": "TB",
-"p": 0.5634,
+"market": "F5",
+"pick": "TB F5",
+"p": 0.578,
 "price": null,
 "edge": null,
 "light": "Gris"
 },
 "topPicks": [
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Under 7.5",
-"p": 0.5267,
-"line": 7.5,
-"ic": 31.8,
+"family": "ML",
+"market": "Moneyline",
+"pick": "TB",
+"p": 0.5491,
+"line": null,
+"ic": 39.1033,
 "level": "Muy baja"
 },
 {
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Over 3.5",
-"p": 0.5365,
-"line": 3.5,
-"ic": 31.8,
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Freddy Peralta Under 5.5 K",
+"p": 0.5681,
+"line": 5.5,
+"ic": 34.8083,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "dato",
-"family": "Total",
-"pick": "Under 7.5",
+"family": "ML",
+"pick": "TB",
 "level": 0,
 "alts": [
-"F5 total",
-"Team total",
-"Team total"
+"K",
+"Total",
+"F5 total"
 ]
 }
 }

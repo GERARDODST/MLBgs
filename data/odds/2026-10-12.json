@@ -263,7 +263,7 @@
     },
     "draftkings": {
      "last": {
-      "at": "2026-10-12T20:00:51Z",
+      "at": "2026-10-12T20:08:52Z",
       "f5": {
        "ml": {
         "away": -145,
@@ -517,7 +517,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-10-12T20:00:51Z",
+   "checked": "2026-10-12T20:08:52Z",
    "espn": "401908031",
    "home": 158,
    "pk": 849812,
@@ -550,7 +550,7 @@
    "books": {
     "betmgm": {
      "last": {
-      "at": "2026-10-12T18:00:23Z",
+      "at": "2026-10-12T20:08:52Z",
       "f5": {
        "ml": {
         "away": 140,
@@ -588,6 +588,10 @@
          "price": -110
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -155,
+       "yrfi": 118
       }
      },
      "mx": false,
@@ -630,6 +634,10 @@
          "price": 105
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -155,
+       "yrfi": 118
       }
      },
      "src": "the-odds-api",
@@ -637,7 +645,7 @@
     },
     "betonlineag": {
      "last": {
-      "at": "2026-10-12T18:00:23Z",
+      "at": "2026-10-12T20:08:52Z",
       "f5": {
        "ml": {
         "away": 135,
@@ -675,6 +683,10 @@
          "price": -112
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -167,
+       "yrfi": 125
       }
      },
      "mx": false,
@@ -717,6 +729,10 @@
          "price": -103
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -167,
+       "yrfi": 125
       }
      },
      "src": "the-odds-api",
@@ -724,13 +740,17 @@
     },
     "betrivers": {
      "last": {
-      "at": "2026-10-12T12:12:00Z",
+      "at": "2026-10-12T20:08:52Z",
       "f5": {
        "ml": {
         "away": 140,
         "home": -195
        },
        "total": {}
+      },
+      "nrfi": {
+       "nrfi": -141,
+       "yrfi": -103
       }
      },
      "mx": false,
@@ -742,6 +762,10 @@
         "home": -195
        },
        "total": {}
+      },
+      "nrfi": {
+       "nrfi": -141,
+       "yrfi": -103
       }
      },
      "src": "the-odds-api",
@@ -879,7 +903,7 @@
     },
     "draftkings": {
      "last": {
-      "at": "2026-10-12T20:00:51Z",
+      "at": "2026-10-12T20:08:52Z",
       "f5": {
        "ml": {
         "away": 140,
@@ -996,7 +1020,7 @@
     },
     "fanduel": {
      "last": {
-      "at": "2026-10-12T18:00:23Z",
+      "at": "2026-10-12T20:08:52Z",
       "f5": {
        "ml": {
         "away": 146,
@@ -1034,6 +1058,10 @@
          "price": -104
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -138,
+       "yrfi": 108
       }
      },
      "mx": false,
@@ -1076,6 +1104,10 @@
          "price": 102
         }
        }
+      },
+      "nrfi": {
+       "nrfi": -138,
+       "yrfi": 108
       }
      },
      "src": "the-odds-api",
@@ -1169,7 +1201,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-10-12T20:00:51Z",
+   "checked": "2026-10-12T20:08:52Z",
    "espn": "401908023",
    "home": 139,
    "pk": 849820,
@@ -1181,22 +1213,26 @@
    "theAt": {
     "h2h_1st_5_innings": "2026-10-12T12:12:00Z",
     "pitcher_strikeouts": "2026-10-12T18:00:23Z",
+    "totals_1st_1_innings": "2026-10-12T20:08:52Z",
     "totals_1st_5_innings": "2026-10-12T12:12:00Z"
    },
    "theEmpty": {
     "h2h_1st_5_innings": 0,
     "pitcher_strikeouts": 0,
+    "totals_1st_1_innings": 0,
     "totals_1st_5_innings": 0
    },
    "theGot": {
     "h2h_1st_5_innings": 8,
     "pitcher_strikeouts": 6,
+    "totals_1st_1_innings": 4,
     "totals_1st_5_innings": 6
    },
    "theId": "362511067a27b4ef89418639e15e80b6",
    "theN": {
     "h2h_1st_5_innings": 1,
     "pitcher_strikeouts": 2,
+    "totals_1st_1_innings": 1,
     "totals_1st_5_innings": 1
    },
    "theSwapped": false
