@@ -29,18 +29,18 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T20:08:44+00:00",
+  "registeredAt": "2026-10-12T21:42:55+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5491,
+   "pHome": 0.5291,
    "projAway": 3.75,
-   "projHome": 4.06,
-   "total": 7.8,
-   "nrfi": 0.5423,
+   "projHome": 3.61,
+   "total": 7.36,
+   "nrfi": 0.5776,
    "light": "Gris",
-   "confidence": "alta",
+   "confidence": "media",
    "probables": {
-    "away": "Por anunciar",
+    "away": "Parker Messick",
     "home": "Freddy Peralta"
    },
    "lineups": "Proyectados"
@@ -49,93 +49,13 @@
    {
     "rank": 1,
     "principal": true,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "TB",
-    "line": null,
-    "p": 0.5491,
-    "fair": -122.0,
-    "ic": 39.1,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.7% · Elo + abridor (5.7.7) 55.1% · λ + Binomial Negativa (5.3 · 5.7.5) 52.9%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9671,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Freddy Peralta Under 5.5 K",
-    "line": 5.5,
-    "p": 0.5681,
-    "fair": -132.0,
-    "ic": 34.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9671,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Under 7.5",
-    "line": 7.5,
-    "p": 0.5277,
-    "fair": -112.0,
-    "ic": 34.4,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9671,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
-    "pick": "F5 Over 3.5",
+    "pick": "F5 Under 3.5",
     "line": 3.5,
-    "p": 0.537,
-    "fair": -116.0,
-    "ic": 34.4,
+    "p": 0.5183,
+    "fair": -108.0,
+    "ic": 37.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -145,23 +65,48 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 108
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 128
+      }
+     ],
+     "steps": [
+      108,
+      111,
+      116,
+      122,
+      128,
+      134,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9671,
-     "r": 1.0
+     "r": 1.0,
+     "maxPrice": 139,
+     "why": "sin momio real: conviene si pagan +108 o mejor"
     }
    },
    {
-    "rank": 5,
-    "principal": false,
+    "rank": 2,
+    "principal": true,
     "family": "Team total",
     "market": "Team total CLE",
     "pick": "CLE Under 3.5",
     "line": 3.5,
     "p": 0.5484,
     "fair": -121.0,
-    "ic": 34.4,
+    "ic": 37.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -179,15 +124,15 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 3,
     "principal": false,
     "family": "Team total",
     "market": "Team total TB",
     "pick": "TB Under 3.5",
     "line": 3.5,
-    "p": 0.5041,
-    "fair": -102.0,
-    "ic": 34.4,
+    "p": 0.568,
+    "fair": -131.0,
+    "ic": 37.0,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -205,41 +150,117 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 4,
     "principal": false,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "TB F5",
-    "line": null,
-    "p": 0.578,
-    "fair": -137.0,
-    "ic": 34.4,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Parker Messick Under 4.5 K",
+    "line": 4.5,
+    "p": 0.5309,
+    "fair": -113.0,
+    "ic": 34.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
+     "λ + Poisson (5.4)"
     ],
-    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 106
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 125
+      }
+     ],
+     "steps": [
+      106,
+      109,
+      114,
+      119,
+      125,
+      131,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9671,
-     "r": 1.0
+     "r": 1.0,
+     "maxPrice": 132,
+     "why": "sin momio real: conviene si pagan +106 o mejor"
     }
    },
    {
-    "rank": 8,
+    "rank": 5,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Freddy Peralta Under 5.5 K",
+    "line": 5.5,
+    "p": 0.5681,
+    "fair": -132.0,
+    "ic": 34.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -109
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 108
+      }
+     ],
+     "steps": [
+      -109,
+      -107,
+      -102,
+      103,
+      108,
+      113,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9671,
+     "r": 1.0,
+     "maxPrice": 113,
+     "why": "sin momio real: conviene si pagan -109 o mejor"
+    }
+   },
+   {
+    "rank": 6,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
     "pick": "CLE +1.5",
     "line": null,
-    "p": 0.6297,
-    "fair": -170.0,
-    "ic": 31.1,
+    "p": 0.6772,
+    "fair": -210.0,
+    "ic": 33.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -257,15 +278,67 @@
     }
    },
    {
+    "rank": 7,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Under 7.5",
+    "line": 7.5,
+    "p": 0.5714,
+    "fair": -133.0,
+    "ic": 33.7,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9671,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "TB F5",
+    "line": null,
+    "p": 0.5141,
+    "fair": -106.0,
+    "ic": 33.7,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9671,
+     "r": 1.0
+    }
+   },
+   {
     "rank": 9,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
     "pick": "NRFI",
     "line": null,
-    "p": 0.5423,
-    "fair": -118.0,
-    "ic": 31.1,
+    "p": 0.5776,
+    "fair": -137.0,
+    "ic": 33.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -281,22 +354,61 @@
      "h": 0.9671,
      "r": 1.0
     }
+   },
+   {
+    "rank": 10,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "TB",
+    "line": null,
+    "p": 0.5291,
+    "fair": -112.0,
+    "ic": 29.0,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.7% · Elo + abridor (5.7.7) 53.6% · λ + Binomial Negativa (5.3 · 5.7.5) 48.4%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9671,
+     "r": 1.0
+    }
    }
   ],
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
+   "why": "falta el momio de Total primeras 5: conviene si pagan +108 o mejor (stake 1); stake 5 desde +128",
    "source": "Framework v2",
-   "pick": "TB",
-   "waitFor": "dato",
-   "market": "Moneyline",
-   "p": 0.5491,
-   "ic": 39.1,
+   "pick": "F5 Under 3.5",
+   "waitFor": "momio",
+   "market": "Total primeras 5",
+   "p": 0.5183,
+   "ic": 37.0,
    "level": 0,
    "amount": 0,
-   "minPrice": null,
-   "ladder": []
+   "minPrice": 108,
+   "ladder": [
+    {
+     "level": 1,
+     "stake": 500,
+     "from": 108
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": 128
+    }
+   ]
   }
  }
 ]

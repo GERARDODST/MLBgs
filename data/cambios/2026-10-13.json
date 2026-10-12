@@ -23,6 +23,29 @@
    "kind": "decision",
    "pk": 849813,
    "text": "Decisión: esperar dato (Under 7.5) → esperar dato (TB) · tras: abridor"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Parker Messick",
+   "at": "2026-10-12T21:43:04Z",
+   "date": "2026-10-13",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849813,
+   "side": "away",
+   "text": "Abridor anunciado (CLE): Parker Messick"
+  },
+  {
+   "after": "esperar momio (F5 Under 3.5)",
+   "at": "2026-10-12T21:42:55Z",
+   "before": "esperar dato (TB)",
+   "date": "2026-10-13",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849813,
+   "text": "Decisión: esperar dato (TB) → esperar momio (F5 Under 3.5) · tras: abridor"
   }
  ],
  "snap": {
@@ -30,9 +53,9 @@
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "TB",
+    "pick": "F5 Under 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 139,
@@ -42,7 +65,10 @@
    },
    "names": {},
    "prob": {
-    "away": null,
+    "away": {
+     "id": 800048,
+     "name": "Parker Messick"
+    },
     "home": {
      "id": 642547,
      "name": "Freddy Peralta"
