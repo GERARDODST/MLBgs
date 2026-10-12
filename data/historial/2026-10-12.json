@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T20:00:42+00:00",
+  "registeredAt": "2026-10-12T20:16:38+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5393,
@@ -48,6 +48,34 @@
   "picks": [
    {
     "rank": 1,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "MIL",
+    "line": null,
+    "p": 0.5393,
+    "fair": -117.0,
+    "ic": 63.3,
+    "level": "Media",
+    "price": 116,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.6% · Elo + abridor (5.7.7) 56.1% · λ + Binomial Negativa (5.3 · 5.7.5) 52.1%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9671,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
     "principal": true,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -94,34 +122,6 @@
      "h": 0.9671,
      "r": 1.0,
      "maxPrice": 124
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "MIL",
-    "line": null,
-    "p": 0.5393,
-    "fair": -117.0,
-    "ic": 58.7,
-    "level": "Media",
-    "price": 109,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 53.6% · Elo + abridor (5.7.7) 56.1% · λ + Binomial Negativa (5.3 · 5.7.5) 52.1%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9671,
-     "r": 1.0
     }
    },
    {
@@ -183,9 +183,9 @@
     "line": null,
     "p": 0.6826,
     "fair": -215.0,
-    "ic": 54.8,
-    "level": "Baja",
-    "price": -164,
+    "ic": 55.2,
+    "level": "Media",
+    "price": -163,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -463,7 +463,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T20:08:44+00:00",
+  "registeredAt": "2026-10-12T20:16:38+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5665,
@@ -541,9 +541,9 @@
     "line": null,
     "p": 0.6511,
     "fair": -187.0,
-    "ic": 50.2,
+    "ic": 50.6,
     "level": "Baja",
-    "price": -156,
+    "price": -155,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -800,7 +800,7 @@
     "fair": -131.0,
     "ic": 18.7,
     "level": "Muy baja",
-    "price": -175,
+    "price": -172,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",

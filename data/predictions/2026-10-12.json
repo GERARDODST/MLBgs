@@ -3,7 +3,7 @@
 "pk": 849812,
 "date": "2026-10-12",
 "time": "2026-10-12T21:00:00Z",
-"generatedAt": "2026-10-12T20:00:42+00:00",
+"generatedAt": "2026-10-12T20:16:38+00:00",
 "away": "LAD",
 "home": "MIL",
 "pHome": 0.5393,
@@ -26,14 +26,23 @@
 },
 "light": "Amarillo",
 "best": {
-"market": "F5",
-"pick": "MIL F5",
-"p": 0.5448,
-"price": 113,
-"edge": 0.0753,
+"market": "ML",
+"pick": "MIL",
+"p": 0.5393,
+"price": 116,
+"edge": 0.0763,
 "light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "MIL",
+"p": 0.5393,
+"line": null,
+"ic": 63.25,
+"level": "Media"
+},
 {
 "family": "F5",
 "market": "F5 Moneyline",
@@ -41,15 +50,6 @@
 "p": 0.5448,
 "line": null,
 "ic": 58.8732,
-"level": "Media"
-},
-{
-"family": "ML",
-"market": "Moneyline",
-"pick": "MIL",
-"p": 0.5393,
-"line": null,
-"ic": 58.7275,
 "level": "Media"
 }
 ],
@@ -70,7 +70,7 @@
 "pk": 849820,
 "date": "2026-10-12",
 "time": "2026-10-13T00:00:00Z",
-"generatedAt": "2026-10-12T20:08:44+00:00",
+"generatedAt": "2026-10-12T20:16:38+00:00",
 "away": "CLE",
 "home": "TB",
 "pHome": 0.5665,
@@ -96,8 +96,8 @@
 "market": "Run Line",
 "pick": "CLE +1.5",
 "p": 0.6511,
-"price": -156,
-"edge": 0.0417,
+"price": -155,
+"edge": 0.0433,
 "light": "Amarillo"
 },
 "topPicks": [
