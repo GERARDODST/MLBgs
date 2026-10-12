@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T04:56:54+00:00",
+  "registeredAt": "2026-10-12T08:40:34+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5395,
@@ -55,9 +55,9 @@
     "line": null,
     "p": 0.5395,
     "fair": -117.0,
-    "ic": 60.3,
+    "ic": 64.1,
     "level": "Media",
-    "price": 113,
+    "price": 119,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -83,9 +83,9 @@
     "line": null,
     "p": 0.6829,
     "fair": -215.0,
-    "ic": 54.5,
-    "level": "Baja",
-    "price": -162,
+    "ic": 55.4,
+    "level": "Media",
+    "price": -160,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -105,13 +105,13 @@
     "principal": false,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Over 7.0",
-    "line": 7.0,
-    "p": 0.5408,
-    "fair": -118.0,
-    "ic": 45.0,
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.5863,
+    "fair": -142.0,
+    "ic": 41.9,
     "level": "Baja",
-    "price": 101,
+    "price": -124,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -441,7 +441,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T04:56:54+00:00",
+  "registeredAt": "2026-10-12T08:40:34+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5681,
@@ -495,7 +495,7 @@
     "fair": -102.0,
     "ic": 36.8,
     "level": "Muy baja",
-    "price": -120,
+    "price": -122,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],

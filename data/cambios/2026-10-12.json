@@ -101,6 +101,18 @@
    "kind": "decision",
    "pk": 849812,
    "text": "Decisión: esperar momio (F5 Over 3.5) → esperar momio (MIL F5) · tras: momio"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 6.5,
+   "at": "2026-10-12T08:40:42Z",
+   "before": 7.0,
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849812,
+   "text": "La línea del total pasa de 7.0 a 6.5"
   }
  ],
  "snap": {
@@ -120,12 +132,12 @@
    },
    "names": {},
    "odds": {
-    "line": 7.0,
+    "line": 6.5,
     "ml": {
-     "away": -136,
-     "home": 113
+     "away": -143,
+     "home": 119
     },
-    "pHome": 0.4489,
+    "pHome": 0.4369,
     "src": "draftkings"
    },
    "prob": {
