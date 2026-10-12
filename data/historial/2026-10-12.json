@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T17:32:14+00:00",
+  "registeredAt": "2026-10-12T18:41:44+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5393,
@@ -203,6 +203,32 @@
    {
     "rank": 5,
     "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5395,
+    "fair": -117.0,
+    "ic": 38.8,
+    "level": "Muy baja",
+    "price": -109,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9671,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Logan Henderson Over 5.5 K",
@@ -252,7 +278,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -278,7 +304,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "Team total",
     "market": "Team total LAD",
@@ -304,7 +330,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 9,
     "principal": false,
     "family": "Team total",
     "market": "Team total MIL",
@@ -330,7 +356,7 @@
     }
    },
    {
-    "rank": 9,
+    "rank": 10,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
@@ -378,32 +404,6 @@
      "r": 1.0,
      "maxPrice": 124,
      "why": "sin momio real: conviene si pagan -105 o mejor"
-    }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.0",
-    "line": 7.0,
-    "p": 0.5395,
-    "fair": -117.0,
-    "ic": 36.8,
-    "level": "Muy baja",
-    "price": -112,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9671,
-     "r": 1.0
     }
    }
   ],
