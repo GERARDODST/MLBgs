@@ -3,7 +3,7 @@
 "pk": 849812,
 "date": "2026-10-12",
 "time": "2026-10-12T21:00:00Z",
-"generatedAt": "2026-10-12T08:40:34+00:00",
+"generatedAt": "2026-10-12T09:36:32+00:00",
 "away": "LAD",
 "home": "MIL",
 "pHome": 0.5395,
@@ -44,23 +44,24 @@
 "level": "Media"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "MIL +1.5",
-"p": 0.6829,
+"family": "F5",
+"market": "F5 Moneyline",
+"pick": "MIL F5",
+"p": 0.5453,
 "line": null,
-"ic": 55.3928,
+"ic": 58.4585,
 "level": "Media"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "F5",
 "pick": "MIL F5",
-"level": 0,
+"level": 4,
 "alts": [
-"F5",
+"ML",
+"RL",
 "K"
 ]
 }

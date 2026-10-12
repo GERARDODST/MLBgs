@@ -113,16 +113,27 @@
    "kind": "momio",
    "pk": 849812,
    "text": "La línea del total pasa de 7.0 a 6.5"
+  },
+  {
+   "after": "apostar MIL F5 · stake 4",
+   "at": "2026-10-12T09:36:32Z",
+   "before": "esperar momio (MIL F5)",
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849812,
+   "text": "Decisión: esperar momio (MIL F5) → apostar MIL F5 · stake 4 · tras: momio"
   }
  ],
  "snap": {
   "849812": {
    "away": 119,
    "dec": {
-    "level": 0,
+    "level": 4,
     "pick": "MIL F5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 158,
