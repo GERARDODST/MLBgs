@@ -124,6 +124,17 @@
    "kind": "decision",
    "pk": 849812,
    "text": "Decisión: esperar momio (MIL F5) → apostar MIL F5 · stake 4 · tras: momio"
+  },
+  {
+   "after": "esperar verificar (Drew Rasmussen Under 5.5 K)",
+   "at": "2026-10-12T12:11:50Z",
+   "before": "esperar momio (F5 Under 3.5)",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849820,
+   "text": "Decisión: esperar momio (F5 Under 3.5) → esperar verificar (Drew Rasmussen Under 5.5 K)"
   }
  ],
  "snap": {
@@ -237,9 +248,9 @@
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "F5 Under 3.5",
+    "pick": "Drew Rasmussen Under 5.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Scheduled",
    "home": 139,

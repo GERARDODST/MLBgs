@@ -438,7 +438,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T11:45:50+00:00",
+  "registeredAt": "2026-10-12T12:11:50+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5681,
@@ -457,6 +457,57 @@
   "picks": [
    {
     "rank": 1,
+    "principal": true,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Drew Rasmussen Under 5.5 K",
+    "line": 5.5,
+    "p": 0.5935,
+    "fair": -146.0,
+    "ic": 64.0,
+    "level": "Media",
+    "price": 103,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -121
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": -102
+      }
+     ],
+     "steps": [
+      -121,
+      -118,
+      -112,
+      -107,
+      -102,
+      103,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9671,
+     "r": 1.0,
+     "maxPrice": 102,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 2,
     "principal": true,
     "family": "RL",
     "market": "Run Line",
@@ -482,32 +533,6 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.5",
-    "line": 6.5,
-    "p": 0.5061,
-    "fair": -102.0,
-    "ic": 36.8,
-    "level": "Muy baja",
-    "price": -120,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9671,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 3,
     "principal": false,
     "family": "F5 total",
@@ -516,9 +541,9 @@
     "line": 3.5,
     "p": 0.5446,
     "fair": -120.0,
-    "ic": 36.8,
-    "level": "Muy baja",
-    "price": null,
+    "ic": 40.3,
+    "level": "Baja",
+    "price": -114,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -555,11 +580,37 @@
      "h": 0.9671,
      "r": 1.0,
      "maxPrice": 124,
-     "why": "sin momio real: conviene si pagan -102 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
     "rank": 4,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.5061,
+    "fair": -102.0,
+    "ic": 36.8,
+    "level": "Muy baja",
+    "price": -120,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9671,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -569,7 +620,7 @@
     "fair": -128.0,
     "ic": 36.8,
     "level": "Muy baja",
-    "price": null,
+    "price": -177,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -606,11 +657,11 @@
      "h": 0.9671,
      "r": 1.0,
      "maxPrice": 116,
-     "why": "sin momio real: conviene si pagan -110 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -620,7 +671,7 @@
     "fair": -101.0,
     "ic": 34.8,
     "level": "Muy baja",
-    "price": null,
+    "price": -129,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -657,58 +708,7 @@
      "h": 0.9671,
      "r": 1.0,
      "maxPrice": 147,
-     "why": "sin momio real: conviene si pagan +118 o mejor"
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Drew Rasmussen Over 4.5 K",
-    "line": 4.5,
-    "p": 0.5817,
-    "fair": -139.0,
-    "ic": 34.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -115
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 103
-      }
-     ],
-     "steps": [
-      -115,
-      -112,
-      -107,
-      -102,
-      103,
-      108,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9671,
-     "r": 1.0,
-     "maxPrice": 107,
-     "why": "sin momio real: conviene si pagan -115 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -821,26 +821,26 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan -102 o mejor (stake 1); stake 5 desde +115",
+   "why": "con el momio de referencia (+103) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con +102 o menos ya pasa el filtro",
    "source": "Framework v2",
-   "pick": "F5 Under 3.5",
-   "waitFor": "momio",
-   "market": "Total primeras 5",
-   "p": 0.5446,
-   "ic": 36.8,
+   "pick": "Drew Rasmussen Under 5.5 K",
+   "waitFor": "verificar",
+   "market": "Prop de ponches",
+   "p": 0.5935,
+   "ic": 64.0,
    "level": 0,
    "amount": 0,
-   "minPrice": -102,
+   "minPrice": -121,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -102
+     "from": -121
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 115
+     "from": -102
     }
    ]
   }

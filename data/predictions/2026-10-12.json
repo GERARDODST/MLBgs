@@ -70,7 +70,7 @@
 "pk": 849820,
 "date": "2026-10-12",
 "time": "2026-10-13T00:00:00Z",
-"generatedAt": "2026-10-12T04:56:54+00:00",
+"generatedAt": "2026-10-12T12:11:50+00:00",
 "away": "CLE",
 "home": "TB",
 "pHome": 0.5681,
@@ -102,6 +102,15 @@
 },
 "topPicks": [
 {
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Drew Rasmussen Under 5.5 K",
+"p": 0.5935,
+"line": 5.5,
+"ic": 63.967,
+"level": "Media"
+},
+{
 "family": "RL",
 "market": "Run Line",
 "pick": "CLE +1.5",
@@ -109,27 +118,18 @@
 "line": null,
 "ic": 47.9,
 "level": "Baja"
-},
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 6.5",
-"p": 0.5061,
-"line": 6.5,
-"ic": 36.8175,
-"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "momio",
-"family": "F5 total",
-"pick": "F5 Under 3.5",
+"waitFor": "verificar",
+"family": "K",
+"pick": "Drew Rasmussen Under 5.5 K",
 "level": 0,
 "alts": [
+"RL",
 "F5 total",
-"F5",
-"K"
+"Total"
 ]
 }
 }
