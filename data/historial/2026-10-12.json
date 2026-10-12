@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T14:47:19+00:00",
+  "registeredAt": "2026-10-12T16:22:49+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5395,
@@ -55,9 +55,9 @@
     "line": null,
     "p": 0.5395,
     "fair": -117.0,
-    "ic": 63.5,
+    "ic": 60.3,
     "level": "Media",
-    "price": 118,
+    "price": 113,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -133,9 +133,9 @@
     "line": null,
     "p": 0.6829,
     "fair": -215.0,
-    "ic": 58.0,
+    "ic": 56.3,
     "level": "Media",
-    "price": -154,
+    "price": -158,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -209,9 +209,9 @@
     "line": 7.0,
     "p": 0.5408,
     "fair": -118.0,
-    "ic": 38.0,
-    "level": "Muy baja",
-    "price": -109,
+    "ic": 40.7,
+    "level": "Baja",
+    "price": -105,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -438,7 +438,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T14:47:19+00:00",
+  "registeredAt": "2026-10-12T16:22:49+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5681,
@@ -515,9 +515,9 @@
     "line": null,
     "p": 0.6489,
     "fair": -185.0,
-    "ic": 47.5,
+    "ic": 47.9,
     "level": "Baja",
-    "price": -158,
+    "price": -157,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -798,9 +798,9 @@
     "line": null,
     "p": 0.5681,
     "fair": -132.0,
-    "ic": 21.8,
+    "ic": 18.5,
     "level": "Muy baja",
-    "price": -169,
+    "price": -174,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
