@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T03:33:04+00:00",
+  "registeredAt": "2026-10-12T04:56:54+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5395,
@@ -37,7 +37,7 @@
    "projHome": 4.09,
    "total": 7.95,
    "nrfi": 0.5446,
-   "light": "Rojo",
+   "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Yoshinobu Yamamoto",
@@ -55,9 +55,9 @@
     "line": null,
     "p": 0.5395,
     "fair": -117.0,
-    "ic": 39.9,
-    "level": "Muy baja",
-    "price": null,
+    "ic": 60.3,
+    "level": "Media",
+    "price": 113,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -77,15 +77,41 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL +1.5",
+    "line": null,
+    "p": 0.6829,
+    "fair": -215.0,
+    "ic": 54.5,
+    "level": "Baja",
+    "price": -162,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9671,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Under 7.5",
-    "line": 7.5,
-    "p": 0.5128,
-    "fair": -105.0,
-    "ic": 35.7,
-    "level": "Muy baja",
-    "price": null,
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5408,
+    "fair": -118.0,
+    "ic": 45.0,
+    "level": "Baja",
+    "price": 101,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -101,7 +127,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -119,40 +145,15 @@
     "res": null,
     "stake": {
      "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 103
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 121
-      }
-     ],
-     "steps": [
-      103,
-      105,
-      110,
-      116,
-      121,
-      127,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
      "a": 1.0,
      "h": 0.9671,
-     "r": 1.0,
-     "maxPrice": 129,
-     "why": "sin momio real: conviene si pagan +103 o mejor"
+     "r": 1.0
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "Team total",
     "market": "Team total LAD",
@@ -178,7 +179,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total MIL",
@@ -204,7 +205,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -255,7 +256,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -306,7 +307,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 9,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -357,7 +358,7 @@
     }
    },
    {
-    "rank": 9,
+    "rank": 10,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
@@ -381,57 +382,31 @@
      "h": 0.9671,
      "r": 1.0
     }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "LAD +1.5",
-    "line": null,
-    "p": 0.6369,
-    "fair": -175.0,
-    "ic": 29.0,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9671,
-     "r": 1.0
-    }
    }
   ],
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan +103 o mejor (stake 1); stake 5 desde +121",
+   "why": "falta el momio de F5 Moneyline: conviene si pagan -101 o mejor (stake 1); stake 5 desde +117",
    "source": "Framework v2",
-   "pick": "F5 Over 3.5",
+   "pick": "MIL F5",
    "waitFor": "momio",
-   "market": "Total primeras 5",
-   "p": 0.5363,
+   "market": "F5 Moneyline",
+   "p": 0.5453,
    "ic": 35.7,
    "level": 0,
    "amount": 0,
-   "minPrice": 103,
+   "minPrice": -101,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": 103
+     "from": -101
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 121
+     "from": 117
     }
    ]
   }
@@ -466,7 +441,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T03:33:04+00:00",
+  "registeredAt": "2026-10-12T04:56:54+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5681,
@@ -492,9 +467,9 @@
     "line": null,
     "p": 0.6489,
     "fair": -185.0,
-    "ic": 47.5,
+    "ic": 47.9,
     "level": "Baja",
-    "price": -158,
+    "price": -157,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -520,7 +495,7 @@
     "fair": -102.0,
     "ic": 36.8,
     "level": "Muy baja",
-    "price": -125,
+    "price": -120,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -828,7 +803,7 @@
     "fair": -132.0,
     "ic": 18.5,
     "level": "Muy baja",
-    "price": -171,
+    "price": -172,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",

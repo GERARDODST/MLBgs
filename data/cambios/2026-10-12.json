@@ -81,6 +81,26 @@
    "kind": "decision",
    "pk": 849820,
    "text": "Decisión: esperar dato (TB) → esperar momio (F5 Under 3.5) · tras: abridor"
+  },
+  {
+   "at": "2026-10-12T04:57:02Z",
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849812,
+   "text": "Mercado abierto: LAD -136 / MIL +113 · total 7.0"
+  },
+  {
+   "after": "esperar momio (MIL F5)",
+   "at": "2026-10-12T04:56:54Z",
+   "before": "esperar momio (F5 Over 3.5)",
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849812,
+   "text": "Decisión: esperar momio (F5 Over 3.5) → esperar momio (MIL F5) · tras: momio"
   }
  ],
  "snap": {
@@ -88,7 +108,7 @@
    "away": 119,
    "dec": {
     "level": 0,
-    "pick": "F5 Over 3.5",
+    "pick": "MIL F5",
     "status": "esperar",
     "waitFor": "momio"
    },
@@ -99,6 +119,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.0,
+    "ml": {
+     "away": -136,
+     "home": 113
+    },
+    "pHome": 0.4489,
+    "src": "draftkings"
+   },
    "prob": {
     "away": {
      "id": 808967,
@@ -174,6 +203,11 @@
     "945461"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   },
   "849820": {

@@ -3,7 +3,7 @@
 "pk": 849812,
 "date": "2026-10-12",
 "time": "2026-10-12T21:00:00Z",
-"generatedAt": "2026-10-11T16:01:30+00:00",
+"generatedAt": "2026-10-12T04:56:54+00:00",
 "away": "LAD",
 "home": "MIL",
 "pHome": 0.5395,
@@ -24,14 +24,14 @@
 "away": "Yoshinobu Yamamoto",
 "home": "Logan Henderson"
 },
-"light": "Rojo",
+"light": "Amarillo",
 "best": {
-"market": "F5",
-"pick": "MIL F5",
-"p": 0.5453,
-"price": null,
-"edge": null,
-"light": "Rojo"
+"market": "ML",
+"pick": "MIL",
+"p": 0.5395,
+"price": 113,
+"edge": 0.07,
+"light": "Amarillo"
 },
 "topPicks": [
 {
@@ -40,27 +40,26 @@
 "pick": "MIL",
 "p": 0.5395,
 "line": null,
-"ic": 39.9089,
-"level": "Muy baja"
+"ic": 60.3178,
+"level": "Media"
 },
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Under 7.5",
-"p": 0.5128,
-"line": 7.5,
-"ic": 35.7014,
-"level": "Muy baja"
+"family": "RL",
+"market": "Run Line",
+"pick": "MIL +1.5",
+"p": 0.6829,
+"line": null,
+"ic": 54.5365,
+"level": "Baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "momio",
-"family": "F5 total",
-"pick": "F5 Over 3.5",
+"family": "F5",
+"pick": "MIL F5",
 "level": 0,
 "alts": [
-"F5 total",
 "F5",
 "K"
 ]
@@ -70,7 +69,7 @@
 "pk": 849820,
 "date": "2026-10-12",
 "time": "2026-10-13T00:00:00Z",
-"generatedAt": "2026-10-11T22:25:49+00:00",
+"generatedAt": "2026-10-12T04:56:54+00:00",
 "away": "CLE",
 "home": "TB",
 "pHome": 0.5681,
@@ -96,8 +95,8 @@
 "market": "Run Line",
 "pick": "CLE +1.5",
 "p": 0.6489,
-"price": -158,
-"edge": 0.0365,
+"price": -157,
+"edge": 0.038,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -107,7 +106,7 @@
 "pick": "CLE +1.5",
 "p": 0.6489,
 "line": null,
-"ic": 47.4601,
+"ic": 47.9,
 "level": "Baja"
 },
 {
