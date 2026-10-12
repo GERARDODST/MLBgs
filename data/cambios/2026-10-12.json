@@ -307,6 +307,18 @@
    "kind": "decision",
    "pk": 849820,
    "text": "Decisión: esperar momio (NRFI) → no apostar · tras: momio, lineup, umpire"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 6.5,
+   "at": "2026-10-12T20:55:42Z",
+   "before": 7.0,
+   "date": "2026-10-12",
+   "game": "LAD @ MIL",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849812,
+   "text": "La línea del total pasa de 7.0 a 6.5"
   }
  ],
  "snap": {
@@ -365,12 +377,12 @@
     "806198": "Cooper Pratt"
    },
    "odds": {
-    "line": 7.0,
+    "line": 6.5,
     "ml": {
-     "away": -142,
-     "home": 118
+     "away": -130,
+     "home": 116
     },
-    "pHome": 0.4388,
+    "pHome": 0.4503,
     "src": "draftkings"
    },
    "prob": {
@@ -456,9 +468,9 @@
    "wx": {
     "closed": true,
     "cond": "Dome",
-    "dir": "calma",
-    "speed": 0,
-    "temp": 72.0
+    "dir": "cruzado",
+    "speed": 1,
+    "temp": 85.0
    }
   },
   "849820": {
