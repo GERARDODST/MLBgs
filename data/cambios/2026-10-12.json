@@ -253,6 +253,49 @@
    "kind": "momio",
    "pk": 849820,
    "text": "La línea del total pasa de 6.5 a 7.0"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-12T20:00:51Z",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849820,
+   "side": "away",
+   "text": "Lineup confirmado (CLE)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-12T20:00:51Z",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849820,
+   "side": "home",
+   "text": "Lineup confirmado (TB)"
+  },
+  {
+   "after": "Nestor Ceja",
+   "at": "2026-10-12T20:00:51Z",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849820,
+   "text": "Umpire de home asignado: Nestor Ceja"
+  },
+  {
+   "after": "esperar momio (NRFI)",
+   "at": "2026-10-12T20:00:42Z",
+   "before": "apostar Drew Rasmussen Under 5.5 K · stake 2",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849820,
+   "text": "Decisión: apostar Drew Rasmussen Under 5.5 K · stake 2 → esperar momio (NRFI) · tras: momio, lineup, umpire"
   }
  ],
  "snap": {
@@ -410,18 +453,57 @@
   "849820": {
    "away": 114,
    "dec": {
-    "level": 2,
-    "pick": "Drew Rasmussen Under 5.5 K",
-    "status": "apostar",
-    "waitFor": null
+    "level": 0,
+    "pick": "NRFI",
+    "status": "esperar",
+    "waitFor": "momio"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 139,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     680757,
+     608070,
+     800050,
+     666176,
+     663993,
+     683953,
+     672275,
+     690984,
+     677587
+    ],
+    "home": [
+     650490,
+     666018,
+     691406,
+     668723,
+     683748,
+     676356,
+     810938,
+     670764,
+     663743
+    ]
    },
-   "names": {},
+   "names": {
+    "608070": "José Ramírez",
+    "650490": "Yandy Díaz",
+    "663743": "Nick Fortes",
+    "663993": "Nathaniel Lowe",
+    "666018": "Jonathan Aranda",
+    "666176": "Jo Adell",
+    "668723": "Ryan Vilade",
+    "670764": "Taylor Walls",
+    "672275": "Patrick Bailey",
+    "676356": "Jonny DeLuca",
+    "677587": "Brayan Rocchio",
+    "680757": "Steven Kwan",
+    "683748": "Victor Mesa Jr.",
+    "683953": "Travis Bazzana",
+    "690984": "Petey Halpin",
+    "691406": "Junior Caminero",
+    "800050": "Chase DeLauter",
+    "810938": "Ben Williamson"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -500,13 +582,19 @@
     "945538",
     "945539"
    ],
-   "ump": null,
+   "ump": "Nestor Ceja",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Dome",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 72.0
+   }
   }
  }
 }

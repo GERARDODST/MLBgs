@@ -3,7 +3,7 @@
 "pk": 849812,
 "date": "2026-10-12",
 "time": "2026-10-12T21:00:00Z",
-"generatedAt": "2026-10-12T19:44:57+00:00",
+"generatedAt": "2026-10-12T20:00:42+00:00",
 "away": "LAD",
 "home": "MIL",
 "pHome": 0.5393,
@@ -35,21 +35,21 @@
 },
 "topPicks": [
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "MIL",
-"p": 0.5393,
-"line": null,
-"ic": 60.0503,
-"level": "Media"
-},
-{
 "family": "F5",
 "market": "F5 Moneyline",
 "pick": "MIL F5",
 "p": 0.5448,
 "line": null,
 "ic": 58.8732,
+"level": "Media"
+},
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "MIL",
+"p": 0.5393,
+"line": null,
+"ic": 58.7275,
 "level": "Media"
 }
 ],
@@ -70,23 +70,23 @@
 "pk": 849820,
 "date": "2026-10-12",
 "time": "2026-10-13T00:00:00Z",
-"generatedAt": "2026-10-12T19:44:57+00:00",
+"generatedAt": "2026-10-12T20:00:42+00:00",
 "away": "CLE",
 "home": "TB",
-"pHome": 0.5681,
+"pHome": 0.5665,
 "methods": {
 "log5": 0.5668,
 "elo": 0.6187,
-"lambda": 0.5186
+"lambda": 0.5138
 },
 "confidence": "baja",
-"projAway": 3.476,
-"projHome": 3.6696,
-"total": 7.1456,
-"f5Away": 1.7064,
-"f5Home": 2.0456,
-"nrfi": 0.592,
-"pOver85": 0.3203,
+"projAway": 3.5719,
+"projHome": 3.7207,
+"total": 7.2926,
+"f5Away": 1.7535,
+"f5Home": 2.074,
+"nrfi": 0.5859,
+"pOver85": 0.3338,
 "probables": {
 "away": "Foster Griffin",
 "home": "Drew Rasmussen"
@@ -95,9 +95,9 @@
 "best": {
 "market": "Run Line",
 "pick": "CLE +1.5",
-"p": 0.6489,
+"p": 0.6511,
 "price": -156,
-"edge": 0.0395,
+"edge": 0.0417,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -105,31 +105,29 @@
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Drew Rasmussen Under 5.5 K",
-"p": 0.5935,
+"p": 0.6829,
 "line": 5.5,
-"ic": 51.6374,
-"level": "Baja"
+"ic": 74.0743,
+"level": "Alta"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "CLE +1.5",
-"p": 0.6489,
-"line": null,
-"ic": 48.3433,
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Foster Griffin Over 3.5 K",
+"p": 0.5899,
+"line": 3.5,
+"ic": 52.8728,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "apostar",
-"waitFor": null,
-"family": "K",
-"pick": "Drew Rasmussen Under 5.5 K",
-"level": 2,
+"status": "esperar",
+"waitFor": "momio",
+"family": "NRFI",
+"pick": "NRFI",
+"level": 0,
 "alts": [
-"RL",
-"F5 total",
-"F5"
+"NRFI"
 ]
 }
 }
