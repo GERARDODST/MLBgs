@@ -463,7 +463,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-12T16:22:49+00:00",
+  "registeredAt": "2026-10-12T18:00:16+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5681,
@@ -489,16 +489,16 @@
     "line": 5.5,
     "p": 0.5935,
     "fair": -146.0,
-    "ic": 64.0,
-    "level": "Media",
-    "price": 103,
+    "ic": 51.6,
+    "level": "Baja",
+    "price": -115,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 0,
+     "level": 2,
      "ladder": [
       {
        "level": 1,
@@ -527,8 +527,7 @@
      "a": 1.0,
      "h": 0.9671,
      "r": 1.0,
-     "maxPrice": 102,
-     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+     "maxPrice": 102
     }
    },
    {
@@ -696,7 +695,7 @@
     "fair": -101.0,
     "ic": 34.8,
     "level": "Muy baja",
-    "price": -129,
+    "price": -119,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -845,16 +844,15 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "con el momio de referencia (+103) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con +102 o menos ya pasa el filtro",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-115)",
    "source": "Framework v2",
    "pick": "Drew Rasmussen Under 5.5 K",
-   "waitFor": "verificar",
    "market": "Prop de ponches",
    "p": 0.5935,
-   "ic": 64.0,
-   "level": 0,
-   "amount": 0,
+   "ic": 51.6,
+   "level": 2,
+   "amount": 625,
    "minPrice": -121,
    "ladder": [
     {

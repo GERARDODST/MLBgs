@@ -230,6 +230,17 @@
    "kind": "decision",
    "pk": 849812,
    "text": "Decisión: apostar MIL F5 · stake 4 → apostar MIL F5 · stake 5 · tras: lineup, umpire"
+  },
+  {
+   "after": "apostar Drew Rasmussen Under 5.5 K · stake 2",
+   "at": "2026-10-12T18:00:16Z",
+   "before": "esperar verificar (Drew Rasmussen Under 5.5 K)",
+   "date": "2026-10-12",
+   "game": "CLE @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849820,
+   "text": "Decisión: esperar verificar (Drew Rasmussen Under 5.5 K) → apostar Drew Rasmussen Under 5.5 K · stake 2"
   }
  ],
  "snap": {
@@ -387,10 +398,10 @@
   "849820": {
    "away": 114,
    "dec": {
-    "level": 0,
+    "level": 2,
     "pick": "Drew Rasmussen Under 5.5 K",
-    "status": "esperar",
-    "waitFor": "verificar"
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 139,
