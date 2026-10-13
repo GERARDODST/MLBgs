@@ -3,23 +3,23 @@
 "pk": 849813,
 "date": "2026-10-13",
 "time": "2026-10-14T00:00:00Z",
-"generatedAt": "2026-10-13T20:12:25+00:00",
+"generatedAt": "2026-10-13T20:26:26+00:00",
 "away": "CLE",
 "home": "TB",
-"pHome": 0.5317,
+"pHome": 0.5272,
 "methods": {
 "log5": 0.5668,
 "elo": 0.5361,
-"lambda": 0.4922
+"lambda": 0.4786
 },
 "confidence": "media",
-"projAway": 3.7462,
+"projAway": 3.8796,
 "projHome": 3.6864,
-"total": 7.4325,
-"f5Away": 1.926,
+"total": 7.566,
+"f5Away": 1.9946,
 "f5Home": 2.047,
-"nrfi": 0.574,
-"pOver85": 0.3467,
+"nrfi": 0.5689,
+"pOver85": 0.3591,
 "probables": {
 "away": "Parker Messick",
 "home": "Freddy Peralta"
@@ -28,7 +28,7 @@
 "best": {
 "market": "NRFI/YRFI",
 "pick": "NRFI",
-"p": 0.574,
+"p": 0.5689,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -38,31 +38,31 @@
 "family": "K",
 "market": "Prop de ponches",
 "pick": "Freddy Peralta Over 3.5 K",
-"p": 0.7712,
+"p": 0.6667,
 "line": 3.5,
-"ic": 69.8083,
+"ic": 67.3079,
 "level": "Media"
 },
 {
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Under 3.5",
-"p": 0.5124,
-"line": 3.5,
-"ic": 39.196,
-"level": "Muy baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Parker Messick Under 4.5 K",
+"p": 0.5252,
+"line": 4.5,
+"ic": 42.5128,
+"level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "verificar",
+"status": "apostar",
+"waitFor": null,
 "family": "K",
 "pick": "Freddy Peralta Over 3.5 K",
-"level": 0,
+"level": 7,
 "alts": [
-"F5 total",
+"K",
 "RL",
-"K"
+"Total"
 ]
 }
 }

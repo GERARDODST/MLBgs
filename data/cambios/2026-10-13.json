@@ -98,21 +98,53 @@
    "kind": "umpire",
    "pk": 849813,
    "text": "Umpire de home asignado: Carlos Torres"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-13T20:26:30Z",
+   "date": "2026-10-13",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849813,
+   "side": "away",
+   "text": "Lineup confirmado (CLE)"
+  },
+  {
+   "after": "apostar Freddy Peralta Over 3.5 K · stake 7",
+   "at": "2026-10-13T20:26:26Z",
+   "before": "esperar verificar (Freddy Peralta Over 3.5 K)",
+   "date": "2026-10-13",
+   "game": "CLE @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849813,
+   "text": "Decisión: esperar verificar (Freddy Peralta Over 3.5 K) → apostar Freddy Peralta Over 3.5 K · stake 7 · tras: lineup, umpire"
   }
  ],
  "snap": {
   "849813": {
    "away": 114,
    "dec": {
-    "level": 0,
+    "level": 7,
     "pick": "Freddy Peralta Over 3.5 K",
-    "status": "esperar",
-    "waitFor": "verificar"
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 139,
    "lu": {
-    "away": [],
+    "away": [
+     680757,
+     608070,
+     800050,
+     666176,
+     663993,
+     683953,
+     690984,
+     595978,
+     677587
+    ],
     "home": [
      650490,
      666018,
@@ -126,13 +158,22 @@
     ]
    },
    "names": {
+    "595978": "Austin Hedges",
+    "608070": "José Ramírez",
     "650490": "Yandy Díaz",
+    "663993": "Nathaniel Lowe",
     "666018": "Jonathan Aranda",
+    "666176": "Jo Adell",
     "670764": "Taylor Walls",
     "676356": "Jonny DeLuca",
+    "677587": "Brayan Rocchio",
+    "680757": "Steven Kwan",
     "683748": "Victor Mesa Jr.",
+    "683953": "Travis Bazzana",
     "689414": "Liam Hicks",
+    "690984": "Petey Halpin",
     "691406": "Junior Caminero",
+    "800050": "Chase DeLauter",
     "802415": "Chandler Simpson",
     "810938": "Ben Williamson"
    },
