@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-13T20:26:26+00:00",
+  "registeredAt": "2026-10-13T21:24:41+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5272,
@@ -99,6 +99,32 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "CLE +1.5",
+    "line": null,
+    "p": 0.6795,
+    "fair": -212.0,
+    "ic": 43.9,
+    "level": "Baja",
+    "price": -194,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9642,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Parker Messick Under 4.5 K",
@@ -148,43 +174,17 @@
     }
    },
    {
-    "rank": 3,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "CLE +1.5",
-    "line": null,
-    "p": 0.6795,
-    "fair": -212.0,
-    "ic": 42.3,
-    "level": "Baja",
-    "price": -199,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9642,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 4,
     "principal": false,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Under 7.0",
-    "line": 7.0,
-    "p": 0.5013,
-    "fair": -101.0,
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.5485,
+    "fair": -122.0,
     "ic": 38.2,
     "level": "Muy baja",
-    "price": -122,
+    "price": -125,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -390,7 +390,7 @@
     "fair": -111.0,
     "ic": 32.3,
     "level": "Muy baja",
-    "price": -132,
+    "price": -136,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
