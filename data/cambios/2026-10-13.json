@@ -55,16 +55,27 @@
    "kind": "momio",
    "pk": 849813,
    "text": "Mercado abierto: CLE +111 / TB -133 · total 7.0"
+  },
+  {
+   "after": "apostar Parker Messick Under 4.5 K · stake 1",
+   "at": "2026-10-13T12:27:02Z",
+   "before": "esperar momio (F5 Under 3.5)",
+   "date": "2026-10-13",
+   "game": "CLE @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849813,
+   "text": "Decisión: esperar momio (F5 Under 3.5) → apostar Parker Messick Under 4.5 K · stake 1"
   }
  ],
  "snap": {
   "849813": {
    "away": 114,
    "dec": {
-    "level": 0,
-    "pick": "F5 Under 3.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 1,
+    "pick": "Parker Messick Under 4.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 139,
