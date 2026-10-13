@@ -1,0 +1,69 @@
+[
+{
+"pk": 849811,
+"date": "2026-10-14",
+"time": "2026-10-15T00:00:00Z",
+"generatedAt": "2026-10-13T04:03:47+00:00",
+"away": "MIL",
+"home": "LAD",
+"pHome": 0.5341,
+"methods": {
+"log5": 0.5216,
+"elo": 0.5712,
+"lambda": 0.5095
+},
+"confidence": "media",
+"projAway": 4.5479,
+"projHome": 4.6618,
+"total": 9.2096,
+"f5Away": 2.3998,
+"f5Home": 2.8067,
+"nrfi": 0.4785,
+"pOver85": 0.511,
+"probables": {
+"away": "Robert Gasser",
+"home": "Por anunciar"
+},
+"light": "Amarillo",
+"best": {
+"market": "ML",
+"pick": "MIL",
+"p": 0.4659,
+"price": 144,
+"edge": 0.0561,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.5",
+"p": 0.6033,
+"line": 7.5,
+"ic": 54.7493,
+"level": "Baja"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "MIL +1.5",
+"p": 0.6327,
+"line": null,
+"ic": 40.3712,
+"level": "Baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 7.5",
+"level": 0,
+"alts": [
+"RL",
+"F5 total",
+"K"
+]
+}
+}
+]
