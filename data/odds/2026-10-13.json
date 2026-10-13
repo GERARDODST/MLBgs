@@ -6,7 +6,7 @@
    "books": {
     "betmgm": {
      "last": {
-      "at": "2026-10-13T18:18:59Z",
+      "at": "2026-10-13T22:34:01Z",
       "f5": {
        "ml": {},
        "total": {
@@ -24,11 +24,21 @@
        "freddy peralta": {
         "over": {
          "point": 3.5,
-         "price": -115
+         "price": -120
         },
         "under": {
          "point": 3.5,
-         "price": -115
+         "price": -110
+        }
+       },
+       "parker messick": {
+        "over": {
+         "point": 4.5,
+         "price": 100
+        },
+        "under": {
+         "point": 4.5,
+         "price": -135
         }
        }
       }
@@ -77,7 +87,7 @@
     },
     "betonlineag": {
      "last": {
-      "at": "2026-10-13T18:18:59Z",
+      "at": "2026-10-13T22:34:01Z",
       "f5": {
        "ml": {},
        "total": {
@@ -95,21 +105,21 @@
        "freddy peralta": {
         "over": {
          "point": 3.5,
-         "price": -143
+         "price": -135
         },
         "under": {
          "point": 3.5,
-         "price": 110
+         "price": 105
         }
        },
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -130
+         "price": -108
         },
         "under": {
          "point": 4.5,
-         "price": 100
+         "price": -120
         }
        }
       }
@@ -195,7 +205,7 @@
     },
     "bovada": {
      "last": {
-      "at": "2026-10-13T18:18:59Z",
+      "at": "2026-10-13T22:34:01Z",
       "f5": {
        "ml": {},
        "total": {
@@ -223,11 +233,11 @@
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -120
+         "price": -105
         },
         "under": {
          "point": 4.5,
-         "price": -110
+         "price": -125
         }
        }
       }
@@ -276,26 +286,26 @@
     },
     "draftkings": {
      "last": {
-      "at": "2026-10-13T22:26:07Z",
+      "at": "2026-10-13T22:34:01Z",
       "k": {
        "freddy peralta": {
         "over": {
          "point": 3.5,
-         "price": -137
+         "price": -132
         },
         "under": {
          "point": 3.5,
-         "price": 108
+         "price": 103
         }
        },
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -117
+         "price": -104
         },
         "under": {
          "point": 4.5,
-         "price": -109
+         "price": -122
         }
        }
       },
@@ -374,12 +384,12 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
     },
     "fanduel": {
      "last": {
-      "at": "2026-10-13T18:18:59Z",
+      "at": "2026-10-13T22:34:01Z",
       "f5": {
        "ml": {},
        "total": {
@@ -407,11 +417,11 @@
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -120
+         "price": -104
         },
         "under": {
          "point": 4.5,
-         "price": -106
+         "price": -122
         }
        }
       }
@@ -460,7 +470,7 @@
     },
     "mybookieag": {
      "last": {
-      "at": "2026-10-13T18:18:59Z",
+      "at": "2026-10-13T22:34:01Z",
       "f5": {
        "ml": {},
        "total": {
@@ -478,21 +488,21 @@
        "freddy peralta": {
         "over": {
          "point": 3.5,
-         "price": -145
+         "price": -138
         },
         "under": {
          "point": 3.5,
-         "price": 105
+         "price": 100
         }
        },
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -133
+         "price": -111
         },
         "under": {
          "point": 4.5,
-         "price": -104
+         "price": -124
         }
        }
       }
@@ -540,7 +550,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-10-13T22:26:07Z",
+   "checked": "2026-10-13T22:34:01Z",
    "espn": "401908024",
    "home": 139,
    "pk": 849813,
@@ -550,7 +560,7 @@
    ],
    "start": "2026-10-14T00:00:00Z",
    "theAt": {
-    "pitcher_strikeouts": "2026-10-13T18:05:06Z",
+    "pitcher_strikeouts": "2026-10-13T22:34:01Z",
     "totals_1st_5_innings": "2026-10-13T18:18:59Z"
    },
    "theEmpty": {
@@ -563,7 +573,7 @@
    },
    "theId": "38049724abb5fcb2b69405bbe4bb3d72",
    "theN": {
-    "pitcher_strikeouts": 2,
+    "pitcher_strikeouts": 3,
     "totals_1st_5_innings": 2
    },
    "theSwapped": false
