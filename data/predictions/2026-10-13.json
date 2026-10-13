@@ -3,32 +3,32 @@
 "pk": 849813,
 "date": "2026-10-13",
 "time": "2026-10-14T00:00:00Z",
-"generatedAt": "2026-10-13T18:18:53+00:00",
+"generatedAt": "2026-10-13T20:12:25+00:00",
 "away": "CLE",
 "home": "TB",
-"pHome": 0.5291,
+"pHome": 0.5317,
 "methods": {
 "log5": 0.5668,
 "elo": 0.5361,
-"lambda": 0.4843
+"lambda": 0.4922
 },
 "confidence": "media",
 "projAway": 3.7462,
-"projHome": 3.6122,
-"total": 7.3584,
+"projHome": 3.6864,
+"total": 7.4325,
 "f5Away": 1.926,
-"f5Home": 2.0058,
-"nrfi": 0.5776,
-"pOver85": 0.3398,
+"f5Home": 2.047,
+"nrfi": 0.574,
+"pOver85": 0.3467,
 "probables": {
 "away": "Parker Messick",
 "home": "Freddy Peralta"
 },
 "light": "Gris",
 "best": {
-"market": "Team total",
-"pick": "TB Under 3.5",
-"p": 0.568,
+"market": "NRFI/YRFI",
+"pick": "NRFI",
+"p": 0.574,
 "price": null,
 "edge": null,
 "light": "Gris"
@@ -44,13 +44,13 @@
 "level": "Media"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "CLE +1.5",
-"p": 0.6772,
-"line": null,
-"ic": 42.0746,
-"level": "Baja"
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Under 3.5",
+"p": 0.5124,
+"line": 3.5,
+"ic": 39.196,
+"level": "Muy baja"
 }
 ],
 "decision": {
@@ -60,8 +60,8 @@
 "pick": "Freddy Peralta Over 3.5 K",
 "level": 0,
 "alts": [
-"RL",
 "F5 total",
+"RL",
 "K"
 ]
 }
