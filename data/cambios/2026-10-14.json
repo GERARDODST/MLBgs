@@ -1,14 +1,38 @@
 {
  "date": "2026-10-14",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Blake Snell",
+   "at": "2026-10-13T18:18:59Z",
+   "date": "2026-10-14",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849811,
+   "side": "home",
+   "text": "Abridor anunciado (LAD): Blake Snell"
+  },
+  {
+   "after": "esperar momio (LAD F5)",
+   "at": "2026-10-13T18:18:53Z",
+   "before": "esperar dato (Over 7.5)",
+   "date": "2026-10-14",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849811,
+   "text": "Decisión: esperar dato (Over 7.5) → esperar momio (LAD F5) · tras: abridor"
+  }
+ ],
  "snap": {
   "849811": {
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "Over 7.5",
+    "pick": "LAD F5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 119,
@@ -31,7 +55,10 @@
      "id": 688107,
      "name": "Robert Gasser"
     },
-    "home": null
+    "home": {
+     "id": 605483,
+     "name": "Blake Snell"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-13T04:03:56Z",
