@@ -46,6 +46,15 @@
    "kind": "decision",
    "pk": 849813,
    "text": "Decisión: esperar dato (TB) → esperar momio (F5 Under 3.5) · tras: abridor"
+  },
+  {
+   "at": "2026-10-13T03:50:06Z",
+   "date": "2026-10-13",
+   "game": "CLE @ TB",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849813,
+   "text": "Mercado abierto: CLE +111 / TB -133 · total 7.0"
   }
  ],
  "snap": {
@@ -64,6 +73,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.0,
+    "ml": {
+     "away": 111,
+     "home": -133
+    },
+    "pHome": 0.5464,
+    "src": "draftkings"
+   },
    "prob": {
     "away": {
      "id": 800048,
@@ -132,6 +150,11 @@
     "945539"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   }
  }

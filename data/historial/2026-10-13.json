@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-13T03:22:03+00:00",
+  "registeredAt": "2026-10-13T03:49:56+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5291,
@@ -49,6 +49,58 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "CLE +1.5",
+    "line": null,
+    "p": 0.6772,
+    "fair": -210.0,
+    "ic": 40.4,
+    "level": "Baja",
+    "price": -199,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9642,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Under 7.0",
+    "line": 7.0,
+    "p": 0.5242,
+    "fair": -110.0,
+    "ic": 37.0,
+    "level": "Muy baja",
+    "price": -115,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9642,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Under 3.5",
@@ -98,8 +150,8 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
+    "rank": 4,
+    "principal": false,
     "family": "Team total",
     "market": "Team total CLE",
     "pick": "CLE Under 3.5",
@@ -124,7 +176,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 5,
     "principal": false,
     "family": "Team total",
     "market": "Team total TB",
@@ -150,7 +202,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 6,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -201,7 +253,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 7,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -249,58 +301,6 @@
      "r": 1.0,
      "maxPrice": 113,
      "why": "sin momio real: conviene si pagan -109 o mejor"
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "CLE +1.5",
-    "line": null,
-    "p": 0.6772,
-    "fair": -210.0,
-    "ic": 33.7,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9642,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Under 7.5",
-    "line": 7.5,
-    "p": 0.5714,
-    "fair": -133.0,
-    "ic": 33.7,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9642,
-     "r": 1.0
     }
    },
    {
@@ -364,9 +364,9 @@
     "line": null,
     "p": 0.5291,
     "fair": -112.0,
-    "ic": 29.0,
+    "ic": 32.3,
     "level": "Muy baja",
-    "price": null,
+    "price": -133,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
