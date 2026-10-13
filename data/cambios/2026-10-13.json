@@ -66,16 +66,27 @@
    "kind": "decision",
    "pk": 849813,
    "text": "Decisión: esperar momio (F5 Under 3.5) → apostar Parker Messick Under 4.5 K · stake 1"
+  },
+  {
+   "after": "esperar verificar (Freddy Peralta Over 3.5 K)",
+   "at": "2026-10-13T18:05:01Z",
+   "before": "apostar Parker Messick Under 4.5 K · stake 1",
+   "date": "2026-10-13",
+   "game": "CLE @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849813,
+   "text": "Decisión: apostar Parker Messick Under 4.5 K · stake 1 → esperar verificar (Freddy Peralta Over 3.5 K)"
   }
  ],
  "snap": {
   "849813": {
    "away": 114,
    "dec": {
-    "level": 1,
-    "pick": "Parker Messick Under 4.5 K",
-    "status": "apostar",
-    "waitFor": null
+    "level": 0,
+    "pick": "Freddy Peralta Over 3.5 K",
+    "status": "esperar",
+    "waitFor": "verificar"
    },
    "detailed": "Scheduled",
    "home": 139,

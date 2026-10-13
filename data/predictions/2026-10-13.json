@@ -3,7 +3,7 @@
 "pk": 849813,
 "date": "2026-10-13",
 "time": "2026-10-14T00:00:00Z",
-"generatedAt": "2026-10-13T12:27:02+00:00",
+"generatedAt": "2026-10-13T18:05:01+00:00",
 "away": "CLE",
 "home": "TB",
 "pHome": 0.5291,
@@ -44,25 +44,25 @@
 "level": "Media"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Parker Messick Under 4.5 K",
-"p": 0.5309,
-"line": 4.5,
-"ic": 49.4986,
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Under 3.5",
+"p": 0.5183,
+"line": 3.5,
+"ic": 42.3726,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "apostar",
-"waitFor": null,
+"status": "esperar",
+"waitFor": "verificar",
 "family": "K",
-"pick": "Parker Messick Under 4.5 K",
-"level": 1,
+"pick": "Freddy Peralta Over 3.5 K",
+"level": 0,
 "alts": [
-"K",
 "F5 total",
-"RL"
+"RL",
+"K"
 ]
 }
 }

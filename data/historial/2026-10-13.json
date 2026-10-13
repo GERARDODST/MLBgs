@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-13T15:28:33+00:00",
+  "registeredAt": "2026-10-13T18:05:01+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5291,
@@ -57,7 +57,7 @@
     "fair": -337.0,
     "ic": 69.8,
     "level": "Media",
-    "price": -131,
+    "price": -133,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -100,56 +100,6 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Parker Messick Under 4.5 K",
-    "line": 4.5,
-    "p": 0.5309,
-    "fair": -113.0,
-    "ic": 49.5,
-    "level": "Baja",
-    "price": 108,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 1,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 106
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 125
-      }
-     ],
-     "steps": [
-      106,
-      109,
-      114,
-      120,
-      125,
-      132,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9642,
-     "r": 1.0,
-     "maxPrice": 132
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Under 3.5",
@@ -199,7 +149,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 3,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
@@ -207,9 +157,9 @@
     "line": null,
     "p": 0.6772,
     "fair": -210.0,
-    "ic": 40.7,
+    "ic": 42.1,
     "level": "Baja",
-    "price": -198,
+    "price": -194,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -225,6 +175,57 @@
     }
    },
    {
+    "rank": 4,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Parker Messick Under 4.5 K",
+    "line": 4.5,
+    "p": 0.5309,
+    "fair": -113.0,
+    "ic": 39.6,
+    "level": "Muy baja",
+    "price": -106,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 106
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 125
+      }
+     ],
+     "steps": [
+      106,
+      109,
+      114,
+      120,
+      125,
+      132,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9642,
+     "r": 1.0,
+     "maxPrice": 132,
+     "why": "edge menor a 3 pp con ese momio"
+    }
+   },
+   {
     "rank": 5,
     "principal": false,
     "family": "Total",
@@ -235,7 +236,7 @@
     "fair": -110.0,
     "ic": 37.0,
     "level": "Muy baja",
-    "price": -123,
+    "price": -117,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -365,7 +366,7 @@
     "fair": -112.0,
     "ic": 32.3,
     "level": "Muy baja",
-    "price": -137,
+    "price": -136,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -385,26 +386,27 @@
   ],
   "result": null,
   "decision": {
-   "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+108)",
+   "status": "esperar",
+   "why": "con el momio de referencia (-133) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -205 o menos ya pasa el filtro",
    "source": "Framework v2",
-   "pick": "Parker Messick Under 4.5 K",
+   "pick": "Freddy Peralta Over 3.5 K",
+   "waitFor": "verificar",
    "market": "Prop de ponches",
-   "p": 0.5309,
-   "ic": 49.5,
-   "level": 1,
-   "amount": 500,
-   "minPrice": 106,
+   "p": 0.7712,
+   "ic": 69.8,
+   "level": 0,
+   "amount": 0,
+   "minPrice": -265,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": 106
+     "from": -265
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 125
+     "from": -217
     }
    ]
   }
