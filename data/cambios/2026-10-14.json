@@ -77,13 +77,35 @@
    "kind": "decision",
    "pk": 849811,
    "text": "Decisión: apostar Blake Snell Under 6.5 K · stake 3 → apostar Robert Gasser Over 3.5 K · stake 5 · tras: lineup, umpire"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-14T21:30:22Z",
+   "date": "2026-10-14",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849811,
+   "side": "away",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "apostar Robert Gasser Over 3.5 K · stake 6",
+   "at": "2026-10-14T21:30:12Z",
+   "before": "apostar Robert Gasser Over 3.5 K · stake 5",
+   "date": "2026-10-14",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849811,
+   "text": "Decisión: apostar Robert Gasser Over 3.5 K · stake 5 → apostar Robert Gasser Over 3.5 K · stake 6 · tras: lineup, umpire"
   }
  ],
  "snap": {
   "849811": {
    "away": 158,
    "dec": {
-    "level": 5,
+    "level": 6,
     "pick": "Robert Gasser Over 3.5 K",
     "status": "apostar",
     "waitFor": null
@@ -91,7 +113,17 @@
    "detailed": "Pre-Game",
    "home": 119,
    "lu": {
-    "away": [],
+    "away": [
+     694192,
+     668930,
+     661388,
+     683734,
+     641343,
+     669003,
+     806198,
+     800325,
+     687401
+    ],
     "home": [
      605141,
      518692,
@@ -109,11 +141,20 @@
     "518692": "Freddie Freeman",
     "605141": "Mookie Betts",
     "606192": "Teoscar Hernández",
+    "641343": "Jake Bauers",
     "660271": "Shohei Ohtani",
+    "661388": "William Contreras",
     "663656": "Kyle Tucker",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
     "669242": "Tommy Edman",
     "669257": "Will Smith",
-    "681624": "Andy Pages"
+    "681624": "Andy Pages",
+    "683734": "Andrew Vaughn",
+    "687401": "Joey Ortiz",
+    "694192": "Jackson Chourio",
+    "800325": "Luis Lara",
+    "806198": "Cooper Pratt"
    },
    "odds": {
     "line": 7.5,

@@ -3,23 +3,23 @@
 "pk": 849811,
 "date": "2026-10-14",
 "time": "2026-10-15T00:00:00Z",
-"generatedAt": "2026-10-14T20:34:24+00:00",
+"generatedAt": "2026-10-14T21:30:12+00:00",
 "away": "MIL",
 "home": "LAD",
-"pHome": 0.5372,
+"pHome": 0.5347,
 "methods": {
 "log5": 0.5216,
 "elo": 0.5527,
-"lambda": 0.5372
+"lambda": 0.5298
 },
 "confidence": "alta",
-"projAway": 4.1973,
+"projAway": 4.2747,
 "projHome": 4.6033,
-"total": 8.8005,
-"f5Away": 2.0797,
+"total": 8.8779,
+"f5Away": 2.118,
 "f5Home": 2.7715,
-"nrfi": 0.504,
-"pOver85": 0.4739,
+"nrfi": 0.5015,
+"pOver85": 0.481,
 "probables": {
 "away": "Robert Gasser",
 "home": "Blake Snell"
@@ -40,17 +40,17 @@
 "pick": "Robert Gasser Over 3.5 K",
 "p": 0.5885,
 "line": 3.5,
-"ic": 62.4597,
+"ic": 63.6597,
 "level": "Media"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Blake Snell Under 6.5 K",
-"p": 0.6754,
-"line": 6.5,
-"ic": 59.8813,
-"level": "Media"
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.5",
+"p": 0.5739,
+"line": 7.5,
+"ic": 53.7274,
+"level": "Baja"
 }
 ],
 "decision": {
@@ -58,10 +58,10 @@
 "waitFor": null,
 "family": "K",
 "pick": "Robert Gasser Over 3.5 K",
-"level": 5,
+"level": 6,
 "alts": [
-"K",
 "Total",
+"K",
 "RL"
 ]
 }
