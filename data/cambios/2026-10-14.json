@@ -134,6 +134,18 @@
    "kind": "momio",
    "pk": 849811,
    "text": "La línea del total pasa de 7.0 a 7.5"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 7.0,
+   "at": "2026-10-14T23:46:25Z",
+   "before": 7.5,
+   "date": "2026-10-14",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849811,
+   "text": "La línea del total pasa de 7.5 a 7.0"
   }
  ],
  "snap": {
@@ -145,7 +157,7 @@
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Pre-Game",
+   "detailed": "Warmup",
    "home": 119,
    "lu": {
     "away": [
@@ -192,12 +204,12 @@
     "806198": "Cooper Pratt"
    },
    "odds": {
-    "line": 7.5,
+    "line": 7.0,
     "ml": {
-     "away": 155,
-     "home": -174
+     "away": 156,
+     "home": -175
     },
-    "pHome": 0.6182,
+    "pHome": 0.6196,
     "src": "draftkings"
    },
    "prob": {
