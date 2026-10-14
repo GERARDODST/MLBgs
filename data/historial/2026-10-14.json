@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-14T15:25:24+00:00",
+  "registeredAt": "2026-10-14T18:01:16+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5389,
@@ -55,9 +55,9 @@
     "line": 3.5,
     "p": 0.6376,
     "fair": -176.0,
-    "ic": 67.2,
+    "ic": 68.3,
     "level": "Media",
-    "price": -109,
+    "price": 100,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -106,16 +106,16 @@
     "line": 6.5,
     "p": 0.6754,
     "fair": -208.0,
-    "ic": 50.3,
-    "level": "Baja",
-    "price": -153,
+    "ic": 56.5,
+    "level": "Media",
+    "price": -140,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 2,
+     "level": 3,
      "ladder": [
       {
        "level": 1,
@@ -381,14 +381,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-153)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-140)",
    "source": "Framework v2",
    "pick": "Blake Snell Under 6.5 K",
    "market": "Prop de ponches",
    "p": 0.6754,
-   "ic": 50.3,
-   "level": 2,
-   "amount": 625,
+   "ic": 56.5,
+   "level": 3,
+   "amount": 750,
    "minPrice": -158,
    "ladder": [
     {
