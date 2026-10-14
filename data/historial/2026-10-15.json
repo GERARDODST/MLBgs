@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-14T11:27:52+00:00",
+  "registeredAt": "2026-10-14T15:25:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4981,
@@ -81,9 +81,9 @@
     "line": null,
     "p": 0.5019,
     "fair": -101.0,
-    "ic": 48.9,
+    "ic": 49.5,
     "level": "Baja",
-    "price": 109,
+    "price": 110,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -111,7 +111,7 @@
     "fair": -193.0,
     "ic": 33.6,
     "level": "Muy baja",
-    "price": -218,
+    "price": -207,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -329,19 +329,19 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-14T04:00:35+00:00",
+  "registeredAt": "2026-10-14T15:25:24+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5044,
-   "projAway": 4.55,
+   "pHome": 0.4927,
+   "projAway": 4.64,
    "projHome": 4.34,
-   "total": 8.89,
-   "nrfi": 0.5011,
-   "light": "Rojo",
-   "confidence": "alta",
+   "total": 8.99,
+   "nrfi": 0.4948,
+   "light": "Gris",
+   "confidence": "media",
    "probables": {
     "away": "Por anunciar",
-    "home": "Por anunciar"
+    "home": "Tyler Glasnow"
    },
    "lineups": "Proyectados"
   },
@@ -351,11 +351,11 @@
     "principal": true,
     "family": "ML",
     "market": "Moneyline",
-    "pick": "LAD",
+    "pick": "MIL",
     "line": null,
-    "p": 0.5044,
-    "fair": -102.0,
-    "ic": 35.6,
+    "p": 0.5073,
+    "fair": -103.0,
+    "ic": 34.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -363,7 +363,7 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.2% · Elo + abridor (5.7.7) 51.2% · λ + Binomial Negativa (5.3 · 5.7.5) 48.0%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 47.8% · Elo + abridor (5.7.7) 51.4% · λ + Binomial Negativa (5.3 · 5.7.5) 52.9%",
     "res": null,
     "stake": {
      "level": 0,
@@ -381,9 +381,9 @@
     "market": "Total completo",
     "pick": "Under 8.5",
     "line": 8.5,
-    "p": 0.5177,
-    "fair": -107.0,
-    "ic": 31.8,
+    "p": 0.5089,
+    "fair": -104.0,
+    "ic": 32.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -407,9 +407,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 4.5",
     "line": 4.5,
-    "p": 0.5175,
-    "fair": -107.0,
-    "ic": 31.8,
+    "p": 0.5063,
+    "fair": -103.0,
+    "ic": 32.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -429,91 +429,13 @@
    {
     "rank": 4,
     "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "MIL +1.5",
-    "line": null,
-    "p": 0.6633,
-    "fair": -197.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9631,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "LAD F5",
-    "line": null,
-    "p": 0.5186,
-    "fair": -108.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9631,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "YRFI",
-    "line": null,
-    "p": 0.4989,
-    "fair": 100.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9631,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
     "family": "Team total",
     "market": "Team total MIL",
-    "pick": "MIL Over 3.5",
-    "line": 3.5,
-    "p": 0.5625,
-    "fair": -129.0,
-    "ic": 25.1,
+    "pick": "MIL Under 4.5",
+    "line": 4.5,
+    "p": 0.5557,
+    "fair": -125.0,
+    "ic": 32.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -531,7 +453,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 5,
     "principal": false,
     "family": "Team total",
     "market": "Team total LAD",
@@ -539,13 +461,117 @@
     "line": 3.5,
     "p": 0.5356,
     "fair": -115.0,
-    "ic": 25.1,
+    "ic": 32.7,
     "level": "Muy baja",
     "price": null,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Binomial Negativa de carreras de LAD",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9631,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "LAD F5",
+    "line": null,
+    "p": 0.5053,
+    "fair": -102.0,
+    "ic": 32.7,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9631,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Tyler Glasnow Over 5.5 K",
+    "line": 5.5,
+    "p": 0.5801,
+    "fair": -138.0,
+    "ic": 31.6,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9631,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL +1.5",
+    "line": null,
+    "p": 0.6704,
+    "fair": -203.0,
+    "ic": 29.4,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9631,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.5052,
+    "fair": -102.0,
+    "ic": 29.4,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
     "res": null,
     "stake": {
      "level": 0,
@@ -562,11 +588,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "LAD",
+   "pick": "MIL",
    "waitFor": "dato",
    "market": "Moneyline",
-   "p": 0.5044,
-   "ic": 35.6,
+   "p": 0.5073,
+   "ic": 34.7,
    "level": 0,
    "amount": 0,
    "minPrice": null,

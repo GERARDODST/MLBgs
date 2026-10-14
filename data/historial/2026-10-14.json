@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-14T12:23:49+00:00",
+  "registeredAt": "2026-10-14T15:25:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5389,
@@ -171,21 +171,19 @@
    {
     "rank": 4,
     "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "LAD",
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL +1.5",
     "line": null,
-    "p": 0.5389,
-    "fair": -117.0,
+    "p": 0.6046,
+    "fair": -153.0,
     "ic": 36.3,
     "level": "Muy baja",
-    "price": -180,
+    "price": -147,
     "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.2% · Elo + abridor (5.7.7) 55.3% · λ + Binomial Negativa (5.3 · 5.7.5) 54.3%",
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
      "level": 0,
@@ -199,19 +197,21 @@
    {
     "rank": 5,
     "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "MIL +1.5",
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "LAD",
     "line": null,
-    "p": 0.6046,
-    "fair": -153.0,
-    "ic": 34.9,
+    "p": 0.5389,
+    "fair": -117.0,
+    "ic": 36.3,
     "level": "Muy baja",
-    "price": -150,
+    "price": -176,
     "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.2% · Elo + abridor (5.7.7) 55.3% · λ + Binomial Negativa (5.3 · 5.7.5) 54.3%",
     "res": null,
     "stake": {
      "level": 0,

@@ -3,7 +3,7 @@
 "pk": 849818,
 "date": "2026-10-15",
 "time": "2026-10-15T22:00:00Z",
-"generatedAt": "2026-10-14T09:35:45+00:00",
+"generatedAt": "2026-10-14T15:25:24+00:00",
 "away": "TB",
 "home": "CLE",
 "pHome": 0.4981,
@@ -49,7 +49,7 @@
 "pick": "TB",
 "p": 0.5019,
 "line": null,
-"ic": 48.8659,
+"ic": 49.5304,
 "level": "Baja"
 }
 ],
@@ -70,53 +70,53 @@
 "pk": 849810,
 "date": "2026-10-15",
 "time": "2026-10-16T01:00:00Z",
-"generatedAt": "2026-10-14T04:00:35+00:00",
+"generatedAt": "2026-10-14T15:25:24+00:00",
 "away": "MIL",
 "home": "LAD",
-"pHome": 0.5044,
+"pHome": 0.4927,
 "methods": {
 "log5": 0.5216,
-"elo": 0.5118,
-"lambda": 0.4799
+"elo": 0.4855,
+"lambda": 0.471
 },
-"confidence": "alta",
-"projAway": 4.5479,
+"confidence": "media",
+"projAway": 4.6447,
 "projHome": 4.3446,
-"total": 8.8925,
-"f5Away": 2.3998,
+"total": 8.9893,
+"f5Away": 2.4875,
 "f5Home": 2.5225,
-"nrfi": 0.5011,
-"pOver85": 0.4823,
+"nrfi": 0.4948,
+"pOver85": 0.4911,
 "probables": {
 "away": "Por anunciar",
-"home": "Por anunciar"
+"home": "Tyler Glasnow"
 },
-"light": "Rojo",
+"light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Under 8.5",
-"p": 0.5177,
+"market": "Prop pitcher",
+"pick": "Tyler Glasnow Over 5.5 K",
+"p": 0.5801,
 "price": null,
 "edge": null,
-"light": "Rojo"
+"light": "Gris"
 },
 "topPicks": [
 {
 "family": "ML",
 "market": "Moneyline",
-"pick": "LAD",
-"p": 0.5044,
+"pick": "MIL",
+"p": 0.5073,
 "line": null,
-"ic": 35.6203,
+"ic": 34.6602,
 "level": "Muy baja"
 },
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Under 8.5",
-"p": 0.5177,
+"p": 0.5089,
 "line": 8.5,
-"ic": 31.8,
+"ic": 32.6895,
 "level": "Muy baja"
 }
 ],
@@ -124,12 +124,12 @@
 "status": "esperar",
 "waitFor": "dato",
 "family": "ML",
-"pick": "LAD",
+"pick": "MIL",
 "level": 0,
 "alts": [
 "Total",
 "F5 total",
-"RL"
+"Team total"
 ]
 }
 }

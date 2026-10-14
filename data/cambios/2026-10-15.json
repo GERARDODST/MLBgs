@@ -23,6 +23,29 @@
    "kind": "decision",
    "pk": 849818,
    "text": "Decisión: esperar dato (Over 7.0) → esperar dato (Over 6.5) · tras: momio"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Tyler Glasnow",
+   "at": "2026-10-14T15:25:31Z",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849810,
+   "side": "home",
+   "text": "Abridor anunciado (LAD): Tyler Glasnow"
+  },
+  {
+   "after": "esperar dato (MIL)",
+   "at": "2026-10-14T15:25:24Z",
+   "before": "esperar dato (LAD)",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849810,
+   "text": "Decisión: esperar dato (LAD) → esperar dato (MIL) · tras: abridor"
   }
  ],
  "snap": {
@@ -30,7 +53,7 @@
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "LAD",
+    "pick": "MIL",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -43,7 +66,10 @@
    "names": {},
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 607192,
+     "name": "Tyler Glasnow"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-14T04:00:42Z",
