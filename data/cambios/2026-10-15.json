@@ -1,6 +1,30 @@
 {
  "date": "2026-10-15",
- "events": [],
+ "events": [
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 6.5,
+   "at": "2026-10-14T07:44:03Z",
+   "before": 7.0,
+   "date": "2026-10-15",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849818,
+   "text": "La línea del total pasa de 7.0 a 6.5"
+  },
+  {
+   "after": "esperar dato (Over 6.5)",
+   "at": "2026-10-14T07:43:53Z",
+   "before": "esperar dato (Over 7.0)",
+   "date": "2026-10-15",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849818,
+   "text": "Decisión: esperar dato (Over 7.0) → esperar dato (Over 6.5) · tras: momio"
+  }
+ ],
  "snap": {
   "849810": {
    "away": 158,
@@ -86,7 +110,7 @@
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "Over 7.0",
+    "pick": "Over 6.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -98,12 +122,12 @@
    },
    "names": {},
    "odds": {
-    "line": 7.0,
+    "line": 6.5,
     "ml": {
-     "away": 111,
-     "home": -133
+     "away": 109,
+     "home": -131
     },
-    "pHome": 0.5464,
+    "pHome": 0.5424,
     "src": "draftkings"
    },
    "prob": {
