@@ -1,0 +1,136 @@
+[
+{
+"pk": 849818,
+"date": "2026-10-15",
+"time": "2026-10-15T22:00:00Z",
+"generatedAt": "2026-10-14T04:00:35+00:00",
+"away": "TB",
+"home": "CLE",
+"pHome": 0.497,
+"methods": {
+"log5": 0.4901,
+"elo": 0.5094,
+"lambda": 0.4917
+},
+"confidence": "alta",
+"projAway": 4.1694,
+"projHome": 4.097,
+"total": 8.2663,
+"f5Away": 2.2858,
+"f5Home": 2.3307,
+"nrfi": 0.5233,
+"pOver85": 0.4244,
+"probables": {
+"away": "Griffin Jax",
+"home": "Por anunciar"
+},
+"light": "Amarillo",
+"best": {
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.5735,
+"price": -105,
+"edge": 0.0613,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5735,
+"line": 7.0,
+"ic": 51.4245,
+"level": "Baja"
+},
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "TB",
+"p": 0.503,
+"line": null,
+"ic": 50.4941,
+"level": "Baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 7.0",
+"level": 0,
+"alts": [
+"ML",
+"RL",
+"F5 total"
+]
+}
+},
+{
+"pk": 849810,
+"date": "2026-10-15",
+"time": "2026-10-16T01:00:00Z",
+"generatedAt": "2026-10-14T04:00:35+00:00",
+"away": "MIL",
+"home": "LAD",
+"pHome": 0.5044,
+"methods": {
+"log5": 0.5216,
+"elo": 0.5118,
+"lambda": 0.4799
+},
+"confidence": "alta",
+"projAway": 4.5479,
+"projHome": 4.3446,
+"total": 8.8925,
+"f5Away": 2.3998,
+"f5Home": 2.5225,
+"nrfi": 0.5011,
+"pOver85": 0.4823,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Rojo",
+"best": {
+"market": "Total",
+"pick": "Under 8.5",
+"p": 0.5177,
+"price": null,
+"edge": null,
+"light": "Rojo"
+},
+"topPicks": [
+{
+"family": "ML",
+"market": "Moneyline",
+"pick": "LAD",
+"p": 0.5044,
+"line": null,
+"ic": 35.6203,
+"level": "Muy baja"
+},
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 8.5",
+"p": 0.5177,
+"line": 8.5,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "ML",
+"pick": "LAD",
+"level": 0,
+"alts": [
+"Total",
+"F5 total",
+"RL"
+]
+}
+}
+]
