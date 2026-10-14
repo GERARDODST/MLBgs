@@ -45,24 +45,76 @@
    "kind": "decision",
    "pk": 849811,
    "text": "Decisión: apostar Blake Snell Under 6.5 K · stake 2 → apostar Blake Snell Under 6.5 K · stake 3"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-14T20:34:33Z",
+   "date": "2026-10-14",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849811,
+   "side": "home",
+   "text": "Lineup confirmado (LAD)"
+  },
+  {
+   "after": "Mark Wegner",
+   "at": "2026-10-14T20:34:33Z",
+   "date": "2026-10-14",
+   "game": "MIL @ LAD",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849811,
+   "text": "Umpire de home asignado: Mark Wegner"
+  },
+  {
+   "after": "apostar Robert Gasser Over 3.5 K · stake 5",
+   "at": "2026-10-14T20:34:24Z",
+   "before": "apostar Blake Snell Under 6.5 K · stake 3",
+   "date": "2026-10-14",
+   "game": "MIL @ LAD",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849811,
+   "text": "Decisión: apostar Blake Snell Under 6.5 K · stake 3 → apostar Robert Gasser Over 3.5 K · stake 5 · tras: lineup, umpire"
   }
  ],
  "snap": {
   "849811": {
    "away": 158,
    "dec": {
-    "level": 3,
-    "pick": "Blake Snell Under 6.5 K",
+    "level": 5,
+    "pick": "Robert Gasser Over 3.5 K",
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 119,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     605141,
+     518692,
+     606192,
+     663656,
+     681624,
+     660271,
+     669257,
+     500743,
+     669242
+    ]
    },
-   "names": {},
+   "names": {
+    "500743": "Miguel Rojas",
+    "518692": "Freddie Freeman",
+    "605141": "Mookie Betts",
+    "606192": "Teoscar Hernández",
+    "660271": "Shohei Ohtani",
+    "663656": "Kyle Tucker",
+    "669242": "Tommy Edman",
+    "669257": "Will Smith",
+    "681624": "Andy Pages"
+   },
    "odds": {
     "line": 7.5,
     "ml": {
@@ -141,13 +193,19 @@
     "945460",
     "945461"
    ],
-   "ump": null,
+   "ump": "Mark Wegner",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "cruzado",
+    "speed": 1,
+    "temp": 84.0
+   }
   }
  }
 }

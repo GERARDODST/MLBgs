@@ -3,66 +3,66 @@
 "pk": 849818,
 "date": "2026-10-15",
 "time": "2026-10-15T17:00:00Z",
-"generatedAt": "2026-10-14T19:11:07+00:00",
+"generatedAt": "2026-10-14T20:34:24+00:00",
 "away": "TB",
 "home": "CLE",
-"pHome": 0.4981,
+"pHome": 0.5042,
 "methods": {
 "log5": 0.4901,
-"elo": 0.5094,
-"lambda": 0.4948
+"elo": 0.4988,
+"lambda": 0.5239
 },
 "confidence": "alta",
-"projAway": 4.0843,
+"projAway": 3.7933,
 "projHome": 4.045,
-"total": 8.1293,
-"f5Away": 2.2391,
+"total": 7.8382,
+"f5Away": 1.9748,
 "f5Home": 2.3012,
-"nrfi": 0.5289,
-"pOver85": 0.4116,
+"nrfi": 0.5495,
+"pOver85": 0.3845,
 "probables": {
 "away": "Griffin Jax",
-"home": "Por anunciar"
+"home": "Gavin Williams"
 },
-"light": "Amarillo",
+"light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Over 6.5",
-"p": 0.6027,
-"price": -120,
-"edge": 0.0572,
-"light": "Amarillo"
+"market": "Prop pitcher",
+"pick": "Gavin Williams Under 5.5 K",
+"p": 0.5677,
+"price": null,
+"edge": null,
+"light": "Gris"
 },
 "topPicks": [
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 6.5",
-"p": 0.6027,
+"p": 0.5751,
 "line": 6.5,
-"ic": 50.2516,
+"ic": 44.8502,
 "level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
-"pick": "TB",
-"p": 0.5019,
+"pick": "CLE",
+"p": 0.5042,
 "line": null,
-"ic": 49.5304,
+"ic": 41.6427,
 "level": "Baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 6.5",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Over 3.5",
 "level": 0,
 "alts": [
-"ML",
-"RL",
-"F5 total"
+"F5 total",
+"F5",
+"K"
 ]
 }
 },
