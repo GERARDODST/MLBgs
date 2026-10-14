@@ -3,7 +3,7 @@
 "pk": 849811,
 "date": "2026-10-14",
 "time": "2026-10-15T00:00:00Z",
-"generatedAt": "2026-10-14T03:32:53+00:00",
+"generatedAt": "2026-10-14T12:23:49+00:00",
 "away": "MIL",
 "home": "LAD",
 "pHome": 0.5389,
@@ -35,33 +35,34 @@
 },
 "topPicks": [
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.5",
-"p": 0.5722,
-"line": 7.5,
-"ic": 47.0564,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Robert Gasser Over 3.5 K",
+"p": 0.6376,
+"line": 3.5,
+"ic": 67.1673,
+"level": "Media"
 },
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "LAD",
-"p": 0.5389,
-"line": null,
-"ic": 36.2669,
-"level": "Muy baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Blake Snell Under 6.5 K",
+"p": 0.6754,
+"line": 6.5,
+"ic": 50.3034,
+"level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
-"family": "F5",
-"pick": "LAD F5",
-"level": 0,
+"status": "apostar",
+"waitFor": null,
+"family": "K",
+"pick": "Blake Snell Under 6.5 K",
+"level": 2,
 "alts": [
-"F5",
-"K"
+"K",
+"Total",
+"ML"
 ]
 }
 }
