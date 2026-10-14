@@ -46,6 +46,17 @@
    "kind": "decision",
    "pk": 849810,
    "text": "Decisión: esperar dato (LAD) → esperar dato (MIL) · tras: abridor"
+  },
+  {
+   "after": "2026-10-15T17:00:00Z",
+   "at": "2026-10-14T16:17:22Z",
+   "before": "2026-10-15T22:00:00Z",
+   "date": "2026-10-15",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "horario",
+   "pk": 849818,
+   "text": "Cambia la hora del partido (-300 min)"
   }
  ],
  "snap": {
@@ -165,7 +176,7 @@
    },
    "probChangedAt": null,
    "since": "2026-10-14T04:00:42Z",
-   "time": "2026-10-15T22:00:00Z",
+   "time": "2026-10-15T17:00:00Z",
    "tx": [
     "943754",
     "943755",

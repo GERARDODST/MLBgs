@@ -3,7 +3,7 @@
   "id": "2026-10-15-849818-framework",
   "pk": 849818,
   "date": "2026-10-15",
-  "time": "2026-10-15T22:00:00Z",
+  "time": "2026-10-15T17:00:00Z",
   "away": "TB",
   "home": "CLE",
   "awayName": "Tampa Bay Rays",
@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-14T15:25:24+00:00",
+  "registeredAt": "2026-10-14T16:17:15+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4981,
@@ -55,9 +55,9 @@
     "line": 6.5,
     "p": 0.6027,
     "fair": -152.0,
-    "ic": 50.3,
+    "ic": 52.7,
     "level": "Baja",
-    "price": -120,
+    "price": -116,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -81,9 +81,9 @@
     "line": null,
     "p": 0.5019,
     "fair": -101.0,
-    "ic": 49.5,
+    "ic": 51.5,
     "level": "Baja",
-    "price": 110,
+    "price": 113,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -111,7 +111,7 @@
     "fair": -193.0,
     "ic": 33.6,
     "level": "Muy baja",
-    "price": -207,
+    "price": -208,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -292,7 +292,7 @@
    "waitFor": "dato",
    "market": "Total completo",
    "p": 0.6027,
-   "ic": 50.3,
+   "ic": 52.7,
    "level": 0,
    "amount": 0,
    "minPrice": null,
