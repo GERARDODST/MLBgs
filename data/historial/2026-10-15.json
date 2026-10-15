@@ -510,14 +510,14 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-15T20:22:24+00:00",
+  "registeredAt": "2026-10-15T20:36:24+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5168,
+   "pHome": 0.5149,
    "projAway": 4.64,
-   "projHome": 4.64,
-   "total": 9.28,
-   "nrfi": 0.4718,
+   "projHome": 4.58,
+   "total": 9.22,
+   "nrfi": 0.4745,
    "light": "Amarillo",
    "confidence": "alta",
    "probables": {
@@ -534,11 +534,11 @@
     "market": "Total completo",
     "pick": "Over 8.0",
     "line": 8.0,
-    "p": 0.5702,
-    "fair": -133.0,
-    "ic": 49.7,
+    "p": 0.5643,
+    "fair": -130.0,
+    "ic": 45.9,
     "level": "Baja",
-    "price": -103,
+    "price": -106,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -563,10 +563,10 @@
     "market": "Run Line",
     "pick": "MIL +1.5",
     "line": null,
-    "p": 0.6422,
-    "fair": -179.0,
-    "ic": 39.6,
-    "level": "Muy baja",
+    "p": 0.6479,
+    "fair": -184.0,
+    "ic": 41.2,
+    "level": "Baja",
     "price": -167,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
@@ -585,13 +585,39 @@
    {
     "rank": 3,
     "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Shane Drohan Over 3.5 K",
+    "line": 3.5,
+    "p": 0.5831,
+    "fair": -140.0,
+    "ic": 37.1,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "LAD",
     "line": null,
-    "p": 0.5168,
-    "fair": -107.0,
-    "ic": 37.3,
+    "p": 0.5149,
+    "fair": -106.0,
+    "ic": 36.1,
     "level": "Muy baja",
     "price": -157,
     "methods": [
@@ -599,7 +625,7 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.2% · Elo + abridor (5.7.7) 53.0% · λ + Binomial Negativa (5.3 · 5.7.5) 49.9%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.2% · Elo + abridor (5.7.7) 53.0% · λ + Binomial Negativa (5.3 · 5.7.5) 49.3%",
     "res": null,
     "alerts": [
      "depende de que Shane Drohan siga en mala racha (8.3)"
@@ -614,14 +640,40 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Tyler Glasnow Over 5.5 K",
+    "line": 5.5,
+    "p": 0.5801,
+    "fair": -138.0,
+    "ic": 34.9,
+    "level": "Muy baja",
+    "price": -160,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5281,
-    "fair": -112.0,
+    "p": 0.5236,
+    "fair": -110.0,
     "ic": 34.7,
     "level": "Muy baja",
     "price": null,
@@ -640,7 +692,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 7,
     "principal": false,
     "family": "Team total",
     "market": "Team total MIL",
@@ -666,14 +718,14 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 8,
     "principal": false,
     "family": "Team total",
     "market": "Team total LAD",
     "pick": "LAD Under 4.5",
     "line": 4.5,
-    "p": 0.5563,
-    "fair": -125.0,
+    "p": 0.5642,
+    "fair": -129.0,
     "ic": 34.7,
     "level": "Muy baja",
     "price": null,
@@ -692,14 +744,14 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 9,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "LAD F5",
     "line": null,
-    "p": 0.545,
-    "fair": -120.0,
+    "p": 0.5398,
+    "fair": -117.0,
     "ic": 34.7,
     "level": "Muy baja",
     "price": -157,
@@ -717,14 +769,14 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -100
+       "from": 103
       }
      ],
      "steps": [
-      -100,
-      105,
-      111,
-      118,
+      103,
+      107,
+      114,
+      121,
       null,
       null,
       null,
@@ -736,109 +788,7 @@
      "a": 1.0,
      "h": 0.9533,
      "r": 0.8,
-     "maxPrice": 124,
-     "why": "edge menor a 3 pp con ese momio"
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Shane Drohan Under 4.5 K",
-    "line": 4.5,
-    "p": 0.5865,
-    "fair": -142.0,
-    "ic": 33.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -116
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 102
-      }
-     ],
-     "steps": [
-      -116,
-      -113,
-      -108,
-      -103,
-      102,
-      null,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0,
-     "maxPrice": 105,
-     "why": "sin momio real: conviene si pagan -116 o mejor"
-    }
-   },
-   {
-    "rank": 9,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Tyler Glasnow Over 5.5 K",
-    "line": 5.5,
-    "p": 0.5801,
-    "fair": -138.0,
-    "ic": 31.6,
-    "level": "Muy baja",
-    "price": -160,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -110
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 108
-      }
-     ],
-     "steps": [
-      -110,
-      -107,
-      -102,
-      103,
-      108,
-      null,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0,
-     "maxPrice": 108,
+     "maxPrice": 127,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -849,8 +799,8 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5282,
-    "fair": -112.0,
+    "p": 0.5255,
+    "fair": -111.0,
     "ic": 31.4,
     "level": "Muy baja",
     "price": null,
@@ -874,27 +824,21 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de Prop de ponches: conviene si pagan -116 o mejor (stake 1); stake 5 desde +102",
+   "status": "no apostar",
+   "why": "con el momio de referencia (-157): edge menor a 3 pp con ese momio (stake 1 desde +103)",
    "source": "Framework v2",
-   "pick": "Shane Drohan Under 4.5 K",
-   "waitFor": "momio",
-   "market": "Prop de ponches",
-   "p": 0.5865,
-   "ic": 33.8,
+   "pick": "LAD F5",
+   "market": "F5 Moneyline",
+   "p": 0.5398,
+   "ic": 34.7,
    "level": 0,
    "amount": 0,
-   "minPrice": -116,
+   "minPrice": 103,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -116
-    },
-    {
-     "level": 5,
-     "stake": 1000,
-     "from": 102
+     "from": 103
     }
    ]
   }

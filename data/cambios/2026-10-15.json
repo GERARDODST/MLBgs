@@ -232,6 +232,38 @@
    "kind": "momio",
    "pk": 849810,
    "text": "La línea del total pasa de 7.5 a 8.0"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-15T20:36:30Z",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849810,
+   "side": "home",
+   "text": "Lineup confirmado (LAD)"
+  },
+  {
+   "after": "Ryan Additon",
+   "at": "2026-10-15T20:36:30Z",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849810,
+   "text": "Umpire de home asignado: Ryan Additon"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-10-15T20:36:24Z",
+   "before": "esperar momio (Shane Drohan Under 4.5 K)",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849810,
+   "text": "Decisión: esperar momio (Shane Drohan Under 4.5 K) → no apostar · tras: momio, lineup, umpire"
   }
  ],
  "snap": {
@@ -239,17 +271,37 @@
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "Shane Drohan Under 4.5 K",
-    "status": "esperar",
-    "waitFor": "momio"
+    "pick": "LAD F5",
+    "status": "no apostar",
+    "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 119,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     660271,
+     605141,
+     518692,
+     669257,
+     663656,
+     606192,
+     500743,
+     681624,
+     571771
+    ]
    },
-   "names": {},
+   "names": {
+    "500743": "Miguel Rojas",
+    "518692": "Freddie Freeman",
+    "571771": "Enrique Hernández",
+    "605141": "Mookie Betts",
+    "606192": "Teoscar Hernández",
+    "660271": "Shohei Ohtani",
+    "663656": "Kyle Tucker",
+    "669257": "Will Smith",
+    "681624": "Andy Pages"
+   },
    "odds": {
     "line": 8.0,
     "ml": {
@@ -327,13 +379,19 @@
     "945460",
     "945461"
    ],
-   "ump": null,
+   "ump": "Ryan Additon",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Clear",
+    "dir": "out",
+    "speed": 4,
+    "temp": 89.0
+   }
   },
   "849818": {
    "away": 139,

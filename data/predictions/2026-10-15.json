@@ -70,34 +70,34 @@
 "pk": 849810,
 "date": "2026-10-15",
 "time": "2026-10-16T00:00:00Z",
-"generatedAt": "2026-10-15T20:22:24+00:00",
+"generatedAt": "2026-10-15T20:36:24+00:00",
 "away": "MIL",
 "home": "LAD",
-"pHome": 0.5168,
+"pHome": 0.5149,
 "methods": {
 "log5": 0.5216,
 "elo": 0.5302,
-"lambda": 0.4986
+"lambda": 0.4929
 },
 "confidence": "alta",
 "projAway": 4.6447,
-"projHome": 4.64,
-"total": 9.2846,
+"projHome": 4.579,
+"total": 9.2237,
 "f5Away": 2.4875,
-"f5Home": 2.7985,
-"nrfi": 0.4718,
-"pOver85": 0.5178,
+"f5Home": 2.7617,
+"nrfi": 0.4745,
+"pOver85": 0.5123,
 "probables": {
 "away": "Shane Drohan",
 "home": "Tyler Glasnow"
 },
 "light": "Amarillo",
 "best": {
-"market": "Total",
-"pick": "Over 8.0",
-"p": 0.5702,
-"price": -103,
-"edge": 0.0628,
+"market": "ML",
+"pick": "MIL",
+"p": 0.4851,
+"price": 130,
+"edge": 0.0503,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -105,28 +105,30 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 8.0",
-"p": 0.5702,
+"p": 0.5643,
 "line": 8.0,
-"ic": 49.6988,
+"ic": 45.8852,
 "level": "Baja"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "MIL +1.5",
-"p": 0.6422,
+"p": 0.6479,
 "line": null,
-"ic": 39.5921,
-"level": "Muy baja"
+"ic": 41.249,
+"level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
-"family": "K",
-"pick": "Shane Drohan Under 4.5 K",
+"status": "no apostar",
+"waitFor": null,
+"family": "F5",
+"pick": "LAD F5",
 "level": 0,
 "alts": [
+"Total",
+"RL",
 "K"
 ]
 }
