@@ -510,7 +510,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-15T21:32:00+00:00",
+  "registeredAt": "2026-10-15T22:35:20+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5152,
@@ -565,9 +565,9 @@
     "line": null,
     "p": 0.5252,
     "fair": -111.0,
-    "ic": 43.3,
+    "ic": 42.5,
     "level": "Baja",
-    "price": 100,
+    "price": -101,
     "methods": [
      "λ calibrado a ceros reales (6.8)"
     ],
@@ -619,9 +619,9 @@
     "line": null,
     "p": 0.6472,
     "fair": -183.0,
-    "ic": 42.2,
+    "ic": 40.6,
     "level": "Baja",
-    "price": -167,
+    "price": -171,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -673,7 +673,7 @@
     "fair": -106.0,
     "ic": 37.5,
     "level": "Muy baja",
-    "price": -157,
+    "price": -156,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -855,12 +855,12 @@
   "result": null,
   "decision": {
    "status": "no apostar",
-   "why": "con el momio de referencia (+100): edge menor a 3 pp con ese momio (stake 1 desde +104)",
+   "why": "con el momio de referencia (-101): edge menor a 3 pp con ese momio (stake 1 desde +104)",
    "source": "Framework v2",
    "pick": "YRFI",
    "market": "NRFI/YRFI",
    "p": 0.5252,
-   "ic": 43.3,
+   "ic": 42.5,
    "level": 0,
    "amount": 0,
    "minPrice": 104,
