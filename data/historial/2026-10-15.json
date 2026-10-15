@@ -510,21 +510,21 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-15T20:36:24+00:00",
+  "registeredAt": "2026-10-15T21:18:08+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5149,
-   "projAway": 4.64,
+   "pHome": 0.5152,
+   "projAway": 4.63,
    "projHome": 4.58,
-   "total": 9.22,
-   "nrfi": 0.4745,
+   "total": 9.21,
+   "nrfi": 0.4748,
    "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Shane Drohan",
     "home": "Tyler Glasnow"
    },
-   "lineups": "Proyectados"
+   "lineups": "Confirmados"
   },
   "picks": [
    {
@@ -534,11 +534,11 @@
     "market": "Total completo",
     "pick": "Over 8.0",
     "line": 8.0,
-    "p": 0.5643,
-    "fair": -130.0,
-    "ic": 45.9,
+    "p": 0.5633,
+    "fair": -129.0,
+    "ic": 48.2,
     "level": "Baja",
-    "price": -106,
+    "price": -104,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -563,9 +563,9 @@
     "market": "Run Line",
     "pick": "MIL +1.5",
     "line": null,
-    "p": 0.6479,
-    "fair": -184.0,
-    "ic": 41.2,
+    "p": 0.6472,
+    "fair": -183.0,
+    "ic": 42.2,
     "level": "Baja",
     "price": -167,
     "methods": [
@@ -591,7 +591,7 @@
     "line": 3.5,
     "p": 0.5831,
     "fair": -140.0,
-    "ic": 37.1,
+    "ic": 38.3,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -615,9 +615,9 @@
     "market": "Moneyline",
     "pick": "LAD",
     "line": null,
-    "p": 0.5149,
+    "p": 0.5152,
     "fair": -106.0,
-    "ic": 36.1,
+    "ic": 37.5,
     "level": "Muy baja",
     "price": -157,
     "methods": [
@@ -625,7 +625,7 @@
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.2% · Elo + abridor (5.7.7) 53.0% · λ + Binomial Negativa (5.3 · 5.7.5) 49.3%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 52.2% · Elo + abridor (5.7.7) 53.0% · λ + Binomial Negativa (5.3 · 5.7.5) 49.4%",
     "res": null,
     "alerts": [
      "depende de que Shane Drohan siga en mala racha (8.3)"
@@ -646,9 +646,9 @@
     "market": "Prop de ponches",
     "pick": "Tyler Glasnow Over 5.5 K",
     "line": 5.5,
-    "p": 0.5801,
-    "fair": -138.0,
-    "ic": 34.9,
+    "p": 0.5782,
+    "fair": -137.0,
+    "ic": 36.1,
     "level": "Muy baja",
     "price": -160,
     "methods": [
@@ -672,9 +672,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 4.5",
     "line": 4.5,
-    "p": 0.5236,
+    "p": 0.5229,
     "fair": -110.0,
-    "ic": 34.7,
+    "ic": 35.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -698,9 +698,9 @@
     "market": "Team total MIL",
     "pick": "MIL Under 4.5",
     "line": 4.5,
-    "p": 0.5557,
-    "fair": -125.0,
-    "ic": 34.7,
+    "p": 0.557,
+    "fair": -126.0,
+    "ic": 35.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -726,7 +726,7 @@
     "line": 4.5,
     "p": 0.5642,
     "fair": -129.0,
-    "ic": 34.7,
+    "ic": 35.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -750,9 +750,9 @@
     "market": "F5 Moneyline",
     "pick": "LAD F5",
     "line": null,
-    "p": 0.5398,
-    "fair": -117.0,
-    "ic": 34.7,
+    "p": 0.5406,
+    "fair": -118.0,
+    "ic": 35.9,
     "level": "Muy baja",
     "price": -157,
     "methods": [
@@ -769,15 +769,20 @@
       {
        "level": 1,
        "stake": 500,
-       "from": 103
+       "from": -102
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 123
       }
      ],
      "steps": [
+      -102,
       103,
-      107,
-      114,
-      121,
-      null,
+      109,
+      116,
+      123,
       null,
       null,
       null,
@@ -788,7 +793,7 @@
      "a": 1.0,
      "h": 0.9533,
      "r": 0.8,
-     "maxPrice": 127,
+     "maxPrice": 126,
      "why": "edge menor a 3 pp con ese momio"
     }
    },
@@ -799,9 +804,9 @@
     "market": "NRFI/YRFI",
     "pick": "YRFI",
     "line": null,
-    "p": 0.5255,
+    "p": 0.5252,
     "fair": -111.0,
-    "ic": 31.4,
+    "ic": 35.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -814,31 +819,62 @@
     ],
     "stake": {
      "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 104
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 131
+      }
+     ],
+     "steps": [
+      104,
+      109,
+      116,
+      123,
+      131,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9533,
-     "r": 0.8
+     "r": 0.8,
+     "maxPrice": 135,
+     "why": "sin momio real: conviene si pagan +104 o mejor"
     }
    }
   ],
   "result": null,
   "decision": {
-   "status": "no apostar",
-   "why": "con el momio de referencia (-157): edge menor a 3 pp con ese momio (stake 1 desde +103)",
+   "status": "esperar",
+   "why": "falta el momio de NRFI/YRFI: conviene si pagan +104 o mejor (stake 1); stake 5 desde +131",
    "source": "Framework v2",
-   "pick": "LAD F5",
-   "market": "F5 Moneyline",
-   "p": 0.5398,
-   "ic": 34.7,
+   "pick": "YRFI",
+   "waitFor": "momio",
+   "market": "NRFI/YRFI",
+   "p": 0.5252,
+   "ic": 35.9,
    "level": 0,
    "amount": 0,
-   "minPrice": 103,
+   "minPrice": 104,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": 103
+     "from": 104
+    },
+    {
+     "level": 5,
+     "stake": 1000,
+     "from": 131
     }
    ]
   }

@@ -264,6 +264,28 @@
    "kind": "decision",
    "pk": 849810,
    "text": "Decisión: esperar momio (Shane Drohan Under 4.5 K) → no apostar · tras: momio, lineup, umpire"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-15T21:18:16Z",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849810,
+   "side": "away",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "esperar momio (YRFI)",
+   "at": "2026-10-15T21:18:08Z",
+   "before": "no apostar",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849810,
+   "text": "Decisión: no apostar → esperar momio (YRFI) · tras: momio, lineup, umpire"
   }
  ],
  "snap": {
@@ -271,14 +293,24 @@
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "LAD F5",
-    "status": "no apostar",
-    "waitFor": null
+    "pick": "YRFI",
+    "status": "esperar",
+    "waitFor": "momio"
    },
    "detailed": "Pre-Game",
    "home": 119,
    "lu": {
-    "away": [],
+    "away": [
+     694192,
+     668930,
+     661388,
+     641343,
+     592885,
+     669003,
+     806198,
+     686217,
+     666152
+    ],
     "home": [
      660271,
      605141,
@@ -295,12 +327,21 @@
     "500743": "Miguel Rojas",
     "518692": "Freddie Freeman",
     "571771": "Enrique Hernández",
+    "592885": "Christian Yelich",
     "605141": "Mookie Betts",
     "606192": "Teoscar Hernández",
+    "641343": "Jake Bauers",
     "660271": "Shohei Ohtani",
+    "661388": "William Contreras",
     "663656": "Kyle Tucker",
+    "666152": "David Hamilton",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
     "669257": "Will Smith",
-    "681624": "Andy Pages"
+    "681624": "Andy Pages",
+    "686217": "Sal Frelick",
+    "694192": "Jackson Chourio",
+    "806198": "Cooper Pratt"
    },
    "odds": {
     "line": 8.0,
