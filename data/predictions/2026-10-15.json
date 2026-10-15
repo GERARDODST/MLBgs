@@ -3,7 +3,7 @@
 "pk": 849818,
 "date": "2026-10-15",
 "time": "2026-10-15T17:00:00Z",
-"generatedAt": "2026-10-14T20:34:24+00:00",
+"generatedAt": "2026-10-15T05:53:22+00:00",
 "away": "TB",
 "home": "CLE",
 "pHome": 0.5042,
@@ -35,34 +35,34 @@
 },
 "topPicks": [
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 6.5",
-"p": 0.5751,
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Gavin Williams Under 6.5 K",
+"p": 0.7209,
 "line": 6.5,
-"ic": 44.8502,
-"level": "Baja"
+"ic": 69.8731,
+"level": "Media"
 },
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "CLE",
-"p": 0.5042,
-"line": null,
-"ic": 41.6427,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Griffin Jax Over 3.5 K",
+"p": 0.7176,
+"line": 3.5,
+"ic": 68.2833,
+"level": "Media"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "momio",
-"family": "F5 total",
-"pick": "F5 Over 3.5",
+"waitFor": "verificar",
+"family": "K",
+"pick": "Gavin Williams Under 6.5 K",
 "level": 0,
 "alts": [
-"F5 total",
-"F5",
-"K"
+"K",
+"Total",
+"ML"
 ]
 }
 },
@@ -70,7 +70,7 @@
 "pk": 849810,
 "date": "2026-10-15",
 "time": "2026-10-16T00:00:00Z",
-"generatedAt": "2026-10-14T19:11:07+00:00",
+"generatedAt": "2026-10-15T05:53:22+00:00",
 "away": "MIL",
 "home": "LAD",
 "pHome": 0.4927,
@@ -91,14 +91,14 @@
 "away": "Por anunciar",
 "home": "Tyler Glasnow"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "Prop pitcher",
-"pick": "Tyler Glasnow Over 5.5 K",
-"p": 0.5801,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "ML",
+"pick": "MIL",
+"p": 0.5073,
+"price": 133,
+"edge": 0.0781,
+"light": "Amarillo"
 },
 "topPicks": [
 {
@@ -107,17 +107,17 @@
 "pick": "MIL",
 "p": 0.5073,
 "line": null,
-"ic": 34.6602,
-"level": "Muy baja"
+"ic": 57.4381,
+"level": "Media"
 },
 {
 "family": "Total",
 "market": "Total completo",
-"pick": "Under 8.5",
-"p": 0.5089,
-"line": 8.5,
-"ic": 32.6895,
-"level": "Muy baja"
+"pick": "Over 7.5",
+"p": 0.5839,
+"line": 7.5,
+"ic": 50.2572,
+"level": "Baja"
 }
 ],
 "decision": {
@@ -128,8 +128,8 @@
 "level": 0,
 "alts": [
 "Total",
-"F5 total",
-"Team total"
+"RL",
+"F5 total"
 ]
 }
 }

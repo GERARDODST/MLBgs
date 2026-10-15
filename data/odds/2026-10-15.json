@@ -3,29 +3,452 @@
  "games": {
   "849810": {
    "away": 158,
-   "checked": "2026-10-15T02:38:30Z",
+   "books": {
+    "draftkings": {
+     "last": {
+      "at": "2026-10-15T05:53:30Z",
+      "ml": {
+       "away": 133,
+       "home": -161
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -164
+       },
+       "home": {
+        "point": -1.5,
+        "price": 136
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -105
+       },
+       "under": {
+        "point": 7.5,
+        "price": -115
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T05:53:30Z",
+      "ml": {
+       "away": 144,
+       "home": -174
+      },
+      "rl": {
+       "away": {
+        "point": 1.5,
+        "price": -151
+       },
+       "home": {
+        "point": -1.5,
+        "price": 125
+       }
+      },
+      "total": {
+       "over": {
+        "point": 7.5,
+        "price": -110
+       },
+       "under": {
+        "point": 7.5,
+        "price": -110
+       }
+      }
+     },
+     "src": "espn",
+     "title": "DraftKings"
+    }
+   },
+   "checked": "2026-10-15T05:53:30Z",
+   "espn": "401908033",
    "home": 119,
    "pk": 849810,
+   "providers": [
+    "espn"
+   ],
    "start": "2026-10-16T00:00:00Z"
   },
   "849818": {
    "away": 139,
    "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 115,
+        "home": -145
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -110
+        },
+        "under": {
+         "point": 3.5,
+         "price": -118
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 105
+        },
+        "under": {
+         "point": 6.5,
+         "price": -140
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -125
+        },
+        "under": {
+         "point": 3.5,
+         "price": -105
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 115,
+        "home": -145
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -110
+        },
+        "under": {
+         "point": 3.5,
+         "price": -118
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 105
+        },
+        "under": {
+         "point": 6.5,
+         "price": -140
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -125
+        },
+        "under": {
+         "point": 3.5,
+         "price": -105
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 118,
+        "home": -138
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -107
+        },
+        "under": {
+         "point": 3.5,
+         "price": -113
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 105
+        },
+        "under": {
+         "point": 6.5,
+         "price": -135
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -149
+        },
+        "under": {
+         "point": 3.5,
+         "price": 115
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 118,
+        "home": -138
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -107
+        },
+        "under": {
+         "point": 3.5,
+         "price": -113
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 105
+        },
+        "under": {
+         "point": 6.5,
+         "price": -135
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -149
+        },
+        "under": {
+         "point": 3.5,
+         "price": 115
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -143
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -143
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -140
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -115
+        },
+        "under": {
+         "point": 3.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -140
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -115
+        },
+        "under": {
+         "point": 3.5,
+         "price": -115
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -145
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": 105
+        },
+        "under": {
+         "point": 3.5,
+         "price": -135
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 100
+        },
+        "under": {
+         "point": 6.5,
+         "price": -130
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -150
+        },
+        "under": {
+         "point": 3.5,
+         "price": 115
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 110,
+        "home": -145
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": 105
+        },
+        "under": {
+         "point": 3.5,
+         "price": -135
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 100
+        },
+        "under": {
+         "point": 6.5,
+         "price": -130
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -150
+        },
+        "under": {
+         "point": 3.5,
+         "price": 115
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
     "draftkings": {
      "last": {
-      "at": "2026-10-15T02:38:30Z",
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 114,
+        "home": -145
+       },
+       "total": {}
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 109
+        },
+        "under": {
+         "point": 6.5,
+         "price": -139
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -132
+        },
+        "under": {
+         "point": 3.5,
+         "price": 104
+        }
+       }
+      },
       "ml": {
-       "away": 110,
-       "home": -133
+       "away": 111,
+       "home": -134
       },
       "rl": {
        "away": {
         "point": 1.5,
-        "price": -207
+        "price": -202
        },
        "home": {
         "point": -1.5,
-        "price": 169
+        "price": 165
        }
       },
       "total": {
@@ -35,13 +458,42 @@
        },
        "under": {
         "point": 6.5,
-        "price": 100
+        "price": -101
        }
       }
      },
      "mx": false,
      "open": {
       "at": "2026-10-14T04:00:42Z",
+      "f5": {
+       "ml": {
+        "away": 114,
+        "home": -145
+       },
+       "total": {}
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 109
+        },
+        "under": {
+         "point": 6.5,
+         "price": -139
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -132
+        },
+        "under": {
+         "point": 3.5,
+         "price": 104
+        }
+       }
+      },
       "ml": {
        "away": 110,
        "home": -133
@@ -67,18 +519,215 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 114,
+        "home": -142
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -118
+        },
+        "under": {
+         "point": 3.5,
+         "price": -110
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 102
+        },
+        "under": {
+         "point": 6.5,
+         "price": -130
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -146
+        },
+        "under": {
+         "point": 3.5,
+         "price": 114
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 114,
+        "home": -142
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -118
+        },
+        "under": {
+         "point": 3.5,
+         "price": -110
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 102
+        },
+        "under": {
+         "point": 6.5,
+         "price": -130
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -146
+        },
+        "under": {
+         "point": 3.5,
+         "price": 114
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 113,
+        "home": -138
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -112
+        },
+        "under": {
+         "point": 3.5,
+         "price": -109
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 100
+        },
+        "under": {
+         "point": 6.5,
+         "price": -138
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -152
+        },
+        "under": {
+         "point": 3.5,
+         "price": 109
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 113,
+        "home": -138
+       },
+       "total": {
+        "over": {
+         "point": 3.5,
+         "price": -112
+        },
+        "under": {
+         "point": 3.5,
+         "price": -109
+        }
+       }
+      },
+      "k": {
+       "gavin williams": {
+        "over": {
+         "point": 6.5,
+         "price": 100
+        },
+        "under": {
+         "point": 6.5,
+         "price": -138
+        }
+       },
+       "griffin jax": {
+        "over": {
+         "point": 3.5,
+         "price": -152
+        },
+        "under": {
+         "point": 3.5,
+         "price": 109
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie"
     }
    },
-   "checked": "2026-10-15T02:38:30Z",
+   "checked": "2026-10-15T05:53:30Z",
    "espn": "401908025",
    "home": 114,
    "pk": 849818,
    "providers": [
-    "espn"
+    "espn",
+    "the-odds-api"
    ],
-   "start": "2026-10-15T17:00:00Z"
+   "start": "2026-10-15T17:00:00Z",
+   "theAt": {
+    "h2h_1st_5_innings": "2026-10-15T05:53:30Z",
+    "pitcher_strikeouts": "2026-10-15T05:53:30Z",
+    "totals_1st_5_innings": "2026-10-15T05:53:30Z"
+   },
+   "theEmpty": {
+    "h2h_1st_5_innings": 0,
+    "pitcher_strikeouts": 0,
+    "totals_1st_5_innings": 0
+   },
+   "theGot": {
+    "h2h_1st_5_innings": 8,
+    "pitcher_strikeouts": 6,
+    "totals_1st_5_innings": 6
+   },
+   "theId": "a681025734060bef9fcce7ea7175674c",
+   "theN": {
+    "h2h_1st_5_innings": 1,
+    "pitcher_strikeouts": 1,
+    "totals_1st_5_innings": 1
+   },
+   "theSwapped": false
   }
  }
 }

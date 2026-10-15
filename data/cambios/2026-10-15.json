@@ -91,6 +91,26 @@
    "kind": "decision",
    "pk": 849818,
    "text": "Decisión: esperar dato (Over 6.5) → esperar momio (F5 Over 3.5) · tras: abridor"
+  },
+  {
+   "at": "2026-10-15T05:53:30Z",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849810,
+   "text": "Mercado abierto: MIL +133 / LAD -161 · total 7.5"
+  },
+  {
+   "after": "esperar verificar (Gavin Williams Under 6.5 K)",
+   "at": "2026-10-15T05:53:22Z",
+   "before": "esperar momio (F5 Over 3.5)",
+   "date": "2026-10-15",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849818,
+   "text": "Decisión: esperar momio (F5 Over 3.5) → esperar verificar (Gavin Williams Under 6.5 K)"
   }
  ],
  "snap": {
@@ -109,6 +129,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.5,
+    "ml": {
+     "away": 133,
+     "home": -161
+    },
+    "pHome": 0.5897,
+    "src": "draftkings"
+   },
    "prob": {
     "away": null,
     "home": {
@@ -175,15 +204,20 @@
     "945461"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   },
   "849818": {
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "F5 Over 3.5",
+    "pick": "Gavin Williams Under 6.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Scheduled",
    "home": 114,
