@@ -4,9 +4,225 @@
   "849810": {
    "away": 158,
    "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -155
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -150
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -155
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -150
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 125,
+        "home": -145
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -167
+        },
+        "under": {
+         "point": 5.5,
+         "price": 128
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 125,
+        "home": -145
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -167
+        },
+        "under": {
+         "point": 5.5,
+         "price": 128
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline"
+    },
+    "betrivers": {
+     "last": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -177
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -177
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetRivers"
+    },
+    "betus": {
+     "last": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 125,
+        "home": -145
+       },
+       "total": {}
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 125,
+        "home": -145
+       },
+       "total": {}
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetUS"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -160
+        },
+        "under": {
+         "point": 5.5,
+         "price": 120
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -160
+        },
+        "under": {
+         "point": 5.5,
+         "price": 120
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
     "draftkings": {
      "last": {
-      "at": "2026-10-15T17:49:32Z",
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 124,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 6.5,
+         "price": 122
+        },
+        "under": {
+         "point": 6.5,
+         "price": -156
+        }
+       }
+      },
       "ml": {
        "away": 130,
        "home": -157
@@ -35,6 +251,25 @@
      "mx": false,
      "open": {
       "at": "2026-10-15T05:53:30Z",
+      "f5": {
+       "ml": {
+        "away": 124,
+        "home": -160
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 6.5,
+         "price": 122
+        },
+        "under": {
+         "point": 6.5,
+         "price": -156
+        }
+       }
+      },
       "ml": {
        "away": 144,
        "home": -174
@@ -60,18 +295,135 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -164
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -154
+        },
+        "under": {
+         "point": 5.5,
+         "price": 122
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 130,
+        "home": -164
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -154
+        },
+        "under": {
+         "point": 5.5,
+         "price": 122
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -147
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -168
+        },
+        "under": {
+         "point": 5.5,
+         "price": 121
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-15T18:03:33Z",
+      "f5": {
+       "ml": {
+        "away": 120,
+        "home": -147
+       },
+       "total": {}
+      },
+      "k": {
+       "tyler glasnow": {
+        "over": {
+         "point": 5.5,
+         "price": -168
+        },
+        "under": {
+         "point": 5.5,
+         "price": 121
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie"
     }
    },
-   "checked": "2026-10-15T17:49:32Z",
+   "checked": "2026-10-15T18:03:33Z",
    "espn": "401908033",
    "home": 119,
    "pk": 849810,
    "providers": [
-    "espn"
+    "espn",
+    "the-odds-api"
    ],
-   "start": "2026-10-16T00:00:00Z"
+   "start": "2026-10-16T00:00:00Z",
+   "theAt": {
+    "h2h_1st_5_innings": "2026-10-15T18:03:33Z",
+    "pitcher_strikeouts": "2026-10-15T18:03:33Z"
+   },
+   "theEmpty": {
+    "h2h_1st_5_innings": 0,
+    "pitcher_strikeouts": 0
+   },
+   "theGot": {
+    "h2h_1st_5_innings": 8,
+    "pitcher_strikeouts": 6
+   },
+   "theId": "ab3e5655be6b32e0853d683e51a60baa",
+   "theN": {
+    "h2h_1st_5_innings": 1,
+    "pitcher_strikeouts": 1
+   },
+   "theSwapped": false
   },
   "849818": {
    "away": 139,
