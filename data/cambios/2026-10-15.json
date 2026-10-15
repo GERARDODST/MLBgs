@@ -186,6 +186,29 @@
    "kind": "clima",
    "pk": 849818,
    "text": "Viento: 3 mph cruzado → 7 mph out"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Shane Drohan",
+   "at": "2026-10-15T17:49:32Z",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849810,
+   "side": "away",
+   "text": "Abridor anunciado (MIL): Shane Drohan"
+  },
+  {
+   "after": "esperar momio (LAD F5)",
+   "at": "2026-10-15T17:49:25Z",
+   "before": "esperar dato (MIL)",
+   "date": "2026-10-15",
+   "game": "MIL @ LAD",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849810,
+   "text": "Decisión: esperar dato (MIL) → esperar momio (LAD F5) · tras: abridor"
   }
  ],
  "snap": {
@@ -193,9 +216,9 @@
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "MIL",
+    "pick": "LAD F5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 119,
@@ -214,7 +237,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 675660,
+     "name": "Shane Drohan"
+    },
     "home": {
      "id": 607192,
      "name": "Tyler Glasnow"
