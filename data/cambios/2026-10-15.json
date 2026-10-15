@@ -176,6 +176,16 @@
    "kind": "umpire",
    "pk": 849818,
    "text": "Cambio de umpire de home: Mark Ripperger → Bill Miller"
+  },
+  {
+   "action": "El total proyectado ya usa el viento nuevo.",
+   "at": "2026-10-15T17:03:48Z",
+   "date": "2026-10-15",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "clima",
+   "pk": 849818,
+   "text": "Viento: 3 mph cruzado → 7 mph out"
   }
  ],
  "snap": {
@@ -414,9 +424,9 @@
    "wx": {
     "closed": false,
     "cond": "Sunny",
-    "dir": "cruzado",
-    "speed": 3,
-    "temp": 57.0
+    "dir": "out",
+    "speed": 7,
+    "temp": 62.0
    }
   }
  }
