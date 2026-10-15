@@ -1,6 +1,39 @@
 {
  "date": "2026-10-16",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Nick Martinez",
+   "at": "2026-10-15T20:22:31Z",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849817,
+   "side": "away",
+   "text": "Abridor anunciado (TB): Nick Martinez"
+  },
+  {
+   "at": "2026-10-15T20:22:31Z",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849817,
+   "text": "Mercado abierto: TB -111 / CLE -108 · total 6.5"
+  },
+  {
+   "after": "esperar dato (Over 6.5)",
+   "at": "2026-10-15T20:22:24Z",
+   "before": "esperar dato (TB)",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849817,
+   "text": "Decisión: esperar dato (TB) → esperar dato (Over 6.5) · tras: abridor, momio"
+  }
+ ],
  "snap": {
   "849808": {
    "away": 158,
@@ -83,7 +116,7 @@
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "TB",
+    "pick": "Over 6.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -94,8 +127,20 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 6.5,
+    "ml": {
+     "away": -111,
+     "home": -108
+    },
+    "pHome": 0.4967,
+    "src": "draftkings"
+   },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 607259,
+     "name": "Nick Martinez"
+    },
     "home": null
    },
    "probChangedAt": null,
@@ -152,6 +197,11 @@
     "945539"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   }
  }
