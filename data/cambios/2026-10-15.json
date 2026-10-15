@@ -154,6 +154,17 @@
    "kind": "decision",
    "pk": 849818,
    "text": "Decisión: esperar verificar (Gavin Williams Under 6.5 K) → esperar momio (NRFI) · tras: lineup, umpire"
+  },
+  {
+   "after": "no apostar",
+   "at": "2026-10-15T14:18:59Z",
+   "before": "esperar momio (NRFI)",
+   "date": "2026-10-15",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849818,
+   "text": "Decisión: esperar momio (NRFI) → no apostar · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -258,9 +269,9 @@
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "NRFI",
-    "status": "esperar",
-    "waitFor": "momio"
+    "pick": "YRFI",
+    "status": "no apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 114,
