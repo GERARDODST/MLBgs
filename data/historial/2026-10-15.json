@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-15T05:53:22+00:00",
+  "registeredAt": "2026-10-15T11:04:07+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5042,
@@ -57,7 +57,7 @@
     "fair": -258.0,
     "ic": 69.9,
     "level": "Media",
-    "price": -136,
+    "price": -130,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -106,9 +106,9 @@
     "line": 3.5,
     "p": 0.7176,
     "fair": -254.0,
-    "ic": 68.3,
+    "ic": 68.1,
     "level": "Media",
-    "price": -147,
+    "price": -149,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -412,7 +412,7 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "con el momio de referencia (-136) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -164 o menos ya pasa el filtro",
+   "why": "con el momio de referencia (-130) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -164 o menos ya pasa el filtro",
    "source": "Framework v2",
    "pick": "Gavin Williams Under 6.5 K",
    "waitFor": "verificar",
@@ -466,7 +466,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-15T08:54:30+00:00",
+  "registeredAt": "2026-10-15T11:04:07+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4927,
@@ -492,9 +492,9 @@
     "line": null,
     "p": 0.5073,
     "fair": -103.0,
-    "ic": 58.0,
+    "ic": 55.8,
     "level": "Media",
-    "price": 134,
+    "price": 130,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -546,9 +546,9 @@
     "line": null,
     "p": 0.6704,
     "fair": -203.0,
-    "ic": 47.1,
+    "ic": 45.4,
     "level": "Baja",
-    "price": -164,
+    "price": -168,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -729,7 +729,7 @@
    "waitFor": "dato",
    "market": "Moneyline",
    "p": 0.5073,
-   "ic": 58.0,
+   "ic": 55.8,
    "level": 0,
    "amount": 0,
    "minPrice": null,
