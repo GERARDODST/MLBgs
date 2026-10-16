@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-16T14:33:05+00:00",
+  "registeredAt": "2026-10-16T14:58:55+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4944,
@@ -49,69 +49,15 @@
    {
     "rank": 1,
     "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.5",
-    "line": 6.5,
-    "p": 0.6076,
-    "fair": -155.0,
-    "ic": 58.7,
-    "level": "Media",
-    "price": -110,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "TB",
-    "line": null,
-    "p": 0.5056,
-    "fair": -102.0,
-    "ic": 44.9,
-    "level": "Baja",
-    "price": -114,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.0% · Elo + abridor (5.7.7) 50.1% · λ + Binomial Negativa (5.3 · 5.7.5) 50.5%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Nick Martinez Over 2.5 K",
     "line": 2.5,
     "p": 0.6003,
     "fair": -150.0,
-    "ic": 34.8,
-    "level": "Muy baja",
-    "price": null,
+    "ic": 69.6,
+    "level": "Media",
+    "price": 108,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -148,150 +94,21 @@
      "h": 0.9533,
      "r": 1.0,
      "maxPrice": -101,
-     "why": "sin momio real: conviene si pagan -125 o mejor"
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
     }
    },
    {
-    "rank": 4,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "CLE +1.5",
-    "line": null,
-    "p": 0.6561,
-    "fair": -191.0,
-    "ic": 34.2,
-    "level": "Muy baja",
-    "price": -197,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 5,
-    "principal": false,
-    "family": "F5 total",
-    "market": "Total primeras 5",
-    "pick": "F5 Under 4.5",
-    "line": 4.5,
-    "p": 0.5582,
-    "fair": -126.0,
-    "ic": 34.2,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa con λ de las primeras 5 entradas",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -104
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 114
-      }
-     ],
-     "steps": [
-      -104,
-      -102,
-      103,
-      108,
-      114,
-      null,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0,
-     "maxPrice": 118,
-     "why": "sin momio real: conviene si pagan -104 o mejor"
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "F5",
-    "market": "F5 Moneyline",
-    "pick": "CLE F5",
-    "line": null,
-    "p": 0.508,
-    "fair": -103.0,
-    "ic": 30.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa F5 (5.4)"
-    ],
-    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 7,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "YRFI",
-    "line": null,
-    "p": 0.4897,
-    "fair": 104.0,
-    "ic": 30.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 8,
-    "principal": false,
+    "rank": 2,
+    "principal": true,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Shawn Armstrong Over 1.5 K",
     "line": 1.5,
     "p": 0.5314,
     "fair": -113.0,
-    "ic": 29.3,
-    "level": "Muy baja",
-    "price": null,
+    "ic": 64.3,
+    "level": "Media",
+    "price": 178,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -323,7 +140,190 @@
      "h": 0.9533,
      "r": 1.0,
      "maxPrice": 131,
-     "why": "sin momio real: conviene si pagan +114 o mejor"
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.6076,
+    "fair": -155.0,
+    "ic": 58.7,
+    "level": "Media",
+    "price": -110,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
+    "family": "F5 total",
+    "market": "Total primeras 5",
+    "pick": "F5 Over 3.5",
+    "line": 3.5,
+    "p": 0.5748,
+    "fair": -135.0,
+    "ic": 45.9,
+    "level": "Baja",
+    "price": -115,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa con λ de las primeras 5 entradas",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -111
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 106
+      }
+     ],
+     "steps": [
+      -111,
+      -109,
+      -103,
+      101,
+      106,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0,
+     "maxPrice": 110,
+     "why": "confianza menor a 55 con ese momio"
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "TB",
+    "line": null,
+    "p": 0.5056,
+    "fair": -102.0,
+    "ic": 44.9,
+    "level": "Baja",
+    "price": -114,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.0% · Elo + abridor (5.7.7) 50.1% · λ + Binomial Negativa (5.3 · 5.7.5) 50.5%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "CLE +1.5",
+    "line": null,
+    "p": 0.6561,
+    "fair": -191.0,
+    "ic": 34.2,
+    "level": "Muy baja",
+    "price": -197,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "F5",
+    "market": "F5 Moneyline",
+    "pick": "CLE F5",
+    "line": null,
+    "p": 0.508,
+    "fair": -103.0,
+    "ic": 30.9,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Binomial Negativa F5 (5.4)"
+    ],
+    "how": "Binomial Negativa de las primeras 5 entradas (sobredispersión medida), empates como push",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "el guion del partido no acompaña",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.4897,
+    "fair": 104.0,
+    "ic": 30.9,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
     }
    },
    {
@@ -382,13 +382,13 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Prop de ponches: conviene si pagan -125 o mejor (stake 1); stake 5 desde -105",
+   "why": "con el momio de referencia (+108) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -101 o menos ya pasa el filtro",
    "source": "Framework v2",
    "pick": "Nick Martinez Over 2.5 K",
-   "waitFor": "momio",
+   "waitFor": "verificar",
    "market": "Prop de ponches",
    "p": 0.6003,
-   "ic": 34.8,
+   "ic": 69.6,
    "level": 0,
    "amount": 0,
    "minPrice": -125,

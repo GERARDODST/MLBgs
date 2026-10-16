@@ -66,6 +66,17 @@
    "kind": "decision",
    "pk": 849817,
    "text": "Decisión: esperar dato (Over 6.5) → esperar momio (Nick Martinez Over 2.5 K) · tras: abridor"
+  },
+  {
+   "after": "esperar verificar (Nick Martinez Over 2.5 K)",
+   "at": "2026-10-16T14:58:55Z",
+   "before": "esperar momio (Nick Martinez Over 2.5 K)",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849817,
+   "text": "Decisión: esperar momio (Nick Martinez Over 2.5 K) → esperar verificar (Nick Martinez Over 2.5 K) · tras: abridor"
   }
  ],
  "snap": {
@@ -152,7 +163,7 @@
     "level": 0,
     "pick": "Nick Martinez Over 2.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Scheduled",
    "home": 114,
