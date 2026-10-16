@@ -77,6 +77,38 @@
    "kind": "decision",
    "pk": 849817,
    "text": "Decisión: esperar momio (Nick Martinez Over 2.5 K) → esperar verificar (Nick Martinez Over 2.5 K) · tras: abridor"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-16T20:05:14Z",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849817,
+   "side": "home",
+   "text": "Lineup confirmado (CLE)"
+  },
+  {
+   "after": "Mark Ripperger",
+   "at": "2026-10-16T20:05:14Z",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849817,
+   "text": "Umpire de home asignado: Mark Ripperger"
+  },
+  {
+   "after": "apostar F5 Over 3.5 · stake 1",
+   "at": "2026-10-16T20:05:07Z",
+   "before": "esperar verificar (Nick Martinez Over 2.5 K)",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849817,
+   "text": "Decisión: esperar verificar (Nick Martinez Over 2.5 K) → apostar F5 Over 3.5 · stake 1 · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -160,18 +192,38 @@
   "849817": {
    "away": 139,
    "dec": {
-    "level": 0,
-    "pick": "Nick Martinez Over 2.5 K",
-    "status": "esperar",
-    "waitFor": "verificar"
+    "level": 1,
+    "pick": "F5 Over 3.5",
+    "status": "apostar",
+    "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 114,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     680757,
+     608070,
+     800050,
+     666176,
+     663993,
+     683953,
+     672275,
+     690984,
+     677587
+    ]
    },
-   "names": {},
+   "names": {
+    "608070": "José Ramírez",
+    "663993": "Nathaniel Lowe",
+    "666176": "Jo Adell",
+    "672275": "Patrick Bailey",
+    "677587": "Brayan Rocchio",
+    "680757": "Steven Kwan",
+    "683953": "Travis Bazzana",
+    "690984": "Petey Halpin",
+    "800050": "Chase DeLauter"
+   },
    "odds": {
     "line": 6.5,
     "ml": {
@@ -244,13 +296,19 @@
     "945538",
     "945539"
    ],
-   "ump": null,
+   "ump": "Mark Ripperger",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Cloudy",
+    "dir": "cruzado",
+    "speed": 9,
+    "temp": 59.0
+   }
   }
  }
 }
