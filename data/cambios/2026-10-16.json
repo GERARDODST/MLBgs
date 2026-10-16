@@ -109,6 +109,17 @@
    "kind": "decision",
    "pk": 849817,
    "text": "Decisión: esperar verificar (Nick Martinez Over 2.5 K) → apostar F5 Over 3.5 · stake 1 · tras: lineup, umpire"
+  },
+  {
+   "after": "apostar F5 Over 3.5 · stake 2",
+   "at": "2026-10-16T20:18:55Z",
+   "before": "apostar F5 Over 3.5 · stake 1",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849817,
+   "text": "Decisión: apostar F5 Over 3.5 · stake 1 → apostar F5 Over 3.5 · stake 2 · tras: lineup, umpire"
   }
  ],
  "snap": {
@@ -192,7 +203,7 @@
   "849817": {
    "away": 139,
    "dec": {
-    "level": 1,
+    "level": 2,
     "pick": "F5 Over 3.5",
     "status": "apostar",
     "waitFor": null

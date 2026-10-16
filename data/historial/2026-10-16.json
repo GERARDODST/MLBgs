@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-16T20:05:07+00:00",
+  "registeredAt": "2026-10-16T20:18:55+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4981,
@@ -81,16 +81,16 @@
     "line": 3.5,
     "p": 0.5832,
     "fair": -140.0,
-    "ic": 48.3,
+    "ic": 51.5,
     "level": "Baja",
-    "price": -115,
+    "price": -110,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "level": 1,
+     "level": 2,
      "ladder": [
       {
        "level": 1,
@@ -336,14 +336,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-115)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-110)",
    "source": "Framework v2",
    "pick": "F5 Over 3.5",
    "market": "Total primeras 5",
    "p": 0.5832,
-   "ic": 48.3,
-   "level": 1,
-   "amount": 500,
+   "ic": 51.5,
+   "level": 2,
+   "amount": 625,
    "minPrice": -115,
    "ladder": [
     {
