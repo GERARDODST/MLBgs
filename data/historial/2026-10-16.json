@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-16T14:58:55+00:00",
+  "registeredAt": "2026-10-16T18:00:01+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4944,
@@ -55,9 +55,9 @@
     "line": 2.5,
     "p": 0.6003,
     "fair": -150.0,
-    "ic": 69.6,
+    "ic": 69.0,
     "level": "Media",
-    "price": 108,
+    "price": 107,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -100,61 +100,15 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Shawn Armstrong Over 1.5 K",
-    "line": 1.5,
-    "p": 0.5314,
-    "fair": -113.0,
-    "ic": 64.3,
-    "level": "Media",
-    "price": 178,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": 114
-      }
-     ],
-     "steps": [
-      114,
-      117,
-      123,
-      129,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0,
-     "maxPrice": 131,
-     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "Total",
     "market": "Total completo",
     "pick": "Over 6.5",
     "line": 6.5,
     "p": 0.6076,
     "fair": -155.0,
-    "ic": 58.7,
-    "level": "Media",
-    "price": -110,
+    "ic": 53.6,
+    "level": "Baja",
+    "price": -118,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -170,7 +124,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 3,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -221,7 +175,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 4,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -231,7 +185,7 @@
     "fair": -102.0,
     "ic": 44.9,
     "level": "Baja",
-    "price": -114,
+    "price": -112,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -249,7 +203,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 5,
     "principal": false,
     "family": "RL",
     "market": "Run Line",
@@ -275,7 +229,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 6,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -301,7 +255,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 7,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
@@ -324,6 +278,52 @@
      "a": 1.0,
      "h": 0.9533,
      "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Shawn Armstrong Over 1.5 K",
+    "line": 1.5,
+    "p": 0.5314,
+    "fair": -113.0,
+    "ic": 29.3,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 114
+      }
+     ],
+     "steps": [
+      114,
+      117,
+      123,
+      129,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0,
+     "maxPrice": 131,
+     "why": "sin momio real: conviene si pagan +114 o mejor"
     }
    },
    {
@@ -382,13 +382,13 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "con el momio de referencia (+108) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -101 o menos ya pasa el filtro",
+   "why": "con el momio de referencia (+107) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -101 o menos ya pasa el filtro",
    "source": "Framework v2",
    "pick": "Nick Martinez Over 2.5 K",
    "waitFor": "verificar",
    "market": "Prop de ponches",
    "p": 0.6003,
-   "ic": 69.6,
+   "ic": 69.0,
    "level": 0,
    "amount": 0,
    "minPrice": -125,

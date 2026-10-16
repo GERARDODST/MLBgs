@@ -13,7 +13,7 @@
    "books": {
     "betmgm": {
      "last": {
-      "at": "2026-10-16T14:59:03Z",
+      "at": "2026-10-16T18:00:10Z",
       "f5": {
        "ml": {},
        "total": {
@@ -74,7 +74,7 @@
     },
     "betonlineag": {
      "last": {
-      "at": "2026-10-16T14:59:03Z",
+      "at": "2026-10-16T18:00:10Z",
       "f5": {
        "ml": {},
        "total": {
@@ -92,11 +92,11 @@
        "nick martinez": {
         "over": {
          "point": 2.5,
-         "price": 113
+         "price": 104
         },
         "under": {
          "point": 2.5,
-         "price": -147
+         "price": -135
         }
        }
       }
@@ -172,7 +172,7 @@
     },
     "bovada": {
      "last": {
-      "at": "2026-10-16T14:59:03Z",
+      "at": "2026-10-16T18:00:10Z",
       "f5": {
        "ml": {},
        "total": {
@@ -183,6 +183,18 @@
         "under": {
          "point": 3.5,
          "price": -110
+        }
+       }
+      },
+      "k": {
+       "nick martinez": {
+        "over": {
+         "point": 2.5,
+         "price": 115
+        },
+        "under": {
+         "point": 2.5,
+         "price": -150
         }
        }
       }
@@ -202,6 +214,18 @@
          "price": -110
         }
        }
+      },
+      "k": {
+       "nick martinez": {
+        "over": {
+         "point": 2.5,
+         "price": 115
+        },
+        "under": {
+         "point": 2.5,
+         "price": -150
+        }
+       }
       }
      },
      "src": "the-odds-api",
@@ -209,32 +233,22 @@
     },
     "draftkings": {
      "last": {
-      "at": "2026-10-16T14:59:03Z",
+      "at": "2026-10-16T18:00:10Z",
       "k": {
        "nick martinez": {
         "over": {
          "point": 2.5,
-         "price": 108
+         "price": 118
         },
         "under": {
          "point": 2.5,
-         "price": -137
-        }
-       },
-       "shawn armstrong": {
-        "over": {
-         "point": 1.5,
-         "price": 178
-        },
-        "under": {
-         "point": 1.5,
-         "price": -231
+         "price": -150
         }
        }
       },
       "ml": {
-       "away": -114,
-       "home": -106
+       "away": -112,
+       "home": -108
       },
       "rl": {
        "away": {
@@ -249,11 +263,11 @@
       "total": {
        "over": {
         "point": 6.5,
-        "price": -110
+        "price": -118
        },
        "under": {
         "point": 6.5,
-        "price": -110
+        "price": -102
        }
       }
      },
@@ -312,7 +326,7 @@
     },
     "fanduel": {
      "last": {
-      "at": "2026-10-16T14:59:03Z",
+      "at": "2026-10-16T18:00:10Z",
       "f5": {
        "ml": {},
        "total": {
@@ -330,11 +344,11 @@
        "nick martinez": {
         "over": {
          "point": 2.5,
-         "price": 102
+         "price": 100
         },
         "under": {
          "point": 2.5,
-         "price": -130
+         "price": -128
         }
        }
       }
@@ -373,16 +387,16 @@
     },
     "mybookieag": {
      "last": {
-      "at": "2026-10-16T14:59:03Z",
+      "at": "2026-10-16T18:00:10Z",
       "k": {
        "nick martinez": {
         "over": {
          "point": 2.5,
-         "price": 108
+         "price": 100
         },
         "under": {
          "point": 2.5,
-         "price": -149
+         "price": -138
         }
        }
       }
@@ -407,7 +421,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-10-16T14:59:03Z",
+   "checked": "2026-10-16T18:00:10Z",
    "espn": "401908026",
    "home": 114,
    "pk": 849817,
@@ -417,7 +431,7 @@
    ],
    "start": "2026-10-17T00:00:00Z",
    "theAt": {
-    "pitcher_strikeouts": "2026-10-16T14:59:03Z",
+    "pitcher_strikeouts": "2026-10-16T18:00:10Z",
     "totals_1st_5_innings": "2026-10-16T14:59:03Z"
    },
    "theEmpty": {
@@ -425,12 +439,12 @@
     "totals_1st_5_innings": 0
    },
    "theGot": {
-    "pitcher_strikeouts": 5,
+    "pitcher_strikeouts": 6,
     "totals_1st_5_innings": 5
    },
    "theId": "b9d2e07cf437b5643307aba274c45a74",
    "theN": {
-    "pitcher_strikeouts": 1,
+    "pitcher_strikeouts": 2,
     "totals_1st_5_innings": 1
    },
    "theSwapped": false
