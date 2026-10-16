@@ -3,34 +3,34 @@
 "pk": 849817,
 "date": "2026-10-16",
 "time": "2026-10-17T00:00:00Z",
-"generatedAt": "2026-10-16T10:32:15+00:00",
+"generatedAt": "2026-10-16T14:33:05+00:00",
 "away": "TB",
 "home": "CLE",
-"pHome": 0.5025,
+"pHome": 0.4944,
 "methods": {
 "log5": 0.4901,
-"elo": 0.5201,
-"lambda": 0.4974
+"elo": 0.4985,
+"lambda": 0.4947
 },
 "confidence": "alta",
-"projAway": 4.0843,
+"projAway": 4.1117,
 "projHome": 4.0707,
-"total": 8.155,
-"f5Away": 2.2391,
+"total": 8.1824,
+"f5Away": 2.2786,
 "f5Home": 2.329,
-"nrfi": 0.5259,
-"pOver85": 0.414,
+"nrfi": 0.5103,
+"pOver85": 0.4166,
 "probables": {
 "away": "Nick Martinez",
-"home": "Por anunciar"
+"home": "Shawn Armstrong"
 },
 "light": "Amarillo",
 "best": {
 "market": "Total",
 "pick": "Over 6.5",
-"p": 0.6051,
+"p": 0.6076,
 "price": -110,
-"edge": 0.0813,
+"edge": 0.0838,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -38,31 +38,30 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 6.5",
-"p": 0.6051,
+"p": 0.6076,
 "line": 6.5,
-"ic": 58.079,
+"ic": 58.6527,
 "level": "Media"
 },
 {
 "family": "ML",
 "market": "Moneyline",
-"pick": "CLE",
-"p": 0.5025,
+"pick": "TB",
+"p": 0.5056,
 "line": null,
-"ic": 40.6065,
+"ic": 44.9423,
 "level": "Baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 6.5",
+"waitFor": "momio",
+"family": "K",
+"pick": "Nick Martinez Over 2.5 K",
 "level": 0,
 "alts": [
-"ML",
 "K",
-"RL"
+"F5 total"
 ]
 }
 },

@@ -43,6 +43,29 @@
    "kind": "horario",
    "pk": 849817,
    "text": "Cambia la hora del partido (+120 min)"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Shawn Armstrong",
+   "at": "2026-10-16T14:33:14Z",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849817,
+   "side": "home",
+   "text": "Abridor anunciado (CLE): Shawn Armstrong"
+  },
+  {
+   "after": "esperar momio (Nick Martinez Over 2.5 K)",
+   "at": "2026-10-16T14:33:05Z",
+   "before": "esperar dato (Over 6.5)",
+   "date": "2026-10-16",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849817,
+   "text": "Decisión: esperar dato (Over 6.5) → esperar momio (Nick Martinez Over 2.5 K) · tras: abridor"
   }
  ],
  "snap": {
@@ -127,9 +150,9 @@
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "Over 6.5",
+    "pick": "Nick Martinez Over 2.5 K",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 114,
@@ -152,7 +175,10 @@
      "id": 607259,
      "name": "Nick Martinez"
     },
-    "home": null
+    "home": {
+     "id": 542888,
+     "name": "Shawn Armstrong"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-15T04:01:47Z",
