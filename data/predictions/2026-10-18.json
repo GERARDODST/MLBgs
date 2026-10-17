@@ -3,32 +3,32 @@
 "pk": 849817,
 "date": "2026-10-18",
 "time": "2026-10-18T21:08:00Z",
-"generatedAt": "2026-10-17T21:27:46+00:00",
+"generatedAt": "2026-10-17T23:54:57+00:00",
 "away": "TB",
 "home": "CLE",
-"pHome": 0.481,
+"pHome": 0.4808,
 "methods": {
 "log5": 0.4901,
 "elo": 0.4731,
-"lambda": 0.4798
+"lambda": 0.4793
 },
 "confidence": "alta",
-"projAway": 4.1903,
-"projHome": 3.9967,
-"total": 8.187,
-"f5Away": 2.2972,
-"f5Home": 2.2222,
-"nrfi": 0.5317,
-"pOver85": 0.417,
+"projAway": 4.0843,
+"projHome": 3.8894,
+"total": 7.9737,
+"f5Away": 2.2391,
+"f5Home": 2.1625,
+"nrfi": 0.5406,
+"pOver85": 0.3971,
 "probables": {
 "away": "Por anunciar",
 "home": "Por anunciar"
 },
 "light": "Rojo",
 "best": {
-"market": "NRFI/YRFI",
-"pick": "NRFI",
-"p": 0.5317,
+"market": "Team total",
+"pick": "CLE Under 3.5",
+"p": 0.5277,
 "price": null,
 "edge": null,
 "light": "Rojo"
@@ -38,18 +38,18 @@
 "family": "ML",
 "market": "Moneyline",
 "pick": "TB",
-"p": 0.519,
+"p": 0.5192,
 "line": null,
-"ic": 41.9688,
+"ic": 40.7688,
 "level": "Baja"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "TB +1.5",
-"p": 0.6721,
-"line": null,
-"ic": 33.0,
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 7.5",
+"p": 0.5109,
+"line": 7.5,
+"ic": 31.8,
 "level": "Muy baja"
 }
 ],
@@ -60,9 +60,9 @@
 "pick": "TB",
 "level": 0,
 "alts": [
-"RL",
 "Total",
-"F5 total"
+"F5 total",
+"Team total"
 ]
 }
 }
