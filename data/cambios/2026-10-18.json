@@ -1,6 +1,50 @@
 {
  "date": "2026-10-18",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-17T21:27:53Z",
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849817,
+   "side": "away",
+   "text": "Lineup confirmado (TB)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-17T21:27:53Z",
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849817,
+   "side": "home",
+   "text": "Lineup confirmado (CLE)"
+  },
+  {
+   "after": "Mark Ripperger",
+   "at": "2026-10-17T21:27:53Z",
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849817,
+   "text": "Umpire de home asignado: Mark Ripperger"
+  },
+  {
+   "after": "Delayed Start",
+   "at": "2026-10-17T21:27:53Z",
+   "before": "Scheduled",
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "alto",
+   "kind": "horario",
+   "pk": 849817,
+   "text": "Estado del partido: Delayed Start"
+  }
+ ],
  "snap": {
   "849817": {
    "away": 139,
@@ -10,13 +54,52 @@
     "status": "esperar",
     "waitFor": "dato"
    },
-   "detailed": "Scheduled",
+   "detailed": "Delayed Start",
    "home": 114,
    "lu": {
-    "away": [],
-    "home": []
+    "away": [
+     650490,
+     666018,
+     802415,
+     691406,
+     689414,
+     683748,
+     676356,
+     680700,
+     670764
+    ],
+    "home": [
+     680757,
+     608070,
+     800050,
+     666176,
+     663993,
+     683953,
+     672275,
+     690984,
+     677587
+    ]
    },
-   "names": {},
+   "names": {
+    "608070": "José Ramírez",
+    "650490": "Yandy Díaz",
+    "663993": "Nathaniel Lowe",
+    "666018": "Jonathan Aranda",
+    "666176": "Jo Adell",
+    "670764": "Taylor Walls",
+    "672275": "Patrick Bailey",
+    "676356": "Jonny DeLuca",
+    "677587": "Brayan Rocchio",
+    "680700": "Richie Palacios",
+    "680757": "Steven Kwan",
+    "683748": "Victor Mesa Jr.",
+    "683953": "Travis Bazzana",
+    "689414": "Liam Hicks",
+    "690984": "Petey Halpin",
+    "691406": "Junior Caminero",
+    "800050": "Chase DeLauter",
+    "802415": "Chandler Simpson"
+   },
    "prob": {
     "away": null,
     "home": null
@@ -70,8 +153,14 @@
     "945538",
     "945539"
    ],
-   "ump": null,
-   "wx": {}
+   "ump": "Mark Ripperger",
+   "wx": {
+    "closed": false,
+    "cond": "Cloudy",
+    "dir": "cruzado",
+    "speed": 9,
+    "temp": 59.0
+   }
   }
  }
 }
