@@ -474,7 +474,7 @@
   ],
   "source": "modelo",
   "registeredAt": "2026-10-15T19:54:41+00:00",
-  "status": "abierto",
+  "status": "cerrado",
   "pred": {
    "pHome": 0.5044,
    "projAway": 4.55,
@@ -715,6 +715,16 @@
    "amount": 0,
    "minPrice": null,
    "ladder": []
+  },
+  "lock": {
+   "at": "2026-10-17T01:06:44+00:00",
+   "hash": "29c68280785c40cc174b115d0e602d971bc8da503129cd4c11b80c9150014117",
+   "algo": {
+    "version": "2026.09.30",
+    "code": "9e5e812e949e"
+   },
+   "expediente": "data/expedientes/2026-10-16/849808.json.gz",
+   "coincide": true
   }
  }
 ]
