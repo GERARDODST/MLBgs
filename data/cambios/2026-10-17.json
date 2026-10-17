@@ -78,6 +78,27 @@
    "kind": "decision",
    "pk": 849816,
    "text": "Decisión: apostar F5 Over 3.5 · stake 4 → apostar F5 Over 3.5 · stake 2"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-17T20:04:53Z",
+   "date": "2026-10-17",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849816,
+   "side": "home",
+   "text": "Lineup confirmado (CLE)"
+  },
+  {
+   "after": "Mark Ripperger",
+   "at": "2026-10-17T20:04:53Z",
+   "date": "2026-10-17",
+   "game": "TB @ CLE",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849816,
+   "text": "Umpire de home asignado: Mark Ripperger"
   }
  ],
  "snap": {
@@ -89,13 +110,33 @@
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 114,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     680757,
+     608070,
+     800050,
+     666176,
+     663993,
+     683953,
+     672275,
+     690984,
+     677587
+    ]
    },
-   "names": {},
+   "names": {
+    "608070": "José Ramírez",
+    "663993": "Nathaniel Lowe",
+    "666176": "Jo Adell",
+    "672275": "Patrick Bailey",
+    "677587": "Brayan Rocchio",
+    "680757": "Steven Kwan",
+    "683953": "Travis Bazzana",
+    "690984": "Petey Halpin",
+    "800050": "Chase DeLauter"
+   },
    "odds": {
     "line": 6.5,
     "ml": {
@@ -166,13 +207,19 @@
     "945538",
     "945539"
    ],
-   "ump": null,
+   "ump": "Mark Ripperger",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": false,
+    "cond": "Partly Cloudy",
+    "dir": "cruzado",
+    "speed": 9,
+    "temp": 51.0
+   }
   }
  }
 }
