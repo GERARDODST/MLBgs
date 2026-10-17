@@ -2,8 +2,8 @@
 {
 "pk": 849816,
 "date": "2026-10-17",
-"time": "2026-10-18T00:00:00Z",
-"generatedAt": "2026-10-17T11:42:23+00:00",
+"time": "2026-10-18T00:08:00Z",
+"generatedAt": "2026-10-17T12:38:11+00:00",
 "away": "TB",
 "home": "CLE",
 "pHome": 0.4944,
@@ -35,6 +35,15 @@
 },
 "topPicks": [
 {
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Nick Martinez Over 2.5 K",
+"p": 0.6003,
+"line": 2.5,
+"ic": 69.775,
+"level": "Media"
+},
+{
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 6.5",
@@ -42,26 +51,18 @@
 "line": 6.5,
 "ic": 59.9881,
 "level": "Media"
-},
-{
-"family": "ML",
-"market": "Moneyline",
-"pick": "TB",
-"p": 0.5056,
-"line": null,
-"ic": 44.9423,
-"level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
-"family": "K",
-"pick": "Nick Martinez Over 2.5 K",
-"level": 0,
+"status": "apostar",
+"waitFor": null,
+"family": "F5 total",
+"pick": "F5 Over 3.5",
+"level": 4,
 "alts": [
 "K",
-"F5 total"
+"Total",
+"ML"
 ]
 }
 }

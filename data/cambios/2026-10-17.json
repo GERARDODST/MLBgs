@@ -56,16 +56,27 @@
    "kind": "momio",
    "pk": 849816,
    "text": "La línea del total pasa de 7.0 a 6.5"
+  },
+  {
+   "after": "apostar F5 Over 3.5 · stake 4",
+   "at": "2026-10-17T12:38:11Z",
+   "before": "esperar momio (Nick Martinez Over 2.5 K)",
+   "date": "2026-10-17",
+   "game": "TB @ CLE",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849816,
+   "text": "Decisión: esperar momio (Nick Martinez Over 2.5 K) → apostar F5 Over 3.5 · stake 4 · tras: momio"
   }
  ],
  "snap": {
   "849816": {
    "away": 139,
    "dec": {
-    "level": 0,
-    "pick": "Nick Martinez Over 2.5 K",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 4,
+    "pick": "F5 Over 3.5",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 114,
@@ -95,7 +106,7 @@
    },
    "probChangedAt": null,
    "since": "2026-10-16T04:01:26Z",
-   "time": "2026-10-18T00:00:00Z",
+   "time": "2026-10-18T00:08:00Z",
    "tx": [
     "943931",
     "943932",
