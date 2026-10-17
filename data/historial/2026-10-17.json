@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-17T12:38:11+00:00",
+  "registeredAt": "2026-10-17T15:39:23+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4944,
@@ -100,32 +100,6 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.5",
-    "line": 6.5,
-    "p": 0.6076,
-    "fair": -155.0,
-    "ic": 60.0,
-    "level": "Media",
-    "price": -108,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
@@ -174,6 +148,32 @@
     }
    },
    {
+    "rank": 3,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.6076,
+    "fair": -155.0,
+    "ic": 57.3,
+    "level": "Media",
+    "price": -112,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
+    }
+   },
+   {
     "rank": 4,
     "principal": false,
     "family": "ML",
@@ -184,7 +184,7 @@
     "fair": -102.0,
     "ic": 44.9,
     "level": "Baja",
-    "price": -116,
+    "price": -114,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -210,9 +210,9 @@
     "line": null,
     "p": 0.6561,
     "fair": -191.0,
-    "ic": 35.5,
+    "ic": 34.2,
     "level": "Muy baja",
-    "price": -187,
+    "price": -193,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
