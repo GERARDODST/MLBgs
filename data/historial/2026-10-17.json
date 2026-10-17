@@ -29,21 +29,21 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-17T20:04:43+00:00",
+  "registeredAt": "2026-10-17T20:46:13+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.4981,
-   "projAway": 4.11,
+   "pHome": 0.4947,
+   "projAway": 4.22,
    "projHome": 4.18,
-   "total": 8.29,
-   "nrfi": 0.5055,
+   "total": 8.4,
+   "nrfi": 0.5012,
    "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Nick Martinez",
     "home": "Shawn Armstrong"
    },
-   "lineups": "Proyectados"
+   "lineups": "Confirmados"
   },
   "picks": [
    {
@@ -55,7 +55,7 @@
     "line": 2.5,
     "p": 0.523,
     "fair": -110.0,
-    "ic": 60.5,
+    "ic": 65.0,
     "level": "Media",
     "price": 130,
     "methods": [
@@ -64,12 +64,36 @@
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
+     "level": 6,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 103
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 119
+      }
+     ],
+     "steps": [
+      103,
+      103,
+      108,
+      113,
+      119,
+      125,
+      131,
+      null,
+      null,
+      null
+     ],
+     "block": null,
      "a": 1.0,
      "h": 0.9533,
-     "r": 1.0
+     "r": 1.0,
+     "maxPrice": 136
     }
    },
    {
@@ -79,9 +103,9 @@
     "market": "Total completo",
     "pick": "Over 6.5",
     "line": 6.5,
-    "p": 0.6179,
-    "fair": -162.0,
-    "ic": 60.3,
+    "p": 0.6275,
+    "fair": -168.0,
+    "ic": 64.4,
     "level": "Media",
     "price": -112,
     "methods": [
@@ -105,10 +129,10 @@
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
     "line": 3.5,
-    "p": 0.5832,
-    "fair": -140.0,
-    "ic": 52.2,
-    "level": "Baja",
+    "p": 0.5907,
+    "fair": -144.0,
+    "ic": 55.6,
+    "level": "Media",
     "price": -109,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
@@ -116,26 +140,26 @@
     "how": "Binomial Negativa con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "level": 2,
+     "level": 4,
      "ladder": [
       {
        "level": 1,
        "stake": 500,
-       "from": -115
+       "from": -124
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": 103
+       "from": -104
       }
      ],
      "steps": [
+      -124,
+      -121,
       -115,
-      -112,
-      -107,
-      -102,
-      103,
-      null,
+      -110,
+      -104,
+      101,
       null,
       null,
       null,
@@ -145,7 +169,7 @@
      "a": 1.0,
      "h": 0.9533,
      "r": 1.0,
-     "maxPrice": 106
+     "maxPrice": 103
     }
    },
    {
@@ -155,17 +179,17 @@
     "market": "Moneyline",
     "pick": "TB",
     "line": null,
-    "p": 0.5019,
-    "fair": -101.0,
-    "ic": 43.4,
+    "p": 0.5053,
+    "fair": -102.0,
+    "ic": 42.8,
     "level": "Baja",
-    "price": -114,
+    "price": -112,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.0% · Elo + abridor (5.7.7) 50.1% · λ + Binomial Negativa (5.3 · 5.7.5) 49.4%",
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 51.0% · Elo + abridor (5.7.7) 50.1% · λ + Binomial Negativa (5.3 · 5.7.5) 50.5%",
     "res": null,
     "stake": {
      "level": 0,
@@ -183,11 +207,11 @@
     "market": "Run Line",
     "pick": "CLE +1.5",
     "line": null,
-    "p": 0.6646,
-    "fair": -198.0,
-    "ic": 34.6,
+    "p": 0.6542,
+    "fair": -189.0,
+    "ic": 35.4,
     "level": "Muy baja",
-    "price": -197,
+    "price": -193,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -205,13 +229,115 @@
    {
     "rank": 6,
     "principal": false,
+    "family": "NRFI",
+    "market": "NRFI/YRFI",
+    "pick": "YRFI",
+    "line": null,
+    "p": 0.4988,
+    "fair": 100.0,
+    "ic": 35.4,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ calibrado a ceros reales (6.8)"
+    ],
+    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 117
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 139
+      }
+     ],
+     "steps": [
+      117,
+      120,
+      126,
+      132,
+      139,
+      146,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0,
+     "maxPrice": 150,
+     "why": "sin momio real: conviene si pagan +117 o mejor"
+    }
+   },
+   {
+    "rank": 7,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Shawn Armstrong Under 1.5 K",
+    "line": 1.5,
+    "p": 0.5038,
+    "fair": -102.0,
+    "ic": 33.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": 117
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 139
+      }
+     ],
+     "steps": [
+      117,
+      120,
+      126,
+      132,
+      139,
+      146,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0,
+     "maxPrice": 147,
+     "why": "sin momio real: conviene si pagan +117 o mejor"
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
     "family": "Team total",
     "market": "Team total TB",
     "pick": "TB Over 3.5",
     "line": 3.5,
-    "p": 0.5037,
-    "fair": -101.0,
-    "ic": 30.9,
+    "p": 0.5185,
+    "fair": -108.0,
+    "ic": 32.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -229,7 +355,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 9,
     "principal": false,
     "family": "Team total",
     "market": "Team total CLE",
@@ -237,7 +363,7 @@
     "line": 3.5,
     "p": 0.5136,
     "fair": -106.0,
-    "ic": 30.9,
+    "ic": 32.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -255,15 +381,15 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 10,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "CLE F5",
     "line": null,
-    "p": 0.518,
-    "fair": -107.0,
-    "ic": 30.9,
+    "p": 0.5087,
+    "fair": -104.0,
+    "ic": 32.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -279,82 +405,30 @@
      "h": 0.9533,
      "r": 1.0
     }
-   },
-   {
-    "rank": 9,
-    "principal": false,
-    "family": "NRFI",
-    "market": "NRFI/YRFI",
-    "pick": "YRFI",
-    "line": null,
-    "p": 0.4945,
-    "fair": 102.0,
-    "ic": 30.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ calibrado a ceros reales (6.8)"
-    ],
-    "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 10,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Shawn Armstrong Over 1.5 K",
-    "line": 1.5,
-    "p": 0.5314,
-    "fair": -113.0,
-    "ic": 29.3,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "el guion del partido no acompaña",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
-    }
    }
   ],
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-109)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+130)",
    "source": "Framework v2",
-   "pick": "F5 Over 3.5",
-   "market": "Total primeras 5",
-   "p": 0.5832,
-   "ic": 52.2,
-   "level": 2,
-   "amount": 625,
-   "minPrice": -115,
+   "pick": "Nick Martinez Over 2.5 K",
+   "market": "Prop de ponches",
+   "p": 0.523,
+   "ic": 65.0,
+   "level": 6,
+   "amount": 1100,
+   "minPrice": 103,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -115
+     "from": 103
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": 103
+     "from": 119
     }
    ]
   }
