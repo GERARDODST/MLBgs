@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-17T15:39:23+00:00",
+  "registeredAt": "2026-10-17T18:14:24+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4944,
@@ -57,7 +57,7 @@
     "fair": -150.0,
     "ic": 69.8,
     "level": "Media",
-    "price": 120,
+    "price": 130,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -100,22 +100,48 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.6076,
+    "fair": -155.0,
+    "ic": 57.3,
+    "level": "Media",
+    "price": -112,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
     "line": 3.5,
     "p": 0.5748,
     "fair": -135.0,
-    "ic": 58.2,
-    "level": "Media",
-    "price": 103,
+    "ic": 49.8,
+    "level": "Baja",
+    "price": -109,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "level": 4,
+     "level": 2,
      "ladder": [
       {
        "level": 1,
@@ -148,32 +174,6 @@
     }
    },
    {
-    "rank": 3,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.5",
-    "line": 6.5,
-    "p": 0.6076,
-    "fair": -155.0,
-    "ic": 57.3,
-    "level": "Media",
-    "price": -112,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 4,
     "principal": false,
     "family": "ML",
@@ -184,7 +184,7 @@
     "fair": -102.0,
     "ic": 44.9,
     "level": "Baja",
-    "price": -114,
+    "price": -112,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -212,7 +212,7 @@
     "fair": -191.0,
     "ic": 34.2,
     "level": "Muy baja",
-    "price": -193,
+    "price": -196,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -381,14 +381,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+103)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-109)",
    "source": "Framework v2",
    "pick": "F5 Over 3.5",
    "market": "Total primeras 5",
    "p": 0.5748,
-   "ic": 58.2,
-   "level": 4,
-   "amount": 875,
+   "ic": 49.8,
+   "level": 2,
+   "amount": 625,
    "minPrice": -111,
    "ladder": [
     {

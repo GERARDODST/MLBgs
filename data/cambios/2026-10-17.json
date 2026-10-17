@@ -67,13 +67,24 @@
    "kind": "decision",
    "pk": 849816,
    "text": "Decisión: esperar momio (Nick Martinez Over 2.5 K) → apostar F5 Over 3.5 · stake 4 · tras: momio"
+  },
+  {
+   "after": "apostar F5 Over 3.5 · stake 2",
+   "at": "2026-10-17T18:14:24Z",
+   "before": "apostar F5 Over 3.5 · stake 4",
+   "date": "2026-10-17",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849816,
+   "text": "Decisión: apostar F5 Over 3.5 · stake 4 → apostar F5 Over 3.5 · stake 2"
   }
  ],
  "snap": {
   "849816": {
    "away": 139,
    "dec": {
-    "level": 4,
+    "level": 2,
     "pick": "F5 Over 3.5",
     "status": "apostar",
     "waitFor": null
