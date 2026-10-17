@@ -3,7 +3,7 @@
 "pk": 849816,
 "date": "2026-10-17",
 "time": "2026-10-18T00:00:00Z",
-"generatedAt": "2026-10-17T01:30:23+00:00",
+"generatedAt": "2026-10-17T04:30:12+00:00",
 "away": "TB",
 "home": "CLE",
 "pHome": 0.4944,
@@ -24,16 +24,25 @@
 "away": "Nick Martinez",
 "home": "Shawn Armstrong"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "Prop pitcher",
-"pick": "Nick Martinez Over 2.5 K",
-"p": 0.6003,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.5648,
+"price": 100,
+"edge": 0.0648,
+"light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5648,
+"line": 7.0,
+"ic": 53.0991,
+"level": "Baja"
+},
 {
 "family": "ML",
 "market": "Moneyline",
@@ -41,15 +50,6 @@
 "p": 0.5056,
 "line": null,
 "ic": 44.9423,
-"level": "Baja"
-},
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 7.0",
-"p": 0.5648,
-"line": 7.0,
-"ic": 42.9247,
 "level": "Baja"
 }
 ],

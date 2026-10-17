@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-17T01:30:23+00:00",
+  "registeredAt": "2026-10-17T04:30:12+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4944,
@@ -37,7 +37,7 @@
    "projHome": 4.07,
    "total": 8.18,
    "nrfi": 0.5103,
-   "light": "Gris",
+   "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Nick Martinez",
@@ -49,6 +49,32 @@
    {
     "rank": 1,
     "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5648,
+    "fair": -130.0,
+    "ic": 53.1,
+    "level": "Baja",
+    "price": 100,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9533,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
     "family": "ML",
     "market": "Moneyline",
     "pick": "TB",
@@ -57,7 +83,7 @@
     "fair": -102.0,
     "ic": 44.9,
     "level": "Baja",
-    "price": -114,
+    "price": -117,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -75,21 +101,21 @@
     }
    },
    {
-    "rank": 2,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.0",
-    "line": 7.0,
-    "p": 0.5648,
-    "fair": -130.0,
-    "ic": 42.9,
-    "level": "Baja",
-    "price": -115,
+    "rank": 3,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "CLE +1.5",
+    "line": null,
+    "p": 0.6561,
+    "fair": -191.0,
+    "ic": 35.2,
+    "level": "Muy baja",
+    "price": -188,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
      "level": 0,
@@ -101,7 +127,7 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 4,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -149,32 +175,6 @@
      "r": 1.0,
      "maxPrice": -101,
      "why": "sin momio real: conviene si pagan -125 o mejor"
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "CLE +1.5",
-    "line": null,
-    "p": 0.6561,
-    "fair": -191.0,
-    "ic": 34.2,
-    "level": "Muy baja",
-    "price": -208,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9533,
-     "r": 1.0
     }
    },
    {
