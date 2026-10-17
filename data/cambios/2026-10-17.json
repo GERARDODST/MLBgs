@@ -1,14 +1,59 @@
 {
  "date": "2026-10-17",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Nick Martinez",
+   "at": "2026-10-17T01:30:28Z",
+   "date": "2026-10-17",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849816,
+   "side": "away",
+   "text": "Abridor anunciado (TB): Nick Martinez"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Shawn Armstrong",
+   "at": "2026-10-17T01:30:28Z",
+   "date": "2026-10-17",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849816,
+   "side": "home",
+   "text": "Abridor anunciado (CLE): Shawn Armstrong"
+  },
+  {
+   "at": "2026-10-17T01:30:28Z",
+   "date": "2026-10-17",
+   "game": "TB @ CLE",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849816,
+   "text": "Mercado abierto: TB -114 / CLE -106 · total 7.0"
+  },
+  {
+   "after": "esperar momio (Nick Martinez Over 2.5 K)",
+   "at": "2026-10-17T01:30:23Z",
+   "before": "esperar dato (TB)",
+   "date": "2026-10-17",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849816,
+   "text": "Decisión: esperar dato (TB) → esperar momio (Nick Martinez Over 2.5 K) · tras: abridor, momio"
+  }
+ ],
  "snap": {
   "849816": {
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "TB",
+    "pick": "Nick Martinez Over 2.5 K",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 114,
@@ -17,9 +62,24 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.0,
+    "ml": {
+     "away": -114,
+     "home": -106
+    },
+    "pHome": 0.4913,
+    "src": "draftkings"
+   },
    "prob": {
-    "away": null,
-    "home": null
+    "away": {
+     "id": 607259,
+     "name": "Nick Martinez"
+    },
+    "home": {
+     "id": 542888,
+     "name": "Shawn Armstrong"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-16T04:01:26Z",
@@ -73,6 +133,11 @@
     "945539"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   }
  }

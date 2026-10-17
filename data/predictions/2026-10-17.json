@@ -3,66 +3,65 @@
 "pk": 849816,
 "date": "2026-10-17",
 "time": "2026-10-18T00:00:00Z",
-"generatedAt": "2026-10-16T04:01:17+00:00",
+"generatedAt": "2026-10-17T01:30:23+00:00",
 "away": "TB",
 "home": "CLE",
-"pHome": 0.4808,
+"pHome": 0.4944,
 "methods": {
 "log5": 0.4901,
-"elo": 0.4731,
-"lambda": 0.4793
+"elo": 0.4985,
+"lambda": 0.4947
 },
 "confidence": "alta",
-"projAway": 4.0843,
-"projHome": 3.8894,
-"total": 7.9737,
-"f5Away": 2.2391,
-"f5Home": 2.1625,
-"nrfi": 0.5406,
-"pOver85": 0.3971,
+"projAway": 4.1117,
+"projHome": 4.0707,
+"total": 8.1824,
+"f5Away": 2.2786,
+"f5Home": 2.329,
+"nrfi": 0.5103,
+"pOver85": 0.4166,
 "probables": {
-"away": "Por anunciar",
-"home": "Por anunciar"
+"away": "Nick Martinez",
+"home": "Shawn Armstrong"
 },
-"light": "Rojo",
+"light": "Gris",
 "best": {
-"market": "Team total",
-"pick": "CLE Under 3.5",
-"p": 0.5277,
+"market": "Prop pitcher",
+"pick": "Nick Martinez Over 2.5 K",
+"p": 0.6003,
 "price": null,
 "edge": null,
-"light": "Rojo"
+"light": "Gris"
 },
 "topPicks": [
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "TB",
-"p": 0.5192,
+"p": 0.5056,
 "line": null,
-"ic": 40.7688,
+"ic": 44.9423,
 "level": "Baja"
 },
 {
 "family": "Total",
 "market": "Total completo",
-"pick": "Under 7.5",
-"p": 0.5109,
-"line": 7.5,
-"ic": 31.8,
-"level": "Muy baja"
+"pick": "Over 7.0",
+"p": 0.5648,
+"line": 7.0,
+"ic": 42.9247,
+"level": "Baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "ML",
-"pick": "TB",
+"waitFor": "momio",
+"family": "K",
+"pick": "Nick Martinez Over 2.5 K",
 "level": 0,
 "alts": [
-"Total",
-"F5 total",
-"Team total"
+"K",
+"F5 total"
 ]
 }
 }
