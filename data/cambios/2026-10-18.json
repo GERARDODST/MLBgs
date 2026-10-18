@@ -172,6 +172,18 @@
    "kind": "decision",
    "pk": 849817,
    "text": "Decisión: esperar verificar (Drew Rasmussen Under 5.5 K) → apostar Drew Rasmussen Under 5.5 K · stake 5"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 6.0,
+   "at": "2026-10-18T21:01:34Z",
+   "before": 6.5,
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849817,
+   "text": "La línea del total pasa de 6.5 a 6.0"
   }
  ],
  "snap": {
@@ -232,12 +244,12 @@
     "810938": "Ben Williamson"
    },
    "odds": {
-    "line": 6.5,
+    "line": 6.0,
     "ml": {
-     "away": -128,
-     "home": 107
+     "away": -122,
+     "home": 109
     },
-    "pHome": 0.4625,
+    "pHome": 0.4654,
     "src": "draftkings"
    },
    "prob": {
@@ -310,7 +322,7 @@
     "cond": "Clear",
     "dir": "cruzado",
     "speed": 8,
-    "temp": 60.0
+    "temp": 63.0
    }
   }
  }
