@@ -120,6 +120,28 @@
    "kind": "decision",
    "pk": 849817,
    "text": "Decisión: apostar Drew Rasmussen Under 5.5 K · stake 2 → no apostar"
+  },
+  {
+   "after": "Jordan Baker",
+   "at": "2026-10-18T17:11:27Z",
+   "before": "Mark Ripperger",
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "umpire",
+   "pk": 849817,
+   "text": "Cambio de umpire de home: Mark Ripperger → Jordan Baker"
+  },
+  {
+   "after": "esperar verificar (Drew Rasmussen Under 5.5 K)",
+   "at": "2026-10-18T17:11:20Z",
+   "before": "no apostar",
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849817,
+   "text": "Decisión: no apostar → esperar verificar (Drew Rasmussen Under 5.5 K) · tras: umpire"
   }
  ],
  "snap": {
@@ -127,11 +149,11 @@
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "Parker Messick Under 4.5 K",
-    "status": "no apostar",
-    "waitFor": null
+    "pick": "Drew Rasmussen Under 5.5 K",
+    "status": "esperar",
+    "waitFor": "verificar"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 114,
    "lu": {
     "away": [
@@ -245,7 +267,7 @@
     "945538",
     "945539"
    ],
-   "ump": "Mark Ripperger",
+   "ump": "Jordan Baker",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
@@ -253,10 +275,10 @@
    },
    "wx": {
     "closed": false,
-    "cond": "Cloudy",
+    "cond": "Clear",
     "dir": "cruzado",
-    "speed": 9,
-    "temp": 59.0
+    "speed": 5,
+    "temp": 62.0
    }
   }
  }
