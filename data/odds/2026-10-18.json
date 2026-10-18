@@ -6,16 +6,16 @@
    "books": {
     "betmgm": {
      "last": {
-      "at": "2026-10-18T09:45:01Z",
+      "at": "2026-10-18T15:20:52Z",
       "k": {
        "drew rasmussen": {
         "over": {
          "point": 5.5,
-         "price": -110
+         "price": 100
         },
         "under": {
          "point": 5.5,
-         "price": -120
+         "price": -135
         }
        },
        "parker messick": {
@@ -61,7 +61,7 @@
     },
     "betonlineag": {
      "last": {
-      "at": "2026-10-18T09:45:01Z",
+      "at": "2026-10-18T15:20:52Z",
       "f5": {
        "ml": {},
        "total": {
@@ -79,21 +79,21 @@
        "drew rasmussen": {
         "over": {
          "point": 5.5,
-         "price": -118
+         "price": 120
         },
         "under": {
          "point": 5.5,
-         "price": -110
+         "price": -156
         }
        },
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -120
+         "price": -125
         },
         "under": {
          "point": 4.5,
-         "price": -108
+         "price": -103
         }
        }
       }
@@ -142,7 +142,7 @@
     },
     "bovada": {
      "last": {
-      "at": "2026-10-18T09:45:01Z",
+      "at": "2026-10-18T15:20:52Z",
       "f5": {
        "ml": {},
        "total": {
@@ -160,21 +160,21 @@
        "drew rasmussen": {
         "over": {
          "point": 5.5,
-         "price": -115
+         "price": 100
         },
         "under": {
          "point": 5.5,
-         "price": -115
+         "price": -130
         }
        },
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -120
+         "price": -135
         },
         "under": {
          "point": 4.5,
-         "price": -110
+         "price": 105
         }
        }
       }
@@ -223,32 +223,32 @@
     },
     "draftkings": {
      "last": {
-      "at": "2026-10-18T12:45:46Z",
+      "at": "2026-10-18T15:20:52Z",
       "k": {
        "drew rasmussen": {
         "over": {
          "point": 5.5,
-         "price": -110
+         "price": -101
         },
         "under": {
          "point": 5.5,
-         "price": -116
+         "price": -127
         }
        },
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -117
+         "price": -130
         },
         "under": {
          "point": 4.5,
-         "price": -109
+         "price": 102
         }
        }
       },
       "ml": {
-       "away": -136,
-       "home": 113
+       "away": -132,
+       "home": 110
       },
       "rl": {
        "away": {
@@ -257,7 +257,7 @@
        },
        "home": {
         "point": 1.5,
-        "price": -163
+        "price": -164
        }
       },
       "total": {
@@ -321,12 +321,12 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
     },
     "fanduel": {
      "last": {
-      "at": "2026-10-18T09:45:01Z",
+      "at": "2026-10-18T15:20:52Z",
       "f5": {
        "ml": {},
        "total": {
@@ -344,21 +344,21 @@
        "drew rasmussen": {
         "over": {
          "point": 5.5,
-         "price": -115
+         "price": 104
         },
         "under": {
          "point": 5.5,
-         "price": -111
+         "price": -132
         }
        },
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -120
+         "price": -136
         },
         "under": {
          "point": 4.5,
-         "price": -108
+         "price": 106
         }
        }
       }
@@ -407,7 +407,7 @@
     },
     "mybookieag": {
      "last": {
-      "at": "2026-10-18T09:45:01Z",
+      "at": "2026-10-18T15:20:52Z",
       "f5": {
        "ml": {},
        "total": {
@@ -425,21 +425,21 @@
        "drew rasmussen": {
         "over": {
          "point": 5.5,
-         "price": -121
+         "price": 117
         },
         "under": {
          "point": 5.5,
-         "price": -114
+         "price": -163
         }
        },
        "parker messick": {
         "over": {
          "point": 4.5,
-         "price": -124
+         "price": -128
         },
         "under": {
          "point": 4.5,
-         "price": -111
+         "price": -107
         }
        }
       }
@@ -487,7 +487,7 @@
      "title": "MyBookie"
     }
    },
-   "checked": "2026-10-18T12:45:46Z",
+   "checked": "2026-10-18T15:20:52Z",
    "espn": "401930515",
    "home": 114,
    "pk": 849817,
@@ -497,7 +497,7 @@
    ],
    "start": "2026-10-18T21:08:00Z",
    "theAt": {
-    "pitcher_strikeouts": "2026-10-18T09:45:01Z",
+    "pitcher_strikeouts": "2026-10-18T15:20:52Z",
     "totals_1st_5_innings": "2026-10-18T09:45:01Z"
    },
    "theEmpty": {
@@ -510,7 +510,7 @@
    },
    "theId": "f4ca2d8a09898a94722dde0633e0a7e1",
    "theN": {
-    "pitcher_strikeouts": 1,
+    "pitcher_strikeouts": 2,
     "totals_1st_5_innings": 1
    },
    "theSwapped": false
