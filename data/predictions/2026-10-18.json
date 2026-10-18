@@ -3,7 +3,7 @@
 "pk": 849817,
 "date": "2026-10-18",
 "time": "2026-10-18T21:08:00Z",
-"generatedAt": "2026-10-17T23:54:57+00:00",
+"generatedAt": "2026-10-18T03:28:16+00:00",
 "away": "TB",
 "home": "CLE",
 "pHome": 0.4808,
@@ -24,16 +24,25 @@
 "away": "Por anunciar",
 "home": "Por anunciar"
 },
-"light": "Rojo",
+"light": "Amarillo",
 "best": {
-"market": "Team total",
-"pick": "CLE Under 3.5",
-"p": 0.5277,
-"price": null,
-"edge": null,
-"light": "Rojo"
+"market": "Total",
+"pick": "Over 6.5",
+"p": 0.5881,
+"price": -118,
+"edge": 0.0468,
+"light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.5",
+"p": 0.5881,
+"line": 6.5,
+"ic": 45.4499,
+"level": "Baja"
+},
 {
 "family": "ML",
 "market": "Moneyline",
@@ -42,27 +51,18 @@
 "line": null,
 "ic": 40.7688,
 "level": "Baja"
-},
-{
-"family": "Total",
-"market": "Total completo",
-"pick": "Under 7.5",
-"p": 0.5109,
-"line": 7.5,
-"ic": 31.8,
-"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "dato",
-"family": "ML",
-"pick": "TB",
+"family": "Total",
+"pick": "Over 6.5",
 "level": 0,
 "alts": [
-"Total",
-"F5 total",
-"Team total"
+"ML",
+"RL",
+"F5 total"
 ]
 }
 }

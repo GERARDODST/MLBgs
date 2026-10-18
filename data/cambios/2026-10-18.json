@@ -43,6 +43,26 @@
    "kind": "horario",
    "pk": 849817,
    "text": "Estado del partido: Delayed Start"
+  },
+  {
+   "at": "2026-10-18T03:28:20Z",
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849817,
+   "text": "Mercado abierto: TB -128 / CLE +107 · total 6.5"
+  },
+  {
+   "after": "esperar dato (Over 6.5)",
+   "at": "2026-10-18T03:28:16Z",
+   "before": "esperar dato (TB)",
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849817,
+   "text": "Decisión: esperar dato (TB) → esperar dato (Over 6.5) · tras: momio"
   }
  ],
  "snap": {
@@ -50,7 +70,7 @@
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "TB",
+    "pick": "Over 6.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -99,6 +119,15 @@
     "691406": "Junior Caminero",
     "800050": "Chase DeLauter",
     "802415": "Chandler Simpson"
+   },
+   "odds": {
+    "line": 6.5,
+    "ml": {
+     "away": -128,
+     "home": 107
+    },
+    "pHome": 0.4625,
+    "src": "draftkings"
    },
    "prob": {
     "away": null,
@@ -154,6 +183,11 @@
     "945539"
    ],
    "ump": "Mark Ripperger",
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {
     "closed": false,
     "cond": "Cloudy",
