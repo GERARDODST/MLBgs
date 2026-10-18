@@ -98,16 +98,27 @@
    "kind": "decision",
    "pk": 849817,
    "text": "Decisión: esperar dato (Over 6.5) → esperar momio (F5 Under 3.5) · tras: momio, abridor"
+  },
+  {
+   "after": "apostar Drew Rasmussen Under 5.5 K · stake 2",
+   "at": "2026-10-18T09:44:51Z",
+   "before": "esperar momio (F5 Under 3.5)",
+   "date": "2026-10-18",
+   "game": "TB @ CLE",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849817,
+   "text": "Decisión: esperar momio (F5 Under 3.5) → apostar Drew Rasmussen Under 5.5 K · stake 2"
   }
  ],
  "snap": {
   "849817": {
    "away": 139,
    "dec": {
-    "level": 0,
-    "pick": "F5 Under 3.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 2,
+    "pick": "Drew Rasmussen Under 5.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 114,
