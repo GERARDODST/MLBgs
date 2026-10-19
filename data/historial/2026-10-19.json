@@ -29,19 +29,19 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-18T04:09:40+00:00",
+  "registeredAt": "2026-10-19T00:26:22+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.5624,
-   "projAway": 3.79,
+   "pHome": 0.5481,
+   "projAway": 3.78,
    "projHome": 4.06,
-   "total": 7.84,
-   "nrfi": 0.5423,
-   "light": "Gris",
-   "confidence": "media",
+   "total": 7.83,
+   "nrfi": 0.5412,
+   "light": "Amarillo",
+   "confidence": "alta",
    "probables": {
     "away": "Por anunciar",
-    "home": "Por anunciar"
+    "home": "Freddy Peralta"
    },
    "lineups": "Proyectados"
   },
@@ -51,13 +51,13 @@
     "principal": true,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Under 7.5",
-    "line": 7.5,
-    "p": 0.5238,
-    "fair": -110.0,
-    "ic": 31.8,
-    "level": "Muy baja",
-    "price": null,
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.5745,
+    "fair": -135.0,
+    "ic": 46.6,
+    "level": "Baja",
+    "price": -114,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -75,13 +75,67 @@
    {
     "rank": 2,
     "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "TB",
+    "line": null,
+    "p": 0.5481,
+    "fair": -121.0,
+    "ic": 38.5,
+    "level": "Muy baja",
+    "price": -130,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.7% · Elo + abridor (5.7.7) 55.1% · λ + Binomial Negativa (5.3 · 5.7.5) 52.6%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9569,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Freddy Peralta Under 5.5 K",
+    "line": 5.5,
+    "p": 0.5681,
+    "fair": -132.0,
+    "ic": 34.8,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9569,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
     "line": 3.5,
-    "p": 0.5385,
+    "p": 0.5391,
     "fair": -117.0,
-    "ic": 31.8,
+    "ic": 34.4,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -99,15 +153,15 @@
     }
    },
    {
-    "rank": 3,
+    "rank": 5,
     "principal": false,
     "family": "Team total",
     "market": "Team total CLE",
     "pick": "CLE Under 3.5",
     "line": 3.5,
-    "p": 0.5426,
+    "p": 0.5441,
     "fair": -119.0,
-    "ic": 31.8,
+    "ic": 34.4,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -125,7 +179,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 6,
     "principal": false,
     "family": "Team total",
     "market": "Team total TB",
@@ -133,7 +187,7 @@
     "line": 3.5,
     "p": 0.5041,
     "fair": -102.0,
-    "ic": 31.8,
+    "ic": 34.4,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -151,69 +205,15 @@
     }
    },
    {
-    "rank": 5,
-    "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "TB",
-    "line": null,
-    "p": 0.5624,
-    "fair": -128.0,
-    "ic": 29.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 56.7% · Elo + abridor (5.7.7) 59.5% · λ + Binomial Negativa (5.3 · 5.7.5) 52.5%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9569,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "CLE +1.5",
-    "line": null,
-    "p": 0.6329,
-    "fair": -172.0,
-    "ic": 28.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9569,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 7,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "TB F5",
     "line": null,
-    "p": 0.576,
-    "fair": -136.0,
-    "ic": 28.5,
+    "p": 0.5753,
+    "fair": -135.0,
+    "ic": 34.4,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -233,13 +233,39 @@
    {
     "rank": 8,
     "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "CLE +1.5",
+    "line": null,
+    "p": 0.632,
+    "fair": -172.0,
+    "ic": 31.1,
+    "level": "Muy baja",
+    "price": -218,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9569,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 9,
+    "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
     "pick": "NRFI",
     "line": null,
-    "p": 0.5423,
-    "fair": -119.0,
-    "ic": 28.5,
+    "p": 0.5412,
+    "fair": -118.0,
+    "ic": 31.1,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -262,11 +288,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "Under 7.5",
+   "pick": "Over 6.5",
    "waitFor": "dato",
    "market": "Total completo",
-   "p": 0.5238,
-   "ic": 31.8,
+   "p": 0.5745,
+   "ic": 46.6,
    "level": 0,
    "amount": 0,
    "minPrice": null,

@@ -1,12 +1,45 @@
 {
  "date": "2026-10-19",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Freddy Peralta",
+   "at": "2026-10-19T00:26:29Z",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849815,
+   "side": "home",
+   "text": "Abridor anunciado (TB): Freddy Peralta"
+  },
+  {
+   "at": "2026-10-19T00:26:29Z",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849815,
+   "text": "Mercado abierto: CLE +108 / TB -130 · total 6.5"
+  },
+  {
+   "after": "esperar dato (Over 6.5)",
+   "at": "2026-10-19T00:26:22Z",
+   "before": "esperar dato (Under 7.5)",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849815,
+   "text": "Decisión: esperar dato (Under 7.5) → esperar dato (Over 6.5) · tras: abridor, momio"
+  }
+ ],
  "snap": {
   "849815": {
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "Under 7.5",
+    "pick": "Over 6.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -17,9 +50,21 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 6.5,
+    "ml": {
+     "away": 108,
+     "home": -130
+    },
+    "pHome": 0.5404,
+    "src": "draftkings"
+   },
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 642547,
+     "name": "Freddy Peralta"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-18T04:09:45Z",
@@ -71,6 +116,11 @@
     "945539"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   }
  }
