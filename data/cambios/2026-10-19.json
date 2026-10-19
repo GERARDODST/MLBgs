@@ -32,6 +32,16 @@
    "kind": "decision",
    "pk": 849815,
    "text": "Decisión: esperar dato (Under 7.5) → esperar dato (Over 6.5) · tras: abridor, momio"
+  },
+  {
+   "action": "Edge, índice de confianza y stake recalculados con el momio nuevo.",
+   "at": "2026-10-19T07:38:47Z",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849815,
+   "text": "El moneyline se mueve hacia TB (3.1 pp): CLE +108→+123, TB -130→-148"
   }
  ],
  "snap": {
@@ -53,10 +63,10 @@
    "odds": {
     "line": 6.5,
     "ml": {
-     "away": 108,
-     "home": -130
+     "away": 123,
+     "home": -148
     },
-    "pHome": 0.5404,
+    "pHome": 0.571,
     "src": "draftkings"
    },
    "prob": {
