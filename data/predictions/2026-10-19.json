@@ -3,34 +3,34 @@
 "pk": 849815,
 "date": "2026-10-19",
 "time": "2026-10-20T00:08:00Z",
-"generatedAt": "2026-10-19T14:27:54+00:00",
+"generatedAt": "2026-10-19T15:20:12+00:00",
 "away": "CLE",
 "home": "TB",
-"pHome": 0.5481,
+"pHome": 0.5548,
 "methods": {
 "log5": 0.5668,
-"elo": 0.5509,
-"lambda": 0.5264
+"elo": 0.5722,
+"lambda": 0.5254
 },
 "confidence": "alta",
 "projAway": 3.7757,
-"projHome": 4.0556,
-"total": 7.8313,
+"projHome": 4.0454,
+"total": 7.8211,
 "f5Away": 1.9412,
-"f5Home": 2.3984,
-"nrfi": 0.5412,
-"pOver85": 0.3838,
+"f5Home": 2.4006,
+"nrfi": 0.5302,
+"pOver85": 0.3829,
 "probables": {
-"away": "Por anunciar",
+"away": "Shawn Armstrong",
 "home": "Freddy Peralta"
 },
 "light": "Amarillo",
 "best": {
 "market": "Total",
 "pick": "Over 6.5",
-"p": 0.5745,
-"price": -118,
-"edge": 0.0332,
+"p": 0.5735,
+"price": -119,
+"edge": 0.0301,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -38,31 +38,31 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 6.5",
-"p": 0.5745,
+"p": 0.5735,
 "line": 6.5,
-"ic": 44.0754,
+"ic": 43.0143,
 "level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "TB",
-"p": 0.5481,
+"p": 0.5548,
 "line": null,
-"ic": 38.4744,
+"ic": 36.9789,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 6.5",
+"waitFor": "momio",
+"family": "K",
+"pick": "Freddy Peralta Under 5.5 K",
 "level": 0,
 "alts": [
-"ML",
 "K",
-"RL"
+"F5 total",
+"F5"
 ]
 }
 }

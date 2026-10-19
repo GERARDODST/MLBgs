@@ -42,6 +42,29 @@
    "kind": "momio",
    "pk": 849815,
    "text": "El moneyline se mueve hacia TB (3.1 pp): CLE +108→+123, TB -130→-148"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Shawn Armstrong",
+   "at": "2026-10-19T15:20:18Z",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849815,
+   "side": "away",
+   "text": "Abridor anunciado (CLE): Shawn Armstrong"
+  },
+  {
+   "after": "esperar momio (Freddy Peralta Under 5.5 K)",
+   "at": "2026-10-19T15:20:12Z",
+   "before": "esperar dato (Over 6.5)",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849815,
+   "text": "Decisión: esperar dato (Over 6.5) → esperar momio (Freddy Peralta Under 5.5 K) · tras: abridor"
   }
  ],
  "snap": {
@@ -49,9 +72,9 @@
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "Over 6.5",
+    "pick": "Freddy Peralta Under 5.5 K",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 139,
@@ -70,7 +93,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 542888,
+     "name": "Shawn Armstrong"
+    },
     "home": {
      "id": 642547,
      "name": "Freddy Peralta"
