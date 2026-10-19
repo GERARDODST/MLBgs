@@ -3,7 +3,7 @@
 "pk": 849815,
 "date": "2026-10-19",
 "time": "2026-10-20T00:08:00Z",
-"generatedAt": "2026-10-19T15:20:12+00:00",
+"generatedAt": "2026-10-19T15:46:01+00:00",
 "away": "CLE",
 "home": "TB",
 "pHome": 0.5548,
@@ -35,6 +35,15 @@
 },
 "topPicks": [
 {
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Freddy Peralta Over 3.5 K",
+"p": 0.7712,
+"line": 3.5,
+"ic": 69.8083,
+"level": "Media"
+},
+{
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 6.5",
@@ -42,27 +51,18 @@
 "line": 6.5,
 "ic": 43.0143,
 "level": "Baja"
-},
-{
-"family": "ML",
-"market": "Moneyline",
-"pick": "TB",
-"p": 0.5548,
-"line": null,
-"ic": 36.9789,
-"level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "momio",
+"waitFor": "verificar",
 "family": "K",
-"pick": "Freddy Peralta Under 5.5 K",
+"pick": "Freddy Peralta Over 3.5 K",
 "level": 0,
 "alts": [
-"K",
-"F5 total",
-"F5"
+"Total",
+"ML",
+"F5 total"
 ]
 }
 }

@@ -65,6 +65,17 @@
    "kind": "decision",
    "pk": 849815,
    "text": "Decisión: esperar dato (Over 6.5) → esperar momio (Freddy Peralta Under 5.5 K) · tras: abridor"
+  },
+  {
+   "after": "esperar verificar (Freddy Peralta Over 3.5 K)",
+   "at": "2026-10-19T15:46:01Z",
+   "before": "esperar momio (Freddy Peralta Under 5.5 K)",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849815,
+   "text": "Decisión: esperar momio (Freddy Peralta Under 5.5 K) → esperar verificar (Freddy Peralta Over 3.5 K) · tras: abridor"
   }
  ],
  "snap": {
@@ -72,9 +83,9 @@
    "away": 114,
    "dec": {
     "level": 0,
-    "pick": "Freddy Peralta Under 5.5 K",
+    "pick": "Freddy Peralta Over 3.5 K",
     "status": "esperar",
-    "waitFor": "momio"
+    "waitFor": "verificar"
    },
    "detailed": "Scheduled",
    "home": 139,
