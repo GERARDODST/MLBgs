@@ -131,14 +131,25 @@
    "kind": "decision",
    "pk": 849815,
    "text": "Decisión: esperar verificar (Freddy Peralta Over 3.5 K) → apostar Freddy Peralta Over 3.5 K · stake 6 · tras: momio, lineup, umpire"
+  },
+  {
+   "after": "apostar Freddy Peralta Over 4.5 K · stake 5",
+   "at": "2026-10-19T22:43:28Z",
+   "before": "apostar Freddy Peralta Over 3.5 K · stake 6",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849815,
+   "text": "Decisión: apostar Freddy Peralta Over 3.5 K · stake 6 → apostar Freddy Peralta Over 4.5 K · stake 5"
   }
  ],
  "snap": {
   "849815": {
    "away": 114,
    "dec": {
-    "level": 6,
-    "pick": "Freddy Peralta Over 3.5 K",
+    "level": 5,
+    "pick": "Freddy Peralta Over 4.5 K",
     "status": "apostar",
     "waitFor": null
    },

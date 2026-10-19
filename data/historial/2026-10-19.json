@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-19T22:27:45+00:00",
+  "registeredAt": "2026-10-19T22:43:28+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5548,
@@ -51,40 +51,40 @@
     "principal": true,
     "family": "K",
     "market": "Prop de ponches",
-    "pick": "Freddy Peralta Over 3.5 K",
-    "line": 3.5,
-    "p": 0.6968,
-    "fair": -230.0,
-    "ic": 64.8,
+    "pick": "Freddy Peralta Over 4.5 K",
+    "line": 4.5,
+    "p": 0.513,
+    "fair": -105.0,
+    "ic": 59.3,
     "level": "Media",
-    "price": -156,
+    "price": 125,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 6,
+     "level": 5,
      "ladder": [
       {
        "level": 1,
        "stake": 500,
-       "from": -200
+       "from": 108
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -171
+       "from": 124
       }
      ],
      "steps": [
-      -200,
-      -200,
-      -190,
-      -180,
-      -171,
-      -162,
-      -154,
+      108,
+      108,
+      112,
+      118,
+      124,
+      130,
+      136,
       null,
       null,
       null
@@ -93,7 +93,7 @@
      "a": 1.0,
      "h": 0.9569,
      "r": 1.0,
-     "maxPrice": -149
+     "maxPrice": 142
     }
    },
    {
@@ -436,25 +436,25 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-156)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+125)",
    "source": "Framework v2",
-   "pick": "Freddy Peralta Over 3.5 K",
+   "pick": "Freddy Peralta Over 4.5 K",
    "market": "Prop de ponches",
-   "p": 0.6968,
-   "ic": 64.8,
-   "level": 6,
-   "amount": 1100,
-   "minPrice": -200,
+   "p": 0.513,
+   "ic": 59.3,
+   "level": 5,
+   "amount": 1000,
+   "minPrice": 108,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -200
+     "from": 108
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -171
+     "from": 124
     }
    ]
   }
