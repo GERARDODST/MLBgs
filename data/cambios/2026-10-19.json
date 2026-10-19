@@ -88,6 +88,27 @@
    "kind": "momio",
    "pk": 849815,
    "text": "La línea del total pasa de 6.5 a 7.0"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-19T20:02:44Z",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849815,
+   "side": "home",
+   "text": "Lineup confirmado (TB)"
+  },
+  {
+   "after": "Chad Fairchild",
+   "at": "2026-10-19T20:02:44Z",
+   "date": "2026-10-19",
+   "game": "CLE @ TB",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849815,
+   "text": "Umpire de home asignado: Chad Fairchild"
   }
  ],
  "snap": {
@@ -99,13 +120,33 @@
     "status": "esperar",
     "waitFor": "verificar"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 139,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     650490,
+     666018,
+     689414,
+     691406,
+     802415,
+     683748,
+     676356,
+     680700,
+     670764
+    ]
    },
-   "names": {},
+   "names": {
+    "650490": "Yandy Díaz",
+    "666018": "Jonathan Aranda",
+    "670764": "Taylor Walls",
+    "676356": "Jonny DeLuca",
+    "680700": "Richie Palacios",
+    "683748": "Victor Mesa Jr.",
+    "689414": "Liam Hicks",
+    "691406": "Junior Caminero",
+    "802415": "Chandler Simpson"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -174,13 +215,19 @@
     "945538",
     "945539"
    ],
-   "ump": null,
+   "ump": "Chad Fairchild",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Dome",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 71.0
+   }
   }
  }
 }
