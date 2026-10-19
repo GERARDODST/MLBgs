@@ -1,0 +1,69 @@
+[
+{
+"pk": 849814,
+"date": "2026-10-20",
+"time": "2026-10-21T00:08:00Z",
+"generatedAt": "2026-10-19T04:51:14+00:00",
+"away": "CLE",
+"home": "TB",
+"pHome": 0.5624,
+"methods": {
+"log5": 0.5668,
+"elo": 0.5948,
+"lambda": 0.5254
+},
+"confidence": "media",
+"projAway": 3.7859,
+"projHome": 4.0556,
+"total": 7.8415,
+"f5Away": 1.9373,
+"f5Home": 2.3984,
+"nrfi": 0.5423,
+"pOver85": 0.3848,
+"probables": {
+"away": "Por anunciar",
+"home": "Por anunciar"
+},
+"light": "Gris",
+"best": {
+"market": "ML",
+"pick": "TB",
+"p": 0.5624,
+"price": null,
+"edge": null,
+"light": "Gris"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Under 7.5",
+"p": 0.5238,
+"line": 7.5,
+"ic": 31.8,
+"level": "Muy baja"
+},
+{
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Over 3.5",
+"p": 0.5385,
+"line": 3.5,
+"ic": 31.8,
+"level": "Muy baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Under 7.5",
+"level": 0,
+"alts": [
+"F5 total",
+"Team total",
+"Team total"
+]
+}
+}
+]
