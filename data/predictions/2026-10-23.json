@@ -3,34 +3,34 @@
 "pk": 849805,
 "date": "2026-10-23",
 "time": "2026-10-24T00:00:00Z",
-"generatedAt": "2026-10-22T17:32:02+00:00",
+"generatedAt": "2026-10-22T20:19:52+00:00",
 "away": "TB",
 "home": "MIL",
-"pHome": 0.607,
+"pHome": 0.6286,
 "methods": {
 "log5": 0.5977,
-"elo": 0.6191,
-"lambda": 0.6042
+"elo": 0.6624,
+"lambda": 0.6257
 },
-"confidence": "alta",
+"confidence": "media",
 "projAway": 3.5075,
-"projHome": 4.5806,
-"total": 8.0881,
+"projHome": 4.8279,
+"total": 8.3354,
 "f5Away": 1.7435,
-"f5Home": 2.5494,
-"nrfi": 0.5476,
-"pOver85": 0.4078,
+"f5Home": 2.7755,
+"nrfi": 0.5276,
+"pOver85": 0.4309,
 "probables": {
-"away": "Por anunciar",
+"away": "Nick Martinez",
 "home": "Jacob Misiorowski"
 },
 "light": "Amarillo",
 "best": {
 "market": "Total",
 "pick": "Over 6.0",
-"p": 0.6653,
+"p": 0.6887,
 "price": -112,
-"edge": 0.137,
+"edge": 0.1604,
 "light": "Amarillo"
 },
 "topPicks": [
@@ -38,30 +38,30 @@
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 6.0",
-"p": 0.6653,
+"p": 0.6887,
 "line": 6.0,
-"ic": 69.2331,
-"level": "Media"
+"ic": 71.8093,
+"level": "Alta"
 },
 {
 "family": "RL",
 "market": "Run Line",
 "pick": "MIL -1.5",
-"p": 0.4437,
+"p": 0.469,
 "line": null,
-"ic": 46.0325,
-"level": "Baja"
+"ic": 55.9933,
+"level": "Media"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 6.0",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Over 3.5",
 "level": 0,
 "alts": [
-"RL",
-"ML",
+"F5 total",
+"F5",
 "K"
 ]
 }

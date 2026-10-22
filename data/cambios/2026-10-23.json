@@ -1,14 +1,38 @@
 {
  "date": "2026-10-23",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Nick Martinez",
+   "at": "2026-10-22T20:19:56Z",
+   "date": "2026-10-23",
+   "game": "TB @ MIL",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849805,
+   "side": "away",
+   "text": "Abridor anunciado (TB): Nick Martinez"
+  },
+  {
+   "after": "esperar momio (F5 Over 3.5)",
+   "at": "2026-10-22T20:19:52Z",
+   "before": "esperar dato (Over 6.0)",
+   "date": "2026-10-23",
+   "game": "TB @ MIL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849805,
+   "text": "Decisión: esperar dato (Over 6.0) → esperar momio (F5 Over 3.5) · tras: abridor"
+  }
+ ],
  "snap": {
   "849805": {
    "away": 139,
    "dec": {
     "level": 0,
-    "pick": "Over 6.0",
+    "pick": "F5 Over 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 158,
@@ -27,7 +51,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 607259,
+     "name": "Nick Martinez"
+    },
     "home": {
      "id": 694819,
      "name": "Jacob Misiorowski"
