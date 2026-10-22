@@ -1,0 +1,69 @@
+[
+{
+"pk": 849805,
+"date": "2026-10-23",
+"time": "2026-10-24T00:00:00Z",
+"generatedAt": "2026-10-22T07:35:13+00:00",
+"away": "TB",
+"home": "MIL",
+"pHome": 0.607,
+"methods": {
+"log5": 0.5977,
+"elo": 0.6191,
+"lambda": 0.6042
+},
+"confidence": "alta",
+"projAway": 3.5075,
+"projHome": 4.5806,
+"total": 8.0881,
+"f5Away": 1.7435,
+"f5Home": 2.5494,
+"nrfi": 0.5476,
+"pOver85": 0.4078,
+"probables": {
+"away": "Por anunciar",
+"home": "Jacob Misiorowski"
+},
+"light": "Amarillo",
+"best": {
+"market": "Total",
+"pick": "Over 6.0",
+"p": 0.6653,
+"price": -110,
+"edge": 0.1415,
+"light": "Amarillo"
+},
+"topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 6.0",
+"p": 0.6653,
+"line": 6.0,
+"ic": 69.2331,
+"level": "Media"
+},
+{
+"family": "RL",
+"market": "Run Line",
+"pick": "MIL -1.5",
+"p": 0.4437,
+"line": null,
+"ic": 46.5048,
+"level": "Baja"
+}
+],
+"decision": {
+"status": "esperar",
+"waitFor": "dato",
+"family": "Total",
+"pick": "Over 6.0",
+"level": 0,
+"alts": [
+"RL",
+"ML",
+"K"
+]
+}
+}
+]
