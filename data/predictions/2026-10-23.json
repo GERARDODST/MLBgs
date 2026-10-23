@@ -3,7 +3,7 @@
 "pk": 849805,
 "date": "2026-10-23",
 "time": "2026-10-24T00:00:00Z",
-"generatedAt": "2026-10-23T07:29:59+00:00",
+"generatedAt": "2026-10-23T12:09:31+00:00",
 "away": "TB",
 "home": "MIL",
 "pHome": 0.6286,
@@ -44,25 +44,25 @@
 "level": "Media"
 },
 {
-"family": "RL",
-"market": "Run Line",
-"pick": "MIL -1.5",
-"p": 0.469,
-"line": null,
-"ic": 42.2194,
+"family": "F5 total",
+"market": "Total primeras 5",
+"pick": "F5 Over 3.5",
+"p": 0.5632,
+"line": 3.5,
+"ic": 53.7935,
 "level": "Baja"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "F5 total",
 "pick": "F5 Over 3.5",
-"level": 0,
+"level": 3,
 "alts": [
-"F5 total",
-"F5",
-"K"
+"Total",
+"K",
+"RL"
 ]
 }
 }

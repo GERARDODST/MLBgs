@@ -45,16 +45,27 @@
    "kind": "momio",
    "pk": 849805,
    "text": "La línea del total pasa de 6.0 a 6.5"
+  },
+  {
+   "after": "apostar F5 Over 3.5 · stake 3",
+   "at": "2026-10-23T12:09:31Z",
+   "before": "esperar momio (F5 Over 3.5)",
+   "date": "2026-10-23",
+   "game": "TB @ MIL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849805,
+   "text": "Decisión: esperar momio (F5 Over 3.5) → apostar F5 Over 3.5 · stake 3"
   }
  ],
  "snap": {
   "849805": {
    "away": 139,
    "dec": {
-    "level": 0,
+    "level": 3,
     "pick": "F5 Over 3.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 158,

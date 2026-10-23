@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-23T07:29:59+00:00",
+  "registeredAt": "2026-10-23T12:09:31+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6286,
@@ -75,48 +75,22 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "MIL -1.5",
-    "line": null,
-    "p": 0.469,
-    "fair": 113.0,
-    "ic": 42.2,
-    "level": "Baja",
-    "price": 122,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.957,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
     "line": 3.5,
     "p": 0.5632,
     "fair": -129.0,
-    "ic": 36.8,
-    "level": "Muy baja",
-    "price": null,
+    "ic": 53.8,
+    "level": "Baja",
+    "price": -102,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
     "how": "Binomial Negativa con λ de las primeras 5 entradas",
     "res": null,
     "stake": {
-     "level": 0,
+     "level": 3,
      "ladder": [
       {
        "level": 1,
@@ -145,12 +119,87 @@
      "a": 1.0,
      "h": 0.957,
      "r": 1.0,
-     "maxPrice": 115,
-     "why": "sin momio real: conviene si pagan -110 o mejor"
+     "maxPrice": 115
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Jacob Misiorowski Under 6.5 K",
+    "line": 6.5,
+    "p": 0.5723,
+    "fair": -134.0,
+    "ic": 53.5,
+    "level": "Baja",
+    "price": -103,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 3,
+     "ladder": [
+      {
+       "level": 1,
+       "stake": 500,
+       "from": -111
+      },
+      {
+       "level": 5,
+       "stake": 1000,
+       "from": 107
+      }
+     ],
+     "steps": [
+      -111,
+      -108,
+      -103,
+      102,
+      107,
+      112,
+      null,
+      null,
+      null,
+      null
+     ],
+     "block": null,
+     "a": 1.0,
+     "h": 0.957,
+     "r": 1.0,
+     "maxPrice": 111
     }
    },
    {
     "rank": 4,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL -1.5",
+    "line": null,
+    "p": 0.469,
+    "fair": 113.0,
+    "ic": 42.2,
+    "level": "Baja",
+    "price": 122,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.957,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -160,7 +209,7 @@
     "fair": -196.0,
     "ic": 36.8,
     "level": "Muy baja",
-    "price": null,
+    "price": -220,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -197,11 +246,11 @@
      "h": 0.957,
      "r": 1.0,
      "maxPrice": -129,
-     "why": "sin momio real: conviene si pagan -166 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -211,7 +260,7 @@
     "fair": -127.0,
     "ic": 34.8,
     "level": "Muy baja",
-    "price": null,
+    "price": -167,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -248,58 +297,7 @@
      "h": 0.957,
      "r": 1.0,
      "maxPrice": 117,
-     "why": "sin momio real: conviene si pagan -106 o mejor"
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "K",
-    "market": "Prop de ponches",
-    "pick": "Jacob Misiorowski Under 6.5 K",
-    "line": 6.5,
-    "p": 0.5723,
-    "fair": -134.0,
-    "ic": 34.5,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Poisson (5.4)"
-    ],
-    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [
-      {
-       "level": 1,
-       "stake": 500,
-       "from": -111
-      },
-      {
-       "level": 5,
-       "stake": 1000,
-       "from": 107
-      }
-     ],
-     "steps": [
-      -111,
-      -108,
-      -103,
-      102,
-      107,
-      112,
-      null,
-      null,
-      null,
-      null
-     ],
-     "block": null,
-     "a": 1.0,
-     "h": 0.957,
-     "r": 1.0,
-     "maxPrice": 111,
-     "why": "sin momio real: conviene si pagan -111 o mejor"
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
@@ -411,16 +409,15 @@
   ],
   "result": null,
   "decision": {
-   "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan -110 o mejor (stake 1); stake 5 desde +107",
+   "status": "apostar",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-102)",
    "source": "Framework v2",
    "pick": "F5 Over 3.5",
-   "waitFor": "momio",
    "market": "Total primeras 5",
    "p": 0.5632,
-   "ic": 36.8,
-   "level": 0,
-   "amount": 0,
+   "ic": 53.8,
+   "level": 3,
+   "amount": 750,
    "minPrice": -110,
    "ladder": [
     {
