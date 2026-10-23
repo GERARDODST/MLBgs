@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-23T15:11:01+00:00",
+  "registeredAt": "2026-10-23T18:13:47+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6286,
@@ -81,9 +81,9 @@
     "line": 3.5,
     "p": 0.5632,
     "fair": -129.0,
-    "ic": 53.8,
-    "level": "Baja",
-    "price": -102,
+    "ic": 55.2,
+    "level": "Media",
+    "price": 100,
     "methods": [
      "λ + Binomial Negativa F5 (5.4)"
     ],
@@ -181,9 +181,9 @@
     "line": null,
     "p": 0.469,
     "fair": 113.0,
-    "ic": 46.2,
+    "ic": 42.8,
     "level": "Baja",
-    "price": 129,
+    "price": 123,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -337,7 +337,7 @@
     "fair": -169.0,
     "ic": 32.5,
     "level": "Muy baja",
-    "price": -188,
+    "price": -192,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -410,12 +410,12 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (-102)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+100)",
    "source": "Framework v2",
    "pick": "F5 Over 3.5",
    "market": "Total primeras 5",
    "p": 0.5632,
-   "ic": 53.8,
+   "ic": 55.2,
    "level": 3,
    "amount": 750,
    "minPrice": -110,
