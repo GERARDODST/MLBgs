@@ -106,6 +106,27 @@
    "pk": 849805,
    "side": "away",
    "text": "TB: Tampa Bay Rays signed free agent LHP Zair Tromp to a minor league contract."
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-23T20:09:14Z",
+   "date": "2026-10-23",
+   "game": "TB @ MIL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849805,
+   "side": "home",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "Gabe Morales",
+   "at": "2026-10-23T20:09:14Z",
+   "date": "2026-10-23",
+   "game": "TB @ MIL",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849805,
+   "text": "Umpire de home asignado: Gabe Morales"
   }
  ],
  "snap": {
@@ -117,13 +138,33 @@
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 158,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     694192,
+     641343,
+     592885,
+     661388,
+     668930,
+     669003,
+     806198,
+     686217,
+     666152
+    ]
    },
-   "names": {},
+   "names": {
+    "592885": "Christian Yelich",
+    "641343": "Jake Bauers",
+    "661388": "William Contreras",
+    "666152": "David Hamilton",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
+    "686217": "Sal Frelick",
+    "694192": "Jackson Chourio",
+    "806198": "Cooper Pratt"
+   },
    "odds": {
     "line": 6.5,
     "ml": {
@@ -166,13 +207,19 @@
     "946894",
     "946897"
    ],
-   "ump": null,
+   "ump": "Gabe Morales",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Roof Closed",
+    "dir": "cruzado",
+    "speed": 1,
+    "temp": 70.0
+   }
   }
  }
 }
