@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-22T20:19:52+00:00",
+  "registeredAt": "2026-10-23T00:03:28+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.6286,
@@ -51,13 +51,13 @@
     "principal": true,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Over 6.0",
-    "line": 6.0,
-    "p": 0.6887,
-    "fair": -221.0,
-    "ic": 71.8,
-    "level": "Alta",
-    "price": -112,
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.6216,
+    "fair": -164.0,
+    "ic": 65.3,
+    "level": "Media",
+    "price": -110,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -81,9 +81,9 @@
     "line": null,
     "p": 0.469,
     "fair": 113.0,
-    "ic": 56.0,
-    "level": "Media",
-    "price": 148,
+    "ic": 44.5,
+    "level": "Baja",
+    "price": 126,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -100,34 +100,6 @@
    },
    {
     "rank": 3,
-    "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "MIL",
-    "line": null,
-    "p": 0.6286,
-    "fair": -169.0,
-    "ic": 37.1,
-    "level": "Muy baja",
-    "price": -166,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 59.8% · Elo + abridor (5.7.7) 66.2% · λ + Binomial Negativa (5.3 · 5.7.5) 62.6%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.957,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 4,
     "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
@@ -178,7 +150,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 4,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -229,7 +201,7 @@
     }
    },
    {
-    "rank": 6,
+    "rank": 5,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -280,7 +252,7 @@
     }
    },
    {
-    "rank": 7,
+    "rank": 6,
     "principal": false,
     "family": "K",
     "market": "Prop de ponches",
@@ -331,7 +303,7 @@
     }
    },
    {
-    "rank": 8,
+    "rank": 7,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
@@ -346,6 +318,34 @@
      "λ calibrado a ceros reales (6.8)"
     ],
     "how": "Primera entrada calibrada con la frecuencia real de ceros de la liga",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.957,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 8,
+    "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "MIL",
+    "line": null,
+    "p": 0.6286,
+    "fair": -169.0,
+    "ic": 32.5,
+    "level": "Muy baja",
+    "price": -198,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 59.8% · Elo + abridor (5.7.7) 66.2% · λ + Binomial Negativa (5.3 · 5.7.5) 62.6%",
     "res": null,
     "stake": {
      "level": 0,
