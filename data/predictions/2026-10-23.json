@@ -3,23 +3,23 @@
 "pk": 849805,
 "date": "2026-10-23",
 "time": "2026-10-24T00:00:00Z",
-"generatedAt": "2026-10-23T20:09:05+00:00",
+"generatedAt": "2026-10-23T20:23:07+00:00",
 "away": "TB",
 "home": "MIL",
-"pHome": 0.6283,
+"pHome": 0.6259,
 "methods": {
 "log5": 0.5977,
 "elo": 0.6624,
-"lambda": 0.6247
+"lambda": 0.6175
 },
 "confidence": "media",
-"projAway": 3.5075,
+"projAway": 3.5785,
 "projHome": 4.8166,
-"total": 8.3241,
-"f5Away": 1.7435,
+"total": 8.395,
+"f5Away": 1.7787,
 "f5Home": 2.7689,
-"nrfi": 0.5281,
-"pOver85": 0.4298,
+"nrfi": 0.5257,
+"pOver85": 0.4364,
 "probables": {
 "away": "Nick Martinez",
 "home": "Jacob Misiorowski"
@@ -28,29 +28,29 @@
 "best": {
 "market": "Total",
 "pick": "Over 6.5",
-"p": 0.6206,
+"p": 0.627,
 "price": -115,
-"edge": 0.0857,
+"edge": 0.0921,
 "light": "Amarillo"
 },
 "topPicks": [
 {
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Jacob Misiorowski Under 6.5 K",
+"p": 0.6198,
+"line": 6.5,
+"ic": 71.842,
+"level": "Alta"
+},
+{
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 6.5",
-"p": 0.6206,
+"p": 0.627,
 "line": 6.5,
-"ic": 61.8012,
+"ic": 64.868,
 "level": "Media"
-},
-{
-"family": "F5 total",
-"market": "Total primeras 5",
-"pick": "F5 Over 3.5",
-"p": 0.5623,
-"line": 3.5,
-"ic": 54.9853,
-"level": "Baja"
 }
 ],
 "decision": {
@@ -58,10 +58,10 @@
 "waitFor": null,
 "family": "F5 total",
 "pick": "F5 Over 3.5",
-"level": 3,
+"level": 4,
 "alts": [
-"Total",
 "K",
+"Total",
 "RL"
 ]
 }
