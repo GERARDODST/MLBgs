@@ -63,13 +63,35 @@
    "kind": "decision",
    "pk": 849802,
    "text": "Decisión: apostar Logan Henderson Over 4.5 K · stake 3 → apostar Drew Rasmussen Under 5.5 K · stake 2 · tras: lineup, umpire"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-24T20:18:15Z",
+   "date": "2026-10-24",
+   "game": "TB @ MIL",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849802,
+   "side": "home",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "apostar Drew Rasmussen Under 5.5 K · stake 3",
+   "at": "2026-10-24T20:18:10Z",
+   "before": "apostar Drew Rasmussen Under 5.5 K · stake 2",
+   "date": "2026-10-24",
+   "game": "TB @ MIL",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849802,
+   "text": "Decisión: apostar Drew Rasmussen Under 5.5 K · stake 2 → apostar Drew Rasmussen Under 5.5 K · stake 3 · tras: lineup, umpire"
   }
  ],
  "snap": {
   "849802": {
    "away": 139,
    "dec": {
-    "level": 2,
+    "level": 3,
     "pick": "Drew Rasmussen Under 5.5 K",
     "status": "apostar",
     "waitFor": null
@@ -88,18 +110,37 @@
      683748,
      670764
     ],
-    "home": []
+    "home": [
+     694192,
+     641343,
+     592885,
+     661388,
+     668930,
+     669003,
+     806198,
+     686217,
+     666152
+    ]
    },
    "names": {
+    "592885": "Christian Yelich",
+    "641343": "Jake Bauers",
     "650490": "Yandy Díaz",
+    "661388": "William Contreras",
     "666018": "Jonathan Aranda",
+    "666152": "David Hamilton",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
     "670764": "Taylor Walls",
     "676356": "Jonny DeLuca",
     "680700": "Richie Palacios",
     "683748": "Victor Mesa Jr.",
+    "686217": "Sal Frelick",
     "689414": "Liam Hicks",
     "691406": "Junior Caminero",
-    "802415": "Chandler Simpson"
+    "694192": "Jackson Chourio",
+    "802415": "Chandler Simpson",
+    "806198": "Cooper Pratt"
    },
    "odds": {
     "line": 6.5,
