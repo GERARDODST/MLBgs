@@ -9,16 +9,27 @@
    "kind": "momio",
    "pk": 849802,
    "text": "Mercado abierto: TB +106 / MIL -127 · total 6.5"
+  },
+  {
+   "after": "apostar Logan Henderson Over 4.5 K · stake 1",
+   "at": "2026-10-24T12:23:43Z",
+   "before": "esperar momio (F5 Over 3.5)",
+   "date": "2026-10-24",
+   "game": "TB @ MIL",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849802,
+   "text": "Decisión: esperar momio (F5 Over 3.5) → apostar Logan Henderson Over 4.5 K · stake 1"
   }
  ],
  "snap": {
   "849802": {
    "away": 139,
    "dec": {
-    "level": 0,
-    "pick": "F5 Over 3.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 1,
+    "pick": "Logan Henderson Over 4.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 158,
