@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-24T22:36:11+00:00",
+  "registeredAt": "2026-10-24T23:07:37+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.5761,
@@ -175,6 +175,34 @@
    {
     "rank": 4,
     "principal": false,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "MIL",
+    "line": null,
+    "p": 0.5761,
+    "fair": -136.0,
+    "ic": 48.5,
+    "level": "Baja",
+    "price": -116,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 59.8% · Elo + abridor (5.7.7) 59.1% · λ + Binomial Negativa (5.3 · 5.7.5) 53.9%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9564,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 5,
+    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Logan Henderson Over 4.5 K",
@@ -223,34 +251,6 @@
     }
    },
    {
-    "rank": 5,
-    "principal": false,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "MIL",
-    "line": null,
-    "p": 0.5761,
-    "fair": -136.0,
-    "ic": 46.1,
-    "level": "Baja",
-    "price": -120,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 59.8% · Elo + abridor (5.7.7) 59.1% · λ + Binomial Negativa (5.3 · 5.7.5) 53.9%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9564,
-     "r": 1.0
-    }
-   },
-   {
     "rank": 6,
     "principal": false,
     "family": "RL",
@@ -259,9 +259,9 @@
     "line": null,
     "p": 0.6937,
     "fair": -226.0,
-    "ic": 38.0,
+    "ic": 38.6,
     "level": "Muy baja",
-    "price": -222,
+    "price": -220,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
