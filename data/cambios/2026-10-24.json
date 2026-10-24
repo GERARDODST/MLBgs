@@ -1,6 +1,16 @@
 {
  "date": "2026-10-24",
- "events": [],
+ "events": [
+  {
+   "at": "2026-10-24T06:48:39Z",
+   "date": "2026-10-24",
+   "game": "TB @ MIL",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849802,
+   "text": "Mercado abierto: TB +106 / MIL -127 · total 6.5"
+  }
+ ],
  "snap": {
   "849802": {
    "away": 139,
@@ -17,6 +27,15 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 6.5,
+    "ml": {
+     "away": 106,
+     "home": -127
+    },
+    "pHome": 0.5354,
+    "src": "draftkings"
+   },
    "prob": {
     "away": {
      "id": 656876,
@@ -50,6 +69,11 @@
     "946897"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   }
  }
