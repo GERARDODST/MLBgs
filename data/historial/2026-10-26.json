@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-25T04:01:13+00:00",
+  "registeredAt": "2026-10-25T06:07:58+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4648,
@@ -68,7 +68,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0
     }
    },
@@ -96,7 +96,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0
     }
    },
@@ -122,7 +122,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0
     }
    },
@@ -154,7 +154,7 @@
       {
        "level": 5,
        "stake": 1000,
-       "from": 112
+       "from": 111
       }
      ],
      "steps": [
@@ -162,7 +162,7 @@
       -103,
       101,
       106,
-      112,
+      111,
       117,
       null,
       null,
@@ -171,7 +171,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0,
      "maxPrice": 119,
      "why": "sin momio real: conviene si pagan -106 o mejor"
@@ -211,7 +211,7 @@
      "steps": [
       117,
       121,
-      127,
+      126,
       133,
       139,
       146,
@@ -222,7 +222,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0,
      "maxPrice": 149,
      "why": "sin momio real: conviene si pagan +117 o mejor"
@@ -261,7 +261,7 @@
      ],
      "steps": [
       116,
-      120,
+      119,
       125,
       132,
       138,
@@ -273,7 +273,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0,
      "maxPrice": 145,
      "why": "sin momio real: conviene si pagan +116 o mejor"
@@ -324,7 +324,7 @@
      ],
      "block": null,
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0,
      "maxPrice": 118,
      "why": "sin momio real: conviene si pagan -102 o mejor"
@@ -352,7 +352,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0
     }
    },
@@ -378,7 +378,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0
     }
    },
@@ -404,7 +404,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.9564,
+     "h": 0.96,
      "r": 1.0
     }
    }
@@ -412,7 +412,7 @@
   "result": null,
   "decision": {
    "status": "esperar",
-   "why": "falta el momio de Total primeras 5: conviene si pagan -106 o mejor (stake 1); stake 5 desde +112",
+   "why": "falta el momio de Total primeras 5: conviene si pagan -106 o mejor (stake 1); stake 5 desde +111",
    "source": "Framework v2",
    "pick": "F5 Under 4.5",
    "waitFor": "momio",
@@ -431,7 +431,7 @@
     {
      "level": 5,
      "stake": 1000,
-     "from": 112
+     "from": 111
     }
    ]
   }
