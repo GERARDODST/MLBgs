@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-26T23:17:37+00:00",
+  "registeredAt": "2026-10-26T23:33:17+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4655,
@@ -151,6 +151,32 @@
    {
     "rank": 3,
     "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5885,
+    "fair": -143.0,
+    "ic": 54.9,
+    "level": "Baja",
+    "price": -112,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.96,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "ML",
     "market": "Moneyline",
     "pick": "MIL",
@@ -166,32 +192,6 @@
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 54.2% · Elo + abridor (5.7.7) 51.1% · λ + Binomial Negativa (5.3 · 5.7.5) 55.1%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.96,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 4,
-    "principal": false,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.0",
-    "line": 7.0,
-    "p": 0.5885,
-    "fair": -143.0,
-    "ic": 52.4,
-    "level": "Baja",
-    "price": -116,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
     "res": null,
     "stake": {
      "level": 0,
