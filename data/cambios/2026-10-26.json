@@ -1,14 +1,26 @@
 {
  "date": "2026-10-26",
- "events": [],
+ "events": [
+  {
+   "after": "apostar Robert Gasser Over 3.5 K · stake 2",
+   "at": "2026-10-26T12:47:13Z",
+   "before": "esperar momio (F5 Under 4.5)",
+   "date": "2026-10-26",
+   "game": "MIL @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849804,
+   "text": "Decisión: esperar momio (F5 Under 4.5) → apostar Robert Gasser Over 3.5 K · stake 2"
+  }
+ ],
  "snap": {
   "849804": {
    "away": 158,
    "dec": {
-    "level": 0,
-    "pick": "F5 Under 4.5",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 2,
+    "pick": "Robert Gasser Over 3.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Scheduled",
    "home": 139,
