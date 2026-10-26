@@ -65,16 +65,27 @@
    "pk": 849804,
    "side": "away",
    "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "esperar verificar (Freddy Peralta Over 4.5 K)",
+   "at": "2026-10-26T22:30:19Z",
+   "before": "apostar Robert Gasser Over 3.5 K · stake 6",
+   "date": "2026-10-26",
+   "game": "MIL @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849804,
+   "text": "Decisión: apostar Robert Gasser Over 3.5 K · stake 6 → esperar verificar (Freddy Peralta Over 4.5 K)"
   }
  ],
  "snap": {
   "849804": {
    "away": 158,
    "dec": {
-    "level": 6,
-    "pick": "Robert Gasser Over 3.5 K",
-    "status": "apostar",
-    "waitFor": null
+    "level": 0,
+    "pick": "Freddy Peralta Over 4.5 K",
+    "status": "esperar",
+    "waitFor": "verificar"
    },
    "detailed": "Pre-Game",
    "home": 139,

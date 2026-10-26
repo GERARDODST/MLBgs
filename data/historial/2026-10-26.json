@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-26T21:42:55+00:00",
+  "registeredAt": "2026-10-26T22:30:19+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4655,
@@ -55,9 +55,9 @@
     "line": 4.5,
     "p": 0.6747,
     "fair": -207.0,
-    "ic": 71.8,
+    "ic": 74.3,
     "level": "Alta",
-    "price": -129,
+    "price": -119,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -106,16 +106,16 @@
     "line": 3.5,
     "p": 0.5708,
     "fair": -133.0,
-    "ic": 64.8,
+    "ic": 67.4,
     "level": "Media",
-    "price": 109,
+    "price": 113,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 6,
+     "level": 0,
      "ladder": [
       {
        "level": 1,
@@ -144,7 +144,8 @@
      "a": 1.0,
      "h": 0.96,
      "r": 1.0,
-     "maxPrice": 112
+     "maxPrice": 112,
+     "why": "el casino lo ve 10 pp o más distinto que el modelo: verificar lesiones, descansos y lineup"
     }
    },
    {
@@ -410,26 +411,27 @@
   ],
   "result": null,
   "decision": {
-   "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+109)",
+   "status": "esperar",
+   "why": "con el momio de referencia (-119) el mercado lo ve 10 pp o más distinto que el modelo: se verifica (lesiones, descansos, lineup) antes de apostar; con -136 o menos ya pasa el filtro",
    "source": "Framework v2",
-   "pick": "Robert Gasser Over 3.5 K",
+   "pick": "Freddy Peralta Over 4.5 K",
+   "waitFor": "verificar",
    "market": "Prop de ponches",
-   "p": 0.5708,
-   "ic": 64.8,
-   "level": 6,
-   "amount": 1100,
-   "minPrice": -117,
+   "p": 0.6747,
+   "ic": 74.3,
+   "level": 0,
+   "amount": 0,
+   "minPrice": -181,
    "ladder": [
     {
      "level": 1,
      "stake": 500,
-     "from": -117
+     "from": -181
     },
     {
      "level": 5,
      "stake": 1000,
-     "from": -100
+     "from": -156
     }
    ]
   }
