@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-26T15:56:54+00:00",
+  "registeredAt": "2026-10-26T18:06:23+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4648,
@@ -55,9 +55,9 @@
     "line": 4.5,
     "p": 0.6751,
     "fair": -208.0,
-    "ic": 66.9,
+    "ic": 67.4,
     "level": "Media",
-    "price": -130,
+    "price": -129,
     "methods": [
      "λ + Poisson (5.4)"
     ],
@@ -100,48 +100,22 @@
    {
     "rank": 2,
     "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 7.0",
-    "line": 7.0,
-    "p": 0.5887,
-    "fair": -143.0,
-    "ic": 51.9,
-    "level": "Baja",
-    "price": -115,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.96,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "K",
     "market": "Prop de ponches",
     "pick": "Robert Gasser Over 3.5 K",
     "line": 3.5,
     "p": 0.5567,
     "fair": -126.0,
-    "ic": 51.3,
-    "level": "Baja",
-    "price": 102,
+    "ic": 56.1,
+    "level": "Media",
+    "price": 109,
     "methods": [
      "λ + Poisson (5.4)"
     ],
     "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
     "res": null,
     "stake": {
-     "level": 2,
+     "level": 3,
      "ladder": [
       {
        "level": 1,
@@ -171,6 +145,32 @@
      "h": 0.96,
      "r": 1.0,
      "maxPrice": 118
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5887,
+    "fair": -143.0,
+    "ic": 51.9,
+    "level": "Baja",
+    "price": -115,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.96,
+     "r": 1.0
     }
    },
    {
@@ -263,7 +263,7 @@
     "fair": -157.0,
     "ic": 36.2,
     "level": "Muy baja",
-    "price": -210,
+    "price": -209,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -411,14 +411,14 @@
   "result": null,
   "decision": {
    "status": "apostar",
-   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+102)",
+   "why": "el pick con más confianza que pasa guion, contradicciones y datos obligatorios y llega a stake con el momio de referencia (+109)",
    "source": "Framework v2",
    "pick": "Robert Gasser Over 3.5 K",
    "market": "Prop de ponches",
    "p": 0.5567,
-   "ic": 51.3,
-   "level": 2,
-   "amount": 625,
+   "ic": 56.1,
+   "level": 3,
+   "amount": 750,
    "minPrice": -102,
    "ladder": [
     {
