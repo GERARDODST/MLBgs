@@ -22,24 +22,76 @@
    "kind": "decision",
    "pk": 849804,
    "text": "Decisión: apostar Robert Gasser Over 3.5 K · stake 2 → apostar Robert Gasser Over 3.5 K · stake 3"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-26T20:11:26Z",
+   "date": "2026-10-26",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849804,
+   "side": "home",
+   "text": "Lineup confirmado (TB)"
+  },
+  {
+   "after": "Nic Lentz",
+   "at": "2026-10-26T20:11:26Z",
+   "date": "2026-10-26",
+   "game": "MIL @ TB",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849804,
+   "text": "Umpire de home asignado: Nic Lentz"
+  },
+  {
+   "after": "apostar Robert Gasser Over 3.5 K · stake 6",
+   "at": "2026-10-26T20:11:17Z",
+   "before": "apostar Robert Gasser Over 3.5 K · stake 3",
+   "date": "2026-10-26",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849804,
+   "text": "Decisión: apostar Robert Gasser Over 3.5 K · stake 3 → apostar Robert Gasser Over 3.5 K · stake 6 · tras: lineup, umpire"
   }
  ],
  "snap": {
   "849804": {
    "away": 158,
    "dec": {
-    "level": 3,
+    "level": 6,
     "pick": "Robert Gasser Over 3.5 K",
     "status": "apostar",
     "waitFor": null
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 139,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     650490,
+     668723,
+     802415,
+     691406,
+     810938,
+     676356,
+     683748,
+     663743,
+     670764
+    ]
    },
-   "names": {},
+   "names": {
+    "650490": "Yandy Díaz",
+    "663743": "Nick Fortes",
+    "668723": "Ryan Vilade",
+    "670764": "Taylor Walls",
+    "676356": "Jonny DeLuca",
+    "683748": "Victor Mesa Jr.",
+    "691406": "Junior Caminero",
+    "802415": "Chandler Simpson",
+    "810938": "Ben Williamson"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -73,13 +125,19 @@
     "946894",
     "946897"
    ],
-   "ump": null,
+   "ump": "Nic Lentz",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Dome",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 70.0
+   }
   }
  }
 }
