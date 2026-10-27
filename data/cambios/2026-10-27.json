@@ -73,6 +73,40 @@
    "kind": "umpire",
    "pk": 849803,
    "text": "Umpire de home asignado: James Hoye"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Dustin May",
+   "at": "2026-10-27T20:37:33Z",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849803,
+   "side": "away",
+   "text": "Abridor anunciado (MIL): Dustin May"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-27T20:37:33Z",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849803,
+   "side": "away",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "esperar momio (Dustin May Under 2.5 K)",
+   "at": "2026-10-27T20:37:26Z",
+   "before": "esperar dato (Over 7.0)",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849803,
+   "text": "Decisión: esperar dato (Over 7.0) → esperar momio (Dustin May Under 2.5 K) · tras: lineup, umpire, abridor"
   }
  ],
  "snap": {
@@ -80,14 +114,24 @@
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "Over 7.0",
+    "pick": "Dustin May Under 2.5 K",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Pre-Game",
    "home": 139,
    "lu": {
-    "away": [],
+    "away": [
+     694192,
+     641343,
+     592885,
+     661388,
+     668930,
+     686217,
+     806198,
+     669003,
+     666152
+    ],
     "home": [
      650490,
      666018,
@@ -101,15 +145,24 @@
     ]
    },
    "names": {
+    "592885": "Christian Yelich",
+    "641343": "Jake Bauers",
     "650490": "Yandy Díaz",
+    "661388": "William Contreras",
     "666018": "Jonathan Aranda",
+    "666152": "David Hamilton",
     "668723": "Ryan Vilade",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
     "670764": "Taylor Walls",
     "676356": "Jonny DeLuca",
     "680700": "Richie Palacios",
+    "686217": "Sal Frelick",
     "689414": "Liam Hicks",
     "691406": "Junior Caminero",
-    "802415": "Chandler Simpson"
+    "694192": "Jackson Chourio",
+    "802415": "Chandler Simpson",
+    "806198": "Cooper Pratt"
    },
    "odds": {
     "line": 7.0,
@@ -121,7 +174,10 @@
     "src": "draftkings"
    },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 669160,
+     "name": "Dustin May"
+    },
     "home": {
      "id": 643377,
      "name": "Griffin Jax"
