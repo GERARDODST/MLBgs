@@ -107,16 +107,27 @@
    "kind": "decision",
    "pk": 849803,
    "text": "Decisión: esperar dato (Over 7.0) → esperar momio (Dustin May Under 2.5 K) · tras: lineup, umpire, abridor"
+  },
+  {
+   "after": "apostar F5 Over 3.5 · stake 6",
+   "at": "2026-10-27T20:51:14Z",
+   "before": "esperar momio (Dustin May Under 2.5 K)",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849803,
+   "text": "Decisión: esperar momio (Dustin May Under 2.5 K) → apostar F5 Over 3.5 · stake 6 · tras: lineup, umpire, abridor"
   }
  ],
  "snap": {
   "849803": {
    "away": 158,
    "dec": {
-    "level": 0,
-    "pick": "Dustin May Under 2.5 K",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 6,
+    "pick": "F5 Over 3.5",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 139,
