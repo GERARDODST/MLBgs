@@ -3,65 +3,65 @@
 "pk": 849803,
 "date": "2026-10-27",
 "time": "2026-10-28T00:00:00Z",
-"generatedAt": "2026-10-26T04:24:41+00:00",
+"generatedAt": "2026-10-27T03:36:31+00:00",
 "away": "MIL",
 "home": "TB",
-"pHome": 0.4588,
+"pHome": 0.4434,
 "methods": {
 "log5": 0.4584,
-"elo": 0.4743,
-"lambda": 0.4436
+"elo": 0.4383,
+"lambda": 0.4335
 },
 "confidence": "alta",
-"projAway": 4.4582,
+"projAway": 4.5689,
 "projHome": 3.8907,
-"total": 8.3489,
-"f5Away": 2.2838,
+"total": 8.4596,
+"f5Away": 2.3799,
 "f5Home": 2.2671,
-"nrfi": 0.5296,
-"pOver85": 0.4321,
+"nrfi": 0.5228,
+"pOver85": 0.4424,
 "probables": {
 "away": "Por anunciar",
-"home": "Por anunciar"
+"home": "Griffin Jax"
 },
-"light": "Rojo",
+"light": "Amarillo",
 "best": {
-"market": "ML",
-"pick": "MIL",
-"p": 0.5412,
-"price": null,
-"edge": null,
-"light": "Rojo"
+"market": "Total",
+"pick": "Over 7.0",
+"p": 0.5931,
+"price": -115,
+"edge": 0.0583,
+"light": "Amarillo"
 },
 "topPicks": [
+{
+"family": "Total",
+"market": "Total completo",
+"pick": "Over 7.0",
+"p": 0.5931,
+"line": 7.0,
+"ic": 50.5477,
+"level": "Baja"
+},
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "MIL",
-"p": 0.5412,
+"p": 0.5566,
 "line": null,
-"ic": 37.9062,
-"level": "Muy baja"
-},
-{
-"family": "RL",
-"market": "Run Line",
-"pick": "MIL +1.5",
-"p": 0.6998,
-"line": null,
-"ic": 31.8,
-"level": "Muy baja"
+"ic": 41.7387,
+"level": "Baja"
 }
 ],
 "decision": {
 "status": "esperar",
 "waitFor": "dato",
-"family": "ML",
-"pick": "MIL",
+"family": "Total",
+"pick": "Over 7.0",
 "level": 0,
 "alts": [
+"ML",
 "RL",
-"Total",
 "F5 total"
 ]
 }

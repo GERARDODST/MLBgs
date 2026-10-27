@@ -1,12 +1,45 @@
 {
  "date": "2026-10-27",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Griffin Jax",
+   "at": "2026-10-27T03:36:39Z",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849803,
+   "side": "home",
+   "text": "Abridor anunciado (TB): Griffin Jax"
+  },
+  {
+   "at": "2026-10-27T03:36:39Z",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849803,
+   "text": "Mercado abierto: MIL -124 / TB +103 · total 7.0"
+  },
+  {
+   "after": "esperar dato (Over 7.0)",
+   "at": "2026-10-27T03:36:31Z",
+   "before": "esperar dato (MIL)",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849803,
+   "text": "Decisión: esperar dato (MIL) → esperar dato (Over 7.0) · tras: abridor, momio"
+  }
+ ],
  "snap": {
   "849803": {
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "MIL",
+    "pick": "Over 7.0",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -17,9 +50,21 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 7.0,
+    "ml": {
+     "away": -124,
+     "home": 103
+    },
+    "pHome": 0.4709,
+    "src": "draftkings"
+   },
    "prob": {
     "away": null,
-    "home": null
+    "home": {
+     "id": 643377,
+     "name": "Griffin Jax"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-26T04:24:47Z",
@@ -36,6 +81,11 @@
     "946897"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   }
  }

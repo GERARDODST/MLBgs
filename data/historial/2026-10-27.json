@@ -29,19 +29,19 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-26T04:24:41+00:00",
+  "registeredAt": "2026-10-27T03:36:31+00:00",
   "status": "abierto",
   "pred": {
-   "pHome": 0.4588,
-   "projAway": 4.46,
+   "pHome": 0.4434,
+   "projAway": 4.57,
    "projHome": 3.89,
-   "total": 8.35,
-   "nrfi": 0.5296,
-   "light": "Rojo",
+   "total": 8.46,
+   "nrfi": 0.5228,
+   "light": "Amarillo",
    "confidence": "alta",
    "probables": {
     "away": "Por anunciar",
-    "home": "Por anunciar"
+    "home": "Griffin Jax"
    },
    "lineups": "Proyectados"
   },
@@ -49,69 +49,15 @@
    {
     "rank": 1,
     "principal": true,
-    "family": "ML",
-    "market": "Moneyline",
-    "pick": "MIL",
-    "line": null,
-    "p": 0.5412,
-    "fair": -118.0,
-    "ic": 37.9,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "Elo + abridor (5.7.7)",
-     "Log5 (5.7.2)",
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Promedio de 3 métodos: Log5 (5.7.2) 54.2% · Elo + abridor (5.7.7) 52.6% · λ + Binomial Negativa (5.3 · 5.7.5) 55.6%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.96,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "MIL +1.5",
-    "line": null,
-    "p": 0.6998,
-    "fair": -233.0,
-    "ic": 31.8,
-    "level": "Muy baja",
-    "price": null,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.96,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 3,
-    "principal": false,
     "family": "Total",
     "market": "Total completo",
-    "pick": "Under 8.0",
-    "line": 8.0,
-    "p": 0.5237,
-    "fair": -110.0,
-    "ic": 31.8,
-    "level": "Muy baja",
-    "price": null,
+    "pick": "Over 7.0",
+    "line": 7.0,
+    "p": 0.5931,
+    "fair": -146.0,
+    "ic": 50.5,
+    "level": "Baja",
+    "price": -115,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -122,7 +68,61 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.96,
+     "h": 0.9556,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
+    "principal": true,
+    "family": "ML",
+    "market": "Moneyline",
+    "pick": "MIL",
+    "line": null,
+    "p": 0.5566,
+    "fair": -126.0,
+    "ic": 41.7,
+    "level": "Baja",
+    "price": -124,
+    "methods": [
+     "Elo + abridor (5.7.7)",
+     "Log5 (5.7.2)",
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Promedio de 3 métodos: Log5 (5.7.2) 54.2% · Elo + abridor (5.7.7) 56.2% · λ + Binomial Negativa (5.3 · 5.7.5) 56.7%",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9556,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 3,
+    "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "TB +1.5",
+    "line": null,
+    "p": 0.598,
+    "fair": -149.0,
+    "ic": 33.6,
+    "level": "Muy baja",
+    "price": -179,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9556,
      "r": 1.0
     }
    },
@@ -133,9 +133,9 @@
     "market": "Total primeras 5",
     "pick": "F5 Under 4.5",
     "line": 4.5,
-    "p": 0.5656,
-    "fair": -130.0,
-    "ic": 31.8,
+    "p": 0.553,
+    "fair": -124.0,
+    "ic": 33.6,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -148,20 +148,46 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.96,
+     "h": 0.9556,
      "r": 1.0
     }
    },
    {
     "rank": 5,
     "principal": false,
+    "family": "K",
+    "market": "Prop de ponches",
+    "pick": "Griffin Jax Under 5.5 K",
+    "line": 5.5,
+    "p": 0.5687,
+    "fair": -132.0,
+    "ic": 33.3,
+    "level": "Muy baja",
+    "price": null,
+    "methods": [
+     "λ + Poisson (5.4)"
+    ],
+    "how": "K% del abridor vs K% del rival (razón de momios) × bateadores esperados, Poisson",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9556,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 6,
+    "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
     "pick": "MIL F5",
     "line": null,
-    "p": 0.5027,
-    "fair": -101.0,
-    "ic": 28.5,
+    "p": 0.5178,
+    "fair": -107.0,
+    "ic": 30.2,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -174,20 +200,20 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.96,
+     "h": 0.9556,
      "r": 1.0
     }
    },
    {
-    "rank": 6,
+    "rank": 7,
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
     "pick": "NRFI",
     "line": null,
-    "p": 0.5296,
-    "fair": -113.0,
-    "ic": 28.5,
+    "p": 0.5228,
+    "fair": -110.0,
+    "ic": 30.2,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -200,20 +226,20 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.96,
+     "h": 0.9556,
      "r": 1.0
     }
    },
    {
-    "rank": 7,
+    "rank": 8,
     "principal": false,
     "family": "Team total",
     "market": "Team total MIL",
     "pick": "MIL Over 3.5",
     "line": 3.5,
-    "p": 0.5508,
-    "fair": -123.0,
-    "ic": 25.1,
+    "p": 0.5653,
+    "fair": -130.0,
+    "ic": 26.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -226,12 +252,12 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.96,
+     "h": 0.9556,
      "r": 1.0
     }
    },
    {
-    "rank": 8,
+    "rank": 9,
     "principal": false,
     "family": "Team total",
     "market": "Team total TB",
@@ -239,7 +265,7 @@
     "line": 3.5,
     "p": 0.5275,
     "fair": -112.0,
-    "ic": 25.1,
+    "ic": 26.9,
     "level": "Muy baja",
     "price": null,
     "methods": [
@@ -252,7 +278,7 @@
      "ladder": [],
      "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
      "a": 1.0,
-     "h": 0.96,
+     "h": 0.9556,
      "r": 1.0
     }
    }
@@ -262,11 +288,11 @@
    "status": "esperar",
    "why": "falta un dato obligatorio (lineup, umpire, clima o abridor): se confirma cerca del primer lanzamiento",
    "source": "Framework v2",
-   "pick": "MIL",
+   "pick": "Over 7.0",
    "waitFor": "dato",
-   "market": "Moneyline",
-   "p": 0.5412,
-   "ic": 37.9,
+   "market": "Total completo",
+   "p": 0.5931,
+   "ic": 50.5,
    "level": 0,
    "amount": 0,
    "minPrice": null,
