@@ -52,6 +52,27 @@
    "kind": "momio",
    "pk": 849803,
    "text": "El moneyline se mueve hacia TB (3.0 pp): MIL -141→-124, TB +117→+103"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-27T20:09:44Z",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849803,
+   "side": "home",
+   "text": "Lineup confirmado (TB)"
+  },
+  {
+   "after": "James Hoye",
+   "at": "2026-10-27T20:09:44Z",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849803,
+   "text": "Umpire de home asignado: James Hoye"
   }
  ],
  "snap": {
@@ -63,13 +84,33 @@
     "status": "esperar",
     "waitFor": "dato"
    },
-   "detailed": "Scheduled",
+   "detailed": "Pre-Game",
    "home": 139,
    "lu": {
     "away": [],
-    "home": []
+    "home": [
+     650490,
+     666018,
+     691406,
+     689414,
+     676356,
+     802415,
+     668723,
+     680700,
+     670764
+    ]
    },
-   "names": {},
+   "names": {
+    "650490": "Yandy Díaz",
+    "666018": "Jonathan Aranda",
+    "668723": "Ryan Vilade",
+    "670764": "Taylor Walls",
+    "676356": "Jonny DeLuca",
+    "680700": "Richie Palacios",
+    "689414": "Liam Hicks",
+    "691406": "Junior Caminero",
+    "802415": "Chandler Simpson"
+   },
    "odds": {
     "line": 7.0,
     "ml": {
@@ -100,13 +141,19 @@
     "946894",
     "946897"
    ],
-   "ump": null,
+   "ump": "James Hoye",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
     "total": "una fuente"
    },
-   "wx": {}
+   "wx": {
+    "closed": true,
+    "cond": "Roof Closed",
+    "dir": "calma",
+    "speed": 0,
+    "temp": 70.0
+   }
   }
  }
 }
