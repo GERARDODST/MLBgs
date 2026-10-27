@@ -42,6 +42,16 @@
    "kind": "momio",
    "pk": 849803,
    "text": "El moneyline se mueve hacia MIL (3.0 pp): MIL -124→-141, TB +103→+117"
+  },
+  {
+   "action": "Edge, índice de confianza y stake recalculados con el momio nuevo.",
+   "at": "2026-10-27T16:46:01Z",
+   "date": "2026-10-27",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849803,
+   "text": "El moneyline se mueve hacia TB (3.0 pp): MIL -141→-124, TB +117→+103"
   }
  ],
  "snap": {
@@ -63,10 +73,10 @@
    "odds": {
     "line": 7.0,
     "ml": {
-     "away": -141,
-     "home": 117
+     "away": -124,
+     "home": 103
     },
-    "pHome": 0.4406,
+    "pHome": 0.4709,
     "src": "draftkings"
    },
    "prob": {
