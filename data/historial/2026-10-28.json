@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-28T20:36:42+00:00",
+  "registeredAt": "2026-10-28T20:50:49+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4445,
@@ -335,13 +335,13 @@
     "principal": false,
     "family": "NRFI",
     "market": "NRFI/YRFI",
-    "pick": "NRFI",
+    "pick": "YRFI",
     "line": null,
-    "p": 0.5822,
-    "fair": -139.0,
+    "p": 0.4178,
+    "fair": 139.0,
     "ic": 37.9,
     "level": "Muy baja",
-    "price": null,
+    "price": 127,
     "methods": [
      "λ calibrado a ceros reales (6.8)"
     ],
@@ -353,22 +353,22 @@
       {
        "level": 1,
        "stake": 500,
-       "from": -123
+       "from": 158
       },
       {
        "level": 5,
        "stake": 1000,
-       "from": -104
+       "from": 188
       }
      ],
      "steps": [
-      -123,
-      -121,
-      -115,
-      -110,
-      -104,
-      101,
-      105,
+      158,
+      161,
+      170,
+      179,
+      188,
+      199,
+      210,
       null,
       null,
       null
@@ -377,8 +377,8 @@
      "a": 1.0,
      "h": 0.9546,
      "r": 1.0,
-     "maxPrice": 107,
-     "why": "sin momio real: conviene si pagan -123 o mejor"
+     "maxPrice": 214,
+     "why": "edge menor a 3 pp con ese momio"
     }
    },
    {
