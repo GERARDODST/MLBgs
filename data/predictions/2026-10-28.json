@@ -3,54 +3,54 @@
 "pk": 849799,
 "date": "2026-10-28",
 "time": "2026-10-29T00:00:00Z",
-"generatedAt": "2026-10-28T20:08:30+00:00",
+"generatedAt": "2026-10-28T20:36:42+00:00",
 "away": "MIL",
 "home": "TB",
-"pHome": 0.4441,
+"pHome": 0.4445,
 "methods": {
 "log5": 0.4584,
 "elo": 0.4447,
-"lambda": 0.4293
+"lambda": 0.4305
 },
 "confidence": "alta",
-"projAway": 4.1534,
+"projAway": 4.141,
 "projHome": 3.4725,
-"total": 7.6259,
-"f5Away": 2.0506,
+"total": 7.6135,
+"f5Away": 2.0445,
 "f5Home": 1.8721,
-"nrfi": 0.5818,
-"pOver85": 0.3647,
+"nrfi": 0.5822,
+"pOver85": 0.3635,
 "probables": {
 "away": "Jacob Misiorowski",
 "home": "Drew Rasmussen"
 },
-"light": "Gris",
+"light": "Amarillo",
 "best": {
-"market": "NRFI/YRFI",
-"pick": "NRFI",
-"p": 0.5818,
-"price": null,
-"edge": null,
-"light": "Gris"
+"market": "Total",
+"pick": "Over 6.5",
+"p": 0.5532,
+"price": -108,
+"edge": 0.034,
+"light": "Amarillo"
 },
 "topPicks": [
 {
 "family": "Total",
 "market": "Total completo",
 "pick": "Over 6.5",
-"p": 0.5545,
+"p": 0.5532,
 "line": 6.5,
-"ic": 44.9599,
+"ic": 47.7982,
 "level": "Baja"
 },
 {
 "family": "ML",
 "market": "Moneyline",
 "pick": "MIL",
-"p": 0.5559,
+"p": 0.5555,
 "line": null,
-"ic": 39.767,
-"level": "Muy baja"
+"ic": 41.2124,
+"level": "Baja"
 }
 ],
 "decision": {
@@ -60,7 +60,8 @@
 "pick": "Drew Rasmussen Under 5.5 K",
 "level": 0,
 "alts": [
-"K"
+"K",
+"NRFI"
 ]
 }
 }

@@ -87,6 +87,27 @@
    "pk": 849799,
    "side": "home",
    "text": "Lineup confirmado (TB)"
+  },
+  {
+   "action": "El modelo pasa del lineup proyectado al confirmado.",
+   "at": "2026-10-28T20:36:47Z",
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "lineup",
+   "pk": 849799,
+   "side": "away",
+   "text": "Lineup confirmado (MIL)"
+  },
+  {
+   "after": "Vic Carapazza",
+   "at": "2026-10-28T20:36:47Z",
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "bajo",
+   "kind": "umpire",
+   "pk": 849799,
+   "text": "Umpire de home asignado: Vic Carapazza"
   }
  ],
  "snap": {
@@ -101,7 +122,17 @@
    "detailed": "Pre-Game",
    "home": 139,
    "lu": {
-    "away": [],
+    "away": [
+     694192,
+     641343,
+     592885,
+     661388,
+     668930,
+     686217,
+     806198,
+     669003,
+     666152
+    ],
     "home": [
      650490,
      666018,
@@ -115,14 +146,23 @@
     ]
    },
    "names": {
+    "592885": "Christian Yelich",
+    "641343": "Jake Bauers",
     "650490": "Yandy Díaz",
+    "661388": "William Contreras",
     "666018": "Jonathan Aranda",
+    "666152": "David Hamilton",
     "668723": "Ryan Vilade",
+    "668930": "Brice Turang",
+    "669003": "Garrett Mitchell",
     "670764": "Taylor Walls",
     "676356": "Jonny DeLuca",
+    "686217": "Sal Frelick",
     "689414": "Liam Hicks",
     "691406": "Junior Caminero",
+    "694192": "Jackson Chourio",
     "802415": "Chandler Simpson",
+    "806198": "Cooper Pratt",
     "810938": "Ben Williamson"
    },
    "odds": {
@@ -158,7 +198,7 @@
     "946894",
     "946897"
    ],
-   "ump": null,
+   "ump": "Vic Carapazza",
    "verify": {
     "ml": "una fuente",
     "rl": "una fuente",
