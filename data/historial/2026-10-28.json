@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-28T23:06:58+00:00",
+  "registeredAt": "2026-10-28T23:22:44+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4445,
@@ -48,6 +48,32 @@
   "picks": [
    {
     "rank": 1,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.0",
+    "line": 6.0,
+    "p": 0.6172,
+    "fair": -161.0,
+    "ic": 63.8,
+    "level": "Media",
+    "price": -112,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9546,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 2,
     "principal": true,
     "family": "K",
     "market": "Prop de ponches",
@@ -94,32 +120,6 @@
      "h": 0.9546,
      "r": 1.0,
      "maxPrice": -121
-    }
-   },
-   {
-    "rank": 2,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.0",
-    "line": 6.0,
-    "p": 0.6172,
-    "fair": -161.0,
-    "ic": 60.0,
-    "level": "Media",
-    "price": -118,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9546,
-     "r": 1.0
     }
    },
    {
