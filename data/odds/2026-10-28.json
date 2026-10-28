@@ -4,12 +4,129 @@
   "849799": {
    "away": 158,
    "books": {
+    "betmgm": {
+     "last": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -140
+        },
+        "under": {
+         "point": 5.5,
+         "price": 105
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -140
+        },
+        "under": {
+         "point": 5.5,
+         "price": 105
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetMGM"
+    },
+    "betonlineag": {
+     "last": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -139
+        },
+        "under": {
+         "point": 5.5,
+         "price": 107
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -139
+        },
+        "under": {
+         "point": 5.5,
+         "price": 107
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "BetOnline"
+    },
+    "bovada": {
+     "last": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -145
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -145
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "Bovada"
+    },
     "draftkings": {
      "last": {
-      "at": "2026-10-28T15:26:20Z",
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -135
+        },
+        "under": {
+         "point": 5.5,
+         "price": 106
+        }
+       }
+      },
       "ml": {
-       "away": -157,
-       "home": 130
+       "away": -162,
+       "home": 134
       },
       "rl": {
        "away": {
@@ -35,6 +152,18 @@
      "mx": false,
      "open": {
       "at": "2026-10-28T04:57:41Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -135
+        },
+        "under": {
+         "point": 5.5,
+         "price": 106
+        }
+       }
+      },
       "ml": {
        "away": -140,
        "home": 116
@@ -60,18 +189,103 @@
        }
       }
      },
-     "src": "espn",
+     "src": "the-odds-api",
      "title": "DraftKings"
+    },
+    "fanduel": {
+     "last": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -140
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -140
+        },
+        "under": {
+         "point": 5.5,
+         "price": 110
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "FanDuel"
+    },
+    "mybookieag": {
+     "last": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -141
+        },
+        "under": {
+         "point": 5.5,
+         "price": 102
+        }
+       }
+      }
+     },
+     "mx": false,
+     "open": {
+      "at": "2026-10-28T18:02:34Z",
+      "k": {
+       "jacob misiorowski": {
+        "over": {
+         "point": 5.5,
+         "price": -141
+        },
+        "under": {
+         "point": 5.5,
+         "price": 102
+        }
+       }
+      }
+     },
+     "src": "the-odds-api",
+     "title": "MyBookie"
     }
    },
-   "checked": "2026-10-28T15:26:20Z",
+   "checked": "2026-10-28T18:02:34Z",
    "espn": "401908046",
    "home": 139,
    "pk": 849799,
    "providers": [
-    "espn"
+    "espn",
+    "the-odds-api"
    ],
-   "start": "2026-10-29T00:00:00Z"
+   "start": "2026-10-29T00:00:00Z",
+   "theAt": {
+    "pitcher_strikeouts": "2026-10-28T18:02:34Z"
+   },
+   "theEmpty": {
+    "pitcher_strikeouts": 0
+   },
+   "theGot": {
+    "pitcher_strikeouts": 6
+   },
+   "theId": "99d7f299f7f7feb7980daeeee5f238a9",
+   "theN": {
+    "pitcher_strikeouts": 1
+   },
+   "theSwapped": false
   }
  }
 }
