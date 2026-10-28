@@ -120,16 +120,27 @@
    "kind": "momio",
    "pk": 849799,
    "text": "La línea del total pasa de 6.5 a 6.0"
+  },
+  {
+   "after": "apostar Drew Rasmussen Over 4.5 K · stake 5",
+   "at": "2026-10-28T22:35:42Z",
+   "before": "esperar momio (Drew Rasmussen Under 5.5 K)",
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "alto",
+   "kind": "decision",
+   "pk": 849799,
+   "text": "Decisión: esperar momio (Drew Rasmussen Under 5.5 K) → apostar Drew Rasmussen Over 4.5 K · stake 5 · tras: momio"
   }
  ],
  "snap": {
   "849799": {
    "away": 158,
    "dec": {
-    "level": 0,
-    "pick": "Drew Rasmussen Under 5.5 K",
-    "status": "esperar",
-    "waitFor": "momio"
+    "level": 5,
+    "pick": "Drew Rasmussen Over 4.5 K",
+    "status": "apostar",
+    "waitFor": null
    },
    "detailed": "Pre-Game",
    "home": 139,

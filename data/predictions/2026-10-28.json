@@ -3,7 +3,7 @@
 "pk": 849799,
 "date": "2026-10-28",
 "time": "2026-10-29T00:00:00Z",
-"generatedAt": "2026-10-28T21:56:33+00:00",
+"generatedAt": "2026-10-28T22:35:42+00:00",
 "away": "MIL",
 "home": "TB",
 "pHome": 0.4445,
@@ -44,23 +44,25 @@
 "level": "Media"
 },
 {
-"family": "ML",
-"market": "Moneyline",
-"pick": "MIL",
-"p": 0.5555,
-"line": null,
-"ic": 41.2124,
-"level": "Baja"
+"family": "K",
+"market": "Prop de ponches",
+"pick": "Drew Rasmussen Over 4.5 K",
+"p": 0.6466,
+"line": 4.5,
+"ic": 61.1781,
+"level": "Media"
 }
 ],
 "decision": {
-"status": "esperar",
-"waitFor": "momio",
+"status": "apostar",
+"waitFor": null,
 "family": "K",
-"pick": "Drew Rasmussen Under 5.5 K",
-"level": 0,
+"pick": "Drew Rasmussen Over 4.5 K",
+"level": 5,
 "alts": [
-"K"
+"Total",
+"ML",
+"F5 total"
 ]
 }
 }
