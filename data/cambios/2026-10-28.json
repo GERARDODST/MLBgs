@@ -108,6 +108,18 @@
    "kind": "umpire",
    "pk": 849799,
    "text": "Umpire de home asignado: Vic Carapazza"
+  },
+  {
+   "action": "Los picks de total usan la línea nueva.",
+   "after": 6.0,
+   "at": "2026-10-28T21:56:42Z",
+   "before": 6.5,
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849799,
+   "text": "La línea del total pasa de 6.5 a 6.0"
   }
  ],
  "snap": {
@@ -166,12 +178,12 @@
     "810938": "Ben Williamson"
    },
    "odds": {
-    "line": 6.5,
+    "line": 6.0,
     "ml": {
-     "away": -154,
-     "home": 128
+     "away": -149,
+     "home": 123
     },
-    "pHome": 0.4198,
+    "pHome": 0.4284,
     "src": "draftkings"
    },
    "prob": {
