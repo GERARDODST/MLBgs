@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-28T23:46:11+00:00",
+  "registeredAt": "2026-10-28T23:54:06+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4445,
@@ -48,32 +48,6 @@
   "picks": [
    {
     "rank": 1,
-    "principal": true,
-    "family": "Total",
-    "market": "Total completo",
-    "pick": "Over 6.0",
-    "line": 6.0,
-    "p": 0.6172,
-    "fair": -161.0,
-    "ic": 61.9,
-    "level": "Media",
-    "price": -115,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9546,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 2,
     "principal": true,
     "family": "K",
     "market": "Prop de ponches",
@@ -123,6 +97,32 @@
     }
    },
    {
+    "rank": 2,
+    "principal": true,
+    "family": "Total",
+    "market": "Total completo",
+    "pick": "Over 6.5",
+    "line": 6.5,
+    "p": 0.5532,
+    "fair": -124.0,
+    "ic": 53.4,
+    "level": "Baja",
+    "price": 100,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Suma de dos Binomiales Negativas (Var/Media medida en la temporada)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9546,
+     "r": 1.0
+    }
+   },
+   {
     "rank": 3,
     "principal": false,
     "family": "ML",
@@ -133,7 +133,7 @@
     "fair": -125.0,
     "ic": 41.2,
     "level": "Baja",
-    "price": -139,
+    "price": -138,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
@@ -263,7 +263,7 @@
     "fair": -154.0,
     "ic": 37.9,
     "level": "Muy baja",
-    "price": -155,
+    "price": -157,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
