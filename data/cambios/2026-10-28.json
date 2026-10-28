@@ -1,12 +1,45 @@
 {
  "date": "2026-10-28",
- "events": [],
+ "events": [
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Jacob Misiorowski",
+   "at": "2026-10-28T04:57:41Z",
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849799,
+   "side": "away",
+   "text": "Abridor anunciado (MIL): Jacob Misiorowski"
+  },
+  {
+   "at": "2026-10-28T04:57:41Z",
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "bajo",
+   "kind": "momio",
+   "pk": 849799,
+   "text": "Mercado abierto: MIL -135 / TB +112 · total 6.5"
+  },
+  {
+   "after": "esperar dato (Over 6.5)",
+   "at": "2026-10-28T04:57:35Z",
+   "before": "esperar dato (MIL)",
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849799,
+   "text": "Decisión: esperar dato (MIL) → esperar dato (Over 6.5) · tras: abridor, momio"
+  }
+ ],
  "snap": {
   "849799": {
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "MIL",
+    "pick": "Over 6.5",
     "status": "esperar",
     "waitFor": "dato"
    },
@@ -17,8 +50,20 @@
     "home": []
    },
    "names": {},
+   "odds": {
+    "line": 6.5,
+    "ml": {
+     "away": -135,
+     "home": 112
+    },
+    "pHome": 0.4509,
+    "src": "draftkings"
+   },
    "prob": {
-    "away": null,
+    "away": {
+     "id": 694819,
+     "name": "Jacob Misiorowski"
+    },
     "home": null
    },
    "probChangedAt": null,
@@ -36,6 +81,11 @@
     "946897"
    ],
    "ump": null,
+   "verify": {
+    "ml": "una fuente",
+    "rl": "una fuente",
+    "total": "una fuente"
+   },
    "wx": {}
   }
  }
