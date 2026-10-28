@@ -29,7 +29,7 @@
    "Contradicciones y semáforo"
   ],
   "source": "modelo",
-  "registeredAt": "2026-10-28T12:24:46+00:00",
+  "registeredAt": "2026-10-28T15:26:14+00:00",
   "status": "abierto",
   "pred": {
    "pHome": 0.4338,
@@ -55,9 +55,9 @@
     "line": 6.5,
     "p": 0.5787,
     "fair": -137.0,
-    "ic": 44.5,
+    "ic": 43.9,
     "level": "Baja",
-    "price": -119,
+    "price": -120,
     "methods": [
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
@@ -101,6 +101,32 @@
    {
     "rank": 3,
     "principal": false,
+    "family": "RL",
+    "market": "Run Line",
+    "pick": "MIL -1.5",
+    "line": null,
+    "p": 0.4323,
+    "fair": 131.0,
+    "ic": 34.2,
+    "level": "Muy baja",
+    "price": 118,
+    "methods": [
+     "λ + Binomial Negativa (5.3 · 5.7.5)"
+    ],
+    "how": "Distribución del margen (Binomial Negativa por equipo)",
+    "res": null,
+    "stake": {
+     "level": 0,
+     "ladder": [],
+     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
+     "a": 1.0,
+     "h": 0.9546,
+     "r": 1.0
+    }
+   },
+   {
+    "rank": 4,
+    "principal": false,
     "family": "F5 total",
     "market": "Total primeras 5",
     "pick": "F5 Over 3.5",
@@ -125,7 +151,7 @@
     }
    },
    {
-    "rank": 4,
+    "rank": 5,
     "principal": false,
     "family": "F5",
     "market": "F5 Moneyline",
@@ -151,7 +177,7 @@
     }
    },
    {
-    "rank": 5,
+    "rank": 6,
     "principal": false,
     "family": "ML",
     "market": "Moneyline",
@@ -161,39 +187,13 @@
     "fair": -131.0,
     "ic": 33.5,
     "level": "Muy baja",
-    "price": -154,
+    "price": -157,
     "methods": [
      "Elo + abridor (5.7.7)",
      "Log5 (5.7.2)",
      "λ + Binomial Negativa (5.3 · 5.7.5)"
     ],
     "how": "Promedio de 3 métodos: Log5 (5.7.2) 54.2% · Elo + abridor (5.7.7) 55.2% · λ + Binomial Negativa (5.3 · 5.7.5) 60.5%",
-    "res": null,
-    "stake": {
-     "level": 0,
-     "ladder": [],
-     "block": "falta un dato obligatorio (lineup, umpire, clima o abridor)",
-     "a": 1.0,
-     "h": 0.9546,
-     "r": 1.0
-    }
-   },
-   {
-    "rank": 6,
-    "principal": false,
-    "family": "RL",
-    "market": "Run Line",
-    "pick": "MIL -1.5",
-    "line": null,
-    "p": 0.4323,
-    "fair": 131.0,
-    "ic": 30.9,
-    "level": "Muy baja",
-    "price": 123,
-    "methods": [
-     "λ + Binomial Negativa (5.3 · 5.7.5)"
-    ],
-    "how": "Distribución del margen (Binomial Negativa por equipo)",
     "res": null,
     "stake": {
      "level": 0,
@@ -292,7 +292,7 @@
    "waitFor": "dato",
    "market": "Total completo",
    "p": 0.5787,
-   "ic": 44.5,
+   "ic": 43.9,
    "level": 0,
    "amount": 0,
    "minPrice": null,
