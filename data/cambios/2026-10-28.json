@@ -42,6 +42,29 @@
    "kind": "momio",
    "pk": 849799,
    "text": "El moneyline se mueve hacia MIL (3.1 pp): MIL -135→-154, TB +112→+128"
+  },
+  {
+   "action": "El modelo ya usa a este abridor; momios revisados en esta corrida.",
+   "after": "Drew Rasmussen",
+   "at": "2026-10-28T19:12:30Z",
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "abridor",
+   "pk": 849799,
+   "side": "home",
+   "text": "Abridor anunciado (TB): Drew Rasmussen"
+  },
+  {
+   "after": "esperar momio (F5 Under 3.5)",
+   "at": "2026-10-28T19:12:25Z",
+   "before": "esperar dato (Over 6.5)",
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "decision",
+   "pk": 849799,
+   "text": "Decisión: esperar dato (Over 6.5) → esperar momio (F5 Under 3.5) · tras: abridor"
   }
  ],
  "snap": {
@@ -49,9 +72,9 @@
    "away": 158,
    "dec": {
     "level": 0,
-    "pick": "Over 6.5",
+    "pick": "F5 Under 3.5",
     "status": "esperar",
-    "waitFor": "dato"
+    "waitFor": "momio"
    },
    "detailed": "Scheduled",
    "home": 139,
@@ -74,7 +97,10 @@
      "id": 694819,
      "name": "Jacob Misiorowski"
     },
-    "home": null
+    "home": {
+     "id": 656876,
+     "name": "Drew Rasmussen"
+    }
    },
    "probChangedAt": null,
    "since": "2026-10-27T04:04:15Z",

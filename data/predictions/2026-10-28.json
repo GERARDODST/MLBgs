@@ -3,66 +3,66 @@
 "pk": 849799,
 "date": "2026-10-28",
 "time": "2026-10-29T00:00:00Z",
-"generatedAt": "2026-10-28T18:02:28+00:00",
+"generatedAt": "2026-10-28T19:12:25+00:00",
 "away": "MIL",
 "home": "TB",
-"pHome": 0.4338,
+"pHome": 0.4421,
 "methods": {
 "log5": 0.4584,
-"elo": 0.4479,
-"lambda": 0.3951
+"elo": 0.4447,
+"lambda": 0.4233
 },
-"confidence": "media",
-"projAway": 4.4582,
+"confidence": "alta",
+"projAway": 4.1534,
 "projHome": 3.417,
-"total": 7.8752,
-"f5Away": 2.2838,
+"total": 7.5703,
+"f5Away": 2.0506,
 "f5Home": 1.8422,
-"nrfi": 0.5674,
-"pOver85": 0.3879,
+"nrfi": 0.5844,
+"pOver85": 0.3595,
 "probables": {
 "away": "Jacob Misiorowski",
-"home": "Por anunciar"
+"home": "Drew Rasmussen"
 },
-"light": "Amarillo",
+"light": "Gris",
 "best": {
-"market": "Total",
-"pick": "Over 6.5",
-"p": 0.5787,
-"price": -120,
-"edge": 0.0332,
-"light": "Amarillo"
+"market": "NRFI/YRFI",
+"pick": "NRFI",
+"p": 0.5844,
+"price": null,
+"edge": null,
+"light": "Gris"
 },
 "topPicks": [
 {
-"family": "Total",
-"market": "Total completo",
-"pick": "Over 6.5",
-"p": 0.5787,
-"line": 6.5,
-"ic": 43.9277,
+"family": "RL",
+"market": "Run Line",
+"pick": "TB +1.5",
+"p": 0.6004,
+"line": null,
+"ic": 43.1801,
 "level": "Baja"
 },
 {
-"family": "K",
-"market": "Prop de ponches",
-"pick": "Jacob Misiorowski Over 5.5 K",
-"p": 0.5877,
-"line": 5.5,
-"ic": 35.7958,
+"family": "ML",
+"market": "Moneyline",
+"pick": "MIL",
+"p": 0.5579,
+"line": null,
+"ic": 38.5249,
 "level": "Muy baja"
 }
 ],
 "decision": {
 "status": "esperar",
-"waitFor": "dato",
-"family": "Total",
-"pick": "Over 6.5",
+"waitFor": "momio",
+"family": "F5 total",
+"pick": "F5 Under 3.5",
 "level": 0,
 "alts": [
-"K",
-"RL",
-"F5 total"
+"F5 total",
+"F5",
+"K"
 ]
 }
 }
