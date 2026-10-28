@@ -32,6 +32,16 @@
    "kind": "decision",
    "pk": 849799,
    "text": "Decisión: esperar dato (MIL) → esperar dato (Over 6.5) · tras: abridor, momio"
+  },
+  {
+   "action": "Edge, índice de confianza y stake recalculados con el momio nuevo.",
+   "at": "2026-10-28T12:24:55Z",
+   "date": "2026-10-28",
+   "game": "MIL @ TB",
+   "impact": "medio",
+   "kind": "momio",
+   "pk": 849799,
+   "text": "El moneyline se mueve hacia MIL (3.1 pp): MIL -135→-154, TB +112→+128"
   }
  ],
  "snap": {
@@ -53,10 +63,10 @@
    "odds": {
     "line": 6.5,
     "ml": {
-     "away": -135,
-     "home": 112
+     "away": -154,
+     "home": 128
     },
-    "pHome": 0.4509,
+    "pHome": 0.4198,
     "src": "draftkings"
    },
    "prob": {
