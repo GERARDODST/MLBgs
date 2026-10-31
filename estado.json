@@ -1,0 +1,35 @@
+{
+ "generatedAt": "2026-10-31T21:33:25+00:00",
+ "digest": "e7602b137ff22d3e",
+ "games": 0,
+ "nextGame": null,
+ "live": 0,
+ "cadence": {
+  "sleep": 0,
+  "every": null,
+  "why": "sin partidos en 36 h: el relevo se detiene (lo reanuda el cron de cada hora)",
+  "next": null,
+  "steps": [
+   {
+    "within": 150,
+    "every": 9
+   },
+   {
+    "within": 360,
+    "every": 15
+   },
+   {
+    "within": 720,
+    "every": 27
+   },
+   {
+    "within": 2160,
+    "every": 57
+   },
+   {
+    "within": null,
+    "every": null
+   }
+  ]
+ }
+}
